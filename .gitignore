@@ -25,6 +25,8 @@ MemoryCaptures/
 *.VC.db
 *.pidb.meta
 
+.vs/
+
 # Unity Cache Server
 Cache/
 
@@ -43,3 +45,4 @@ Thumbs.db
 
 # Personal settings (optional)
 UserSettings/
+Cattler/.vsconfig
