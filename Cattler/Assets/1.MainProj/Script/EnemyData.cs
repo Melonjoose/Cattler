@@ -9,5 +9,6 @@ public class EnemyData : ScriptableObject
     public int attackPower;
     public float moveSpeed;
     public float attackSpeed;
+    public float attackRange;
     //public EnemyType type;
 }
