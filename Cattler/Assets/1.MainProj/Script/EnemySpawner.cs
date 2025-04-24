@@ -12,4 +12,8 @@ public class EnemySpawner : MonoBehaviour
         //controller.catData = data;
         //controller.isCat = true;
     }
+
+    //Assign Data into enemy
+
+    //Add any additional stats from higher difficulty
 }

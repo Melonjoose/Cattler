@@ -8,5 +8,6 @@ public class CatData : ScriptableObject
     public int health;
     public int attackPower;
     public float attackSpeed;
+    public float attackRange;
     //public AbilityData[] abilities; // Optional
 }

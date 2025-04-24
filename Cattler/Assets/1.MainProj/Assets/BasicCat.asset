@@ -15,5 +15,6 @@ MonoBehaviour:
   catName: BasicCat
   icon: {fileID: 7680419535816754504, guid: fb42a84de1f59964bb5666487e2d5c69, type: 3}
   health: 10
-  attackPower: 1
+  attackPower: 2
   attackSpeed: 1
+  attackRange: 10

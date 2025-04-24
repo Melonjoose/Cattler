@@ -3,6 +3,7 @@ using UnityEngine;
 public class CatUnit : MonoBehaviour
 {
     public CatData catData;
+    public GameObject targetPoint;
 
     private float attackCooldown;
 
@@ -30,6 +31,9 @@ public class CatUnit : MonoBehaviour
         {
             Debug.LogWarning("No CatData assigned to " + gameObject.name);
         }
+
+        TriggerTrack triggerTrack = GetComponentInChildren<TriggerTrack>();
+        triggerTrack.triggerRadius = catData.attackRange;
     }
 
     private void Update()
@@ -65,8 +69,11 @@ public class CatUnit : MonoBehaviour
 
     private void Attack(EnemyUnit target)
     {
+        Vector3 hitlocation = targetPoint.transform.position;
+
         target.TakeDamage((int)attackDamage);
         Debug.Log(catData.catName + " attacked " + target.name + " for " + attackDamage + " damage!");
+        DamageNumberManager.Instance.ShowDamage((int)attackDamage, hitlocation);
     }
 
     public void TakeDamage(int amount)

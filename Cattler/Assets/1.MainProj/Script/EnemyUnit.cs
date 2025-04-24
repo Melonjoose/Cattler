@@ -29,7 +29,7 @@ public class EnemyUnit : MonoBehaviour
             currentHealth = enemyData.health;
             attackSpeed = enemyData.attackSpeed;
             attackDamage = enemyData.attackPower;
-            moveSpeed = enemyData.moveSpeed;
+            moveSpeed = enemyData.movementSpeed;
             attackRange = enemyData.attackRange;
         }
         else

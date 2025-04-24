@@ -1,16 +1,16 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEnemy", menuName = "Units/Enemy")]
-public class EnemyData : ScriptableObject
+[CreateAssetMenu(fileName = "Items", menuName = "Items")]
+public class ItemType : ScriptableObject
 {
-    public string enemyName;
+    public string Item;
     public Sprite icon;
     public int health;
-    
+
     public int attackPower;
     public float attackSpeed;
     public float attackRange;
-    
+
     public float movementSpeed;
-    //public EnemyType type;
+    //public AbilityData[] abilities; // Optional
 }

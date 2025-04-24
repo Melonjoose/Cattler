@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: BasicEnemy
   icon: {fileID: -8021277769608807489, guid: 2348ebc65ed3ebf45868445bf5eb58e6, type: 3}
-  health: 2
+  health: 5
   attackPower: 10
   moveSpeed: 3
   attackSpeed: 3
