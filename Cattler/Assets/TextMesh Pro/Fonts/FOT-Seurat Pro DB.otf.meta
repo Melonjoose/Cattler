@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: ab3be4a8660fa2e4987f9d0f85c72edf
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - FOT-Seurat Pro
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 06099c7e8caa5e447af8781a01f6bdf0, type: 3}
+  - {fileID: 12800000, guid: b85958f6794c20d429db212445844ad7, type: 3}
+  - {fileID: 12800000, guid: a3400ded1295f014d92850e1d014750e, type: 3}
+  - {fileID: 12800000, guid: 269ef9d3af248554ab71766d5869cf57, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

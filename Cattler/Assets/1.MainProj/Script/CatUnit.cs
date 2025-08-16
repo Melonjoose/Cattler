@@ -1,56 +1,58 @@
+using System.Collections.Generic;
+using NUnit.Framework;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CatUnit : MonoBehaviour
 {
-    public CatData catData;
     public GameObject targetPoint;
+    public CatData baseData;
+    public CatRuntimeData runtimeData;
+
+    public int currentHealth;
+    public float attackPower;
+
 
     private float attackCooldown;
 
-    [Header("Stats")]
-    [SerializeField, Tooltip("Current health of the cat")] private int currentHealth;
-    [SerializeField, Tooltip("Attack speed of the cat")] private float attackSpeed;
-    [SerializeField, Tooltip("Attack damage of the cat")] private float attackDamage;
-
     private void Start()
     {
-        if (catData != null)
+
+        if (baseData != null)
         {
-            attackCooldown = 1f / catData.attackSpeed;
-
-            // Set sprite
-            SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            if (sr && catData.icon != null)
-                sr.sprite = catData.icon;
-
-            currentHealth = catData.health;
-            attackSpeed = catData.attackSpeed;
-            attackDamage = catData.attackPower;
+            runtimeData = new CatRuntimeData(baseData);
+            GetComponent<SpriteRenderer>().sprite = runtimeData.icon;
         }
+           
         else
         {
             Debug.LogWarning("No CatData assigned to " + gameObject.name);
         }
 
         TriggerTrack triggerTrack = GetComponentInChildren<TriggerTrack>();
-        triggerTrack.triggerRadius = catData.attackRange;
+        triggerTrack.triggerRadius = runtimeData.attackRange;
     }
 
     private void Update()
     {
         if (attackCooldown > 0f)
             attackCooldown -= Time.deltaTime;
+
+        currentHealth = runtimeData.currentHealth;
+        attackPower = runtimeData.attackPower;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        Debug.Log("TriggerStay2D: " + other.name);
         if (attackCooldown <= 0f)
         {
             EnemyUnit enemy = other.GetComponent<EnemyUnit>();
             if (enemy != null)
             {
                 Attack(enemy);
-                attackCooldown = 1f / attackSpeed;
+                attackCooldown = 1f / runtimeData.attackSpeed;
             }
         }
     }
@@ -62,7 +64,7 @@ public class CatUnit : MonoBehaviour
             if (enemy != null)
             {
                 Attack(enemy);
-                attackCooldown = 1f / attackSpeed;
+                attackCooldown = 1f / runtimeData.attackSpeed;
             }
         }
     }
@@ -71,15 +73,16 @@ public class CatUnit : MonoBehaviour
     {
         Vector3 hitlocation = targetPoint.transform.position;
 
-        target.TakeDamage((int)attackDamage);
-        Debug.Log(catData.catName + " attacked " + target.name + " for " + attackDamage + " damage!");
-        DamageNumberManager.Instance.ShowDamage((int)attackDamage, hitlocation);
+        target.TakeDamage((int)runtimeData.attackPower);
+        Debug.Log(runtimeData.catName + " attacked " + target.name + " for " + runtimeData.attackPower + " damage!");
+        DamageNumberManager.Instance.ShowDamage((int)runtimeData.attackPower, hitlocation);
     }
+
 
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
-        if (currentHealth <= 0)
+        runtimeData.currentHealth -= amount;
+        if (runtimeData.currentHealth <= 0)
         {
             Die();
         }
@@ -87,7 +90,7 @@ public class CatUnit : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log(catData.catName + " has been defeated.");
+        Debug.Log(runtimeData.catName + " has been defeated.");
         Destroy(gameObject);
     }
 }
