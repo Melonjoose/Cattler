@@ -1,55 +1,90 @@
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class EnemyUnit : MonoBehaviour
 {
-    public EnemyData enemyData; // Drag in your ScriptableObject (e.g., BasicEnemy.asset)
-    private GameObject TargetCat;
+    public EnemyData enemyData; // ScriptableObject with enemy stats
+    private GameObject TargetCat; // Reference to current target
+
+    [Header("Targeting")]
+    public GameObject targetPoint; // Assign in inspector (child empty GameObject at attack point)
+
+    private float attackCooldown;
 
     [Header("Stats")]
-    [SerializeField, Tooltip("Current health of the Enemy")] private int currentHealth;
-    [SerializeField, Tooltip("Attack speed of the Enemy")] private float attackSpeed;
-    [SerializeField, Tooltip("Attack damage of the Enemy")] private float attackDamage;
-    [SerializeField, Tooltip("Movement speed of the Enemy")] private float moveSpeed;
-    [SerializeField, Tooltip("Attack range of the Enemy")] private float attackRange;
+    [SerializeField] private int currentHealth;
+    [SerializeField] private float attackSpeed;
+    [SerializeField] private float attackDamage;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float attackRange;
 
     private void Start()
     {
         if (enemyData != null)
         {
-            currentHealth = enemyData.health;
-
-            // Set the sprite visually
-            SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            if (sr && enemyData.icon != null)
-            {
-                sr.sprite = enemyData.icon;
-            }
-
+            // Initialize stats from SO
             currentHealth = enemyData.health;
             attackSpeed = enemyData.attackSpeed;
             attackDamage = enemyData.attackPower;
             moveSpeed = enemyData.movementSpeed;
             attackRange = enemyData.attackRange;
+
+            // Apply sprite
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (sr && enemyData.icon != null)
+            {
+                sr.sprite = enemyData.icon;
+            }
         }
         else
         {
             Debug.LogWarning("No EnemyData assigned to " + gameObject.name);
         }
+
+        LinkTargetpoint(); // Link the targetPoint to an object called targetPoint located in this enemy's children
     }
+
 
     private void Update()
     {
+        // Tick down cooldown
+        if (attackCooldown > 0f)
+            attackCooldown -= Time.deltaTime;
+
         if (TargetCat == null)
         {
             ChooseRandomCat();
         }
         else
         {
-            MovetowardsCat(TargetCat);
+            MovetowardsCat();
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (attackCooldown <= 0f)
+        {
+            CatUnit cat = other.GetComponent<CatUnit>();
+            if (cat != null && other.gameObject == TargetCat) // only attack chosen target
+            {
+                AttackCat(cat);
+                attackCooldown = 1f / attackSpeed; // Reset cooldown
+            }
+        }
+    }
+
+    void LinkTargetpoint()
+    {
+        Transform tp = transform.Find("TargetPoint");
+        if (tp != null)
+        {
+            targetPoint = tp.gameObject;
+        }
+        else
+        {
+            Debug.LogWarning("No child named 'targetPoint' found under " + gameObject.name);
+        }
+    }
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
@@ -64,44 +99,46 @@ public class EnemyUnit : MonoBehaviour
     private void Die()
     {
         Debug.Log(enemyData.enemyName + " has been defeated.");
+        Currency.instance.AddInk(10); // Add ink to currency
         Destroy(gameObject);
     }
 
-    private void MovetowardsCat(GameObject TargetCat)
+    private void MovetowardsCat()
     {
-        // Move towards the cat
+        if (TargetCat == null) return;
+
         Vector3 direction = (TargetCat.transform.position - transform.position).normalized;
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
 
-    void ChooseRandomCat()
+    private void ChooseRandomCat()
     {
-        GameObject[] AllCats = GameObject.FindGameObjectsWithTag("Cat"); // Fixed: Correct method to find multiple objects with a tag
+        GameObject[] allCats = GameObject.FindGameObjectsWithTag("Cat");
 
-        if(AllCats.Length == 0)
+        if (allCats.Length == 0)
         {
             Debug.LogWarning("No cats found in the scene.");
-            GameObject TargetCat = null;
+            TargetCat = null;
             return;
         }
-        
-        foreach (GameObject cat in AllCats) // Use the array of cats
-        {
-            if (Random.Range(0, 4) == 0)
-            {
-                TargetCat = cat; // Fixed: Correct variable name
-            }
-        }
+
+        // Pick random
+        TargetCat = allCats[Random.Range(0, allCats.Length)];
 
         if (TargetCat != null)
         {
             Debug.Log("Target Cat: " + TargetCat.name);
-            MovetowardsCat(TargetCat);
-        }
-        else
-        {
-            Debug.LogWarning("No target cat found.");
         }
     }
 
+    private void AttackCat(CatUnit cat)
+    {
+        if (cat == null) return;
+
+        Vector3 hitLocation = targetPoint != null ? targetPoint.transform.position : transform.position;
+
+        cat.TakeDamage((int)attackDamage); // Call CatUnit’s TakeDamage
+        Debug.Log(enemyData.enemyName + " attacked " + cat.name + " for " + attackDamage + " damage!");
+        DamageNumberManager.Instance.ShowDamage((int)attackDamage, hitLocation);
+    }
 }

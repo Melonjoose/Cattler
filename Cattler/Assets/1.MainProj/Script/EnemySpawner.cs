@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -13,7 +14,11 @@ public class EnemySpawner : MonoBehaviour
         //controller.isCat = true;
     }
 
-    //Assign Data into enemy
+    
+
+
 
     //Add any additional stats from higher difficulty
+
+
 }

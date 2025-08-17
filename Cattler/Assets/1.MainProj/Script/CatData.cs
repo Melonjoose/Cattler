@@ -5,9 +5,12 @@ public class CatData : ScriptableObject
 {
     public string catName;
     public Sprite icon;
+    public int level; // Level of the cat
+    public int EXP; // Experience points for leveling up
     public int health;
     public int attackPower;
     public float attackSpeed;
     public float attackRange;
+    
     //public AbilityData[] abilities; // Optional
 }

@@ -11,6 +11,7 @@ public class CatUnit : MonoBehaviour
     public CatRuntimeData runtimeData;
 
     public int currentHealth;
+    public int currentEXP;
     public float attackPower;
 
 
@@ -30,6 +31,8 @@ public class CatUnit : MonoBehaviour
             Debug.LogWarning("No CatData assigned to " + gameObject.name);
         }
 
+
+        LinkTargetpoint();//link the targetPoint to and object called targetPoint located in this enemy's children
         TriggerTrack triggerTrack = GetComponentInChildren<TriggerTrack>();
         triggerTrack.triggerRadius = runtimeData.attackRange;
     }
@@ -37,7 +40,9 @@ public class CatUnit : MonoBehaviour
     private void Update()
     {
         if (attackCooldown > 0f)
-            attackCooldown -= Time.deltaTime;
+        {
+            attackCooldown -= Time.deltaTime; //reset cooldown if not attacking
+        }
 
         currentHealth = runtimeData.currentHealth;
         attackPower = runtimeData.attackPower;
@@ -45,7 +50,6 @@ public class CatUnit : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("TriggerStay2D: " + other.name);
         if (attackCooldown <= 0f)
         {
             EnemyUnit enemy = other.GetComponent<EnemyUnit>();
@@ -54,6 +58,19 @@ public class CatUnit : MonoBehaviour
                 Attack(enemy);
                 attackCooldown = 1f / runtimeData.attackSpeed;
             }
+        }
+    }
+
+    void LinkTargetpoint()
+    {
+        Transform tp = transform.Find("TargetPoint");
+        if (tp != null)
+        {
+            targetPoint = tp.gameObject;
+        }
+        else
+        {
+            Debug.LogWarning("No child named 'targetPoint' found under " + gameObject.name);
         }
     }
     public void TryAttack(Collider2D other)
@@ -67,15 +84,16 @@ public class CatUnit : MonoBehaviour
                 attackCooldown = 1f / runtimeData.attackSpeed;
             }
         }
+
     }
 
     private void Attack(EnemyUnit target)
     {
-        Vector3 hitlocation = targetPoint.transform.position;
+        Vector3 hitlocation = targetPoint.transform.position; // Indicate the targetPoint's position for where the damage number will be displayed
 
-        target.TakeDamage((int)runtimeData.attackPower);
-        Debug.Log(runtimeData.catName + " attacked " + target.name + " for " + runtimeData.attackPower + " damage!");
-        DamageNumberManager.Instance.ShowDamage((int)runtimeData.attackPower, hitlocation);
+        target.TakeDamage((int)runtimeData.attackPower); //run the TakeDamage method on the target enemy by dealing attackPower damage. (TAKES ACTUAL DMG)
+        Debug.Log(runtimeData.catName + " attacked " + target.name + " for " + runtimeData.attackPower + " damage!"); //debug to state damage dealt to who in console
+        DamageNumberManager.Instance.ShowDamage((int)runtimeData.attackPower, hitlocation); //Showdamage at location (SHOWS DMG TAKEN)
     }
 
 
@@ -86,7 +104,7 @@ public class CatUnit : MonoBehaviour
         {
             Die();
         }
-    }
+    } //runs when triggered by ICombatUnit.cs
 
     private void Die()
     {
