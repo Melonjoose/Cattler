@@ -1,4 +1,4 @@
-Control Manager
+[[Control Manager]]
  Point and Click system on interactable buttons on screen.
  1. Functioning Cursor
  2. Interactable Buttons

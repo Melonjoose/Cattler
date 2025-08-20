@@ -13,7 +13,7 @@ public class CatUnit : MonoBehaviour
     public int currentHealth;
     public int currentEXP;
     public float attackPower;
-
+    
 
     private float attackCooldown;
 
@@ -84,7 +84,6 @@ public class CatUnit : MonoBehaviour
                 attackCooldown = 1f / runtimeData.attackSpeed;
             }
         }
-
     }
 
     private void Attack(EnemyUnit target)
@@ -110,5 +109,6 @@ public class CatUnit : MonoBehaviour
     {
         Debug.Log(runtimeData.catName + " has been defeated.");
         Destroy(gameObject);
+        //Give Send EXP gained from death to Retreat controller   
     }
 }

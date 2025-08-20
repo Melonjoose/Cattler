@@ -1,0 +1,1 @@
+Game detects what cats is added in [[Team]]
