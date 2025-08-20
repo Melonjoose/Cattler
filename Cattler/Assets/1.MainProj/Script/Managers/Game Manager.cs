@@ -1,12 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
 
     [Header("Pages")]
-    [SerializeField] private List<GameObject> Pages = new List<GameObject>();
+    public GameObject inventory;
+    public GameObject summonPage;
 
-     
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

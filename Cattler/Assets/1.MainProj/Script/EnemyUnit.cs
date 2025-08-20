@@ -15,7 +15,7 @@ public class EnemyUnit : MonoBehaviour
     [SerializeField] private float attackSpeed;
     [SerializeField] private float attackDamage;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float attackRange;
+    [SerializeField] public float attackRange;
 
     private void Start()
     {
@@ -41,6 +41,8 @@ public class EnemyUnit : MonoBehaviour
         }
 
         LinkTargetpoint(); // Link the targetPoint to an object called targetPoint located in this enemy's children
+        EnemyTriggerTrack triggerTrack = GetComponentInChildren<EnemyTriggerTrack>();
+        triggerTrack.triggerRadius = enemyData.attackRange;
     }
 
 

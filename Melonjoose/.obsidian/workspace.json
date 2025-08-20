@@ -13,33 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Team Page.md",
+                "file": "Purrgatory Game (Main Game)/Game UI.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Team Page"
-            }
-          },
-          {
-            "id": "778c89ded5578c4b",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Purrgatory Game (Main Game)/Game Flow.canvas",
-                "viewState": {
-                  "x": 2139,
-                  "y": 190.29098984771582,
-                  "zoom": -1.7863309996223433
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Game Flow"
+              "title": "Game UI"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -187,16 +169,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "778c89ded5578c4b",
+  "active": "5d09ab864d2728e6",
   "lastOpenFiles": [
-    "Marketing/Youtube Schedule Planning.md",
-    "Main Gameplay Page.md",
     "Team Page.md",
-    "Purrgatory Game (Main Game)/Game Flow.canvas",
-    "Purrgatory Game (Main Game)/Control Manager.md",
+    "Team.md",
     "Purrgatory Game (Main Game)/Game Manager.md",
+    "Purrgatory Game (Main Game)/Control Manager.md",
+    "Purrgatory Game (Main Game)/Game Flow.canvas",
     "Purrgatory Game (Main Game)/Basic Cats.md",
     "Purrgatory Game (Main Game)/Game UI.md",
+    "Marketing/Youtube Schedule Planning.md",
+    "Main Gameplay Page.md",
     "Team Management/FYP BOOTH Showcase.md",
     "Team Management/House Rules.md",
     "Game Structure and Timeline.canvas",

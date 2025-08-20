@@ -8,12 +8,11 @@ public class EnemyTriggerTrack : MonoBehaviour
     public Vector3 offsetFromCat = new Vector3(0, 0, 1f); // Position in front of the cat
 
     private GameObject chosenCat;
-    private EnemyData enemydata; // Assuming you have an EnemyData class that holds enemy properties
+    private EnemyUnit enemyUnit; // Assuming you have an EnemyData class that holds enemy properties
 
     void Start()
     {
         enemy = transform.parent.gameObject; // Automatically assign the enemy as parent
-        triggerRadius = enemydata.attackRange; //Set triggerRadius to enemie's attackrange;
     }
 
     void FixedUpdate()
