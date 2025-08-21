@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class SlidingIcons : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class SlidingIcons : MonoBehaviour
     void Start()
     {
         ArrangeIcons();
+        AssignIcons(); // make sure cats are synced to positions
+        UpdateIconIndex(); // Update indices after assigning icons
     }
     void Update()
     {
@@ -57,6 +60,8 @@ public class SlidingIcons : MonoBehaviour
                 iconLocations.Add(child);
             }
         }
+        //assign icons to their index located in DraggableIcon.cs
+
         // Arrange icons in their slots
         SnapIconstoPositions();
     }
@@ -103,6 +108,8 @@ public class SlidingIcons : MonoBehaviour
 
         // Snap all icons to positions
         ReorderIcons(draggedIcon);
+        UpdateIconIndex(); // Update indices after snapping
+        //UpdateCatPositionManager();
     }
 
     public void ReorderIcons(DraggableIcon draggedIcon)
@@ -128,6 +135,35 @@ public class SlidingIcons : MonoBehaviour
         }
     }
 
+    void AssignIcons()
+    {
+        icons.Clear();
 
+        foreach (Transform child in transform) // or specific IconGroup
+        {
+            DraggableIcon draggable = child.GetComponent<DraggableIcon>();
+            if (draggable != null)
+            {
+                icons.Add(draggable);
+                draggable.slidingIcons = this; // make sure the reference is set
+            }
+        }
 
+        SnapIconstoPositions();
+    }
+
+    public void UpdateIconIndex()
+    {
+        // After rearranging icons, reassign indices
+        for (int i = 0; i < icons.Count; i++)
+        {
+            icons[i].SetIndex(i);
+        }
+
+    }
+
+    public void UpdateCatPositionManager()
+    {
+
+    }
 }

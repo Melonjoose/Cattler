@@ -129,7 +129,7 @@ public class EnemyUnit : MonoBehaviour
 
         if (TargetCat != null)
         {
-            Debug.Log("Target Cat: " + TargetCat.name);
+            //Debug.Log("Target Cat: " + TargetCat.name);
         }
     }
 

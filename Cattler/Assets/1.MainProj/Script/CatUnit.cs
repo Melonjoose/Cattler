@@ -13,7 +13,8 @@ public class CatUnit : MonoBehaviour
     public int currentHealth;
     public int currentEXP;
     public float attackPower;
-    
+    public float movementSpeed;
+
 
     private float attackCooldown;
 
@@ -46,6 +47,7 @@ public class CatUnit : MonoBehaviour
 
         currentHealth = runtimeData.currentHealth;
         attackPower = runtimeData.attackPower;
+        movementSpeed = runtimeData.movementSpeed;
     }
 
     private void OnTriggerStay2D(Collider2D other)

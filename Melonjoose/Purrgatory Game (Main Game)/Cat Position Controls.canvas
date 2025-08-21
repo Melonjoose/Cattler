@@ -1,0 +1,36 @@
+{
+	"nodes":[
+		{"id":"ce42ea31fd2dc032","type":"text","text":"CatPosition.cs","x":-20,"y":0,"width":250,"height":60},
+		{"id":"e5a38ddf02e7ec1f","type":"text","text":"Cat","x":-660,"y":0,"width":250,"height":60},
+		{"id":"be2ae681d889a9c5","type":"text","text":"CatIcons","x":-1160,"y":0,"width":250,"height":60},
+		{"id":"6e0358363101246f","type":"text","text":"DraggableIcon.cs","x":-1480,"y":0,"width":250,"height":60},
+		{"id":"644a6f07f642e8a5","type":"text","text":"CatIcon_GRP","x":-1160,"y":-180,"width":250,"height":60},
+		{"id":"b7429da9c744f1bd","type":"text","text":"SlidingIcons.cs","x":-1480,"y":-180,"width":250,"height":60},
+		{"id":"b892c7a307711681","type":"text","text":"CatPositionManager.cs","x":-20,"y":-180,"width":250,"height":60},
+		{"id":"7db379181eae7043","type":"text","text":"PlayerTeam","x":-660,"y":-180,"width":250,"height":60},
+		{"id":"63efb2cc81d5ca60","type":"text","text":"Detect and assign Default Cat Position","x":-200,"y":-680,"width":250,"height":60},
+		{"id":"125f02fb41a57768","type":"text","text":"Detect and assign Designated Position","x":160,"y":-679,"width":250,"height":59},
+		{"id":"b19296c2405aabd5","type":"text","text":"Detect & Assign Draggable Icons","x":-1605,"y":-679,"width":250,"height":60},
+		{"id":"89aba55fc642bff3","type":"text","text":"Detect & Assign Draggable locations","x":-1355,"y":-679,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"c62f3ba380a78cdc","fromNode":"7db379181eae7043","fromSide":"right","toNode":"b892c7a307711681","toSide":"left"},
+		{"id":"cf4e0b3d2a93a8da","fromNode":"7db379181eae7043","fromSide":"bottom","toNode":"e5a38ddf02e7ec1f","toSide":"top"},
+		{"id":"5aa2713581fe2d9e","fromNode":"e5a38ddf02e7ec1f","fromSide":"right","toNode":"ce42ea31fd2dc032","toSide":"left"},
+		{"id":"bd15e8c5327f414f","fromNode":"ce42ea31fd2dc032","fromSide":"top","toNode":"b892c7a307711681","toSide":"bottom"},
+		{"id":"f53a1d76aaf923e3","fromNode":"b892c7a307711681","fromSide":"right","toNode":"ce42ea31fd2dc032","toSide":"right","label":"Give Index Int"},
+		{"id":"074669b17b8e7bd5","fromNode":"644a6f07f642e8a5","fromSide":"bottom","toNode":"be2ae681d889a9c5","toSide":"top"},
+		{"id":"a8df7d30e6a410c8","fromNode":"be2ae681d889a9c5","fromSide":"right","toNode":"e5a38ddf02e7ec1f","toSide":"left","label":"Controls"},
+		{"id":"07103414c477a9d2","fromNode":"b892c7a307711681","fromSide":"top","toNode":"63efb2cc81d5ca60","toSide":"bottom"},
+		{"id":"2d18e0943243d108","fromNode":"b892c7a307711681","fromSide":"top","toNode":"125f02fb41a57768","toSide":"bottom"},
+		{"id":"c92cf9c69516322f","fromNode":"63efb2cc81d5ca60","fromSide":"top","toNode":"125f02fb41a57768","toSide":"top","label":"Cats position can go to Designated position only"},
+		{"id":"5f0c7d5326985c52","fromNode":"63efb2cc81d5ca60","fromSide":"left","toNode":"ce42ea31fd2dc032","toSide":"left","label":"tell individual cat's their position"},
+		{"id":"437b541a0b13aa1f","fromNode":"be2ae681d889a9c5","fromSide":"left","toNode":"6e0358363101246f","toSide":"right"},
+		{"id":"521dd7ab4a6ff0a7","fromNode":"644a6f07f642e8a5","fromSide":"left","toNode":"b7429da9c744f1bd","toSide":"right"},
+		{"id":"dfd9a3a54112f403","fromNode":"b7429da9c744f1bd","fromSide":"bottom","toNode":"6e0358363101246f","toSide":"top","label":"Give Index Int"},
+		{"id":"5b421a53327f7e19","fromNode":"b7429da9c744f1bd","fromSide":"top","toNode":"b19296c2405aabd5","toSide":"bottom"},
+		{"id":"a676dad99d177f44","fromNode":"b7429da9c744f1bd","fromSide":"top","toNode":"89aba55fc642bff3","toSide":"bottom"},
+		{"id":"510a397483e3f1ba","fromNode":"b19296c2405aabd5","fromSide":"top","toNode":"89aba55fc642bff3","toSide":"top","label":"Snap & Reorder Icon to locations"},
+		{"id":"f3b891247b55023b","fromNode":"6e0358363101246f","fromSide":"bottom","toNode":"63efb2cc81d5ca60","toSide":"left","label":"Index int given to CatManager to change individual icons"}
+	]
+}

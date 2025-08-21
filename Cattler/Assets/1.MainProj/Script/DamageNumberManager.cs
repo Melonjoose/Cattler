@@ -24,7 +24,7 @@ public class DamageNumberManager : MonoBehaviour
         Vector3 spawnPos = worldPosition + Vector3.up * 1f;
         dn.transform.position = spawnPos;
 
-        Debug.Log($"[ShowDamage] Spawning damage number at worldPosition: {worldPosition}, final spawnPos: {spawnPos}");
+        //Debug.Log($"[ShowDamage] Spawning damage number at worldPosition: {worldPosition}, final spawnPos: {spawnPos}");
 
         dn.SetText(amount);
     }

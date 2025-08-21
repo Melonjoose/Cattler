@@ -11,6 +11,7 @@ public class CatData : ScriptableObject
     public int attackPower;
     public float attackSpeed;
     public float attackRange;
-    
+    public float movementSpeed;
+
     //public AbilityData[] abilities; // Optional
 }

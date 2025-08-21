@@ -9,6 +9,7 @@ public class CatRuntimeData
     public int attackPower;
     public float attackSpeed;
     public float attackRange;
+    public float movementSpeed;
 
     public CatRuntimeData(CatData baseData)
     {
@@ -18,5 +19,6 @@ public class CatRuntimeData
         attackPower = baseData.attackPower;
         attackSpeed = baseData.attackSpeed;
         attackRange = baseData.attackRange;
+        movementSpeed = baseData.movementSpeed;
     }
 }

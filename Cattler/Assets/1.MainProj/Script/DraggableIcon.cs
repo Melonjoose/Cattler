@@ -1,56 +1,83 @@
 using UnityEngine;
-using UnityEngine.EventSystems; // Needed for drag/drop interfaces
+using UnityEngine.EventSystems; // For drag/drop interfaces
 
 public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private RectTransform rectTransform; // The UI object we are dragging
-    private Canvas canvas; // Needed to calculate proper position
-    private CanvasGroup canvasGroup; // Helps with raycasting (interaction)
+    // References
+    private RectTransform rectTransform;
+    private Canvas canvas;
+    private CanvasGroup canvasGroup;
 
-    public SlidingIcons slidingIcons; // reference to manager
-    public bool isDragging = false;
+    [HideInInspector] public SlidingIcons slidingIcons; // Reference to manager
+    [HideInInspector] public bool isDragging = false;
+
+    // Index in SlidingIcons list
+    [SerializeField] private int iconIndex = 0;
 
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
 
-        // Find the parent canvas (needed for correct mouse position conversion)
+        // Find parent canvas for proper scaling
         canvas = GetComponentInParent<Canvas>();
-
     }
 
-    // Called when drag begins (mouse button pressed down on this object)
+    void Start()
+    {
+        // Optional: auto-register with manager if not assigned manually
+        if (slidingIcons != null && !slidingIcons.icons.Contains(this))
+        {
+            slidingIcons.icons.Add(this);
+            slidingIcons.UpdateIconIndex(); // Sync index
+        }
+    }
+
+    // --------------------
+    // Drag Handlers
+    // --------------------
     public void OnBeginDrag(PointerEventData eventData)
     {
         isDragging = true;
-        // Make the icon semi-transparent while dragging
-        canvasGroup.alpha = 0.6f;
-
-        // Disable raycast so we don't block other UI elements while dragging
-        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = 0.6f;          // Semi-transparent
+        canvasGroup.blocksRaycasts = false; // Allow drop targets to receive raycasts
     }
 
-    // Called every frame while dragging
     public void OnDrag(PointerEventData eventData)
     {
-        // Move the icon with the mouse
-        // eventData.delta = mouse movement in pixels
-        // We use canvas scale to adjust movement properly
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
-    // Called when drag ends (mouse released)
     public void OnEndDrag(PointerEventData eventData)
     {
         isDragging = false;
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        // Snap to nearest slot
+        // Snap to nearest slot via manager
         if (slidingIcons != null)
         {
             slidingIcons.SnapDraggedIcon(this);
         }
     }
+
+    // --------------------
+    // Index management
+    // --------------------
+
+    public void SetIndex(int index)
+    {
+        iconIndex = index;
+        // Debug log helps confirm sync
+        // Debug.Log($"{gameObject.name} assigned index {iconIndex}");
+    }
+
+    /// <summary>
+    /// Get this icon's current index
+    /// </summary>
+    public int GetIndex()
+    {
+        return iconIndex;
+    }
+
 }

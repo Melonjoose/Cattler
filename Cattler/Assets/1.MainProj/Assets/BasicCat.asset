@@ -20,3 +20,4 @@ MonoBehaviour:
   attackPower: 2
   attackSpeed: 1
   attackRange: 10
+  movementSpeed: 5
