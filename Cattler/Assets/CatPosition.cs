@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class CatPosition : MonoBehaviour
 {
-    public int CatPositionIndex;
+
+    public int currentCatPosition;// indicate position of the cat in the team lineup
+    public int newCatPosition;// indicate new position of the cat in the team lineup;
     public bool isCatWalking = false;
     public bool isCatAtTargetLocation = false;
 
@@ -26,13 +28,22 @@ public class CatPosition : MonoBehaviour
                 transform.position = targetLocation.position;
                 isCatWalking = false;
                 isCatAtTargetLocation = true;
+                UpdateCurrentPosition();
             }
         }
     }
 
-    public void SetCatPositionIndex(int index)
+    public void SetNewCatPosition(int index)
     {
-        CatPositionIndex = index;
+        newCatPosition = index;
+    }
+
+    void UpdateCurrentPosition()
+    {
+        if (currentCatPosition != newCatPosition)
+        {
+            currentCatPosition = newCatPosition;
+        }
     }
 
     public void MoveToDesignatedLocation(Transform target)

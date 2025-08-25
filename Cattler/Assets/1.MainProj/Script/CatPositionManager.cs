@@ -1,58 +1,32 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 public class CatPositionManager : MonoBehaviour
 {
-    [Header("Position Assignments")]
-    public List<GameObject> positions = new List<GameObject>();
+    public static CatPositionManager instance;
 
-    [Header("Cat Designated Positions")]
-    public List<GameObject> catDesignatedPosition = new List<GameObject>();
+    [Header("WorldPosition")]
+    public List<GameObject> worldPositions = new List<GameObject>(); // world positions for cats to walk to.
+
+    [Header("CurrentCatPositions")]
+    public List<GameObject> catPositions = new List<GameObject>(); // Where the cats are supposed to be.
 
     public GameObject playerTeam; // Reference to the player team GameObject
 
     void Start()
     {
+        instance = this;
         playerTeam = this.gameObject; // Assuming this script is attached to the player team GameObject
-        AutoAssignPositions();
-        AssignCatTeam();
-        MoveCatsToPositionAssigned();
+        AssignWorldPositions();
+        UpdateCatPositions();
     }
 
-    public void AssignCatTeam()
+
+    public void AssignWorldPositions() //ONE TIME USE at start.
     {
-        catDesignatedPosition.Clear();
-
-        int catCounter = 0;
-
-        foreach (Transform child in playerTeam.transform)
-        {
-            if (child.CompareTag("Cat"))
-            {
-                CatPosition cat = child.GetComponent<CatPosition>();
-                if (cat != null)
-                {
-                    if (catCounter < positions.Count)
-                    {
-                        cat.SetCatPositionIndex(catCounter); // assign sequential index
-                        catDesignatedPosition.Add(child.gameObject);
-
-                        Debug.Log($"{child.name} assigned to index {catCounter}");
-                    }
-                    else
-                    {
-                        Debug.LogWarning("More cats than available positions!");
-                    }
-
-                    catCounter++;
-                }
-            }
-        }
-    }
-
-    public void AutoAssignPositions()
-    {
-        positions.Clear();
+        worldPositions.Clear();
 
         Transform catpointsGroup = playerTeam.transform.Find("CatPoints_GRP");
         if (catpointsGroup == null)
@@ -65,37 +39,36 @@ public class CatPositionManager : MonoBehaviour
         {
             if (child.name.StartsWith("Position"))
             {
-                positions.Add(child.gameObject);
+                worldPositions.Add(child.gameObject);
             }
         }
     }
 
-    void MoveCatsToPositionAssigned()
+    public void UpdateCatPositions() // Call this whenever cats are added/removed
     {
-        foreach (GameObject catObj in catDesignatedPosition)
+        catPositions.Clear();
+
+        Transform playerTeamGRP = playerTeam.transform.Find("PlayerTeam");
+        foreach (Transform cat in playerTeamGRP)
         {
-            CatPosition cat = catObj.GetComponent<CatPosition>();
-            if (cat != null)
+            if (cat.CompareTag("Cat")) // only add if tagged correctly
             {
-                int index = cat.CatPositionIndex;
-
-                if (index >= 0 && index < positions.Count)
-                {
-                    Transform pos = positions[index].transform;
-
-                    // Option A: smooth walk
-                    cat.MoveToDesignatedLocation(pos);
-
-                    // Option B: instant snap
-                    // cat.TeleportToLocation(pos);
-                }
-                else
-                {
-                    Debug.LogWarning("Invalid position index for " + catObj.name);
-                }
+                catPositions.Add(cat.gameObject);
             }
         }
     }
 
-    //Read 
+    public void SyncCatsWithIcons(List<DraggableIcon> icons)
+    {
+        for (int i = 0; i < icons.Count; i++)
+        {
+            CatPosition cat = icons[i].GetAssignedCat();
+            if (cat == null) continue;
+
+            // Move to correct position
+            if (i < worldPositions.Count)
+                cat.MoveToDesignatedLocation(worldPositions[i].transform);
+        }
+    }
+
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems; // For drag/drop interfaces
 
@@ -13,6 +14,8 @@ public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     // Index in SlidingIcons list
     [SerializeField] private int iconIndex = 0;
+
+    private CatPosition assignedCat;
 
     void Awake()
     {
@@ -65,19 +68,10 @@ public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     // Index management
     // --------------------
 
-    public void SetIndex(int index)
-    {
-        iconIndex = index;
-        // Debug log helps confirm sync
-        // Debug.Log($"{gameObject.name} assigned index {iconIndex}");
-    }
+    public void SetIndex(int newIndex) => iconIndex = newIndex;
+    public int GetIndex() => iconIndex;
 
-    /// <summary>
-    /// Get this icon's current index
-    /// </summary>
-    public int GetIndex()
-    {
-        return iconIndex;
-    }
+    public void AssignCat(CatPosition cat) => assignedCat = cat;
+    public CatPosition GetAssignedCat() => assignedCat;
 
 }

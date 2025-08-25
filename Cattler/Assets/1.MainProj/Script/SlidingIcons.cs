@@ -1,25 +1,27 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SlidingIcons : MonoBehaviour
 {
     public List<DraggableIcon> icons = new List<DraggableIcon>();
     public GameObject PositionGRP;
-    public List<Transform> iconLocations; // Slots for icons
+    public List<Transform> iconLocations = new List<Transform>(); // Slots for icons
+    public List<Transform> catPositions = new List<Transform>(); // world positions for cats
 
     private bool isReordering = false;
 
-
-    /// <summary>
-    /// Places icons onto their current slot positions.
-    /// </summary> 
+    private int index;
+    private CatPosition assignedCat;
     void Start()
     {
-        ArrangeIcons();
-        AssignIcons(); // make sure cats are synced to positions
-        UpdateIconIndex(); // Update indices after assigning icons
+        ArrangeIcons();      // Build slot list
+        AssignIcons();       // Find draggable icons and register them
+        UpdateIconIndex();   // Sync indices immediately
+        UpdateCatPositionManager(); // Initial sync with CatPositionManager
+
     }
+
     void Update()
     {
         if (!isReordering) return;
@@ -31,7 +33,7 @@ public class SlidingIcons : MonoBehaviour
             if (icons[i] == null) continue;
 
             // Skip icons being dragged
-            DraggableIcon draggable = icons[i].GetComponent<DraggableIcon>();
+            DraggableIcon draggable = icons[i];
             if (draggable != null && draggable.isDragging) continue;
 
             RectTransform iconRect = icons[i].GetComponent<RectTransform>();
@@ -40,7 +42,6 @@ public class SlidingIcons : MonoBehaviour
             // Smoothly move towards target
             iconRect.localPosition = Vector3.Lerp(iconRect.localPosition, targetPos, Time.deltaTime * 10f);
 
-            // Check if close enough
             if (Vector3.Distance(iconRect.localPosition, targetPos) > 0.01f)
                 allSnapped = false;
         }
@@ -49,43 +50,55 @@ public class SlidingIcons : MonoBehaviour
             isReordering = false; // Stop updating when all icons are at their slots
     }
 
-    public void ArrangeIcons() //add all Position1,Position2,etc that is a child of positionGRP to iconLocations
+    // ---------------------------
+    // Setup
+    // ---------------------------
+    public void ArrangeIcons()
     {
-        iconLocations.Clear(); // Clear existing slots
-        // Find all child transforms named Position1, Position2, etc.
+        iconLocations.Clear();
+
         foreach (Transform child in PositionGRP.transform)
         {
             if (child.name.StartsWith("Position"))
-            {
                 iconLocations.Add(child);
-            }
         }
-        //assign icons to their index located in DraggableIcon.cs
 
-        // Arrange icons in their slots
-        SnapIconstoPositions();
+        SnapIconsToPositions();
+        UpdateIconIndex(); // make sure indices are synced
     }
 
-    void SnapIconstoPositions()
+    void AssignIcons()
     {
-                for (int i = 0; i < icons.Count; i++)
+        icons.Clear();
+
+        foreach (Transform child in transform) // or a dedicated IconGroup
+        {
+            DraggableIcon draggable = child.GetComponent<DraggableIcon>();
+            if (draggable != null)
+            {
+                icons.Add(draggable);
+                draggable.slidingIcons = this;
+            }
+        }
+
+        SnapIconsToPositions();
+        UpdateIconIndex(); // sync indices
+    }
+
+    // ---------------------------
+    // Icon Positioning
+    // ---------------------------
+    void SnapIconsToPositions()
+    {
+        for (int i = 0; i < icons.Count; i++)
         {
             if (i < iconLocations.Count)
-            {
                 icons[i].GetComponent<RectTransform>().localPosition = iconLocations[i].localPosition;
-            }
             else
-            {
-                // If there are more icons than slots, just disable the extra icons
-                icons[i].gameObject.SetActive(false);
-            }
+                icons[i].gameObject.SetActive(false); // too many icons for slots
         }
     }
 
-
-    /// <summary>
-    /// Snap dragged icon to nearest slot & reorder icons list.
-    /// </summary>
     public void SnapDraggedIcon(DraggableIcon draggedIcon)
     {
         // Find nearest slot
@@ -102,19 +115,20 @@ public class SlidingIcons : MonoBehaviour
             }
         }
 
-        // Reorder icons list
+        // Reorder list
         icons.Remove(draggedIcon);
         icons.Insert(nearestIndex, draggedIcon);
 
-        // Snap all icons to positions
+        // Rearrange
         ReorderIcons(draggedIcon);
-        UpdateIconIndex(); // Update indices after snapping
-        //UpdateCatPositionManager();
+        UpdateIconIndex(); // <--- important: sync indices here
+        UpdateCatPositionManager(); // <--- hook into your Cat system
     }
 
     public void ReorderIcons(DraggableIcon draggedIcon)
     {
-        isReordering = true; // Start reordering process
+        isReordering = true;
+
         for (int i = 0; i < icons.Count; i++)
         {
             if (icons[i] == null || i >= iconLocations.Count) continue;
@@ -123,47 +137,45 @@ public class SlidingIcons : MonoBehaviour
             Vector3 targetPos = iconLocations[i].localPosition;
 
             if (icons[i] == draggedIcon)
-            {
-                // Snap instantly
-                iconRect.localPosition = targetPos;
-            }
+                iconRect.localPosition = targetPos; // snap instantly
             else
-            {
-                // Smooth move
                 iconRect.localPosition = Vector3.Lerp(iconRect.localPosition, targetPos, 0.5f);
-            }
-        }
-    }
-
-    void AssignIcons()
-    {
-        icons.Clear();
-
-        foreach (Transform child in transform) // or specific IconGroup
-        {
-            DraggableIcon draggable = child.GetComponent<DraggableIcon>();
-            if (draggable != null)
-            {
-                icons.Add(draggable);
-                draggable.slidingIcons = this; // make sure the reference is set
-            }
         }
 
-        SnapIconstoPositions();
     }
 
+    // ---------------------------
+    // Sync
+    // ---------------------------
     public void UpdateIconIndex()
     {
-        // After rearranging icons, reassign indices
         for (int i = 0; i < icons.Count; i++)
         {
             icons[i].SetIndex(i);
-        }
 
+            // Sync the cat’s movement
+        }
     }
 
     public void UpdateCatPositionManager()
     {
+        if (CatPositionManager.instance == null) return;
 
+        CatPositionManager.instance.SyncCatsWithIcons(icons); //Sync Cats with Icons
     }
+    public void SetIndex(int newIndex)
+    {
+        index = newIndex;
+    }
+    public int GetIndex() => index;
+
+    public void AssignCat(CatPosition cat)
+    {
+        assignedCat = cat;
+    }
+
+    public CatPosition GetAssignedCat() => assignedCat;
+
+    //  Add this helper function
+
 }
