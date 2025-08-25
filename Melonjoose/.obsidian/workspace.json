@@ -23,8 +23,43 @@
               "icon": "lucide-layout-dashboard",
               "title": "Cat Position Controls"
             }
+          },
+          {
+            "id": "f772fb44ab909a48",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Game Structure and Timeline.canvas",
+                "viewState": {
+                  "x": 604.2765369246995,
+                  "y": 74.14418883363395,
+                  "zoom": -0.6666666666666666
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Game Structure and Timeline"
+            }
+          },
+          {
+            "id": "e0c7df3fe6993327",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Purrgatory Game (Main Game)/Game Flow.canvas",
+                "viewState": {
+                  "x": 341.3311069171909,
+                  "y": 54.88441138688978,
+                  "zoom": -1
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Game Flow"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -172,23 +207,30 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5d09ab864d2728e6",
+  "active": "f772fb44ab909a48",
   "lastOpenFiles": [
-    "Game Structure and Timeline.canvas",
-    "Main Gameplay Page.md",
-    "Team Page.md",
     "Team Management/FYP BOOTH Showcase.md",
     "Team Management/House Rules.md",
+    "Purrgatory Game (Main Game)/Game UI.md",
+    "Purrgatory Game (Main Game)/Basic Cats.md",
+    "Purrgatory Game (Main Game)/Game Flow.canvas",
+    "Purrgatory Game (Main Game)/Game Manager.md",
     "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
     "Purrgatory Game (Main Game)/Control Manager.md",
-    "Purrgatory Game (Main Game)/Basic Cats.md",
-    "Purrgatory Game (Main Game)/Game Manager.md",
-    "Purrgatory Game (Main Game)/Game Flow.canvas",
-    "Purrgatory Game (Main Game)/Game UI.md",
-    "Untitled",
-    "Team.md",
+    "Lobby/LOBBY.md",
+    "Lobby/Summon Page.md",
+    "Lobby/Team & Inventory.md",
     "Marketing/Youtube Schedule Planning.md",
+    "List of Assets/Cats List.md",
+    "List of Assets/Enemy List.md",
+    "List of Assets/Equipment's List.md",
+    "List of Assets/Hats List.md",
+    "Game Structure and Timeline.canvas",
+    "Team Page.md",
+    "Main Gameplay Page.md",
     "Marketing/Marketing.md",
+    "List of Assets",
+    "Team.md",
     "Lobby",
     "!CODING.md",
     "2025-08-16.md",
