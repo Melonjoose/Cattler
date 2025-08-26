@@ -254,10 +254,10 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &3395550791810030578
 CapsuleCollider2D:
@@ -275,7 +275,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -317,9 +317,11 @@ MonoBehaviour:
     attackPower: 0
     attackSpeed: 0
     attackRange: 0
+    movementSpeed: 0
   currentHealth: 0
   currentEXP: 0
   attackPower: 0
+  movementSpeed: 0
 --- !u!114 &939203406886400898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +334,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98f6d00cd1535c4986846bbc7152856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CatPositionIndex: 0
-  isCatWalking: 0
-  isCatAtTargetLocation: 0
+  catIndex: 0
+  moveSpeed: 3
+  worldPositionGRP: {fileID: 0}
+  worldPos1: {fileID: 0}
+  worldPos2: {fileID: 0}
+  worldPos3: {fileID: 0}
+  worldPos4: {fileID: 0}
+  worldPos5: {fileID: 0}

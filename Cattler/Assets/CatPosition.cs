@@ -2,18 +2,28 @@ using UnityEngine;
 
 public class CatPosition : MonoBehaviour
 {
-
-    public int currentCatPosition;// indicate position of the cat in the team lineup
-    public int newCatPosition;// indicate new position of the cat in the team lineup;
-    public bool isCatWalking = false;
-    public bool isCatAtTargetLocation = false;
-
-    [SerializeField] private float moveSpeed = 3f;
+    public int catIndex; // Current index in the lineup
     private Transform targetLocation;
+    private int lastAssignedIndex = -1;
+    [SerializeField] private float moveSpeed = 3f;
 
+    // To be assigned by CatPositionManager
+    public GameObject worldPositionGRP; // Parent object containing world position transforms
+    public Transform worldPos1;
+    public Transform worldPos2;
+    public Transform worldPos3;
+    public Transform worldPos4;
+    public Transform worldPos5;
+
+    private bool isCatWalking = false;
+
+    private void Start()
+    {
+        worldPositionGRP = GameObject.Find("CatPoints_GRP");
+    }
     void Update()
     {
-        // Move smoothly to target if one is set
+        // Smooth movement
         if (isCatWalking && targetLocation != null)
         {
             transform.position = Vector3.MoveTowards(
@@ -22,27 +32,54 @@ public class CatPosition : MonoBehaviour
                 moveSpeed * Time.deltaTime
             );
 
-            // Check if reached
             if (Vector3.Distance(transform.position, targetLocation.position) < 0.05f)
             {
                 transform.position = targetLocation.position;
                 isCatWalking = false;
-                isCatAtTargetLocation = true;
-                UpdateCurrentPosition();
             }
+        }
+
+        // Only update target if catIndex changed
+        if (catIndex != lastAssignedIndex)
+        {
+            lastAssignedIndex = catIndex;
+            AssignTargetPosition();
         }
     }
 
-    public void SetNewCatPosition(int index)
+    public void AssignWorldPositions()
     {
-        newCatPosition = index;
+        if( worldPositionGRP != null)
+        {
+            worldPos1 = worldPositionGRP.GetComponent<Transform>().Find("Position1");
+            worldPos2 = worldPositionGRP.GetComponent<Transform>().Find("Position2");
+            worldPos3 = worldPositionGRP.GetComponent<Transform>().Find("Position3");
+            worldPos4 = worldPositionGRP.GetComponent<Transform>().Find("Position4");
+            worldPos5 = worldPositionGRP.GetComponent<Transform>().Find("Position5");
+        }
+        else
+        {
+            Debug.LogError("WorldPositionGRP not assigned in CatPosition!");
+        }
     }
 
-    void UpdateCurrentPosition()
+    public void AssignCatIndex(int index)
     {
-        if (currentCatPosition != newCatPosition)
+        catIndex = index;
+    }
+
+    private void AssignTargetPosition()
+    {
+        switch (catIndex)
         {
-            currentCatPosition = newCatPosition;
+            case 0: MoveToDesignatedLocation(worldPos1); break;
+            case 1: MoveToDesignatedLocation(worldPos2); break;
+            case 2: MoveToDesignatedLocation(worldPos3); break;
+            case 3: MoveToDesignatedLocation(worldPos4); break;
+            case 4: MoveToDesignatedLocation(worldPos5); break;
+            default:
+                Debug.LogError($"CatIndex {catIndex} out of range!");
+                break;
         }
     }
 
@@ -50,13 +87,12 @@ public class CatPosition : MonoBehaviour
     {
         targetLocation = target;
         isCatWalking = true;
-        isCatAtTargetLocation = false;
     }
 
+    // Optional: instant teleport
     public void TeleportToLocation(Transform target)
     {
         transform.position = target.position;
         isCatWalking = false;
-        isCatAtTargetLocation = true;
     }
 }

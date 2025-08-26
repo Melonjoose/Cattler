@@ -13,7 +13,7 @@ public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public bool isDragging = false;
 
     // Index in SlidingIcons list
-    [SerializeField] private int iconIndex = 0;
+    [SerializeField] public int iconIndex = 0;
 
     private CatPosition assignedCat;
 
@@ -71,7 +71,10 @@ public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void SetIndex(int newIndex) => iconIndex = newIndex;
     public int GetIndex() => iconIndex;
 
-    public void AssignCat(CatPosition cat) => assignedCat = cat;
+    public void AssignCatIndex(int catIndex)
+    {
+        catIndex = iconIndex; // Sync icon index with cat position index
+    } 
     public CatPosition GetAssignedCat() => assignedCat;
 
 }

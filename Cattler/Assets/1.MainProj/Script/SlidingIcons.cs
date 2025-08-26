@@ -18,7 +18,7 @@ public class SlidingIcons : MonoBehaviour
         ArrangeIcons();      // Build slot list
         AssignIcons();       // Find draggable icons and register them
         UpdateIconIndex();   // Sync indices immediately
-        UpdateCatPositionManager(); // Initial sync with CatPositionManager
+        CatPositionManager.instance.UpdateIconIndices(); // Sync with CatPositionManager
 
     }
 
@@ -88,7 +88,7 @@ public class SlidingIcons : MonoBehaviour
     // ---------------------------
     // Icon Positioning
     // ---------------------------
-    void SnapIconsToPositions()
+    void SnapIconsToPositions() // Force Icons to their slots
     {
         for (int i = 0; i < icons.Count; i++)
         {
@@ -122,7 +122,7 @@ public class SlidingIcons : MonoBehaviour
         // Rearrange
         ReorderIcons(draggedIcon);
         UpdateIconIndex(); // <--- important: sync indices here
-        UpdateCatPositionManager(); // <--- hook into your Cat system
+        CatPositionManager.instance.UpdateManager(); // Sync with CatPositionManager
     }
 
     public void ReorderIcons(DraggableIcon draggedIcon)
@@ -152,30 +152,7 @@ public class SlidingIcons : MonoBehaviour
         for (int i = 0; i < icons.Count; i++)
         {
             icons[i].SetIndex(i);
-
-            // Sync the cat’s movement
         }
     }
-
-    public void UpdateCatPositionManager()
-    {
-        if (CatPositionManager.instance == null) return;
-
-        CatPositionManager.instance.SyncCatsWithIcons(icons); //Sync Cats with Icons
-    }
-    public void SetIndex(int newIndex)
-    {
-        index = newIndex;
-    }
-    public int GetIndex() => index;
-
-    public void AssignCat(CatPosition cat)
-    {
-        assignedCat = cat;
-    }
-
-    public CatPosition GetAssignedCat() => assignedCat;
-
-    //  Add this helper function
 
 }
