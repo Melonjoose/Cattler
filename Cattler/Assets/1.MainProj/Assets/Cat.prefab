@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 3395550791810030578}
   - component: {fileID: 805315713060478103}
   - component: {fileID: 939203406886400898}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cat
   m_TagString: Cat
   m_Icon: {fileID: 0}
@@ -293,8 +293,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
+  m_Offset: {x: 0, y: -0.13439962}
+  m_Size: {x: 1, y: 1.913918}
   m_Direction: 0
 --- !u!114 &805315713060478103
 MonoBehaviour:
