@@ -15,8 +15,9 @@ public class CatUnit : MonoBehaviour
     public float attackPower;
     public float movementSpeed;
 
-
     private float attackCooldown;
+
+    public bool isAttacking = false;
 
     private void Start()
     {
@@ -34,8 +35,7 @@ public class CatUnit : MonoBehaviour
 
 
         LinkTargetpoint();//link the targetPoint to and object called targetPoint located in this enemy's children
-        TriggerTrack triggerTrack = GetComponentInChildren<TriggerTrack>();
-        triggerTrack.triggerRadius = runtimeData.attackRange;
+        UpdateStatsAtStart();
     }
 
     private void Update()
@@ -45,22 +45,11 @@ public class CatUnit : MonoBehaviour
             attackCooldown -= Time.deltaTime; //reset cooldown if not attacking
         }
 
-        currentHealth = runtimeData.currentHealth;
-        attackPower = runtimeData.attackPower;
-        movementSpeed = runtimeData.movementSpeed;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (attackCooldown <= 0f)
-        {
-            EnemyUnit enemy = other.GetComponent<EnemyUnit>();
-            if (enemy != null)
-            {
-                Attack(enemy);
-                attackCooldown = 1f / runtimeData.attackSpeed;
-            }
-        }
+        TryAttack(other);
     }
 
     void LinkTargetpoint()
@@ -77,12 +66,14 @@ public class CatUnit : MonoBehaviour
     }
     public void TryAttack(Collider2D other)
     {
+        EnemyUnit enemytarget = other.GetComponent<EnemyUnit>();
+
         if (attackCooldown <= 0f)
         {
-            EnemyUnit enemy = other.GetComponent<EnemyUnit>();
-            if (enemy != null)
+            
+            if (enemytarget != null)
             {
-                Attack(enemy);
+                Attack(enemytarget);
                 attackCooldown = 1f / runtimeData.attackSpeed;
             }
         }
@@ -112,5 +103,14 @@ public class CatUnit : MonoBehaviour
         Debug.Log(runtimeData.catName + " has been defeated.");
         Destroy(gameObject);
         //Give Send EXP gained from death to Retreat controller   
+    }
+
+    void UpdateStatsAtStart()
+    {
+        TriggerTrack triggerTrack = GetComponentInChildren<TriggerTrack>();
+        triggerTrack.triggerRadius = runtimeData.attackRange;
+        currentHealth = runtimeData.currentHealth;
+        attackPower = runtimeData.attackPower;
+        movementSpeed = runtimeData.movementSpeed;
     }
 }

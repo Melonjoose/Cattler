@@ -42,6 +42,23 @@
             }
           },
           {
+            "id": "00dd73bfa46c815e",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Game Structure and Timeline.canvas",
+                "viewState": {
+                  "x": 434.94281376329036,
+                  "y": 159.06949762884923,
+                  "zoom": -0.7466685373811768
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Game Structure and Timeline"
+            }
+          },
+          {
             "id": "e0c7df3fe6993327",
             "type": "leaf",
             "state": {
@@ -59,7 +76,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -207,8 +224,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f772fb44ab909a48",
+  "active": "00dd73bfa46c815e",
   "lastOpenFiles": [
+    "Team Page.md",
+    "Main Gameplay Page.md",
+    "Resolution for Assets.md",
     "Purrgatory Game (Main Game)/Game Flow.canvas",
     "Purrgatory Game (Main Game)/Game UI.md",
     "Marketing/Youtube Schedule Planning.md",
@@ -227,8 +247,6 @@
     "List of Assets/Enemy List.md",
     "List of Assets/Equipment's List.md",
     "List of Assets/Hats List.md",
-    "Team Page.md",
-    "Main Gameplay Page.md",
     "List of Assets",
     "Team.md",
     "Lobby",

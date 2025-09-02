@@ -1,7 +1,10 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class MasterTester : MonoBehaviour
 {
+    public GameObject AdminButtons;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,6 +28,16 @@ public class MasterTester : MonoBehaviour
         {
             MakeMeRich();
         }
+
+        if (Input.GetKeyDown(KeyCode.L)) //give Currency to the player
+        {
+            StartGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P)) //give Currency to the player
+        {
+            OpenDebugList();
+        }
     }
 
     void MakeMeRich()
@@ -32,5 +45,16 @@ public class MasterTester : MonoBehaviour
         Currency.instance.AddInk(1000); // Add 1000 ink to the currency
         Currency.instance.AddEXP(500); // Add 500 EXP to the currency
         Currency.instance.AddCore(10); // Add 10 core to the currency
+    }
+
+    void OpenDebugList()
+    {
+        if (!AdminButtons.activeSelf) { AdminButtons.SetActive(true); return; }
+        else if (AdminButtons.activeSelf) { AdminButtons.SetActive(false); return; }
+    }
+
+    void StartGame()
+    {
+
     }
 }

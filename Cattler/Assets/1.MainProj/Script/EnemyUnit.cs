@@ -3,18 +3,18 @@ using UnityEngine;
 public class EnemyUnit : MonoBehaviour
 {
     public EnemyData enemyData; // ScriptableObject with enemy stats
-    private GameObject TargetCat; // Reference to current target
-
     [Header("Targeting")]
+    public GameObject TargetCat; // Reference to current target
+
     public GameObject targetPoint; // Assign in inspector (child empty GameObject at attack point)
 
     private float attackCooldown;
 
     [Header("Stats")]
-    [SerializeField] private int currentHealth;
-    [SerializeField] private float attackSpeed;
-    [SerializeField] private float attackDamage;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] public int currentHealth;
+    [SerializeField] public float attackSpeed;
+    [SerializeField] public float attackDamage;
+    [SerializeField] public float moveSpeed;
     [SerializeField] public float attackRange;
 
     private void Start()

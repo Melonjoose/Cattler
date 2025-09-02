@@ -5,14 +5,20 @@ public class GameManager : MonoBehaviour
 {
 
     [Header("Pages")]
+    public GameObject lobby;
     public GameObject inventory;
     public GameObject summonPage;
 
+    [SerializeField] private Transform OpenedLobbyPOS;
+    [SerializeField] private Transform ClosedLobbyPOS;
+
     [SerializeField]private Transform OpenedInventoryPOS;
     [SerializeField]private Transform ClosedInventoryPOS;
+
     [SerializeField]private Transform OpenedSummonPagePOS;
     [SerializeField]private Transform ClosedSummonPagePOS;
 
+    public bool isLobbyOpen = false;
     public bool isInventoryOpen = false;
     public bool isSummonPageOpen = false;
 
@@ -36,27 +42,27 @@ public class GameManager : MonoBehaviour
     {
         isSummonPageOpen = true;
         summonPage.transform.position = OpenedSummonPagePOS.position;
-        Debug.Log("Opening Summon Page");
+        //Debug.Log("Opening Summon Page");
     }
 
     public void CloseSummonPage()
     {
         isSummonPageOpen = false;
         summonPage.transform.position = ClosedSummonPagePOS.position;
-        Debug.Log("Closing Summon Page");
+        //Debug.Log("Closing Summon Page");
     }
 
     public void OpenInventory()
     {
         isInventoryOpen = true;
         inventory.transform.position = OpenedInventoryPOS.position;
-        Debug.Log("Opening Inventory");
+        //Debug.Log("Opening Inventory");
     }
 
     public void CloseInventory()
     {
         isInventoryOpen = false;
         inventory.transform.position = ClosedInventoryPOS.position;
-        Debug.Log("Closing Inventory");
+        //Debug.Log("Closing Inventory");
     }
 }

@@ -9,8 +9,9 @@ public class Distance : MonoBehaviour
     public float distanceTraveled;
     public int dstanceCheckPoint;
     public TextMeshProUGUI distanceText;
+    public Slider distanceSlider;
 
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,5 +28,6 @@ public class Distance : MonoBehaviour
     public void UpdateDistanceUI(float Distance)
     {
         distanceText.text = Distance.ToString("F0");
+        distanceSlider.value = Distance;
     }
 }

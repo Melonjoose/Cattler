@@ -57,5 +57,15 @@ public class TriggerTrack : MonoBehaviour
         }
 
         nearestEnemy = closestEnemy; // Will be null if no enemies are in range
+
+        CatUnit catUnit = cat.GetComponent<CatUnit>();
+        if (nearestEnemy != null)
+        {
+            catUnit.isAttacking = true;
+        }
+        else         
+        {
+            catUnit.isAttacking = false;
+        }
     }
 }

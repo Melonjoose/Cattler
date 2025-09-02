@@ -3,15 +3,27 @@ using UnityEngine;
 public class TravelManager : MonoBehaviour
 {
     public float distanceTraveled;
+    public float distanceTraveledUIvalue;
     public float travelSpeed = 1f;
+    public float distanceMultiplier = 1f;
     public GameObject[] floors; // floor1, floor2, floor3
     public GameObject floorGRP;
+
     public bool isTraveling = false;
 
-    private float floorLength = 30f; // adjust based on your tile size
+    private float floorLength = 23.09f; // adjust based on your tile size
 
     void Update()
     {
+        if (EnemyDetector.instance.enemyDetected == false )//&& any cat is not attacking)
+        {
+            isTraveling = true;
+        }
+        else
+        { 
+            isTraveling = false; 
+        }
+            
         if (isTraveling)
         {
             TeamWalk();
@@ -24,14 +36,15 @@ public class TravelManager : MonoBehaviour
             
         }
 
-        Distance.instance.UpdateDistanceUI(distanceTraveled);
+        Distance.instance.UpdateDistanceUI(distanceTraveledUIvalue);
     }
 
     public void TeamWalk()
     {
-        distanceTraveled += travelSpeed * Time.deltaTime;
-        floorGRP.transform.position = new Vector3(-distanceTraveled, -3.64f, 0);
+        distanceTraveled += (travelSpeed*distanceMultiplier) * Time.deltaTime;
+        floorGRP.transform.position = new Vector3(-distanceTraveled, -3.64f, 0); // floor movement
         
+        distanceTraveledUIvalue += travelSpeed * Time.deltaTime;
     }
 
     public void ExtendFloorPlane()

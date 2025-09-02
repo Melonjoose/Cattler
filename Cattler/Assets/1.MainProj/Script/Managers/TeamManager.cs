@@ -3,6 +3,8 @@ using UnityEngine;
 public class TeamManager : MonoBehaviour
 {
     public static TeamManager instance;
+    public int availableTeamSlots = 3; // Maximum number of cats allowed in the team. can be upgraded later. max 5.
+    public CatUnit[] teamCats; // Array to hold the cats in the team
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,16 +17,7 @@ public class TeamManager : MonoBehaviour
     // Detect which cats are in the team
     public void DetectTeam()
     {
-        // Find all CatUnit components in the scene
-        CatUnit[] cats = FindObjectsOfType<CatUnit>();
-        
-        // Loop through each cat and perform necessary initialization
-        foreach (CatUnit cat in cats)
-        {
-            // Initialize or register the cat in the team
-            Debug.Log("Detected cat: " + cat.name);
-            // Additional logic to manage the team can be added here
-        }
+
     }
 
     // Method to add a cat to the team
