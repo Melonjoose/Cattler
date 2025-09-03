@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
   m_Name: BasicCat
   m_EditorClassIdentifier: 
-  catName: BasicCat
+  itemName: BasicCat
   icon: {fileID: 7680419535816754504, guid: fb42a84de1f59964bb5666487e2d5c69, type: 3}
+  itemID: 0
   level: 1
   EXP: 0
   health: 10

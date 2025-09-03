@@ -10,11 +10,6 @@ public class CatUnit : MonoBehaviour
     public CatData baseData;
     public CatRuntimeData runtimeData;
 
-    public int currentHealth;
-    public int currentEXP;
-    public float attackPower;
-    public float movementSpeed;
-
     private float attackCooldown;
 
     public bool isAttacking = false;
@@ -35,7 +30,6 @@ public class CatUnit : MonoBehaviour
 
 
         LinkTargetpoint();//link the targetPoint to and object called targetPoint located in this enemy's children
-        UpdateStatsAtStart();
     }
 
     private void Update()
@@ -105,12 +99,4 @@ public class CatUnit : MonoBehaviour
         //Give Send EXP gained from death to Retreat controller   
     }
 
-    void UpdateStatsAtStart()
-    {
-        TriggerTrack triggerTrack = GetComponentInChildren<TriggerTrack>();
-        triggerTrack.triggerRadius = runtimeData.attackRange;
-        currentHealth = runtimeData.currentHealth;
-        attackPower = runtimeData.attackPower;
-        movementSpeed = runtimeData.movementSpeed;
-    }
 }

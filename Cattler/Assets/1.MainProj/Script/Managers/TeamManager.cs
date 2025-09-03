@@ -4,7 +4,7 @@ public class TeamManager : MonoBehaviour
 {
     public static TeamManager instance;
     public int availableTeamSlots = 3; // Maximum number of cats allowed in the team. can be upgraded later. max 5.
-    public CatUnit[] teamCats; // Array to hold the cats in the team
+    public GameObject[] teamCats; // Array to hold the cats in the team
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,12 +17,12 @@ public class TeamManager : MonoBehaviour
     // Detect which cats are in the team
     public void DetectTeam()
     {
-
+        //check teamCats array for cats.
     }
 
     // Method to add a cat to the team
     // Add each cat to the team from DetectTeam's list
-        public void AddCatToTeam(CatUnit cat)
+    public void AddCatToTeam(CatUnit cat)
     {
         if (cat != null)
         {
