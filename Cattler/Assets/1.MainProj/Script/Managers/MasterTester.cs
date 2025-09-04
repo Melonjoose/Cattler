@@ -38,6 +38,11 @@ public class MasterTester : MonoBehaviour
         {
             OpenDebugList();
         }
+
+        if (Input.GetKeyDown(KeyCode.S)) //summon a cat
+        {
+            SummonManager.instance.Summon();
+        }
     }
 
     void MakeMeRich()

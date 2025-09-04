@@ -18,7 +18,7 @@ public class SlidingIcons : MonoBehaviour
         ArrangeIcons();      // Build slot list
         AssignIcons();       // Find draggable icons and register them
         UpdateIconIndex();   // Sync indices immediately
-        CatPositionManager.instance.UpdateIconIndices(); // Sync with CatPositionManager
+        //CatPositionManager.instance.UpdateIconIndices(); // Sync with CatPositionManager
 
     }
 

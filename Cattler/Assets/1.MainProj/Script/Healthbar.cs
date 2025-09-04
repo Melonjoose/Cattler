@@ -39,7 +39,7 @@ public class Healthbar : MonoBehaviour
         healthBar.maxValue = catUnit.runtimeData.maxHealth;
         healthBar.minValue = 0f;
         isCat = true;
-        Debug.Log("Cat Healthbar Set");
+        //Debug.Log("Cat Healthbar Set");
     }
 
     void SetEnemyHealthBar()

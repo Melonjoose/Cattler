@@ -3,66 +3,61 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class Page
+    {
+        public string name;               // e.g. "Lobby"
+        public GameObject pageObject;     // the panel
+        public Transform openPos;         // target position when opened
+        public Transform closedPos;       // target position when closed
+    }
 
-    [Header("Pages")]
-    public GameObject lobby;
-    public GameObject inventory;
-    public GameObject summonPage;
+    [Header("All Pages")]
+    public List<Page> pages = new List<Page>();
 
-    [SerializeField] private Transform OpenedLobbyPOS;
-    [SerializeField] private Transform ClosedLobbyPOS;
-
-    [SerializeField]private Transform OpenedInventoryPOS;
-    [SerializeField]private Transform ClosedInventoryPOS;
-
-    [SerializeField]private Transform OpenedSummonPagePOS;
-    [SerializeField]private Transform ClosedSummonPagePOS;
-
-    public bool isLobbyOpen = false;
-    public bool isInventoryOpen = false;
-    public bool isSummonPageOpen = false;
+    private Page currentPage;
 
     void Start()
     {
         CloseAllPages();
     }
 
-    void Update()
+    public void OpenPage(string pageName)
     {
-        
+        // close current
+        if (currentPage != null)
+        {
+            currentPage.pageObject.transform.position = currentPage.closedPos.position;
+        }
+
+        // find new page
+        Page newPage = pages.Find(p => p.name == pageName);
+        if (newPage != null)
+        {
+            newPage.pageObject.transform.position = newPage.openPos.position;
+            currentPage = newPage;
+        }
+        else
+        {
+            Debug.LogWarning($"Page {pageName} not found!");
+        }
     }
 
-    void CloseAllPages()
+    public void CloseCurrentPage()
     {
-        CloseSummonPage();
-        CloseInventory();
+        if (currentPage != null)
+        {
+            currentPage.pageObject.transform.position = currentPage.closedPos.position;
+            currentPage = null;
+        }
     }
 
-    public void OpenSummonPage()
+    private void CloseAllPages()
     {
-        isSummonPageOpen = true;
-        summonPage.transform.position = OpenedSummonPagePOS.position;
-        //Debug.Log("Opening Summon Page");
-    }
-
-    public void CloseSummonPage()
-    {
-        isSummonPageOpen = false;
-        summonPage.transform.position = ClosedSummonPagePOS.position;
-        //Debug.Log("Closing Summon Page");
-    }
-
-    public void OpenInventory()
-    {
-        isInventoryOpen = true;
-        inventory.transform.position = OpenedInventoryPOS.position;
-        //Debug.Log("Opening Inventory");
-    }
-
-    public void CloseInventory()
-    {
-        isInventoryOpen = false;
-        inventory.transform.position = ClosedInventoryPOS.position;
-        //Debug.Log("Closing Inventory");
+        foreach (Page p in pages)
+        {
+            p.pageObject.transform.position = p.closedPos.position;
+        }
+        currentPage = null;
     }
 }

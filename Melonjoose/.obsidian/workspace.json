@@ -45,17 +45,14 @@
             "id": "00dd73bfa46c815e",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Game Structure and Timeline.canvas",
-                "viewState": {
-                  "x": 434.94281376329036,
-                  "y": 159.06949762884923,
-                  "zoom": -0.7466685373811768
-                }
+                "file": "Game Manager (Old).md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Game Structure and Timeline"
+              "icon": "lucide-file",
+              "title": "Game Manager (Old)"
             }
           },
           {
@@ -226,6 +223,8 @@
   },
   "active": "00dd73bfa46c815e",
   "lastOpenFiles": [
+    "Game Structure and Timeline.canvas",
+    "Game Manager (Old).md",
     "Team Page.md",
     "Main Gameplay Page.md",
     "Resolution for Assets.md",
@@ -233,7 +232,6 @@
     "Purrgatory Game (Main Game)/Game UI.md",
     "Marketing/Youtube Schedule Planning.md",
     "Marketing/Marketing.md",
-    "Game Structure and Timeline.canvas",
     "Team Management/FYP BOOTH Showcase.md",
     "Team Management/House Rules.md",
     "Purrgatory Game (Main Game)/Basic Cats.md",
@@ -259,7 +257,6 @@
     "2025-08-14.md",
     "Welcome.md",
     "Untitled 1.canvas",
-    "create a link.md",
     "Purrgatory Game (Main Game)"
   ]
 }

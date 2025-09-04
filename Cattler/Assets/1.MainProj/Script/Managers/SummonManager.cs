@@ -4,21 +4,56 @@ public class SummonManager : MonoBehaviour
 
 {
     public static SummonManager instance;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    [System.Serializable]
+    public class GachaPoolEntry
     {
-      instance = this;
+        public CatData catData;
+        public float weight; // probability weight
     }
 
-    // Update is called once per frame
-    void Update()
+    public GachaPoolEntry[] gachaPool; // assign in inspector
+
+    private void Awake()
     {
-        
+        instance = this;
     }
 
-    public void SummonCat()
+
+    public CatData Roll()
     {
-        Debug.Log("Summoning Cat...");
-        // Add summon logic here
+        float totalWeight = 0f;
+        foreach (var entry in gachaPool)
+            totalWeight += entry.weight;
+
+        float roll = Random.Range(0f, totalWeight);
+        float cumulative = 0f;
+
+        foreach (var entry in gachaPool)
+        {
+            cumulative += entry.weight;
+            if (roll <= cumulative)
+            {
+                return entry.catData;
+            }
+        }
+
+        return null; // should never happen
+    }
+
+    public void Summon()
+    {
+        CatData rolledCat = Roll();
+        if (rolledCat != null)
+        {
+            // make runtime cat instance
+            CatRuntimeData runtimeCat = new CatRuntimeData(rolledCat);
+
+            // add to inventory
+            Inventory.instance.Add(rolledCat);
+
+            Debug.Log($"Summoned {rolledCat.itemName}!");
+        }
     }
 }
+
