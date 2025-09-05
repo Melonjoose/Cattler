@@ -8,10 +8,10 @@
 		{"id":"435bb89080b7bfee","type":"text","text":"Week 8 / 9","x":-300,"y":1000,"width":250,"height":60},
 		{"id":"f30f37f3449198de","type":"text","text":"Week 4 / 5","x":-300,"y":410,"width":250,"height":60},
 		{"id":"41d6a1263adbdc81","type":"text","text":"Inventory","x":389,"y":200,"width":211,"height":60,"color":"3"},
-		{"id":"e73ef90e7124091e","type":"text","text":"Upgrades","x":389,"y":260,"width":211,"height":60},
+		{"id":"e73ef90e7124091e","type":"text","text":"Upgrades","x":389,"y":260,"width":211,"height":60,"color":"3"},
 		{"id":"9bbe31e7e93eeb49","type":"text","text":"Valuables","x":389,"y":320,"width":211,"height":60},
 		{"id":"0649cefe343d3da4","type":"text","text":"Enemy Loot Drops","x":389,"y":380,"width":211,"height":60},
-		{"id":"27fa3606fa7ca9d4","type":"text","text":"Money","x":724,"y":290,"width":250,"height":60,"color":"3"},
+		{"id":"27fa3606fa7ca9d4","type":"text","text":"Money","x":724,"y":290,"width":250,"height":60,"color":"4"},
 		{"id":"9cc831a4c0119810","type":"text","text":"Stat Potions (Item)","x":724,"y":350,"width":250,"height":60},
 		{"id":"b982bda497670ed3","type":"text","text":"Coding","x":25,"y":310,"width":250,"height":60},
 		{"id":"9f65a7afdcdbd589","type":"text","text":"29/09 - 03/10","x":-640,"y":860,"width":250,"height":60},
@@ -57,21 +57,22 @@
 		{"id":"8ae4ff09fc6dc510","type":"text","text":"Difficulty Manager","x":784,"y":-720,"width":250,"height":60},
 		{"id":"962c4186e12b5fc2","type":"text","text":"Basic Enemy","x":620,"y":-490,"width":250,"height":60,"color":"4"},
 		{"id":"a5f383f179f0e7d5","type":"text","text":"Boss Cat","x":784,"y":-56,"width":250,"height":58},
-		{"id":"3e2a7dc89e8555dd","type":"text","text":"Fighting Cats","x":784,"y":-1,"width":250,"height":58},
-		{"id":"685a6e99871bab95","type":"text","text":"Enemies","x":784,"y":59,"width":250,"height":58},
-		{"id":"c4639517f52a9acc","type":"text","text":"Cat Keeper","x":784,"y":117,"width":250,"height":58},
-		{"id":"4347f9f03005312c","type":"text","text":"Game Balancing & Game Testing","x":25,"y":1000,"width":250,"height":60},
+		{"id":"3e2a7dc89e8555dd","type":"text","text":"Fighting Cats","x":784,"y":-1,"width":250,"height":58,"color":"4"},
+		{"id":"685a6e99871bab95","type":"text","text":"Enemies","x":784,"y":59,"width":250,"height":58,"color":"3"},
+		{"id":"c4639517f52a9acc","type":"text","text":"Cat Keeper","x":784,"y":117,"width":250,"height":58,"color":"4"},
 		{"id":"8eaaeb3169150edf","type":"text","text":"Cat body style","x":1218,"y":3,"width":250,"height":50,"color":"4"},
 		{"id":"adca91b4cbbfc3ce","type":"text","text":"Syl","x":1490,"y":140,"width":250,"height":60,"color":"#2bff00"},
 		{"id":"3dc978514d8af558","type":"text","text":"Activatable Skills ","x":389,"y":140,"width":250,"height":60},
 		{"id":"fa5639ad47705b74","type":"text","text":"Narrative","x":25,"y":410,"width":250,"height":60},
 		{"id":"88d598af27f89d98","type":"text","text":"Syl","x":389,"y":658,"width":250,"height":60,"color":"#2bff00"},
 		{"id":"45341d4dcf40b5ae","type":"text","text":"Render a completed Basic Cat","x":390,"y":540,"width":313,"height":50,"color":"4"},
-		{"id":"234f30ec2eab7f4c","type":"text","text":"User Interface Composition / Layout","x":390,"y":590,"width":369,"height":50},
+		{"id":"234f30ec2eab7f4c","type":"text","text":"User Interface Composition / Layout","x":390,"y":590,"width":369,"height":50,"color":"4"},
 		{"id":"4c4e726bab7491dc","type":"text","text":"Syl","x":890,"y":598,"width":250,"height":60,"color":"#2bff00"},
 		{"id":"5a80afedab850bab","type":"text","text":"Adele","x":888,"y":530,"width":250,"height":60,"color":"#fe71d9"},
 		{"id":"c614cd6798a022f3","type":"text","text":"Introduction/Settings","x":390,"y":480,"width":250,"height":60},
-		{"id":"8dae06362c36d1f4","type":"text","text":"Slide presentation","x":-300,"y":793,"width":250,"height":60,"color":"1"}
+		{"id":"8dae06362c36d1f4","type":"text","text":"Slide presentation","x":-300,"y":793,"width":250,"height":60,"color":"1"},
+		{"id":"4347f9f03005312c","type":"text","text":"Game Balancing & Game Testing","x":30,"y":1002,"width":250,"height":60},
+		{"id":"f2619fc8067595b3","x":30,"y":942,"width":250,"height":60,"type":"text","text":"Debuffs"}
 	],
 	"edges":[
 		{"id":"93a4e5dcf3587b96","fromNode":"389dccb7d45659b8","fromSide":"right","toNode":"128884b66a4ad460","toSide":"left","label":"Syl"},
@@ -135,6 +136,7 @@
 		{"id":"78ca0de19b727073","fromNode":"fa5639ad47705b74","fromSide":"right","toNode":"c614cd6798a022f3","toSide":"left"},
 		{"id":"f6e67d1d86d61d91","fromNode":"c614cd6798a022f3","fromSide":"right","toNode":"5a80afedab850bab","toSide":"left"},
 		{"id":"57581b945c7551d0","fromNode":"9f65a7afdcdbd589","fromSide":"right","toNode":"8dae06362c36d1f4","toSide":"left"},
-		{"id":"44734dbf6543be0d","fromNode":"6028b2ecbb3a180c","fromSide":"right","toNode":"f30f37f3449198de","toSide":"left"}
+		{"id":"44734dbf6543be0d","fromNode":"6028b2ecbb3a180c","fromSide":"right","toNode":"f30f37f3449198de","toSide":"left"},
+		{"id":"e401068139ba36e4","fromNode":"435bb89080b7bfee","fromSide":"right","toNode":"f2619fc8067595b3","toSide":"left"}
 	]
 }

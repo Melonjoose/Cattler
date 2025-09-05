@@ -1,46 +1,64 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.WSA;
 
 public class CatIconUI : MonoBehaviour
 {
     public static CatIconUI instance;
-    [Header("CatIcon1")]
-    public bool catIcon1Active;
-    public bool catIcon2Active;
-    public bool catIcon3Active;
-    public bool catIcon4Active;
-    public bool catIcon5Active;
-    public Image catIcon1;
-    public Image catIcon2;
-    public Image catIcon3;
-    public Image catIcon4;
-    public Image catIcon5;
-    public Slider catIconHealthBar1;
-    public Slider catIconHealthBar2;
-    public Slider catIconHealthBar3;
-    public Slider catIconHealthBar4;
-    public Slider catIconHealthBar5;
 
+    [System.Serializable]
+    public class CatIconSlot
+    {
+        public Image icon;
+        public Slider healthBar;
+    }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("UI Slots")]
+    public CatIconSlot[] uiSlots; // assign 5 in Inspector
+
+    [Header("Containers")]
+    public GameObject[] catContainer; // assign containers in Inspector
+
+    private void Awake()
     {
         instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        ActivateHealthBar();
+        RefreshIcons();
     }
 
-    void ActivateHealthBar()
+    private void Update()
     {
-        if(catIcon1Active){catIconHealthBar1.gameObject.SetActive(true);} else{catIconHealthBar1.gameObject.SetActive(false);}
-        if(catIcon2Active){catIconHealthBar2.gameObject.SetActive(true);} else{catIconHealthBar2.gameObject.SetActive(false);}
-        if(catIcon3Active){catIconHealthBar3.gameObject.SetActive(true);} else{catIconHealthBar3.gameObject.SetActive(false);}
-        if(catIcon4Active){catIconHealthBar4.gameObject.SetActive(true);} else{catIconHealthBar4.gameObject.SetActive(false);}
-        if(catIcon5Active){catIconHealthBar5.gameObject.SetActive(true);} else{catIconHealthBar5.gameObject.SetActive(false);}
+        RefreshIcons(); 
+    }
+
+    private void RefreshIcons()
+    {
+        for (int i = 0; i < uiSlots.Length; i++)
+        {
+            if (i >= catContainer.Length) return; // safety check
+
+            // If a cat exists in container slot
+            if (catContainer[i].transform.childCount > 0)
+            {
+                CatUnit cat = catContainer[i].transform.GetChild(0).GetComponent<CatUnit>();
+                if (cat != null)
+                {
+                    uiSlots[i].icon.sprite = cat.runtimeData.icon;
+                    uiSlots[i].icon.gameObject.SetActive(true);
+
+                    uiSlots[i].healthBar.gameObject.SetActive(true);
+                    uiSlots[i].healthBar.maxValue = cat.runtimeData.maxHealth;
+                    uiSlots[i].healthBar.value = cat.runtimeData.currentHealth;
+                }
+            }
+            else
+            {
+                // No cat in this container → hide icon & healthbar
+                uiSlots[i].icon.gameObject.SetActive(false);
+                uiSlots[i].healthBar.gameObject.SetActive(false);
+            }
+        }
     }
 }
