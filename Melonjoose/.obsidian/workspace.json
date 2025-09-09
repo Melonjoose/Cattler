@@ -30,15 +30,15 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "Game Structure and Timeline.canvas",
+                "file": "Purrgatory Game (Main Game)/Game Flow.canvas",
                 "viewState": {
-                  "x": 527.214276065153,
-                  "y": 413.7820662949956,
-                  "zoom": -0.7466685373811768
+                  "x": 3304.6266232454163,
+                  "y": 246.11162219185286,
+                  "zoom": -0.6666666666666665
                 }
               },
               "icon": "lucide-layout-dashboard",
-              "title": "Game Structure and Timeline"
+              "title": "Game Flow"
             }
           },
           {
@@ -223,15 +223,15 @@
   },
   "active": "f772fb44ab909a48",
   "lastOpenFiles": [
-    "Game Manager (Old).md",
+    "Team Management/FYP BOOTH Showcase.md",
+    "Purrgatory Game (Main Game)/Game Flow.canvas",
     "Purrgatory Game (Main Game)/Enemy.md",
+    "Main Gameplay Page.md",
+    "Team Page.md",
+    "Resolution for Assets.md",
+    "Game Manager (Old).md",
     "Game Structure and Timeline.canvas",
     "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
-    "Team Management/FYP BOOTH Showcase.md",
-    "Team Page.md",
-    "Main Gameplay Page.md",
-    "Resolution for Assets.md",
-    "Purrgatory Game (Main Game)/Game Flow.canvas",
     "Purrgatory Game (Main Game)/Game UI.md",
     "Marketing/Youtube Schedule Planning.md",
     "Marketing/Marketing.md",

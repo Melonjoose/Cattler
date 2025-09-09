@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
   m_Name: Grey Cat
   m_EditorClassIdentifier: 
-  itemName: Grey Cat
-  icon: {fileID: 21300000, guid: 85a0fe27d3a1d834ab1cbb76d5b1f11c, type: 3}
-  itemID: 0
+  unitName: Grey Cat
+  unitIcon: {fileID: 21300000, guid: 85a0fe27d3a1d834ab1cbb76d5b1f11c, type: 3}
+  unitType: 1 Star Cat
+  unitDescription: A basic cat.
   level: 1
   EXP: 0
-  health: 10
-  attackPower: 2
+  maxHealth: 5
+  currentHealth: 5
+  attackPower: 1
   attackSpeed: 1
-  attackRange: 5
-  movementSpeed: 5
+  attackRange: 1
+  movementSpeed: 1

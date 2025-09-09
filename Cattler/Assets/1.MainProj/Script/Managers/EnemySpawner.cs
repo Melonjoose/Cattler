@@ -62,13 +62,6 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
 
-        // Assign EnemyData if UnitController exists
-        UnitController controller = newEnemy.GetComponent<UnitController>();
-        if (controller != null)
-        {
-            controller.enemyData = data;
-        }
-
         AddEnemyToSpawnedList(newEnemy);
     }
 

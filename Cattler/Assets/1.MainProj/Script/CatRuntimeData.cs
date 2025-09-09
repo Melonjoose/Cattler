@@ -1,13 +1,16 @@
 using UnityEngine;
 
-[System.Serializable]
-public class CatRuntimeData
+[CreateAssetMenu(fileName = "RuntimeCat", menuName = "Items/RuntimeCat")]
+public class CatRuntimeData : Item
 {
-    public string catName;
-    public Sprite icon;
-    public int itemID;
+    public string unitName;
+    public Sprite unitIcon;
+    public string unitType;
+    [TextArea]
+    public string unitDescription;
+    public int level;
 
-
+    public int EXP;
     public int maxHealth;
     public int currentHealth;
     public int attackPower;
@@ -15,17 +18,21 @@ public class CatRuntimeData
     public float attackRange;
     public float movementSpeed;
 
-    public CatRuntimeData(CatData baseData)
+    // Copy stats from CatData template
+    public void InitializeFrom(CatData template)
     {
-        catName = baseData.itemName;
-        icon = baseData.icon;
-        itemID = baseData.itemID;
+        unitName = template.unitName;
+        unitIcon = template.unitIcon;
+        unitType = template.unitType;
+        unitDescription = template.unitDescription;
+        level = template.level;
+        EXP = template.EXP;
 
-        maxHealth = baseData.health;
-        currentHealth = baseData.health;
-        attackPower = baseData.attackPower;
-        attackSpeed = baseData.attackSpeed;
-        attackRange = baseData.attackRange;
-        movementSpeed = baseData.movementSpeed;
+        maxHealth = template.maxHealth;
+        currentHealth = template.maxHealth; // start at full
+        attackPower = template.attackPower;
+        attackSpeed = template.attackSpeed;
+        attackRange = template.attackRange;
+        movementSpeed = template.movementSpeed;
     }
 }

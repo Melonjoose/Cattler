@@ -45,7 +45,7 @@ public class CatIconUI : MonoBehaviour
                 CatUnit cat = catContainer[i].transform.GetChild(0).GetComponent<CatUnit>();
                 if (cat != null)
                 {
-                    uiSlots[i].icon.sprite = cat.runtimeData.icon;
+                    uiSlots[i].icon.sprite = cat.runtimeData.unitIcon; 
                     uiSlots[i].icon.gameObject.SetActive(true);
 
                     uiSlots[i].healthBar.gameObject.SetActive(true);

@@ -13,20 +13,7 @@ public class CatUnit : MonoBehaviour
     public bool isAttacking = false;
 
     private void Start()
-    {
-
-        if (baseData != null)
-        {
-            runtimeData = new CatRuntimeData(baseData);
-            GetComponent<SpriteRenderer>().sprite = runtimeData.icon;
-        }
-           
-        else
-        {
-            Debug.LogWarning("No CatData assigned to " + gameObject.name);
-        }
-
-
+    {   
         LinkTargetpoint();//link the targetPoint to and object called targetPoint located in this enemy's children
     }
 
@@ -77,7 +64,7 @@ public class CatUnit : MonoBehaviour
         Vector3 hitlocation = targetPoint.transform.position; // Indicate the targetPoint's position for where the damage number will be displayed
 
         target.TakeDamage((int)runtimeData.attackPower); //run the TakeDamage method on the target enemy by dealing attackPower damage. (TAKES ACTUAL DMG)
-        Debug.Log(runtimeData.catName + " attacked " + target.name + " for " + runtimeData.attackPower + " damage!"); //debug to state damage dealt to who in console
+        Debug.Log(runtimeData.unitName + " attacked " + target.name + " for " + runtimeData.attackPower + " damage!"); //debug to state damage dealt to who in console
         DamageNumberManager.Instance.ShowDamage((int)runtimeData.attackPower, hitlocation); //Showdamage at location (SHOWS DMG TAKEN)
     }
 
@@ -89,13 +76,19 @@ public class CatUnit : MonoBehaviour
         {
             Die();
         }
-    } //runs when triggered by ICombatUnit.cs
+    } 
 
     private void Die()
     {        
-        Debug.Log(runtimeData.catName + " has been defeated.");
+        Debug.Log(runtimeData.unitName + " has been defeated.");
         Destroy(gameObject);
         //Give Send EXP gained from death to Retreat controller   
+    }
+
+    public void AssignCat(CatRuntimeData runtimeCat)
+    {
+        runtimeData = runtimeCat;
+        GetComponent<SpriteRenderer>().sprite = runtimeCat.unitIcon;
     }
 
 }

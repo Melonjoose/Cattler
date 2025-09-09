@@ -1,37 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
-    public CatData debugCat; // assign in Inspector
-
-    public List<Item> items = new List<Item>(); //this list stores references
+    public List<Item> items = new List<Item>();
 
     public int currentCapacity = 5;
     public int maxCapacity = 60;
-    public GameObject inventoryGRP;
-    public GameObject inventorySlotPrefab; // prefab for slots to instantiate into inventoryGRP
-    public GameObject[] inventorySlots; //add from using a forloop detecting children of inventoryGRP. should be matching woth items list.
 
-    public GameObject itemPlaceholder; // prefab for items to reference data and edited into items.
+    [Header("UI")]
+    public GameObject inventoryGRP;          // Parent object for inventory slots
+    public GameObject inventorySlotPrefab;   // Prefab for slot
+    public GameObject itemPlaceholder;       // Prefab for item icons in UI
+
+    private GameObject[] inventorySlots;
 
     private void Awake()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
-        SetInventorySpace(currentCapacity);
-    }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            IncreaseCapacity(1);
-        }
-        
+        SetInventorySpace(currentCapacity);
     }
 
     public bool Add(Item item)
@@ -41,23 +32,32 @@ public class Inventory : MonoBehaviour
             Debug.Log("Inventory full!");
             return false;
         }
+
         items.Add(item);
-        Debug.Log($"Added {item.itemName} to inventory.");
+        Debug.Log($"Added {item.unitName} to inventory.");
+
+        AddIntoInventoryUI(item);
         return true;
     }
 
     public void Remove(Item item)
     {
-        items.Remove(item);
+        int index = items.IndexOf(item);
+        if (index >= 0)
+        {
+            items.RemoveAt(index);
+
+            // Remove UI placeholder
+            Transform slot = inventorySlots[index].transform;
+            if (slot.childCount > 0)
+                Destroy(slot.GetChild(0).gameObject);
+        }
     }
 
     void SetInventorySpace(int capacity)
     {
-        if (capacity > maxCapacity)
-        {
-            currentCapacity = maxCapacity;
-            return; // Do not exceed max capacity
-        }
+        if (capacity > maxCapacity) capacity = maxCapacity;
+        currentCapacity = capacity;
 
         // Destroy old slots
         foreach (Transform child in inventoryGRP.transform)
@@ -65,29 +65,43 @@ public class Inventory : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        inventorySlots = new GameObject[capacity]; // update array size to new capacity
-
+        // Recreate slots
+        inventorySlots = new GameObject[capacity];
         for (int i = 0; i < capacity; i++)
         {
             GameObject slot = Instantiate(inventorySlotPrefab, inventoryGRP.transform);
             inventorySlots[i] = slot;
         }
 
+        // Trim items if needed
         if (items.Count > capacity)
         {
             items.RemoveRange(capacity, items.Count - capacity);
         }
     }
 
-    public void IncreaseCapacity(int addedslots)
+    public void IncreaseCapacity(int addedSlots)
     {
-        currentCapacity += addedslots;
+        currentCapacity += addedSlots;
         SetInventorySpace(currentCapacity);
     }
 
-    void AddIntoInventoryUI()
+    //  Link item data to UI
+    void AddIntoInventoryUI(Item item)
     {
-        //instantiate itemPlaceholder as child of inventoryGRP
-        //reference data from items list and reflect it to the prefab
+        // Find the first empty slot
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            if (inventorySlots[i].transform.childCount == 0)
+            {
+                GameObject placeholder = Instantiate(itemPlaceholder, inventorySlots[i].transform);
+                // Assign item data to placeholder script if you have one
+                ItemUI itemUI = placeholder.GetComponent<ItemUI>();
+                if (itemUI != null)
+                    itemUI.SetItem(item);
+
+                break;
+            }
+        }
     }
 }

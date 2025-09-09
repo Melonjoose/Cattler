@@ -1,9 +1,9 @@
 using UnityEngine;
 
 public class SummonManager : MonoBehaviour
-
 {
     public static SummonManager instance;
+    public GameObject catTemplatePrefab;
 
     [System.Serializable]
     public class GachaPoolEntry
@@ -19,7 +19,6 @@ public class SummonManager : MonoBehaviour
         instance = this;
     }
 
-
     public CatData Roll()
     {
         float totalWeight = 0f;
@@ -33,9 +32,7 @@ public class SummonManager : MonoBehaviour
         {
             cumulative += entry.weight;
             if (roll <= cumulative)
-            {
                 return entry.catData;
-            }
         }
 
         return null; // should never happen
@@ -43,19 +40,25 @@ public class SummonManager : MonoBehaviour
 
     public void Summon()
     {
+        if(Inventory.instance.items.Count >= Inventory.instance.currentCapacity) return;
+
         CatData rolledCat = Roll();
-        if (rolledCat != null)
-        {
-            // make runtime cat instance
-            CatRuntimeData runtimeCat = new CatRuntimeData(rolledCat);
+        if (rolledCat == null) return;
 
-            // add to inventory
-            Inventory.instance.Add(rolledCat);
+        //  1. Create a runtime instance of the cat
+        CatRuntimeData runtimeCat = ScriptableObject.CreateInstance<CatRuntimeData>();
+        runtimeCat.InitializeFrom(rolledCat); // copy stats from template
 
-            Debug.Log($"Summoned {rolledCat.itemName}!");
-        }
+        //  2. Add runtime cat to inventory
+        Inventory.instance.Add(runtimeCat);
+
+        //  3. Instantiate the prefab in the scene
+        GameObject newCatGO = Instantiate(catTemplatePrefab);
+        CatUnit catUnit = newCatGO.GetComponent<CatUnit>();
+        catUnit.AssignCat(runtimeCat);
+
+        Debug.Log($"Summoned {rolledCat.unitName}!");
+
+        TeamManager.instance.AddCatToTeam(catUnit);
     }
-
-    
 }
-
