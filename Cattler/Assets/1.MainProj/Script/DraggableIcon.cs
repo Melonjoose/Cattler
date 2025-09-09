@@ -17,6 +17,9 @@ public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private CatPosition assignedCat;
 
+    private SnappableLocation currentSlot;
+    private Transform originalParent;
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -41,6 +44,15 @@ public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     // --------------------
     public void OnBeginDrag(PointerEventData eventData)
     {
+        originalParent = transform.parent; // Store original parent
+        currentSlot = originalParent.GetComponent<SnappableLocation>();
+        
+        if(currentSlot != null)
+        {
+            currentSlot.RemoveItem(); // Clear slot occupation
+        }
+        transform.SetParent(canvas.transform, true); // Move to top-level canvas during drag
+
         isDragging = true;
         canvasGroup.alpha = 0.6f;          // Semi-transparent
         canvasGroup.blocksRaycasts = false; // Allow drop targets to receive raycasts
@@ -56,6 +68,13 @@ public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         isDragging = false;
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+
+        if (transform.parent == transform.root && originalParent != null)
+        {
+            transform.SetParent(originalParent, false);
+            transform.localPosition = Vector3.zero;
+            currentSlot?.PlaceItem(this);
+        }
 
         if (slidingIcons != null) //Snaps to sliding icon positions.
         {
