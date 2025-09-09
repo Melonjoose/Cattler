@@ -28,17 +28,14 @@
             "id": "f772fb44ab909a48",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Purrgatory Game (Main Game)/Game Flow.canvas",
-                "viewState": {
-                  "x": 3304.6266232454163,
-                  "y": 246.11162219185286,
-                  "zoom": -0.6666666666666665
-                }
+                "file": "List of Assets/Equipment's List.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Game Flow"
+              "icon": "lucide-file",
+              "title": "Equipment's List"
             }
           },
           {
@@ -223,8 +220,15 @@
   },
   "active": "f772fb44ab909a48",
   "lastOpenFiles": [
-    "Team Management/FYP BOOTH Showcase.md",
+    "List of Assets/Cats List.md",
+    "List of Assets/Enemy List.md",
+    "Lobby/Team & Inventory.md",
+    "Marketing/Youtube Schedule Planning.md",
+    "Marketing/Marketing.md",
+    "Lobby/Lobby.md",
+    "Lobby/Summon Page.md",
     "Purrgatory Game (Main Game)/Game Flow.canvas",
+    "Team Management/FYP BOOTH Showcase.md",
     "Purrgatory Game (Main Game)/Enemy.md",
     "Main Gameplay Page.md",
     "Team Page.md",
@@ -233,17 +237,10 @@
     "Game Structure and Timeline.canvas",
     "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
     "Purrgatory Game (Main Game)/Game UI.md",
-    "Marketing/Youtube Schedule Planning.md",
-    "Marketing/Marketing.md",
     "Team Management/House Rules.md",
     "Purrgatory Game (Main Game)/Basic Cats.md",
     "Purrgatory Game (Main Game)/Game Manager.md",
     "Purrgatory Game (Main Game)/Control Manager.md",
-    "Lobby/LOBBY.md",
-    "Lobby/Summon Page.md",
-    "Lobby/Team & Inventory.md",
-    "List of Assets/Cats List.md",
-    "List of Assets/Enemy List.md",
     "List of Assets/Equipment's List.md",
     "List of Assets/Hats List.md",
     "List of Assets",
