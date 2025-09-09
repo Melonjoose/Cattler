@@ -34,7 +34,7 @@ public class Inventory : MonoBehaviour
         }
 
         items.Add(item);
-        Debug.Log($"Added {item.unitName} to inventory.");
+        Debug.Log($"Added {item} to inventory.");
 
         AddIntoInventoryUI(item);
         return true;
@@ -89,16 +89,20 @@ public class Inventory : MonoBehaviour
     //  Link item data to UI
     void AddIntoInventoryUI(Item item)
     {
-        // Find the first empty slot
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (inventorySlots[i].transform.childCount == 0)
             {
                 GameObject placeholder = Instantiate(itemPlaceholder, inventorySlots[i].transform);
-                // Assign item data to placeholder script if you have one
-                ItemUI itemUI = placeholder.GetComponent<ItemUI>();
-                if (itemUI != null)
-                    itemUI.SetItem(item);
+                placeholder.transform.localPosition = Vector3.zero;
+                // Cast to CatRuntimeData
+                CatRuntimeData catItem = item as CatRuntimeData;
+                if (catItem != null)
+                {
+                    ItemUI itemUI = placeholder.GetComponent<ItemUI>();
+                    if (itemUI != null)
+                        itemUI.SetItem(catItem); // now icon is available
+                }
 
                 break;
             }
