@@ -27,9 +27,7 @@ public class TeamManager : MonoBehaviour
         if (cat != null)
         {
             Debug.Log("Adding cat to team: " + cat.name);
-            // Logic to add the cat to the team
-            // For example, you could maintain a list of cats in the team
-            // teamCats.Add(cat);
+
         }
         else
         {

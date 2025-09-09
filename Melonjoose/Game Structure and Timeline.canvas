@@ -20,8 +20,8 @@
 		{"id":"6cf76428e8d811f8","type":"text","text":"Lore","x":40,"y":91,"width":220,"height":50},
 		{"id":"389dccb7d45659b8","type":"text","text":"Week 2 / 3","x":-300,"y":-260,"width":250,"height":60},
 		{"id":"8c20c57832dd1094","type":"file","file":"Purrgatory Game (Main Game)/Basic Cats.md","x":379,"y":-354,"width":182,"height":60,"color":"4"},
-		{"id":"6028b2ecbb3a180c","type":"text","text":"01/09 - 07/09","x":-640,"y":380,"width":250,"height":60,"color":"2"},
-		{"id":"3feefc8666bc7e6a","type":"text","text":"08/08  - 14/08","x":-640,"y":440,"width":250,"height":60},
+		{"id":"6028b2ecbb3a180c","type":"text","text":"01/09 - 07/09","x":-640,"y":380,"width":250,"height":60,"color":"4"},
+		{"id":"3feefc8666bc7e6a","type":"text","text":"08/08  - 14/08","x":-640,"y":440,"width":250,"height":60,"color":"2"},
 		{"id":"860df341347196db","type":"text","text":"15/09 - 21/09","x":-640,"y":631,"width":250,"height":60},
 		{"id":"823cda1e75263519","type":"text","text":"22/09 - 28/09","x":-640,"y":691,"width":250,"height":60},
 		{"id":"98462ac8738281d7","type":"text","text":"04/10 - 11/10","x":-640,"y":970,"width":250,"height":60},
@@ -72,7 +72,7 @@
 		{"id":"c614cd6798a022f3","type":"text","text":"Introduction/Settings","x":390,"y":480,"width":250,"height":60},
 		{"id":"8dae06362c36d1f4","type":"text","text":"Slide presentation","x":-300,"y":793,"width":250,"height":60,"color":"1"},
 		{"id":"4347f9f03005312c","type":"text","text":"Game Balancing & Game Testing","x":30,"y":1002,"width":250,"height":60},
-		{"id":"f2619fc8067595b3","x":30,"y":942,"width":250,"height":60,"type":"text","text":"Debuffs"}
+		{"id":"f2619fc8067595b3","type":"text","text":"Debuffs","x":30,"y":942,"width":250,"height":60}
 	],
 	"edges":[
 		{"id":"93a4e5dcf3587b96","fromNode":"389dccb7d45659b8","fromSide":"right","toNode":"128884b66a4ad460","toSide":"left","label":"Syl"},

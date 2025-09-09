@@ -57,8 +57,7 @@ public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        // Snap to nearest slot via manager
-        if (slidingIcons != null)
+        if (slidingIcons != null) //Snaps to sliding icon positions.
         {
             slidingIcons.SnapDraggedIcon(this);
         }

@@ -30,7 +30,7 @@ public class CatIconUI : MonoBehaviour
 
     private void Update()
     {
-        RefreshIcons(); 
+        RefreshIcons(); // left here for simplicity, optimize later if needed
     }
 
     private void RefreshIcons()
@@ -61,4 +61,5 @@ public class CatIconUI : MonoBehaviour
             }
         }
     }
+
 }

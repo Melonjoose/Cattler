@@ -55,5 +55,7 @@ public class SummonManager : MonoBehaviour
             Debug.Log($"Summoned {rolledCat.itemName}!");
         }
     }
+
+    
 }
 

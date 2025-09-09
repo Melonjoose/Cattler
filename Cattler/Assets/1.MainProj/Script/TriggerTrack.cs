@@ -9,6 +9,7 @@ public class TriggerTrack : MonoBehaviour
 
     private GameObject nearestEnemy;
 
+
     void Start()
     {
         cat = transform.parent.gameObject; // Automatically assign the cat as parent
@@ -66,6 +67,20 @@ public class TriggerTrack : MonoBehaviour
         else         
         {
             catUnit.isAttacking = false;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        CatUnit catUnit = cat.GetComponent<CatUnit>();
+
+        // Only attack if this trigger overlaps an enemy
+        if (other.CompareTag("Enemy"))
+        {
+            Collider2D target = other.GetComponent<Collider2D>();
+            if (target != null)
+            {
+                catUnit.TryAttack(target); // Call Attack component, not static
+            }
         }
     }
 }

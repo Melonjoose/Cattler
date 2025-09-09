@@ -32,8 +32,8 @@
               "state": {
                 "file": "Game Structure and Timeline.canvas",
                 "viewState": {
-                  "x": 500.36765646110376,
-                  "y": 548.0151643152419,
+                  "x": 527.214276065153,
+                  "y": 413.7820662949956,
                   "zoom": -0.7466685373811768
                 }
               },
@@ -130,7 +130,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 298.5
   },
   "right": {
     "id": "9647e7f00c7fb346",

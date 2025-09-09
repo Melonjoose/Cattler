@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-using NUnit.Framework;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,6 +56,7 @@ public class CatUnit : MonoBehaviour
             Debug.LogWarning("No child named 'targetPoint' found under " + gameObject.name);
         }
     }
+    
     public void TryAttack(Collider2D other)
     {
         EnemyUnit enemytarget = other.GetComponent<EnemyUnit>();
@@ -93,7 +92,7 @@ public class CatUnit : MonoBehaviour
     } //runs when triggered by ICombatUnit.cs
 
     private void Die()
-    {
+    {        
         Debug.Log(runtimeData.catName + " has been defeated.");
         Destroy(gameObject);
         //Give Send EXP gained from death to Retreat controller   

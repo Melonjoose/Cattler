@@ -550,7 +550,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.53, y: -0.38, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2029251617970882734}
   - {fileID: 6726801444387179633}
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPoint: {fileID: 365364454014447571}
-  baseData: {fileID: 11400000, guid: d76f97047c653c54ba36a6a2be93e556, type: 2}
+  baseData: {fileID: 11400000, guid: 4cd58893a20fca541850e9999fe7960d, type: 2}
   runtimeData:
     catName: 
     icon: {fileID: 0}

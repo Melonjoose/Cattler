@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyUnit : MonoBehaviour
 {
+    private GameObject thisUnit; // Reference to self for clarity
+
     public EnemyData enemyData; // ScriptableObject with enemy stats
     [Header("Targeting")]
     public GameObject TargetCat; // Reference to current target
@@ -19,6 +21,8 @@ public class EnemyUnit : MonoBehaviour
 
     private void Start()
     {
+        thisUnit = this.gameObject;
+
         if (enemyData != null)
         {
             // Initialize stats from SO
@@ -87,6 +91,8 @@ public class EnemyUnit : MonoBehaviour
             Debug.LogWarning("No child named 'targetPoint' found under " + gameObject.name);
         }
     }
+
+
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
@@ -100,6 +106,7 @@ public class EnemyUnit : MonoBehaviour
 
     private void Die()
     {
+        if (EnemySpawner.instance != null) { EnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); } //Clear Spawned Enemies list to prevent targeting dead cats
         Debug.Log(enemyData.enemyName + " has been defeated.");
         Currency.instance.AddInk(10); // Add ink to currency
         Destroy(gameObject);
