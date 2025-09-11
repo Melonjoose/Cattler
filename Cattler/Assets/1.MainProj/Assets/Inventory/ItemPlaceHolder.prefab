@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 5739447054361119168}
   - component: {fileID: 4041207186281485513}
   - component: {fileID: 3001923757112930428}
+  - component: {fileID: 3170660487566940422}
   - component: {fileID: 254105634031565087}
   - component: {fileID: 4425046505213308379}
   m_Layer: 5
@@ -230,6 +231,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3170660487566940422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115270866861483169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db07850975812944ab40b6a2595172a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 0}
+  icon: {fileID: 0}
 --- !u!114 &254105634031565087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +257,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95573deaf7a62e341975aa4558792695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalParent: {fileID: 0}
+  itemType: 0
+  originalSlot: {fileID: 0}
+  currentSlot: {fileID: 0}
 --- !u!225 &4425046505213308379
 CanvasGroup:
   m_ObjectHideFlags: 0

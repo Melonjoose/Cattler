@@ -59,6 +59,8 @@ public class SummonManager : MonoBehaviour
 
         Debug.Log($"Summoned {rolledCat.unitName}!");
 
+        //add cat to inventory UI.
+
         TeamManager.instance.AddCatToTeam(catUnit);
     }
 }

@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.Port;
 using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
+    private bool isInitialized = false;
     public List<Item> items = new List<Item>();
 
     public int currentCapacity = 5;
@@ -22,7 +24,7 @@ public class Inventory : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
 
-        SetInventorySpace(currentCapacity);
+        InitializeInventorySpace(currentCapacity);
     }
 
     public bool Add(Item item)
@@ -36,7 +38,8 @@ public class Inventory : MonoBehaviour
         items.Add(item);
         Debug.Log($"Added {item} to inventory.");
 
-        AddIntoInventoryUI(item);
+        AddItemIntoInventoryUI(item);
+
         return true;
     }
 
@@ -54,58 +57,72 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void SetInventorySpace(int capacity)
+    void InitializeInventorySpace(int capacity)
     {
         if (capacity > maxCapacity) capacity = maxCapacity;
         currentCapacity = capacity;
 
-        // Destroy old slots
+        // Destroy old slots (run once at start)
         foreach (Transform child in inventoryGRP.transform)
-        {
             Destroy(child.gameObject);
-        }
 
         // Recreate slots
         inventorySlots = new GameObject[capacity];
         for (int i = 0; i < capacity; i++)
         {
             GameObject slot = Instantiate(inventorySlotPrefab, inventoryGRP.transform);
+            slot.name = $"InventorySlot{i + 1}"; // rename sequentially
             inventorySlots[i] = slot;
         }
 
         // Trim items if needed
         if (items.Count > capacity)
-        {
             items.RemoveRange(capacity, items.Count - capacity);
-        }
     }
 
     public void IncreaseCapacity(int addedSlots)
     {
-        currentCapacity += addedSlots;
-        SetInventorySpace(currentCapacity);
+        if (currentCapacity >= maxCapacity)
+        {
+            Debug.Log("Inventory at max capacity!");
+            return;
+        }
+
+        for (int i = 0; i < addedSlots; i++)
+        {
+            if (currentCapacity >= maxCapacity) break;
+
+            GameObject slot = Instantiate(inventorySlotPrefab, inventoryGRP.transform);
+            slot.name = $"InventorySlot{currentCapacity + 1}"; // continue sequence
+                                                               // Optionally, add to inventorySlots array if you maintain it dynamically
+            currentCapacity++;
+        }
     }
 
     //  Link item data to UI
-    void AddIntoInventoryUI(Item item)
+    void AddItemIntoInventoryUI(Item item)
     {
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (inventorySlots[i].transform.childCount == 0)
             {
+                // Instantiate placeholder in the empty slot
                 GameObject placeholder = Instantiate(itemPlaceholder, inventorySlots[i].transform);
                 placeholder.transform.localPosition = Vector3.zero;
-                // Cast to CatRuntimeData
-                CatRuntimeData catItem = item as CatRuntimeData;
-                if (catItem != null)
+
+                // Assign the data to the placeholder
+                ItemUI itemUI = placeholder.GetComponent<ItemUI>();
+                if (itemUI != null)
                 {
-                    ItemUI itemUI = placeholder.GetComponent<ItemUI>();
-                    if (itemUI != null)
-                        itemUI.SetItem(catItem); // now icon is available
+                    // Use the proper type cast
+                    CatRuntimeData catItem = item as CatRuntimeData;
+                    if (catItem != null)
+                        itemUI.SetItem(catItem);
                 }
 
-                break;
+                break; // stop after filling one slot
             }
         }
     }
+
 }

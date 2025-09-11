@@ -1,39 +1,51 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static SnappableLocation;
 
 public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     private RectTransform rectTransform;
-    private Canvas canvas;
+    private Canvas parentCanvas;   // renamed to avoid ambiguity
     private CanvasGroup canvasGroup;
-    private Transform originalParent;
-    private SnappableLocation currentSlot;
+    public Transform originalParent;
+
+    public SnappableLocation.ItemType itemType;
+
+    public SnappableLocation originalSlot;
+    public SnappableLocation currentSlot;
 
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        canvas = GetComponentInParent<Canvas>();
+        parentCanvas = GetComponentInParent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
+    }
+
+    public void Start()
+    {
+        // Snap to nearest slot at start
+        SnapToNearestSlot();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         originalParent = transform.parent;
-        currentSlot = originalParent.GetComponent<SnappableLocation>();
+        transform.SetParent(transform.root); // move to top canvas so it doesn’t get hidden
+        canvasGroup.blocksRaycasts = false;
 
+        // Tell slot we are leaving
         if (currentSlot != null)
         {
-            currentSlot.RemoveItem(); // notify slot
+            originalSlot = currentSlot; // remember slot for swap
+            currentSlot.RemoveItem();
+            currentSlot = null;
         }
-
-        transform.SetParent(GetComponentInParent<Canvas>().transform, true);
-        canvasGroup.alpha = 0.6f;          // Semi-transparent
-        canvasGroup.blocksRaycasts = false; // Allow drop targets to receive raycasts
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        if (parentCanvas == null) return;
+        rectTransform.anchoredPosition += eventData.delta / parentCanvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -44,9 +56,51 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         // if dropped on empty space, return to original slot
         if (transform.parent == transform.root && originalParent != null)
         {
+            currentSlot = originalSlot;
             transform.SetParent(originalParent, false);
             transform.localPosition = Vector3.zero;
             currentSlot?.PlaceItem(this);
         }
+    }
+
+    public void SetSlot(SnappableLocation slot)
+    {
+        currentSlot = slot;
+    }
+
+    public void SnapToNearestSlot()
+    {
+        SnappableLocation[] slots = FindObjectsOfType<SnappableLocation>();
+
+        SnappableLocation nearestSlot = null;
+        float nearestDistance = float.MaxValue;
+
+        foreach (var slot in slots)
+        {
+            // Skip occupied slots unless it's the one we're already in
+            if (slot.isOccupied && slot != currentSlot) continue;
+
+            float distance = Vector3.Distance(transform.position, slot.transform.position);
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestSlot = slot;
+            }
+        }
+
+        if (nearestSlot != null)
+        {
+            // Snap into slot
+            nearestSlot.PlaceItem(this);
+            currentSlot = nearestSlot;
+            originalSlot = nearestSlot;
+        }
+        else
+        {
+            Debug.LogWarning("No available slot found to snap into!");
+        }
+
+        nearestSlot.isOccupied = true; // Mark the slot as occupied
+        nearestSlot.currentItem = this; // Set the current item in the slot
     }
 }

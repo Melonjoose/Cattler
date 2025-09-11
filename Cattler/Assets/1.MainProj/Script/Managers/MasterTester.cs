@@ -43,6 +43,11 @@ public class MasterTester : MonoBehaviour
         {
             SummonManager.instance.Summon();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Inventory.instance.IncreaseCapacity(+1);
+        }
     }
 
     void MakeMeRich()

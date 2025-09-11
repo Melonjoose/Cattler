@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemUI : MonoBehaviour
 {
     public Item itemData;
-    public UnityEngine.UI.Image icon;
+    public Image iconImage; 
 
-    public void SetItem(CatRuntimeData item)
+    public void SetItem(CatRuntimeData cat)
     {
-        itemData = item;
-        icon.sprite = item.unitIcon; // assuming Item has unitIcon
+        if (cat != null && iconImage != null)
+        {
+            itemData = cat;
+            iconImage.sprite = cat.unitIcon;
+        }
     }
-
 }
