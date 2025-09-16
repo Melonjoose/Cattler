@@ -3,7 +3,7 @@ using UnityEngine;
 public class SummonManager : MonoBehaviour
 {
     public static SummonManager instance;
-    public GameObject catTemplatePrefab;
+
 
     [System.Serializable]
     public class GachaPoolEntry
@@ -40,7 +40,7 @@ public class SummonManager : MonoBehaviour
 
     public void Summon()
     {
-        if(Inventory.instance.items.Count >= Inventory.instance.currentCapacity) return;
+        if(Inventory.instance.inventoryList.Count >= Inventory.instance.currentCapacity) return;
 
         CatData rolledCat = Roll();
         if (rolledCat == null) return;
@@ -50,17 +50,8 @@ public class SummonManager : MonoBehaviour
         runtimeCat.InitializeFrom(rolledCat); // copy stats from template
 
         //  2. Add runtime cat to inventory
-        Inventory.instance.Add(runtimeCat);
-
-        //  3. Instantiate the prefab in the scene
-        GameObject newCatGO = Instantiate(catTemplatePrefab);
-        CatUnit catUnit = newCatGO.GetComponent<CatUnit>();
-        catUnit.AssignCat(runtimeCat);
+        Inventory.instance.AddNew(runtimeCat);
 
         Debug.Log($"Summoned {rolledCat.unitName}!");
-
-        //add cat to inventory UI.
-
-        TeamManager.instance.AddCatToTeam(catUnit);
     }
 }

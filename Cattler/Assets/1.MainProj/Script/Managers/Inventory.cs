@@ -7,7 +7,8 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
     private bool isInitialized = false;
-    public List<Item> items = new List<Item>();
+    public List<Item> inventoryList = new List<Item>();
+    public List<Item> teamList = new List<Item>();
 
     public int currentCapacity = 5;
     public int maxCapacity = 60;
@@ -25,36 +26,53 @@ public class Inventory : MonoBehaviour
         else Destroy(gameObject);
 
         InitializeInventorySpace(currentCapacity);
+
+        // Subscribe to all slots
+        foreach (var slot in FindObjectsOfType<SnappableLocation>())
+        {
+            slot.OnItemPlaced += HandleItemPlaced;
+            slot.OnItemRemoved += HandleItemRemoved;
+        }
     }
 
     public bool Add(Item item)
     {
-        if (items.Count >= currentCapacity)
+        if (inventoryList.Count >= currentCapacity)
         {
             Debug.Log("Inventory full!");
             return false;
         }
-
-        items.Add(item);
         Debug.Log($"Added {item} to inventory.");
-
-        AddItemIntoInventoryUI(item);
 
         return true;
     }
 
     public void Remove(Item item)
     {
-        int index = items.IndexOf(item);
-        if (index >= 0)
+        if (inventoryList.Contains(item))
         {
-            items.RemoveAt(index);
-
-            // Remove UI placeholder
-            Transform slot = inventorySlots[index].transform;
-            if (slot.childCount > 0)
-                Destroy(slot.GetChild(0).gameObject);
+            inventoryList.Remove(item);
         }
+        else if (teamList.Contains(item))
+        {
+            teamList.Remove(item);
+        }
+    }
+
+    public bool AddNew(Item item)
+    {
+        if (inventoryList.Count >= currentCapacity)
+        {
+            Debug.Log("Inventory full!");
+            return false;
+        }
+
+        
+        Debug.Log($"Added {item} to inventory.");
+
+        AddItemIntoInventoryUI(item);
+
+        return true;
     }
 
     void InitializeInventorySpace(int capacity)
@@ -76,8 +94,8 @@ public class Inventory : MonoBehaviour
         }
 
         // Trim items if needed
-        if (items.Count > capacity)
-            items.RemoveRange(capacity, items.Count - capacity);
+        if (inventoryList.Count > capacity)
+            inventoryList.RemoveRange(capacity, inventoryList.Count - capacity);
     }
 
     public void IncreaseCapacity(int addedSlots)
@@ -109,9 +127,11 @@ public class Inventory : MonoBehaviour
                 // Instantiate placeholder in the empty slot
                 GameObject placeholder = Instantiate(itemPlaceholder, inventorySlots[i].transform);
                 placeholder.transform.localPosition = Vector3.zero;
-
-                // Assign the data to the placeholder
+           
                 ItemUI itemUI = placeholder.GetComponent<ItemUI>();
+                itemUI.itemData = item;
+                InventoryIcon icon = placeholder.GetComponent<InventoryIcon>();
+                icon.catData = item as CatRuntimeData;
                 if (itemUI != null)
                 {
                     // Use the proper type cast
@@ -124,5 +144,65 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
+
+
+    void RemoveFromList(Item item)
+    {
+        int index = inventoryList.IndexOf(item);
+        if (index >= 0)
+        {
+            inventoryList.RemoveAt(index);
+
+            // Remove UI placeholder
+            Transform slot = inventorySlots[index].transform;
+            if (slot.childCount > 0)
+                Destroy(slot.GetChild(0).gameObject);
+        }
+    }
+
+    private void HandleItemPlaced(SnappableLocation slot)
+    {
+        if (slot.currentItem == null) return;
+
+        Item item = slot.currentItem.catData;
+
+        switch (slot.slotType)
+        {
+            case SnappableLocation.SlotType.InventoryList:
+                if (!inventoryList.Contains(item))
+                    inventoryList.Add(item);
+                break;
+
+            case SnappableLocation.SlotType.TeamList:
+                if (!teamList.Contains(item))
+                    teamList.Add(item);
+                break;
+
+            case SnappableLocation.SlotType.CharacterPreview:
+                // optional: preview slot doesn’t store in lists
+                break;
+        }
+    }
+
+    private void HandleItemRemoved(SnappableLocation slot)
+    {
+        if (slot.currentItem == null) return; // careful: after removal, currentItem may already be null
+        Item item = slot.currentItem.catData;
+
+        switch (slot.slotType)
+        {
+            case SnappableLocation.SlotType.InventoryList:
+                inventoryList.Remove(item);
+                break;
+
+            case SnappableLocation.SlotType.TeamList:
+                teamList.Remove(item);
+                break;
+        }
+    }
+
+
+
 
 }

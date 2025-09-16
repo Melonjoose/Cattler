@@ -1,0 +1,1 @@
+is essentially **an inventory system with multiple “containers”**

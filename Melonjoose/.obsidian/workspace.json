@@ -30,12 +30,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "List of Assets/Equipment's List.md",
+                "file": "Lobby/Team & Inventory.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Equipment's List"
+              "title": "Team & Inventory"
             }
           },
           {
@@ -220,6 +220,7 @@
   },
   "active": "f772fb44ab909a48",
   "lastOpenFiles": [
+    "List of Assets/Equipment's List.md",
     "List of Assets/Cats List.md",
     "List of Assets/Enemy List.md",
     "Lobby/Team & Inventory.md",
@@ -241,7 +242,6 @@
     "Purrgatory Game (Main Game)/Basic Cats.md",
     "Purrgatory Game (Main Game)/Game Manager.md",
     "Purrgatory Game (Main Game)/Control Manager.md",
-    "List of Assets/Equipment's List.md",
     "List of Assets/Hats List.md",
     "List of Assets",
     "Team.md",

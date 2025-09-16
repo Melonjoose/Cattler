@@ -16,7 +16,23 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         Hat
     }
 
+    public enum SlotType
+    {
+        InventoryList,
+        TeamList,
+        CharacterPreview
+    }
+
+    public SlotType slotType; // set in inspector per slot
+
+
+    // Events
+    public event Action<SnappableLocation> OnItemPlaced;
     public event Action<SnappableLocation> OnItemRemoved;
+    public SnappableLocation.SlotType slotSlotType(SnappableLocation slot)
+    {
+        return slot.slotType;
+    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -61,12 +77,11 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         item.transform.localPosition = Vector3.zero;
 
         item.SetSlot(this); // tell the icon which slot it is now in
-        Debug.Log("Item placed in slot: " + gameObject.name);
+        //Debug.Log("Item placed in slot: " + gameObject.name);
+
+        OnItemPlaced?.Invoke(this);
     }
 
-    /// <summary>
-    /// Clears this slot (keeps it empty).
-    /// </summary>
     public void RemoveItem()
     {
         OnItemRemoved?.Invoke(this);
