@@ -40,7 +40,12 @@ public class SummonManager : MonoBehaviour
 
     public void Summon()
     {
-        if(Inventory.instance.inventoryList.Count >= Inventory.instance.currentCapacity) return;
+        // check if there is at least one empty slot
+        if (!Inventory.instance.inventoryList.Contains(null))
+        {
+            Debug.Log("Inventory full! Cannot summon more cats.");
+            return;
+        }
 
         CatData rolledCat = Roll();
         if (rolledCat == null) return;
