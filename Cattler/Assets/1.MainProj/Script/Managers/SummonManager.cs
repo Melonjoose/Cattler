@@ -57,6 +57,9 @@ public class SummonManager : MonoBehaviour
         //  2. Add runtime cat to inventory
         Inventory.instance.AddNew(runtimeCat);
 
+        TeamManager.instance.AddCatToWorld(runtimeCat);
+
+
         Debug.Log($"Summoned {rolledCat.unitName}!");
     }
 }
