@@ -15,6 +15,9 @@ public class EnemySpawner : MonoBehaviour
     public int currentEnemyCount = 0;
     public int maxEnemies = 10;
 
+    public float minSize = 0.6f;    
+    public float maxSize = 1.4f;
+
     private float timer = 0f;
     
     public List<EnemyData> enemyList;
@@ -60,7 +63,11 @@ public class EnemySpawner : MonoBehaviour
         // Convert 2D offset to 3D position
         Vector3 spawnPos = spawnLocation.transform.position + new Vector3(spawnOffset.x, 0, 0f);
 
+        //enemy can spawn at a random size
+        float randomSize = Random.Range(minSize, maxSize);
+
         GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        newEnemy.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
 
         AddEnemyToSpawnedList(newEnemy);
     }

@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 7651245875201186195}
   - component: {fileID: 2900330853516322464}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: Enemy_Artillery
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,7 +601,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -8021277769608807489, guid: 2348ebc65ed3ebf45868445bf5eb58e6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4669811, b: 0.4669811, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069cbdd678f358c409c2b3b872401b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: f498614201f45c44fa142f3772532706, type: 2}
+  enemyData: {fileID: 11400000, guid: 2a9688ae1e8e824429bd9a70adc1483a, type: 2}
   TargetCat: {fileID: 0}
   targetPoint: {fileID: 0}
   currentHealth: 0
@@ -726,8 +726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootTable:
   - item: {fileID: 302557032810016064, guid: 7ac2dd59924489d478005bdbbcd2a5f7, type: 3}
-    dropChance: 10
+    dropChance: 0.05
   - item: {fileID: 1930171780827623856, guid: 210b1424d1a17fd448715829c1f8b455, type: 3}
-    dropChance: 90
-  chanceToDropNothing: 0.1
-  enemy: {fileID: 0}
+    dropChance: 0.05
+  chanceToDropNothing: 0.5
+  enemy: {fileID: 7866871971107095405}

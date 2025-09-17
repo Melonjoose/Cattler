@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e672a37ccd97a428fabbfc780bf11a, type: 3}
+  m_Name: Artillery - Enemy
+  m_EditorClassIdentifier: 
+  enemyName: Artillery
+  icon: {fileID: -8021277769608807489, guid: 2348ebc65ed3ebf45868445bf5eb58e6, type: 3}
+  health: 5
+  attackPower: 7
+  attackSpeed: 3
+  attackRange: 9
+  movementSpeed: 3

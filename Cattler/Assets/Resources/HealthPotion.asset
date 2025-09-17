@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8e672a37ccd97a428fabbfc780bf11a, type: 3}
-  m_Name: NewEnemy
+  m_Script: {fileID: 11500000, guid: 626546a8f3a11b64f84fc7e7cc89e5c6, type: 3}
+  m_Name: HealthPotion
   m_EditorClassIdentifier: 
-  enemyName: BasicEnemy
-  icon: {fileID: -8021277769608807489, guid: 2348ebc65ed3ebf45868445bf5eb58e6, type: 3}
-  health: 5
-  attackPower: 3
-  attackSpeed: 3
-  attackRange: 3
-  movementSpeed: 3
+  itemName: HealthPotion
+  icon: {fileID: 1018383391595562092, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
+  description: Increase MaxHP by 1
+  prefab: {fileID: 0}
+  value: 1

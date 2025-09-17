@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyUnit : MonoBehaviour
+public class ArtilleryUnit : MonoBehaviour
 {
     private GameObject thisUnit; // Reference to self for clarity
 
@@ -76,7 +76,7 @@ public class EnemyUnit : MonoBehaviour
             CatUnit cat = other.GetComponent<CatUnit>();
             if (cat != null && other.gameObject == TargetCat) // only attack chosen target
             {
-                AttackCat(cat);
+                LockOnCat(cat);
                 attackCooldown = 1f / attackSpeed; // Reset cooldown
             }
         }
@@ -144,14 +144,30 @@ public class EnemyUnit : MonoBehaviour
         }
     }
 
-    private void AttackCat(CatUnit cat)
+    private void LockOnCat(CatUnit cat)
     {
         if (cat == null) return;
 
         Vector3 hitLocation = targetPoint != null ? targetPoint.transform.position : transform.position;
 
-        cat.TakeDamage((int)attackDamage); // Call CatUnit’s TakeDamage
-        Debug.Log(enemyData.enemyName + " attacked " + cat.name + " for " + attackDamage + " damage!");
-        DamageNumberManager.Instance.ShowDamage((int)attackDamage, hitLocation);
+        //artillery stops moving.
+
+        //instantiate a lock on effect on the cat's position
+
+        //once target is locked on cat, shoot projectile in air and out of screen.
+
+        //after firing, move towards cats.
+
+        //projectile move to above the cat's position outside of screen
+
+        //projectile to be positioned at targetPoint's X position, Y + some height, Z 0.
+
+        //wait for a few seconds for player to react.
+
+        //projectile moves down to hitLocation
+
+        //projectile collides with cat, dealing damage
+
+        //after cooldown ends, artillery stop moving, locks on and shoots again.
     }
 }
