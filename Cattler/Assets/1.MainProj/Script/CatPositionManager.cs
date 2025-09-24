@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CatPositionManager : MonoBehaviour
@@ -84,4 +85,5 @@ public class CatPositionManager : MonoBehaviour
             }
         }
     }
+
 }

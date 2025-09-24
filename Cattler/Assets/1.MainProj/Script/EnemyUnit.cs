@@ -99,7 +99,7 @@ public class EnemyUnit : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        Debug.Log(enemyData.enemyName + " takes " + amount + " damage. Remaining HP: " + currentHealth);
+        //Debug.Log(enemyData.enemyName + " takes " + amount + " damage. Remaining HP: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -110,7 +110,7 @@ public class EnemyUnit : MonoBehaviour
     private void Die()
     {
         if (EnemySpawner.instance != null) { EnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); } //Clear Spawned Enemies list to prevent targeting dead cats
-        Debug.Log(enemyData.enemyName + " has been defeated.");
+        //Debug.Log(enemyData.enemyName + " has been defeated.");
         Currency.instance.AddInk(10); // Add ink to currency
         dropLoot.GiveLoot();
         Destroy(gameObject);

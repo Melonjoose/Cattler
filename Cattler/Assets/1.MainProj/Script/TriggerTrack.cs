@@ -3,6 +3,7 @@ using UnityEngine;
 public class TriggerTrack : MonoBehaviour
 {
     private GameObject cat;
+    private CatUnit catUnit;
     public float triggerRadius = 5f;      // Radius around the cat
     public float moveSpeed = 3f;
     public Vector3 offsetFromCat = new Vector3(0, 0, 1f); // Position in front of the cat
@@ -13,10 +14,15 @@ public class TriggerTrack : MonoBehaviour
     void Start()
     {
         cat = transform.parent.gameObject; // Automatically assign the cat as parent
+        catUnit = cat.GetComponent<CatUnit>();
     }
 
     void FixedUpdate()
     {
+        if(triggerRadius != catUnit.runtimeData.attackRange)
+        {
+            triggerRadius = catUnit.runtimeData.attackRange;
+        }
         FindNearestEnemy();
         TrackEnemy();
     }

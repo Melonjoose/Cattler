@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5949029776931679301}
   - component: {fileID: 646697982409018096}
   - component: {fileID: 264290960892310411}
-  - component: {fileID: -7507933166310155015}
-  m_Layer: 0
+  - component: {fileID: -3487885070277928809}
+  m_Layer: 7
   m_Name: HealthPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,10 +104,10 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consumableData: {fileID: 11400000, guid: 286284ff2debb494bbc3f16e51c61c26, type: 2}
---- !u!114 &-7507933166310155015
+--- !u!114 &-3487885070277928809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,6 +177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1930171780827623856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed519e9f33d6664c81da69593f62c9e, type: 3}
+  m_Script: {fileID: 11500000, guid: f0b70082de614064baa2676799404a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  col: {fileID: 0}

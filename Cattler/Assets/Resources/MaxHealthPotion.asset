@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 626546a8f3a11b64f84fc7e7cc89e5c6, type: 3}
-  m_Name: HealthPotion
+  m_Name: MaxHealthPotion
   m_EditorClassIdentifier: 
-  itemName: HealthPotion
+  itemName: MaxHealthPotion
   icon: {fileID: 1018383391595562092, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
   description: Increase MaxHP by 1
   prefab: {fileID: 0}

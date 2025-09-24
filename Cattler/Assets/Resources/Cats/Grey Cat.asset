@@ -22,5 +22,5 @@ MonoBehaviour:
   currentHealth: 5
   attackPower: 1
   attackSpeed: 1
-  attackRange: 1
+  attackRange: 8
   movementSpeed: 1

@@ -3,8 +3,6 @@
 		{"id":"98522f37b3a051a2","type":"text","text":"Animation (Spline 2D)","x":30,"y":620,"width":250,"height":60},
 		{"id":"02760acf472b347e","type":"text","text":"Week 6 / 7 ","x":-300,"y":661,"width":250,"height":60},
 		{"id":"fe7b7599ca074e75","type":"text","text":"Gacha?(might be too fast)","x":25,"y":721,"width":250,"height":60},
-		{"id":"5acf1cdf0aaa482b","type":"text","text":"RECESS WEEK","x":-300,"y":860,"width":250,"height":60},
-		{"id":"09149468d5e4c7ee","type":"text","text":"MILESTONE Presentation","x":25,"y":860,"width":250,"height":60,"color":"5"},
 		{"id":"435bb89080b7bfee","type":"text","text":"Week 8 / 9","x":-300,"y":1000,"width":250,"height":60},
 		{"id":"f30f37f3449198de","type":"text","text":"Week 4 / 5","x":-300,"y":410,"width":250,"height":60},
 		{"id":"41d6a1263adbdc81","type":"text","text":"Inventory","x":389,"y":200,"width":211,"height":60,"color":"3"},
@@ -70,9 +68,11 @@
 		{"id":"4c4e726bab7491dc","type":"text","text":"Syl","x":890,"y":598,"width":250,"height":60,"color":"#2bff00"},
 		{"id":"5a80afedab850bab","type":"text","text":"Adele","x":888,"y":530,"width":250,"height":60,"color":"#fe71d9"},
 		{"id":"c614cd6798a022f3","type":"text","text":"Introduction/Settings","x":390,"y":480,"width":250,"height":60},
-		{"id":"8dae06362c36d1f4","type":"text","text":"Slide presentation","x":-300,"y":793,"width":250,"height":60,"color":"1"},
 		{"id":"4347f9f03005312c","type":"text","text":"Game Balancing & Game Testing","x":30,"y":1002,"width":250,"height":60},
-		{"id":"f2619fc8067595b3","type":"text","text":"Debuffs","x":30,"y":942,"width":250,"height":60}
+		{"id":"f2619fc8067595b3","type":"text","text":"Debuffs","x":30,"y":942,"width":250,"height":60},
+		{"id":"8dae06362c36d1f4","type":"text","text":"Slide presentation","x":-300,"y":815,"width":250,"height":60,"color":"1"},
+		{"id":"5acf1cdf0aaa482b","type":"text","text":"RECESS WEEK","x":-300,"y":882,"width":250,"height":60},
+		{"id":"3835dc41c8f1ef90","type":"text","text":"MILESTONE Presentation","x":-890,"y":970,"width":250,"height":60,"color":"5"}
 	],
 	"edges":[
 		{"id":"93a4e5dcf3587b96","fromNode":"389dccb7d45659b8","fromSide":"right","toNode":"128884b66a4ad460","toSide":"left","label":"Syl"},
@@ -103,7 +103,6 @@
 		{"id":"d453d539ee913e50","fromNode":"b43e01ebe1df238d","fromSide":"right","toNode":"389dccb7d45659b8","toSide":"left"},
 		{"id":"00231f31721534cd","fromNode":"860df341347196db","fromSide":"right","toNode":"02760acf472b347e","toSide":"left"},
 		{"id":"a7a09a20e26f03f7","fromNode":"9f65a7afdcdbd589","fromSide":"right","toNode":"5acf1cdf0aaa482b","toSide":"left"},
-		{"id":"cb4f2194c4896e1d","fromNode":"5acf1cdf0aaa482b","fromSide":"right","toNode":"09149468d5e4c7ee","toSide":"left"},
 		{"id":"06fb21a7f21bdf21","fromNode":"b008e08ad0f89b47","fromSide":"right","toNode":"389dccb7d45659b8","toSide":"left"},
 		{"id":"6716ed251c2455b5","fromNode":"3feefc8666bc7e6a","fromSide":"right","toNode":"f30f37f3449198de","toSide":"left"},
 		{"id":"3de00af8c6f0b4b1","fromNode":"823cda1e75263519","fromSide":"right","toNode":"02760acf472b347e","toSide":"left"},

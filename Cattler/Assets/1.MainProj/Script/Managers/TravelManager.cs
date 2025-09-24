@@ -13,6 +13,13 @@ public class TravelManager : MonoBehaviour
 
     private float floorLength = 23.09f; // adjust based on your tile size
 
+    public static TravelManager instance;
+
+    private void Start()
+    {
+        instance = this;
+    }
+
     void Update()
     {
         if (EnemyDetector.instance.enemyDetected == false )//&& any cat is not attacking)
