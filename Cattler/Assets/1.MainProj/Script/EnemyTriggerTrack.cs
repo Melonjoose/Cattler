@@ -1,11 +1,13 @@
 using UnityEngine;
 
+
 public class EnemyTriggerTrack : MonoBehaviour
 {
     private GameObject enemy;
     public float triggerRadius = 5f;      // Radius around the cat
     public float moveSpeed = 3f;
     public Vector3 offsetFromCat = new Vector3(0, 0, 1f); // Position in front of the cat
+    public bool onTarget = false;
 
     private GameObject chosenCat;
     private EnemyUnit enemyUnit; // Assuming you have an EnemyData class that holds enemy properties
@@ -13,6 +15,7 @@ public class EnemyTriggerTrack : MonoBehaviour
     void Start()
     {
         enemy = transform.parent.gameObject; // Automatically assign the enemy as parent
+        triggerRadius = enemyUnit.attackRange;
     }
 
     void FixedUpdate()
@@ -38,6 +41,8 @@ public class EnemyTriggerTrack : MonoBehaviour
 
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
+
+        OnTargetChecker();
     }
 
     void FindChosenCat()
@@ -58,5 +63,17 @@ public class EnemyTriggerTrack : MonoBehaviour
         }
 
         chosenCat = closestCat; // Will be null if no enemies are in range
+    }
+
+    void OnTargetChecker()
+    {
+        if (this.transform.position == chosenCat.transform.position)
+        {
+            onTarget = true;
+        }
+        else
+        {
+            onTarget = false;
+        }
     }
 }

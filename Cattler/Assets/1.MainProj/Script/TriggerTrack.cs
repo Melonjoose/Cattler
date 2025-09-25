@@ -33,6 +33,10 @@ public class TriggerTrack : MonoBehaviour
         {
             // Move toward the enemy
             transform.position = Vector3.MoveTowards(transform.position, nearestEnemy.transform.position, moveSpeed * Time.deltaTime);
+            if (transform.position == nearestEnemy.transform.position)
+            { 
+                transform.position = nearestEnemy.transform.position; // to lock on so it don't jitter
+            }
         }
         else
         {

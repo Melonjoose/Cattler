@@ -60,4 +60,12 @@ public class GameManager : MonoBehaviour
         }
         currentPage = null;
     }
+
+    public void CloseTab(GameObject Tab)
+    {
+        if(Tab != null)
+        {
+            Tab.SetActive(false);
+        }
+    }
 }

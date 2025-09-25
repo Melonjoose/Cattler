@@ -530,6 +530,7 @@ GameObject:
   - component: {fileID: 7264339959531709018}
   - component: {fileID: 1161300915100922967}
   - component: {fileID: 7866871971107095405}
+  - component: {fileID: 4142594138649292838}
   - component: {fileID: 7651245875201186195}
   - component: {fileID: 2900330853516322464}
   m_Layer: 6
@@ -695,6 +696,21 @@ MonoBehaviour:
   attackDamage: 0
   moveSpeed: 0
   attackRange: 0
+--- !u!114 &4142594138649292838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9134958204535856097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba03ac79a71f124a9febe6caabf9cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  TargetCat: {fileID: 0}
+  targetPoint: {fileID: 0}
 --- !u!114 &7651245875201186195
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,10 +3,12 @@ using UnityEngine;
 public class EnemyUnit : MonoBehaviour
 {
     private GameObject thisUnit; // Reference to self for clarity
+    private EnemyMovement EnemyMovement;
 
     private DropLoot dropLoot;
 
     public EnemyData enemyData; // ScriptableObject with enemy stats
+
     [Header("Targeting")]
     public GameObject TargetCat; // Reference to current target
 
@@ -23,6 +25,7 @@ public class EnemyUnit : MonoBehaviour
 
     private void Start()
     {
+        EnemyMovement = GetComponent<EnemyMovement>();
         thisUnit = this.gameObject;
         dropLoot = GetComponent<DropLoot>();
 
@@ -63,10 +66,7 @@ public class EnemyUnit : MonoBehaviour
         {
             ChooseRandomCat();
         }
-        else
-        {
-            MovetowardsCat();
-        }
+
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -95,6 +95,25 @@ public class EnemyUnit : MonoBehaviour
         }
     }
 
+    private void ChooseRandomCat()
+    {
+        GameObject[] allCats = GameObject.FindGameObjectsWithTag("Cat");
+
+        if (allCats.Length == 0)
+        {
+            Debug.LogWarning("No cats found in the scene.");
+            TargetCat = null;
+            return;
+        }
+
+        // Pick random
+        TargetCat = allCats[Random.Range(0, allCats.Length)];
+
+        if (TargetCat != null)
+        {
+            EnemyMovement.TargetCat = TargetCat;
+        }
+    }
 
     public void TakeDamage(int amount)
     {
@@ -116,33 +135,6 @@ public class EnemyUnit : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void MovetowardsCat()
-    {
-        if (TargetCat == null) return;
-
-        Vector3 direction = (TargetCat.transform.position - transform.position).normalized;
-        transform.position += direction * moveSpeed * Time.deltaTime;
-    }
-
-    private void ChooseRandomCat()
-    {
-        GameObject[] allCats = GameObject.FindGameObjectsWithTag("Cat");
-
-        if (allCats.Length == 0)
-        {
-            Debug.LogWarning("No cats found in the scene.");
-            TargetCat = null;
-            return;
-        }
-
-        // Pick random
-        TargetCat = allCats[Random.Range(0, allCats.Length)];
-
-        if (TargetCat != null)
-        {
-            //Debug.Log("Target Cat: " + TargetCat.name);
-        }
-    }
 
     private void AttackCat(CatUnit cat)
     {
@@ -151,7 +143,11 @@ public class EnemyUnit : MonoBehaviour
         Vector3 hitLocation = targetPoint != null ? targetPoint.transform.position : transform.position;
 
         cat.TakeDamage((int)attackDamage); // Call CatUnit’s TakeDamage
-        Debug.Log(enemyData.enemyName + " attacked " + cat.name + " for " + attackDamage + " damage!");
+        
+        if (this.gameObject.CompareTag("Artillery") == true) 
+            
+            return; 
         DamageNumberManager.Instance.ShowDamage((int)attackDamage, hitLocation);
+        //Debug.Log(enemyData.enemyName + " attacked " + cat.name + " for " + attackDamage + " damage!");
     }
 }
