@@ -1,30 +1,30 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class SpecialEnemySpawner : MonoBehaviour
 {
-    public static EnemySpawner instance;
+    public static SpecialEnemySpawner instance;
 
     public float minSpawnInterval = 2f;
     public float maxSpawnInterval = 5f;
 
-    public int minEnemiesPerInterval = 0;
-    public int maxEnemiesPerInterval = 1;
+    public float ChanceToSpawn = 5f;  //start at 1%
+
+    public int minEnemiesPerInterval = 1;
+    public int maxEnemiesPerInterval = 2;
 
     public int currentEnemyCount = 0;
     public int maxEnemies = 10;
 
-    public float minSize = 0.6f;    
+    public float minSize = 0.6f;
     public float maxSize = 1.4f;
 
     private float timer = 0f;
 
-    public List<EnemyData> spawnableList = new List<EnemyData>();
+    public List<GameObject> spawnableList = new List<GameObject>();
 
     public List<GameObject> spawnedEnemies = new List<GameObject>();
 
-    public GameObject enemyPrefab;
     public GameObject spawnLocation;
     public int radius = 3;
 
@@ -49,42 +49,43 @@ public class EnemySpawner : MonoBehaviour
         timer += Time.deltaTime;
 
 
-        if(currentEnemyCount <= maxEnemies) //if max enemies not reached
+        if (currentEnemyCount <= maxEnemies) //if max enemies not reached
         {
             Spawner();
         }
     }
 
-    public void SpawnEnemy(EnemyData data)
+    public void SpawnEnemy(GameObject enemy)
     {
+        Debug.Log("SpawnEnemy called");
+        if (enemy == null)
+        {
+            Debug.LogError("Enemy prefab is null!");
+            return;
+        }
         // Pick a random offset within a circle
         Vector2 spawnOffset = Random.insideUnitCircle * radius;
 
         // Convert 2D offset to 3D position
         Vector3 spawnPos = spawnLocation.transform.position + new Vector3(spawnOffset.x, 0, 0f);
 
-        //enemy can spawn at a random size
         float randomSize = Random.Range(minSize, maxSize);
 
-        GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemy, spawnPos, Quaternion.identity);
         newEnemy.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
         newEnemy.transform.SetParent(TravelManager.instance.floorGRP.transform, true);
         AddEnemyToSpawnedList(newEnemy);
+        Debug.Log("enemyspawned");
     }
 
-    void AddEnemyToSpawnList(EnemyData data)
+    void AddEnemyToSpawnList(GameObject enemy)
     {
-            spawnableList.Add(data);
-    }
-
-    void CreateNewEnemy(EnemyData data)
-    {
-
+        spawnableList.Add(enemy);
     }
 
     void Spawner()
     {
-        if (timer >= Random.Range(minSpawnInterval,maxSpawnInterval))
+        if (timer >= Random.Range(minSpawnInterval, maxSpawnInterval))
         {
             if (spawnableList.Count == 0) return;
 
@@ -92,7 +93,7 @@ public class EnemySpawner : MonoBehaviour
 
             int amountToSpawn = Random.Range(minEnemiesPerInterval, maxEnemiesPerInterval);
 
-            if(amountToSpawn > maxEnemies - currentEnemyCount) //if amount to spawn exceeds max enemies, cap it
+            if (amountToSpawn > maxEnemies - currentEnemyCount) //if amount to spawn exceeds max enemies, cap it
             {
                 amountToSpawn = maxEnemies - currentEnemyCount;
             }

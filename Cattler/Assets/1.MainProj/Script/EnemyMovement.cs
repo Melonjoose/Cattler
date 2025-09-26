@@ -18,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
     {
         this.rb = GetComponent<Rigidbody2D>();
         unit = GetComponent<EnemyUnit>();
+        moveSpeed = unit.moveSpeed;
     }
 
     // Update is called once per frame

@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Artillery
   icon: {fileID: -8021277769608807489, guid: 2348ebc65ed3ebf45868445bf5eb58e6, type: 3}
   health: 5
-  attackPower: 0
+  attackPower: 5
   attackSpeed: 0
   attackRange: 20
-  movementSpeed: 3
+  movementSpeed: 2

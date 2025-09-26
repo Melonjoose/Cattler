@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Threading;
+using TMPro;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 [RequireComponent(typeof(LineRenderer))]
@@ -36,6 +37,7 @@ public class Artillery : MonoBehaviour
         unit = GetComponent<EnemyUnit>();
         movement = GetComponent<EnemyMovement>();
         //triggerTrack = GetComponentInChildren<EnemyTriggerTrack>();
+        //targetLocations = FindObjectByName("Floor UI "[0].name); // Add Floor UI 1, Floor UI 2, etc to list. **
     }
 
     // Update is called once per frame
@@ -108,10 +110,10 @@ public class Artillery : MonoBehaviour
         // Start arc updater
         StartCoroutine(UpdateArc());
 
-        yield return new WaitForSeconds(3f); //  actually wait
+        yield return new WaitForSeconds(2f); //  actually wait
         FireArtillery();
 
-        yield return new WaitForSeconds(2f); //  actually wait
+        yield return new WaitForSeconds(5f); //  actually wait
         DeleteArc();
         canWalk = true;
         attacking = false; // reset after attack
@@ -125,7 +127,14 @@ public class Artillery : MonoBehaviour
 
     void FireArtillery()
     {
-        Instantiate(artilleryShot, transform.position, transform.rotation);
+        GameObject shotGO = Instantiate(artilleryShot, transform.position, transform.rotation);
+
+        ArtyShot shot = shotGO.GetComponent<ArtyShot>();
+        if (shot != null)
+        {
+            shot.unit = unit;
+            shot.Launch(targetSpot.transform.position, unit);
+        }
     }
 
     IEnumerator UpdateArc()

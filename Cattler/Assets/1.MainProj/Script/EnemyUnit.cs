@@ -19,7 +19,7 @@ public class EnemyUnit : MonoBehaviour
     [Header("Stats")]
     [SerializeField] public int currentHealth;
     [SerializeField] public float attackSpeed;
-    [SerializeField] public float attackDamage;
+    [SerializeField] public int attackDamage;
     [SerializeField] public float moveSpeed;
     [SerializeField] public float attackRange;
 

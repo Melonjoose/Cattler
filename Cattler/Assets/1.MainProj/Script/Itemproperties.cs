@@ -23,7 +23,6 @@ public class ItemProperties : MonoBehaviour
 
     void Consume()
     {
-        Debug.Log("consume runned");
         if (consumableData != null)
         {
             PotionChecker();

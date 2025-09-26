@@ -531,7 +531,6 @@ GameObject:
   - component: {fileID: 7264339959531709018}
   - component: {fileID: 1161300915100922967}
   - component: {fileID: 7866871971107095405}
-  - component: {fileID: 4972483507337331246}
   - component: {fileID: 7651245875201186195}
   - component: {fileID: 2900330853516322464}
   - component: {fileID: 5716459444044239008}
@@ -699,22 +698,6 @@ MonoBehaviour:
   attackDamage: 0
   moveSpeed: 0
   attackRange: 0
---- !u!114 &4972483507337331246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9134958204535856097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba03ac79a71f124a9febe6caabf9cef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1.5
-  canWalk: 1
-  TargetCat: {fileID: 0}
-  targetPoint: {fileID: 0}
 --- !u!114 &7651245875201186195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,7 +759,7 @@ MonoBehaviour:
   - {fileID: 0}
   targetSpot: {fileID: 0}
   attacking: 0
-  artilleryShot: {fileID: 1501784088886520407, guid: 573b8b8c7830b6a41bd98da9c140a3f6, type: 3}
+  artilleryShot: {fileID: 8386587287915444830, guid: b7fad7c3505beb34da6c744eb8e57702, type: 3}
   moveSpeed: 0.5
   canWalk: 1
   shotCooldown: 2
@@ -838,7 +821,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.48387146
+        value: 0.25
         inSlope: 1.8539224
         outSlope: 1.8539224
         tangentMode: 0
@@ -850,9 +833,9 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 0, b: 0, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -868,14 +851,14 @@ LineRenderer:
       ctime7: 0
       atime0: 0
       atime1: 65535
-      atime2: 0
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0

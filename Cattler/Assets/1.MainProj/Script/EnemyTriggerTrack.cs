@@ -15,6 +15,7 @@ public class EnemyTriggerTrack : MonoBehaviour
     void Start()
     {
         enemy = transform.parent.gameObject; // Automatically assign the enemy as parent
+        enemyUnit = enemy.GetComponent<EnemyUnit>();
         triggerRadius = enemyUnit.attackRange;
     }
 
@@ -67,6 +68,7 @@ public class EnemyTriggerTrack : MonoBehaviour
 
     void OnTargetChecker()
     {
+        if (enemy != null) return;
         if (this.transform.position == chosenCat.transform.position)
         {
             onTarget = true;

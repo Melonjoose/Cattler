@@ -20,7 +20,7 @@ MonoBehaviour:
   EXP: 0
   maxHealth: 5
   currentHealth: 5
-  attackPower: 1
+  attackPower: 2
   attackSpeed: 1
   attackRange: 8
   movementSpeed: 1
