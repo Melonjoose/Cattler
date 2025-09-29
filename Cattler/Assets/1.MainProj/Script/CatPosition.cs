@@ -24,13 +24,12 @@ public class CatPosition : MonoBehaviour
     void Update()
     {
         // Smooth movement
-        if (isCatWalking && targetLocation != null)
+        if (targetLocation != null)
         {
-            transform.position = Vector3.MoveTowards(
-                transform.position,
-                targetLocation.position,
-                moveSpeed * Time.deltaTime
-            );
+            {
+                transform.position = Vector3.MoveTowards(transform.position,targetLocation.position,moveSpeed * Time.deltaTime); 
+                isCatWalking = true;
+            }
 
             if (Vector3.Distance(transform.position, targetLocation.position) < 0.05f)
             {

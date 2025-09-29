@@ -27,9 +27,18 @@
                     "name": "Fire",
                     "type": "Button",
                     "id": "2113f1f1-2f1a-45fe-9c7a-b9ced63de7c9",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DragItem",
+                    "type": "Button",
+                    "id": "3aff5cad-5c88-421c-b5df-b1546283441b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 }
             ],
@@ -251,6 +260,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "621ae54a-0ac3-48da-8f98-9bd00cb5f003",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DragItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

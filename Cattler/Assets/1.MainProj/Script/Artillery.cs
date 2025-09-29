@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class Artillery : MonoBehaviour
     public int resolution = 20;
     private LineRenderer line;
 
-    public GameObject[] targetLocations;
+    List<GameObject> targetLocations = new List<GameObject>();
 
     public GameObject targetSpot;
     public bool attacking = false;
@@ -37,7 +38,7 @@ public class Artillery : MonoBehaviour
         unit = GetComponent<EnemyUnit>();
         movement = GetComponent<EnemyMovement>();
         //triggerTrack = GetComponentInChildren<EnemyTriggerTrack>();
-        //targetLocations = FindObjectByName("Floor UI "[0].name); // Add Floor UI 1, Floor UI 2, etc to list. **
+        LinkFloors();
     }
 
     // Update is called once per frame
@@ -152,4 +153,17 @@ public class Artillery : MonoBehaviour
     //4. bullet flies into sky.
     //5. bullet falls directly straight down to location of targeted spot.
     //6. if bullet hits target, damage cat. (projectile script. not here.)
+
+    void LinkFloors()
+    {
+        for (int i = 1; i <= 5; i++) // Example: 5 floors
+        {
+            string objName = "Floor UI " + i;
+            GameObject floor = GameObject.Find(objName);
+            if (floor != null)
+            {
+                targetLocations.Add(floor);
+            }
+        }
+    }
 }

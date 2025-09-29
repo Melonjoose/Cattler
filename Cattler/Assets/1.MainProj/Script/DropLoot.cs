@@ -11,8 +11,11 @@ public class DropLoot : MonoBehaviour
     public LootTableEntry[] lootTable; // Assign in inspector
     public float chanceToDropNothing = 0.5f; // 50% chance to drop nothing
 
+    public int InkDrop = 10;
+    public int CoreDrop = 0;
+    public int EXPDrop = 10;
 
-    public EnemyUnit enemy;
+    private EnemyUnit enemy;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

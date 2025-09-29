@@ -128,7 +128,14 @@ public class EnemyUnit : MonoBehaviour
 
     private void Die()
     {
-        if (EnemySpawner.instance != null) { EnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); } //Clear Spawned Enemies list to prevent targeting dead cats
+        if(this.CompareTag("Enemy") == true)
+        {
+            if (EnemySpawner.instance != null) { EnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); } //Clear Spawned Enemies list to prevent targeting dead cats
+        }
+        if (this.CompareTag("Artillery"))
+        {
+            if (SpecialEnemySpawner.instance != null) { SpecialEnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); } //Clear Spawned Enemies list to prevent targeting dead cats
+        }
         //Debug.Log(enemyData.enemyName + " has been defeated.");
         Currency.instance.AddInk(10); // Add ink to currency
         dropLoot.GiveLoot();
@@ -142,12 +149,12 @@ public class EnemyUnit : MonoBehaviour
 
         Vector3 hitLocation = targetPoint != null ? targetPoint.transform.position : transform.position;
 
+        DamageNumberManager.Instance.ShowDamage((int)attackDamage, hitLocation);
         cat.TakeDamage((int)attackDamage); // Call CatUnit’s TakeDamage
         
         if (this.gameObject.CompareTag("Artillery") == true) 
             
             return; 
-        DamageNumberManager.Instance.ShowDamage((int)attackDamage, hitLocation);
         //Debug.Log(enemyData.enemyName + " attacked " + cat.name + " for " + attackDamage + " damage!");
     }
 }

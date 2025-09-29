@@ -6,9 +6,9 @@ public class Healthbar : MonoBehaviour
     [SerializeField]private bool isEnemy;
     [SerializeField]private bool isCat;
 
-    public Slider healthBar;
-    public EnemyUnit enemyUnit;
-    public CatUnit catUnit;
+    private Slider healthBar;
+    private EnemyUnit enemyUnit;
+    private CatUnit catUnit;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

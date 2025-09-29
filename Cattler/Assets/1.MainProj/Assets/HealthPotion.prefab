@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 646697982409018096}
   - component: {fileID: 264290960892310411}
   - component: {fileID: -3487885070277928809}
+  - component: {fileID: -84960310980982749}
   m_Layer: 7
   m_Name: HealthPotion
   m_TagString: Untagged
@@ -140,7 +141,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -181,3 +182,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 0}
+--- !u!114 &-84960310980982749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930171780827623856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61b7c8f7c4a5c345a4040ffd5f4bd06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

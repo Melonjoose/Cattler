@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5068631874440071538}
   - component: {fileID: 235337284978740961}
   - component: {fileID: -2414179100548080445}
+  - component: {fileID: -4132794197872657065}
   m_Layer: 7
   m_Name: AttackPotion
   m_TagString: Untagged
@@ -140,7 +141,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -168,8 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consumableData: {fileID: 11400000, guid: 89c9676e0b84bd14aae96b2240d1a9ad, type: 2}
-  col: {fileID: 0}
-  cat: {fileID: 0}
 --- !u!114 &-2414179100548080445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +182,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 0}
+--- !u!114 &-4132794197872657065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302557032810016064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61b7c8f7c4a5c345a4040ffd5f4bd06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
