@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42edf7177f7b824a9397cad7402c45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 45
-  lifetime: 1
+  movespeed: 80
+  lifetime: 0.2
   col: {fileID: 0}
   rb: {fileID: 0}
   CatUnit: {fileID: 0}

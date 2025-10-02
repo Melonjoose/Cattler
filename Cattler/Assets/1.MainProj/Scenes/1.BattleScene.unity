@@ -22930,7 +22930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1718311654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23728,6 +23728,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71376b311026b948bc207f23f23abdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 966757545}
+  textBox: {fileID: 1718311653}
+  textTypingSpeed: 0.01
+  dialogueLifetime: 5
+  dialogueTextChoices:
+  - Hello Commander! Please lead us to victory!
+  - Commander! Your cat is low on health!
+  - Your on a roll! Keep it up!
 --- !u!1 &1809721742
 GameObject:
   m_ObjectHideFlags: 0
