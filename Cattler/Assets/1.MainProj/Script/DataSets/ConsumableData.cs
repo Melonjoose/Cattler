@@ -4,6 +4,7 @@ using UnityEngine;
 public class ConsumableData : Item
 {
     public string itemName;
+    public string itemNameShort;
     public Sprite icon;
     public string description;
     public GameObject prefab;

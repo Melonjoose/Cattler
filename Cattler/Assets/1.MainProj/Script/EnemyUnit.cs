@@ -97,6 +97,9 @@ public class EnemyUnit : MonoBehaviour
 
     private void ChooseRandomCat()
     {
+        if (this.CompareTag("Artillery"))
+            return;
+
         GameObject[] allCats = GameObject.FindGameObjectsWithTag("Cat");
 
         if (allCats.Length == 0)

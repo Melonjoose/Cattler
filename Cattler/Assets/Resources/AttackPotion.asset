@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AttackPotion
   m_EditorClassIdentifier: 
   itemName: AttackPotion
+  itemNameShort: ATK
   icon: {fileID: 7763498119798118100, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
   description: Increase ATK by 1
   prefab: {fileID: 0}

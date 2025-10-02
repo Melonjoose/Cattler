@@ -5,9 +5,11 @@ public class ItemProperties : MonoBehaviour
     public ConsumableData consumableData;
     private CapsuleCollider2D col;
     private CatUnit cat;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<CapsuleCollider2D>();
     }
 
@@ -26,6 +28,12 @@ public class ItemProperties : MonoBehaviour
         if (consumableData != null)
         {
             PotionChecker();
+
+            SFX popup = SFXManager.instance.GetFromPool();
+            popup.transform.position = this.transform.position;
+            popup.SetText(consumableData.value , consumableData.itemNameShort);
+            popup.SetIcon(spriteRenderer.sprite);
+
         }
         Destroy(gameObject); // Destroy the item object fully
     }
