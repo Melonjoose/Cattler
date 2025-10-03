@@ -27,6 +27,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     {
         // Snap to nearest slot at start
         SnapToNearestSlot();
+        originalParent = transform.parent;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

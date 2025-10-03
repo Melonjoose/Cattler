@@ -1085,6 +1085,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 0
   isCat: 0
-  healthBar: {fileID: 0}
-  enemyUnit: {fileID: 0}
-  catUnit: {fileID: 0}

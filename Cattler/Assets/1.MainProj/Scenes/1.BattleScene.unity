@@ -13546,6 +13546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentItem: {fileID: 0}
+  SlotIndex: 0
   allowedTypes: 00000000
   slotType: 0
 --- !u!1 &1065959427
@@ -13656,6 +13657,7 @@ GameObject:
   - component: {fileID: 1068720749}
   - component: {fileID: 1068720751}
   - component: {fileID: 1068720750}
+  - component: {fileID: 1068720752}
   m_Layer: 5
   m_Name: ItemSlot - L_Item (1)
   m_TagString: Untagged
@@ -13720,6 +13722,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068720748}
   m_CullTransparentMesh: 1
+--- !u!114 &1068720752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068720748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c67ed2ceb8ab44aa743c5b2bc9ba80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOccupied: 0
+  currentItem: {fileID: 0}
+  SlotIndex: 0
+  allowedTypes: 02000000
+  slotType: 2
 --- !u!1001 &1068939851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14396,6 +14415,7 @@ GameObject:
   - component: {fileID: 1089701391}
   - component: {fileID: 1089701393}
   - component: {fileID: 1089701392}
+  - component: {fileID: 1089701394}
   m_Layer: 5
   m_Name: ItemSlot 3 - R_item (1)
   m_TagString: Untagged
@@ -14460,6 +14480,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089701390}
   m_CullTransparentMesh: 1
+--- !u!114 &1089701394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089701390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c67ed2ceb8ab44aa743c5b2bc9ba80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOccupied: 0
+  currentItem: {fileID: 0}
+  SlotIndex: 0
+  allowedTypes: 01000000
+  slotType: 2
 --- !u!114 &1090571570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17105,7 +17142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1263659752
 Transform:
   m_ObjectHideFlags: 0
@@ -19287,7 +19324,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466976859}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19305,7 +19342,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -988, y: 541}
+  m_AnchoredPosition: {x: -1137.2424, y: -0.62}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1471362836
@@ -22476,6 +22513,7 @@ GameObject:
   - component: {fileID: 1683087011}
   - component: {fileID: 1683087012}
   - component: {fileID: 1683087013}
+  - component: {fileID: 1683087014}
   m_Layer: 0
   m_Name: Inventory/Team Manager
   m_TagString: Untagged
@@ -22534,6 +22572,40 @@ MonoBehaviour:
   maxTeamSlots: 5
   teamCats: []
   catTemplatePrefab: {fileID: 8409749662932035737, guid: e18086921a3595644892483f62fc8cd8, type: 3}
+--- !u!114 &1683087014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683087010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad85fa749a739c4ebfbbebfcfba5d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldPositions:
+  - {fileID: 2047399121}
+  - {fileID: 616740034}
+  - {fileID: 597424653}
+  - {fileID: 1533355049}
+  - {fileID: 1129556219}
+  catContainers:
+  - {fileID: 1694478273}
+  - {fileID: 1209880545}
+  - {fileID: 111533695}
+  - {fileID: 1000019708}
+  - {fileID: 323605287}
+  icons:
+  - {fileID: 1081970024}
+  - {fileID: 2070008657}
+  - {fileID: 67617513}
+  - {fileID: 256267063}
+  - {fileID: 743636647}
+  iconIndices: 0000000000000000000000000000000000000000
+  catIndices: 0000000000000000000000000000000000000000
+  catInContainers: 0000000000
+  worldPositionGRP: {fileID: 1095590784}
 --- !u!1 &1692162457
 GameObject:
   m_ObjectHideFlags: 0
@@ -22738,6 +22810,7 @@ GameObject:
   - component: {fileID: 1708201427}
   - component: {fileID: 1708201429}
   - component: {fileID: 1708201428}
+  - component: {fileID: 1708201430}
   m_Layer: 5
   m_Name: ItemSlot 2 - hat (1)
   m_TagString: Untagged
@@ -22802,6 +22875,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708201426}
   m_CullTransparentMesh: 1
+--- !u!114 &1708201430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708201426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c67ed2ceb8ab44aa743c5b2bc9ba80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOccupied: 0
+  currentItem: {fileID: 0}
+  SlotIndex: 0
+  allowedTypes: 01000000
+  slotType: 2
 --- !u!1 &1711728410
 GameObject:
   m_ObjectHideFlags: 0
@@ -23364,7 +23454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1752030928
 Transform:
   m_ObjectHideFlags: 0
@@ -24944,7 +25034,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1917870090}
-  - component: {fileID: 1917870091}
   m_Layer: 0
   m_Name: PlayerTeam
   m_TagString: Untagged
@@ -24974,40 +25063,6 @@ Transform:
   - {fileID: 323605288}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1917870091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917870089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fad85fa749a739c4ebfbbebfcfba5d60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldPositions:
-  - {fileID: 2047399121}
-  - {fileID: 616740034}
-  - {fileID: 597424653}
-  - {fileID: 1533355049}
-  - {fileID: 1129556219}
-  catContainers:
-  - {fileID: 1694478273}
-  - {fileID: 1209880545}
-  - {fileID: 111533695}
-  - {fileID: 1000019708}
-  - {fileID: 323605287}
-  icons:
-  - {fileID: 1081970024}
-  - {fileID: 2070008657}
-  - {fileID: 67617513}
-  - {fileID: 256267063}
-  - {fileID: 743636647}
-  iconIndices: 0000000000000000000000000000000000000000
-  catIndices: 0000000000000000000000000000000000000000
-  catInContainers: 0000000000
-  worldPositionGRP: {fileID: 1095590784}
 --- !u!224 &1919938862 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6586653347554897387, guid: 0584ecba7b4cffe4a82fbc2b1eb39820, type: 3}
@@ -26136,6 +26191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentItem: {fileID: 0}
+  SlotIndex: 0
   allowedTypes: 00000000
   slotType: 2
 --- !u!1 &2028990754

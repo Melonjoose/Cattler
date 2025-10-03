@@ -1,7 +1,7 @@
-using System.ComponentModel;
-using UnityEngine;
+using UnityEngine.UIElements;
 
-public class Item : ScriptableObject
+[System.Serializable]
+public class Item
 {
 
 }

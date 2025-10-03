@@ -6,6 +6,7 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
 {
     public bool isOccupied;
     public InventoryIcon currentItem;
+    public int SlotIndex = 0;
 
     [Header("Allowed Item Types")]
     public ItemType[] allowedTypes; // set in Inspector

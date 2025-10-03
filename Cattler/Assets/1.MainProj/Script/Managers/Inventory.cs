@@ -33,6 +33,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        //if slot 1 of Team list is not empty, read the cat inside the slot 1. add it into the world.
+        //if slot 2 of team list is not empty, etc
+    }
+
     public bool Add(Item item)
     {
         if (inventoryList.Count >= currentCapacity)
@@ -79,7 +85,7 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    void InitializeInventorySpace(int capacity)
+    void InitializeInventorySpace(int capacity) //Adding UI slots and assign slotindex.
     {
         if (capacity > maxCapacity) capacity = maxCapacity;
         currentCapacity = capacity;
@@ -95,6 +101,8 @@ public class Inventory : MonoBehaviour
             GameObject slot = Instantiate(inventorySlotPrefab, inventoryGRP.transform);
             slot.name = $"InventorySlot{i + 1}";
             inventorySlots[i] = slot;
+            SnappableLocation Slot = slot.GetComponent<SnappableLocation>();
+            Slot.SlotIndex = i;
         }
 
         // Make sure inventoryList always matches capacity in size
@@ -107,6 +115,10 @@ public class Inventory : MonoBehaviour
 
     void AddItemIntoInventoryUIAt(Item item, int slotIndex)
     {
+        //run through the Inventory List and find empty slot.
+
+        //Insert itemslot into empty slot
+
         GameObject slot = inventorySlots[slotIndex];
         if (slot.transform.childCount > 0)
             Destroy(slot.transform.GetChild(0).gameObject);
@@ -200,8 +212,6 @@ public class Inventory : MonoBehaviour
                 break;
         }
     }
-
-
 
 
 }
