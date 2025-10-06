@@ -36,4 +36,17 @@ public class EnemyDetector : MonoBehaviour
             }
         }
     }
+
+    public void OnEnemyDestroyed(GameObject enemy)
+    {
+        if (enemy.CompareTag("Enemy"))
+        {
+            enemyCount--;
+            if (enemyCount <= 0)
+            {
+                enemyDetected = false;
+                enemyCount = 0;
+            }
+        }
+    }
 }

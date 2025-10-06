@@ -72,14 +72,25 @@ public class CatUnit : MonoBehaviour
     public void TakeDamage(int amount)
     {
         runtimeData.currentHealth -= amount;
+        int dyingHealth = runtimeData.maxHealth / 3;
         if (runtimeData.currentHealth <= 0)
         {
             Die();
         }
+        else if (runtimeData.currentHealth <= dyingHealth)         //33% of max health
+        {
+            Dying();
+        }
     } 
 
+    public void Dying()
+    {
+        CommentaryManager.instance.AddDialogueToQueue(1); // Cat defeated dialogue
+    }
+
     private void Die()
-    {        
+    {   
+        CommentaryManager.instance.AddDialogueToQueue(2); // Cat defeated dialogue
         Debug.Log(runtimeData.template.itemName + " has been defeated.");
         Destroy(gameObject);
         //Give Send EXP gained from death to Retreat controller   

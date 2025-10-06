@@ -4,8 +4,9 @@ public class EnemyUnit : MonoBehaviour
 {
     private GameObject thisUnit; // Reference to self for clarity
     private EnemyMovement EnemyMovement;
+    public bool canWalk = true;
 
-    private DropLoot dropLoot;
+    public DropLoot dropLoot;
 
     public EnemyData enemyData; // ScriptableObject with enemy stats
 
@@ -129,19 +130,15 @@ public class EnemyUnit : MonoBehaviour
         }
     }
 
-    private void Die()
+    public virtual void Die()
     {
-        if(this.CompareTag("Enemy") == true)
-        {
-            if (EnemySpawner.instance != null) { EnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); } //Clear Spawned Enemies list to prevent targeting dead cats
-        }
-        if (this.CompareTag("Artillery"))
-        {
-            if (SpecialEnemySpawner.instance != null) { SpecialEnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); } //Clear Spawned Enemies list to prevent targeting dead cats
-        }
+        EnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); 
+        
         //Debug.Log(enemyData.enemyName + " has been defeated.");
         Currency.instance.AddInk(10); // Add ink to currency
         dropLoot.GiveLoot();
+
+        EnemyDetector.instance.OnEnemyDestroyed(gameObject);
         Destroy(gameObject);
     }
 

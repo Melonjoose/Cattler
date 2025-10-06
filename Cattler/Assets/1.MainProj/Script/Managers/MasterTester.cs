@@ -48,6 +48,11 @@ public class MasterTester : MonoBehaviour
         {
             Inventory.instance.IncreaseCapacity(+1);
         }
+
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            EnemySpawner.instance.SpawnEnemy(EnemySpawner.instance.spawnableList[0]);
+        }
     }
 
     void MakeMeRich()

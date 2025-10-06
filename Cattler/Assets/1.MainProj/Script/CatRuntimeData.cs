@@ -3,6 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class CatRuntimeData
 {
+    //changable stats during gameplay. to be saved and stored into new datasets
+
     public CatData template;
     [Header("Base Stats")]
     public int currentHealth;

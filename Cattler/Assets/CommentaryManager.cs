@@ -8,12 +8,17 @@ public class CommentaryManager : MonoBehaviour
     public static CommentaryManager instance;
     public TextMeshProUGUI text;
     public GameObject textBox;  //the gameobject that holds the text.
+    public GameObject[] catContainer;
 
     public float textTypingSpeed = 1.0f; //how fast the type writing effect is going to be
 
     public float dialogueLifetime = 5.0f; // the time it stays open before it close.
     //create a list that holds string(text or comment)
     public string[] dialogueTextChoices;
+
+    public string[] dialogueQueue; 
+
+    public bool isTalking = false;
 
     private void Awake()
     {
@@ -29,7 +34,7 @@ public class CommentaryManager : MonoBehaviour
         }
     }
 
-    void BeginTalk(int TextChoice)
+    public void BeginTalk(int TextChoice)
     {
         //called when catkeeper starts talking.
         textBox.SetActive(true);
@@ -59,14 +64,17 @@ public class CommentaryManager : MonoBehaviour
         CloseDialogue();
     }
 
+    public void AddDialogueToQueue(int Dialogue) 
+    {
+        dialogueQueue = new string[Dialogue];
+        if (isTalking == false)
+        {
+            BeginTalk(Dialogue);
+        }
+
+    }
+
     //---- Triggers ---// 
 
-    //void DetectLowHealth
-
-    void DetectLowHPCat()
-    {
-        //Find all cat in - game.
-        //access their current HP and Max HP
-        //if any cat health is below 25%. BeginTalk(1)
-    }
+    //Called from other scripts to trigger dialogue.
 }

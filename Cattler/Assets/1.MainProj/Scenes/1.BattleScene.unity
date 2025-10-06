@@ -17142,7 +17142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1263659752
 Transform:
   m_ObjectHideFlags: 0
@@ -17173,15 +17173,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpawnInterval: 2
   maxSpawnInterval: 5
-  ChanceToSpawn: 1
   minEnemiesPerInterval: 1
   maxEnemiesPerInterval: 2
   currentEnemyCount: 0
   maxEnemies: 1
   minSize: 0.6
   maxSize: 1.4
+  timer: 0
   spawnableList:
-  - {fileID: 9134958204535856097, guid: 82044b34b8f3ff343b815cd40b8ec12f, type: 3}
+  - {fileID: 11400000, guid: 2a9688ae1e8e824429bd9a70adc1483a, type: 2}
   spawnedEnemies: []
   spawnLocation: {fileID: 1850967998}
   radius: 3
@@ -23454,7 +23454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1752030928
 Transform:
   m_ObjectHideFlags: 0
@@ -23491,11 +23491,10 @@ MonoBehaviour:
   maxEnemies: 10
   minSize: 0.8
   maxSize: 1.2
+  timer: 0
   spawnableList:
   - {fileID: 11400000, guid: f498614201f45c44fa142f3772532706, type: 2}
-  - {fileID: 11400000, guid: 2a9688ae1e8e824429bd9a70adc1483a, type: 2}
   spawnedEnemies: []
-  enemyPrefab: {fileID: 9134958204535856097, guid: 2673c2ced4585154292cb28e1ae40141, type: 3}
   spawnLocation: {fileID: 926965319}
   radius: 3
 --- !u!1 &1782665246
@@ -23820,12 +23819,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 966757545}
   textBox: {fileID: 1718311653}
+  catContainer: []
   textTypingSpeed: 0.01
   dialogueLifetime: 5
   dialogueTextChoices:
   - Hello Commander! Please lead us to victory!
   - Commander! Your cat is low on health!
+  - No.. Your Cat has fallen... Maybe we should retreat for now.....
   - Your on a roll! Keep it up!
+  dialogueQueue: []
+  isTalking: 0
 --- !u!1 &1809721742
 GameObject:
   m_ObjectHideFlags: 0
@@ -28390,8 +28393,13 @@ MonoBehaviour:
   catData:
     template: {fileID: 0}
     currentHealth: 0
+    maxHealth: 0
     level: 0
     exp: 0
+    attackPower: 0
+    attackSpeed: 0
+    attackRange: 0
+    movementSpeed: 0
 --- !u!222 &8563901206680886936
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e672a37ccd97a428fabbfc780bf11a, type: 3}
   m_Name: Basic - Enemy
   m_EditorClassIdentifier: 
+  prefab: {fileID: 9134958204535856097, guid: 2673c2ced4585154292cb28e1ae40141, type: 3}
   enemyName: BasicEnemy
   icon: {fileID: -8021277769608807489, guid: 2348ebc65ed3ebf45868445bf5eb58e6, type: 3}
   health: 5

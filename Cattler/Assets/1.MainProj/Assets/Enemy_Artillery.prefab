@@ -530,14 +530,13 @@ GameObject:
   - component: {fileID: 6266515500319101641}
   - component: {fileID: 7264339959531709018}
   - component: {fileID: 1161300915100922967}
-  - component: {fileID: 7866871971107095405}
   - component: {fileID: 7651245875201186195}
   - component: {fileID: 2900330853516322464}
   - component: {fileID: 5716459444044239008}
   - component: {fileID: 3533009508938043914}
   m_Layer: 6
   m_Name: Enemy_Artillery
-  m_TagString: Artillery
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -678,26 +677,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7866871971107095405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9134958204535856097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 069cbdd678f358c409c2b3b872401b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 2a9688ae1e8e824429bd9a70adc1483a, type: 2}
-  TargetCat: {fileID: 0}
-  targetPoint: {fileID: 0}
-  currentHealth: 0
-  attackSpeed: 0
-  attackDamage: 0
-  moveSpeed: 0
-  attackRange: 0
 --- !u!114 &7651245875201186195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,9 +691,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 0
   isCat: 0
-  healthBar: {fileID: 0}
-  enemyUnit: {fileID: 0}
-  catUnit: {fileID: 0}
 --- !u!114 &2900330853516322464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,7 +709,9 @@ MonoBehaviour:
   - item: {fileID: 1930171780827623856, guid: 210b1424d1a17fd448715829c1f8b455, type: 3}
     dropChance: 0.05
   chanceToDropNothing: 0.5
-  enemy: {fileID: 7866871971107095405}
+  InkDrop: 10
+  CoreDrop: 0
+  EXPDrop: 10
 --- !u!114 &5716459444044239008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,22 +724,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635a3d6ca253f5f4699dcab3e9cdd728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 0}
-  movement: {fileID: 0}
-  triggerTrack: {fileID: 0}
+  canWalk: 1
+  dropLoot: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: 2a9688ae1e8e824429bd9a70adc1483a, type: 2}
+  TargetCat: {fileID: 0}
+  targetPoint: {fileID: 0}
+  currentHealth: 0
+  attackSpeed: 0
+  attackDamage: 0
+  moveSpeed: 0.5
+  attackRange: 0
   height: 40
   resolution: 20
-  targetLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   targetSpot: {fileID: 0}
   attacking: 0
   artilleryShot: {fileID: 8386587287915444830, guid: b7fad7c3505beb34da6c744eb8e57702, type: 3}
-  moveSpeed: 0.5
-  canWalk: 1
   shotCooldown: 2
   cooldowntimer: 0
   lockedCD: 0
@@ -871,4 +848,4 @@ LineRenderer:
   m_MaskInteraction: 0
   m_UseWorldSpace: 1
   m_Loop: 0
-  m_ApplyActiveColorSpace: 1
+  m_ApplyActiveColorSpace: 0

@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewEnemy", menuName = "Units/Enemy")]
 public class EnemyData : ScriptableObject
 {
+    public GameObject prefab; // The actual enemy prefab to spawn
+
     public string enemyName;
     public Sprite icon;
     public int health;

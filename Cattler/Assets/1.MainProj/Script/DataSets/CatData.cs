@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CatData : ItemData
 {
+
+    //stats that should not change
     [Header("Unit Info")]
     public string unitType;
     public int level;

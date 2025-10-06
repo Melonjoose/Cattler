@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
   m_Name: Grey Cat
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
   itemName: Grey Cat
   icon: {fileID: 21300000, guid: 85a0fe27d3a1d834ab1cbb76d5b1f11c, type: 3}
   type: 0

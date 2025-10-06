@@ -7,11 +7,10 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 [RequireComponent(typeof(LineRenderer))]
 
-public class Artillery : MonoBehaviour
+public class ArtilleryUnit : EnemyUnit
 {
-    public EnemyUnit unit;
-    public EnemyMovement movement;
-    public EnemyTriggerTrack triggerTrack;
+
+    [Header ("Artillery Exclusive")]
 
     public float height = 20f;
     public int resolution = 20;
@@ -22,8 +21,7 @@ public class Artillery : MonoBehaviour
     public GameObject targetSpot;
     public bool attacking = false;
     public GameObject artilleryShot;
-    public float moveSpeed = 3;
-    public bool canWalk = true;
+
 
     public float shotCooldown = 10f;
     public float cooldowntimer = 0f;
@@ -32,11 +30,28 @@ public class Artillery : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        dropLoot = GetComponent<DropLoot>();
         line = GetComponent<LineRenderer>();
         line.positionCount = resolution + 1;
 
-        unit = GetComponent<EnemyUnit>();
-        movement = GetComponent<EnemyMovement>();
+
+        if (enemyData != null)
+        {
+            // Initialize stats from SO
+            currentHealth = enemyData.health;
+            attackSpeed = enemyData.attackSpeed;
+            attackDamage = enemyData.attackPower;
+            moveSpeed = enemyData.movementSpeed;
+            attackRange = enemyData.attackRange;
+
+            // Apply sprite
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (sr && enemyData.icon != null)
+            {
+                sr.sprite = enemyData.icon;
+            }
+        }
+
         //triggerTrack = GetComponentInChildren<EnemyTriggerTrack>();
         LinkFloors();
     }
@@ -59,7 +74,8 @@ public class Artillery : MonoBehaviour
     void DrawArc()
     {
         line.enabled = true;
-        Vector3 start = unit.transform.position;
+        line.startColor = Color.red;
+        Vector3 start = transform.position;
         Vector3 end = targetSpot.transform.position;
         Vector3 mid = (start + end) / 2 + Vector3.up * height; // peak point
 
@@ -71,7 +87,6 @@ public class Artillery : MonoBehaviour
             Vector3 p2 = Vector3.Lerp(mid, end, t);
             Vector3 curvePoint = Vector3.Lerp(p1, p2, t);
 
-            line.startColor = Color.red;
             line.SetPosition(i, curvePoint);
         }
     }
@@ -133,8 +148,8 @@ public class Artillery : MonoBehaviour
         ArtyShot shot = shotGO.GetComponent<ArtyShot>();
         if (shot != null)
         {
-            shot.unit = unit;
-            shot.Launch(targetSpot.transform.position, unit);
+            shot.unit = this;
+            shot.Launch(targetSpot.transform.position, this);
         }
     }
 
@@ -165,5 +180,14 @@ public class Artillery : MonoBehaviour
                 targetLocations.Add(floor);
             }
         }
+    }
+
+    public override void Die()
+    {
+        SpecialEnemySpawner.instance.RemoveSpawnedEnemies(this.gameObject); 
+        //Debug.Log(enemyData.enemyName + " has been defeated.");
+        Currency.instance.AddInk(10); // Add ink to currency
+        dropLoot.GiveLoot();
+        Destroy(gameObject);
     }
 }

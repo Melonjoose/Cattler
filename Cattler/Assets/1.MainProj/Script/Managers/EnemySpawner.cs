@@ -18,29 +18,16 @@ public class EnemySpawner : MonoBehaviour
     public float minSize = 0.6f;    
     public float maxSize = 1.4f;
 
-    private float timer = 0f;
+    public float timer = 0f;
 
     public List<EnemyData> spawnableList = new List<EnemyData>();
 
     public List<GameObject> spawnedEnemies = new List<GameObject>();
 
-    public GameObject enemyPrefab;
     public GameObject spawnLocation;
     public int radius = 3;
 
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    protected virtual void Awake() => instance = this;
 
     private void Update()
     {
@@ -66,20 +53,10 @@ public class EnemySpawner : MonoBehaviour
         //enemy can spawn at a random size
         float randomSize = Random.Range(minSize, maxSize);
 
-        GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        GameObject newEnemy = Instantiate(data.prefab, spawnPos, Quaternion.identity);
         newEnemy.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
         newEnemy.transform.SetParent(TravelManager.instance.floorGRP.transform, true);
         AddEnemyToSpawnedList(newEnemy);
-    }
-
-    void AddEnemyToSpawnList(EnemyData data)
-    {
-            spawnableList.Add(data);
-    }
-
-    void CreateNewEnemy(EnemyData data)
-    {
-
     }
 
     void Spawner()
@@ -108,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void AddEnemyToSpawnedList(GameObject spawnedEnemy)
+    public void AddEnemyToSpawnedList(GameObject spawnedEnemy)
     {
         spawnedEnemies.Add(spawnedEnemy);
         UpdateSpawnedEnemy();
@@ -120,7 +97,7 @@ public class EnemySpawner : MonoBehaviour
         UpdateSpawnedEnemy();
     }
 
-    void UpdateSpawnedEnemy()
+    public virtual void UpdateSpawnedEnemy()
     {
         for (int i = spawnedEnemies.Count - 1; i >= 0; i--)
         {

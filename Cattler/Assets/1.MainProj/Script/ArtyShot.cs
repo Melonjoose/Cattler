@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ArtyShot : MonoBehaviour
 {
+    public int damage;
     public float movespeed = 3f;
     public float lifetime = 0.7f;
 
@@ -12,7 +13,10 @@ public class ArtyShot : MonoBehaviour
 
     public EnemyUnit unit;
 
-
+    public void Start()
+    {
+        damage = unit.attackDamage;
+    }
     private void Awake()
     {
         col = GetComponent<CapsuleCollider2D>();
@@ -51,9 +55,8 @@ public class ArtyShot : MonoBehaviour
         if (other.CompareTag("Cat"))
         {
             CatUnit cat = other.GetComponent<CatUnit>();
-            if (cat != null && unit != null)
+            if (cat != null)
             {
-                int damage = unit.attackDamage;
                 cat.TakeDamage(damage);
                 DamageNumberManager.Instance.ShowDamage(damage, cat.transform.position);
             }

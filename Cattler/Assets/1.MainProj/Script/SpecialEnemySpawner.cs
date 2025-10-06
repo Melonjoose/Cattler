@@ -1,46 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialEnemySpawner : MonoBehaviour
+public class SpecialEnemySpawner : EnemySpawner
 {
-    public static SpecialEnemySpawner instance;
-
-    public float minSpawnInterval = 2f;
-    public float maxSpawnInterval = 5f;
-
-    public float ChanceToSpawn = 5f;  //start at 1%
-
-    public int minEnemiesPerInterval = 1;
-    public int maxEnemiesPerInterval = 2;
-
-    public int currentEnemyCount = 0;
-    public int maxEnemies = 10;
-
-    public float minSize = 0.6f;
-    public float maxSize = 1.4f;
-
-    private float timer = 0f;
-
-    public List<GameObject> spawnableList = new List<GameObject>();
-
-    public List<GameObject> spawnedEnemies = new List<GameObject>();
-
-    public GameObject spawnLocation;
-    public int radius = 3;
-
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    public static new SpecialEnemySpawner instance;
+    protected override void Awake() => instance = this;
 
     private void Update()
     {
@@ -78,11 +42,6 @@ public class SpecialEnemySpawner : MonoBehaviour
         Debug.Log("enemyspawned");
     }
 
-    void AddEnemyToSpawnList(GameObject enemy)
-    {
-        spawnableList.Add(enemy);
-    }
-
     void Spawner()
     {
         if (timer >= Random.Range(minSpawnInterval, maxSpawnInterval))
@@ -109,26 +68,9 @@ public class SpecialEnemySpawner : MonoBehaviour
         }
     }
 
-    void AddEnemyToSpawnedList(GameObject spawnedEnemy)
+    public override void UpdateSpawnedEnemy()
     {
-        spawnedEnemies.Add(spawnedEnemy);
-        UpdateSpawnedEnemy();
+        currentEnemyCount = spawnedEnemies.Count;
     }
-
-    public void RemoveSpawnedEnemies(GameObject spawnedEnemy)
-    {
-        spawnedEnemies.Remove(spawnedEnemy);
-        UpdateSpawnedEnemy();
-    }
-
-    void UpdateSpawnedEnemy()
-    {
-        for (int i = spawnedEnemies.Count - 1; i >= 0; i--)
-        {
-            currentEnemyCount = spawnedEnemies.Count;
-        }
-    }
-    //Add any additional stats from higher difficulty
-
 
 }
