@@ -21,7 +21,7 @@ public class MasterTester : MonoBehaviour
             //give +1 attackPower to Cat
             GameObject cat = GameObject.Find("Cat1");
 
-            cat.GetComponent<CatUnit>().runtimeData.attackPower += 1;
+            cat.GetComponent<CatUnit>().runtimeData.template.attackPower += 1;
         }
 
         if(Input.GetKeyDown(KeyCode.M)) //give Currency to the player

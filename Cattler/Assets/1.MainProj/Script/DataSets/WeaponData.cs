@@ -1,9 +1,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewWeapon", menuName = "Items/Weapon")]
-public class WeaponData : Item
+public class WeaponData : ItemData
 {
-    public string description;
     //Stats it gives to the cat
     public int health;
     public int attackPower;

@@ -33,7 +33,7 @@ public class Slash : MonoBehaviour
         EnemyUnit enemy = collision.gameObject.GetComponent<EnemyUnit>();
         if (enemy != null && CatUnit != null )
         {
-            int damage = Mathf.CeilToInt(CatUnit.runtimeData.attackPower * 1.5f);
+            int damage = Mathf.CeilToInt(CatUnit.runtimeData.template.attackPower * 1.5f);
             enemy.TakeDamage(damage);
             DamageNumberManager.Instance.ShowDamage((int)damage, enemy.transform.localPosition);
             //Debug.Log("enemy hit by slash, taking" + damage);

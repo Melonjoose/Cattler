@@ -1,38 +1,44 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "RuntimeCat", menuName = "Items/RuntimeCat")]
-public class CatRuntimeData : Item
+[System.Serializable]
+public class CatRuntimeData
 {
-    public string unitName;
-    public Sprite unitIcon;
-    public string unitType;
-    [TextArea]
-    public string unitDescription;
-    public int level;
-
-    public int EXP;
-    public int maxHealth;
+    public CatData template;
+    [Header("Base Stats")]
     public int currentHealth;
+    public int maxHealth;
+    public int level;
+    public int exp;
+
     public int attackPower;
     public float attackSpeed;
     public float attackRange;
     public float movementSpeed;
 
-    // Copy stats from CatData template
-    public void InitializeFrom(CatData template)
+    public CatRuntimeData(CatData template)
     {
-        unitName = template.unitName;
-        unitIcon = template.unitIcon;
-        unitType = template.unitType;
-        unitDescription = template.unitDescription;
-        level = template.level;
-        EXP = template.EXP;
+        this.template = template;
+        
+        this.currentHealth = template.baseHealth;
+        this.maxHealth = template.baseHealth;
+        this.level = template.level;
+        this.exp = 0;
 
-        maxHealth = template.maxHealth;
-        currentHealth = template.maxHealth; // start at full
-        attackPower = template.attackPower;
-        attackSpeed = template.attackSpeed;
-        attackRange = template.attackRange;
-        movementSpeed = template.movementSpeed;
+        this.attackPower = template.attackPower;
+        this.attackSpeed = template.attackSpeed;
+        this.attackRange = template.attackRange;
+        this.movementSpeed = template.movementSpeed;
+    }
+
+    public void GainExp(int amount)
+    {
+        exp += amount;
+        // Example level-up logic
+        if (exp >= 100)
+        {
+            exp -= 100;
+            level++;
+            currentHealth = maxHealth; // restore health on level up
+        }
     }
 }

@@ -19,9 +19,9 @@ public class TriggerTrack : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(triggerRadius != catUnit.runtimeData.attackRange)
+        if(triggerRadius != catUnit.runtimeData.template.attackRange)
         {
-            triggerRadius = catUnit.runtimeData.attackRange;
+            triggerRadius = catUnit.runtimeData.template.attackRange;
         }
         FindNearestEnemy();
         TrackEnemy();

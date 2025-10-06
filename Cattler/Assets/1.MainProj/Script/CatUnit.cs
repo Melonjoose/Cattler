@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CatUnit : MonoBehaviour
 {
     public GameObject targetPoint;
-    public CatData baseData;
+
     public CatRuntimeData runtimeData;
 
     private float attackCooldown;
@@ -80,7 +80,7 @@ public class CatUnit : MonoBehaviour
 
     private void Die()
     {        
-        Debug.Log(runtimeData.unitName + " has been defeated.");
+        Debug.Log(runtimeData.template.itemName + " has been defeated.");
         Destroy(gameObject);
         //Give Send EXP gained from death to Retreat controller   
     }
@@ -88,7 +88,7 @@ public class CatUnit : MonoBehaviour
     public void AssignCat(CatRuntimeData runtimeCat)
     {
         runtimeData = runtimeCat;
-        GetComponent<SpriteRenderer>().sprite = runtimeCat.unitIcon;
+        GetComponent<SpriteRenderer>().sprite = runtimeCat.template.icon;
     }
 
 }

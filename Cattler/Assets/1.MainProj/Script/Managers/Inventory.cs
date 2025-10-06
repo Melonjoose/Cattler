@@ -5,8 +5,8 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
     private bool isInitialized = false;
-    public List<Item> inventoryList = new List<Item>();
-    public List<Item> teamList = new List<Item>();
+    public List<CatRuntimeData> inventoryList = new List<CatRuntimeData>();
+    public List<CatRuntimeData> teamList = new List<CatRuntimeData>();
 
     public int currentCapacity = 5;
     public int maxCapacity = 60;
@@ -25,12 +25,6 @@ public class Inventory : MonoBehaviour
 
         InitializeInventorySpace(currentCapacity);
 
-        // Subscribe to all slots
-        foreach (var slot in FindObjectsOfType<SnappableLocation>())
-        {
-            slot.OnItemPlaced += HandleItemPlaced;
-            slot.OnItemRemoved += HandleItemRemoved;
-        }
     }
 
     private void Update()
@@ -39,50 +33,27 @@ public class Inventory : MonoBehaviour
         //if slot 2 of team list is not empty, etc
     }
 
-    public bool Add(Item item)
+    public void Add(CatRuntimeData newCat)
     {
-        if (inventoryList.Count >= currentCapacity)
-        {
-            Debug.Log("Inventory full!");
-            return false;
-        }
-        Debug.Log($"Added {item} to inventory.");
-
-        return true;
+        if (inventoryList.Count >= currentCapacity) { Debug.LogWarning("Inventory full"); return; }
+        inventoryList.Add(newCat);
+        Debug.Log($"Added {newCat.template.itemName} to inventory.");
     }
 
-    public void Remove(Item item)
+    public void Remove(CatRuntimeData newCat)
     {
-        if (inventoryList.Contains(item))
+        if (inventoryList.Contains(newCat))
         {
-            int index = inventoryList.IndexOf(item);
+            int index = inventoryList.IndexOf(newCat);
             if (index >= 0)
             {
                 inventoryList[index] = null; // mark the slot empty
             }
         }
-        else if (teamList.Contains(item))
+        else if (teamList.Contains(newCat))
         {
-            teamList.Remove(item);
+            teamList.Remove(newCat);
         }
-    }
-
-    public bool AddNew(Item item)
-    {
-        // look for an empty slot (null entry)
-        int emptyIndex = inventoryList.FindIndex(i => i == null);
-        if (emptyIndex == -1)
-        {
-            Debug.Log("Inventory full!");
-            return false;
-        }
-
-        // place the item in the empty slot
-        inventoryList[emptyIndex] = item;
-        Debug.Log($"Added {item} to inventory slot {emptyIndex}");
-
-        AddItemIntoInventoryUIAt(item, emptyIndex);
-        return true;
     }
 
     void InitializeInventorySpace(int capacity) //Adding UI slots and assign slotindex.
@@ -113,36 +84,7 @@ public class Inventory : MonoBehaviour
             inventoryList.RemoveRange(capacity, inventoryList.Count - capacity);
     }
 
-    void AddItemIntoInventoryUIAt(Item item, int slotIndex)
-    {
-        //run through the Inventory List and find empty slot.
 
-        //Insert itemslot into empty slot
-
-        GameObject slot = inventorySlots[slotIndex];
-        if (slot.transform.childCount > 0)
-            Destroy(slot.transform.GetChild(0).gameObject);
-
-        GameObject placeholder = Instantiate(itemPlaceholder, slot.transform); // add ItemPH
-        placeholder.transform.localPosition = Vector3.zero;  //center in slot
-
-        ItemUI itemUI = placeholder.GetComponent<ItemUI>();
-        itemUI.itemData = item;
-
-        InventoryIcon icon = placeholder.GetComponent<InventoryIcon>();
-        icon.catData = item as CatRuntimeData;
-
-        if (itemUI != null)
-        {
-            // Use the proper type cast
-            CatRuntimeData catItem = item as CatRuntimeData;
-            itemUI.SetItem(catItem); // this is not working at all.... 
-            item.name = catItem.unitName; //name data //working 
-            GameObject gameObject = itemUI.gameObject;
-            gameObject.name = catItem.unitName; //name GameObject // working
-
-        }
-    }
 
     public void IncreaseCapacity(int addedSlots)
     {
@@ -171,47 +113,5 @@ public class Inventory : MonoBehaviour
         inventorySlots = slotsList.ToArray();
         currentCapacity = targetCapacity;
     }
-
-    private void HandleItemPlaced(SnappableLocation slot)
-    {
-        if (slot.currentItem == null) return;
-
-        Item item = slot.currentItem.catData;
-
-        switch (slot.slotType)
-        {
-            case SnappableLocation.SlotType.InventoryList:
-                if (!inventoryList.Contains(item))
-                    inventoryList.Add(item);
-                break;
-
-            case SnappableLocation.SlotType.TeamList:
-                if (!teamList.Contains(item))
-                    teamList.Add(item);
-                break;
-
-            case SnappableLocation.SlotType.CharacterPreview:
-                // optional: preview slot doesn’t store in lists
-                break;
-        }
-    }
-
-    private void HandleItemRemoved(SnappableLocation slot)
-    {
-        if (slot.currentItem == null) return; // careful: after removal, currentItem may already be null
-        Item item = slot.currentItem.catData;
-
-        switch (slot.slotType)
-        {
-            case SnappableLocation.SlotType.InventoryList:
-                inventoryList.Remove(item);
-                break;
-
-            case SnappableLocation.SlotType.TeamList:
-                teamList.Remove(item);
-                break;
-        }
-    }
-
 
 }

@@ -46,12 +46,12 @@ public class TeamManager : MonoBehaviour
 
         //  3. Instantiate the prefab in the scene
         GameObject newCatGO = Instantiate(catTemplatePrefab);
-        newCatGO.name = runtimeCat.unitName; //rename GO
+        newCatGO.name = runtimeCat.template.itemName; //rename GO
 
         CatUnit newCatUnit = newCatGO.GetComponent<CatUnit>();
         newCatUnit.runtimeData = runtimeCat; // link runtime data
 
-        runtimeCat.name = runtimeCat.unitName; //name data
+        runtimeCat.template.name = runtimeCat.template.itemName; //name data
 
         newCatUnit.AssignCat(runtimeCat); // Initialize cat stats
 
@@ -78,7 +78,7 @@ public class TeamManager : MonoBehaviour
 
                 teamCats[i] = cat.gameObject;
 
-                Debug.Log($"Added {cat.runtimeData.unitName} to the team at slot {i}!");
+                Debug.Log($"Added {cat.runtimeData.template.itemName} to the team at slot {i}!");
                 return;
             }
         }

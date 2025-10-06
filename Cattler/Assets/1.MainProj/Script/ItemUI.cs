@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ItemUI : MonoBehaviour
 {
-    public Item itemData;
+    public ItemData itemData;
     public Image iconImage;
 
     private void Awake()
@@ -11,17 +11,13 @@ public class ItemUI : MonoBehaviour
         if (iconImage == null)
             iconImage = GetComponentInChildren<Image>();
     }
-    public void SetItem(CatRuntimeData cat)
+    public void SetItem(ItemData item)
     {
-        if (cat == null || iconImage == null) return;
+        if (item == null || iconImage == null) return;
 
-        itemData = cat;
-        iconImage.sprite = cat.unitIcon;
-        Debug.Log($"Set item UI to {cat.unitName}");
+        itemData = item;
+        iconImage.sprite = item.icon;
+        Debug.Log($"Set item UI to {item.itemName}");
     }
 
-    public CatRuntimeData GetCatData()
-    {
-        return itemData as CatRuntimeData; // safe cast back
-    }
 }

@@ -48,19 +48,21 @@ public class SummonManager : MonoBehaviour
         }
 
         CatData rolledCat = Roll();
-        if (rolledCat == null) return;
+        if (rolledCat == null)
+        {
+            Debug.LogError("No cat was rolled!");
+            return;
+        }
 
-        //  1. Create a runtime instance of the cat
-        CatRuntimeData runtimeCat = ScriptableObject.CreateInstance<CatRuntimeData>();
-        runtimeCat.InitializeFrom(rolledCat); // copy stats from template
+        CatRuntimeData runtimeCat = new CatRuntimeData(rolledCat);
 
         //  2. Add runtime cat to inventory
-        Inventory.instance.AddNew(runtimeCat);
+        Inventory.instance.Add(runtimeCat);
 
 
-        //TeamManager.instance.AddCatToWorld(runtimeCat);
+        TeamManager.instance.AddCatToWorld(runtimeCat);
 
 
-        Debug.Log($"Summoned {rolledCat.unitName}!");
+        Debug.Log($"Summoned {rolledCat.itemName}!");
     }
 }

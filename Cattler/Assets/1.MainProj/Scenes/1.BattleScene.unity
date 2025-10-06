@@ -23454,7 +23454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1752030928
 Transform:
   m_ObjectHideFlags: 0
@@ -28387,7 +28387,11 @@ MonoBehaviour:
   itemType: 1
   originalSlot: {fileID: 0}
   currentSlot: {fileID: 0}
-  catData: {fileID: 0}
+  catData:
+    template: {fileID: 0}
+    currentHealth: 0
+    level: 0
+    exp: 0
 --- !u!222 &8563901206680886936
 CanvasRenderer:
   m_ObjectHideFlags: 0

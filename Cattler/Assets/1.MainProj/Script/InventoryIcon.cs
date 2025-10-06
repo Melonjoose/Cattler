@@ -43,7 +43,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
             currentSlot.RemoveItem();
             currentSlot = null;
         }
-        Inventory.instance.Remove(catData);
+        //Inventory.instance.Remove(catData);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -66,7 +66,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
             currentSlot?.PlaceItem(this);
         }
 
-        Inventory.instance.Add(catData);
+        //Inventory.instance.Add(catData);
     }
 
     public void SetSlot(SnappableLocation slot)

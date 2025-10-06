@@ -28,17 +28,14 @@
             "id": "f772fb44ab909a48",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Purrgatory Game (Main Game)/Game Flow.canvas",
-                "viewState": {
-                  "x": 755.5702435205925,
-                  "y": 1991.5589556439504,
-                  "zoom": -0.5642629330109965
-                }
+                "file": "Coding Notes.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Game Flow"
+              "icon": "lucide-file",
+              "title": "Coding Notes"
             }
           },
           {
@@ -223,6 +220,12 @@
   },
   "active": "f772fb44ab909a48",
   "lastOpenFiles": [
+    "Main Gameplay Page.md",
+    "Coding Notes.md",
+    "Team Page.md",
+    "Resolution for Assets.md",
+    "Game Manager (Old).md",
+    "Purrgatory Game (Main Game)/Game Flow.canvas",
     "Lobby/Summon Page.md",
     "Lobby/Team & Inventory.md",
     "List of Assets/Cats List.md",
@@ -236,15 +239,10 @@
     "Purrgatory Game (Main Game)/Game Manager.md",
     "Purrgatory Game (Main Game)/Basic Cats.md",
     "Purrgatory Game (Main Game)/Game UI.md",
-    "Main Gameplay Page.md",
-    "Team Page.md",
-    "Resolution for Assets.md",
     "Game Structure and Timeline.canvas",
-    "Game Manager (Old).md",
     "Team Management/House Rules.md",
     "Team Management/FYP BOOTH Showcase.md",
     "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
-    "Purrgatory Game (Main Game)/Game Flow.canvas",
     "Purrgatory Game (Main Game)/Enemy.md",
     "List of Assets",
     "Team.md",
