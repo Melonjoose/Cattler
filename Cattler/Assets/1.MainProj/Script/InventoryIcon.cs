@@ -14,8 +14,6 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public SnappableLocation originalSlot;
     public SnappableLocation currentSlot;
 
-    public CatRuntimeData catData; // reference to the cat data this icon represents
-
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -43,7 +41,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
             currentSlot.RemoveItem();
             currentSlot = null;
         }
-        //Inventory.instance.Remove(catData);
+        Inventory.instance.Remove(this.gameObject, currentSlot);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -66,7 +64,6 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
             currentSlot?.PlaceItem(this);
         }
 
-        //Inventory.instance.Add(catData);
     }
 
     public void SetSlot(SnappableLocation slot)

@@ -67,6 +67,7 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         if (item.currentSlot != null && item.currentSlot != this)
         {
             item.currentSlot.RemoveItem();
+            Inventory.instance.Remove(item.gameObject, null);
         }
 
         currentItem = item;
@@ -74,20 +75,22 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
 
         // Parent to this slot (UI friendly)
         item.transform.SetParent(transform, false);
-        // center in slot
         item.transform.localPosition = Vector3.zero;
 
-        item.SetSlot(this); // tell the icon which slot it is now in
-        //Debug.Log("Item placed in slot: " + gameObject.name);
+        item.SetSlot(this);
 
         OnItemPlaced?.Invoke(this);
+
+        // Finally, add it to the new slot
+        Inventory.instance.Add(item.gameObject, this);
     }
 
     public void RemoveItem()
     {
-        OnItemRemoved?.Invoke(this);
         isOccupied = false;
         currentItem = null;
+
+        OnItemRemoved?.Invoke(this);
     }
 
     /// <summary>
@@ -113,6 +116,7 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         if (sourceSlot != null)
         {
             sourceSlot.PlaceItem(oldItem);
+            
         }
         else
         {
@@ -120,6 +124,7 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
             oldItem.transform.SetParent(oldItem.originalParent, false);
             oldItem.transform.localPosition = Vector3.zero;
             oldItem.SetSlot(null);
+           
         }
         isOccupied = true;
         currentItem = draggedItem;

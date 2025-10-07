@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &370994451803135415
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6317325917983831310
 RectTransform:
   m_ObjectHideFlags: 0
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 254105634031565087}
   - component: {fileID: 4425046505213308379}
   m_Layer: 5
-  m_Name: CatPlaceHolder
+  m_Name: itemPlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,6 @@ MonoBehaviour:
   itemType: 0
   originalSlot: {fileID: 0}
   currentSlot: {fileID: 0}
-  catData: {fileID: 0}
 --- !u!225 &4425046505213308379
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -258,7 +257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1566397093383267808
 RectTransform:
   m_ObjectHideFlags: 0
@@ -328,7 +327,7 @@ GameObject:
   - component: {fileID: 4696938246776162700}
   - component: {fileID: 6691864222413922990}
   m_Layer: 5
-  m_Name: Cat
+  m_Name: itemSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -384,7 +383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85a0fe27d3a1d834ab1cbb76d5b1f11c, type: 3}
+  m_Sprite: {fileID: 385401333230314352, guid: 0fc91c68bbea2d847ab04fb35d6c214c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

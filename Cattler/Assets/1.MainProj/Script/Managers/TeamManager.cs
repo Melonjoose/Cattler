@@ -55,7 +55,7 @@ public class TeamManager : MonoBehaviour
 
         newCatUnit.AssignCat(runtimeCat); // Initialize cat stats
 
-        AddCatToTeam(newCatUnit);
+        AddCatToTeam(newCatUnit.gameObject);
         //Get data from Inventory Team
         currentTeamSize++;
     }
@@ -65,7 +65,7 @@ public class TeamManager : MonoBehaviour
 
     }
 
-    public void AddCatToTeam(CatUnit cat)
+    public void AddCatToTeam(GameObject cat)
     {
         for (int i = 0; i < availableTeamSlots; i++)
         {
@@ -80,7 +80,7 @@ public class TeamManager : MonoBehaviour
 
                 cat.GetComponent<CatMovement>().AssignCatIndex(i + 1); // +1 because index is 1-based
 
-                Debug.Log($"Added {cat.runtimeData.template.itemName} to the team at slot {i}!");
+                Debug.Log($"Added {cat.name} to the team at slot {i}!");
                 return;
             }
         }

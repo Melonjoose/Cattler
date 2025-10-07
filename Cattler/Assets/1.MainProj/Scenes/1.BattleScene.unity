@@ -22964,6 +22964,7 @@ MonoBehaviour:
   teamList: []
   currentCapacity: 5
   maxCapacity: 8
+  testItem: {fileID: 11400000, guid: 94971b01b6c1a5341977532c6d2e63aa, type: 2}
   inventoryGRP: {fileID: 1047930414}
   inventorySlotPrefab: {fileID: 4529605128634022272, guid: 29295be9f362d7f4f9c32d7e08671517, type: 3}
   itemPlaceholder: {fileID: 4115270866861483169, guid: 0ed02ae6504d4fe42adccf5be4c80644, type: 3}
@@ -28923,16 +28924,6 @@ MonoBehaviour:
   itemType: 1
   originalSlot: {fileID: 0}
   currentSlot: {fileID: 0}
-  catData:
-    template: {fileID: 0}
-    currentHealth: 0
-    maxHealth: 0
-    level: 0
-    exp: 0
-    attackPower: 0
-    attackSpeed: 0
-    attackRange: 0
-    movementSpeed: 0
 --- !u!222 &8563901206680886936
 CanvasRenderer:
   m_ObjectHideFlags: 0
