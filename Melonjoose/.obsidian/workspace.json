@@ -15,9 +15,9 @@
               "state": {
                 "file": "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
                 "viewState": {
-                  "x": -473.5238797818997,
-                  "y": -42.96302075400794,
-                  "zoom": -1.0748285859800537
+                  "x": -426.40859521384556,
+                  "y": 70.86463086677375,
+                  "zoom": -0.7414952526467204
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -60,16 +60,17 @@
               "state": {
                 "file": "Purrgatory Game (Main Game)/Game Flow.canvas",
                 "viewState": {
-                  "x": 566.3126033770409,
-                  "y": 1579.290241770938,
-                  "zoom": -0.6666666666666667
+                  "x": 695.1321109439774,
+                  "y": 2087.5047054082006,
+                  "zoom": -0.3333333333333334
                 }
               },
               "icon": "lucide-layout-dashboard",
               "title": "Game Flow"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -218,12 +219,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5d09ab864d2728e6",
+  "active": "e0c7df3fe6993327",
   "lastOpenFiles": [
-    "Coding Notes.md",
     "Team Management/FYP BOOTH Showcase.md",
-    "Purrgatory Game (Main Game)/Game Flow.canvas",
+    "Coding Notes.md",
     "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
+    "Purrgatory Game (Main Game)/Game Flow.canvas",
     "Main Gameplay Page.md",
     "Team Page.md",
     "Resolution for Assets.md",

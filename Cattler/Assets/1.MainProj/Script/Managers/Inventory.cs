@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
- 
+            
         }
 
     }
@@ -42,6 +42,8 @@ public class Inventory : MonoBehaviour
         inventoryList.Add(newCat);
         Debug.Log($"Added {newCat.template.itemName} to inventory.");
     }
+
+
 
     public void Remove(CatRuntimeData newCat)
     {

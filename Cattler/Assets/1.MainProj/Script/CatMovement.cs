@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CatMovement : MonoBehaviour
@@ -9,88 +10,93 @@ public class CatMovement : MonoBehaviour
     public bool canWalk = true;
 
     // To be assigned by CatPositionManager
-    public GameObject worldPositionGRP; // Parent object containing world position transforms
-    public Transform worldPos1;
-    public Transform worldPos2;
-    public Transform worldPos3;
-    public Transform worldPos4;
-    public Transform worldPos5;
+    public Transform worldPositionGRP;
+    public List<Transform> worldPositions = new List<Transform>();
 
     private bool isCatWalking = false;
 
     private void Start()
     {
-        worldPositionGRP = GameObject.Find("CatPoints_GRP");
+        AssignWorldPositionsAndIndex();
     }
     void Update()
     {
-        // Smooth movement
-        if (targetLocation != null && canWalk)
-        {
-            {
-                transform.position = Vector3.MoveTowards(transform.position,targetLocation.position,moveSpeed * Time.deltaTime); 
-            }
-
-            if (Vector3.Distance(transform.position, targetLocation.position) < 0.05f)
-            {
-                transform.position = targetLocation.position;
-            }
-        }
+        Walk(catIndex); // walks to catIndex position
 
         // Only update target if catIndex changed
         if (catIndex != lastAssignedIndex)
         {
             lastAssignedIndex = catIndex;
-            AssignTargetPosition();
         }
     }
 
-    public void AssignWorldPositions()
+    public void AssignWorldPositionsAndIndex() //assign 1-5 positions to worldPositions list
     {
-        if( worldPositionGRP != null)
-        {
-            worldPos1 = worldPositionGRP.GetComponent<Transform>().Find("Position1");
-            worldPos2 = worldPositionGRP.GetComponent<Transform>().Find("Position2");
-            worldPos3 = worldPositionGRP.GetComponent<Transform>().Find("Position3");
-            worldPos4 = worldPositionGRP.GetComponent<Transform>().Find("Position4");
-            worldPos5 = worldPositionGRP.GetComponent<Transform>().Find("Position5");
-        }
-        else
+        worldPositionGRP = GameObject.Find("CatPoints_GRP")?.transform;
+        if (worldPositionGRP == null)
         {
             Debug.LogError("WorldPositionGRP not assigned in CatPosition!");
+            return;
+        }
+
+        worldPositions.Clear(); // Clear any previous data
+
+        // Loop through expected child names
+        for (int i = 1; i <= 5; i++)
+        {
+            Transform pos = worldPositionGRP.Find($"Position{i}");
+            if (pos != null)
+            {
+                worldPositions.Add(pos);
+                Debug.Log($"Assigned {pos.name} as index {i}");
+            }
+            else
+            {
+                Debug.LogWarning($"Position{i} not found under {worldPositionGRP.name}");
+            }
         }
     }
 
-    public void AssignCatIndex(int index)
+    public void AssignCatIndex(int index) //where the cat is in the lineup
     {
         catIndex = index;
     }
 
-    private void AssignTargetPosition()
+    public void MoveToDesignatedLocation(int targetindex) 
     {
-        switch (catIndex)
+        lastAssignedIndex = catIndex; // make lastAssignedIndex same as catIndex so it can update
+        catIndex = targetindex; // change catIndex to targetindex so it can walk to that position
+    }
+
+    void Walk(int targetindex)
+    {
+        targetLocation = worldPositions[targetindex-1]; // -1 because list is 0-based //go to
+
+        if (targetLocation != null && canWalk)
         {
-            case 0: MoveToDesignatedLocation(worldPos1); break;
-            case 1: MoveToDesignatedLocation(worldPos2); break;
-            case 2: MoveToDesignatedLocation(worldPos3); break;
-            case 3: MoveToDesignatedLocation(worldPos4); break;
-            case 4: MoveToDesignatedLocation(worldPos5); break;
-            default:
-                Debug.LogError($"CatIndex {catIndex} out of range!");
-                break;
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetLocation.position, moveSpeed * Time.deltaTime);
+                isCatWalking = true;
+            }
+
+            if (Vector3.Distance(transform.position, targetLocation.position) < 0.05f)
+            {
+                transform.position = targetLocation.position;
+                isCatWalking = false;
+            }
         }
     }
 
-    public void MoveToDesignatedLocation(Transform target)
+    public void SwapLocationWithCat(CatMovement otherCat)
     {
-        targetLocation = target;
-        isCatWalking = true;
-    }
-
-    // Optional: instant teleport
-    public void TeleportToLocation(Transform target)
-    {
-        transform.position = target.position;
-        isCatWalking = false;
+        if (otherCat == null)
+        {
+            Debug.LogError("Other cat is null!");
+            return;
+        }
+        int tempIndex = this.catIndex;
+        this.catIndex = otherCat.catIndex;
+        otherCat.catIndex = tempIndex;
+        Debug.Log($"Swapped positions: Cat {this.name} is now at index {this.catIndex}, Cat {otherCat.name} is now at index {otherCat.catIndex}");
     }
 }

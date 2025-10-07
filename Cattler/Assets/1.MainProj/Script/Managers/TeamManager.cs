@@ -78,6 +78,8 @@ public class TeamManager : MonoBehaviour
 
                 teamCats[i] = cat.gameObject;
 
+                cat.GetComponent<CatMovement>().AssignCatIndex(i + 1); // +1 because index is 1-based
+
                 Debug.Log($"Added {cat.runtimeData.template.itemName} to the team at slot {i}!");
                 return;
             }

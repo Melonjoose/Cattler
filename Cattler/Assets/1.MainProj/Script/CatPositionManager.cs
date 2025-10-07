@@ -76,7 +76,7 @@ public class CatPositionManager : MonoBehaviour
             if (catPos != null)
             {
                 catPos.AssignCatIndex(catIndices[i]);
-                catPos.AssignWorldPositions();
+                //catPos.AssignWorldPositions();
                 catInContainers[i] = true;
             }
             else

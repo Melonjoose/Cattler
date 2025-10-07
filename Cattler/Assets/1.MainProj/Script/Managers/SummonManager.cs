@@ -62,6 +62,7 @@ public class SummonManager : MonoBehaviour
 
 
         TeamManager.instance.AddCatToWorld(runtimeCat);
+        
 
 
         Debug.Log($"Summoned {rolledCat.itemName}!");
