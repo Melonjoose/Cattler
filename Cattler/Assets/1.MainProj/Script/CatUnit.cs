@@ -1,4 +1,6 @@
 
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,21 +9,29 @@ public class CatUnit : MonoBehaviour
     public GameObject targetPoint;
 
     public CatRuntimeData runtimeData;
+    public CatMovement catMovement;
 
     private float attackCooldown;
 
     public bool isAttacking = false;
+    public bool isStunned = false;
+
+    public bool canAttack = true;
 
     private void Start()
     {   
+        catMovement = GetComponent<CatMovement>();
         LinkTargetpoint();//link the targetPoint to and object called targetPoint located in this enemy's children
     }
 
     private void Update()
     {
-        if (attackCooldown > 0f)
+        if (canAttack) 
         {
-            attackCooldown -= Time.deltaTime; //reset cooldown if not attacking
+            if (attackCooldown > 0f)
+            {
+                attackCooldown -= Time.deltaTime; //reset cooldown if not attacking
+            }
         }
 
     }
@@ -102,4 +112,36 @@ public class CatUnit : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = runtimeCat.template.icon;
     }
 
+    private Coroutine stunCoroutine;
+
+    public void Stunned(float duration)
+    {
+        if (stunCoroutine != null)
+        {
+            StopCoroutine(stunCoroutine); //stops the current stun
+        }
+
+        //reapply stun
+        isStunned = true; //isstunned
+        canAttack = false; //cannot attack
+        this.GetComponent<CatMovement>().enabled = false; //cannot move
+        stunCoroutine = StartCoroutine(StunSequence(duration));
+    }
+
+    IEnumerator StunSequence(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        Unstun();
+    }
+
+    public void Unstun()
+    {
+        if (!isStunned) return; // if not stunned, then cannot be unstunned.
+
+        isStunned = false; //notstunned
+        canAttack = true; //can attack
+        this.GetComponent<CatMovement>().enabled = true; //can move
+
+        stunCoroutine = null;
+    }
 }

@@ -72,7 +72,7 @@ public class CatPositionManager : MonoBehaviour
         {
             catIndices[i] = iconIndices[i];
 
-            CatPosition catPos = catContainers[i].GetComponentInChildren<CatPosition>();
+            CatMovement catPos = catContainers[i].GetComponentInChildren<CatMovement>();
             if (catPos != null)
             {
                 catPos.AssignCatIndex(catIndices[i]);

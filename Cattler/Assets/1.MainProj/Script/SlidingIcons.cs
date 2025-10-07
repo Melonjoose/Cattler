@@ -12,7 +12,7 @@ public class SlidingIcons : MonoBehaviour
     private bool isReordering = false;
 
     private int index;
-    private CatPosition assignedCat;
+    private CatMovement assignedCat;
     void Start()
     {
         ArrangeIcons();      // Build slot list

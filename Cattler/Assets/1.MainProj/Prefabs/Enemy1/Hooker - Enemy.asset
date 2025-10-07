@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e672a37ccd97a428fabbfc780bf11a, type: 3}
+  m_Name: Hooker - Enemy
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 9134958204535856097, guid: 079fc20874240ee4c9dadcd4e6ef9229, type: 3}
+  enemyName: Hooker
+  icon: {fileID: -8021277769608807489, guid: 2348ebc65ed3ebf45868445bf5eb58e6, type: 3}
+  health: 10
+  attackPower: 1
+  attackSpeed: 5
+  attackRange: 10
+  movementSpeed: 1

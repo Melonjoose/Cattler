@@ -60,17 +60,16 @@
               "state": {
                 "file": "Purrgatory Game (Main Game)/Game Flow.canvas",
                 "viewState": {
-                  "x": 341.3311069171909,
-                  "y": 54.88441138688978,
-                  "zoom": -1
+                  "x": 566.3126033770409,
+                  "y": 1579.290241770938,
+                  "zoom": -0.6666666666666667
                 }
               },
               "icon": "lucide-layout-dashboard",
               "title": "Game Flow"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -127,7 +126,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 298.5
+    "width": 298.5,
+    "collapsed": true
   },
   "right": {
     "id": "9647e7f00c7fb346",
@@ -218,14 +218,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f772fb44ab909a48",
+  "active": "5d09ab864d2728e6",
   "lastOpenFiles": [
-    "Main Gameplay Page.md",
     "Coding Notes.md",
+    "Team Management/FYP BOOTH Showcase.md",
+    "Purrgatory Game (Main Game)/Game Flow.canvas",
+    "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
+    "Main Gameplay Page.md",
     "Team Page.md",
     "Resolution for Assets.md",
     "Game Manager (Old).md",
-    "Purrgatory Game (Main Game)/Game Flow.canvas",
     "Lobby/Summon Page.md",
     "Lobby/Team & Inventory.md",
     "List of Assets/Cats List.md",
@@ -241,8 +243,6 @@
     "Purrgatory Game (Main Game)/Game UI.md",
     "Game Structure and Timeline.canvas",
     "Team Management/House Rules.md",
-    "Team Management/FYP BOOTH Showcase.md",
-    "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
     "Purrgatory Game (Main Game)/Enemy.md",
     "List of Assets",
     "Team.md",
@@ -253,7 +253,6 @@
     "2025-08-15.md",
     "Team Management",
     "User Interface",
-    "2025-08-14.md",
     "Untitled 1.canvas",
     "Purrgatory Game (Main Game)"
   ]

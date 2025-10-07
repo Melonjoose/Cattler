@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class CatPosition : MonoBehaviour
+public class CatMovement : MonoBehaviour
 {
     public int catIndex; // Current index in the lineup
     private Transform targetLocation;
     private int lastAssignedIndex = -1;
     [SerializeField] private float moveSpeed = 3f;
+    public bool canWalk = true;
 
     // To be assigned by CatPositionManager
     public GameObject worldPositionGRP; // Parent object containing world position transforms
@@ -24,17 +25,15 @@ public class CatPosition : MonoBehaviour
     void Update()
     {
         // Smooth movement
-        if (targetLocation != null)
+        if (targetLocation != null && canWalk)
         {
             {
                 transform.position = Vector3.MoveTowards(transform.position,targetLocation.position,moveSpeed * Time.deltaTime); 
-                isCatWalking = true;
             }
 
             if (Vector3.Distance(transform.position, targetLocation.position) < 0.05f)
             {
                 transform.position = targetLocation.position;
-                isCatWalking = false;
             }
         }
 

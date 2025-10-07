@@ -15,7 +15,7 @@ public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     // Index in SlidingIcons list
     [SerializeField] public int iconIndex = 0;
 
-    private CatPosition assignedCat;
+    private CatMovement assignedCat;
 
     void Awake()
     {
@@ -48,7 +48,15 @@ public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (eventData == null) //to prevent glitch when cat dies while dragging.
+        {
+            OnEndDrag(eventData);
+        }
+
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        
+ 
+        
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -74,6 +82,6 @@ public class DraggableIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         catIndex = iconIndex; // Sync icon index with cat position index
     } 
-    public CatPosition GetAssignedCat() => assignedCat;
+    public CatMovement GetAssignedCat() => assignedCat;
 
 }

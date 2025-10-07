@@ -29,8 +29,11 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        //if slot 1 of Team list is not empty, read the cat inside the slot 1. add it into the world.
-        //if slot 2 of team list is not empty, etc
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+ 
+        }
+
     }
 
     public void Add(CatRuntimeData newCat)
