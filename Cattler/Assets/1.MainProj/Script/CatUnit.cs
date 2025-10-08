@@ -1,4 +1,4 @@
-
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,6 +17,8 @@ public class CatUnit : MonoBehaviour
     public bool isStunned = false;
 
     public bool canAttack = true;
+
+    public Action CatDeath;
 
     private void Start()
     {   
@@ -104,6 +106,8 @@ public class CatUnit : MonoBehaviour
         Debug.Log(runtimeData.template.itemName + " has been defeated.");
         Destroy(gameObject);
         //Give Send EXP gained from death to Retreat controller   
+        CatDeath?.Invoke();
+
     }
 
     public void AssignCat(CatRuntimeData runtimeCat)

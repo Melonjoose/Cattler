@@ -11,6 +11,13 @@ public class ItemUI : MonoBehaviour
         if (iconImage == null)
             iconImage = GetComponentInChildren<Image>();
     }
+    void Start()
+    {
+        //if (itemData.type != ItemData.ItemType.Cat)
+        {
+            SetItem(itemData);
+        }
+    }
     public void SetItem(ItemData item)
     {
         if (item == null || iconImage == null) return;

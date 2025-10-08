@@ -2,15 +2,26 @@ using UnityEngine;
 
 public class ContainerDetector : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public CatUnit occupyingCat;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Cat"))
+        {
+            occupyingCat = collision.GetComponent<CatUnit>();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Cat"))
+        {
+            if (occupyingCat == collision.GetComponent<CatUnit>())
+                occupyingCat = null;
+        }
     }
+
+    public bool IsOccupied => occupyingCat != null;
+
+
 }

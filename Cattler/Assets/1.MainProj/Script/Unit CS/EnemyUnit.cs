@@ -18,6 +18,7 @@ public class EnemyUnit : MonoBehaviour
     private float attackCooldown;
 
     [Header("Stats")]
+    [SerializeField] public int maxHealth;
     [SerializeField] public int currentHealth;
     [SerializeField] public float attackSpeed;
     [SerializeField] public int attackDamage;
@@ -33,6 +34,7 @@ public class EnemyUnit : MonoBehaviour
         if (enemyData != null)
         {
             // Initialize stats from SO
+            maxHealth = enemyData.health;
             currentHealth = enemyData.health;
             attackSpeed = enemyData.attackSpeed;
             attackDamage = enemyData.attackPower;

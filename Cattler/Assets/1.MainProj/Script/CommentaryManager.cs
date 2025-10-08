@@ -25,6 +25,10 @@ public class CommentaryManager : MonoBehaviour
         instance = this;
     }
 
+    public void Start()
+    {
+        textBox.SetActive(false);
+    }   
     // Update is called once per frame
     void Update()
     {

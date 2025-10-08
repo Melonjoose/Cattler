@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -8,6 +9,7 @@ public class MovementDrag : MonoBehaviour
     public Camera mainCam;
     private LineRenderer line;
 
+
     private bool dragging = false;
     private float camToObjDistance;
     private Vector3 startPos;
@@ -15,6 +17,8 @@ public class MovementDrag : MonoBehaviour
 
     public float arcHeight = 1.5f;
     public int resolution = 20;
+
+    public float snapRange = 2f;
 
     void Awake()
     {
@@ -39,15 +43,20 @@ public class MovementDrag : MonoBehaviour
     {
         if (!dragging) return;
 
-        // Convert screen mouse position to world position
+        // Draw line from object to arrow tip at mouse position.
+        // if there are any nearby positions, snap arrow tip to that position.
+        
         startPos = transform.position;
         Vector3 mouseScreen = Input.mousePosition;
         mouseScreen.z = camToObjDistance;
         Vector3 mouseWorld = mainCam.ScreenToWorldPoint(mouseScreen);
         mouseWorld.z = 0; // flatten to 2D plane
+        Vector3 arrowTip = mouseWorld;
 
         lastMouseWorld = mouseWorld;
-        DrawArc(startPos, mouseWorld);
+        DrawArc(startPos, arrowTip);
+
+        SnapArrowToPosition();
     }
 
 
@@ -56,20 +65,31 @@ public class MovementDrag : MonoBehaviour
         dragging = false;
         line.enabled = false;
 
-        // Find nearest world position
-        int nearestIndex = FindNearestPositionIndex(lastMouseWorld);
+        CatUnit otherCat;
+        int nearestIndex = FindNearestPositionIndex(lastMouseWorld, out otherCat);
 
         if (nearestIndex != -1)
         {
-            // Move cat to that index
-            catMovement.MoveToDesignatedLocation(nearestIndex);
+            if(otherCat != null)
+            {
+                int originalIndex = catMovement.catIndex;
+                catMovement.catIndex = nearestIndex;
+                otherCat.catMovement.catIndex = originalIndex;
+            }
+            else
+            {
+                catMovement.MoveToDesignatedLocation(nearestIndex);
+                Debug.Log($"Moving to newPosition {nearestIndex}");
+            }
         }
     }
 
-    private int FindNearestPositionIndex(Vector3 mouseWorld)
+
+    private int FindNearestPositionIndex(Vector3 mouseWorld, out CatUnit otherCat)
     {
         float nearestDist = Mathf.Infinity;
         int nearestIndex = -1;
+        otherCat = null;
 
         for (int i = 0; i < catMovement.worldPositions.Count; i++)
         {
@@ -81,13 +101,29 @@ public class MovementDrag : MonoBehaviour
             }
         }
 
-        // Optional snap range: if too far, don’t move
-        if (nearestDist > 3f) // adjust range to taste
+        if (nearestDist > snapRange) // adjust range to taste
             return -1;
+
+        foreach (CatUnit cat in FindObjectsByType<CatUnit>(FindObjectsSortMode.None))
+        {
+            if (cat == this.GetComponent<CatUnit>()) continue; // skip self
+
+            if (Vector3.Distance(cat.transform.position, catMovement.worldPositions[nearestIndex].position) < 0.1f)
+            {
+                otherCat = cat;
+                break;
+            }
+        }
 
         return nearestIndex + 1; // +1 since your movement uses 1-based indexing
     }
 
+
+    void SnapArrowToPosition()
+    {
+        //base on distance to nearest position, snap arrow to that position.
+
+    }
     private void DrawArc(Vector3 start, Vector3 end)
     {
         line.enabled = true;

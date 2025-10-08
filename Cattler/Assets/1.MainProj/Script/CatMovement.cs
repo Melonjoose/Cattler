@@ -4,6 +4,7 @@ using UnityEngine;
 public class CatMovement : MonoBehaviour
 {
     public int catIndex; // Current index in the lineup
+    private CatUnit catUnit => GetComponent<CatUnit>();
     private Transform targetLocation;
     private int lastAssignedIndex = -1;
     [SerializeField] private float moveSpeed = 3f;
@@ -28,6 +29,8 @@ public class CatMovement : MonoBehaviour
         {
             lastAssignedIndex = catIndex;
         }
+    
+        moveSpeed = catUnit.runtimeData.movementSpeed;
     }
 
     public void AssignWorldPositionsAndIndex() //assign 1-5 positions to worldPositions list
@@ -87,16 +90,4 @@ public class CatMovement : MonoBehaviour
         }
     }
 
-    public void SwapLocationWithCat(CatMovement otherCat)
-    {
-        if (otherCat == null)
-        {
-            Debug.LogError("Other cat is null!");
-            return;
-        }
-        int tempIndex = this.catIndex;
-        this.catIndex = otherCat.catIndex;
-        otherCat.catIndex = tempIndex;
-        Debug.Log($"Swapped positions: Cat {this.name} is now at index {this.catIndex}, Cat {otherCat.name} is now at index {otherCat.catIndex}");
-    }
 }

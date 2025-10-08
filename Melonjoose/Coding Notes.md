@@ -19,3 +19,15 @@
     }
     
 //USING OVERRIDE, Can use base.Die() to just call the inherited function without typing everything out again.
+
+Class -> blueprint / template
+Objects -> Instantiated from class. (individual entity itself)
+
+
+        if (cat == this.GetComponent<CatUnit>()) continue; // skip self
+//LEARN THE EXISTENCE OF continue
+
+
+private int FindNearestPositionIndex(Vector3 mouseWorld, out CatUnit otherCat)
+
+//KNOW about out

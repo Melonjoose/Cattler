@@ -1,65 +1,52 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    [SerializeField]private bool isEnemy;
-    [SerializeField]private bool isCat;
+    public bool isEnemy;
+    public bool isCat;
 
-    private Slider healthBar;
     private EnemyUnit enemyUnit;
     private CatUnit catUnit;
+    private HealthbarUIElement healthBarUIElement; //  Correct type!
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private GameObject healthbarLocation;
+    private void OnEnable()
     {
-        UnitChecker();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(isEnemy && enemyUnit != null)
-        {
-            healthBar.value = enemyUnit.currentHealth;
-        }
-        else if(isCat && catUnit != null)
-        {
-            healthBar.value = catUnit.runtimeData.currentHealth;
-            healthBar.maxValue = catUnit.runtimeData.maxHealth;
-        }
-    }
-
-    void SetCatHealthBar()
-    {
-        CatUnit Cat = GetComponent<CatUnit>();
-        if (Cat == null) { return; }
-        healthBar = GetComponentInChildren<Slider>();
-        catUnit = GetComponent<CatUnit>();
-        healthBar.maxValue = catUnit.runtimeData.maxHealth;
-        healthBar.minValue = 0f;
-        isCat = true;
-        //Debug.Log("Cat Healthbar Set");
-    }
-
-    void SetEnemyHealthBar()
-    {
-        EnemyUnit Enemy = GetComponent<EnemyUnit>();
-        if (Enemy == null) { return; }
-        healthBar = GetComponentInChildren<Slider>();
+        // Detect unit type
         enemyUnit = GetComponent<EnemyUnit>();
-        healthBar.maxValue = enemyUnit.enemyData.health;
-        healthBar.minValue = 0f;
-        isEnemy = true;
-        Debug.Log("Enemy Healthbar Set");
-    } 
+        catUnit = GetComponent<CatUnit>();
+        healthbarLocation = transform.Find("HealthbarLocation")?.gameObject;
 
-    void UnitChecker()
+        isEnemy = enemyUnit != null;
+        isCat = catUnit != null;
+
+        //  Create UI element and store it properly
+        healthBarUIElement = HealthbarUI.instance.CreateHealthbar(this);
+    }
+
+    private void Update()
     {
-        CatUnit Cat = GetComponent<CatUnit>();
-        EnemyUnit Enemy = GetComponent<EnemyUnit>();
-        if (Cat != null) { SetCatHealthBar(); return; }
-        if (Enemy != null) { SetEnemyHealthBar(); return; }
+        if (healthBarUIElement == null) return;
 
+        //  Update the position and value through HealthbarUIElement
+        healthBarUIElement.UpdatePosition(healthbarLocation.transform.position);
+
+        if (isEnemy && enemyUnit != null)
+        {
+            healthBarUIElement.UpdateHealth(enemyUnit.currentHealth, enemyUnit.maxHealth);
+        }
+        else if (isCat && catUnit != null)
+        {
+            healthBarUIElement.UpdateHealth(catUnit.runtimeData.currentHealth, catUnit.runtimeData.maxHealth);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (healthBarUIElement != null)
+        {
+            healthBarUIElement.RemoveHealthbar();
+            healthBarUIElement = null;
+        }
     }
 }
