@@ -98,10 +98,6 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
             currentSlot = nearestSlot;
             originalSlot = nearestSlot;
         }
-        else
-        {
-            Debug.LogWarning("No available slot found to snap into!");
-        }
 
         nearestSlot.isOccupied = true; // Mark the slot as occupied
         nearestSlot.currentItem = this; // Set the current item in the slot

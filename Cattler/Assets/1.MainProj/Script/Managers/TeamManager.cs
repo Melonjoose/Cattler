@@ -8,7 +8,7 @@ public class TeamManager : MonoBehaviour
     public int currentTeamSize = 0;
     public int availableTeamSlots = 3; // can expand up to 5
     public int maxTeamSlots = 5;
-    public GameObject[] teamCats;      // Holds the *actual spawned cats* in the team
+    public GameObject[] teamCats;      // Holds the *actual spawned cats* in the team // add index to teamcats array
 
     public GameObject catTemplatePrefab;
 
@@ -16,6 +16,8 @@ public class TeamManager : MonoBehaviour
     {
         instance = this;
         teamCats = new GameObject[availableTeamSlots];
+        
+
     }
 
     private void Update()
@@ -36,7 +38,7 @@ public class TeamManager : MonoBehaviour
 
     // Add a cat unit to the team
 
-    public void AddCatToWorld(CatRuntimeData runtimeCat)
+    public void AddCatToWorld(CatRuntimeData runtimeCat) 
     {
         if (currentTeamSize >= availableTeamSlots)
         {
@@ -45,7 +47,7 @@ public class TeamManager : MonoBehaviour
         }
 
         //  3. Instantiate the prefab in the scene
-        GameObject newCatGO = Instantiate(catTemplatePrefab);
+        GameObject newCatGO = Instantiate(catTemplatePrefab); //instantiate cat in world
         newCatGO.name = runtimeCat.template.itemName; //rename GO
 
         CatUnit newCatUnit = newCatGO.GetComponent<CatUnit>();
@@ -67,25 +69,11 @@ public class TeamManager : MonoBehaviour
 
     public void AddCatToTeam(GameObject cat)
     {
-        for (int i = 0; i < availableTeamSlots; i++)
-        {
-            if (teamCats[i] == null) // Empty slot
-            {
-                
-                // Parent cat to CatPositionManager’s container
-                cat.transform.SetParent(CatPositionManager.instance.catContainers[i].transform);
-                cat.transform.localPosition = Vector3.zero; // snap into container
-
-                teamCats[i] = cat.gameObject;
-
-                cat.GetComponent<CatMovement>().AssignCatIndex(i + 1); // +1 because index is 1-based
-
-                Debug.Log($"Added {cat.name} to the team at slot {i}!");
-                return;
-            }
-        }
-
-        Debug.LogWarning("No free team slots available!");
+        //1. find CatContainers[i] that has containerDetector.cs inside.
+        //2. check if containerDetector.cs has isOccupied == false
+        //3. if false, assign cat to that containerDetector.cs
+        //4. to add it, just set the cat's index to container index. if container1 is empty, set catindex1. etc
+        //5. add cat to TeamCats[]
     }
 
 

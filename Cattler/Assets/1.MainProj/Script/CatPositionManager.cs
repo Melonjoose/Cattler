@@ -8,7 +8,7 @@ public class CatPositionManager : MonoBehaviour
     [Header("References")]
     public GameObject[] worldPositions;      // list of world pos (extracted from worldPositionGRP if needed)
     public GameObject[] catContainers;       // parent objects holding cats
-    public DraggableIcon[] icons;            // icons linked to cats
+    public Icon[] icons;            // icons linked to cats
 
     [Header("Indices")]
     public int[] iconIndices;                // indices of icons

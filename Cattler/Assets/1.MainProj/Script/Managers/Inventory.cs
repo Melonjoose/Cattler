@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ public class Inventory : MonoBehaviour
     public GameObject itemPlaceholder;       // Prefab for item icons in UI
 
     private GameObject[] inventorySlots;
+    public SnappableLocation[] teamSlots;
+    public SnappableLocation[] previewSlots;
 
     private void Awake()
     {
@@ -27,6 +30,25 @@ public class Inventory : MonoBehaviour
         else Destroy(gameObject);
 
         InitializeInventorySpace(currentCapacity);
+
+        foreach (GameObject slotObj in inventorySlots)
+        {
+            SnappableLocation slot = slotObj.GetComponent<SnappableLocation>();
+            slot.OnItemPlaced += OnItemPlaced;
+            slot.OnItemRemoved += OnItemRemoved;
+        }
+        foreach (SnappableLocation slotObj in teamSlots)
+        {
+            SnappableLocation slot = slotObj.GetComponent<SnappableLocation>();
+            slot.OnItemPlaced += OnItemPlaced;
+            slot.OnItemRemoved += OnItemRemoved;
+        }
+        foreach (SnappableLocation slotObj in previewSlots)
+        {
+            SnappableLocation slot = slotObj.GetComponent<SnappableLocation>();
+            slot.OnItemPlaced += OnItemPlaced;
+            slot.OnItemRemoved += OnItemRemoved;
+        }
     }
 
     private void Update()
@@ -42,17 +64,17 @@ public class Inventory : MonoBehaviour
         if(slot.slotType == SnappableLocation.SlotType.InventoryList)
         {
             inventoryList.Add(Item);
-            Debug.Log($"Added {Item} to inventory.");
+            //Debug.Log($"Added {Item} to inventory.");
         }
         else if(slot.slotType == SnappableLocation.SlotType.TeamList)
         {
             teamList.Add(Item);
-            Debug.Log($"Added {Item} to Teamlist.");
+            //Debug.Log($"Added {Item} to Teamlist.");
         }
         else if(slot.slotType == SnappableLocation.SlotType.CharacterPreview)
         {
             previewList.Add(Item);
-            Debug.Log($"Added {Item} to CharacterPreview.");
+            //Debug.Log($"Added {Item} to CharacterPreview.");
         }
     }
 
@@ -69,11 +91,7 @@ public class Inventory : MonoBehaviour
             newItem.itemData = itemData;
 
             newItem.iconImage.sprite = itemData.icon;
-
-
-            //Add(prefab.gameObject, emptySlot); //it add it but not replace a null slot..
         }
-
     }
 
     public void Remove(GameObject Item, SnappableLocation slot)
@@ -150,14 +168,21 @@ public class Inventory : MonoBehaviour
             GameObject slot = Instantiate(inventorySlotPrefab, inventoryGRP.transform); //add UI slots
             slot.name = $"InventorySlot{i + 1}";
             slotsList.Add(slot);
-
-            // Keep inventoryList index aligned (add placeholder null)
-            if (inventoryList.Count <= i)
-                inventoryList.Add(null);
         }
 
         inventorySlots = slotsList.ToArray();
         currentCapacity = targetCapacity;
     }
 
+    private void OnItemPlaced(SnappableLocation slot)
+    {
+        Debug.Log($"Item placed in slot {slot.name}");
+        Debug.Log($"Slot index is {slot.SlotIndex}");
+
+    }
+
+    private void OnItemRemoved(SnappableLocation slot)
+    {
+        Debug.Log($"Item removed from slot {slot.name}");
+    }
 }

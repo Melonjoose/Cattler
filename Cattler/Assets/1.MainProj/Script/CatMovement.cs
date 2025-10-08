@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CatMovement : MonoBehaviour
 {
     public int catIndex; // Current index in the lineup
+    public bool inPosition = false;
     private CatUnit catUnit => GetComponent<CatUnit>();
     private Transform targetLocation;
     private int lastAssignedIndex = -1;
@@ -13,8 +15,7 @@ public class CatMovement : MonoBehaviour
     // To be assigned by CatPositionManager
     public Transform worldPositionGRP;
     public List<Transform> worldPositions = new List<Transform>();
-
-    private bool isCatWalking = false;
+    public Action<int> onMove;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class CatMovement : MonoBehaviour
     
         moveSpeed = catUnit.runtimeData.movementSpeed;
     }
-
+    
     public void AssignWorldPositionsAndIndex() //assign 1-5 positions to worldPositions list
     {
         worldPositionGRP = GameObject.Find("CatPoints_GRP")?.transform;
@@ -62,6 +63,7 @@ public class CatMovement : MonoBehaviour
 
     public void AssignCatIndex(int index) //where the cat is in the lineup
     {
+        Debug.Log($"Assigning {gameObject.name} to index {index}");
         catIndex = index;
     }
 
@@ -69,6 +71,7 @@ public class CatMovement : MonoBehaviour
     {
         lastAssignedIndex = catIndex; // make lastAssignedIndex same as catIndex so it can update
         catIndex = targetindex; // change catIndex to targetindex so it can walk to that position
+        onMove?.Invoke(targetindex);
     }
 
     void Walk(int targetindex)
@@ -79,13 +82,11 @@ public class CatMovement : MonoBehaviour
         {
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetLocation.position, moveSpeed * Time.deltaTime);
-                isCatWalking = true;
             }
 
             if (Vector3.Distance(transform.position, targetLocation.position) < 0.05f)
             {
                 transform.position = targetLocation.position;
-                isCatWalking = false;
             }
         }
     }

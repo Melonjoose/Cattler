@@ -1,8 +1,17 @@
 using UnityEngine;
-
+using System;
 public class ContainerDetector : MonoBehaviour
 {
     public CatUnit occupyingCat;
+    public int containerIndex;
+    public event Action<CatUnit> OnCatEnter;
+    public event Action<CatUnit> OnCatExit;
+    public event Action initializeContainer;
+
+    private void OnEnable()
+    {
+        initializeContainer?.Invoke();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,6 +31,11 @@ public class ContainerDetector : MonoBehaviour
     }
 
     public bool IsOccupied => occupyingCat != null;
+
+    private void OnEnterContainer()
+    {
+
+    }
 
 
 }

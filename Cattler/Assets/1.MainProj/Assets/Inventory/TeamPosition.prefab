@@ -166,4 +166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentItem: {fileID: 0}
+  SlotIndex: 0
   allowedTypes: 00000000
+  slotType: 1

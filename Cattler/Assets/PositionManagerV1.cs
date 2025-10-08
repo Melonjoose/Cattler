@@ -6,11 +6,18 @@ public class PositionManagerV1 : MonoBehaviour
 {
     public List<ContainerDetector> containers = new List<ContainerDetector>();
     private List<CatUnit> registeredCats = new List<CatUnit>();
-
+    public static PositionManagerV1 instance;
     void Awake()
     {
+        instance = this;
         // Find all containers automatically
         containers.AddRange(GetComponentsInChildren<ContainerDetector>());
+        //containers.initializeContainer += SetContainerIndex();
+    }
+
+    void SetContainerIndex()
+    {
+        //containers.containerIndex = containers[i]
     }
 
     /// <summary>

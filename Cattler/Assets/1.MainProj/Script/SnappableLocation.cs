@@ -56,6 +56,8 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         {
             PlaceItem(droppedItem);
         }
+
+
     }
 
     /// <summary>
@@ -79,7 +81,7 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
 
         item.SetSlot(this);
 
-        OnItemPlaced?.Invoke(this);
+        OnItemPlaced?.Invoke(this); // Notify listeners
 
         // Finally, add it to the new slot
         Inventory.instance.Add(item.gameObject, this);
@@ -140,4 +142,8 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         }
         return false;
     }
+
+
+    //onItemPlaced.
+    //if slottype is TeamList, check this location's index.
 }
