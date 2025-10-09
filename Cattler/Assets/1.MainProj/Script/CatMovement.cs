@@ -55,7 +55,7 @@ public class CatMovement : MonoBehaviour
             if (pos != null)
             {
                 worldPositions.Add(pos); //
-                Debug.Log($"Assigned {pos.name} as index {i}"); 
+                //Debug.Log($"Assigned {pos.name} as index {i}"); 
             }
             else
             {
@@ -68,6 +68,7 @@ public class CatMovement : MonoBehaviour
         inPosition = false;
         lastAssignedIndex = catIndex; // make lastAssignedIndex same as catIndex so it can update
         AssignCatIndex(targetindex);
+        CatIconUI.instance.MoveCatIconTo(this.catIndex , targetindex);
         onMove?.Invoke();
     }
 

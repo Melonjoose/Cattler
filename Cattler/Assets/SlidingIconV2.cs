@@ -1,9 +1,12 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class SlidingIconV2 : MonoBehaviour
 {
+    
+    public SlidingIconV2 instance;
+
     //PositionManagerV1.instance.containers[0 - 4] is basically containers with their index 0 - 4 / left to right.
     private Transform iconPositionGRP;
     public List<Transform> iconPosition = new List<Transform>();  //ensure that icon is 0 - 4 / left to right.
@@ -11,14 +14,19 @@ public class SlidingIconV2 : MonoBehaviour
     public List<Icon> Icons = new List<Icon>();  //to get data from catUnit. // set icon position to iconpositions.transform
     private CatUnit[] catUnit; //Can accessCatmovement with this.  set data to icon
 
+    public void Start()
+    {
+        instance = this;
+    }
+
     private void OnEnable()
     {
         InitializeiconPositions();
-        TeamManager.instance.onTeamAdd += InitializeCatIcon;
+        TeamManager.instance.OnTeamAdd += InitializeCatIcon;
     }
     private void OnDisable()
     {
-
+        TeamManager.instance.OnTeamAdd -= InitializeCatIcon; //nullreference
     }
 
     public void Update()
@@ -36,7 +44,7 @@ public class SlidingIconV2 : MonoBehaviour
         }
         for (int i = 0; i < 5; i++) //0 - 4
         {
-            Transform pos = iconPositionGRP.Find($"Position{i}_Icon");
+            Transform pos = iconPositionGRP.Find($"PositionIcon{i}");
             if (pos != null)
             {
                 iconPosition.Add(pos); //
@@ -50,7 +58,7 @@ public class SlidingIconV2 : MonoBehaviour
 
     }
 
-    void InitializeCatIcon()
+    public void InitializeCatIcon()
     {
         Debug.Log("new icon added.");
     }
@@ -73,3 +81,4 @@ public class SlidingIconV2 : MonoBehaviour
     //Change catIcon's Image.sprite to Catunit.template.sprite
     //
 }
+*/

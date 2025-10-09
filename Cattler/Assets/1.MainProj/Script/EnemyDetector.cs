@@ -10,6 +10,7 @@ public class EnemyDetector : MonoBehaviour
 
     void Start()
     {
+        enemyDetected = false; //no enemydetected as default
         instance = this;
         detectionArea = GetComponent<BoxCollider2D>();
         detectionArea.isTrigger = true; // make sure it's a trigger

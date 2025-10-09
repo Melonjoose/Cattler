@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class TeamManager : MonoBehaviour
 {
@@ -9,19 +10,17 @@ public class TeamManager : MonoBehaviour
     public int currentTeamSize = 0;
     public int availableTeamSlots = 3; // can expand up to 5
     public int maxTeamSlots = 5;
-    public GameObject[] teamCats;      // Holds the *actual spawned cats* in the team // add index to teamcats array
+
     public GameObject playerTeamGO;
 
     public GameObject catTemplatePrefab;
 
-    public Action onTeamAdd;
+    public Action OnTeamAdd;
 
     private void Awake()
     {
         instance = this;
         teamCats = new GameObject[availableTeamSlots];
-        
-
     }
 
     private void Update()
@@ -54,6 +53,8 @@ public class TeamManager : MonoBehaviour
         GameObject newCatGO = Instantiate(catTemplatePrefab); //instantiate cat in world
         newCatGO.name = runtimeCat.template.itemName; //rename GO
 
+        currentTeamSize++;
+
         CatUnit newCatUnit = newCatGO.GetComponent<CatUnit>();
         newCatUnit.runtimeData = runtimeCat; // link runtime data
 
@@ -63,13 +64,14 @@ public class TeamManager : MonoBehaviour
 
         AddCatToTeam(newCatUnit.gameObject);
         //Get data from Inventory Team
-        currentTeamSize++;
     }
 
     public void RemoveCatFromWorld(GameObject Cat)
     {
 
     }
+
+    public GameObject[] teamCats;  // Array of cats, same length as number of containers
 
     public void AddCatToTeam(GameObject cat)
     {
@@ -78,6 +80,12 @@ public class TeamManager : MonoBehaviour
         {
             Debug.LogError("PositionManagerV1 instance not found!");
             return;
+        }
+
+        // Make sure teamCats array is initialized with correct size
+        if (teamCats == null || teamCats.Length != positionManager.containers.Count)
+        {
+            teamCats = new GameObject[positionManager.containers.Count];
         }
 
         foreach (var container in positionManager.containers)
@@ -91,15 +99,13 @@ public class TeamManager : MonoBehaviour
                     return;
                 }
 
-                // Assign container index
-                //assigning catIndex to be container's index if container is 1, catindex is 1.
-                //catMovement.catIndex = container.containerIndex; //containerIndex are 1 ,2,3,4,5 not sure if I have to plus 1
-                catMovement.MoveToDesignatedLocation(container.containerIndex);
+                int containerIndex = container.containerIndex; // Assuming this starts at 0 or 1 depending on setup
+                catMovement.MoveToDesignatedLocation(containerIndex);
 
-                // Move cat to container position (for initial placement)
+                // Move cat to container position
                 cat.transform.position = container.transform.position;
 
-                // Optional: Parent under PlayerTeam instead of container
+                // Optional: Parent under PlayerTeam
                 if (playerTeamGO != null)
                     cat.transform.SetParent(playerTeamGO.transform);
 
@@ -107,18 +113,23 @@ public class TeamManager : MonoBehaviour
                 CatUnit catUnit = cat.GetComponent<CatUnit>();
                 container.AddCatToContainer(catUnit);
 
-                onTeamAdd?.Invoke();
-                Debug.Log($"Added {cat.name} to container {container.containerIndex}");
+                // Assign into team array (adjust index if containerIndex starts at 1)
+                int arrayIndex = containerIndex - 1;
+                teamCats[arrayIndex] = cat;
 
-                //  Exit after assigning to the first available container
+                // Trigger event
+                OnTeamAdd?.Invoke();
+
+                // Update UI
+                CatIconUI.instance.IntializeCatIcon();
+
+                Debug.Log($"Added {cat.name} to container {container.containerIndex} (teamCats index {arrayIndex})");
+
                 return;
             }
         }
 
-        // If no container was found
         Debug.LogWarning("No empty container found for cat!");
     }
-
-
 
 }

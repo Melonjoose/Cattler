@@ -731,9 +731,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catIndex: 0
+  inPosition: 0
+  rb: {fileID: 0}
   moveSpeed: 3
   canWalk: 1
-  worldPositionGRP: {fileID: 0}
+  PlayerTeam: {fileID: 0}
   worldPositions: []
 --- !u!114 &-6617303911603268508
 MonoBehaviour:
@@ -835,7 +837,7 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 0.7064048, b: 0.1745283, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 0.7064048, b: 0.1745283, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -872,4 +874,4 @@ LineRenderer:
   m_MaskInteraction: 0
   m_UseWorldSpace: 1
   m_Loop: 0
-  m_ApplyActiveColorSpace: 1
+  m_ApplyActiveColorSpace: 0

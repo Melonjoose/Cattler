@@ -60,7 +60,7 @@ public class Skill_Button : MonoBehaviour // add handlers
     {
         if(cat == null)
         {
-            cat = TeamManager.instance.teamCats[0];
+            cat = GameObject.Find("Grey Cat");
         }
     }
 }
