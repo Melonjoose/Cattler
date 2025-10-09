@@ -5,7 +5,6 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
-    private bool isInitialized = false;
     public List<GameObject> inventoryList = new List<GameObject>();
     public List<GameObject> teamList = new List<GameObject>();
     public List<GameObject> previewList = new List<GameObject>();
@@ -178,6 +177,10 @@ public class Inventory : MonoBehaviour
     {
         Debug.Log($"Item placed in slot {slot.name}");
         Debug.Log($"Slot index is {slot.SlotIndex}");
+        if (slot.slotType == SnappableLocation.SlotType.TeamList) 
+        {
+
+        }
 
     }
 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Catkeeper Icon_0: -6952352901813856594
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

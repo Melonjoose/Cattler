@@ -6,6 +6,7 @@ public class CatMovement : MonoBehaviour
 {
     public int catIndex; // Current index in the lineup
     public bool inPosition = false;
+    public Rigidbody2D rb;
     private CatUnit catUnit => GetComponent<CatUnit>();
     private Transform targetLocation;
     private int lastAssignedIndex = -1;
@@ -13,13 +14,15 @@ public class CatMovement : MonoBehaviour
     public bool canWalk = true;
 
     // To be assigned by CatPositionManager
-    public Transform worldPositionGRP;
+    public Transform PlayerTeam;
     public List<Transform> worldPositions = new List<Transform>();
-    public Action<int> onMove;
+    public event Action onMove;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         AssignWorldPositionsAndIndex();
+        lastAssignedIndex = catIndex;
     }
     void Update()
     {
@@ -36,29 +39,36 @@ public class CatMovement : MonoBehaviour
     
     public void AssignWorldPositionsAndIndex() //assign 1-5 positions to worldPositions list
     {
-        worldPositionGRP = GameObject.Find("CatPoints_GRP")?.transform;
-        if (worldPositionGRP == null)
+        PlayerTeam = GameObject.Find("PlayerTeam")?.transform;
+        if (PlayerTeam == null)
         {
-            Debug.LogError("WorldPositionGRP not assigned in CatPosition!");
+            Debug.LogError("PlayerTeam not assigned in CatPosition!");
             return;
         }
 
         worldPositions.Clear(); // Clear any previous data
 
         // Loop through expected child names
-        for (int i = 1; i <= 5; i++)
+        for (int i = 0; i < 5; i++)
         {
-            Transform pos = worldPositionGRP.Find($"Position{i}");
+            Transform pos = PlayerTeam.Find($"Cat_Container{i}");
             if (pos != null)
             {
-                worldPositions.Add(pos);
-                Debug.Log($"Assigned {pos.name} as index {i}");
+                worldPositions.Add(pos); //
+                Debug.Log($"Assigned {pos.name} as index {i}"); 
             }
             else
             {
-                Debug.LogWarning($"Position{i} not found under {worldPositionGRP.name}");
+                Debug.LogWarning($"Position{i} not found under {PlayerTeam.name}");
             }
         }
+    }
+    public void MoveToDesignatedLocation(int targetindex)
+    {
+        inPosition = false;
+        lastAssignedIndex = catIndex; // make lastAssignedIndex same as catIndex so it can update
+        AssignCatIndex(targetindex);
+        onMove?.Invoke();
     }
 
     public void AssignCatIndex(int index) //where the cat is in the lineup
@@ -67,21 +77,21 @@ public class CatMovement : MonoBehaviour
         catIndex = index;
     }
 
-    public void MoveToDesignatedLocation(int targetindex) 
-    {
-        lastAssignedIndex = catIndex; // make lastAssignedIndex same as catIndex so it can update
-        catIndex = targetindex; // change catIndex to targetindex so it can walk to that position
-        onMove?.Invoke(targetindex);
-    }
+
 
     void Walk(int targetindex)
     {
-        targetLocation = worldPositions[targetindex-1]; // -1 because list is 0-based //go to
+        targetLocation = worldPositions[targetindex]; // 0 - 4
 
         if (targetLocation != null && canWalk)
         {
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetLocation.position, moveSpeed * Time.deltaTime);
+                Vector2 currentPos = rb.position;
+                Vector2 targetPos = targetLocation.position;
+
+                // Move only X
+                float newX = Mathf.MoveTowards(currentPos.x, targetPos.x, moveSpeed * Time.fixedDeltaTime);
+                rb.MovePosition(new Vector2(newX, currentPos.y));
             }
 
             if (Vector3.Distance(transform.position, targetLocation.position) < 0.05f)

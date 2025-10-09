@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class SummonManager : MonoBehaviour
 {
     public static SummonManager instance;
 
-
+    public Action OnSummon;
     [System.Serializable]
     public class GachaPoolEntry
     {
@@ -25,7 +26,7 @@ public class SummonManager : MonoBehaviour
         foreach (var entry in gachaPool)
             totalWeight += entry.weight;
 
-        float roll = Random.Range(0f, totalWeight);
+        float roll = UnityEngine.Random.Range(0f, totalWeight);
         float cumulative = 0f;
 
         foreach (var entry in gachaPool)
@@ -40,13 +41,11 @@ public class SummonManager : MonoBehaviour
 
     public void Summon()
     {
-        // check if there is at least one empty slot
-        /*
-        if (!Inventory.instance.inventoryList.Contains(null))
+        if (TeamManager.instance.currentTeamSize >= TeamManager.instance.availableTeamSlots)
         {
-            Debug.Log("Inventory full! Cannot summon more cats.");
+            Debug.Log("No free team slots available!");
             return;
-        }*/
+        }
 
         CatData rolledCat = Roll();
         if (rolledCat == null)
@@ -58,13 +57,39 @@ public class SummonManager : MonoBehaviour
         CatRuntimeData runtimeCat = new CatRuntimeData(rolledCat);
 
         //  2. Add runtime cat to inventory
-        //Inventory.instance.Add(runtimeCat);
+        //Inventory.instance.Add(runtimeCat);  //might change to add cats
 
+        //TeamManager.instance.AddCatToWorld(runtimeCat); // belongs to TeamManager or Inventory? whenever cat is added to Inventory.TeamList.
+        
+        Debug.Log($"Summoned {rolledCat.itemName}!");
+        OnSummon?.Invoke(); // Notify listeners
+        //send to Inventory to add into inventory
+    }
+
+    public void TestSummon()
+    {
+        if (TeamManager.instance.currentTeamSize >= TeamManager.instance.availableTeamSlots)
+        {
+            Debug.Log("No free team slots available!");
+            return;
+        }
+
+        CatData rolledCat = Roll();
+        if (rolledCat == null)
+        {
+            Debug.LogError("No cat was rolled!");
+            return;
+        }
+
+        CatRuntimeData runtimeCat = new CatRuntimeData(rolledCat);
+
+        //  2. Add runtime cat to inventory
+        //Inventory.instance.Add(runtimeCat);  //might change to add cats
 
         TeamManager.instance.AddCatToWorld(runtimeCat);
-        
-
 
         Debug.Log($"Summoned {rolledCat.itemName}!");
+        OnSummon?.Invoke(); // Notify listeners
+        //send to Inventory to add into inventory
     }
 }

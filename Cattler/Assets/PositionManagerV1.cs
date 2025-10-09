@@ -15,11 +15,6 @@ public class PositionManagerV1 : MonoBehaviour
         //containers.initializeContainer += SetContainerIndex();
     }
 
-    void SetContainerIndex()
-    {
-        //containers.containerIndex = containers[i]
-    }
-
     /// <summary>
     /// Called when a new cat spawns or joins the scene.
     /// </summary>

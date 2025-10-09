@@ -27,7 +27,7 @@ public class DragWorldObject : MonoBehaviour
     {
         if (isDragging)
         {
-            rb.isKinematic = true;
+            //rb.isKinematic = true;
             // Mouse position > world position
             Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(
                 new Vector3(Input.mousePosition.x, Input.mousePosition.y,
@@ -41,7 +41,7 @@ public class DragWorldObject : MonoBehaviour
         }
         else
         {
-            rb.isKinematic = false;
+            //rb.isKinematic = false;
         }
     }
 }

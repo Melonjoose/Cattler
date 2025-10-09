@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -67,6 +68,7 @@ public class MovementDrag : MonoBehaviour
 
         CatUnit otherCat;
         int nearestIndex = FindNearestPositionIndex(lastMouseWorld, out otherCat);
+        
 
         if (nearestIndex != -1)
         {
@@ -79,6 +81,7 @@ public class MovementDrag : MonoBehaviour
             else
             {
                 catMovement.MoveToDesignatedLocation(nearestIndex);
+                
                 Debug.Log($"Moving to newPosition {nearestIndex}");
             }
         }
@@ -115,7 +118,7 @@ public class MovementDrag : MonoBehaviour
             }
         }
 
-        return nearestIndex + 1; // +1 since your movement uses 1-based indexing
+        return nearestIndex; // +1 since your movement uses 0-based indexing
     }
 
 

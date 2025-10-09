@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class TeamManager : MonoBehaviour
 {
@@ -9,8 +10,11 @@ public class TeamManager : MonoBehaviour
     public int availableTeamSlots = 3; // can expand up to 5
     public int maxTeamSlots = 5;
     public GameObject[] teamCats;      // Holds the *actual spawned cats* in the team // add index to teamcats array
+    public GameObject playerTeamGO;
 
     public GameObject catTemplatePrefab;
+
+    public Action onTeamAdd;
 
     private void Awake()
     {
@@ -29,9 +33,9 @@ public class TeamManager : MonoBehaviour
     }
 
     // Detect which cats are in the team (from inventory placeholders)
-    public void DetectTeam()
+    public void DetectTeamList()
     {
-        // This depends on how you structured inventory.
+        // Look at Inventory.TeamList. if cat is in slot 1, AddCatToWorld ().
         // Example: loop through inventory slots, find occupied ones,
         // get their ItemData, and then spawn the correct cat prefab.
     }
@@ -69,12 +73,52 @@ public class TeamManager : MonoBehaviour
 
     public void AddCatToTeam(GameObject cat)
     {
-        //1. find CatContainers[i] that has containerDetector.cs inside.
-        //2. check if containerDetector.cs has isOccupied == false
-        //3. if false, assign cat to that containerDetector.cs
-        //4. to add it, just set the cat's index to container index. if container1 is empty, set catindex1. etc
-        //5. add cat to TeamCats[]
+        var positionManager = PositionManagerV1.instance;
+        if (positionManager == null)
+        {
+            Debug.LogError("PositionManagerV1 instance not found!");
+            return;
+        }
+
+        foreach (var container in positionManager.containers)
+        {
+            if (!container.IsOccupied)
+            {
+                CatMovement catMovement = cat.GetComponent<CatMovement>();
+                if (catMovement == null)
+                {
+                    Debug.LogError("The provided GameObject does not have a CatMovement component.");
+                    return;
+                }
+
+                // Assign container index
+                //assigning catIndex to be container's index if container is 1, catindex is 1.
+                //catMovement.catIndex = container.containerIndex; //containerIndex are 1 ,2,3,4,5 not sure if I have to plus 1
+                catMovement.MoveToDesignatedLocation(container.containerIndex);
+
+                // Move cat to container position (for initial placement)
+                cat.transform.position = container.transform.position;
+
+                // Optional: Parent under PlayerTeam instead of container
+                if (playerTeamGO != null)
+                    cat.transform.SetParent(playerTeamGO.transform);
+
+                // Mark container as occupied
+                CatUnit catUnit = cat.GetComponent<CatUnit>();
+                container.AddCatToContainer(catUnit);
+
+                onTeamAdd?.Invoke();
+                Debug.Log($"Added {cat.name} to container {container.containerIndex}");
+
+                //  Exit after assigning to the first available container
+                return;
+            }
+        }
+
+        // If no container was found
+        Debug.LogWarning("No empty container found for cat!");
     }
+
 
 
 }

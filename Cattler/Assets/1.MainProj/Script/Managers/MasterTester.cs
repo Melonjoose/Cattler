@@ -41,7 +41,7 @@ public class MasterTester : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S)) //summon a cat
         {
-            SummonManager.instance.Summon();
+            SummonManager.instance.TestSummon();
         }
 
         if (Input.GetKeyDown(KeyCode.P))
