@@ -4173,9 +4173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb91cb3383873024b813abb0832b3a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
-  iconPosition: []
-  Icons: []
 --- !u!1001 &319938064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13565,30 +13562,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiSlots:
-  - icon: {fileID: 1081970028}
+  - iconIndex: -1
+    icon: {fileID: 1081970028}
     iconImage: {fileID: 1081970022}
     healthBar: {fileID: 1021024898}
-    iconIndex: -1
     catIndex: -1
-  - icon: {fileID: 2070008659}
+  - iconIndex: -1
+    icon: {fileID: 2070008659}
     iconImage: {fileID: 2070008655}
     healthBar: {fileID: 558069926}
-    iconIndex: -1
     catIndex: -1
-  - icon: {fileID: 67617515}
+  - iconIndex: -1
+    icon: {fileID: 67617515}
     iconImage: {fileID: 67617511}
     healthBar: {fileID: 645018704}
-    iconIndex: -1
     catIndex: -1
-  - icon: {fileID: 256267065}
+  - iconIndex: -1
+    icon: {fileID: 256267065}
     iconImage: {fileID: 256267061}
     healthBar: {fileID: 1940469767}
-    iconIndex: -1
     catIndex: -1
-  - icon: {fileID: 743636649}
+  - iconIndex: -1
+    icon: {fileID: 743636649}
     iconImage: {fileID: 743636645}
     healthBar: {fileID: 2076997381}
-    iconIndex: -1
     catIndex: -1
   iconPosition: []
   catContainer:
@@ -22061,13 +22058,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c979e8c84b7199041bf2092461db7595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slidingIconManager: {fileID: 0}
   currentTeamSize: 0
   availableTeamSlots: 5
   maxTeamSlots: 5
-  teamCats: []
   playerTeamGO: {fileID: 1917870089}
   catTemplatePrefab: {fileID: 8409749662932035737, guid: e18086921a3595644892483f62fc8cd8, type: 3}
+  teamCats: []
 --- !u!114 &1683087014
 MonoBehaviour:
   m_ObjectHideFlags: 0

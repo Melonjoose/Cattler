@@ -5,7 +5,6 @@ public class SummonManager : MonoBehaviour
 {
     public static SummonManager instance;
 
-    public Action OnSummon;
     [System.Serializable]
     public class GachaPoolEntry
     {
@@ -14,6 +13,7 @@ public class SummonManager : MonoBehaviour
     }
 
     public GachaPoolEntry[] gachaPool; // assign in inspector
+    public event Action onGacha;
 
     private void Awake()
     {
@@ -54,18 +54,18 @@ public class SummonManager : MonoBehaviour
             return;
         }
 
-        CatRuntimeData runtimeCat = new CatRuntimeData(rolledCat);
+        //CatRuntimeData runtimeCat = new CatRuntimeData(rolledCat); //we get a random
 
-        //  2. Add runtime cat to inventory
-        //Inventory.instance.Add(runtimeCat);  //might change to add cats
+        //onGacha.Invoke();  //tell listener
 
-        //TeamManager.instance.AddCatToWorld(runtimeCat); // belongs to TeamManager or Inventory? whenever cat is added to Inventory.TeamList.
-        
+        Inventory.instance.InstantiateNewCat(rolledCat);
+
         Debug.Log($"Summoned {rolledCat.itemName}!");
-        OnSummon?.Invoke(); // Notify listeners
         //send to Inventory to add into inventory
     }
 
+
+    /*
     public void TestSummon()
     {
         if (TeamManager.instance.currentTeamSize >= TeamManager.instance.availableTeamSlots)
@@ -86,10 +86,10 @@ public class SummonManager : MonoBehaviour
         //  2. Add runtime cat to inventory
         //Inventory.instance.Add(runtimeCat);  //might change to add cats
 
-        TeamManager.instance.AddCatToWorld(runtimeCat);
+        //TeamManager.instance.AddCatToWorld(runtimeCat); oudated
 
         Debug.Log($"Summoned {rolledCat.itemName}!");
-        OnSummon?.Invoke(); // Notify listeners
         //send to Inventory to add into inventory
-    }
+    }*/
+    
 }

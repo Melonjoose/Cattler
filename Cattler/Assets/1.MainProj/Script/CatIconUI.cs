@@ -1,5 +1,8 @@
 ﻿using NUnit.Framework.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,22 +14,28 @@ public class CatIconUI : MonoBehaviour
     [System.Serializable]
     public class CatIconSlot
     {
+        public int iconIndex = -1;
         public Icon icon;
         public Image iconImage;
         public Slider healthBar;
-        public int iconIndex = -1;
         public int catIndex = -1;
+
     }
 
     [Header("UI Slots")]
     public CatIconSlot[] uiSlots; // assign 5 in Inspector
 
-    [Header("UI Slots")]
-    public List<Transform> iconPosition = new List<Transform>();  //ensure that icon is 0 - 4 / left to right.
+    [Header("UI Slots Positions")]
+    public List<RectTransform> iconPosition = new List<RectTransform>();  //ensure that icon is 0 - 4 / left to right.
 
     [Header("Containers")]
     public GameObject[] catContainer; // assign containers in Inspector 
 
+
+    public void OnEnable()
+    {
+        
+    }
 
 
     private void Awake()
@@ -49,7 +58,7 @@ public class CatIconUI : MonoBehaviour
     }
 
     //CatIconUI Logic. (Intializing Syncing)
-    public void IntializeCatIcon()
+    public void IntializeCatIcon() // change to be a callfunction
     {
         for (int i = 0; i < uiSlots.Length; i++)
         {
@@ -74,6 +83,7 @@ public class CatIconUI : MonoBehaviour
 
                     uiSlots[i].iconIndex = i;
                     uiSlots[i].catIndex = cat.catMovement.catIndex;
+
                 }
             }
             else
@@ -83,32 +93,37 @@ public class CatIconUI : MonoBehaviour
                 uiSlots[i].healthBar.gameObject.SetActive(false);
             }
         }
-
     }
 
     void InitializeiconPositions()
     {
+        // 1️⃣ Get the parent group Transform
         Transform iconPositionGRP = GameObject.Find("Position_GRP")?.transform;
         if (iconPositionGRP == null)
         {
-            Debug.LogError("iconPositionGRP not assigned in CatPosition!");
+            Debug.LogError("Position_GRP not found!");
             return;
         }
-        for (int i = 0; i < 5; i++) //0 - 4
+
+        iconPosition.Clear(); // Always good to clear before adding new ones
+
+        // 2️⃣ Loop through child objects
+        for (int i = 0; i < 5; i++)
         {
-            Transform pos = iconPositionGRP.Find($"PositionIcon{i}");
-            if (pos != null)
+            Transform posTransform = iconPositionGRP.Find($"PositionIcon{i}");
+            if (posTransform != null)
             {
-                iconPosition.Add(pos); //
-                //Debug.Log($"Assigned {pos.name} as index {i}");
+                RectTransform posRect = posTransform as RectTransform;
+                iconPosition.Add(posRect); // Add RectTransform to the list
+                Debug.Log($"Assigned {posRect.name} as index {i}");
             }
             else
             {
-                Debug.LogWarning($"Position{i} not found under {iconPositionGRP.name}");
+                Debug.LogWarning($"PositionIcon{i} not found under {iconPositionGRP.name}");
             }
         }
-
     }
+
 
     void SyncIconToCatPosition()
     {
@@ -121,39 +136,69 @@ public class CatIconUI : MonoBehaviour
             }
         }
     }
-
-
+    /*
     public void MoveCatIconTo(int catIconIndex, int positionIndex)
     {
-        if (catIconIndex < 0 || catIconIndex >= uiSlots.Length)
+        // safety checks
+        if (uiSlots == null || uiSlots.Length == 0)
         {
-            Debug.LogWarning($"Invalid CatIcon index: {catIconIndex}");
+            Debug.LogWarning("uiSlots not set up");
             return;
         }
-
         if (positionIndex < 0 || positionIndex >= iconPosition.Count)
         {
-            Debug.LogWarning($"Invalid position index: {positionIndex}");
+            Debug.LogWarning($"Invalid positionIndex {positionIndex}");
             return;
         }
 
-        RectTransform iconRect = uiSlots[catIconIndex].icon.GetComponent<RectTransform>();
-        RectTransform targetRect = iconPosition[positionIndex].GetComponent<RectTransform>();
-
-        if (iconRect != null && targetRect != null)
+        // 1) find the uiSlot that currently represents the cat with catIndex == catIconIndex
+        CatIconSlot foundSlot = null;
+        int foundIndexInArray = -1;
+        for (int i = 0; i < uiSlots.Length; i++)
         {
-            iconRect.anchoredPosition = targetRect.anchoredPosition; //  correct way for UI
-            uiSlots[catIconIndex].icon.AssignIconIndex(positionIndex);
-            uiSlots[catIconIndex].iconIndex = positionIndex;
+            if (uiSlots[i] != null && uiSlots[i].catIndex == catIconIndex)
+            {
+                foundSlot = uiSlots[i];
+                foundIndexInArray = i;
+                break;
+            }
+        }
 
-            Debug.Log($"Icon {catIconIndex} instantly moved to Position {positionIndex}");
-        }
-        else
+        if (foundSlot == null)
         {
-            Debug.LogWarning($"Missing RectTransform on icon or position target!");
+            Debug.LogWarning($"No uiSlot found for catIndex {catIconIndex}");
+            return;
         }
-        Debug.Log($"Before move: {iconRect.anchoredPosition}, After: {targetRect.anchoredPosition}");
-    }
+
+        // 2) get transforms
+        RectTransform movingIconRect = foundSlot.icon?.GetComponent<RectTransform>();
+        RectTransform targetRect = iconPosition[positionIndex] as RectTransform;
+
+        if (movingIconRect == null || targetRect == null)
+        {
+            Debug.LogWarning("Missing RectTransforms on icon or target.");
+            return;
+        }
+
+        // 3) convert target position into the moving icon's parent local space and set it
+        // This works even if the two objects live under different parents/canvases.
+        Vector3 worldTarget = targetRect.TransformPoint(Vector3.zero);
+        Vector3 localTarget = movingIconRect.parent.InverseTransformPoint(worldTarget);
+        //movingIconRect.localPosition = localTarget;
+        LeanTween.moveLocal(movingIconRect.gameObject, localTarget, 0.25f).setEase(LeanTweenType.easeInOutQuad);
+
+        // 4) update bookkeeping so the slot knows its new logical position
+        // set both the iconIndex (where it visually sits) and catIndex (which cat it represents)
+        foundSlot.iconIndex = positionIndex;
+        // if you want catIndex to change to the same as iconIndex (rare), uncomment:
+        // foundSlot.catIndex = positionIndex;
+
+
+        Debug.Log($"Moved uiSlot[{foundIndexInArray}] (catIndex {catIconIndex}) -> position {positionIndex}");
+    }*/
+
+
+
 
 
 

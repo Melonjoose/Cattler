@@ -54,7 +54,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            InstantiateNew(testItem);
+            InstantiateNewCat(testItem as CatData);
         }
     }
 
@@ -63,33 +63,41 @@ public class Inventory : MonoBehaviour
         if(slot.slotType == SnappableLocation.SlotType.InventoryList)
         {
             inventoryList.Add(Item);
+            //Item.transform.scale(X1)
             //Debug.Log($"Added {Item} to inventory.");
         }
         else if(slot.slotType == SnappableLocation.SlotType.TeamList)
         {
             teamList.Add(Item);
             //Debug.Log($"Added {Item} to Teamlist.");
+            //Item.transform.scale(X1)
         }
         else if(slot.slotType == SnappableLocation.SlotType.CharacterPreview)
         {
             previewList.Add(Item);
+            //Item.transform.scale(X3)
             //Debug.Log($"Added {Item} to CharacterPreview.");
         }
     }
 
-    public void InstantiateNew(ItemData itemData)
+    public void InstantiateNewCat(CatData catData)
     {
         if (inventoryList.Count >= currentCapacity) { Debug.LogWarning("Inventory full"); return; }
         SnappableLocation emptySlot = GetFirstEmptySlot();
         GameObject prefab = Instantiate(itemPlaceholder , emptySlot.transform);
         ItemUI newItem = prefab.GetComponent<ItemUI>();
-        if (newItem != null)
+        ItemType itemType = catData.type;
+        if (itemType == ItemType.Cat)
         {
-            prefab.name = itemData.itemName;
-
-            newItem.itemData = itemData;
-
-            newItem.iconImage.sprite = itemData.icon;
+            prefab.name = catData.itemName;
+            newItem.itemData = catData;
+            newItem.iconImage.sprite = catData.icon;
+            //create CatUnit.cs
+            prefab.AddComponent<CatUnit>(); //is working.
+            CatUnit newCatUnit = prefab.GetComponent<CatUnit>();
+            //Add ItemData to CatUnit.template
+            newCatUnit.runtimeData.template = catData; //still empty and not linked. null reference?
+            //Instantiate and add it into the Catunit.runtimedata.
         }
     }
 

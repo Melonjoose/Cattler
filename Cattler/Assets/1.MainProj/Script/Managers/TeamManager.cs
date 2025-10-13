@@ -16,6 +16,7 @@ public class TeamManager : MonoBehaviour
     public GameObject catTemplatePrefab;
 
     public Action OnTeamAdd;
+    public GameObject[] teamCats;  // Array of cats, same length as number of containers
 
     private void Awake()
     {
@@ -41,7 +42,7 @@ public class TeamManager : MonoBehaviour
 
     // Add a cat unit to the team
 
-    public void AddCatToWorld(CatRuntimeData runtimeCat) 
+    public void AddCatToWorld(CatUnit newlyAddedCat) 
     {
         if (currentTeamSize >= availableTeamSlots)
         {
@@ -51,29 +52,33 @@ public class TeamManager : MonoBehaviour
 
         //  3. Instantiate the prefab in the scene
         GameObject newCatGO = Instantiate(catTemplatePrefab); //instantiate cat in world
-        newCatGO.name = runtimeCat.template.itemName; //rename GO
+        newCatGO.name = newlyAddedCat.runtimeData.template.itemName; //rename GO
 
         currentTeamSize++;
 
         CatUnit newCatUnit = newCatGO.GetComponent<CatUnit>();
-        newCatUnit.runtimeData = runtimeCat; // link runtime data
+        //newCatUnit.runtimeData = newlyAddedCat; // link runtime data
 
-        runtimeCat.template.name = runtimeCat.template.itemName; //name data
+        //runtimeCat.template.name = runtimeCat.template.itemName; //name data
 
-        newCatUnit.AssignCat(runtimeCat); // Initialize cat stats
+        //newCatUnit.AssignCat(runtimeCat); // Initialize cat stats
 
         AddCatToTeam(newCatUnit.gameObject);
         //Get data from Inventory Team
     }
 
-    public void RemoveCatFromWorld(GameObject Cat)
-    {
+    void UpdateCatTeam() // called when item placed in teamslot. 
+    { 
+        //read for empty null slots. return if empty.
+        //if there are any slot that are not null and is a cat.
+        //check for which slot the cat has been added to. and then AddCatToTeam() to test flow. 
 
     }
 
-    public GameObject[] teamCats;  // Array of cats, same length as number of containers
 
-    public void AddCatToTeam(GameObject cat)
+
+
+    public void AddCatToTeam(GameObject cat)  // Team is not empty & ONLY to be added into the world when battle begin 
     {
         var positionManager = PositionManagerV1.instance;
         if (positionManager == null)
@@ -120,7 +125,7 @@ public class TeamManager : MonoBehaviour
                 // Trigger event
                 OnTeamAdd?.Invoke();
 
-                // Update UI
+
                 CatIconUI.instance.IntializeCatIcon();
 
                 Debug.Log($"Added {cat.name} to container {container.containerIndex} (teamCats index {arrayIndex})");
@@ -128,6 +133,8 @@ public class TeamManager : MonoBehaviour
                 return;
             }
         }
+
+
 
         Debug.LogWarning("No empty container found for cat!");
     }
