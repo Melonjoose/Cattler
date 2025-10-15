@@ -4,11 +4,13 @@ using UnityEngine;
 public class MasterTester : MonoBehaviour
 {
     public GameObject AdminButtons;
+    public GameManager GameManager;
+    public GameObject ES;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        GameManager = GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -52,6 +54,28 @@ public class MasterTester : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.O))
         {
             EnemySpawner.instance.SpawnEnemy(EnemySpawner.instance.spawnableList[0]);
+        }
+
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            //openInventory
+            GameManager.OpenPage("Inventory");
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            //openInventory
+            GameManager.CloseCurrentPage();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (ES.activeSelf)//if it is active,
+            {
+                ES.SetActive(false);
+            }
+            else
+            {
+                ES.SetActive(true);
+            }
         }
     }
 

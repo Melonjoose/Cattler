@@ -31,3 +31,12 @@ Objects -> Instantiated from class. (individual entity itself)
 private int FindNearestPositionIndex(Vector3 mouseWorld, out CatUnit otherCat)
 
 //KNOW about out
+
+**Confirm subscription happens before `Consume()` is invoked**. Add logs:
+
+- In each subclass `OnEnable()` / `Start()` print `Subscribed`.
+    
+- In `ConsumableItem.Consume()` print before `onConsumed?.Invoke()` (you already have VFX log).
+    
+- If “Subscribed” doesn’t appear before Consume, the listener isn’t attached.
+//CAN ADD LISTENER CHECKER

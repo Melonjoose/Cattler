@@ -73,7 +73,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void SnapToNearestSlot()
     {
-        SnappableLocation[] slots = FindObjectsOfType<SnappableLocation>();
+        SnappableLocation[] slots = FindObjectsByType<SnappableLocation>(FindObjectsSortMode.None);
 
         SnappableLocation nearestSlot = null;
         float nearestDistance = float.MaxValue;

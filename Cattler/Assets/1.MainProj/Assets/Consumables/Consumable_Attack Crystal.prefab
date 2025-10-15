@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 6599754367527754741}
   - component: {fileID: 5068631874440071538}
   - component: {fileID: 235337284978740961}
+  - component: {fileID: 5546284264803971323}
   - component: {fileID: -2414179100548080445}
   - component: {fileID: -4132794197872657065}
   m_Layer: 7
-  m_Name: AttackPotion
+  m_Name: Consumable_Attack Crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7763498119798118100, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7e52b36d16234846aa2b254f13ee0e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -163,12 +164,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302557032810016064}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c134fbb9e403ad4a91d9d0539ce5d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   consumableData: {fileID: 11400000, guid: 89c9676e0b84bd14aae96b2240d1a9ad, type: 2}
+  cat: {fileID: 0}
+--- !u!114 &5546284264803971323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302557032810016064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9dcfc8197d9d924f9f439ff4198e3b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumableData: {fileID: 11400000, guid: 89c9676e0b84bd14aae96b2240d1a9ad, type: 2}
+  cat: {fileID: 0}
 --- !u!114 &-2414179100548080445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,3 +210,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61b7c8f7c4a5c345a4040ffd5f4bd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followSpeed: 10

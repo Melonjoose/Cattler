@@ -1,9 +1,4 @@
-﻿using NUnit.Framework.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using UnityEditor.Rendering.LookDev;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -136,70 +131,6 @@ public class CatIconUI : MonoBehaviour
             }
         }
     }
-    /*
-    public void MoveCatIconTo(int catIconIndex, int positionIndex)
-    {
-        // safety checks
-        if (uiSlots == null || uiSlots.Length == 0)
-        {
-            Debug.LogWarning("uiSlots not set up");
-            return;
-        }
-        if (positionIndex < 0 || positionIndex >= iconPosition.Count)
-        {
-            Debug.LogWarning($"Invalid positionIndex {positionIndex}");
-            return;
-        }
-
-        // 1) find the uiSlot that currently represents the cat with catIndex == catIconIndex
-        CatIconSlot foundSlot = null;
-        int foundIndexInArray = -1;
-        for (int i = 0; i < uiSlots.Length; i++)
-        {
-            if (uiSlots[i] != null && uiSlots[i].catIndex == catIconIndex)
-            {
-                foundSlot = uiSlots[i];
-                foundIndexInArray = i;
-                break;
-            }
-        }
-
-        if (foundSlot == null)
-        {
-            Debug.LogWarning($"No uiSlot found for catIndex {catIconIndex}");
-            return;
-        }
-
-        // 2) get transforms
-        RectTransform movingIconRect = foundSlot.icon?.GetComponent<RectTransform>();
-        RectTransform targetRect = iconPosition[positionIndex] as RectTransform;
-
-        if (movingIconRect == null || targetRect == null)
-        {
-            Debug.LogWarning("Missing RectTransforms on icon or target.");
-            return;
-        }
-
-        // 3) convert target position into the moving icon's parent local space and set it
-        // This works even if the two objects live under different parents/canvases.
-        Vector3 worldTarget = targetRect.TransformPoint(Vector3.zero);
-        Vector3 localTarget = movingIconRect.parent.InverseTransformPoint(worldTarget);
-        //movingIconRect.localPosition = localTarget;
-        LeanTween.moveLocal(movingIconRect.gameObject, localTarget, 0.25f).setEase(LeanTweenType.easeInOutQuad);
-
-        // 4) update bookkeeping so the slot knows its new logical position
-        // set both the iconIndex (where it visually sits) and catIndex (which cat it represents)
-        foundSlot.iconIndex = positionIndex;
-        // if you want catIndex to change to the same as iconIndex (rare), uncomment:
-        // foundSlot.catIndex = positionIndex;
-
-
-        Debug.Log($"Moved uiSlot[{foundIndexInArray}] (catIndex {catIconIndex}) -> position {positionIndex}");
-    }*/
-
-
-
-
 
 
 }

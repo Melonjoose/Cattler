@@ -69,6 +69,11 @@ public class Inventory : MonoBehaviour
         else if(slot.slotType == SnappableLocation.SlotType.TeamList)
         {
             teamList.Add(Item);
+            if (Item.GetComponent<CatUnit>() != null)
+            {
+                CatUnit catUnit = Item.GetComponent<CatUnit>();
+                TeamManager.instance.AddCatToWorld(catUnit);
+            }
             //Debug.Log($"Added {Item} to Teamlist.");
             //Item.transform.scale(X1)
         }
@@ -96,7 +101,8 @@ public class Inventory : MonoBehaviour
             prefab.AddComponent<CatUnit>(); //is working.
             CatUnit newCatUnit = prefab.GetComponent<CatUnit>();
             //Add ItemData to CatUnit.template
-            newCatUnit.runtimeData.template = catData; //still empty and not linked. null reference?
+            newCatUnit.runtimeData = new CatRuntimeData(catData);
+            //newCatUnit.runtimeData.template = catData; //still empty and not linked. null reference?
             //Instantiate and add it into the Catunit.runtimedata.
         }
     }

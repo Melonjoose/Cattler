@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 5949029776931679301}
   - component: {fileID: 646697982409018096}
   - component: {fileID: 264290960892310411}
+  - component: {fileID: 9174061173191080292}
   - component: {fileID: -3487885070277928809}
   - component: {fileID: -84960310980982749}
   m_Layer: 7
-  m_Name: HealthPotion
+  m_Name: Consumable_Health Crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1018383391595562092, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 73cb5f7a8f5e2ee4cacd9033853d65cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -163,12 +164,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930171780827623856}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c134fbb9e403ad4a91d9d0539ce5d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   consumableData: {fileID: 11400000, guid: 286284ff2debb494bbc3f16e51c61c26, type: 2}
+  cat: {fileID: 0}
+--- !u!114 &9174061173191080292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930171780827623856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a25d8d06283b443a1d61d3c2c2957c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumableData: {fileID: 11400000, guid: 286284ff2debb494bbc3f16e51c61c26, type: 2}
+  cat: {fileID: 0}
 --- !u!114 &-3487885070277928809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,3 +210,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61b7c8f7c4a5c345a4040ffd5f4bd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followSpeed: 10

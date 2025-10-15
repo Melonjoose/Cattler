@@ -78,8 +78,6 @@ public class CatMovement : MonoBehaviour
         catIndex = index;
     }
 
-
-
     void Walk(int targetindex)
     {
         targetLocation = worldPositions[targetindex]; // 0 - 4

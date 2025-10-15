@@ -15,6 +15,11 @@ public class SummonManager : MonoBehaviour
     public GachaPoolEntry[] gachaPool; // assign in inspector
     public event Action onGacha;
 
+    private void OnEnable()
+    {
+        onGacha += GachaSequence;
+    }
+
     private void Awake()
     {
         instance = this;
@@ -62,6 +67,12 @@ public class SummonManager : MonoBehaviour
 
         Debug.Log($"Summoned {rolledCat.itemName}!");
         //send to Inventory to add into inventory
+        onGacha?.Invoke();
+    }
+
+    void GachaSequence()
+    {
+        Debug.Log("Gacha sequence playing...");
     }
 
 

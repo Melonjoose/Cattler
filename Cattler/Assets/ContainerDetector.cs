@@ -19,18 +19,17 @@ public class ContainerDetector : MonoBehaviour
     {
         occupyingCat = enteringCat;
         occupyingCat.CatDeath += RemoveCatFromContainer; // Subscribe to CatDeath event // so when cat dies. run RemoveCatFromContainer
-        occupyingCat.catMovement.onMove += RemoveCatFromContainer;
+        occupyingCat.catMovement.onMove += RemoveCatFromContainer; //subscribe the cat inside this container. //when Catmovement.onMove is triggered.
         OnCatEnter?.Invoke(occupyingCat);
         Debug.Log($"Cat {occupyingCat.runtimeData.template.name} entered container {containerIndex}");
     }
 
-    public void RemoveCatFromContainer()
+    public void RemoveCatFromContainer() //when catMovement.onMove, this function is called.
     {
         if (occupyingCat != null)
         {
-            occupyingCat = null;
-
-            occupyingCat.catMovement.onMove -= RemoveCatFromContainer;
+            occupyingCat.catMovement.onMove -= RemoveCatFromContainer; //unsubscribe this first.
+            occupyingCat = null; //make occupying null.
 
             OnCatExit?.Invoke(occupyingCat);
             Debug.Log($"Cat {occupyingCat.runtimeData.template.name} exited container {containerIndex}");

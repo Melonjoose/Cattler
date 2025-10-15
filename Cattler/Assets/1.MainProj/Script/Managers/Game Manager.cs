@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //public static GameManager instance; 
+
     [System.Serializable]
     public class Page
     {
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //instance = this;
         CloseAllPages();
     }
 

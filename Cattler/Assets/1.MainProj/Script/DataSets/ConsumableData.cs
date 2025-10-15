@@ -4,5 +4,4 @@ using UnityEngine;
 public class ConsumableData : ItemData
 {
     public string itemNameShort;
-    public GameObject prefab;
 }

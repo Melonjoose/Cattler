@@ -401,6 +401,8 @@ MonoBehaviour:
     dropChance: 10
   - item: {fileID: 1930171780827623856, guid: 210b1424d1a17fd448715829c1f8b455, type: 3}
     dropChance: 90
+  - item: {fileID: 1930171780827623856, guid: c67e5a5c8c7bbda4f9533e145fb90fc2, type: 3}
+    dropChance: 40
   chanceToDropNothing: 0.1
   InkDrop: 10
   CoreDrop: 0

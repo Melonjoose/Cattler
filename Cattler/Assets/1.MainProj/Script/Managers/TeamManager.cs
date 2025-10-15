@@ -26,10 +26,7 @@ public class TeamManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            SummonManager.instance.Summon();
-        }
+
     }
 
     // Detect which cats are in the team (from inventory placeholders)
@@ -57,14 +54,10 @@ public class TeamManager : MonoBehaviour
         currentTeamSize++;
 
         CatUnit newCatUnit = newCatGO.GetComponent<CatUnit>();
-        //newCatUnit.runtimeData = newlyAddedCat; // link runtime data
-
-        //runtimeCat.template.name = runtimeCat.template.itemName; //name data
-
-        //newCatUnit.AssignCat(runtimeCat); // Initialize cat stats
-
+        newCatUnit.runtimeData = newlyAddedCat.runtimeData; // link runtime data. Get from TeamManager.
+        SpriteRenderer catSprite = newCatUnit.GetComponent<SpriteRenderer>();
+        catSprite.sprite = newCatUnit.runtimeData.template.icon;
         AddCatToTeam(newCatUnit.gameObject);
-        //Get data from Inventory Team
     }
 
     void UpdateCatTeam() // called when item placed in teamslot. 
@@ -75,7 +68,10 @@ public class TeamManager : MonoBehaviour
 
     }
 
+    void AddCatToTeamCatList()
+    {
 
+    } 
 
 
     public void AddCatToTeam(GameObject cat)  // Team is not empty & ONLY to be added into the world when battle begin 

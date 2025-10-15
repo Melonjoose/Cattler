@@ -49,4 +49,9 @@ public class Healthbar : MonoBehaviour
             healthBarUIElement = null;
         }
     }
+
+    public void UpdateHealthBarUI()
+    {
+
+    }
 }

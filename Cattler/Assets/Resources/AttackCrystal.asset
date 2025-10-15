@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 626546a8f3a11b64f84fc7e7cc89e5c6, type: 3}
-  m_Name: AttackPotion
+  m_Name: AttackCrystal
   m_EditorClassIdentifier: 
-  itemName: AttackPotion
-  itemNameShort: ATK
-  icon: {fileID: 7763498119798118100, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
-  description: Increase ATK by 1
   prefab: {fileID: 0}
+  prefab2: {fileID: 0}
+  itemName: Attack Crystal
+  icon: {fileID: 21300000, guid: b7e52b36d16234846aa2b254f13ee0e3, type: 3}
+  type: 0
+  description: Increase ATK by 1
   value: 1
+  itemNameShort: ATK
