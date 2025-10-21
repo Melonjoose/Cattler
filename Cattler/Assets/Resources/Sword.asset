@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b62d4114a6764024295b118ad43d00ae, type: 3}
-  m_Name: Weapon
+  m_Name: Sword
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   prefab2: {fileID: 0}
-  itemName: 
-  icon: {fileID: 0}
+  itemName: Basic Sword
+  icon: {fileID: -4330735260778472016, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
   type: 1
-  description: 
-  value: 0
-  health: 0
-  attackPower: 0
-  attackSpeed: 0
-  attackRange: 0
+  description: Basic and Reliable
+  value: 1
+  health: 3
+  attackPower: 3
+  attackSpeed: 1
+  attackRange: 1
   movementSpeed: 0

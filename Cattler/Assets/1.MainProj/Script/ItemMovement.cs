@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ItemMovement : MonoBehaviour
 {
-    public CapsuleCollider2D col;
+    public Collider2D col;
     public void Start()
     {
-        col = GetComponent<CapsuleCollider2D>();
+        col = GetComponent<Collider2D>();
     }
 
     private void Update()

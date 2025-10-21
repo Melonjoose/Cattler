@@ -20,7 +20,7 @@ public class CatRuntimeData
     public CatRuntimeData(CatData template)
     {
         this.template = template;
-        
+
         this.currentHealth = template.baseHealth;
         this.maxHealth = template.baseHealth;
         this.level = template.level;

@@ -185,8 +185,8 @@ RectTransform:
   - {fileID: 5811881645784101569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -315, y: 78}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -228,6 +228,7 @@ MonoBehaviour:
   itemType: 0
   originalSlot: {fileID: 0}
   currentSlot: {fileID: 0}
+  itemUI: {fileID: 0}
 --- !u!225 &4425046505213308379
 CanvasGroup:
   m_ObjectHideFlags: 0

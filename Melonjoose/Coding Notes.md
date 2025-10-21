@@ -5,6 +5,8 @@
 | Plain `class` / `struct` | Pure data   | In memory          | Runtime instances       |
 |                          |             |                    |                         |
 
+    public virtual void Die()  
+    {   UnHookCat(); //plays this IF no override
 
     public override void Die()  
     {
