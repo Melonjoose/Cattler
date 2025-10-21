@@ -78,6 +78,7 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         // Parent to this slot (UI friendly)
         item.transform.SetParent(transform, false);
         item.transform.localPosition = Vector3.zero;
+        item.transform.localScale = transform.localScale;
 
         item.SetSlot(this);
 
@@ -90,8 +91,8 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
     public void RemoveItem()
     {
         isOccupied = false;
+        //currentItem.transform.localScale = Vector3.one;
         currentItem = null;
-
         OnItemRemoved?.Invoke(this);
     }
 

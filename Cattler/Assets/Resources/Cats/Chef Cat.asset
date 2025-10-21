@@ -20,6 +20,8 @@ MonoBehaviour:
   description: A Chef Cat that preps meals for the team!
   value: 2
   unitType: 2 Star Cat
+  skillName: Cook
+  skillDesc: Cook a meal every 15 seconds that heal cats!
   level: 1
   exp: 0
   baseHealth: 10

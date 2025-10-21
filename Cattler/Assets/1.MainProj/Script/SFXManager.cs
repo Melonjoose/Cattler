@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SFXManager : MonoBehaviour
+public class StatFXManager : MonoBehaviour
 {
-    public static SFXManager instance;
+    public static StatFXManager instance;
     public GameObject SFXPoolContainer;
     public int poolSize = 30;
 
-    public SFX SFXPrefab;
+    public StatFX SFXPrefab;
 
-    private Queue<SFX> pool = new Queue<SFX>();
+    private Queue<StatFX> pool = new Queue<StatFX>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Awake()
@@ -18,28 +18,28 @@ public class SFXManager : MonoBehaviour
 
         for (int i = 0; i < poolSize; i++)
         {
-            SFX sfx = Instantiate(SFXPrefab, SFXPoolContainer.transform);
+            StatFX sfx = Instantiate(SFXPrefab, SFXPoolContainer.transform);
             sfx.gameObject.SetActive(false);
             pool.Enqueue(sfx);
         }
     }
 
-    public SFX GetFromPool()
+    public StatFX GetFromPool()
     {
         if (pool.Count > 0)
         {
-            SFX sfx = pool.Dequeue();
+            StatFX sfx = pool.Dequeue();
             sfx.gameObject.SetActive(true);
             return sfx;
         }
         else
         {
-            SFX sfx = Instantiate(SFXPrefab, SFXPoolContainer.transform);
+            StatFX sfx = Instantiate(SFXPrefab, SFXPoolContainer.transform);
             return sfx;
         }
     }
 
-    public void ReturnToPool(SFX sfx)
+    public void ReturnToPool(StatFX sfx)
     {
         sfx.transform.SetParent(SFXPoolContainer.transform); // Re-parent under DamageNumberPool
         sfx.gameObject.SetActive(false);

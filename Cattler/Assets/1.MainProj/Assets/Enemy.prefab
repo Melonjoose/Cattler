@@ -398,9 +398,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootTable:
   - item: {fileID: 302557032810016064, guid: 7ac2dd59924489d478005bdbbcd2a5f7, type: 3}
-    dropChance: 10
+    dropChance: 20
   - item: {fileID: 1930171780827623856, guid: 210b1424d1a17fd448715829c1f8b455, type: 3}
-    dropChance: 90
+    dropChance: 20
   - item: {fileID: 1930171780827623856, guid: c67e5a5c8c7bbda4f9533e145fb90fc2, type: 3}
     dropChance: 40
   chanceToDropNothing: 0.1

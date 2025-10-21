@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class SFX : MonoBehaviour
+public class StatFX : MonoBehaviour
 {
     public TextMeshPro text;
     public SpriteRenderer spriteRenderer;
@@ -52,6 +52,6 @@ public class SFX : MonoBehaviour
             yield return null;
         }
 
-        SFXManager.instance.ReturnToPool(this);
+        StatFXManager.instance.ReturnToPool(this);
     }
 }

@@ -63,8 +63,6 @@ public class Inventory : MonoBehaviour
         if(slot.slotType == SnappableLocation.SlotType.InventoryList)
         {
             inventoryList.Add(Item);
-            //Item.transform.scale(X1)
-            //Debug.Log($"Added {Item} to inventory.");
         }
         else if(slot.slotType == SnappableLocation.SlotType.TeamList)
         {
@@ -74,14 +72,12 @@ public class Inventory : MonoBehaviour
                 CatUnit catUnit = Item.GetComponent<CatUnit>();
                 TeamManager.instance.AddCatToWorld(catUnit);
             }
-            //Debug.Log($"Added {Item} to Teamlist.");
-            //Item.transform.scale(X1)
+
         }
         else if(slot.slotType == SnappableLocation.SlotType.CharacterPreview)
         {
             previewList.Add(Item);
-            //Item.transform.scale(X3)
-            //Debug.Log($"Added {Item} to CharacterPreview.");
+
         }
     }
 

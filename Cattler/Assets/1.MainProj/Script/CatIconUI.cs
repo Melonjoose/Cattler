@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,7 @@ public class CatIconUI : MonoBehaviour
 
     [Header("Containers")]
     public GameObject[] catContainer; // assign containers in Inspector 
+
 
 
     public void OnEnable()
@@ -118,8 +120,6 @@ public class CatIconUI : MonoBehaviour
             }
         }
     }
-
-
     void SyncIconToCatPosition()
     {
         // Sync iconIndex to catIndex for each slot if not already matching
@@ -132,5 +132,5 @@ public class CatIconUI : MonoBehaviour
         }
     }
 
-
+ 
 }

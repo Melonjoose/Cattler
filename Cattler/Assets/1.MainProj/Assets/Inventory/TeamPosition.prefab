@@ -103,7 +103,7 @@ RectTransform:
   m_GameObject: {fileID: 3023692388128447766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0001249, y: 1.0001249, z: 1.0001249}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8463837823748627241}
@@ -166,6 +166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentItem: {fileID: 0}
-  SlotIndex: 0
+  SlotIndex: 4
   allowedTypes: 00000000
   slotType: 1

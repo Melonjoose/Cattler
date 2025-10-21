@@ -30,7 +30,7 @@ public class HealingPotion : ConsumableItem
     }
     private void VFX()
     {
-        SFX popup = SFXManager.instance.GetFromPool();
+        StatFX popup = StatFXManager.instance.GetFromPool();
         popup.transform.position = this.transform.position;
         popup.SetText(healthToRecover, consumableData.itemNameShort);
         popup.SetIcon(consumableData.icon);

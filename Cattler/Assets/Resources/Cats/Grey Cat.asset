@@ -20,6 +20,8 @@ MonoBehaviour:
   description: A Basic Grey Cat
   value: 1
   unitType: 1 Star Cat
+  skillName: Nil
+  skillDesc: No Skill
   level: 1
   exp: 0
   baseHealth: 5

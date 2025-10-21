@@ -30,7 +30,7 @@ public class HealthCrystal : ConsumableItem
     }
     private void VFX()
     {
-        SFX popup = SFXManager.instance.GetFromPool();
+        StatFX popup = StatFXManager.instance.GetFromPool();
         popup.transform.position = this.transform.position;
         popup.SetText(consumableData.value, consumableData.itemNameShort);
         popup.SetIcon(consumableData.icon);

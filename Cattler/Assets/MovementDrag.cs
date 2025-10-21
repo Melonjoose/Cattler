@@ -42,6 +42,9 @@ public class MovementDrag : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        //realised clicking on target point trigger draggable.. Need to determine specifics like ONLY clicking on catUnit, then can trigger onMouseDrag. **need to work on.
+
+
         if (!dragging) return;
 
         // Draw line from object to arrow tip at mouse position.

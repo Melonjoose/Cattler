@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using static SnappableLocation;
 
-public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler , IPointerEnterHandler, IPointerExitHandler
 {
     private RectTransform rectTransform;
     private Canvas parentCanvas;   // renamed to avoid ambiguity
@@ -14,8 +14,11 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public SnappableLocation originalSlot;
     public SnappableLocation currentSlot;
 
+    [SerializeField] private ItemUI itemUI;
+    
     private void Awake()
     {
+        itemUI = GetComponent<ItemUI>();
         canvasGroup = GetComponent<CanvasGroup>();
         parentCanvas = GetComponentInParent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
@@ -26,6 +29,29 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         // Snap to nearest slot at start
         SnapToNearestSlot();
         originalParent = transform.parent;
+    }
+
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        DisplayItemManager.instance.ShowDisplayUI(rectTransform);
+        Debug.Log("MouseHover");
+        if (itemUI.itemData != null)
+        {
+            if(itemUI.itemData is CatData)
+            {
+                CatUnit catUnit = GetComponent<CatUnit>();
+                if (catUnit != null)
+                {
+                    DisplayItemManager.instance.displayItemUI.Show(this.gameObject);
+                }
+            }
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        DisplayItemManager.instance.HideDisplayUI();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -60,6 +86,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         {
             currentSlot = originalSlot;
             transform.SetParent(originalParent, false);
+            transform.transform.localScale = originalParent.localScale;
             transform.localPosition = Vector3.zero;
             currentSlot?.PlaceItem(this);
         }
