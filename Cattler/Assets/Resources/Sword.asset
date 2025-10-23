@@ -19,6 +19,8 @@ MonoBehaviour:
   type: 1
   description: Basic and Reliable
   value: 1
+  AbilityName: Slash
+  AbilityDesc: A short slash that attack all enemy infront of the cat.
   health: 3
   attackPower: 3
   attackSpeed: 1

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -72,7 +73,6 @@ public class Inventory : MonoBehaviour
                 CatUnit catUnit = Item.GetComponent<CatUnit>();
                 TeamManager.instance.AddCatToWorld(catUnit);
             }
-
         }
         else if(slot.slotType == SnappableLocation.SlotType.CharacterPreview)
         {
@@ -94,12 +94,39 @@ public class Inventory : MonoBehaviour
             newItem.itemData = catData;
             newItem.iconImage.sprite = catData.icon;
             //create CatUnit.cs
-            prefab.AddComponent<CatUnit>(); //is working.
+            prefab.AddComponent<CatUnit>();
             CatUnit newCatUnit = prefab.GetComponent<CatUnit>();
             //Add ItemData to CatUnit.template
             newCatUnit.runtimeData = new CatRuntimeData(catData);
             //newCatUnit.runtimeData.template = catData; //still empty and not linked. null reference?
             //Instantiate and add it into the Catunit.runtimedata.
+        }
+    }
+
+    public void InstantiateNewWeapon(Item item)
+    {
+        if (inventoryList.Count >= currentCapacity) { Debug.LogWarning("Inventory full"); return; }
+        SnappableLocation emptySlot = GetFirstEmptySlot();
+        GameObject prefab = Instantiate(itemPlaceholder, emptySlot.transform);
+        ItemUI newItem = prefab.GetComponent<ItemUI>();
+
+        InventoryIcon newItemIcon = prefab.GetComponent<InventoryIcon>();
+        newItemIcon.itemType = SnappableLocation.ItemType.Weapon;
+
+        ItemType itemType = item.runtimeData.template.type;
+        {
+            prefab.name = item.runtimeData.template.itemName;
+            newItem.itemData = item.runtimeData.template;
+            newItem.iconImage.sprite = item.runtimeData.template.icon;
+            prefab.AddComponent<Item>();
+            Item newWeaponItem = prefab.GetComponent<Item>();
+            newWeaponItem.runtimeData = new ItemRuntimeData(item.runtimeData.template); //create new runtimedata.
+
+            newWeaponItem.runtimeData.health = item.runtimeData.health; //inherit item's randomized stats.
+            newWeaponItem.runtimeData.attackPower = item.runtimeData.attackPower;
+            newWeaponItem.runtimeData.attackSpeed = item.runtimeData.attackSpeed;
+            newWeaponItem.runtimeData.attackRange = item.runtimeData.attackRange;
+            newWeaponItem.runtimeData.movementSpeed = item.runtimeData.movementSpeed;
         }
     }
 
@@ -187,11 +214,6 @@ public class Inventory : MonoBehaviour
     {
         Debug.Log($"Item placed in slot {slot.name}");
         Debug.Log($"Slot index is {slot.SlotIndex}");
-        if (slot.slotType == SnappableLocation.SlotType.TeamList) 
-        {
-
-        }
-
     }
 
     private void OnItemRemoved(SnappableLocation slot)
