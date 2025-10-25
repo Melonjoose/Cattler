@@ -35,7 +35,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public void OnPointerEnter(PointerEventData eventData)
     {
         DisplayItemManager.instance.ShowDisplayUI(rectTransform);
-        Debug.Log("MouseHover");
+        //Debug.Log("MouseHover");
         if (itemUI.itemData != null)
         {
             if(itemUI.itemData is CatData)
@@ -46,6 +46,17 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
                     DisplayItemManager.instance.displayItemUI.Show(this.gameObject);
                 }
             }
+
+            if(itemUI.itemData is WeaponData)
+            {
+                Item weapon = GetComponent<Item>();
+                if (weapon != null)
+                {
+                    DisplayItemManager.instance.displayItemUI.Show(this.gameObject);
+                }
+            }
+
+            //armor
         }
     }
 
@@ -85,9 +96,9 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         if (transform.parent == transform.root && originalParent != null)
         {
             currentSlot = originalSlot;
-            transform.SetParent(originalParent, false);
-            transform.transform.localScale = originalParent.localScale;
-            transform.localPosition = Vector3.zero;
+            //transform.SetParent(originalParent, false);
+            //transform.transform.localScale = originalParent.localScale;
+            //transform.localPosition = Vector3.zero;
             currentSlot?.PlaceItem(this);
         }
 

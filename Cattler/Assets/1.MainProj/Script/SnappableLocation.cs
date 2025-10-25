@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEditor.Progress;
 
 public class SnappableLocation : MonoBehaviour, IDropHandler
 {
@@ -75,18 +76,40 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         currentItem = item;
         isOccupied = true;
 
-        // Parent to this slot (UI friendly)
-        item.transform.SetParent(transform, false);
-        item.transform.localPosition = Vector3.zero;
-        item.transform.localScale = transform.localScale;
+        // Store original world position
+        Vector3 startPos = item.transform.position;
+        Vector3 endPos = transform.position;
+        Vector3 targetScale = transform.localScale;
+
+        // Temporarily keep world position before parenting
+        //item.transform.SetParent(transform.parent, true);
+        Transform tweenParent = Inventory.instance.transform;
+        item.transform.SetParent(transform.parent, true);
+
+        // Animate both movement and scale together
+        float tweenDuration = 0.3f;
+
+        LeanTween.move(item.gameObject, endPos, tweenDuration)
+            .setEase(LeanTweenType.easeInOutQuad);
+
+        LeanTween.scale(item.gameObject, targetScale, tweenDuration)
+            .setEase(LeanTweenType.easeInBounce) // gives it a soft bounce
+            .setOnComplete(() =>
+            {
+                // After animation finishes, parent to slot
+                item.transform.SetParent(transform, false);
+                item.transform.localPosition = Vector3.zero;
+                item.transform.localScale = targetScale;
+            });
 
         item.SetSlot(this);
-
+        
         OnItemPlaced?.Invoke(this); // Notify listeners
 
-        // Finally, add it to the new slot
+        if (this.CompareTag("CatPreviewSlot")) { SelectedItemDisplayUI.instance.ShowCatStats(this); }
         Inventory.instance.Add(item.gameObject, this);
     }
+
 
     public void RemoveItem()
     {
@@ -94,6 +117,8 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         //currentItem.transform.localScale = Vector3.one;
         currentItem = null;
         OnItemRemoved?.Invoke(this);
+        if (this.CompareTag("CatPreviewSlot")) { SelectedItemDisplayUI.instance.ShowCatStats(this); }
+        
     }
 
     /// <summary>
@@ -131,6 +156,8 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         }
         isOccupied = true;
         currentItem = draggedItem;
+
+        if (this.CompareTag("CatPreviewSlot")) { SelectedItemDisplayUI.instance.ShowCatStats(this); }
     }
 
 
@@ -144,7 +171,4 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         return false;
     }
 
-
-    //onItemPlaced.
-    //if slottype is TeamList, check this location's index.
 }

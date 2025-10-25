@@ -17,12 +17,25 @@ public class ContainerDetector : MonoBehaviour
     //using Adding/Removing function to detect cats entering/exiting container
     public void AddCatToContainer(CatUnit enteringCat)
     {
+        if (enteringCat == null)
+        {
+            Debug.LogError($"AddCatToContainer called with null CatUnit in container {containerIndex}");
+            return;
+        }
+
         occupyingCat = enteringCat;
-        occupyingCat.CatDeath += RemoveCatFromContainer; // Subscribe to CatDeath event // so when cat dies. run RemoveCatFromContainer
-        occupyingCat.catMovement.onMove += RemoveCatFromContainer; //subscribe the cat inside this container. //when Catmovement.onMove is triggered.
+
+        if (occupyingCat.catMovement == null)
+            Debug.LogError($"Cat {occupyingCat.name} has no CatMovement component!");
+
+        // Subscribe safely
+        //occupyingCat.CatDeath += RemoveCatFromContainer;
+        //occupyingCat.catMovement.onMove += RemoveCatFromContainer;
+
         OnCatEnter?.Invoke(occupyingCat);
-        Debug.Log($"Cat {occupyingCat.runtimeData.template.name} entered container {containerIndex}");
+        Debug.Log($"Cat {occupyingCat.runtimeData?.template?.name ?? "Unnamed"} entered container {containerIndex}");
     }
+
 
     public void RemoveCatFromContainer() //when catMovement.onMove, this function is called.
     {
@@ -36,31 +49,6 @@ public class ContainerDetector : MonoBehaviour
         }
 
     }
-    private void OnTriggerEnter2D(Collider2D collision) // not really working. It's becuz
-    {
-        if (occupyingCat == null)
-            return; // No cat assigned yet, skip
 
-        // Check if the collider belongs to the occupyingCat
-        if (collision.gameObject == occupyingCat.gameObject)
-        {
-            CatMovement catMovement = occupyingCat.GetComponent<CatMovement>();
-            if (catMovement != null)
-            {
-                catMovement.inPosition = true;
-                Debug.Log($"{occupyingCat.name} reached its container position!");
-            }
-        }
-    }
-    /*
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Cat"))
-        {
-            if (occupyingCat == collision.GetComponent<CatUnit>())
-                occupyingCat = null;
-        }
-    }
-    */
     public bool IsOccupied => occupyingCat != null;
 }

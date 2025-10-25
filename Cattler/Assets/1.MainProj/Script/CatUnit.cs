@@ -18,7 +18,7 @@ public class CatUnit : MonoBehaviour
 
     public bool canAttack = true;
 
-    public Action CatDeath;
+    public event Action CatDeath;
 
     private void Start()
     {   

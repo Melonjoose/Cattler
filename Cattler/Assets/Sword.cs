@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Sword : Item
 {
+    public GameObject slash; //prefab
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +22,15 @@ public class Sword : Item
     }
     void Slash()
     {
-        //add Slash Effect here.
+        Vector3 spawnloc = catUnit.transform.position + Vector3.right; // Vector3(1,0,0) also works
+        GameObject newSlash = Instantiate(slash, spawnloc, transform.rotation); // use rotation, not transform
+        Slash SlashInfo = newSlash.GetComponent<Slash>();
+        CatUnit catInfo = catUnit.GetComponent<CatUnit>();
+        SlashInfo.CatUnit = catInfo;
+    }
+
+    public void EquipSword(CatUnit user) 
+    {
+        catUnit = user;
     }
 }

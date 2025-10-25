@@ -4,25 +4,25 @@ using UnityEngine.EventSystems;
 public class Skill_Button : MonoBehaviour // add handlers
 
 {
-    public GameObject cat;
+    public CatUnit catUnit;
     public GameObject skillButton;
     private RectTransform buttonRect;
     public bool isRevealed = false;
     public GameObject slash;
     void Start()
     {
-        skillButton.transform.localPosition = Vector3.zero;
-        buttonRect = skillButton.GetComponent<RectTransform>();
-        HideButton();
+        //skillButton.transform.localPosition = Vector3.zero;
+        //buttonRect = skillButton.GetComponent<RectTransform>();
+        //HideButton();
     }
 
     // Update is called once per frame
     void Update()
     {
-        DetectCat();
+
     }
 
-    public void CatIconOnClicked()
+    public void RevealSkillButton()
     {
         if (isRevealed == false)
         {
@@ -39,15 +39,14 @@ public class Skill_Button : MonoBehaviour // add handlers
 
     public void ClickOnSkill()
     {
-        Vector3 spawnloc = cat.transform.position + Vector3.right; // Vector3(1,0,0) also works
+        Vector3 spawnloc = catUnit.transform.position + Vector3.right; // Vector3(1,0,0) also works
         GameObject newSlash = Instantiate(slash, spawnloc, transform.rotation); // use rotation, not transform
         Slash SlashInfo = newSlash.GetComponent<Slash>();
-        CatUnit catInfo = cat.GetComponent<CatUnit>();
+        CatUnit catInfo = catUnit.GetComponent<CatUnit>();
         SlashInfo.CatUnit = catInfo;
         HideButton();
 
     }
-
 
     public void HideButton()
     {
@@ -56,11 +55,4 @@ public class Skill_Button : MonoBehaviour // add handlers
         skillButton.gameObject.SetActive(false);
     }
 
-    void DetectCat()
-    {
-        if(cat == null)
-        {
-            cat = GameObject.Find("Grey Cat");
-        }
-    }
 }

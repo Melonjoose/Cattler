@@ -51,14 +51,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            InstantiateNewCat(testItem as CatData);
-        }
-    }
-
     public void Add(GameObject Item , SnappableLocation slot)  //when added new or when moving items around
     {
         if(slot.slotType == SnappableLocation.SlotType.InventoryList)
@@ -80,7 +72,6 @@ public class Inventory : MonoBehaviour
 
         }
     }
-
     public void InstantiateNewCat(CatData catData)
     {
         if (inventoryList.Count >= currentCapacity) { Debug.LogWarning("Inventory full"); return; }
@@ -102,7 +93,6 @@ public class Inventory : MonoBehaviour
             //Instantiate and add it into the Catunit.runtimedata.
         }
     }
-
     public void InstantiateNewWeapon(Item item)
     {
         if (inventoryList.Count >= currentCapacity) { Debug.LogWarning("Inventory full"); return; }

@@ -5,6 +5,8 @@ public class Item : MonoBehaviour
     public Collider2D collider2D;
     public ItemRuntimeData runtimeData;
 
+    public CatUnit catUnit; //cat that is equipping this item.
+
     private void Awake()
     {
         //if this gameobject has collider2D, get Collider2D and add it to collider2D

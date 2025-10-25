@@ -7,10 +7,15 @@ public class SelectedItemDisplayUI : MonoBehaviour
     public static SelectedItemDisplayUI instance;
     [Header("UI References")]
     [SerializeField] private GameObject textBoxGRP;
+    [SerializeField] private GameObject StatGRP;
     [SerializeField] private TextMeshProUGUI nameUI;
     [SerializeField] private TextMeshProUGUI descriptionUI;
     [SerializeField] private TextMeshProUGUI SkillUI;
-    [SerializeField] private TextMeshProUGUI StatsUI;
+    [SerializeField] private TextMeshProUGUI HP_StatsUI;
+    [SerializeField] private TextMeshProUGUI ATK_StatsUI;
+    [SerializeField] private TextMeshProUGUI ATKSPD_StatsUI;
+    [SerializeField] private TextMeshProUGUI ATKRNG_StatsUI;
+    [SerializeField] private TextMeshProUGUI MVSPD_StatsUI;
     [SerializeField] private TextMeshProUGUI LVLUI;
     [SerializeField] private TextMeshProUGUI EXPUI;
 
@@ -23,17 +28,17 @@ public class SelectedItemDisplayUI : MonoBehaviour
 
         InitializeReferences();
 
-        NothingInSelectedItemDisplayUI(null);
+        NothingInSelectedItemDisplayUI();
     }
     private void OnEnable()
     {
-        catSlot.OnItemPlaced += ShowCatStats;
-        catSlot.OnItemRemoved += NothingInSelectedItemDisplayUI;
+        //catSlot.OnItemPlaced += ShowCatStats;
+        //catSlot.OnItemRemoved += ShowCatStats;
     }
     private void OnDisable()
     {
-        catSlot.OnItemPlaced -= ShowCatStats;
-        catSlot.OnItemRemoved -= NothingInSelectedItemDisplayUI;
+        //catSlot.OnItemPlaced -= ShowCatStats;
+        //catSlot.OnItemRemoved -= ShowCatStats;
     }
 
 
@@ -41,6 +46,9 @@ public class SelectedItemDisplayUI : MonoBehaviour
     {
         if (textBoxGRP == null)
             textBoxGRP = transform.Find("TextBox")?.GetComponent<GameObject>();
+
+        if (StatGRP == null)
+            StatGRP = transform.Find("Stat")?.GetComponent<GameObject>();
 
         // Auto-assign if not linked in Inspector
         if (nameUI == null)
@@ -52,8 +60,22 @@ public class SelectedItemDisplayUI : MonoBehaviour
         if (SkillUI == null)
             SkillUI = textBoxGRP.transform.Find("Skill")?.GetComponent<TextMeshProUGUI>();
 
-        if (StatsUI == null)
-            StatsUI = textBoxGRP.transform.Find("Stats")?.GetComponent<TextMeshProUGUI>();
+        //------------------------------------Stats--------------------------------//
+        if (HP_StatsUI == null)
+            HP_StatsUI = StatGRP.transform.Find("HP")?.GetComponent<TextMeshProUGUI>();
+
+        if (ATK_StatsUI == null)
+            ATK_StatsUI = StatGRP.transform.Find("ATK")?.GetComponent<TextMeshProUGUI>();
+
+        if (ATKSPD_StatsUI == null)
+            ATKSPD_StatsUI = StatGRP.transform.Find("ATKSPD")?.GetComponent<TextMeshProUGUI>();
+
+        if (ATKRNG_StatsUI == null)
+            ATKRNG_StatsUI = StatGRP.transform.Find("ATKRNG")?.GetComponent<TextMeshProUGUI>();
+
+        if (MVSPD_StatsUI == null)
+            MVSPD_StatsUI = StatGRP.transform.Find("MVSPD")?.GetComponent<TextMeshProUGUI>();
+        //------------------------------------Stats--------------------------------//
 
         if (LVLUI == null)
             LVLUI = textBoxGRP.transform.Find("Level")?.GetComponent<TextMeshProUGUI>();
@@ -62,17 +84,15 @@ public class SelectedItemDisplayUI : MonoBehaviour
             EXPUI = textBoxGRP.transform.Find("Experience")?.GetComponent<TextMeshProUGUI>();
 
         if (catSlot == null)
-            catSlot = transform.Find("CatImage")?.GetComponent<SnappableLocation>();
+            catSlot = transform.Find("CatPreviewSlot")?.GetComponent<SnappableLocation>();
 
-        if (nameUI == null || descriptionUI == null || SkillUI == null || StatsUI == null || LVLUI == null || EXPUI == null || catSlot == null)
-            Debug.Log("DisplayItemUI: Missing one or more UI references!");
     } 
 
     public void ShowCatStats(SnappableLocation catSlot)
     {
         if(catSlot != null)
         {
-            if (catSlot.currentItem != null)
+            if (catSlot.currentItem != null) //if there is item inside
             {
                InventoryIcon cat = catSlot.currentItem;
                 CatUnit catUnit = cat.GetComponent<CatUnit>();
@@ -81,25 +101,39 @@ public class SelectedItemDisplayUI : MonoBehaviour
                     nameUI.text = catUnit.runtimeData.template.itemName;
                     descriptionUI.text = catUnit.runtimeData.template.description;
                     SkillUI.text = catUnit.runtimeData.template.skillDesc;
-                    StatsUI.text = $"HP : {catUnit.runtimeData.maxHealth} " +
-                        $"\nATK : {catUnit.runtimeData.attackPower}" +
-                        $"\nATK SPD : {catUnit.runtimeData.attackSpeed}" +
-                        $"\nATK RNG : {catUnit.runtimeData.attackRange}" +
-                        $"\nMV SPD : {catUnit.runtimeData.movementSpeed}";
+                    HP_StatsUI.text = $"HP : {catUnit.runtimeData.maxHealth} ";
+                    ATK_StatsUI.text = $"ATK : {catUnit.runtimeData.attackPower} ";
+                    ATKSPD_StatsUI.text = $"ATK SPD : {catUnit.runtimeData.attackSpeed} ";
+                    ATKRNG_StatsUI.text = $"ATK RNG : {catUnit.runtimeData.attackRange} ";
+                    MVSPD_StatsUI.text = $"MV SPD : {catUnit.runtimeData.movementSpeed} ";
                 }
             }
+            else
+            {
+                NothingInSelectedItemDisplayUI();
+            }
         }
+
+
     }
 
-    public void NothingInSelectedItemDisplayUI(SnappableLocation catSlot) // default state.
+    public void NothingInSelectedItemDisplayUI() // default state.
     {
         nameUI.text = "No cats to preview!";
         descriptionUI.text = string.Empty;
         descriptionUI.text = string.Empty;
         SkillUI.text = string.Empty;
-        StatsUI.text = string.Empty;
+
+        HP_StatsUI.text = string.Empty;
+        ATK_StatsUI.text = string.Empty;
+        ATKSPD_StatsUI.text = string.Empty;
+        ATKRNG_StatsUI.text = string.Empty;
+        MVSPD_StatsUI.text = string.Empty;
+
         LVLUI.text = string.Empty;
         EXPUI.text = string.Empty;
         //null everything
     }
+
+    //replacing cat does 1.show then 2.remove??? or the other way round
 }

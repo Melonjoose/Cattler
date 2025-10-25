@@ -65,8 +65,24 @@ public class DisplayItemUI : MonoBehaviour
                     $"\nMV SPD : {catUnit.runtimeData.movementSpeed}";
 
             }
-        }
+            Item equipment = Item.GetComponent<Item>();
+            if (equipment != null)
+            {
+                nameUI.text = equipment.runtimeData.template.itemName;
+                iconUI.sprite = equipment.runtimeData.template.icon;
+                descriptionUI.text = equipment.runtimeData.template.description;
+                nameUI.text = equipment.runtimeData.template.itemName;
+                SkillUI.text = equipment.runtimeData.template.AbilityDesc;
+                StatsUI.text = $"HP : {equipment.runtimeData.health} " +
+                    $"\nATK : {equipment.runtimeData.attackPower}" +
+                    $"\nATK SPD : {equipment.runtimeData.attackSpeed}" +
+                    $"\nATK RNG : {equipment.runtimeData.attackRange}" +
+                    $"\nMV SPD : {equipment.runtimeData.movementSpeed}";
 
+            }
+            
+        }
+        
         gameObject.SetActive(true);
     }
 
