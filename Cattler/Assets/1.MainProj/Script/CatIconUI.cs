@@ -1,5 +1,6 @@
-﻿using TMPro;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using TMPro;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,14 +28,6 @@ public class CatIconUI : MonoBehaviour
     [Header("Containers")]
     public GameObject[] catContainer; // assign containers in Inspector 
 
-
-
-    public void OnEnable()
-    {
-        
-    }
-
-
     private void Awake()
     {
         instance = this;
@@ -42,16 +35,14 @@ public class CatIconUI : MonoBehaviour
 
     private void Start()
     {
-        //RefreshIcons();
         InitializeiconPositions();
         IntializeCatIcon();
     }
 
     private void Update()
     {
-        //RefreshIcons(); // left here for simplicity, optimize later if needed
-        IntializeCatIcon();
-        SyncIconToCatPosition();
+        //IntializeCatIcon();
+        //SyncIconToCatPosition();
     }
 
     //CatIconUI Logic. (Intializing Syncing)
@@ -59,33 +50,7 @@ public class CatIconUI : MonoBehaviour
     {
         for (int i = 0; i < uiSlots.Length; i++)
         {
-            if (i >= catContainer.Length) return; // safety check
-
-            ContainerDetector detector = catContainer[i].GetComponent<ContainerDetector>();
-
-            // if the catContainer.cs is not empty.
-            if (detector.occupyingCat != null)
-            {
-                CatUnit cat = detector.occupyingCat;
-                if (cat != null)
-                {
-                    uiSlots[i].icon.linkedCat = cat.catMovement;
-
-                    uiSlots[i].iconImage.sprite = cat.runtimeData.template.icon;
-                    uiSlots[i].icon.gameObject.SetActive(true);
-
-                    uiSlots[i].healthBar.gameObject.SetActive(true);
-                    uiSlots[i].healthBar.maxValue = cat.runtimeData.maxHealth;
-                    uiSlots[i].healthBar.value = cat.runtimeData.currentHealth;
-
-                    uiSlots[i].iconIndex = i;
-                    uiSlots[i].catIndex = cat.catMovement.catIndex;
-
-                }
-            }
-            else
-            {
-                // No cat in this container → hide icon & healthbar
+            { 
                 uiSlots[i].icon.gameObject.SetActive(false);
                 uiSlots[i].healthBar.gameObject.SetActive(false);
             }
@@ -120,17 +85,38 @@ public class CatIconUI : MonoBehaviour
             }
         }
     }
-    void SyncIconToCatPosition()
+
+    public void UpdateIcons(int i, CatUnit cat) //This Icon 
     {
-        // Sync iconIndex to catIndex for each slot if not already matching
-        for (int i = 0; i < uiSlots.Length; i++)
+        if (i >= catContainer.Length) return; // safety check
+
+        // if the catContainer.cs is not empty.
+        if (cat != null)
         {
-            if (uiSlots[i].iconIndex != uiSlots[i].catIndex && uiSlots[i].catIndex != -1)
-            {
-                uiSlots[i].iconIndex = uiSlots[i].catIndex;
-            }
+            uiSlots[i].iconIndex = i;
+
+            uiSlots[i].icon.gameObject.SetActive(true);
+            
+            uiSlots[i].icon.linkedCat = cat.catMovement;
+            uiSlots[i].iconImage.sprite = cat.runtimeData.template.icon;
+
+            uiSlots[i].healthBar.gameObject.SetActive(true);
+            uiSlots[i].healthBar.maxValue = cat.runtimeData.maxHealth;
+            uiSlots[i].healthBar.value = cat.runtimeData.currentHealth;
+
+            uiSlots[i].catIndex = cat.catMovement.catIndex;
+
+
+            uiSlots[i].icon.transform.position = iconPosition[cat.catMovement.catIndex].transform.position;
+            Debug.Log($"update Icon{i}");
+        }
+        else
+        {
+            // No cat in this container → hide icon & healthbar
+            uiSlots[i].icon.gameObject.SetActive(false);
+            uiSlots[i].healthBar.gameObject.SetActive(false);
+            Debug.Log("NocattoUpdate");
         }
     }
 
- 
 }

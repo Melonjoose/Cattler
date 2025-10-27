@@ -65,10 +65,13 @@ public class CatMovement : MonoBehaviour
     }
     public void MoveToDesignatedLocation(int targetindex)
     {
-        //if cat is added to container 2. target index hould be 2.
+        
         inPosition = false;
         AssignCatIndex(targetindex);
         lastAssignedIndex = catIndex; // make lastAssignedIndex same as catIndex so it can update
+
+        CatIconUI.instance.UpdateIcons(targetindex , catUnit);
+
         onMove?.Invoke();
     }
 

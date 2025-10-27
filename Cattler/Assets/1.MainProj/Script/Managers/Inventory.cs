@@ -63,7 +63,7 @@ public class Inventory : MonoBehaviour
             if (Item.GetComponent<CatUnit>() != null)
             {
                 CatUnit catUnit = Item.GetComponent<CatUnit>();
-                TeamManager.instance.AddCatToWorld(catUnit);
+                TeamManager.instance.AddCatToWorld(catUnit , slot.SlotIndex);
             }
         }
         else if(slot.slotType == SnappableLocation.SlotType.CharacterPreview)

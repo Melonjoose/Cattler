@@ -84,8 +84,6 @@ public class MovementDrag : MonoBehaviour
             else
             {
                 catMovement.MoveToDesignatedLocation(nearestIndex);
-                
-                //Debug.Log($"Moving to newPosition {nearestIndex}");
             }
         }
     }

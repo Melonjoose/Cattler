@@ -38,9 +38,6 @@ public class DisplayItemUI : MonoBehaviour
         if (EXPUI == null)
             EXPUI = transform.Find("Experience")?.GetComponent<TextMeshProUGUI>();
 
-        if (nameUI == null || iconUI == null || descriptionUI == null || SkillUI || StatsUI || LVLUI || EXPUI)
-            Debug.Log("DisplayItemUI: Missing one or more UI references!");
-
         Hide();
     }
 
