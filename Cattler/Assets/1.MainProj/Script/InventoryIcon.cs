@@ -74,11 +74,12 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         // Tell slot we are leaving
         if (currentSlot != null)
         {
+            var item = this;
             originalSlot = currentSlot; // remember slot for swap
-            currentSlot.RemoveItem();
+            currentSlot.RemoveItem(item);
             currentSlot = null;
         }
-        Inventory.instance.Remove(this.gameObject, currentSlot);
+        //Inventory.instance.Remove(this.gameObject, currentSlot);
     }
 
     public void OnDrag(PointerEventData eventData)

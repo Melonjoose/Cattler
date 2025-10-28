@@ -21,8 +21,8 @@ public class Inventory : MonoBehaviour
     public GameObject itemPlaceholder;       // Prefab for item icons in UI
 
     private GameObject[] inventorySlots;
-    public SnappableLocation[] teamSlots;
-    public SnappableLocation[] previewSlots;
+    public GameObject[] teamSlots;  //manually added
+    public GameObject[] previewSlots;  //manually added
 
     private void Awake()
     {
@@ -30,30 +30,53 @@ public class Inventory : MonoBehaviour
         else Destroy(gameObject);
 
         InitializeInventorySpace(currentCapacity);
+        SubscribeToSlots();
 
-        foreach (GameObject slotObj in inventorySlots)
+    }
+
+    void SubscribeToSlots()
+    {
+        SubscribeToSlotList(inventorySlots);
+        SubscribeToSlotList(teamSlots);
+        SubscribeToSlotList(previewSlots);
+    }
+
+    void SubscribeToSlotList(IEnumerable<GameObject> slotObjects)
+    {
+        foreach (GameObject slotObj in slotObjects)
         {
+            if (slotObj == null)
+            {
+                Debug.LogWarning($" A slot GameObject reference is missing in {name}.");
+                continue;
+            }
+
             SnappableLocation slot = slotObj.GetComponent<SnappableLocation>();
-            slot.OnItemPlaced += OnItemPlaced;
-            slot.OnItemRemoved += OnItemRemoved;
-        }
-        foreach (SnappableLocation slotObj in teamSlots)
-        {
-            SnappableLocation slot = slotObj.GetComponent<SnappableLocation>();
-            slot.OnItemPlaced += OnItemPlaced;
-            slot.OnItemRemoved += OnItemRemoved;
-        }
-        foreach (SnappableLocation slotObj in previewSlots)
-        {
-            SnappableLocation slot = slotObj.GetComponent<SnappableLocation>();
+            if (slot == null)
+            {
+                Debug.LogWarning($" GameObject '{slotObj.name}' does not have a SnappableLocation component.");
+                continue;
+            }
+
+            // Avoid double-subscribing if this is called multiple times
+            slot.OnItemPlaced -= OnItemPlaced;
+            slot.OnItemRemoved -= OnItemRemoved;
+
             slot.OnItemPlaced += OnItemPlaced;
             slot.OnItemRemoved += OnItemRemoved;
         }
     }
 
+
     public void Add(GameObject Item , SnappableLocation slot)  //when added new or when moving items around
     {
-        if(slot.slotType == SnappableLocation.SlotType.InventoryList)
+        if (slot == null)
+        {
+            Debug.LogWarning($"[Inventory] Tried to Add {Item.name} but slot was null.");
+            return;
+        }
+
+        if (slot.slotType == SnappableLocation.SlotType.InventoryList)
         {
             inventoryList.Add(Item);
         }
@@ -122,26 +145,25 @@ public class Inventory : MonoBehaviour
 
     public void Remove(GameObject Item, SnappableLocation slot)
     {
+        if (slot == null)
+        {
+            Debug.LogWarning($"[Inventory] Tried to remove {Item.name} but slot was null.");
+            return;
+        }
         if (slot.slotType == SnappableLocation.SlotType.InventoryList)
         {
+            Debug.Log("removefromInventory");
             inventoryList.Remove(Item);
         }
         else if (slot.slotType == SnappableLocation.SlotType.TeamList)
         {
+            Debug.Log("removefromTeam");
             teamList.Remove(Item);
-            if (Item.GetComponent<CatUnit>() != null)
-            {
-                CatUnit catUnit = Item.GetComponent<CatUnit>();
-
-            }
         }
         else if (slot.slotType == SnappableLocation.SlotType.CharacterPreview)
         {
             previewList.Remove(Item);
         }
-
-
-
     }
 
     SnappableLocation GetFirstEmptySlot()

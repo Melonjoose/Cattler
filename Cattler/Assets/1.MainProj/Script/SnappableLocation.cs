@@ -27,14 +27,9 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
 
     public SlotType slotType; // set in inspector per slot
 
-
     // Events
     public event Action<SnappableLocation> OnItemPlaced;
     public event Action<SnappableLocation> OnItemRemoved;
-    public SnappableLocation.SlotType slotSlotType(SnappableLocation slot)
-    {
-        return slot.slotType;
-    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -66,11 +61,10 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
     /// </summary>
     public void PlaceItem(InventoryIcon item)
     {
-        // If the item was in another slot, tell that slot it’s empty
         if (item.currentSlot != null && item.currentSlot != this)
         {
-            item.currentSlot.RemoveItem();
-            Inventory.instance.Remove(item.gameObject, null);
+            item.currentSlot.RemoveItem(item);
+
         }
 
         currentItem = item;
@@ -111,10 +105,12 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
     }
 
 
-    public void RemoveItem()
+    public void RemoveItem(InventoryIcon item)
     {
         isOccupied = false;
-        //currentItem.transform.localScale = Vector3.one;
+
+        Inventory.instance.Remove(item.gameObject, this); // pass real slot
+
         currentItem = null;
         OnItemRemoved?.Invoke(this);
         if (this.CompareTag("CatPreviewSlot")) { SelectedItemDisplayUI.instance.ShowCatStats(this); }
@@ -133,9 +129,11 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
         SnappableLocation sourceSlot = draggedItem.originalSlot; // where dragged item came from
 
         // Step 1: remove both from their slots temporarily
-        RemoveItem();
+
+        RemoveItem(draggedItem);
+
         if (sourceSlot != null)
-            sourceSlot.RemoveItem();
+            sourceSlot.RemoveItem(oldItem);
 
         // Step 2: place dragged item into this slot
         PlaceItem(draggedItem);

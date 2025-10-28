@@ -73,7 +73,7 @@ public class CatIconUI : MonoBehaviour
             {
                 RectTransform posRect = posTransform as RectTransform;
                 iconPosition.Add(posRect); // Add RectTransform to the list
-                Debug.Log($"Assigned {posRect.name} as index {i}");
+                //Debug.Log($"Assigned {posRect.name} as index {i}");
             }
             else
             {
