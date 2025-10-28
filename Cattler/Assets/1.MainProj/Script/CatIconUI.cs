@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using TMPro;
-using UnityEditor.Rendering.LookDev;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class CatIconUI : MonoBehaviour
 {
@@ -15,8 +15,7 @@ public class CatIconUI : MonoBehaviour
         public Icon icon;
         public Image iconImage;
         public Slider healthBar;
-        public int catIndex = -1;
-
+        public CatUnit unit;
     }
 
     [Header("UI Slots")]
@@ -24,9 +23,6 @@ public class CatIconUI : MonoBehaviour
 
     [Header("UI Slots Positions")]
     public List<RectTransform> iconPosition = new List<RectTransform>();  //ensure that icon is 0 - 4 / left to right.
-
-    [Header("Containers")]
-    public GameObject[] catContainer; // assign containers in Inspector 
 
     private void Awake()
     {
@@ -86,28 +82,21 @@ public class CatIconUI : MonoBehaviour
         }
     }
 
-    public void UpdateIcons(int i, CatUnit cat) //This Icon 
+    public void LinkCatToIcon(int i, CatUnit cat) //This Icon 
     {
-        if (i >= catContainer.Length) return; // safety check
-
-        // if the catContainer.cs is not empty.
-        if (cat != null)
+       if (cat != null)
         {
             uiSlots[i].iconIndex = i;
-
             uiSlots[i].icon.gameObject.SetActive(true);
-            
-            uiSlots[i].icon.linkedCat = cat.catMovement;
+
+            uiSlots[i].unit = cat;
             uiSlots[i].iconImage.sprite = cat.runtimeData.template.icon;
 
             uiSlots[i].healthBar.gameObject.SetActive(true);
             uiSlots[i].healthBar.maxValue = cat.runtimeData.maxHealth;
             uiSlots[i].healthBar.value = cat.runtimeData.currentHealth;
 
-            uiSlots[i].catIndex = cat.catMovement.catIndex;
-
-
-            uiSlots[i].icon.transform.position = iconPosition[cat.catMovement.catIndex].transform.position;
+            uiSlots[i].icon.gameObject.transform.position = iconPosition[cat.catMovement.catIndex].transform.position;
             Debug.Log($"update Icon{i}");
         }
         else
@@ -117,6 +106,26 @@ public class CatIconUI : MonoBehaviour
             uiSlots[i].healthBar.gameObject.SetActive(false);
             Debug.Log("NocattoUpdate");
         }
+        Debug.Log("updateIconfunction ran");
+    }
+
+    public void MoveIcon(CatUnit cat, int newIconIndex)
+    {
+        // Find the icon whose CatUnit matches this cat
+        var movingIcon = uiSlots.FirstOrDefault(slot => slot.unit == cat)?.icon;
+        if (movingIcon == null)
+        {
+            Debug.LogWarning($"No icon found for {cat.name}");
+            return;
+        }
+
+        // Get target slot
+        var targetSlot = iconPosition[newIconIndex].transform;
+
+        Debug.Log($"Moving {cat.name}'s icon to slot {newIconIndex}");
+
+        LeanTween.move(movingIcon.gameObject, targetSlot.position, 0.4f)
+            .setEase(LeanTweenType.easeInOutQuad);
     }
 
 }

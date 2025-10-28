@@ -93,7 +93,7 @@ public class SnappableLocation : MonoBehaviour, IDropHandler
             .setEase(LeanTweenType.easeInOutQuad);
 
         LeanTween.scale(item.gameObject, targetScale, tweenDuration)
-            .setEase(LeanTweenType.easeInBounce) // gives it a soft bounce
+            .setEase(LeanTweenType.easeInOutQuad)
             .setOnComplete(() =>
             {
                 // After animation finishes, parent to slot

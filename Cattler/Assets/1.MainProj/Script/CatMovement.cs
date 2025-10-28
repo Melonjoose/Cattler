@@ -66,11 +66,11 @@ public class CatMovement : MonoBehaviour
     public void MoveToDesignatedLocation(int targetindex)
     {
         
+        CatIconUI.instance.MoveIcon(catUnit,targetindex);
         inPosition = false;
         AssignCatIndex(targetindex);
         lastAssignedIndex = catIndex; // make lastAssignedIndex same as catIndex so it can update
 
-        CatIconUI.instance.UpdateIcons(targetindex , catUnit);
 
         onMove?.Invoke();
     }

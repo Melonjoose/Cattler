@@ -78,8 +78,10 @@ public class MovementDrag : MonoBehaviour
             if(otherCat != null)
             {
                 int originalIndex = catMovement.catIndex;
-                catMovement.catIndex = nearestIndex;
-                otherCat.catMovement.catIndex = originalIndex;
+                //catMovement.catIndex = nearestIndex;
+                //otherCat.catMovement.catIndex = originalIndex;
+                catMovement.MoveToDesignatedLocation(nearestIndex);
+                otherCat.catMovement.MoveToDesignatedLocation(originalIndex);
             }
             else
             {

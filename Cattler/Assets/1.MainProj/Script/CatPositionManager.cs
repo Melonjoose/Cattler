@@ -59,11 +59,7 @@ public class CatPositionManager : MonoBehaviour
 
     void UpdateIconIndices()
     {
-        for (int i = 0; i < icons.Length; i++)
-        {
-            if (icons[i] != null)
-                iconIndices[i] = icons[i].iconIndex;
-        }
+
     }
 
     void UpdateCatIndices()

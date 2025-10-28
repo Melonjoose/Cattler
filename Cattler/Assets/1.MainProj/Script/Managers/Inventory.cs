@@ -122,9 +122,26 @@ public class Inventory : MonoBehaviour
 
     public void Remove(GameObject Item, SnappableLocation slot)
     {
-        inventoryList.Remove(Item);
-        teamList.Remove(Item);
-        previewList.Remove(Item);
+        if (slot.slotType == SnappableLocation.SlotType.InventoryList)
+        {
+            inventoryList.Remove(Item);
+        }
+        else if (slot.slotType == SnappableLocation.SlotType.TeamList)
+        {
+            teamList.Remove(Item);
+            if (Item.GetComponent<CatUnit>() != null)
+            {
+                CatUnit catUnit = Item.GetComponent<CatUnit>();
+
+            }
+        }
+        else if (slot.slotType == SnappableLocation.SlotType.CharacterPreview)
+        {
+            previewList.Remove(Item);
+        }
+
+
+
     }
 
     SnappableLocation GetFirstEmptySlot()

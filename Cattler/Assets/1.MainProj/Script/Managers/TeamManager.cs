@@ -76,7 +76,7 @@ public class TeamManager : MonoBehaviour
         if (playerTeamGO != null)
             cat.transform.SetParent(playerTeamGO.transform);
 
-        CatIconUI.instance.UpdateIcons(slotIndex , cat);
+        CatIconUI.instance.LinkCatToIcon(slotIndex , cat);
 
         return;
 
