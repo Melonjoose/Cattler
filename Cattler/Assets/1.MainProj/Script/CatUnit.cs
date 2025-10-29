@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CatUnit : MonoBehaviour
 {
+    public GameObject catGO;
     public GameObject targetPoint;
 
     public CatRuntimeData runtimeData;
@@ -23,6 +24,11 @@ public class CatUnit : MonoBehaviour
 
     private void Start()
     {   
+        InventoryIcon item = this.GetComponent<InventoryIcon>();
+        if(item == null)
+        {
+            catGO = this.gameObject;
+        }
         catMovement = GetComponent<CatMovement>();
         LinkTargetpoint();//link the targetPoint to and object called targetPoint located in this enemy's children
     }
@@ -155,4 +161,6 @@ public class CatUnit : MonoBehaviour
 
         stunCoroutine = null;
     }
+
+
 }

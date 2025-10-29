@@ -84,6 +84,7 @@ public class CatIconUI : MonoBehaviour
 
     public void LinkCatToIcon(int i, CatUnit cat) //This Icon 
     {
+       Debug.Log($"{i} and {cat}");
        if (cat != null)
         {
             uiSlots[i].iconIndex = i;
@@ -96,17 +97,23 @@ public class CatIconUI : MonoBehaviour
             uiSlots[i].healthBar.maxValue = cat.runtimeData.maxHealth;
             uiSlots[i].healthBar.value = cat.runtimeData.currentHealth;
 
-            uiSlots[i].icon.gameObject.transform.position = iconPosition[cat.catMovement.catIndex].transform.position;
-            Debug.Log($"update Icon{i}");
+            var thisIconPosition = uiSlots[i].icon.gameObject.transform.position;
+            var positionSlotToSnap = iconPosition[i].transform.position;
+
+            thisIconPosition = positionSlotToSnap;
         }
         else
         {
-            // No cat in this container → hide icon & healthbar
+            // No cat in this container > hide icon & healthbar
             uiSlots[i].icon.gameObject.SetActive(false);
             uiSlots[i].healthBar.gameObject.SetActive(false);
-            Debug.Log("NocattoUpdate");
+
         }
-        Debug.Log("updateIconfunction ran");
+    }
+
+    void UpdateIconHealthUI()
+    {
+        
     }
 
     public void MoveIcon(CatUnit cat, int newIconIndex)

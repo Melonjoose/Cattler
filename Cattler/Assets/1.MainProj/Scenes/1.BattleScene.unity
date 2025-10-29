@@ -2144,7 +2144,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111533695}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf4d491515d4e3043a313a7ba038b3fa, type: 3}
   m_Name: 
@@ -4964,7 +4964,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323605287}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf4d491515d4e3043a313a7ba038b3fa, type: 3}
   m_Name: 
@@ -14477,7 +14477,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000019708}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf4d491515d4e3043a313a7ba038b3fa, type: 3}
   m_Name: 
@@ -18727,7 +18727,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209880545}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf4d491515d4e3043a313a7ba038b3fa, type: 3}
   m_Name: 
@@ -24373,9 +24373,9 @@ MonoBehaviour:
   availableTeamSlots: 5
   maxTeamSlots: 5
   catContainers: []
+  cats: []
   playerTeamGO: {fileID: 1917870089}
   catTemplatePrefab: {fileID: 8409749662932035737, guid: e18086921a3595644892483f62fc8cd8, type: 3}
-  teamCats: []
 --- !u!114 &1683087014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24609,7 +24609,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694478273}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf4d491515d4e3043a313a7ba038b3fa, type: 3}
   m_Name: 

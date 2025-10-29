@@ -183,28 +183,39 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void Remove(GameObject Item, SnappableLocation slot)
+    public void Remove(GameObject item, SnappableLocation slot)
     {
+        //Debug.Log($"[Inventory] Remove called for {item.name}");
+
         if (slot == null)
         {
-            Debug.LogWarning($"[Inventory] Tried to remove {Item.name} but slot was null.");
+            Debug.LogWarning($"[Inventory] Tried to remove {item.name} but slot was null.");
             return;
         }
-        if (slot.slotType == SnappableLocation.SlotType.InventoryList)
+
+        switch (slot.slotType)
         {
-            //Debug.Log("removefromInventory");
-            inventoryList.Remove(Item);
-        }
-        else if (slot.slotType == SnappableLocation.SlotType.TeamList)
-        {
-            //Debug.Log("removefromTeam");
-            teamList.Remove(Item);
-        }
-        else if (slot.slotType == SnappableLocation.SlotType.CharacterPreview)
-        {
-            previewList.Remove(Item);
+            case SnappableLocation.SlotType.InventoryList:
+                inventoryList.Remove(item);
+                break;
+
+            case SnappableLocation.SlotType.TeamList:
+                teamList.Remove(item);
+                CatUnit cat = item.GetComponent<CatUnit>();
+                TeamManager.instance.RemoveCatFromWorld(cat);
+                break;
+
+
+            case SnappableLocation.SlotType.CharacterPreview:
+                previewList.Remove(item);
+                break;
+
+            default:
+                Debug.LogWarning($"[Inventory] Unknown slot type for {item.name}.");
+                break;
         }
     }
+
 
     SnappableLocation GetFirstEmptySlot()
     {

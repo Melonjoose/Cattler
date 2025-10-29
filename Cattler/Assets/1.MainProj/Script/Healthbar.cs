@@ -1,6 +1,8 @@
 using UnityEngine;
 
 public class Healthbar : MonoBehaviour
+// JUST DRAG AND DROP THIS ON ANY catUNIT or enemyUNIT and it will create a healthbar and self-link
+// It works with HealthBarUI.cs and HealthbarUIElement
 {
     public bool isEnemy;
     public bool isCat;

@@ -99,7 +99,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         // Traverse up the hierarchy to find a valid SnappableLocation
         if (dropTarget != null)
         {
-            Debug.Log($"drag onto {dropTarget.name}");
+            //Debug.Log($"drag onto {dropTarget.name}");
             targetSlot = dropTarget.GetComponentInParent<SnappableLocation>();
         }
 
@@ -112,14 +112,14 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         }
         else
         {
-            Debug.Log($"dropped on{targetSlot.name}");
+            //Debug.Log($"dropped on{targetSlot.name}");
             if (targetSlot.currentItem == null)
             {
                 Inventory.instance.PlaceItem(this, targetSlot);
             }
             else if (targetSlot.currentItem != null)
             {
-                Debug.Log("swap is taking place");
+                //Debug.Log("swap is taking place");
                 Inventory.instance.SwapItem(this, originalSlot, targetSlot);
             }
 

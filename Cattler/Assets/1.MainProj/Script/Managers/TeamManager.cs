@@ -12,17 +12,15 @@ public class TeamManager : MonoBehaviour
     public int availableTeamSlots = 3; // can expand up to 5
     public int maxTeamSlots = 5;
     public List<ContainerDetector> catContainers = new List<ContainerDetector>(); 
+    public List<CatUnit> cats = new List<CatUnit>(); 
 
     public GameObject playerTeamGO;
 
     public GameObject catTemplatePrefab;
 
-    public GameObject[] teamCats;  // Array of cats, same length as number of containers
-
     private void Awake()
     {
         instance = this;
-        teamCats = new GameObject[availableTeamSlots];
         InitializeContainers();
     }
 
@@ -46,6 +44,11 @@ public class TeamManager : MonoBehaviour
         catSprite.sprite = newCatUnit.runtimeData.template.icon;
 
         AddCatToTeam(newCatUnit , slot);
+
+        cats.Add(newCatUnit );
+
+        newlyAddedCat.catGO = newCatUnit.gameObject;
+
     }
 
     public void AddCatToTeam(CatUnit cat , int slot)  // Team is not empty & ONLY to be added into the world when battle begin 
@@ -81,6 +84,12 @@ public class TeamManager : MonoBehaviour
         return;
 
     }
+
+    public void RemoveCatFromWorld(CatUnit cat)
+    {
+        Destroy(cat.catGO);
+        cats.Remove(cat); //remove from the list
+    } 
 
     void InitializeContainers()
     {
