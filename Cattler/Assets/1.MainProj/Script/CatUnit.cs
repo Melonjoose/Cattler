@@ -18,6 +18,7 @@ public class CatUnit : MonoBehaviour
 
     public bool canAttack = true;
 
+    public event Action<int,int> onHealthChanged;
     public event Action CatDeath;
 
     private void Start()
@@ -35,7 +36,6 @@ public class CatUnit : MonoBehaviour
                 attackCooldown -= Time.deltaTime; //reset cooldown if not attacking
             }
         }
-
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -58,8 +58,13 @@ public class CatUnit : MonoBehaviour
     
     public void TryAttack(Collider2D other)
     {
-        EnemyUnit enemytarget = other.GetComponent<EnemyUnit>();
+        if(targetPoint == null)
+        {
+            Debug.LogWarning($"{gameObject.name} do not have a 'targetPoint' and is unable to attack");
+            return;
+        }
 
+        EnemyUnit enemytarget = other.GetComponent<EnemyUnit>();
         if (attackCooldown <= 0f)
         {
             
@@ -83,7 +88,9 @@ public class CatUnit : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+
         runtimeData.currentHealth -= amount;
+        onHealthChanged?.Invoke(runtimeData.currentHealth , runtimeData.maxHealth);
         int dyingHealth = runtimeData.maxHealth / 3;
         if (runtimeData.currentHealth <= 0)
         {

@@ -21,6 +21,9 @@ public class MovementDrag : MonoBehaviour
 
     public float snapRange = 2f;
 
+    public GameObject arrowHeadPrefab;
+    private GameObject arrowHeadInstance;
+
     void Awake()
     {
         catMovement = GetComponent<CatMovement>();
@@ -88,6 +91,8 @@ public class MovementDrag : MonoBehaviour
                 catMovement.MoveToDesignatedLocation(nearestIndex);
             }
         }
+
+        arrowHeadInstance.SetActive(false);
     }
 
 
@@ -127,9 +132,28 @@ public class MovementDrag : MonoBehaviour
 
     void SnapArrowToPosition()
     {
-        //base on distance to nearest position, snap arrow to that position.
+        float nearestDist = Mathf.Infinity;
+        int nearestIndex = -1;
 
+        for (int i = 0; i < catMovement.worldPositions.Count; i++)
+        {
+            float dist = Vector3.Distance(lastMouseWorld, catMovement.worldPositions[i].position);
+            if (dist < nearestDist)
+            {
+                nearestDist = dist;
+                nearestIndex = i;
+            }
+        }
+
+        // If within snap range, redraw arc to snapped position
+        if (nearestDist <= snapRange && nearestIndex != -1)
+        {
+            Vector3 snappedTip = catMovement.worldPositions[nearestIndex].position;
+            DrawArc(startPos, snappedTip);
+        }
     }
+
+
     private void DrawArc(Vector3 start, Vector3 end)
     {
         line.enabled = true;
@@ -146,5 +170,34 @@ public class MovementDrag : MonoBehaviour
             Vector3 curvePoint = Vector3.Lerp(p1, p2, t);
             line.SetPosition(i, curvePoint);
         }
+
+        // Place arrowhead at the end
+        if (arrowHeadInstance == null)
+        {
+            arrowHeadInstance = Instantiate(arrowHeadPrefab);
+        }
+
+        arrowHeadInstance.SetActive(true);
+        arrowHeadInstance.transform.position = end;
+        // Rotate to face direction
+        Vector3 dir = (end - line.GetPosition(resolution - 1)).normalized;
+        arrowHeadInstance.transform.rotation = Quaternion.LookRotation(Vector3.forward, dir);
+
+        Gradient gradient = new Gradient();
+        gradient.SetKeys(
+            new GradientColorKey[] {
+        new GradientColorKey(Color.magenta, 0.0f),
+        new GradientColorKey(new Color(0.925f, 0.573f, 0.286f), 1.0f) // EC9249 orange
+            },
+            new GradientAlphaKey[] {
+        new GradientAlphaKey(0.0f, 0.0f), // Magenta faded
+        new GradientAlphaKey(1.0f, 1.0f)  // Orange strong
+            }
+        );
+        line.colorGradient = gradient;
+
+        line.sortingLayerName = "Default"; // or a custom layer like "Background"
+        line.sortingOrder = -1;             // lower number = behind
+
     }
 }

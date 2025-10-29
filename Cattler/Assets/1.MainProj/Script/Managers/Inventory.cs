@@ -31,7 +31,6 @@ public class Inventory : MonoBehaviour
 
         InitializeInventorySpace(currentCapacity);
         SubscribeToSlots();
-
     }
 
     void SubscribeToSlots()
@@ -58,15 +57,8 @@ public class Inventory : MonoBehaviour
                 continue;
             }
 
-            // Avoid double-subscribing if this is called multiple times
-            slot.OnItemPlaced -= OnItemPlaced;
-            slot.OnItemRemoved -= OnItemRemoved;
-
-            slot.OnItemPlaced += OnItemPlaced;
-            slot.OnItemRemoved += OnItemRemoved;
         }
     }
-
 
     public void Add(GameObject Item , SnappableLocation slot)  //when added new or when moving items around
     {
@@ -93,29 +85,77 @@ public class Inventory : MonoBehaviour
         {
             previewList.Add(Item);
 
+            if (this.CompareTag("CatPreviewSlot"))
+            {
+                SelectedItemDisplayUI.instance.ShowCatStats(slot);
+            }
+
         }
     }
     public void InstantiateNewCat(CatData catData)
     {
-        if (inventoryList.Count >= currentCapacity) { Debug.LogWarning("Inventory full"); return; }
+        //Check for capacity
+        if (inventoryList.Count >= currentCapacity)
+        {
+            Debug.LogWarning("Inventory full");
+            return;
+        }
+
+        // Find first empty slot
         SnappableLocation emptySlot = GetFirstEmptySlot();
-        GameObject prefab = Instantiate(itemPlaceholder , emptySlot.transform);
+        if (emptySlot == null)
+        {
+            Debug.LogWarning("No empty inventory slot found!");
+            return;
+        }
+
+        //Instantiate the item prefab into the slot
+        GameObject prefab = Instantiate(itemPlaceholder, emptySlot.transform);
+        prefab.transform.SetParent(emptySlot.transform, false);
+        prefab.transform.localPosition = Vector3.zero;
+        prefab.transform.localScale = Vector3.one;
+
+        //Get its UI/Item script
         ItemUI newItem = prefab.GetComponent<ItemUI>();
-        ItemType itemType = catData.type;
-        if (itemType == ItemType.Cat)
+        if (newItem == null)
+        {
+            Debug.LogError("ItemUI component missing on instantiated prefab!");
+            return;
+        }
+
+        //Assign data
+        newItem.itemData = catData;
+        newItem.iconImage.sprite = catData.icon;
+        InventoryIcon newItemIcon = newItem.GetComponent<InventoryIcon>();
+        newItemIcon.originalSlot = emptySlot;
+        newItemIcon.currentSlot = emptySlot;
+
+        //Set as a Cat type item
+        if (catData.type == ItemType.Cat)
         {
             prefab.name = catData.itemName;
-            newItem.itemData = catData;
-            newItem.iconImage.sprite = catData.icon;
-            //create CatUnit.cs
-            prefab.AddComponent<CatUnit>();
-            CatUnit newCatUnit = prefab.GetComponent<CatUnit>();
-            //Add ItemData to CatUnit.template
+
+            // Create and set up CatUnit
+            CatUnit newCatUnit = prefab.AddComponent<CatUnit>();
+
+            // Create runtime data based on template CatData
             newCatUnit.runtimeData = new CatRuntimeData(catData);
-            //newCatUnit.runtimeData.template = catData; //still empty and not linked. null reference?
-            //Instantiate and add it into the Catunit.runtimedata.
+
+     
+            // (Optional) link back to template if needed later
+            // newCatUnit.runtimeData.template = catData;
+
+            //Add to internal tracking
+            inventoryList.Add(prefab);
+
+            //Mark slot as occupied
+            emptySlot.currentItem = prefab.GetComponent<InventoryIcon>();
+            emptySlot.isOccupied = true;
+
+            Debug.Log($" Spawned new Cat: {catData.itemName} into slot {emptySlot.name}");
         }
     }
+
     public void InstantiateNewWeapon(Item item)
     {
         if (inventoryList.Count >= currentCapacity) { Debug.LogWarning("Inventory full"); return; }
@@ -152,12 +192,12 @@ public class Inventory : MonoBehaviour
         }
         if (slot.slotType == SnappableLocation.SlotType.InventoryList)
         {
-            Debug.Log("removefromInventory");
+            //Debug.Log("removefromInventory");
             inventoryList.Remove(Item);
         }
         else if (slot.slotType == SnappableLocation.SlotType.TeamList)
         {
-            Debug.Log("removefromTeam");
+            //Debug.Log("removefromTeam");
             teamList.Remove(Item);
         }
         else if (slot.slotType == SnappableLocation.SlotType.CharacterPreview)
@@ -239,14 +279,74 @@ public class Inventory : MonoBehaviour
         currentCapacity = targetCapacity;
     }
 
-    private void OnItemPlaced(SnappableLocation slot)
+
+    ///             MOVEMENT            ///
+
+    public void PlaceItem(InventoryIcon item, SnappableLocation slot)
     {
-        Debug.Log($"Item placed in slot {slot.name}");
-        Debug.Log($"Slot index is {slot.SlotIndex}");
+        slot.isOccupied = true;
+        slot.currentItem = item;
+
+        Vector3 startWorldPos = item.transform.position; // Save current world position
+        Vector3 endWorldPos = slot.transform.position;
+        Vector3 targetScale = slot.transform.localScale;
+        float tweenDuration = 0.2f;
+
+        // Temporarily reparent to Canvas to stay on top
+        Canvas canvas = item.GetComponentInParent<Canvas>();
+        if (canvas != null)
+        {
+            item.transform.SetParent(canvas.transform, false);
+            item.transform.position = startWorldPos; // Restore world position after reparenting
+        }
+
+        // Animate movement and scale
+        LeanTween.move(item.gameObject, endWorldPos, tweenDuration).setEase(LeanTweenType.easeInOutQuad);
+        LeanTween.scale(item.gameObject, targetScale, tweenDuration).setEase(LeanTweenType.easeInOutQuad);
+
+        // After animation, reparent to slot
+        LeanTween.delayedCall(item.gameObject, tweenDuration, () =>
+        {
+            item.transform.SetParent(slot.transform, false);
+            item.transform.localPosition = Vector3.zero;
+            item.transform.localScale = targetScale;
+
+            item.currentSlot = slot;
+            Add(item.gameObject, slot);
+        });
     }
 
-    private void OnItemRemoved(SnappableLocation slot)
+
+    public void RemoveItem(InventoryIcon item , SnappableLocation slot)
     {
-        Debug.Log($"Item removed from slot {slot.name}");
+        slot.isOccupied = false;
+
+        Remove(item.gameObject , slot); // pass real slot
+
+        slot.currentItem = null;
+
+        if (this.CompareTag("CatPreviewSlot")) { SelectedItemDisplayUI.instance.ShowCatStats(slot); }
     }
+
+    public void SwapItem(InventoryIcon draggedItem , SnappableLocation draggedItemOriginalSlot , SnappableLocation newSlot)
+    {
+        InventoryIcon replacedItem = newSlot.currentItem;                // item currently in this slot
+        SnappableLocation sourceSlot = draggedItem.originalSlot; // where dragged item came from
+
+        // Step 1: remove both from their slots temporarily
+        RemoveItem(draggedItem, draggedItemOriginalSlot);
+        RemoveItem(replacedItem , newSlot);
+    
+        // Step 2: place dragged item into this slot
+        PlaceItem(draggedItem , newSlot);
+
+        // Step 3: place old item into dragged item's original slot (or fallback)
+        PlaceItem(replacedItem, draggedItemOriginalSlot);
+
+
+        if (this.CompareTag("CatPreviewSlot")) { SelectedItemDisplayUI.instance.ShowCatStats(newSlot); }
+    }
+
+
+    ///             MOVEMENT            ///
 }

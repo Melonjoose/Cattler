@@ -26,8 +26,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void Start()
     {
-        // Snap to nearest slot at start
-        SnapToNearestSlot();
+
         originalParent = transform.parent;
     }
 
@@ -76,14 +75,15 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         {
             var item = this;
             originalSlot = currentSlot; // remember slot for swap
-            currentSlot.RemoveItem(item);
-            currentSlot = null;
+            currentSlot.currentItem = null; //remove the item inside of slot.
+            currentSlot = null; //remove slot from this item.
         }
-        //Inventory.instance.Remove(this.gameObject, currentSlot);
+        Inventory.instance.Remove(this.gameObject, originalSlot);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        canvasGroup.blocksRaycasts = false;
         if (parentCanvas == null) return;
         rectTransform.anchoredPosition += eventData.delta / parentCanvas.scaleFactor;
     }
@@ -93,52 +93,36 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        // if dropped on empty space, return to original slot
-        if (transform.parent == transform.root && originalParent != null)
+        GameObject dropTarget = eventData.pointerEnter;
+        SnappableLocation targetSlot = null;
+
+        // Traverse up the hierarchy to find a valid SnappableLocation
+        if (dropTarget != null)
         {
+            Debug.Log($"drag onto {dropTarget.name}");
+            targetSlot = dropTarget.GetComponentInParent<SnappableLocation>();
+        }
+
+        if (targetSlot == null)
+        {
+
+            // Invalid drop target — return to original slot
             currentSlot = originalSlot;
-            //transform.SetParent(originalParent, false);
-            //transform.transform.localScale = originalParent.localScale;
-            //transform.localPosition = Vector3.zero;
-            currentSlot?.PlaceItem(this);
+            Inventory.instance.PlaceItem(this, originalSlot);
         }
-
-    }
-
-    public void SetSlot(SnappableLocation slot)
-    {
-        currentSlot = slot;
-    }
-
-    public void SnapToNearestSlot()
-    {
-        SnappableLocation[] slots = FindObjectsByType<SnappableLocation>(FindObjectsSortMode.None);
-
-        SnappableLocation nearestSlot = null;
-        float nearestDistance = float.MaxValue;
-
-        foreach (var slot in slots)
+        else
         {
-            // Skip occupied slots unless it's the one we're already in
-            if (slot.isOccupied && slot != currentSlot) continue;
-
-            float distance = Vector3.Distance(transform.position, slot.transform.position);
-            if (distance < nearestDistance)
+            Debug.Log($"dropped on{targetSlot.name}");
+            if (targetSlot.currentItem == null)
             {
-                nearestDistance = distance;
-                nearestSlot = slot;
+                Inventory.instance.PlaceItem(this, targetSlot);
             }
-        }
+            else if (targetSlot.currentItem != null)
+            {
+                Debug.Log("swap is taking place");
+                Inventory.instance.SwapItem(this, originalSlot, targetSlot);
+            }
 
-        if (nearestSlot != null)
-        {
-            // Snap into slot
-            nearestSlot.PlaceItem(this);
-            currentSlot = nearestSlot;
-            originalSlot = nearestSlot;
         }
-
-        nearestSlot.isOccupied = true; // Mark the slot as occupied
-        nearestSlot.currentItem = this; // Set the current item in the slot
     }
 }
