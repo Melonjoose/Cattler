@@ -59,39 +59,20 @@ public class Inventory : MonoBehaviour
 
         }
     }
-
-    public void Add(GameObject Item , SnappableLocation slot)  //when added new or when moving items around
+    SnappableLocation GetFirstEmptySlot()
     {
-        if (slot == null)
+        foreach (GameObject slotObj in inventorySlots)
         {
-            Debug.LogWarning($"[Inventory] Tried to Add {Item.name} but slot was null.");
-            return;
-        }
+            SnappableLocation slot = slotObj.GetComponent<SnappableLocation>();
 
-        if (slot.slotType == SnappableLocation.SlotType.InventoryList)
-        {
-            inventoryList.Add(Item);
-        }
-        else if(slot.slotType == SnappableLocation.SlotType.TeamList)
-        {
-            teamList.Add(Item);
-            if (Item.GetComponent<CatUnit>() != null)
+            if (slot != null && !slot.isOccupied)
             {
-                CatUnit catUnit = Item.GetComponent<CatUnit>();
-                TeamManager.instance.AddCatToWorld(catUnit , slot.SlotIndex);
+                return slot;
             }
         }
-        else if(slot.slotType == SnappableLocation.SlotType.CharacterPreview)
-        {
-            previewList.Add(Item);
-
-            if (this.CompareTag("CatPreviewSlot"))
-            {
-                SelectedItemDisplayUI.instance.ShowCatStats(slot);
-            }
-
-        }
+        return null;
     }
+
     public void InstantiateNewCat(CatData catData)
     {
         //Check for capacity
@@ -181,8 +162,42 @@ public class Inventory : MonoBehaviour
             newWeaponItem.runtimeData.attackRange = item.runtimeData.attackRange;
             newWeaponItem.runtimeData.movementSpeed = item.runtimeData.movementSpeed;
         }
-    }
 
+        PlaceItem(newItemIcon, emptySlot);
+    }
+    public void Add(GameObject Item, SnappableLocation slot)  //when added new or when moving items around
+    {
+        if (slot == null)
+        {
+            Debug.LogWarning($"[Inventory] Tried to Add {Item.name} but slot was null.");
+            return;
+        }
+
+        if (slot.slotType == SnappableLocation.SlotType.InventoryList)
+        {
+            inventoryList.Add(Item);
+        }
+        else if (slot.slotType == SnappableLocation.SlotType.TeamList)
+        {
+            teamList.Add(Item);
+            if (Item.GetComponent<CatUnit>() != null)
+            {
+                CatUnit catUnit = Item.GetComponent<CatUnit>();
+                TeamManager.instance.AddCatToWorld(catUnit, slot.SlotIndex);
+            }
+        }
+        else if (slot.slotType == SnappableLocation.SlotType.CharacterPreview)
+        {
+            previewList.Add(Item);
+
+            if (slot.gameObject.CompareTag("CatPreviewSlot"))
+            {
+                InventoryIcon itemIcon = slot.currentItem;
+                SelectedItemDisplayUI.instance.ShowCatStats(itemIcon);
+                Debug.Log(itemIcon);
+            }
+        }
+    }
     public void Remove(GameObject item, SnappableLocation slot)
     {
         //Debug.Log($"[Inventory] Remove called for {item.name}");
@@ -208,6 +223,7 @@ public class Inventory : MonoBehaviour
 
             case SnappableLocation.SlotType.CharacterPreview:
                 previewList.Remove(item);
+                SelectedItemDisplayUI.instance.RemoveCatStats();
                 break;
 
             default:
@@ -215,34 +231,6 @@ public class Inventory : MonoBehaviour
                 break;
         }
     }
-
-
-    SnappableLocation GetFirstEmptySlot()
-    {
-        foreach (GameObject slotObj in inventorySlots)
-        {
-            SnappableLocation slot = slotObj.GetComponent<SnappableLocation>();
-
-            if (slot != null && !slot.isOccupied)
-            {
-                return slot;
-            }
-        }
-        return null;
-    }
-
-    public void AddToSlotAsChild(GameObject item, int slotIndex) //when moving items around
-    {
-        if (slotIndex < 0 || slotIndex >= inventorySlots.Length)
-        {
-            Debug.LogError("Invalid slot index");
-            return;
-        }
-        item.transform.SetParent(inventorySlots[slotIndex].transform);
-        item.transform.localPosition = Vector3.zero; // Center in slot
-        item.transform.localScale = Vector3.one;    // Reset scale
-    }
-
 
     void InitializeInventorySpace(int capacity) //Adding UI slots and assign slotindex.
     {
@@ -330,13 +318,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(InventoryIcon item , SnappableLocation slot)
     {
-        slot.isOccupied = false;
-
         Remove(item.gameObject , slot); // pass real slot
-
-        slot.currentItem = null;
-
-        if (this.CompareTag("CatPreviewSlot")) { SelectedItemDisplayUI.instance.ShowCatStats(slot); }
     }
 
     public void SwapItem(InventoryIcon draggedItem , SnappableLocation draggedItemOriginalSlot , SnappableLocation newSlot)
@@ -353,9 +335,6 @@ public class Inventory : MonoBehaviour
 
         // Step 3: place old item into dragged item's original slot (or fallback)
         PlaceItem(replacedItem, draggedItemOriginalSlot);
-
-
-        if (this.CompareTag("CatPreviewSlot")) { SelectedItemDisplayUI.instance.ShowCatStats(newSlot); }
     }
 
 

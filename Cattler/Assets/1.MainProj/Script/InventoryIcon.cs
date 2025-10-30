@@ -70,15 +70,10 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         transform.SetParent(transform.root); // move to top canvas so it doesn’t get hidden
         canvasGroup.blocksRaycasts = false;
 
+        Inventory.instance.Remove(this.gameObject, currentSlot);
         // Tell slot we are leaving
-        if (currentSlot != null)
-        {
-            var item = this;
-            originalSlot = currentSlot; // remember slot for swap
-            currentSlot.currentItem = null; //remove the item inside of slot.
-            currentSlot = null; //remove slot from this item.
-        }
-        Inventory.instance.Remove(this.gameObject, originalSlot);
+        RemoveItemFromSlot();
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -123,6 +118,17 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
                 Inventory.instance.SwapItem(this, originalSlot, targetSlot);
             }
 
+        }
+    }
+
+    public void RemoveItemFromSlot()
+    {
+        if (currentSlot != null)
+        {
+            originalSlot = currentSlot;
+            currentSlot.isOccupied = false;
+            currentSlot.currentItem = null;
+            currentSlot = null;
         }
     }
 }

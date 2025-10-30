@@ -19,8 +19,11 @@ public class SelectedItemDisplayUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI LVLUI;
     [SerializeField] private TextMeshProUGUI EXPUI;
 
-    //[SerializeField] private GameObject catSlot;
-    [SerializeField] private SnappableLocation catSlot;
+    //Items that have been added into the Displayer.
+    [SerializeField] private InventoryIcon selectedCat;
+    [SerializeField] private InventoryIcon selectedHat;
+    [SerializeField] private InventoryIcon selectedWeapon1;
+    [SerializeField] private InventoryIcon selectedWeapon2;
 
     private void Awake()
     {
@@ -28,7 +31,7 @@ public class SelectedItemDisplayUI : MonoBehaviour
 
         InitializeReferences();
 
-        NothingInSelectedItemDisplayUI();
+        RemoveCatStats(); //default State
     }
     private void OnEnable()
     {
@@ -83,41 +86,32 @@ public class SelectedItemDisplayUI : MonoBehaviour
         if (EXPUI == null)
             EXPUI = textBoxGRP.transform.Find("Experience")?.GetComponent<TextMeshProUGUI>();
 
-        if (catSlot == null)
-            catSlot = transform.Find("CatPreviewSlot")?.GetComponent<SnappableLocation>();
 
     } 
 
-    public void ShowCatStats(SnappableLocation catSlot)
+    public void ShowCatStats(InventoryIcon catIcon)
     {
-        if(catSlot != null)
+        selectedCat = catIcon;
+            CatUnit catUnit = selectedCat.GetComponent<CatUnit>();
+        if (catUnit != null)
         {
-            if (catSlot.currentItem != null) //if there is item inside
-            {
-               InventoryIcon cat = catSlot.currentItem;
-                CatUnit catUnit = cat.GetComponent<CatUnit>();
-                if (catUnit != null)
-                {
-                    nameUI.text = catUnit.runtimeData.template.itemName;
-                    descriptionUI.text = catUnit.runtimeData.template.description;
-                    SkillUI.text = catUnit.runtimeData.template.skillDesc;
-                    HP_StatsUI.text = $"HP : {catUnit.runtimeData.maxHealth} ";
-                    ATK_StatsUI.text = $"ATK : {catUnit.runtimeData.attackPower} ";
-                    ATKSPD_StatsUI.text = $"ATK SPD : {catUnit.runtimeData.attackSpeed} ";
-                    ATKRNG_StatsUI.text = $"ATK RNG : {catUnit.runtimeData.attackRange} ";
-                    MVSPD_StatsUI.text = $"MV SPD : {catUnit.runtimeData.movementSpeed} ";
-                }
-            }
-            else
-            {
-                NothingInSelectedItemDisplayUI();
-            }
+            nameUI.text = catUnit.runtimeData.template.itemName;
+            descriptionUI.text = catUnit.runtimeData.template.description;
+            SkillUI.text = catUnit.runtimeData.template.skillDesc;
+            HP_StatsUI.text = $"HP : {catUnit.runtimeData.maxHealth} ";
+            ATK_StatsUI.text = $"ATK : {catUnit.runtimeData.attackPower} ";
+            ATKSPD_StatsUI.text = $"ATK SPD : {catUnit.runtimeData.attackSpeed} ";
+            ATKRNG_StatsUI.text = $"ATK RNG : {catUnit.runtimeData.attackRange} ";
+            MVSPD_StatsUI.text = $"MV SPD : {catUnit.runtimeData.movementSpeed} ";
         }
-
-
+        else
+        {
+            RemoveCatStats();
+        }
+        
     }
 
-    public void NothingInSelectedItemDisplayUI() // default state.
+    public void RemoveCatStats() // default state.
     {
         nameUI.text = "No cats to preview!";
         descriptionUI.text = string.Empty;
@@ -132,7 +126,7 @@ public class SelectedItemDisplayUI : MonoBehaviour
 
         LVLUI.text = string.Empty;
         EXPUI.text = string.Empty;
-        //null everything
+        selectedCat = null;
     }
 
     //replacing cat does 1.show then 2.remove??? or the other way round
