@@ -9,6 +9,10 @@ TagManager:
   - Floor
   - Artillery
   - CatPreviewSlot
+  - HatPreviewSlot
+  - WeaponPreviewSlot_R
+  - WeaponPreviewSlot_L
+  - WeaponPreviewSlot
   layers:
   - Default
   - TransparentFX

@@ -6,11 +6,11 @@ public class ItemData : ScriptableObject
     public GameObject prefab2; // The actual item prefab to spawn
     public string itemName;
     public Sprite icon;
-    public ItemType type;
+    public ItemType itemType;
     public string description;
     public int value;
 
 }
 
-public enum ItemType { Cat, Weapon, Hat}
+public enum ItemType { Cat, Weapon, Hat , Consumable}
 

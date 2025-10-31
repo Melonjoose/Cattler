@@ -101,6 +101,8 @@ public class CatIconUI : MonoBehaviour
             var positionSlotToSnap = iconPosition[i].transform.position;
 
             thisIconPosition = positionSlotToSnap;
+
+            cat.onHealthChanged += (current, max) => UpdateIconHealthUI(i , current, max);
         }
         else
         {
@@ -111,10 +113,14 @@ public class CatIconUI : MonoBehaviour
         }
     }
 
-    void UpdateIconHealthUI()
+    private void UpdateIconHealthUI(int i , float currentHealth, float maxHealth)
     {
-        
+        // Find the correct slot (if needed) and update the health bar
+        // Example assumes you're updating the currently linked slot
+        uiSlots[i].healthBar.maxValue = maxHealth;
+        uiSlots[i].healthBar.value = currentHealth;
     }
+
 
     public void MoveIcon(CatUnit cat, int newIconIndex)
     {

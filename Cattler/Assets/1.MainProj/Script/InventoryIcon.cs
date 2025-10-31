@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Linq;
 using static SnappableLocation;
+using static UnityEditor.Progress;
 
 public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler , IPointerEnterHandler, IPointerExitHandler
 {
@@ -91,33 +93,28 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         GameObject dropTarget = eventData.pointerEnter;
         SnappableLocation targetSlot = null;
 
-        // Traverse up the hierarchy to find a valid SnappableLocation
         if (dropTarget != null)
         {
-            //Debug.Log($"drag onto {dropTarget.name}");
             targetSlot = dropTarget.GetComponentInParent<SnappableLocation>();
         }
 
-        if (targetSlot == null)
+        // If no valid slot or item type mismatch, return to original slot
+        if (targetSlot == null || !targetSlot.allowedTypes.Contains(this.itemType))
         {
-
-            // Invalid drop target — return to original slot
             currentSlot = originalSlot;
             Inventory.instance.PlaceItem(this, originalSlot);
+            return;
+        }
+
+        // If slot is empty, place item
+        if (targetSlot.currentItem == null)
+        {
+            Inventory.instance.PlaceItem(this, targetSlot);
         }
         else
         {
-            //Debug.Log($"dropped on{targetSlot.name}");
-            if (targetSlot.currentItem == null)
-            {
-                Inventory.instance.PlaceItem(this, targetSlot);
-            }
-            else if (targetSlot.currentItem != null)
-            {
-                //Debug.Log("swap is taking place");
-                Inventory.instance.SwapItem(this, originalSlot, targetSlot);
-            }
-
+            // Slot occupied: swap items
+            Inventory.instance.SwapItem(this, originalSlot, targetSlot);
         }
     }
 

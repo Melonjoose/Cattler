@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
@@ -112,7 +113,7 @@ public class Inventory : MonoBehaviour
         newItemIcon.currentSlot = emptySlot;
 
         //Set as a Cat type item
-        if (catData.type == ItemType.Cat)
+        if (catData.itemType == ItemType.Cat)
         {
             prefab.name = catData.itemName;
 
@@ -147,7 +148,7 @@ public class Inventory : MonoBehaviour
         InventoryIcon newItemIcon = prefab.GetComponent<InventoryIcon>();
         newItemIcon.itemType = SnappableLocation.ItemType.Weapon;
 
-        ItemType itemType = item.runtimeData.template.type;
+        ItemType itemType = item.runtimeData.template.itemType;
         {
             prefab.name = item.runtimeData.template.itemName;
             newItem.itemData = item.runtimeData.template;
@@ -194,7 +195,29 @@ public class Inventory : MonoBehaviour
             {
                 InventoryIcon itemIcon = slot.currentItem;
                 SelectedItemDisplayUI.instance.ShowCatStats(itemIcon);
+                CatUnit catUnit = Item.GetComponent<CatUnit>();
+                PreviewManager.instance.AddCatToPreview(catUnit);
                 Debug.Log(itemIcon);
+            }
+
+            if (slot.gameObject.CompareTag("HatPreviewSlot"))
+            {
+                Item hatItem = Item.GetComponent<Item>();
+                PreviewManager.instance.AddItemToPreview(hatItem , slot);
+            }
+
+            if (slot.gameObject.CompareTag("WeaponPreviewSlot_R"))
+            {
+                Debug.Log("10");
+                Item weaponItem = Item.GetComponent<Item>();
+                PreviewManager.instance.AddItemToPreview(weaponItem , slot);
+            }
+
+            if (slot.gameObject.CompareTag("WeaponPreviewSlot_L"))
+            {
+                Debug.Log("20");
+                Item weaponItem = Item.GetComponent<Item>();
+                PreviewManager.instance.AddItemToPreview(weaponItem, slot);
             }
         }
     }
@@ -283,6 +306,9 @@ public class Inventory : MonoBehaviour
 
     public void PlaceItem(InventoryIcon item, SnappableLocation slot)
     {
+        if (!slot.allowedTypes.Contains(item.itemType)) return;
+
+
         slot.isOccupied = true;
         slot.currentItem = item;
 

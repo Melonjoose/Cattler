@@ -24,7 +24,11 @@ public class SnappableLocation : MonoBehaviour
     {
         InventoryList,
         TeamList,
-        CharacterPreview
+        CharacterPreview,
+        CatPreview,
+        HatPreview,
+        L_WeaponPreview,
+        R_WeaponPreview
     }
 
     public SlotType slotType; // set in inspector per slot

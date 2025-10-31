@@ -119,6 +119,8 @@ public class TeamManager : MonoBehaviour
         }
 
         Debug.Log($"Initialized {catContainers.Count} cat containers under PlayerTeam.");
+
+        //unlink cat UI.
     }
 
     ContainerDetector FindEmptyContainer()

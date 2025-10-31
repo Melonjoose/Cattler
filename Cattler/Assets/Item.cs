@@ -11,6 +11,10 @@ public class Item : MonoBehaviour
     {
         //if this gameobject has collider2D, get Collider2D and add it to collider2D
         collider2D = GetComponent<Collider2D>();
+
+    }
+    private void Start()
+    {
         runtimeData = new ItemRuntimeData(runtimeData.template);
 
         // Only randomize when runtimeData exists

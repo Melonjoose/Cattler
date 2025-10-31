@@ -16,7 +16,7 @@ MonoBehaviour:
   prefab2: {fileID: 0}
   itemName: Basic Sword
   icon: {fileID: -4330735260778472016, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
-  type: 1
+  itemType: 1
   description: Basic and Reliable
   value: 1
   AbilityName: Slash

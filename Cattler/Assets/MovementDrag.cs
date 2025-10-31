@@ -74,12 +74,14 @@ public class MovementDrag : MonoBehaviour
 
         CatUnit otherCat;
         int nearestIndex = FindNearestPositionIndex(lastMouseWorld, out otherCat);
-        
 
+        Debug.Log($"other cat is " + otherCat);
         if (nearestIndex != -1)
         {
-            if(otherCat != null)
+
+            if (otherCat != null) //if there is another cat.
             {
+                Debug.Log(otherCat + "is found");
                 int originalIndex = catMovement.catIndex;
                 //catMovement.catIndex = nearestIndex;
                 //otherCat.catMovement.catIndex = originalIndex;
@@ -88,6 +90,8 @@ public class MovementDrag : MonoBehaviour
             }
             else
             {
+                Debug.Log("no cat is not found");
+               
                 catMovement.MoveToDesignatedLocation(nearestIndex);
             }
         }
@@ -119,7 +123,7 @@ public class MovementDrag : MonoBehaviour
         {
             if (cat == this.GetComponent<CatUnit>()) continue; // skip self
 
-            if (Vector3.Distance(cat.transform.position, catMovement.worldPositions[nearestIndex].position) < 0.1f)
+            if (Vector3.Distance(cat.transform.position, catMovement.worldPositions[nearestIndex].position) < 0.5f)
             {
                 otherCat = cat;
                 break;
