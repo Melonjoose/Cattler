@@ -246,7 +246,18 @@ public class Inventory : MonoBehaviour
 
             case SnappableLocation.SlotType.CharacterPreview:
                 previewList.Remove(item);
-                SelectedItemDisplayUI.instance.RemoveCatStats();
+                //removing Cat
+                if (slot.CompareTag("CatPreviewSlot"))
+                {
+                    SelectedItemDisplayUI.instance.RemoveCatStats();
+                    cat = item.GetComponent<CatUnit>();
+                    PreviewManager.instance.RemoveCatFromPreview(cat, slot);
+                }
+                else
+                {
+                    PreviewManager.instance.RemoveItem(slot);
+                }
+            
                 break;
 
             default:
@@ -345,6 +356,15 @@ public class Inventory : MonoBehaviour
     public void RemoveItem(InventoryIcon item , SnappableLocation slot)
     {
         Remove(item.gameObject , slot); // pass real slot
+    }
+
+    public void RemoveItemFromPreviewList(GameObject itemGO)
+    {
+        previewList.Remove(itemGO);
+    }
+    public void AddItemToPreviewList(GameObject itemGO)
+    {
+        previewList.Add(itemGO);
     }
 
     public void SwapItem(InventoryIcon draggedItem , SnappableLocation draggedItemOriginalSlot , SnappableLocation newSlot)

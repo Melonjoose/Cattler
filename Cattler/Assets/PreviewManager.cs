@@ -1,9 +1,12 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class PreviewManager : MonoBehaviour
 {
     public static PreviewManager instance;
+
+    public SnappableLocation hatSlot , weaponLSlot , weaponRSlot ;
     public CatUnit catUnit;
     public Item hat;
     public Item weaponL;
@@ -23,40 +26,115 @@ public class PreviewManager : MonoBehaviour
     public void AddCatToPreview(CatUnit cat)
     {
         catUnit = cat;
-        //if(catUnit) have weapon1 , weapon2, hat. AddItemToPreview(Item item)
+
+        if (catUnit.hat != null)
+        {
+            AddItemToPreview(catUnit.hat, hatSlot);
+        }
+
+        if (catUnit.weaponL != null)
+        {
+            Debug.Log("meow");
+            AddItemToPreview(catUnit.weaponL, weaponLSlot);
+        }
+
+        if (catUnit.weaponR != null)
+        {
+            AddItemToPreview(catUnit.weaponR, weaponRSlot);
+        }
+
+        //check catUnit's Hat,Wep1,Wep2 for data. if have add them to respective slots.
     }
 
-    public void AddItemToPreview(Item item , SnappableLocation slot)
+    public void RemoveCatFromPreview(CatUnit cat , SnappableLocation slot)
     {
-        Debug.Log("00");
-        if (catUnit == null || item == null) return;
-        Debug.Log("01");
+        catUnit = null;
+
+        if (hat != null)
+        {
+            ItemFollowCat(hat);
+            Inventory.instance.RemoveItemFromPreviewList(hat.gameObject);
+        }
+        if (weaponL != null)
+        {
+            ItemFollowCat(weaponL);
+            Inventory.instance.RemoveItemFromPreviewList(hat.gameObject);
+        }
+        if (weaponR != null)
+        {
+            ItemFollowCat(weaponR);
+            Inventory.instance.RemoveItemFromPreviewList(hat.gameObject);
+        }
+    }
+
+    public Transform itemEquippedGroup; // Assign this in the Inspector
+
+    public void ItemFollowCat(Item item)
+    {
+        if (item == null) return;
+
+        // Move item under itemEquippedGroup for hierarchy organization
+        if (itemEquippedGroup != null)
+        {
+            item.transform.SetParent(itemEquippedGroup);
+            item.transform.localPosition = Vector3.zero;
+        }
+        else
+        {
+            Debug.LogWarning("itemEquippedGroup is not assigned.");
+            item.transform.position = Vector3.zero;
+        }
+
+        item.gameObject.SetActive(false); // Hide item temporarily
+
+        // Clear references
+        if (item == hat)
+        {
+            hat = null;
+        }
+        else if (item == weaponL)
+        {
+            weaponL = null;
+        }
+        else if (item == weaponR)
+        {
+            weaponR = null;
+        }
+    }
+
+    public void AddItemToPreview(Item item, SnappableLocation slot)
+    {
+        if (catUnit == null || item == null || slot == null) return;
+
         switch (item.runtimeData.template.itemType)
         {
             case ItemType.Weapon:
                 if (slot.slotType == SnappableLocation.SlotType.CharacterPreview)
                 {
-                    Debug.Log("001");
                     if (slot.gameObject.CompareTag("WeaponPreviewSlot_R"))
                     {
-                        Debug.Log("2");
                         weaponR = item;
-                        SetWeaponPreview(item, "R_WeaponPlaceHolder");
+                        ReparentItemToSlot(item, slot);
+                        SetItemToCat(item, "R_WeaponPlaceHolder");
                     }
                     else if (slot.gameObject.CompareTag("WeaponPreviewSlot_L"))
                     {
-                        Debug.Log("3");
                         weaponL = item;
-                        SetWeaponPreview(item, "L_WeaponPlaceHolder");
+                        ReparentItemToSlot(item, slot);
+                        SetItemToCat(item, "L_WeaponPlaceHolder");
                     }
                 }
-
                 break;
 
             case ItemType.Hat:
                 if (slot.slotType == SnappableLocation.SlotType.CharacterPreview)
                 {
-                    hat = item;
+                    if (slot.gameObject.CompareTag("HatPreviewSlot"))
+                    {
+                        hat = item;
+                        ReparentItemToSlot(item, slot);
+                        SetItemToCat(item, "T_HatPlaceHolder");
+                    }
                 }
                 break;
 
@@ -64,22 +142,26 @@ public class PreviewManager : MonoBehaviour
                 Debug.LogWarning("Unknown item type");
                 break;
         }
-
-    // Apply item to cat visually or functionally
-    ItemShownWhenCatIsAdded();
     }
 
-    private void SetWeaponPreview(Item item, string placeholderName)
+    private void ReparentItemToSlot(Item item, SnappableLocation slot)
     {
-        Debug.Log("2");
+        item.transform.SetParent(slot.transform);
+        item.transform.localPosition = Vector3.zero;
+        item.transform.localRotation = Quaternion.identity;
+        item.gameObject.SetActive(true); // Ensure it's visible
+    }
+
+    private void SetItemToCat(Item item, string placeholderName)
+    {
         Transform placeholderTransform = catUnit.transform.Find("itemSprite/" + placeholderName);
 
         if (placeholderTransform != null)
         {
-            GameObject weaponPlaceholderGO = placeholderTransform.gameObject;
-            weaponPlaceholderGO.SetActive(true);
+            GameObject itemPlaceholderGO = placeholderTransform.gameObject;
+            itemPlaceholderGO.SetActive(true);
 
-            UnityEngine.UI.Image imageComponent = weaponPlaceholderGO.GetComponent<UnityEngine.UI.Image>();
+            UnityEngine.UI.Image imageComponent = itemPlaceholderGO.GetComponent<UnityEngine.UI.Image>();
             if (imageComponent != null)
             {
                 imageComponent.sprite = item.runtimeData.template.icon;
@@ -88,6 +170,13 @@ public class PreviewManager : MonoBehaviour
             {
                 Debug.LogWarning($"Image component not found on {placeholderName}.");
             }
+
+            item.gameObject.SetActive(true); // Ensure item is visible
+
+            if (item == hat) catUnit.hat = item; 
+            if (item == weaponL) catUnit.weaponL = item; 
+            if (item == weaponR) catUnit.weaponR = item;
+
         }
         else
         {
@@ -95,14 +184,55 @@ public class PreviewManager : MonoBehaviour
         }
     }
 
-
-    public void ItemFollowCat()
+    public void RemoveItem(SnappableLocation slot)
     {
+        if (slot.currentItem == null || catUnit == null) return;
 
+        InventoryIcon iconItemToRemove = slot.currentItem;
+        Item itemToRemove = iconItemToRemove.GetComponent<Item>();
+        if (itemToRemove == hat)
+        {
+            hat = null;
+            catUnit.hat = null;
+            ClearItemFromCat("T_HatPlaceHolder");
+        }
+        else if (itemToRemove == weaponL)
+        {
+            weaponL = null;
+            catUnit.weaponL = null;
+            ClearItemFromCat("L_WeaponPlaceHolder");
+        }
+        else if (itemToRemove == weaponR)
+        {
+            weaponR = null;
+            catUnit.weaponR = null;
+            ClearItemFromCat("R_WeaponPlaceHolder");
+        }
     }
 
-    public void ItemShownWhenCatIsAdded()
+    private void ClearItemFromCat(string placeholderName)
     {
-
+        Transform placeholderTransform = catUnit.transform.Find("itemSprite/" + placeholderName);
+        if (placeholderTransform != null)
+        {
+            GameObject itemPlaceholderGO = placeholderTransform.gameObject;
+            itemPlaceholderGO.SetActive(false);
+        }
     }
+
+
+public void ItemFollowCatWhenRemoved()
+{
+    if (catUnit == null) return;
+
+    if (hat != null) ClearItemFromCat("T_HatPlaceHolder");
+    if (weaponL != null) ClearItemFromCat("L_WeaponPlaceHolder");
+    if (weaponR != null) ClearItemFromCat("R_WeaponPlaceHolder");
+
+    hat = null;
+    weaponL = null;
+    weaponR = null;
+}
+
+
 }

@@ -8,8 +8,8 @@ public class CatUnit : MonoBehaviour
 {
     //--- Equipments ---// memory allocation
     public Item hat;
-    public Item weapon1; //L
-    public Item weapon2; //R
+    public Item weaponL; //L
+    public Item weaponR; //R
 
     public GameObject catGO;
     public GameObject targetPoint;
