@@ -70,7 +70,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -219,12 +219,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "00dd73bfa46c815e",
+  "active": "e0c7df3fe6993327",
   "lastOpenFiles": [
-    "Purrgatory Game (Main Game)/Game Flow.canvas",
-    "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
     "Coding Notes.md",
     "Team Management/FYP BOOTH Showcase.md",
+    "Purrgatory Game (Main Game)/Game Flow.canvas",
+    "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
     "Main Gameplay Page.md",
     "Team Page.md",
     "Resolution for Assets.md",

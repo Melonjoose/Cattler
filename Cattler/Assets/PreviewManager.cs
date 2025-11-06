@@ -210,7 +210,7 @@ public class PreviewManager : MonoBehaviour
         }
     }
 
-    private void ClearItemFromCat(string placeholderName)
+    private void ClearItemFromCat(string placeholderName)   //Visuals for now
     {
         Transform placeholderTransform = catUnit.transform.Find("itemSprite/" + placeholderName);
         if (placeholderTransform != null)

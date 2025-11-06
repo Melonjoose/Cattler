@@ -7,8 +7,10 @@ public class Skill_Button : MonoBehaviour // add handlers
     public CatUnit catUnit;
     public GameObject skillButton;
     private RectTransform buttonRect;
-    public bool isRevealed = false;
-    public GameObject slash;
+
+    public GameObject skillPrefab;
+
+    public ActiveAbility activeAbility;
     void Start()
     {
         //skillButton.transform.localPosition = Vector3.zero;
@@ -22,37 +24,14 @@ public class Skill_Button : MonoBehaviour // add handlers
 
     }
 
-    public void RevealSkillButton()
-    {
-        if (isRevealed == false)
-        {
-            isRevealed=true;
-            skillButton.SetActive(true);
-            // Raise button above default position (relative to parent)
-            skillButton.transform.localPosition = new Vector3(0f, 62.5f, 0f);
-        }
-        else
-        {
-            HideButton();
-        }
-    }
-
-    public void ClickOnSkill()
+    public void UseSkill(GameObject skill)
     {
         Vector3 spawnloc = catUnit.transform.position + Vector3.right; // Vector3(1,0,0) also works
-        GameObject newSlash = Instantiate(slash, spawnloc, transform.rotation); // use rotation, not transform
+        GameObject newSlash = Instantiate(skillPrefab, spawnloc, transform.rotation); // use rotation, not transform
         Slash SlashInfo = newSlash.GetComponent<Slash>();
         CatUnit catInfo = catUnit.GetComponent<CatUnit>();
-        SlashInfo.CatUnit = catInfo;
-        HideButton();
+        SlashInfo.catUnit = catInfo;
+        //HideButton();
 
     }
-
-    public void HideButton()
-    {
-        isRevealed = false;
-        skillButton.transform.localPosition = new Vector3(0f, 0f, 0f);
-        skillButton.gameObject.SetActive(false);
-    }
-
 }

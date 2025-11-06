@@ -26,7 +26,7 @@ public class Sword : Item
         GameObject newSlash = Instantiate(slash, spawnloc, transform.rotation); // use rotation, not transform
         Slash SlashInfo = newSlash.GetComponent<Slash>();
         CatUnit catInfo = catUnit.GetComponent<CatUnit>();
-        SlashInfo.CatUnit = catInfo;
+        SlashInfo.catUnit = catInfo;
     }
 
     public void EquipSword(CatUnit user) 

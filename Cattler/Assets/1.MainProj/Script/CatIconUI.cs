@@ -113,6 +113,11 @@ public class CatIconUI : MonoBehaviour
         }
     }
 
+    public void UnlinkCatFromIcon(CatUnit cat , int i)
+    {
+
+    }
+
     private void UpdateIconHealthUI(int i , float currentHealth, float maxHealth)
     {
         // Find the correct slot (if needed) and update the health bar
