@@ -63,5 +63,10 @@ public class Item : MonoBehaviour
         Inventory.instance.InstantiateNewWeapon(this);
         Destroy(gameObject);
     }
+
+    void EquipItem()
+    {
+
+    }
 }
 

@@ -52,18 +52,18 @@ public class PreviewManager : MonoBehaviour
 
         if (hat != null)
         {
-            ItemFollowCat(hat);
             Inventory.instance.RemoveItemFromPreviewList(hat.gameObject);
+            ItemFollowCat(hat);
         }
         if (weaponL != null)
         {
+            Inventory.instance.RemoveItemFromPreviewList(weaponL.gameObject);
             ItemFollowCat(weaponL);
-            Inventory.instance.RemoveItemFromPreviewList(hat.gameObject);
         }
         if (weaponR != null)
         {
+            Inventory.instance.RemoveItemFromPreviewList(weaponR.gameObject);
             ItemFollowCat(weaponR);
-            Inventory.instance.RemoveItemFromPreviewList(hat.gameObject);
         }
     }
 

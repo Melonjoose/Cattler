@@ -87,8 +87,13 @@ public class TeamManager : MonoBehaviour
 
     public void RemoveCatFromWorld(CatUnit cat)
     {
-        Destroy(cat.catGO);
+        GameObject worldCat = cat.catGO;
+        CatUnit WorldCatUnit = worldCat.GetComponent<CatUnit>();
+        CatIconUI.instance.UnlinkCatFromIcon(WorldCatUnit);
+        cat.catGO = null;
+        Destroy(WorldCatUnit.gameObject);
         cats.Remove(cat); //remove from the list
+
     } 
 
     void InitializeContainers()

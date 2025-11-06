@@ -113,10 +113,28 @@ public class CatIconUI : MonoBehaviour
         }
     }
 
-    public void UnlinkCatFromIcon(CatUnit cat , int i)
+    public void UnlinkCatFromIcon(CatUnit cat)
     {
+        // Find the slot that contains this cat
+        for (int i = 0; i < uiSlots.Length; i++)
+        {
+            if (uiSlots[i].unit == cat)
+            {
+                // Unlink the cat from this slot
+                uiSlots[i].iconIndex = -1;
+                uiSlots[i].unit = null;
 
+                uiSlots[i].icon.gameObject.SetActive(false);
+                uiSlots[i].healthBar.gameObject.SetActive(false);
+
+                Debug.Log($"Unlinked cat from icon slot {i}");
+                return;
+            }
+        }
+
+        Debug.LogWarning($"Tried to unlink cat, but no matching icon slot was found.");
     }
+
 
     private void UpdateIconHealthUI(int i , float currentHealth, float maxHealth)
     {
