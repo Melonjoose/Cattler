@@ -183,9 +183,23 @@ public class Inventory : MonoBehaviour
             teamList.Add(Item);
             if (Item.GetComponent<CatUnit>() != null)
             {
-                CatUnit catUnit = Item.GetComponent<CatUnit>();
-                TeamManager.instance.AddCatToWorld(catUnit, slot.SlotIndex);
+                if(slot.currentItem == null)
+                {
+                    CatUnit catUnit = Item.GetComponent<CatUnit>();
+                    TeamManager.instance.AddCatToWorld(catUnit, slot);
+                }
+                else
+                {
+                    SnappableLocation previousSlot = Item.GetComponent<InventoryIcon>().currentSlot;
+                    SnappableLocation PreviewSlotIndex = previousSlot;  
+                    CatUnit catUnit = Item.GetComponent<CatUnit>();
+                    CatUnit replacedCatUnit = slot.currentItem.GetComponent<CatUnit>();
+                    TeamManager.instance.RemoveCatFromWorld(replacedCatUnit, slot); //remove the replaced cat from world
+                    TeamManager.instance.AddCatToWorld(catUnit, slot); //add the new cat to world
+                    TeamManager.instance.AddCatToWorld(replacedCatUnit, PreviewSlotIndex); //readd the replaced cat to world into previous slot.
+                }
             }
+            
         }
         else if (slot.slotType == SnappableLocation.SlotType.CharacterPreview)
         {
@@ -235,12 +249,14 @@ public class Inventory : MonoBehaviour
         {
             case SnappableLocation.SlotType.InventoryList:
                 inventoryList.Remove(item);
+                slot.currentItem = null;
                 break;
 
             case SnappableLocation.SlotType.TeamList:
+                slot.currentItem = null;
                 teamList.Remove(item);
                 CatUnit cat = item.GetComponent<CatUnit>();
-                TeamManager.instance.RemoveCatFromWorld(cat);
+                TeamManager.instance.RemoveCatFromWorld(cat, slot);
 
                 break;
 
@@ -250,12 +266,14 @@ public class Inventory : MonoBehaviour
                 previewList.Remove(item);
                 if (slot.CompareTag("CatPreviewSlot"))
                 {
+                    slot.currentItem = null;
                     SelectedItemDisplayUI.instance.RemoveCatStats();
                     cat = item.GetComponent<CatUnit>();
                     PreviewManager.instance.RemoveCatFromPreview(cat, slot);
                 }
                 else
                 {
+                    slot.currentItem = null;
                     PreviewManager.instance.RemoveItem(slot);
                 }
             
@@ -319,7 +337,6 @@ public class Inventory : MonoBehaviour
     public void PlaceItem(InventoryIcon item, SnappableLocation slot)
     {
         if (!slot.allowedTypes.Contains(item.itemType)) return;
-
 
         slot.isOccupied = true;
         slot.currentItem = item;

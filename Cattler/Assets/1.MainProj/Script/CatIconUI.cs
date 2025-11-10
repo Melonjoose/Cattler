@@ -120,12 +120,19 @@ public class CatIconUI : MonoBehaviour
         {
             if (uiSlots[i].unit == cat)
             {
+                var thisIconPosition = uiSlots[i].icon.gameObject.transform.position;
+                var positionSlotToSnap = iconPosition[cat.catMovement.catIndex].transform.position;
+
+                thisIconPosition = positionSlotToSnap;
+
                 // Unlink the cat from this slot
                 uiSlots[i].iconIndex = -1;
                 uiSlots[i].unit = null;
 
                 uiSlots[i].icon.gameObject.SetActive(false);
                 uiSlots[i].healthBar.gameObject.SetActive(false);
+
+
 
                 Debug.Log($"Unlinked cat from icon slot {i}");
                 return;

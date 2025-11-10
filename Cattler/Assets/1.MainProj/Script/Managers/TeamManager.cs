@@ -24,40 +24,55 @@ public class TeamManager : MonoBehaviour
         InitializeContainers();
     }
 
-    public void AddCatToWorld(CatUnit newlyAddedCat, int slot) 
+    public void AddCatToWorld(CatUnit newlyAddedCat, SnappableLocation slot)
     {
         if (currentTeamSize >= availableTeamSlots)
         {
             Debug.Log("No free team slots available!");
-            return; 
+            return;
         }
 
-        //  3. Instantiate the prefab in the scene
-        GameObject newCatGO = Instantiate(catTemplatePrefab); //instantiate cat in world
-        newCatGO.name = newlyAddedCat.runtimeData.template.itemName; //rename GO
+        CatUnit newCatUnit;
 
-        currentTeamSize++;
+        if (newlyAddedCat.catGO == null)  //if first time added to world.
+        {
+            GameObject newCatGO = Instantiate(catTemplatePrefab);
+            newCatGO.name = newlyAddedCat.runtimeData.template.itemName;
 
-        CatUnit newCatUnit = newCatGO.GetComponent<CatUnit>();
-        newCatUnit.runtimeData = newlyAddedCat.runtimeData; // link runtime data. Get from TeamManager.
-        SpriteRenderer catSprite = newCatUnit.GetComponent<SpriteRenderer>();
-        catSprite.sprite = newCatUnit.runtimeData.template.icon;
+            currentTeamSize++;
 
-        AddCatToTeam(newCatUnit , slot);
+            newCatUnit = newCatGO.GetComponent<CatUnit>();
+            newCatUnit.runtimeData = newlyAddedCat.runtimeData;
+            SpriteRenderer catSprite = newCatUnit.GetComponent<SpriteRenderer>();
+            catSprite.sprite = newCatUnit.runtimeData.template.icon;
 
-        cats.Add(newCatUnit );
+            newlyAddedCat.catGO = newCatUnit.gameObject;
 
-        newlyAddedCat.catGO = newCatUnit.gameObject;
 
+            if (!cats.Contains(newCatUnit))
+            {
+                cats.Add(newCatUnit);
+            }
+            
+            AddCatToTeam(newCatUnit, slot);
+        }
+
+        else // readded into the world.
+        {
+            CatUnit existingCatUnit = newlyAddedCat.catGO.GetComponent<CatUnit>();
+            existingCatUnit.gameObject.SetActive(true);
+            if (!cats.Contains(existingCatUnit))
+            {
+                cats.Add(existingCatUnit);
+            }
+
+            AddCatToTeam(existingCatUnit, slot);
+        }
     }
 
-    public void AddCatToTeam(CatUnit cat , int slot)  // Team is not empty & ONLY to be added into the world when battle begin 
+    public void AddCatToTeam(CatUnit cat , SnappableLocation slot)  // Team is not empty & ONLY to be added into the world when battle begin 
     {
-        var emptyContainer = FindEmptyContainer();
-        if (emptyContainer == null)
-        {
-            Debug.Log("no empty containers");
-        }
+
 
         CatMovement catMovement = cat.GetComponent<CatMovement>();
         if (catMovement == null)
@@ -67,11 +82,11 @@ public class TeamManager : MonoBehaviour
         }
 
         //int slotIndex = emptyContainer.containerIndex;
-        int slotIndex = slot;
+        int slotIndex = slot.SlotIndex;
         cat.transform.position = catContainers[slotIndex].transform.position;
         catMovement.MoveToDesignatedLocation(slotIndex);
-        emptyContainer.occupyingCat = cat;
-        
+        catContainers[slot.SlotIndex].occupyingCat = cat;
+
 
         // Move cat to container position
 
@@ -82,19 +97,33 @@ public class TeamManager : MonoBehaviour
         CatIconUI.instance.LinkCatToIcon(slotIndex , cat);
 
         return;
-
     }
 
-    public void RemoveCatFromWorld(CatUnit cat)
+    public void RemoveCatFromWorld(CatUnit cat, SnappableLocation slot)
     {
-        GameObject worldCat = cat.catGO;
-        CatUnit WorldCatUnit = worldCat.GetComponent<CatUnit>();
-        CatIconUI.instance.UnlinkCatFromIcon(WorldCatUnit);
-        cat.catGO = null;
-        Destroy(WorldCatUnit.gameObject);
-        cats.Remove(cat); //remove from the list
+        if (cat == null || cat.catGO == null)
+        {
+            Debug.LogWarning("Attempted to remove a null or uninitialized cat.");
+            return;
+        }
 
-    } 
+        cats.Remove(cat);
+        GameObject worldCat = cat.catGO;
+        CatUnit worldCatUnit = worldCat.GetComponent<CatUnit>();
+
+        if (worldCatUnit == null)
+        {
+            Debug.LogWarning("Cat GameObject does not contain a CatUnit component.");
+            return;
+        }
+
+        CatIconUI.instance?.UnlinkCatFromIcon(worldCatUnit);
+
+        worldCat.SetActive(false); // Hide cat in world
+        cats.Remove(worldCatUnit);          // Remove from the list
+        catContainers[slot.SlotIndex].occupyingCat = null;
+    }
+
 
     void InitializeContainers()
     {
