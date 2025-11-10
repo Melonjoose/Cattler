@@ -26,6 +26,10 @@ public class HealingPotion : ConsumableItem
             cat.runtimeData.maxHealth
         );
 
+        int currentHealth = cat.runtimeData.currentHealth;
+        int maxHealth = cat.runtimeData.maxHealth;
+        cat.OnHealthChange(currentHealth, maxHealth);
+
         Debug.Log($"{cat.name} healed +{healthToRecover} Health!");
     }
     private void VFX()

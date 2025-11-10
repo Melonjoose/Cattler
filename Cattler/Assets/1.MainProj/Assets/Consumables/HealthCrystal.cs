@@ -24,7 +24,12 @@ public class HealthCrystal : ConsumableItem
         cat.runtimeData.currentHealth = Mathf.Min(
             cat.runtimeData.currentHealth + valueAdded,
             cat.runtimeData.maxHealth
+
         );
+
+        int currentHealth = cat.runtimeData.currentHealth;
+        int maxHealth = cat.runtimeData.maxHealth;
+        cat.OnHealthChange(currentHealth, maxHealth);
 
         Debug.Log($"{cat.name} gained +{valueAdded} max HP!");
     }

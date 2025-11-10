@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using Unity.VisualScripting;
 using System.Collections.Generic;
+using System.Xml;
 
 public class TeamManager : MonoBehaviour
 {
@@ -48,6 +49,24 @@ public class TeamManager : MonoBehaviour
 
             newlyAddedCat.catGO = newCatUnit.gameObject;
 
+            var catGO = newlyAddedCat.catGO;
+            var catHat = newlyAddedCat.hat;
+            var catWeaponL = newlyAddedCat.weaponL;
+            var catWeaponR = newlyAddedCat.weaponR;
+
+            //if newlyAddedCat has item equipped. show item on catGO.
+            if (catHat != null)
+            {
+
+            }
+            if (catWeaponL != null)
+            {
+                EquipItem(catWeaponL , catGO);
+            }
+            if (catWeaponR != null)
+            {
+
+            }
 
             if (!cats.Contains(newCatUnit))
             {
@@ -167,5 +186,55 @@ public class TeamManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+
+    void EquipItem(Item item, GameObject worldCat)
+    {
+        if (item == null || item.runtimeData?.template?.icon == null)
+        {
+            Debug.LogWarning("Invalid item or missing icon.");
+            return;
+        }
+
+        Sprite newIcon = item.runtimeData.template.icon;
+
+        // Hat Slot
+        Transform hatSlot = worldCat.transform.Find("T_HatSlot");
+        if (hatSlot != null)
+        {
+            Transform hat = hatSlot.Find("Hat");
+            if (hat != null)
+            {
+                //instantiate prefab under hatslot
+            }
+        }
+
+        // Left Weapon Slot
+        Transform leftWeaponSlot = worldCat.transform.Find("L_WeaponSlot");
+        if (leftWeaponSlot != null)
+        {
+            Transform weapon = leftWeaponSlot.Find("Weapon");
+            if (weapon != null)
+            {
+                //instantiate prefab under leftweaponslot
+                Instantiate(item.runtimeData.template.prefab, leftWeaponSlot);
+            }
+        }
+
+        // Right Weapon Slot
+        Transform rightWeaponSlot = worldCat.transform.Find("R_WeaponSlot");
+        if (rightWeaponSlot != null)
+        {
+            Transform weapon = rightWeaponSlot.Find("Weapon");
+            if (weapon != null)
+            {
+                SpriteRenderer weaponRenderer = weapon.GetComponent<SpriteRenderer>();
+                if (weaponRenderer != null)
+                {
+                    weaponRenderer.sprite = newIcon;
+                }
+            }
+        }
     }
 }

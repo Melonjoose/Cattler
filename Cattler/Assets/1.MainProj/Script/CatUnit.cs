@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -112,6 +113,12 @@ public class CatUnit : MonoBehaviour
             Dying();
         }
     } 
+
+    public void OnHealthChange(int currentHPAmount , int maxHpAmount)
+    {
+        //onHealthChanged?.Invoke(runtimeData.currentHealth , runtimeData.maxHealth);
+        onHealthChanged?.Invoke(currentHPAmount, maxHpAmount);
+    }
 
     public void Dying()
     {
