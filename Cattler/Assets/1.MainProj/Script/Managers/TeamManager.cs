@@ -53,7 +53,7 @@ public class TeamManager : MonoBehaviour
             var catHat = newlyAddedCat.hat;
             var catWeaponL = newlyAddedCat.weaponL;
             var catWeaponR = newlyAddedCat.weaponR;
-
+            Debug.Log("00");
             //if newlyAddedCat has item equipped. show item on catGO.
             if (catHat != null)
             {
@@ -61,6 +61,7 @@ public class TeamManager : MonoBehaviour
             }
             if (catWeaponL != null)
             {
+                Debug.Log("1");
                 EquipItem(catWeaponL , catGO);
             }
             if (catWeaponR != null)
@@ -191,6 +192,7 @@ public class TeamManager : MonoBehaviour
 
     void EquipItem(Item item, GameObject worldCat)
     {
+        Debug.Log("additemtocat");
         if (item == null || item.runtimeData?.template?.icon == null)
         {
             Debug.LogWarning("Invalid item or missing icon.");
@@ -214,11 +216,13 @@ public class TeamManager : MonoBehaviour
         Transform leftWeaponSlot = worldCat.transform.Find("L_WeaponSlot");
         if (leftWeaponSlot != null)
         {
-            Transform weapon = leftWeaponSlot.Find("Weapon");
+            Transform weapon = leftWeaponSlot.Find("Weapon");   //// LAST WORKED ON BEFORE LEAVING ON 14/11 
             if (weapon != null)
             {
-                //instantiate prefab under leftweaponslot
-                Instantiate(item.runtimeData.template.prefab, leftWeaponSlot);
+                weapon.gameObject.SetActive(true);
+                SpriteRenderer sr = weapon.GetComponent<SpriteRenderer>();
+                sr.enabled = true;
+                sr.sprite = item.runtimeData.template.icon;
             }
         }
 
