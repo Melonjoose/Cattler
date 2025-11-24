@@ -11,7 +11,7 @@ public class Icon : MonoBehaviour
 
     public Icon thisIcon;
 
-    private void Start()
+    private void Awake()
     {
         thisIcon = this;
         skillButton1 = transform.Find("SkillButton1").GetComponent<Skill_Button>();

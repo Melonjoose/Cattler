@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 6788972550112090241}
   - component: {fileID: 786085283252390775}
   m_Layer: 0
-  m_Name: BasicSword_Weapon(Equipped)
+  m_Name: WeaponPreFab(ForInventory)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,4 +285,3 @@ MonoBehaviour:
     attackRange: 0
     movementSpeed: 0
   catUnit: {fileID: 0}
-  slash: {fileID: 1501784088886520407, guid: 573b8b8c7830b6a41bd98da9c140a3f6, type: 3}

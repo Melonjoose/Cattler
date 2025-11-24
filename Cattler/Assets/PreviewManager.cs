@@ -34,7 +34,6 @@ public class PreviewManager : MonoBehaviour
 
         if (catUnit.weaponL != null)
         {
-            Debug.Log("meow");
             AddItemToPreview(catUnit.weaponL, weaponLSlot);
         }
 
@@ -186,6 +185,7 @@ public class PreviewManager : MonoBehaviour
 
     public void RemoveItem(SnappableLocation slot)
     {
+        Debug.Log("Removing Item");
         if (slot.currentItem == null || catUnit == null) return;
 
         InventoryIcon iconItemToRemove = slot.currentItem;
@@ -198,6 +198,7 @@ public class PreviewManager : MonoBehaviour
         }
         else if (itemToRemove == weaponL)
         {
+            Debug.Log("Removing Left Weapon");
             weaponL = null;
             catUnit.weaponL = null;
             ClearItemFromCat("L_WeaponPlaceHolder");

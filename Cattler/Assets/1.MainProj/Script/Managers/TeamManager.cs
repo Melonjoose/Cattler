@@ -37,36 +37,38 @@ public class TeamManager : MonoBehaviour
 
         if (newlyAddedCat.catGO == null)  //if first time added to world.
         {
-            GameObject newCatGO = Instantiate(catTemplatePrefab);
+            GameObject newCatGO = Instantiate(catTemplatePrefab);  //new  cat gameobject in the world.
             newCatGO.name = newlyAddedCat.runtimeData.template.itemName;
 
             currentTeamSize++;
 
-            newCatUnit = newCatGO.GetComponent<CatUnit>();
+            newCatUnit = newCatGO.GetComponent<CatUnit>(); //cat gameobject's catunit component.
             newCatUnit.runtimeData = newlyAddedCat.runtimeData;
             SpriteRenderer catSprite = newCatUnit.GetComponent<SpriteRenderer>();
             catSprite.sprite = newCatUnit.runtimeData.template.icon;
 
             newlyAddedCat.catGO = newCatUnit.gameObject;
 
-            var catGO = newlyAddedCat.catGO;
-            var catHat = newlyAddedCat.hat;
-            var catWeaponL = newlyAddedCat.weaponL;
-            var catWeaponR = newlyAddedCat.weaponR;
-            Debug.Log("00");
+            newCatUnit.catGO = newCatUnit.gameObject;
+
+            newCatUnit.weaponL = newlyAddedCat.weaponL;
+            newCatUnit.weaponR = newlyAddedCat.weaponR;
+            newCatUnit.hat = newlyAddedCat.hat;
+
+            Debug.Log("AddCatToWorld");
             //if newlyAddedCat has item equipped. show item on catGO.
-            if (catHat != null)
+            if (newCatUnit.hat != null)
             {
-
+                EquipItem(newCatUnit.hat, newCatUnit, "Hat");
             }
-            if (catWeaponL != null)
+            if (newCatUnit.weaponL != null)
             {
-                Debug.Log("1");
-                EquipItem(catWeaponL , catGO);
+                Debug.Log("AddCatToWorldWithLeftWeapon");
+                EquipItem(newCatUnit.weaponL, newCatUnit , "L_Weapon");
             }
-            if (catWeaponR != null)
+            if (newCatUnit.weaponR != null)
             {
-
+                EquipItem(newCatUnit.weaponR, newCatUnit, "R_Weapon");
             }
 
             if (!cats.Contains(newCatUnit))
@@ -85,6 +87,32 @@ public class TeamManager : MonoBehaviour
             {
                 cats.Add(existingCatUnit);
             }
+
+            existingCatUnit.weaponL = newlyAddedCat.weaponL;
+            existingCatUnit.weaponR = newlyAddedCat.weaponR;
+            existingCatUnit.hat = newlyAddedCat.hat;
+
+            Debug.Log("AddCatToWorld");
+            //if newlyAddedCat has item equipped. show item on catGO.
+            if (existingCatUnit.hat != null)
+            {
+                EquipItem(existingCatUnit.hat, existingCatUnit, "Hat");
+            }
+            if (existingCatUnit.weaponL != null)
+            {
+                Debug.Log("AddCatToWorldWithLeftWeapon");
+                EquipItem(existingCatUnit.weaponL, existingCatUnit, "L_Weapon");
+            }
+            if (existingCatUnit.weaponR != null)
+            {
+                EquipItem(existingCatUnit.weaponR, existingCatUnit, "R_Weapon");
+            }
+
+            if (!cats.Contains(existingCatUnit))
+            {
+                cats.Add(existingCatUnit);
+            }
+
 
             AddCatToTeam(existingCatUnit, slot);
         }
@@ -190,7 +218,7 @@ public class TeamManager : MonoBehaviour
     }
 
 
-    void EquipItem(Item item, GameObject worldCat)
+    void EquipItem(Item item, CatUnit worldCat, string slotName)
     {
         Debug.Log("additemtocat");
         if (item == null || item.runtimeData?.template?.icon == null)
@@ -202,43 +230,57 @@ public class TeamManager : MonoBehaviour
         Sprite newIcon = item.runtimeData.template.icon;
 
         // Hat Slot
-        Transform hatSlot = worldCat.transform.Find("T_HatSlot");
-        if (hatSlot != null)
+        if (slotName == "Hat")
         {
-            Transform hat = hatSlot.Find("Hat");
-            if (hat != null)
+            Transform hatSlot = worldCat.transform.Find("T_HatSlot");
+            if (hatSlot != null)
             {
-                //instantiate prefab under hatslot
-            }
-        }
-
-        // Left Weapon Slot
-        Transform leftWeaponSlot = worldCat.transform.Find("L_WeaponSlot");
-        if (leftWeaponSlot != null)
-        {
-            Transform weapon = leftWeaponSlot.Find("Weapon");   //// LAST WORKED ON BEFORE LEAVING ON 14/11 
-            if (weapon != null)
-            {
-                weapon.gameObject.SetActive(true);
-                SpriteRenderer sr = weapon.GetComponent<SpriteRenderer>();
-                sr.enabled = true;
-                sr.sprite = item.runtimeData.template.icon;
-            }
-        }
-
-        // Right Weapon Slot
-        Transform rightWeaponSlot = worldCat.transform.Find("R_WeaponSlot");
-        if (rightWeaponSlot != null)
-        {
-            Transform weapon = rightWeaponSlot.Find("Weapon");
-            if (weapon != null)
-            {
-                SpriteRenderer weaponRenderer = weapon.GetComponent<SpriteRenderer>();
-                if (weaponRenderer != null)
+                Transform hat = hatSlot.Find("Hat");
+                if (worldCat.hat != null)
                 {
-                    weaponRenderer.sprite = newIcon;
+                    hat.gameObject.SetActive(true);
+                    SpriteRenderer sr = hat.GetComponent<SpriteRenderer>();
+                    sr.enabled = true;
+                    sr.sprite = item.runtimeData.template.icon;
                 }
             }
         }
+
+
+        // Left Weapon Slot
+        if(slotName == "L_Weapon")
+        {
+            Transform leftWeaponSlot = worldCat.transform.Find("L_WeaponSlot");
+            if (leftWeaponSlot != null)
+            {
+                Transform weapon = leftWeaponSlot.Find("Weapon");   
+                if (worldCat.weaponL != null)
+                {
+                    weapon.gameObject.SetActive(true);
+                    SpriteRenderer sr = weapon.GetComponent<SpriteRenderer>();
+                    sr.enabled = true;
+                    sr.sprite = item.runtimeData.template.icon;
+                }
+            }
+        }
+
+
+        // Right Weapon Slot
+        if(slotName == "R_Weapon")
+        {
+            Transform rightWeaponSlot = worldCat.transform.Find("R_WeaponSlot");
+            if (rightWeaponSlot != null)
+            {
+                Transform weapon = rightWeaponSlot.Find("Weapon");
+                if (worldCat.weaponR != null)
+                {
+                    weapon.gameObject.SetActive(true);
+                    SpriteRenderer sr = weapon.GetComponent<SpriteRenderer>();
+                    sr.enabled = true;
+                    sr.sprite = item.runtimeData.template.icon;
+                }
+            }
+        }
+
     }
 }

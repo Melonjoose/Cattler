@@ -4,7 +4,8 @@ public class Slash : ActiveAbility
 {
     private void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
     void Update()
     {

@@ -84,8 +84,8 @@ public class CatIconUI : MonoBehaviour
 
     public void LinkCatToIcon(int i, CatUnit cat) //This Icon 
     {
-       Debug.Log($"{i} and {cat}");
-       if (cat != null)
+        //Debug.Log($"{i} and {cat}");
+        if (cat != null)
         {
             uiSlots[i].iconIndex = i;
             uiSlots[i].icon.gameObject.SetActive(true);
@@ -102,7 +102,7 @@ public class CatIconUI : MonoBehaviour
 
             thisIconPosition = positionSlotToSnap;
 
-            cat.onHealthChanged += (current, max) => UpdateIconHealthUI(i , current, max);
+            cat.onHealthChanged += (current, max) => UpdateIconHealthUI(i, current, max);
         }
         else
         {
@@ -110,6 +110,44 @@ public class CatIconUI : MonoBehaviour
             uiSlots[i].icon.gameObject.SetActive(false);
             uiSlots[i].healthBar.gameObject.SetActive(false);
 
+        }
+
+        Icon thisIcon = uiSlots[i].icon;
+
+        if (cat.weaponL != null || cat.weaponR != null || cat.hat != null)
+        {
+            Debug.Log("Linking skill!");
+            // Show the skill button
+            thisIcon.skillButton1.gameObject.SetActive(true);
+
+            // Find the child button correctly
+            Skill_Button skillButton1 = thisIcon.skillButton1;
+            if (skillButton1 != null)
+            {
+                skillButton1.AssignCat(cat);
+                if(cat.weaponL != null)
+                {
+                    skillButton1.AssignSkill(cat.weaponL.runtimeData.template.skill);
+                }
+                else
+                {
+                    Debug.Log("No left weapon found for skill assignment.");
+                }
+            }
+
+            Skill_Button skillButton2 = thisIcon.skillButton2;
+            if (skillButton2 != null)
+            {
+                skillButton2.AssignCat(cat);
+                if (cat.weaponR != null)
+                {
+                    skillButton2.AssignSkill(cat.weaponR.runtimeData.template.skill);
+                }
+                else
+                {
+                    Debug.Log("No right weapon found for skill assignment.");
+                }
+            }
         }
     }
 
@@ -134,7 +172,7 @@ public class CatIconUI : MonoBehaviour
 
 
 
-                Debug.Log($"Unlinked cat from icon slot {i}");
+                //Debug.Log($"Unlinked cat from icon slot {i}");
                 return;
             }
         }
@@ -165,7 +203,7 @@ public class CatIconUI : MonoBehaviour
         // Get target slot
         var targetSlot = iconPosition[newIconIndex].transform;
 
-        Debug.Log($"Moving {cat.name}'s icon to slot {newIconIndex}");
+       // Debug.Log($"Moving {cat.name}'s icon to slot {newIconIndex}");
 
         LeanTween.move(movingIcon.gameObject, targetSlot.position, 0.4f)
             .setEase(LeanTweenType.easeInOutQuad);

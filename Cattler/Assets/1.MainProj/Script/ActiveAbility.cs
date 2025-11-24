@@ -10,7 +10,7 @@ public class ActiveAbility : MonoBehaviour
     public float movespeed = 3f;
     public float lifetime = 0.7f;
     public float timer = 0f;
-    public CapsuleCollider2D col;
+    public Collider2D col;
     public Rigidbody2D rb;
 
     public CatUnit catUnit;

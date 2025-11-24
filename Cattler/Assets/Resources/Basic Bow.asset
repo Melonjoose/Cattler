@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b62d4114a6764024295b118ad43d00ae, type: 3}
-  m_Name: Basic Sword
+  m_Name: Basic Bow
   m_EditorClassIdentifier: 
   prefab: {fileID: 4227622569212406947, guid: 097cf5f9a1f8d7a47881fdb8f5cf19e0, type: 3}
   prefab2: {fileID: 0}
-  itemName: Basic Sword
-  icon: {fileID: -4330735260778472016, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
+  itemName: Basic Bow
+  icon: {fileID: 2568506949165742456, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
   itemType: 1
-  description: Basic and Reliable
+  description: Shoots Far
   value: 1
-  skill: {fileID: 376969740731148697, guid: 573b8b8c7830b6a41bd98da9c140a3f6, type: 3}
-  AbilityName: Slash
-  AbilityDesc: A short slash that attack all enemy infront of the cat.
-  health: 3
+  skill: {fileID: 376969740731148697, guid: 17f2b63f9939f734797ad08d443d081d, type: 3}
+  AbilityName: Volley
+  AbilityDesc: Shoots a volley of arrows.
+  health: 2
   attackPower: 3
-  attackSpeed: 1
-  attackRange: 1
-  movementSpeed: 0
+  attackSpeed: 2
+  attackRange: 3
+  movementSpeed: 1

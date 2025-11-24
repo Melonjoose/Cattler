@@ -222,14 +222,14 @@ public class Inventory : MonoBehaviour
 
             if (slot.gameObject.CompareTag("WeaponPreviewSlot_R"))
             {
-                Debug.Log("10");
+                //Debug.Log("10");
                 Item weaponItem = Item.GetComponent<Item>();
                 PreviewManager.instance.AddItemToPreview(weaponItem , slot);
             }
 
             if (slot.gameObject.CompareTag("WeaponPreviewSlot_L"))
             {
-                Debug.Log("20");
+                //Debug.Log("20");
                 Item weaponItem = Item.GetComponent<Item>();
                 PreviewManager.instance.AddItemToPreview(weaponItem, slot);
             }
@@ -273,8 +273,8 @@ public class Inventory : MonoBehaviour
                 }
                 else
                 {
-                    slot.currentItem = null;
                     PreviewManager.instance.RemoveItem(slot);
+                    slot.currentItem = null;
                 }
             
                 break;
