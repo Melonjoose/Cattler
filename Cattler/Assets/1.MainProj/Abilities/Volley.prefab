@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8804540001750243900}
   - component: {fileID: 7833715004910915176}
   m_Layer: 0
-  m_Name: Red Effect Bullet Impact Explosion 32x32_115 (2)
+  m_Name: Arrow4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 4761314918338271221}
   - component: {fileID: 5005983143468467396}
   m_Layer: 0
-  m_Name: Red Effect Bullet Impact Explosion 32x32_115 (3)
+  m_Name: Arrow1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 945243360847399119}
   - component: {fileID: 3255081837305831482}
   m_Layer: 0
-  m_Name: Red Effect Bullet Impact Explosion 32x32_115
+  m_Name: Arrow2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 759745065942554783}
   - component: {fileID: 4221398377441151015}
   m_Layer: 0
-  m_Name: Red Effect Bullet Impact Explosion 32x32_115 (4)
+  m_Name: Arrow5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 6271192235288628516}
   - component: {fileID: 7920996975018960358}
   m_Layer: 0
-  m_Name: Red Effect Bullet Impact Explosion 32x32_115 (1)
+  m_Name: Arrow3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

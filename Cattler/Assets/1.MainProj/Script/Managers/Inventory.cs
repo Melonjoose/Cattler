@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.U2D.Aseprite;
+using UnityEditor.XR;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -13,6 +14,7 @@ public class Inventory : MonoBehaviour
 
     public int currentCapacity = 5;
     public int maxCapacity = 60;
+    public bool isFull => inventoryList.Count >= currentCapacity;
 
     [Header("UI")]
     public ItemData testItem;
@@ -32,6 +34,10 @@ public class Inventory : MonoBehaviour
 
         InitializeInventorySpace(currentCapacity);
         SubscribeToSlots();
+    }
+    private void Update()
+    {
+
     }
 
     void SubscribeToSlots()
@@ -79,6 +85,7 @@ public class Inventory : MonoBehaviour
         //Check for capacity
         if (inventoryList.Count >= currentCapacity)
         {
+            CommentaryManager.instance.AddDialogueToQueue(4); // Inventory full dialogue
             Debug.LogWarning("Inventory full");
             return;
         }
@@ -138,17 +145,32 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void InstantiateNewWeapon(Item item)
+    public void InstantiateNewItem(Item item)
     {
-        if (inventoryList.Count >= currentCapacity) { Debug.LogWarning("Inventory full"); return; }
+        if (inventoryList.Count >= currentCapacity) 
+        {
+            CommentaryManager.instance.AddDialogueToQueue(4); // Inventory full dialogue
+            Debug.LogWarning("Inventory full"); 
+            return; 
+        }
+
         SnappableLocation emptySlot = GetFirstEmptySlot();
         GameObject prefab = Instantiate(itemPlaceholder, emptySlot.transform);
         ItemUI newItem = prefab.GetComponent<ItemUI>();
 
         InventoryIcon newItemIcon = prefab.GetComponent<InventoryIcon>();
-        newItemIcon.itemType = SnappableLocation.ItemType.Weapon;
 
         ItemType itemType = item.runtimeData.template.itemType;
+        if(itemType == ItemType.Weapon)
+        {
+            newItemIcon.itemType = SnappableLocation.ItemType.Weapon ;
+        }
+        if (itemType == ItemType.Hat)
+        {
+            newItemIcon.itemType = SnappableLocation.ItemType.Hat;
+        }
+
+
         {
             prefab.name = item.runtimeData.template.itemName;
             newItem.itemData = item.runtimeData.template;

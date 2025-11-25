@@ -71,4 +71,45 @@ public class GameManager : MonoBehaviour
             Tab.SetActive(false);
         }
     }
+
+    public void LobbyState()
+    {
+        // Set up lobby state
+        //spawner not active
+        //travel manager not active
+        //
+    }
+
+    public void StartMission()
+    {
+        // spawner active
+        // everything travel to zero.
+        // make sure ink & core is same from lobbystate.
+        // travel manager active
+        //optional. catkeeper words of encouragement.
+    }
+
+
+    public void RetreatButton()
+    {
+        //When button is clicked.
+        //confirm button pops up.
+    }
+
+    public void ReturnToBase()
+    {
+        // When confirm button is clicked.
+        // goes to a summary page.
+        //summary page shows rewards gained from the mission.
+        //shows total ink earned. shows items gained. shows core gained.
+        //shows cats that survived.
+        //shows cats that died.
+        //converts cats to ink.(money)
+    }
+
+    public void ReturnToLobby()
+    {
+        // When confirm button is clicked.
+        // load lobby scene.
+    }
 }

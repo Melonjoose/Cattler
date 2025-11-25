@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,9 +22,12 @@ public class SelectedItemDisplayUI : MonoBehaviour
 
     //Items that have been added into the Displayer.
     [SerializeField] private InventoryIcon selectedCat;
-    [SerializeField] private InventoryIcon selectedHat;
-    [SerializeField] private InventoryIcon selectedWeapon1;
-    [SerializeField] private InventoryIcon selectedWeapon2;
+
+    public int hpChange;
+    public int atkChange;
+    public float atkspdChange;
+    public float atkrngChange;
+    public float mvspdChange;
 
     private void Awake()
     {
@@ -47,11 +51,8 @@ public class SelectedItemDisplayUI : MonoBehaviour
 
     void InitializeReferences()
     {
-        if (textBoxGRP == null)
-            textBoxGRP = transform.Find("TextBox")?.GetComponent<GameObject>();
-
-        if (StatGRP == null)
-            StatGRP = transform.Find("Stat")?.GetComponent<GameObject>();
+        textBoxGRP = transform.Find("TextBox")?.gameObject;
+        StatGRP = textBoxGRP.transform.Find("Stat")?.gameObject;
 
         // Auto-assign if not linked in Inspector
         if (nameUI == null)
@@ -87,34 +88,37 @@ public class SelectedItemDisplayUI : MonoBehaviour
             EXPUI = textBoxGRP.transform.Find("Experience")?.GetComponent<TextMeshProUGUI>();
 
 
-    } 
+    }
 
     public void ShowCatStats(InventoryIcon catIcon)
     {
         selectedCat = catIcon;
-            CatUnit catUnit = selectedCat.GetComponent<CatUnit>();
+        CatUnit catUnit = selectedCat.GetComponent<CatUnit>();
+
         if (catUnit != null)
         {
             nameUI.text = catUnit.runtimeData.template.itemName;
             descriptionUI.text = catUnit.runtimeData.template.description;
             SkillUI.text = catUnit.runtimeData.template.skillDesc;
-            HP_StatsUI.text = $"HP : {catUnit.runtimeData.maxHealth} ";
-            ATK_StatsUI.text = $"ATK : {catUnit.runtimeData.attackPower} ";
-            ATKSPD_StatsUI.text = $"ATK SPD : {catUnit.runtimeData.attackSpeed} ";
-            ATKRNG_StatsUI.text = $"ATK RNG : {catUnit.runtimeData.attackRange} ";
-            MVSPD_StatsUI.text = $"MV SPD : {catUnit.runtimeData.movementSpeed} ";
+
+            // Use FormatStat for all stats
+            CalculateItemStatsChanges(); // returns your StatChanges struct
+
+            HP_StatsUI.text = FormatStat("HP", catUnit.runtimeData.maxHealth, hpChange, 0);
+            ATK_StatsUI.text = FormatStat("ATK", catUnit.runtimeData.attackPower, atkChange, 0);
+            ATKSPD_StatsUI.text = FormatStat("ATK SPD", catUnit.runtimeData.attackSpeed, atkspdChange, 2);
+            ATKRNG_StatsUI.text = FormatStat("ATK RNG", catUnit.runtimeData.attackRange, atkrngChange, 2);
+            MVSPD_StatsUI.text = FormatStat("MV SPD", catUnit.runtimeData.movementSpeed, mvspdChange, 2);
         }
         else
         {
             RemoveCatStats();
         }
-        
     }
 
     public void RemoveCatStats() // default state.
     {
-        nameUI.text = "No cats to preview!";
-        descriptionUI.text = string.Empty;
+        nameUI.text = "Add a cat above to preview!";
         descriptionUI.text = string.Empty;
         SkillUI.text = string.Empty;
 
@@ -129,5 +133,69 @@ public class SelectedItemDisplayUI : MonoBehaviour
         selectedCat = null;
     }
 
-    //replacing cat does 1.show then 2.remove??? or the other way round
+
+    public void CalculateItemStatsChanges()
+    {
+        Item Hat = PreviewManager.instance.hat;
+        Item WeaponL = PreviewManager.instance.weaponL;
+        Item WeaponR = PreviewManager.instance.weaponR;
+
+        hpChange = (Hat?.runtimeData?.health ?? 0) +
+                       (WeaponL?.runtimeData?.health ?? 0) +
+                       (WeaponR?.runtimeData?.health ?? 0);
+
+        atkChange = (Hat?.runtimeData?.attackPower ?? 0) +
+                       (WeaponL?.runtimeData?.attackPower ?? 0) +
+                       (WeaponR?.runtimeData?.attackPower ?? 0);
+
+        atkspdChange = (Hat?.runtimeData?.attackSpeed ?? 0f) +
+                       (WeaponL?.runtimeData?.attackSpeed ?? 0f) +
+                       (WeaponR?.runtimeData?.attackSpeed ?? 0f);
+
+        atkrngChange = (Hat?.runtimeData?.attackRange ?? 0f) +
+                       (WeaponL?.runtimeData?.attackRange ?? 0f) +
+                       (WeaponR?.runtimeData?.attackRange ?? 0f);
+
+        mvspdChange = (Hat?.runtimeData?.movementSpeed ?? 0f) +
+                       (WeaponL?.runtimeData?.movementSpeed ?? 0f) +
+                       (WeaponR?.runtimeData?.movementSpeed ?? 0f);
+    }
+
+
+
+    public void UpdateStats()
+    {
+        CatUnit catUnit = selectedCat.GetComponent<CatUnit>();
+        if (catUnit != null)
+        {
+            nameUI.text = catUnit.runtimeData.template.itemName;
+            descriptionUI.text = catUnit.runtimeData.template.description;
+            SkillUI.text = catUnit.runtimeData.template.skillDesc;
+
+            // Use FormatStat for all stats
+            CalculateItemStatsChanges(); // returns your StatChanges struct
+
+            HP_StatsUI.text = FormatStat("HP", catUnit.runtimeData.maxHealth, hpChange, 0);
+            ATK_StatsUI.text = FormatStat("ATK", catUnit.runtimeData.attackPower, atkChange, 0);
+            ATKSPD_StatsUI.text = FormatStat("ATK SPD", catUnit.runtimeData.attackSpeed, atkspdChange, 2);
+            ATKRNG_StatsUI.text = FormatStat("ATK RNG", catUnit.runtimeData.attackRange, atkrngChange, 2);
+            MVSPD_StatsUI.text = FormatStat("MV SPD", catUnit.runtimeData.movementSpeed, mvspdChange, 2);
+        }
+    }
+
+    private string FormatStat(string label, float baseValue, float changeValue, int decimals = 2)
+    {
+        float finalValue = baseValue + changeValue;
+        string changeText = "";
+
+        if (changeValue > 0)
+            changeText = $" <color=green>(+{changeValue.ToString($"F{decimals}")})</color>";
+        else if (changeValue < 0)
+            changeText = $" <color=red>({changeValue.ToString($"F{decimals}")})</color>";
+
+        return $"{label} : {baseValue.ToString($"F{decimals}")}{changeText}";
+    }
+
+
+
 }

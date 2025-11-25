@@ -1180,6 +1180,7 @@ GameObject:
   - component: {fileID: 67617512}
   - component: {fileID: 67617511}
   - component: {fileID: 67617514}
+  - component: {fileID: 67617516}
   - component: {fileID: 67617515}
   m_Layer: 5
   m_Name: CatIcon 2
@@ -1278,6 +1279,62 @@ MonoBehaviour:
   skillButton1: {fileID: 0}
   skillButton2: {fileID: 0}
   thisIcon: {fileID: 0}
+--- !u!114 &67617516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67617509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1081970022}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 67617515}
+        m_TargetAssemblyTypeName: Icon, Assembly-CSharp
+        m_MethodName: IconButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 67617515}
+          m_ObjectArgumentAssemblyTypeName: Icon, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &68168785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,7 +1448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.475, y: -33.23499}
+  m_AnchoredPosition: {x: -69.475, y: -36.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &77582050
@@ -1412,7 +1469,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 0.5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1651,10 +1708,6 @@ PrefabInstance:
     - target: {fileID: 1190175119024557911, guid: 5d8c80c5c922ace4895b4aafe68a6fed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2371860744122222213, guid: 5d8c80c5c922ace4895b4aafe68a6fed, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4041,6 +4094,7 @@ GameObject:
   - component: {fileID: 256267062}
   - component: {fileID: 256267061}
   - component: {fileID: 256267064}
+  - component: {fileID: 256267066}
   - component: {fileID: 256267065}
   m_Layer: 5
   m_Name: CatIcon 3
@@ -4139,6 +4193,62 @@ MonoBehaviour:
   skillButton1: {fileID: 0}
   skillButton2: {fileID: 0}
   thisIcon: {fileID: 0}
+--- !u!114 &256267066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256267059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1081970022}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 256267065}
+        m_TargetAssemblyTypeName: Icon, Assembly-CSharp
+        m_MethodName: IconButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 256267065}
+          m_ObjectArgumentAssemblyTypeName: Icon, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &257661155
 GameObject:
   m_ObjectHideFlags: 0
@@ -7314,6 +7424,7 @@ MonoBehaviour:
   catUnit: {fileID: 0}
   assignedSkill: {fileID: 0}
   skillButton: {fileID: 0}
+  skillIcon: {fileID: 0}
 --- !u!114 &526603951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8059,6 +8170,7 @@ MonoBehaviour:
   catUnit: {fileID: 0}
   assignedSkill: {fileID: 0}
   skillButton: {fileID: 0}
+  skillIcon: {fileID: 0}
 --- !u!114 &592156363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8734,9 +8846,11 @@ MonoBehaviour:
   LVLUI: {fileID: 0}
   EXPUI: {fileID: 0}
   selectedCat: {fileID: 0}
-  selectedHat: {fileID: 0}
-  selectedWeapon1: {fileID: 0}
-  selectedWeapon2: {fileID: 0}
+  hpChange: 0
+  atkChange: 0
+  atkspdChange: 0
+  atkrngChange: 0
+  mvspdChange: 0
 --- !u!1001 &664772558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9011,6 +9125,7 @@ MonoBehaviour:
   catUnit: {fileID: 0}
   assignedSkill: {fileID: 0}
   skillButton: {fileID: 0}
+  skillIcon: {fileID: 0}
 --- !u!114 &682002466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10175,6 +10290,7 @@ GameObject:
   - component: {fileID: 743636646}
   - component: {fileID: 743636645}
   - component: {fileID: 743636648}
+  - component: {fileID: 743636650}
   - component: {fileID: 743636649}
   m_Layer: 5
   m_Name: CatIcon 4
@@ -10273,6 +10389,62 @@ MonoBehaviour:
   skillButton1: {fileID: 0}
   skillButton2: {fileID: 0}
   thisIcon: {fileID: 0}
+--- !u!114 &743636650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743636643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1081970022}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 743636649}
+        m_TargetAssemblyTypeName: Icon, Assembly-CSharp
+        m_MethodName: IconButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 743636649}
+          m_ObjectArgumentAssemblyTypeName: Icon, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &747066872
 GameObject:
   m_ObjectHideFlags: 0
@@ -11256,6 +11428,7 @@ MonoBehaviour:
   catUnit: {fileID: 0}
   assignedSkill: {fileID: 0}
   skillButton: {fileID: 0}
+  skillIcon: {fileID: 0}
 --- !u!114 &770732850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11896,7 +12069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 128.2, y: -77.2}
+  m_AnchoredPosition: {x: 128.2, y: -77.9}
   m_SizeDelta: {x: 240.01, y: 31.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &820770132
@@ -16618,6 +16791,7 @@ MonoBehaviour:
   catUnit: {fileID: 0}
   assignedSkill: {fileID: 0}
   skillButton: {fileID: 0}
+  skillIcon: {fileID: 0}
 --- !u!114 &1066292334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18302,6 +18476,7 @@ MonoBehaviour:
   catUnit: {fileID: 0}
   assignedSkill: {fileID: 0}
   skillButton: {fileID: 0}
+  skillIcon: {fileID: 0}
 --- !u!1 &1130626556
 GameObject:
   m_ObjectHideFlags: 0
@@ -18515,7 +18690,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
@@ -24870,7 +25045,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 128.2, y: -41.339996}
+  m_AnchoredPosition: {x: 128.2, y: -42.8}
   m_SizeDelta: {x: 240.01, y: 31.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1649886435
@@ -25641,6 +25816,7 @@ MonoBehaviour:
   catUnit: {fileID: 0}
   assignedSkill: {fileID: 0}
   skillButton: {fileID: 0}
+  skillIcon: {fileID: 0}
 --- !u!114 &1681147989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27089,8 +27265,9 @@ MonoBehaviour:
   dialogueTextChoices:
   - Hello Commander! Please lead us to victory!
   - Commander! Your cat is low on health!
-  - No.. Your Cat has fallen... Maybe we should retreat for now.....
+  - No.. Your cat has fallen... Maybe we should retreat for now.....
   - Your on a roll! Keep it up!
+  - Your Inventory is full Commander!
   dialogueQueue: []
   isTalking: 0
 --- !u!1 &1806202130
@@ -27148,6 +27325,7 @@ MonoBehaviour:
   catUnit: {fileID: 0}
   assignedSkill: {fileID: 0}
   skillButton: {fileID: 0}
+  skillIcon: {fileID: 0}
 --- !u!114 &1806202133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30415,6 +30593,7 @@ MonoBehaviour:
   catUnit: {fileID: 0}
   assignedSkill: {fileID: 0}
   skillButton: {fileID: 0}
+  skillIcon: {fileID: 0}
 --- !u!114 &2021622590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30881,6 +31060,7 @@ GameObject:
   - component: {fileID: 2070008656}
   - component: {fileID: 2070008655}
   - component: {fileID: 2070008658}
+  - component: {fileID: 2070008660}
   - component: {fileID: 2070008659}
   m_Layer: 5
   m_Name: CatIcon 1
@@ -30979,6 +31159,62 @@ MonoBehaviour:
   skillButton1: {fileID: 0}
   skillButton2: {fileID: 0}
   thisIcon: {fileID: 0}
+--- !u!114 &2070008660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070008653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1081970022}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2070008659}
+        m_TargetAssemblyTypeName: Icon, Assembly-CSharp
+        m_MethodName: IconButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2070008659}
+          m_ObjectArgumentAssemblyTypeName: Icon, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2070269631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31640,6 +31876,7 @@ MonoBehaviour:
   catUnit: {fileID: 0}
   assignedSkill: {fileID: 0}
   skillButton: {fileID: 0}
+  skillIcon: {fileID: 0}
 --- !u!114 &2127849443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32356,6 +32593,63 @@ RectTransform:
   m_AnchoredPosition: {x: 4.8999023, y: -18.2}
   m_SizeDelta: {x: 15.51, y: 15.51}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &3540442030391165371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1063309126661408168, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+      propertyPath: m_Name
+      value: BasicHat_ArcherHat
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042607115927372942, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042607115927372942, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042607115927372942, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042607115927372942, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042607115927372942, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042607115927372942, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042607115927372942, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042607115927372942, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042607115927372942, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042607115927372942, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
 --- !u!1001 &3874469393945467109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32689,3 +32983,4 @@ SceneRoots:
   - {fileID: 1150937719}
   - {fileID: 103713868}
   - {fileID: 3874469393945467109}
+  - {fileID: 3540442030391165371}

@@ -103,6 +103,8 @@ public class PreviewManager : MonoBehaviour
 
     public void AddItemToPreview(Item item, SnappableLocation slot)
     {
+        AddItemStatsToCat(item);
+
         if (catUnit == null || item == null || slot == null) return;
 
         switch (item.runtimeData.template.itemType)
@@ -141,6 +143,8 @@ public class PreviewManager : MonoBehaviour
                 Debug.LogWarning("Unknown item type");
                 break;
         }
+
+        SelectedItemDisplayUI.instance.UpdateStats();
     }
 
     private void ReparentItemToSlot(Item item, SnappableLocation slot)
@@ -209,6 +213,8 @@ public class PreviewManager : MonoBehaviour
             catUnit.weaponR = null;
             ClearItemFromCat("R_WeaponPlaceHolder");
         }
+        RemoveItemStatsFromCat(itemToRemove);
+        SelectedItemDisplayUI.instance.UpdateStats();
     }
 
     private void ClearItemFromCat(string placeholderName)   //Visuals for now
@@ -222,18 +228,45 @@ public class PreviewManager : MonoBehaviour
     }
 
 
-public void ItemFollowCatWhenRemoved()
-{
-    if (catUnit == null) return;
+    public void ItemFollowCatWhenRemoved()
+    {
+        if (catUnit == null) return;
 
-    if (hat != null) ClearItemFromCat("T_HatPlaceHolder");
-    if (weaponL != null) ClearItemFromCat("L_WeaponPlaceHolder");
-    if (weaponR != null) ClearItemFromCat("R_WeaponPlaceHolder");
+        if (hat != null) ClearItemFromCat("T_HatPlaceHolder");
+        if (weaponL != null) ClearItemFromCat("L_WeaponPlaceHolder");
+        if (weaponR != null) ClearItemFromCat("R_WeaponPlaceHolder");
 
-    hat = null;
-    weaponL = null;
-    weaponR = null;
-}
+        hat = null;
+        weaponL = null;
+        weaponR = null;
+    }
 
 
+
+    public void UpdateStats()  //when equipping items 
+    {
+        // To be implemented: Update catUnit's stats based on equipped items
+        if (catUnit == null) return;
+
+    }
+
+    public void AddItemStatsToCat(Item item)
+    {
+        catUnit.runtimeData.maxHealth += item.runtimeData.health;
+        catUnit.runtimeData.currentHealth = catUnit.runtimeData.maxHealth;
+        catUnit.runtimeData.attackPower += item.runtimeData.attackPower;
+        catUnit.runtimeData.attackSpeed += item.runtimeData.attackSpeed;
+        catUnit.runtimeData.attackRange += item.runtimeData.attackRange;
+        catUnit.runtimeData.movementSpeed += item.runtimeData.movementSpeed;
+    }
+
+    public void RemoveItemStatsFromCat(Item item)
+    {
+        catUnit.runtimeData.maxHealth -= item.runtimeData.health;
+        catUnit.runtimeData.currentHealth = catUnit.runtimeData.maxHealth;
+        catUnit.runtimeData.attackPower -= item.runtimeData.attackPower;
+        catUnit.runtimeData.attackSpeed -= item.runtimeData.attackSpeed;
+        catUnit.runtimeData.attackRange -= item.runtimeData.attackRange;
+        catUnit.runtimeData.movementSpeed -= item.runtimeData.movementSpeed;
+    }
 }

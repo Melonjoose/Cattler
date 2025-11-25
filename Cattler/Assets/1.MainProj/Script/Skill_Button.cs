@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Skill_Button : MonoBehaviour // add handlers
 
@@ -8,10 +9,12 @@ public class Skill_Button : MonoBehaviour // add handlers
     public ActiveAbility assignedSkill;
     public GameObject skillButton;
     private RectTransform buttonRect;
+    public Image skillIcon;
 
-    void Start()
+    void Awake()
     {
         skillButton = this.gameObject;
+        skillIcon = this.transform.Find("Sprite").GetComponent<Image>();
 
         //skillButton.transform.localPosition = Vector3.zero;
         //buttonRect = skillButton.GetComponent<RectTransform>();
@@ -26,6 +29,23 @@ public class Skill_Button : MonoBehaviour // add handlers
     public void AssignSkill(ActiveAbility skill)
     {
         assignedSkill = skill;
+
+    }
+
+    public void UpdateIcon(Item item)
+    {
+        if(item == null)
+        {
+            Debug.LogWarning("No item provided to update icon.");
+            return;
+        }
+        if(skillIcon == null)
+        {
+            Debug.LogWarning("Skill icon Image component not found.");
+            return;
+        } 
+        Sprite itemIcon = item.runtimeData.template.icon;
+        skillIcon.sprite = itemIcon;
     }
 
     public void UseSkill()

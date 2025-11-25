@@ -118,7 +118,7 @@ public class CatIconUI : MonoBehaviour
         {
             Debug.Log("Linking skill!");
             // Show the skill button
-            thisIcon.skillButton1.gameObject.SetActive(true);
+            //thisIcon.skillButton1.gameObject.SetActive(true);
 
             // Find the child button correctly
             Skill_Button skillButton1 = thisIcon.skillButton1;
@@ -128,6 +128,7 @@ public class CatIconUI : MonoBehaviour
                 if(cat.weaponL != null)
                 {
                     skillButton1.AssignSkill(cat.weaponL.runtimeData.template.skill);
+                    skillButton1.UpdateIcon(cat.weaponL);
                 }
                 else
                 {
@@ -142,13 +143,21 @@ public class CatIconUI : MonoBehaviour
                 if (cat.weaponR != null)
                 {
                     skillButton2.AssignSkill(cat.weaponR.runtimeData.template.skill);
+                    skillButton2.UpdateIcon(cat.weaponR);
                 }
                 else
                 {
                     Debug.Log("No right weapon found for skill assignment.");
                 }
             }
+            else
+            {
+                //change skillbutton to a cross icon to indicate no skill.
+                //cannot open if both skill is null.
+            }
         }
+
+
     }
 
     public void UnlinkCatFromIcon(CatUnit cat)

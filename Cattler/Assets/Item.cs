@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public Collider2D collider2D;
+    public CapsuleCollider2D triggerCollider2D;
     public ItemRuntimeData runtimeData;
 
     public CatUnit catUnit; //cat that is equipping this item.
@@ -10,7 +10,7 @@ public class Item : MonoBehaviour
     private void Awake()
     {
         //if this gameobject has collider2D, get Collider2D and add it to collider2D
-        collider2D = GetComponent<Collider2D>();
+        triggerCollider2D = GetComponent<CapsuleCollider2D>();
 
     }
     private void Start()
@@ -47,26 +47,37 @@ public class Item : MonoBehaviour
     
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private bool hasCommented = false;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collider2D != null)
+        if (GetComponent<Collider2D>() != null)
         {
             if (collision.gameObject.CompareTag("Cat"))
             {
-                AddItemtoInventory();
+                if(Inventory.instance.isFull != true)
+                {
+                    AddItemtoInventory(this);
+                }
+                else if(!hasCommented)
+                {
+                    CommentaryManager.instance.AddDialogueToQueue(4); // Inventory full dialogue
+                    hasCommented = true;
+                }
             }
         }
     }
 
-    void AddItemtoInventory()
+    void AddItemtoInventory(Item item)
     {
-        Inventory.instance.InstantiateNewWeapon(this);
+        Inventory.instance.InstantiateNewItem(item);
+        CollectItem();
+    }
+
+    void CollectItem()
+    {
         Destroy(gameObject);
+        //later can be a sequence.
     }
 
-    void EquipItem()
-    {
-
-    }
 }
 

@@ -190,15 +190,16 @@ public class MovementDrag : MonoBehaviour
         Gradient gradient = new Gradient();
         gradient.SetKeys(
             new GradientColorKey[] {
-        new GradientColorKey(Color.magenta, 0.0f),
-        new GradientColorKey(new Color(0.925f, 0.573f, 0.286f), 1.0f) // EC9249 orange
+        new GradientColorKey(new Color(0.925f, 0.573f, 0.286f), 0.0f), // start color
+        new GradientColorKey(new Color(0.925f, 0.573f, 0.286f), 1.0f) // EC9249 orange at end
             },
             new GradientAlphaKey[] {
-        new GradientAlphaKey(0.0f, 0.0f), // Magenta faded
-        new GradientAlphaKey(1.0f, 1.0f)  // Orange strong
+        new GradientAlphaKey(1.0f, 0.0f), // fully opaque at start
+        new GradientAlphaKey(1.0f, 1.0f)  // fully opaque at end
             }
         );
         line.colorGradient = gradient;
+
 
         line.sortingLayerName = "Default"; // or a custom layer like "Background"
         line.sortingOrder = -1;             // lower number = behind

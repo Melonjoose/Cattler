@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -16,7 +17,8 @@ public class CommentaryManager : MonoBehaviour
     //create a list that holds string(text or comment)
     public string[] dialogueTextChoices;
 
-    public string[] dialogueQueue; 
+    public List<string> dialogueQueue = new List<string>();
+
 
     public bool isTalking = false;
 
@@ -41,6 +43,7 @@ public class CommentaryManager : MonoBehaviour
     public void BeginTalk(int TextChoice)
     {
         //called when catkeeper starts talking.
+        isTalking = true;
         textBox.SetActive(true);
         string chosenDialogue = dialogueTextChoices[TextChoice];
         text.text = chosenDialogue;
@@ -52,6 +55,7 @@ public class CommentaryManager : MonoBehaviour
 
     void CloseDialogue()
     {
+        isTalking = false;
         textBox.SetActive(false);
     }
 
@@ -60,25 +64,51 @@ public class CommentaryManager : MonoBehaviour
         text.text = "";
         foreach (char c in dialogue)
         {
-            text.text += c; // add 1 character
+            text.text += c;
             yield return new WaitForSeconds(textTypingSpeed);
         }
 
         yield return new WaitForSeconds(dialogueLifetime);
         CloseDialogue();
-    }
 
-    public void AddDialogueToQueue(int Dialogue) 
-    {
-        dialogueQueue = new string[Dialogue];
-        if (isTalking == false)
+        // If more dialogues are queued, continue automatically
+        if (dialogueQueue.Count > 0)
         {
-            BeginTalk(Dialogue);
+            BeginTalkFromQueue();
         }
-
     }
+
+
+    public void AddDialogueToQueue(int dialogueIndex)
+    {
+        // Add the chosen dialogue line to the queue
+        string chosenDialogue = dialogueTextChoices[dialogueIndex];
+        dialogueQueue.Add(chosenDialogue);
+
+        // If not currently talking, start immediately
+        if (!isTalking)
+        {
+            BeginTalkFromQueue();
+        }
+    }
+    public void BeginTalkFromQueue()
+    {
+        if (dialogueQueue.Count == 0) return;
+
+        isTalking = true;
+        textBox.SetActive(true);
+
+        string nextDialogue = dialogueQueue[0];
+        dialogueQueue.RemoveAt(0);
+
+        StopAllCoroutines();
+        StartCoroutine(TypeWritingEffect(nextDialogue));
+    }
+
 
     //---- Triggers ---// 
 
     //Called from other scripts to trigger dialogue.
+
+
 }
