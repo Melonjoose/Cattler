@@ -15,6 +15,7 @@ public class Skill_Button : MonoBehaviour // add handlers
     {
         skillButton = this.gameObject;
         skillIcon = this.transform.Find("Sprite").GetComponent<Image>();
+        skillIcon.sprite = null; // change to an X in the future??
 
         //skillButton.transform.localPosition = Vector3.zero;
         //buttonRect = skillButton.GetComponent<RectTransform>();
@@ -36,6 +37,7 @@ public class Skill_Button : MonoBehaviour // add handlers
     {
         if(item == null)
         {
+            skillIcon.sprite = null;
             Debug.LogWarning("No item provided to update icon.");
             return;
         }

@@ -180,6 +180,8 @@ public class CatIconUI : MonoBehaviour
                 uiSlots[i].healthBar.gameObject.SetActive(false);
 
 
+                //unlink skill buttons
+
 
                 //Debug.Log($"Unlinked cat from icon slot {i}");
                 return;

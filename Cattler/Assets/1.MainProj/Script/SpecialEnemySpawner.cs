@@ -8,6 +8,8 @@ public class SpecialEnemySpawner : EnemySpawner
 
     private void Update()
     {
+        if( !spawnerActive) return;
+
         if (TeamManager.instance.currentTeamSize == 0) return;
 
         timer += Time.deltaTime;

@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class CatUnit : MonoBehaviour
 {
@@ -83,6 +84,7 @@ public class CatUnit : MonoBehaviour
             if (enemytarget != null)
             {
                 Attack(enemytarget);
+                Knockback(enemytarget); //knockback effect when attacked
                 attackCooldown = 1f / runtimeData.attackSpeed;
             }
         }
@@ -94,9 +96,21 @@ public class CatUnit : MonoBehaviour
 
         target.TakeDamage((int)runtimeData.attackPower); //run the TakeDamage method on the target enemy by dealing attackPower damage. (TAKES ACTUAL DMG)
         //Debug.Log(runtimeData.unitName + " attacked " + target.name + " for " + runtimeData.attackPower + " damage!"); //debug to state damage dealt to who in console
+
         DamageNumberManager.Instance.ShowDamage((int)runtimeData.attackPower, hitlocation); //Showdamage at location (SHOWS DMG TAKEN)
+        //VFX can be added here later.
     }
 
+    private void Knockback(EnemyUnit target)
+    {
+        Rigidbody2D targetrb = target.GetComponent<Rigidbody2D>();
+        if (targetrb != null)
+        {
+            Vector2 knockbackDirection = (target.transform.position - transform.position).normalized;
+            float knockbackForce = 3f; // Adjust force as needed
+            targetrb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        }
+    }
 
     public void TakeDamage(int amount)
     {
@@ -111,6 +125,9 @@ public class CatUnit : MonoBehaviour
         else if (runtimeData.currentHealth <= dyingHealth)         //33% of max health
         {
             Dying();
+            //Add a saving Grace function here later. ensure it survives at 1HP instead of dying.
+            //Invunerable for 2 seconds.
+            //then add a knockback to all enemies around it.
         }
     } 
 

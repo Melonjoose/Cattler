@@ -273,6 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2992956722592371742}
   - component: {fileID: 2204417235729385700}
+  - component: {fileID: 3720534467417270998}
   m_Layer: 0
   m_Name: StatsUpPrefab
   m_TagString: Untagged
@@ -291,7 +292,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.8600373, y: -0.93661165, z: -0.04229446}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4914370896567433847}
   - {fileID: 4452395458800282436}
@@ -313,3 +314,25 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   lifetime: 2
   floatSpeed: 1
+--- !u!95 &3720534467417270998
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7069958348808849709}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a89ad35cf6650b0498e004b3208b6e7c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -9,7 +9,7 @@ public class MovementDrag : MonoBehaviour
     public CatMovement catMovement;
     public Camera mainCam;
     private LineRenderer line;
-
+    private Collider2D col;
 
     private bool dragging = false;
     private float camToObjDistance;
@@ -31,18 +31,56 @@ public class MovementDrag : MonoBehaviour
         line.positionCount = resolution + 1;
         line.useWorldSpace = true;
         line.enabled = false;
+        col = this.GetComponent<Collider2D>();
 
         mainCam = Camera.main;
         if (mainCam == null) Debug.LogError("No main camera found (tag MainCamera).");
     }
 
-    void OnMouseDown()
+    void Update()
     {
-        // Called when mouse button pressed over this object's collider
-        dragging = true;
-        camToObjDistance = Vector3.Distance(mainCam.transform.position, transform.position);
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            // Only raycast against the "Cats" layer
+            int catLayerMask = LayerMask.GetMask("Cats");
+            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, catLayerMask);
+
+            if (hit.collider != null && hit.collider == col)
+            {
+                dragging = true;
+                camToObjDistance = Vector3.Distance(Camera.main.transform.position, transform.position);
+                Debug.Log("Cat clicked!");
+            }
+        }
+
+        if (Input.GetMouseButton(0) && dragging)
+        {
+            startPos = transform.position;
+            Vector3 mouseScreen = Input.mousePosition;
+            mouseScreen.z = camToObjDistance;
+            Vector3 mouseWorld = mainCam.ScreenToWorldPoint(mouseScreen);
+            mouseWorld.z = 0;
+
+            lastMouseWorld = mouseWorld;
+            DrawArc(startPos, mouseWorld);
+            SnapArrowToPosition();
+        }
+
+        if (Input.GetMouseButtonUp(0) && dragging)
+        {
+            dragging = false;
+            line.enabled = false;
+            HandleRelease();
+        }
+
+
     }
 
+
+
+    /*
     private void OnMouseDrag()
     {
         //realised clicking on target point trigger draggable.. Need to determine specifics like ONLY clicking on catUnit, then can trigger onMouseDrag. **need to work on.
@@ -98,7 +136,36 @@ public class MovementDrag : MonoBehaviour
 
         arrowHeadInstance.SetActive(false);
     }
+    */
 
+    void HandleRelease()
+    {
+        CatUnit otherCat;
+        int nearestIndex = FindNearestPositionIndex(lastMouseWorld, out otherCat);
+
+        Debug.Log($"other cat is " + otherCat);
+        if (nearestIndex != -1)
+        {
+
+            if (otherCat != null) //if there is another cat.
+            {
+                Debug.Log(otherCat + "is found");
+                int originalIndex = catMovement.catIndex;
+                //catMovement.catIndex = nearestIndex;
+                //otherCat.catMovement.catIndex = originalIndex;
+                catMovement.MoveToDesignatedLocation(nearestIndex);
+                otherCat.catMovement.MoveToDesignatedLocation(originalIndex);
+            }
+            else
+            {
+                Debug.Log("no cat is not found");
+
+                catMovement.MoveToDesignatedLocation(nearestIndex);
+            }
+        }
+
+        arrowHeadInstance.SetActive(false);
+    }
 
     private int FindNearestPositionIndex(Vector3 mouseWorld, out CatUnit otherCat)
     {

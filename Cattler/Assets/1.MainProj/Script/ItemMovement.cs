@@ -10,6 +10,7 @@ public class ItemMovement : MonoBehaviour
 
     private void Update()
     {
+        if (TravelManager.instance.disableTravel == true) return;
         if (TravelManager.instance.isTraveling != true) return;
         transform.position += Vector3.left * (TravelManager.instance.travelSpeed*TravelManager.instance.distanceMultiplier) * Time.deltaTime;
     }

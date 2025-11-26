@@ -38,6 +38,7 @@ public class ArtilleryUnit : EnemyUnit
         if (enemyData != null)
         {
             // Initialize stats from SO
+            maxHealth = enemyData.health;
             currentHealth = enemyData.health;
             attackSpeed = enemyData.attackSpeed;
             attackDamage = enemyData.attackPower;

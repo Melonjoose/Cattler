@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //public static GameManager instance; 
+    public static GameManager instance;
+    public EnemySpawner enemySpawner;    // reference to spawner if needed
+    public SpecialEnemySpawner specialSpawner; // reference to special spawner if needed
 
     [System.Serializable]
     public class Page
@@ -19,10 +21,22 @@ public class GameManager : MonoBehaviour
 
     private Page currentPage;
 
-    void Start()
+    void Awake()
     {
-        //instance = this;
-        CloseAllPages();
+        instance = this;
+
+        //default state at lobby.
+        
+    }
+    private void Start()
+    {
+        // Start at lobby
+        LobbyState();
+    }
+
+    private void Update()
+    {
+
     }
 
     public void OpenPage(string pageName)
@@ -55,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void CloseAllPages()
+    public void CloseAllPages()
     {
         foreach (Page p in pages)
         {
@@ -71,21 +85,62 @@ public class GameManager : MonoBehaviour
             Tab.SetActive(false);
         }
     }
+    public void OpenTab(GameObject Tab)
+    {
+        if (Tab != null)
+        {
+            Tab.SetActive(true);
+        }
+    }
+
+    public void FreezeGamePlay()
+    {
+        // Freeze all physics and gameplay that depend on Time.deltaTime
+        Time.timeScale = 0f;
+
+    }
+    public void ResumeGamePlay()
+    {
+        Time.timeScale = 1f; // Resume gameplay
+    }
+
 
     public void LobbyState()
     {
+        //FreezeGamePlay();
         // Set up lobby state
         //spawner not active
+        enemySpawner.spawnerActive = false;
+        specialSpawner.spawnerActive = false;
+        
+
         //travel manager not active
-        //
+        OpenPage("Lobby");
+        TravelManager.instance.ResetToStart();
+        TravelManager.instance.DisableTravel();
+
     }
 
     public void StartMission()
     {
+        if(TeamManager.instance.currentTeamSize == 0)
+        {
+            Debug.LogWarning("Cannot start mission with no cats in the team!");
+            return;
+        }
+
+        CloseAllPages();
+        //ResumeGamePlay();
         // spawner active
-        // everything travel to zero.
+        enemySpawner.spawnerActive = true;
+        specialSpawner.spawnerActive = true;
+
+        TravelManager.instance.EnableTravel();
+        TravelManager.instance.ResetToStart();
         // make sure ink & core is same from lobbystate.
+
         // travel manager active
+
         //optional. catkeeper words of encouragement.
     }
 
@@ -93,11 +148,14 @@ public class GameManager : MonoBehaviour
     public void RetreatButton()
     {
         //When button is clicked.
+        //pause the game.
+        FreezeGamePlay();
         //confirm button pops up.
     }
 
     public void ReturnToBase()
     {
+        ResumeGamePlay();
         // When confirm button is clicked.
         // goes to a summary page.
         //summary page shows rewards gained from the mission.
@@ -112,4 +170,14 @@ public class GameManager : MonoBehaviour
         // When confirm button is clicked.
         // load lobby scene.
     }
+
+    /// ------------------------------- < Gameplay> ------------------------------------///
+    //phases of the game during travel.
+    //1. Level 1. 0 - 5km
+    //2. Level 2. 5 - 10km
+    //3. MINI BOSS SPAWN POINT (10KM)
+    //4. Level 3. 10 - 15km
+    //5. Level 4. 15 - 20km
+    //6. BOSS SPAWN POINT (20KM)
+    // End Demo.
 }

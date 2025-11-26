@@ -6,6 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     public static EnemySpawner instance;
 
+    public bool spawnerActive = false;
+
     public float minSpawnInterval = 2f;
     public float maxSpawnInterval = 5f;
 
@@ -31,6 +33,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        if(!spawnerActive) return;
+
         if (TeamManager.instance.currentTeamSize == 0) return;
 
         timer += Time.deltaTime;

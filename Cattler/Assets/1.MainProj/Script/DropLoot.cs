@@ -11,8 +11,10 @@ public class DropLoot : MonoBehaviour
     public LootTableEntry[] lootTable; // Assign in inspector
     public float chanceToDropNothing = 0.5f; // 50% chance to drop nothing
 
-    public int InkDrop = 10;
-    public int CoreDrop = 0;
+    public int minInkDrop = 10;
+    public int maXInkDrop = 10;
+    public int minCoreDrop = 0;
+    public int maxCoreDrop = 10;
     public int EXPDrop = 10;
 
     private EnemyUnit enemy;
@@ -56,6 +58,8 @@ public class DropLoot : MonoBehaviour
         {
             GameObject dropInstance = Instantiate(dropPrefab, enemy.transform.position, Quaternion.identity);
         }
+
+        
 
     }
 }
