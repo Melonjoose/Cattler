@@ -188,8 +188,9 @@ GameObject:
   - component: {fileID: 7529121288823028622}
   - component: {fileID: 1109530416184957058}
   - component: {fileID: 934774444833671183}
-  - component: {fileID: 8808920440993331834}
   - component: {fileID: 977705979066154320}
+  - component: {fileID: 8808920440993331834}
+  - component: {fileID: 6470101849914334256}
   m_Layer: 0
   m_Name: BasicSword_Bow
   m_TagString: Untagged
@@ -378,6 +379,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.65625, y: 0.65625}
   m_Direction: 0
+--- !u!114 &977705979066154320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110738209023974265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8021a46b6b495e04388859447b76db46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCollider2D: {fileID: 0}
+  runtimeData:
+    template: {fileID: 11400000, guid: e100e0e9fe6335146bf0d75c630c6aa3, type: 2}
+    health: 0
+    attackPower: 0
+    attackSpeed: 0
+    attackRange: 0
+    movementSpeed: 0
+  catUnit: {fileID: 0}
 --- !u!114 &8808920440993331834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 0}
---- !u!114 &977705979066154320
+--- !u!114 &6470101849914334256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -400,15 +422,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8110738209023974265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8021a46b6b495e04388859447b76db46, type: 3}
+  m_Script: {fileID: 11500000, guid: e61b7c8f7c4a5c345a4040ffd5f4bd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider2D: {fileID: 0}
-  runtimeData:
-    template: {fileID: 11400000, guid: e100e0e9fe6335146bf0d75c630c6aa3, type: 2}
-    health: 0
-    attackPower: 0
-    attackSpeed: 0
-    attackRange: 0
-    movementSpeed: 0
-  catUnit: {fileID: 0}
+  followSpeed: 10

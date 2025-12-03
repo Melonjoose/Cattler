@@ -137,7 +137,7 @@ public class EnemyUnit : MonoBehaviour
         EnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); 
         
         //Debug.Log(enemyData.enemyName + " has been defeated.");
-        Currency.instance.AddInk(10); // Add ink to currency
+        //Currency.instance.AddInk(10); // Add ink to currency
         dropLoot.GiveLoot();
 
         EnemyDetector.instance.OnEnemyDestroyed(gameObject);

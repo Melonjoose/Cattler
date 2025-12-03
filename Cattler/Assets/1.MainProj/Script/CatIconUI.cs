@@ -24,6 +24,8 @@ public class CatIconUI : MonoBehaviour
     [Header("UI Slots Positions")]
     public List<RectTransform> iconPosition = new List<RectTransform>();  //ensure that icon is 0 - 4 / left to right.
 
+    public Sprite deathIcon;
+
     private void Awake()
     {
         instance = this;
@@ -101,6 +103,11 @@ public class CatIconUI : MonoBehaviour
             var positionSlotToSnap = iconPosition[i].transform.position;
 
             thisIconPosition = positionSlotToSnap;
+
+            cat.catIconSlot = uiSlots[i];
+
+            Button catUISlotbutton = uiSlots[i].icon.GetComponent<Button>();  //enable button ineractions
+            catUISlotbutton.interactable = true;
 
             cat.onHealthChanged += (current, max) => UpdateIconHealthUI(i, current, max);
         }
@@ -220,4 +227,12 @@ public class CatIconUI : MonoBehaviour
             .setEase(LeanTweenType.easeInOutQuad);
     }
 
+
+    public void SetIconToDead(CatIconSlot catUISlot)
+    {
+        catUISlot.iconImage.sprite = deathIcon;
+        Button catUISlotbutton = catUISlot.icon.GetComponent<Button>();
+        catUISlotbutton.interactable = false;
+        catUISlot.healthBar.gameObject.SetActive(false);
+    }
 }

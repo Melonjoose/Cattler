@@ -110,9 +110,14 @@ public class GameManager : MonoBehaviour
         //FreezeGamePlay();
         // Set up lobby state
         //spawner not active
+        enemySpawner.ClearAllSpawnedEnemies();
+        specialSpawner.ClearAllSpawnedEnemies();
+
         enemySpawner.spawnerActive = false;
         specialSpawner.spawnerActive = false;
-        
+
+
+        CloseAllPages();
 
         //travel manager not active
         OpenPage("Lobby");
@@ -165,11 +170,6 @@ public class GameManager : MonoBehaviour
         //converts cats to ink.(money)
     }
 
-    public void ReturnToLobby()
-    {
-        // When confirm button is clicked.
-        // load lobby scene.
-    }
 
     /// ------------------------------- < Gameplay> ------------------------------------///
     //phases of the game during travel.

@@ -6,16 +6,17 @@ public class DropLoot : MonoBehaviour
     public class LootTableEntry
     {
         public GameObject item;
-        public float dropChance; // Probability weight
+        [Range(0f, 100f)]  // 0 % to 100%
+        public float dropChance; // Percentage chance to drop this item
     }
     public LootTableEntry[] lootTable; // Assign in inspector
-    public float chanceToDropNothing = 0.5f; // 50% chance to drop nothing
 
     public int minInkDrop = 10;
-    public int maXInkDrop = 10;
+    public int maXInkDrop = 100;
     public int minCoreDrop = 0;
-    public int maxCoreDrop = 10;
-    public int EXPDrop = 10;
+    public int maxCoreDrop = 0;
+    public int minEXPDrop = 10;
+    public int maxEXPDrop = 20;
 
     private EnemyUnit enemy;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,29 +27,35 @@ public class DropLoot : MonoBehaviour
 
     public GameObject Roll()
     {
-        float totalWeight = 0f;
-        // Include the "nothing" chance in total weight
-        foreach (var entry in lootTable)
-            totalWeight += entry.dropChance;
-        totalWeight += chanceToDropNothing;
-
-        float roll = Random.Range(0f, totalWeight);
+        float roll = Random.Range(0f, 100f); // roll between 0 and 100
         float cumulative = 0f;
 
-        // Check if roll falls into the "nothing" range first
-        cumulative += chanceToDropNothing;
-        if (roll <= cumulative)
-            return null;
-
-        // Otherwise, iterate loot table
+        // Iterate loot table
         foreach (var entry in lootTable)
         {
             cumulative += entry.dropChance;
             if (roll <= cumulative)
                 return entry.item;
+            //Debug.Log("Rolled " + roll + " needed less than " + cumulative + " for " + entry.item.name);
         }
 
         return null; // fallback
+    }
+
+
+    public int RollInk()
+    {
+        return Random.Range(minInkDrop, maXInkDrop);
+    }
+
+    public int GetEXP()
+    {
+        return Random.Range(minEXPDrop , maxEXPDrop);
+    }
+
+    public int GetCoreDrop()
+    {
+        return Random.Range(minCoreDrop, maxCoreDrop);
     }
 
     public void GiveLoot()
@@ -59,7 +66,8 @@ public class DropLoot : MonoBehaviour
             GameObject dropInstance = Instantiate(dropPrefab, enemy.transform.position, Quaternion.identity);
         }
 
-        
-
+        Currency.instance.AddInk(RollInk());
+        Currency.instance.AddCore(GetCoreDrop());
+        Currency.instance.AddEXP(GetEXP());
     }
 }

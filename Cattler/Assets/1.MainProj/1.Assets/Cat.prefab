@@ -719,6 +719,12 @@ MonoBehaviour:
     attackRange: 0
     movementSpeed: 0
   catMovement: {fileID: 0}
+  catIconSlot:
+    iconIndex: -1
+    icon: {fileID: 0}
+    iconImage: {fileID: 0}
+    healthBar: {fileID: 0}
+    unit: {fileID: 0}
   isAttacking: 0
   isStunned: 0
   canAttack: 1
@@ -734,7 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98f6d00cd1535c4986846bbc7152856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catIndex: 0
+  catIndex: -1
   inPosition: 0
   rb: {fileID: 0}
   moveSpeed: 3

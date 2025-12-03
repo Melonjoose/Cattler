@@ -13,6 +13,11 @@ public class Currency : MonoBehaviour
     public TextMeshProUGUI expText; // Text to display EXP amount
     public TextMeshProUGUI coreText; // Text to display core amount
 
+    public Animator inkAnimator; // Animator for ink text
+    public Animator eXPAnimator;
+    public Animator coreAnimator;
+
+
     public static Currency instance; //Singleton instance to access this script easily from other scripts
 
     //might want to make this script accessible to all other scripts
@@ -25,8 +30,16 @@ public class Currency : MonoBehaviour
 
     public void AddInk(int amount)
     {
-        ink += amount;
+        if (amount <= 0) return;
+
+        ink += amount;    
         UpdateGUI(); // Update the GUI after adding ink
+        
+        if(inkAnimator != null) 
+        {
+            inkAnimator.SetTrigger("Bounce"); // Trigger bounce animation
+        }
+
     }
 
     public void AddEXP(int amount)
@@ -37,8 +50,14 @@ public class Currency : MonoBehaviour
 
     public void AddCore(int amount)
     {
+        if(amount <= 0) return;
+
         core += amount;
         UpdateGUI(); // Update the GUI after adding core
+        if(coreAnimator != null )
+        {
+           coreAnimator.SetTrigger("Bounce"); // Trigger bounce animation
+        }
     }
 
     void UpdateGUI()

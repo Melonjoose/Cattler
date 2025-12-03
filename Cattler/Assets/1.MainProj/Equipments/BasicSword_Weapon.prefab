@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 9132886927635791346}
   - component: {fileID: 6877051776942261105}
   - component: {fileID: 3313233181249440876}
-  - component: {fileID: 2371860744122222213}
   - component: {fileID: 7540920697073003077}
+  - component: {fileID: 2371860744122222213}
+  - component: {fileID: -5062887821688926032}
   m_Layer: 0
   m_Name: BasicSword_Weapon
   m_TagString: Untagged
@@ -203,6 +204,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.84375, y: 0.84375}
   m_Direction: 0
+--- !u!114 &7540920697073003077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504138518039254494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df888fedd98f5954bb69ef7ad7d57a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCollider2D: {fileID: 0}
+  runtimeData:
+    template: {fileID: 11400000, guid: 56a322b562e1c0c499c621f9567a557b, type: 2}
+    health: 0
+    attackPower: 0
+    attackSpeed: 0
+    attackRange: 0
+    movementSpeed: 0
+  catUnit: {fileID: 0}
 --- !u!114 &2371860744122222213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 0}
---- !u!114 &7540920697073003077
+--- !u!114 &-5062887821688926032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,18 +247,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 504138518039254494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df888fedd98f5954bb69ef7ad7d57a83, type: 3}
+  m_Script: {fileID: 11500000, guid: e61b7c8f7c4a5c345a4040ffd5f4bd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider2D: {fileID: 0}
-  runtimeData:
-    template: {fileID: 11400000, guid: 56a322b562e1c0c499c621f9567a557b, type: 2}
-    health: 0
-    attackPower: 0
-    attackSpeed: 0
-    attackRange: 0
-    movementSpeed: 0
-  catUnit: {fileID: 0}
+  followSpeed: 10
 --- !u!1 &2044278070745602552
 GameObject:
   m_ObjectHideFlags: 0

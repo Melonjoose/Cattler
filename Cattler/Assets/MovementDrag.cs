@@ -146,26 +146,33 @@ public class MovementDrag : MonoBehaviour
         Debug.Log($"other cat is " + otherCat);
         if (nearestIndex != -1)
         {
+            int originalIndex = catMovement.catIndex;
 
-            if (otherCat != null) //if there is another cat.
+            if (otherCat != null) // another cat owns that slot
             {
-                Debug.Log(otherCat + "is found");
-                int originalIndex = catMovement.catIndex;
-                //catMovement.catIndex = nearestIndex;
-                //otherCat.catMovement.catIndex = originalIndex;
+                Debug.Log(otherCat + " is found");
+
+                // Swap logical ownership
+                catMovement.catIndex = nearestIndex;
+                otherCat.catMovement.catIndex = originalIndex;
+
+                // Move them to their designated slots (regardless of current physical position)
                 catMovement.MoveToDesignatedLocation(nearestIndex);
                 otherCat.catMovement.MoveToDesignatedLocation(originalIndex);
             }
             else
             {
-                Debug.Log("no cat is not found");
+                Debug.Log("no cat is found");
 
+                // Just move current cat to new slot
+                catMovement.catIndex = nearestIndex;
                 catMovement.MoveToDesignatedLocation(nearestIndex);
             }
         }
 
         arrowHeadInstance.SetActive(false);
     }
+
 
     private int FindNearestPositionIndex(Vector3 mouseWorld, out CatUnit otherCat)
     {

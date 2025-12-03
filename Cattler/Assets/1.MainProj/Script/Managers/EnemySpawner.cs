@@ -97,6 +97,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void RemoveSpawnedEnemies(GameObject spawnedEnemy)
     {
+        currentEnemyCount -= 1;
         spawnedEnemies.Remove(spawnedEnemy);
         UpdateSpawnedEnemy();
     }
@@ -110,5 +111,20 @@ public class EnemySpawner : MonoBehaviour
     }
     //Add any additional stats from higher difficulty
 
+    public void ClearAllSpawnedEnemies()
+    {
+        if(spawnedEnemies.Count == 0) return;
 
+        //destory all spawned enemies in spawnedenemies List
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            if (enemy != null)
+            {
+                Destroy(enemy);
+            }
+        }
+
+        spawnedEnemies.Clear();
+        UpdateSpawnedEnemy();
+    }
 }

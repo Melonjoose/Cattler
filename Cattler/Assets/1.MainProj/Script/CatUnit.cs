@@ -13,11 +13,13 @@ public class CatUnit : MonoBehaviour
     public Item weaponL; //L
     public Item weaponR; //R
 
+    //--- Cat linked objects ---//
     public GameObject catGO;
     public GameObject targetPoint;
 
     public CatRuntimeData runtimeData;
     public CatMovement catMovement;
+    public CatIconUI.CatIconSlot catIconSlot;
 
     private float attackCooldown;
 
@@ -62,10 +64,6 @@ public class CatUnit : MonoBehaviour
         if (tp != null)
         {
             targetPoint = tp.gameObject;
-        }
-        else
-        {
-            Debug.LogWarning("No child named 'targetPoint' found under " + gameObject.name);
         }
     }
     
@@ -146,10 +144,15 @@ public class CatUnit : MonoBehaviour
     {   
         CommentaryManager.instance.AddDialogueToQueue(2); // Cat defeated dialogue
         Debug.Log(runtimeData.template.itemName + " has been defeated.");
-        Destroy(gameObject);
         //Give Send EXP gained from death to Retreat controller   
         CatDeath?.Invoke();
 
+        CatIconUI.instance.SetIconToDead(catIconSlot);
+
+        TeamManager.instance.StoreToDeadCatsList(this);
+        
+        catGO.SetActive(false);
+        //Destroy(gameObject);  //delete when return to lobby.
     }
 
     public void AssignCat(CatRuntimeData runtimeCat)

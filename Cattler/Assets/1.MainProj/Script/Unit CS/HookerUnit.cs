@@ -61,18 +61,17 @@ public class HookerUnit : EnemyUnit
 
     void DrawLine()
     {
+        if (TargetCat == null) return;
+
         line.enabled = true;
         line.startColor = Color.red;
         line.endColor = Color.red;
 
-        Vector3 thisUnit = transform.position;
-        Vector3 chosenCat = TargetCat.transform.position;
-        
         line.positionCount = 2;
-        line.SetPosition(0, thisUnit);
-        line.SetPosition(1, chosenCat);
-
+        line.SetPosition(0, transform.position);
+        line.SetPosition(1, TargetCat.transform.position);
     }
+
     void DeleteLine()
     {
         if (line != null)
@@ -121,50 +120,64 @@ public class HookerUnit : EnemyUnit
         HookCat();
     }
 
-    void Walk() // State 1
+    void Walk() //state 1
     {
-        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        if (canWalk)
+            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
     }
+
 
     private Coroutine pullCoroutine;
 
-    void HookCat() // State 2
+    void HookCat() //state 2
     {
         if (TargetCat != null)
         {
             DrawLine();
-
             hookedCat = TargetCat.GetComponent<CatUnit>();
             if (hookedCat != null)
             {
-                DebuffManager.instance.Stunned(hookedCat.gameObject, 999f); // Stun indefinitely
+                DebuffManager.instance.Stunned(hookedCat.gameObject, 999f);
                 Debug.Log($"{hookedCat.name} is hooked and stunned!");
                 pullCoroutine = StartCoroutine(pullCat());
             }
         }
     }
 
+
     IEnumerator pullCat()
     {
-        while (hookedCat != null && Vector3.Distance(hookedCat.transform.position, this.transform.position) > 0.5)
+        while (hookedCat != null && Vector3.Distance(hookedCat.transform.position, transform.position) > 1.2f)
         {
-            hookedCat.transform.position = Vector3.MoveTowards(hookedCat.transform.position, transform.position, pullSpeed * Time.deltaTime);
+            hookedCat.transform.position = Vector3.MoveTowards(
+                hookedCat.transform.position,
+                transform.position,
+                pullSpeed * Time.deltaTime
+            );
             yield return null;
         }
-        Debug.Log($"{hookedCat.name} has been pulled to the Hooker!");
+
+        UnHookCat(); // cleanup
     }
 
-    void UnHookCat() // State 3
+
+    void UnHookCat()
     {
         DeleteLine();
-        if (TargetCat != null)
+
+        if (hookedCat != null)
         {
             hookedCat.catMovement.canWalk = true;
             hookedCat.GetComponent<CatMovement>().enabled = true;
             DebuffManager.instance.RemoveStun(hookedCat.gameObject);
-            hookedCat = null;
         }
+
+        hookedCat = null;
+        TargetCat = null;   // <-- important
+        attacking = false;  // stop UpdateLine loop
+        canWalk = true;     // resume walking
     }
+
 
     IEnumerator UpdateLine()
     {
@@ -187,9 +200,10 @@ public class HookerUnit : EnemyUnit
             hookedCat = null;
         }
 
-        SpecialEnemySpawner.instance.RemoveSpawnedEnemies(this.gameObject);
-        Currency.instance.AddInk(10); // Add ink to currency
+        SpecialEnemySpawner.instance.RemoveSpawnedEnemies(gameObject);
+        EnemyDetector.instance.OnEnemyDestroyed(gameObject);
         dropLoot.GiveLoot();
+
         Destroy(gameObject);
     }
 }

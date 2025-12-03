@@ -15,6 +15,8 @@ public class TeamManager : MonoBehaviour
     public List<ContainerDetector> catContainers = new List<ContainerDetector>(); 
     public List<CatUnit> cats = new List<CatUnit>(); 
 
+    public List<CatUnit> deadCats = new List<CatUnit>(); //store cats that died in battle.
+
     public GameObject playerTeamGO;
 
     public GameObject catTemplatePrefab;
@@ -282,5 +284,12 @@ public class TeamManager : MonoBehaviour
             }
         }
 
+    }
+
+
+    public void StoreToDeadCatsList(CatUnit cat)
+    {
+        cats.Remove(cat);
+        deadCats.Add(cat);
     }
 }
