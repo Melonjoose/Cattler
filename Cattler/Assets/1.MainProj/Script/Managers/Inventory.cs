@@ -423,6 +423,5 @@ public class Inventory : MonoBehaviour
         PlaceItem(replacedItem, draggedItemOriginalSlot);
     }
 
-
     ///             MOVEMENT            ///
 }

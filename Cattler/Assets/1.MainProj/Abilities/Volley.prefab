@@ -54,7 +54,7 @@ MonoBehaviour:
   AbilityPrefab: {fileID: 1501784088886520407}
   damage: 2
   cooldown: 5
-  range: 20.05
+  range: 20
   movespeed: 100
   lifetime: 1.5
   timer: 0

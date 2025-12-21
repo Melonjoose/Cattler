@@ -131,8 +131,10 @@ public class HookerUnit : EnemyUnit
 
     void HookCat() //state 2
     {
-        if (TargetCat != null)
-        {
+        if (TargetCat != null) 
+        { 
+            CatUnit chosenCat = TargetCat.GetComponent<CatUnit>();
+            chosenCat.stunnedByThisUnit = this; // set reference to this HookerUnit
             DrawLine();
             hookedCat = TargetCat.GetComponent<CatUnit>();
             if (hookedCat != null)
@@ -161,7 +163,7 @@ public class HookerUnit : EnemyUnit
     }
 
 
-    void UnHookCat()
+    public void UnHookCat()
     {
         DeleteLine();
 

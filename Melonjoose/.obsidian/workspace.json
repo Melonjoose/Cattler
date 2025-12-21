@@ -15,9 +15,9 @@
               "state": {
                 "file": "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
                 "viewState": {
-                  "x": -641.0867792978484,
-                  "y": 598.1240747379358,
-                  "zoom": -1.408161919313387
+                  "x": -419.99214269423794,
+                  "y": -58.840820935431736,
+                  "zoom": -0.7414952526467204
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -68,21 +68,8 @@
               "icon": "lucide-layout-dashboard",
               "title": "Game Flow"
             }
-          },
-          {
-            "id": "5caf33f3e1b829ed",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.10.3"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.10.3"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -231,14 +218,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "00dd73bfa46c815e",
+  "active": "5d09ab864d2728e6",
   "lastOpenFiles": [
+    "Coding Notes.md",
+    "Purrgatory Game (Main Game)/Game Flow.canvas",
+    "Purrgatory Game (Main Game)/Basic Cats.md",
     "Untitled 1.base",
     "Untitled.base",
     "Team Management/FYP BOOTH Showcase.md",
-    "Purrgatory Game (Main Game)/Game Flow.canvas",
     "Purrgatory Game (Main Game)/Cat Position Controls.canvas",
-    "Coding Notes.md",
     "Main Gameplay Page.md",
     "Team Page.md",
     "Resolution for Assets.md",
@@ -254,7 +242,6 @@
     "Marketing/Youtube Schedule Planning.md",
     "Purrgatory Game (Main Game)/Control Manager.md",
     "Purrgatory Game (Main Game)/Game Manager.md",
-    "Purrgatory Game (Main Game)/Basic Cats.md",
     "Purrgatory Game (Main Game)/Game UI.md",
     "Game Structure and Timeline.canvas",
     "Team Management/House Rules.md",

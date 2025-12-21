@@ -65,11 +65,10 @@ public class EnemyUnit : MonoBehaviour
         if (attackCooldown > 0f)
             attackCooldown -= Time.deltaTime;
 
-        if (TargetCat == null)
+        if (TargetCat == null || !TargetCat.activeSelf)
         {
             ChooseRandomCat();
         }
-
     }
 
     private void OnTriggerStay2D(Collider2D other)
