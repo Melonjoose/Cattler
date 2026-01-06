@@ -25,7 +25,7 @@ public class CatUnit : MonoBehaviour
 
     public bool isAttacking = false;
     public bool isStunned = false;
-    public HookerUnit stunnedByThisUnit;
+    public bool isDead = false;
 
     public bool canAttack = true;
 
@@ -147,8 +147,8 @@ public class CatUnit : MonoBehaviour
         Debug.Log(runtimeData.template.itemName + " has been defeated.");
         //Give Send EXP gained from death to Retreat controller   
         CatDeath?.Invoke();
-
-        if (stunnedByThisUnit != null) { stunnedByThisUnit.UnHookCat(); }
+        
+        isDead = true;
 
         CatIconUI.instance.SetIconToDead(catIconSlot);
 

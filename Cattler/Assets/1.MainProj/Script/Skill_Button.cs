@@ -23,7 +23,8 @@ public class Skill_Button : MonoBehaviour // add handlers
         button = skillButton.GetComponent<Button>();
         skillIcon = this.transform.Find("Sprite").GetComponent<Image>();
         skillIcon.sprite = null; // change to an X in the future??
-
+        cooldownVisual = skillButton.transform.Find("CooldownVisual").gameObject;
+        cooldownNumber = cooldownVisual.transform.Find("CooldownNumber").GetComponent<TextMeshProUGUI>();
 
         cooldownVisual.SetActive(false);
 

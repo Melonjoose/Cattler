@@ -19,11 +19,6 @@ public class Icon : MonoBehaviour
         thisIcon.HideButton();
     }
 
-    public void InitializeSkills()  //based on what item the cat has, initialize the skills accordingly. //maybe I might shift this to TeamManager later.
-    {
-
-    }
-
     public void IconButtonClicked(Icon icon)
     {
         if(icon != thisIcon)
@@ -34,20 +29,25 @@ public class Icon : MonoBehaviour
 
         if (isRevealed == false)
         {
-            isRevealed = true;
-
-            skillButton1.gameObject.SetActive(true);
-            skillButton2.gameObject.SetActive(true);
-            // Raise button above default position (relative to parent)
-            //skillButton1.transform.localPosition = new Vector3(0f, 55f, 0f);
-            //skillButton2.transform.localPosition = new Vector3(0f, 100f, 0f);
-            LeanTween.moveLocal(skillButton1.gameObject, new Vector3(-16f, 48f, 0.1f), 0.2f);
-            LeanTween.moveLocal(skillButton2.gameObject, new Vector3(15f, 48f, 0.1f), 0.2f);
+            ShowButton();
         }
         else
         {
             HideButton();
         }
+    }
+
+    public void ShowButton()
+    {
+        isRevealed = true;
+
+        skillButton1.gameObject.SetActive(true);
+        skillButton2.gameObject.SetActive(true);
+        // Raise button above default position (relative to parent)
+        //skillButton1.transform.localPosition = new Vector3(0f, 55f, 0f);
+        //skillButton2.transform.localPosition = new Vector3(0f, 100f, 0f);
+        LeanTween.moveLocal(skillButton1.gameObject, new Vector3(-16f, 48f, 0.1f), 0.2f);
+        LeanTween.moveLocal(skillButton2.gameObject, new Vector3(15f, 48f, 0.1f), 0.2f);
     }
     public void HideButton()
     {

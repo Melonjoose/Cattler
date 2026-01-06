@@ -133,8 +133,6 @@ public class HookerUnit : EnemyUnit
     {
         if (TargetCat != null) 
         { 
-            CatUnit chosenCat = TargetCat.GetComponent<CatUnit>();
-            chosenCat.stunnedByThisUnit = this; // set reference to this HookerUnit
             DrawLine();
             hookedCat = TargetCat.GetComponent<CatUnit>();
             if (hookedCat != null)
@@ -149,7 +147,7 @@ public class HookerUnit : EnemyUnit
 
     IEnumerator pullCat()
     {
-        while (hookedCat != null && Vector3.Distance(hookedCat.transform.position, transform.position) > 1.2f)
+        while (hookedCat != null && Vector3.Distance(hookedCat.transform.position, transform.position) > 1.2f  && hookedCat.isDead == false)
         {
             hookedCat.transform.position = Vector3.MoveTowards(
                 hookedCat.transform.position,
