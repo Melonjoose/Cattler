@@ -16,10 +16,10 @@ MonoBehaviour:
   prefab2: {fileID: 0}
   itemName: Chef Cat
   icon: {fileID: 21300000, guid: c62d99b94f4c45044a9612616b69604b, type: 3}
-  type: 0
+  itemType: 0
   description: A Chef Cat that preps meals for the team!
   value: 2
-  unitType: 2 Star Cat
+  Rarity: 1
   skillName: Cook
   skillDesc: Cook a meal every 15 seconds that heal cats!
   level: 1

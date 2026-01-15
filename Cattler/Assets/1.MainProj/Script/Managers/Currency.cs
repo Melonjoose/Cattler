@@ -9,9 +9,10 @@ public class Currency : MonoBehaviour
     public int eXP = 0; // EXP can be earn after the player retreats. EXP can also be earn from dead cats
     public int core = 0; //Rare currency drop by mini bosses and bosses
     
-    public TextMeshProUGUI inkText; // Text to display ink amount
-    public TextMeshProUGUI expText; // Text to display EXP amount
-    public TextMeshProUGUI coreText; // Text to display core amount
+    public TextMeshProUGUI[] inkText; // Text to display ink amount
+    public TextMeshProUGUI[] expText; // Text to display EXP amount
+    public TextMeshProUGUI[] coreText; // Text to display core amount
+    
 
     public Animator inkAnimator; // Animator for ink text
     public Animator eXPAnimator;
@@ -30,7 +31,6 @@ public class Currency : MonoBehaviour
 
     public void AddInk(int amount)
     {
-        if (amount <= 0) return;
 
         ink += amount;    
         UpdateGUI(); // Update the GUI after adding ink
@@ -62,8 +62,17 @@ public class Currency : MonoBehaviour
 
     void UpdateGUI()
     {
-        inkText.text = ink.ToString();
-        expText.text = eXP.ToString();
-        coreText.text = core.ToString();
+        foreach (var text in inkText)
+        {
+            text.text = ink.ToString();
+        }
+        foreach (var text in expText) 
+        { 
+            text.text = eXP.ToString(); 
+        }
+        foreach (var text in coreText)
+        {
+            text.text = core.ToString();
+        }
     }
 }

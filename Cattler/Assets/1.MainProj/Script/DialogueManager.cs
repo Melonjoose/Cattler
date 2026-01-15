@@ -2,25 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CommentaryManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public static CommentaryManager instance;
+    public static DialogueManager instance;
     public TextMeshProUGUI text;
     public GameObject textBox;  //the gameobject that holds the text.
-    public GameObject[] catContainer;
 
     public float textTypingSpeed = 1.0f; //how fast the type writing effect is going to be
+    public RawImage CharacterLeft;
+    public RawImage CharacterRight;
 
-    public float dialogueLifetime = 5.0f; // the time it stays open before it close.
     //create a list that holds string(text or comment)
+    //need a list that holds multiple dialogue choices,sprites and scenerios.(screenshake, emergency, shockCharacterLeft, shock characterRight) 
     public string[] dialogueTextChoices;
 
     public List<string> dialogueQueue = new List<string>();
 
-
     public bool isTalking = false;
+
+    //while talking, tap to skip to the end of the text.
+    //while end of text, tap to move to next dialogue in queue.
 
     private void Awake()
     {
@@ -30,14 +33,14 @@ public class CommentaryManager : MonoBehaviour
     public void Start()
     {
         textBox.SetActive(false);
-    }   
+    }
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.N)) // test
-        //{
-        //    BeginTalk(0);
-        //}
+        if (Input.GetKeyDown(KeyCode.N)) // test
+        {
+            BeginTalk(0);
+        }
     }
 
     public void BeginTalk(int TextChoice)
@@ -68,7 +71,7 @@ public class CommentaryManager : MonoBehaviour
             yield return new WaitForSeconds(textTypingSpeed);
         }
 
-        yield return new WaitForSeconds(dialogueLifetime);
+        //if mouse is clicked, move to next text in queue else. close dialogue
         CloseDialogue();
 
         // If more dialogues are queued, continue automatically
@@ -104,11 +107,5 @@ public class CommentaryManager : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(TypeWritingEffect(nextDialogue));
     }
-
-
-    //---- Triggers ---// 
-
-    //Called from other scripts to trigger dialogue.
-
-
+    // Function to start a dialogue sequence
 }

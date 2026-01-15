@@ -5,7 +5,7 @@ public class CatData : ItemData
 
     //stats that should not change
     [Header("Unit Info")]
-    public string unitType;
+    public Rarity Rarity;
     public string skillName;
     public string skillDesc;
     public int level;
@@ -17,4 +17,6 @@ public class CatData : ItemData
     public float attackSpeed;
     public float attackRange;
     public float movementSpeed;
+
 }
+    public enum Rarity { Common,Rare,Legendary}

@@ -1,9 +1,23 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SummonManager : MonoBehaviour
 {
     public static SummonManager instance;
+    public int summonCost = 100;
+    public Animator summonAnimator;
+    public GameObject tapToRevealPage;
+    public GameObject displaySummonedCatPage;
+    public GameObject closeSummonPage;
+    public CatData currentRolledCat;
+
+    public TextMeshProUGUI catNameText;
+    public RawImage catSummonedImage;
+    public TextMeshProUGUI descText;
+
+
 
     [System.Serializable]
     public class GachaPoolEntry
@@ -15,6 +29,8 @@ public class SummonManager : MonoBehaviour
     public GachaPoolEntry[] gachaPool; // assign in inspector
     public event Action onGacha;
 
+
+
     private void OnEnable()
     {
         onGacha += GachaSequence;
@@ -23,6 +39,9 @@ public class SummonManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        tapToRevealPage.SetActive(false);
+        displaySummonedCatPage.SetActive(false);
+        closeSummonPage.SetActive(false);
     }
 
     public CatData Roll()
@@ -46,27 +65,17 @@ public class SummonManager : MonoBehaviour
 
     public void Summon()
     {
-        if (TeamManager.instance.currentTeamSize >= TeamManager.instance.availableTeamSlots)
-        {
-            Debug.Log("No free team slots available!");
-            return;
-        }
+        currentRolledCat = Roll();
+        Debug.Log("Rolled cat = " + currentRolledCat);
 
-        CatData rolledCat = Roll();
-        if (rolledCat == null)
+        if (currentRolledCat == null)
         {
             Debug.LogError("No cat was rolled!");
             return;
         }
 
-        //CatRuntimeData runtimeCat = new CatRuntimeData(rolledCat); //we get a random
-
-        //onGacha.Invoke();  //tell listener
-
-        Inventory.instance.InstantiateNewCat(rolledCat);
-
-        Debug.Log($"Summoned {rolledCat.itemName}!");
-        //send to Inventory to add into inventory
+        Inventory.instance.InstantiateNewCat(currentRolledCat);
+        Debug.Log($"Summoned {currentRolledCat.itemName}!");
         onGacha?.Invoke();
     }
 
@@ -74,10 +83,23 @@ public class SummonManager : MonoBehaviour
     {
         Debug.Log("Gacha sequence playing...");
     }
+    void UpdateCatDisplay(CatData catData)
+    {
+        catNameText.text = catData.itemName;
+        catSummonedImage.texture = catData.icon.texture;
+        descText.text = catData.description;
+    }
 
+    void DisplayGachaResult()
+    {
+        displaySummonedCatPage.SetActive(true);
+        UpdateCatDisplay(currentRolledCat);
+        summonAnimator.SetTrigger("Summon");
 
-    /*
-    public void TestSummon()
+        Debug.Log("Displaying gacha result to player...");
+    }
+
+    public void SummonButtonPressed() //to add to button onclick event
     {
         if (TeamManager.instance.currentTeamSize >= TeamManager.instance.availableTeamSlots)
         {
@@ -85,22 +107,35 @@ public class SummonManager : MonoBehaviour
             return;
         }
 
-        CatData rolledCat = Roll();
-        if (rolledCat == null)
+        if (Currency.instance.ink < summonCost)
         {
-            Debug.LogError("No cat was rolled!");
+            Debug.Log("Not enough ink to summon!");
             return;
         }
+        Currency.instance.AddInk(-summonCost); // Deduct summon cost
+        Summon();
+        OpenTapToRevealPage();
+    }
 
-        CatRuntimeData runtimeCat = new CatRuntimeData(rolledCat);
+    void OpenTapToRevealPage()
+    {
+        tapToRevealPage.SetActive(true);
+    }
 
-        //  2. Add runtime cat to inventory
-        //Inventory.instance.Add(runtimeCat);  //might change to add cats
+    public void TapToReveal()
+    {
+        DisplayGachaResult();
+        closeSummonPage.SetActive(true);
+    }
 
-        //TeamManager.instance.AddCatToWorld(runtimeCat); oudated
-
-        Debug.Log($"Summoned {rolledCat.itemName}!");
-        //send to Inventory to add into inventory
-    }*/
-    
+    public void CloseSummonPages()
+    {
+        if(tapToRevealPage.activeSelf == false && displaySummonedCatPage.activeSelf == false && closeSummonPage.activeSelf)
+        {
+            return; //both pages are already closed
+        }
+        tapToRevealPage.SetActive(false);
+        displaySummonedCatPage.SetActive(false);
+        closeSummonPage.SetActive(false);
+    }
 }

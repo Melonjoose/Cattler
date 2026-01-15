@@ -1,35 +1,34 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
-    public Animator transitionAnimator;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        OpeningScene();
+
     }
 
-    public void FadeIn()
+    public void Update()
     {
-        transitionAnimator.SetTrigger("FadeIn");
-    }
-
-    public void FadeOut()
-    {
-        transitionAnimator.SetTrigger("FadeOut");
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            OpeningScene();
+        }
     }
 
     public void OpeningScene()
     {
         //Fade in from black
         Debug.Log("OpeningScene playing");
-        FadeIn();
+        Transition.instance.FadeIn();
         CutSceneOne();
     }
 
 
-    // First cutscene where player is saved by cats
+    // First cutscene where player is saved by cats //
     // Long Black screen..
     // Fade into Lobby..
     // Player: "Where am I???"

@@ -404,9 +404,9 @@ MonoBehaviour:
   - item: {fileID: 1930171780827623856, guid: c67e5a5c8c7bbda4f9533e145fb90fc2, type: 3}
     dropChance: 3
   - item: {fileID: 504138518039254494, guid: 5d8c80c5c922ace4895b4aafe68a6fed, type: 3}
-    dropChance: 0.5
+    dropChance: 1
   - item: {fileID: 8110738209023974265, guid: 1c097599161fb9843b70efc124d80978, type: 3}
-    dropChance: 0.5
+    dropChance: 1
   minInkDrop: 10
   maXInkDrop: 30
   minCoreDrop: 0

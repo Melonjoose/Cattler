@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 4227622569212406947, guid: 097cf5f9a1f8d7a47881fdb8f5cf19e0, type: 3}
   prefab2: {fileID: 0}
   itemName: Basic Sword
-  icon: {fileID: -6748212257843699856, guid: 3babbab066446674689c64f22221d8ff, type: 3}
+  icon: {fileID: 21300000, guid: 3babbab066446674689c64f22221d8ff, type: 3}
   itemType: 1
   description: Basic and Reliable
   value: 1
