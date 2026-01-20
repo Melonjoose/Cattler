@@ -125,7 +125,7 @@ public class CatIconUI : MonoBehaviour
         {
             Debug.Log("Linking skill!");
             // Show the skill button
-            //thisIcon.skillButton1.gameObject.SetActive(true);
+            thisIcon.ShowButton();
 
             // Find the child button correctly
             Skill_Button skillButton1 = thisIcon.skillButton1;

@@ -115,7 +115,6 @@ public class TeamManager : MonoBehaviour
                 cats.Add(existingCatUnit);
             }
 
-
             AddCatToTeam(existingCatUnit, slot);
         }
     }
@@ -245,6 +244,14 @@ public class TeamManager : MonoBehaviour
                     sr.enabled = true;
                     sr.sprite = item.runtimeData.template.icon;
                 }
+                else
+                {
+                    Debug.Log("worldCat has no hat");
+                    hat.gameObject.SetActive(false);
+                    SpriteRenderer sr = hat.GetComponent<SpriteRenderer>();
+                    sr.sprite = null;
+                    sr.enabled = false;
+                }
             }
         }
 
@@ -263,6 +270,14 @@ public class TeamManager : MonoBehaviour
                     sr.enabled = true;
                     sr.sprite = item.runtimeData.template.icon;
                 }
+                else
+                {
+                    Debug.Log("worldCat has no left weapon");
+                    weapon.gameObject.SetActive(false);
+                    SpriteRenderer sr = weapon.GetComponent<SpriteRenderer>();
+                    sr.sprite = null;
+                    sr.enabled = false;
+                }
             }
         }
 
@@ -280,6 +295,14 @@ public class TeamManager : MonoBehaviour
                     SpriteRenderer sr = weapon.GetComponent<SpriteRenderer>();
                     sr.enabled = true;
                     sr.sprite = item.runtimeData.template.icon;
+                }
+                else
+                {
+                    Debug.Log("worldCat has no right weapon");
+                    weapon.gameObject.SetActive(false);
+                    SpriteRenderer sr = weapon.GetComponent<SpriteRenderer>();
+                    sr.sprite = null;
+                    sr.enabled = false;
                 }
             }
         }

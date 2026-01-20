@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7540920697073003077}
   - component: {fileID: 2371860744122222213}
   - component: {fileID: -5062887821688926032}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicSword_Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &9132886927635791346
@@ -261,7 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4241314236337581253}
   - component: {fileID: 8962977192150336617}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3babbab066446674689c64f22221d8ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7acf75292979b304cbcb283a24352fd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -348,7 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8166330509188977017}
   - component: {fileID: 5007860434461323612}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

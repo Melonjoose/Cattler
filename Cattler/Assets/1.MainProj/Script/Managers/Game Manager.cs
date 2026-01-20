@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public EnemySpawner enemySpawner;    // reference to spawner if needed
     public SpecialEnemySpawner specialSpawner; // reference to special spawner if needed
+
+    public PlayerData playerData;
 
     [System.Serializable]
     public class Page
@@ -116,6 +119,8 @@ public class GameManager : MonoBehaviour
         enemySpawner.spawnerActive = false;
         specialSpawner.spawnerActive = false;
 
+        //all cats are unstunned and moved back to their team list's position.
+        //if any cats are "dead". delete them from team list.
 
         CloseAllPages();
 
@@ -170,7 +175,12 @@ public class GameManager : MonoBehaviour
         //converts cats to ink.(money)
     }
 
+    public void ResetDemo()
+    {
+        // Reload it by name
+        SceneManager.LoadScene(0);
 
+    }
     /// ------------------------------- < Gameplay> ------------------------------------///
     //phases of the game during travel.
     //1. Level 1. 0 - 5km

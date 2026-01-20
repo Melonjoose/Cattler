@@ -122,6 +122,7 @@ public class EnemyUnit : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        AudioManager.instance.PlaySFX("EnemyHit");
         currentHealth -= amount;
         //Debug.Log(enemyData.enemyName + " takes " + amount + " damage. Remaining HP: " + currentHealth);
 

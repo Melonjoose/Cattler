@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 4227622569212406947, guid: 097cf5f9a1f8d7a47881fdb8f5cf19e0, type: 3}
   prefab2: {fileID: 0}
   itemName: Basic Bow
-  icon: {fileID: 21300000, guid: 4381a0ce0eaf5cf42b2cd415b79f9684, type: 3}
+  icon: {fileID: 21300000, guid: 96e726683ceb73748a1f38cfef3a050a, type: 3}
   itemType: 1
   description: Shoots Far
   value: 1

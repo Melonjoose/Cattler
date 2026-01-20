@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6485881137306524889}
   - component: {fileID: 6405028485822514918}
   - component: {fileID: 5772848794279592698}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicHat_ArcherHat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 89701339620561678}
   - component: {fileID: 1011282310675392904}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9129865278334355310}
   - component: {fileID: 7233049197332597510}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 4309002616532926168}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0.27, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
