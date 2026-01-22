@@ -10,6 +10,7 @@ public class DisplayItemUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI descriptionUI;
     [SerializeField] private TextMeshProUGUI SkillUI;
     [SerializeField] private TextMeshProUGUI StatsUI;
+    [SerializeField] private TextMeshProUGUI HP , ATK , ATKSPD, RNG, MVSPD;
     [SerializeField] private TextMeshProUGUI LVLUI;
     [SerializeField] private TextMeshProUGUI EXPUI;
 
@@ -30,7 +31,14 @@ public class DisplayItemUI : MonoBehaviour
             SkillUI = transform.Find("Skill")?.GetComponent<TextMeshProUGUI>();
 
         if (StatsUI == null)
+        {
             StatsUI = transform.Find("Stats")?.GetComponent<TextMeshProUGUI>();
+            HP = StatsUI.transform.Find("HP")?.GetComponent<TextMeshProUGUI>();
+            ATK = StatsUI.transform.Find("ATK")?.GetComponent<TextMeshProUGUI>();
+            ATKSPD = StatsUI.transform.Find("ATKSPD")?.GetComponent<TextMeshProUGUI>();
+            RNG = StatsUI.transform.Find("RNG")?.GetComponent<TextMeshProUGUI>();
+            MVSPD = StatsUI.transform.Find("MVSPD")?.GetComponent<TextMeshProUGUI>();
+        }
 
         if (LVLUI == null)
             LVLUI = transform.Find("Level")?.GetComponent<TextMeshProUGUI>();
@@ -55,12 +63,11 @@ public class DisplayItemUI : MonoBehaviour
                 iconUI.sprite = catUnit.runtimeData.template.icon;
                 descriptionUI.text = catUnit.runtimeData.template.description;
                 SkillUI.text = catUnit.runtimeData.template.skillDesc;
-                StatsUI.text = $"HP : {catUnit.runtimeData.maxHealth} " +
-                    $"\nATK : {catUnit.runtimeData.attackPower}" +
-                    $"\nATK SPD : {catUnit.runtimeData.attackSpeed}" +
-                    $"\nATK RNG : {catUnit.runtimeData.attackRange}" +
-                    $"\nMV SPD : {catUnit.runtimeData.movementSpeed}";
-
+                HP.text = $"{catUnit.runtimeData.maxHealth}";
+                ATK.text = $"{catUnit.runtimeData.attackPower}";
+                ATKSPD.text = $"{catUnit.runtimeData.attackSpeed}";
+                RNG.text = $"{catUnit.runtimeData.attackRange}";
+                MVSPD.text = $"{catUnit.runtimeData.movementSpeed}";
             }
             Item equipment = Item.GetComponent<Item>();
             if (equipment != null)
@@ -70,11 +77,11 @@ public class DisplayItemUI : MonoBehaviour
                 descriptionUI.text = equipment.runtimeData.template.description;
                 nameUI.text = equipment.runtimeData.template.itemName;
                 SkillUI.text = equipment.runtimeData.template.AbilityDesc;
-                StatsUI.text = $"HP : {equipment.runtimeData.health} " +
-                    $"\nATK : {equipment.runtimeData.attackPower}" +
-                    $"\nATK SPD : {equipment.runtimeData.attackSpeed}" +
-                    $"\nATK RNG : {equipment.runtimeData.attackRange}" +
-                    $"\nMV SPD : {equipment.runtimeData.movementSpeed}";
+                HP.text = $"{equipment.runtimeData.health}";
+                ATK.text = $"{equipment.runtimeData.attackPower}";
+                ATKSPD.text = $"{equipment.runtimeData.attackSpeed}";
+                RNG.text = $"{equipment.runtimeData.attackRange}";
+                MVSPD.text = $"{equipment.runtimeData.movementSpeed}";
 
             }
             
