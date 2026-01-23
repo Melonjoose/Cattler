@@ -1,13 +1,18 @@
 using NUnit.Framework;
 using System.Collections;
-using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
 
 
 public class Icon : MonoBehaviour
 {
     public bool isRevealed = false;
     public Skill_Button skillButton1, skillButton2;
+    public GameObject cooldown1, cooldown2;
+    public float cooldownDuration1, cooldownDuration2; //cooldown durations for skills
 
     public Icon thisIcon;
 
@@ -16,6 +21,12 @@ public class Icon : MonoBehaviour
         thisIcon = this;
         skillButton1 = transform.Find("SkillButton1").GetComponent<Skill_Button>();
         skillButton2 = transform.Find("SkillButton2").GetComponent<Skill_Button>();
+        cooldown1 = skillButton1.transform.Find("CooldownVisual1").gameObject;
+        cooldown2 = skillButton2.transform.Find("CooldownVisual2").gameObject;
+
+        cooldown1.SetActive(false);
+        cooldown2.SetActive(false);
+
         thisIcon.HideButton();
     }
 
@@ -60,5 +71,31 @@ public class Icon : MonoBehaviour
         isRevealed = false;
     }
 
+    public IEnumerator CooldownRoutine(float cooldownTime, Button button, GameObject cooldownVisual)
+    {
+        float elapsed = 0f;
+        cooldownVisual.SetActive(true);
 
+        TextMeshProUGUI cooldownNumber = cooldownVisual.transform.Find("CooldownNumber").GetComponent<TextMeshProUGUI>();
+        Image image = cooldownVisual.GetComponent<Image>();
+
+        while (elapsed < cooldownTime)
+        {
+            elapsed += Time.deltaTime;
+            float remainingTime = cooldownTime - elapsed;
+
+            // Update countdown text
+            cooldownNumber.text = remainingTime.ToString("F1");
+
+            // Fade alpha
+            float alpha = Mathf.Lerp(0.8f, 0f, elapsed / cooldownTime);
+            image.color = new Color(0, 0, 0, alpha);
+
+            yield return null;
+        }
+
+        // Cooldown complete
+        button.interactable = true;
+        cooldownVisual.SetActive(false);
+    }
 }
