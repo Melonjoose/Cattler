@@ -19,7 +19,8 @@ MonoBehaviour:
   itemType: 0
   description: A colourful spotted cat
   value: 2
-  unitType: 1 Star Cat
+  catID: 1
+  Rarity: 0
   skillName: Nil
   skillDesc: Nil
   level: 1

@@ -5,6 +5,7 @@ public class CatData : ItemData
 
     //stats that should not change
     [Header("Unit Info")]
+    public int catID;
     public Rarity Rarity;
     public string skillName;
     public string skillDesc;

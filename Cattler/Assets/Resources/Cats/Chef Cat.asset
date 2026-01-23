@@ -19,6 +19,7 @@ MonoBehaviour:
   itemType: 0
   description: A Chef Cat that preps meals for the team!
   value: 2
+  catID: 2
   Rarity: 1
   skillName: Cook
   skillDesc: Cook a meal every 15 seconds that heal cats!

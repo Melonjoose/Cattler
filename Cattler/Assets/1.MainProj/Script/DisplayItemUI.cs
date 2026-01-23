@@ -6,6 +6,7 @@ public class DisplayItemUI : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI nameUI;
+    [SerializeField] private TextMeshProUGUI catIDUI;
     [SerializeField] private Image iconUI;
     [SerializeField] private TextMeshProUGUI descriptionUI;
     [SerializeField] private TextMeshProUGUI SkillUI;
@@ -33,6 +34,7 @@ public class DisplayItemUI : MonoBehaviour
         if (StatsUI == null)
         {
             StatsUI = transform.Find("Stats")?.GetComponent<TextMeshProUGUI>();
+            catIDUI = StatsUI.transform.Find("CatHex")?.GetComponent<TextMeshProUGUI>();
             HP = StatsUI.transform.Find("HP")?.GetComponent<TextMeshProUGUI>();
             ATK = StatsUI.transform.Find("ATK")?.GetComponent<TextMeshProUGUI>();
             ATKSPD = StatsUI.transform.Find("ATKSPD")?.GetComponent<TextMeshProUGUI>();
@@ -60,6 +62,7 @@ public class DisplayItemUI : MonoBehaviour
             if (catUnit != null)
             {
                 nameUI.text = catUnit.runtimeData.template.itemName;
+                catIDUI.text = $"{catUnit.runtimeData.template.catID}";
                 iconUI.sprite = catUnit.runtimeData.template.icon;
                 descriptionUI.text = catUnit.runtimeData.template.description;
                 SkillUI.text = catUnit.runtimeData.template.skillDesc;
