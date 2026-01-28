@@ -51,9 +51,17 @@ public class Icon : MonoBehaviour
     public void ShowButton()
     {
         isRevealed = true;
+        
+        CanvasGroup cg1 = skillButton1.GetComponent<CanvasGroup>();
+        cg1.alpha = 1f;
+        cg1.interactable = true;
+        cg1.blocksRaycasts = true;
 
-        skillButton1.gameObject.SetActive(true);
-        skillButton2.gameObject.SetActive(true);
+        CanvasGroup cg2 = skillButton2.GetComponent<CanvasGroup>();
+        cg2.alpha = 1f;
+        cg2.interactable = true;
+        cg2.blocksRaycasts = true;
+        
         // Raise button above default position (relative to parent)
         //skillButton1.transform.localPosition = new Vector3(0f, 55f, 0f);
         //skillButton2.transform.localPosition = new Vector3(0f, 100f, 0f);
@@ -62,12 +70,37 @@ public class Icon : MonoBehaviour
     }
     public void HideButton()
     {
+        /*
+        CanvasGroup cg1 = skillButton1.GetComponent<CanvasGroup>();
+        cg1.alpha = 0f;
+        cg1.interactable = false;
+        cg1.blocksRaycasts = false;
+
+        CanvasGroup cg2 = skillButton2.GetComponent<CanvasGroup>();
+        cg2.alpha = 0f;
+        cg2.interactable = false;
+        cg2.blocksRaycasts = false;
+        */
         LeanTween.moveLocal(skillButton1.gameObject, new Vector3(-16f, 0f, 0.1f), 0.2f)
-            .setOnComplete(() => skillButton1.gameObject.SetActive(false));
+            .setOnComplete(() =>
+            {
+                CanvasGroup cg1 = skillButton1.GetComponent<CanvasGroup>();
+                cg1.alpha = 0f;
+                cg1.interactable = false;
+                cg1.blocksRaycasts = false;
+
+            });
 
         LeanTween.moveLocal(skillButton2.gameObject, new Vector3(15f, 0f, 0.1f), 0.2f)
-            .setOnComplete(() => skillButton2.gameObject.SetActive(false));
+            .setOnComplete(() =>
+            {
 
+                CanvasGroup cg2 = skillButton2.GetComponent<CanvasGroup>();
+                cg2.alpha = 0f;
+                cg2.interactable = false;
+                cg2.blocksRaycasts = false;
+            });
+        
         isRevealed = false;
     }
 

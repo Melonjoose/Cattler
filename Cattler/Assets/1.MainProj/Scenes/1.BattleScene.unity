@@ -2065,6 +2065,10 @@ MonoBehaviour:
   isRevealed: 0
   skillButton1: {fileID: 0}
   skillButton2: {fileID: 0}
+  cooldown1: {fileID: 0}
+  cooldown2: {fileID: 0}
+  cooldownDuration1: 0
+  cooldownDuration2: 0
   thisIcon: {fileID: 0}
 --- !u!114 &67617516
 MonoBehaviour:
@@ -2073,7 +2077,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67617509}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -5863,6 +5867,7 @@ RectTransform:
   - {fileID: 1121086708}
   - {fileID: 1323622665}
   - {fileID: 219450533}
+  - {fileID: 904337604}
   m_Father: {fileID: 1968332054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6612,6 +6617,10 @@ MonoBehaviour:
   isRevealed: 0
   skillButton1: {fileID: 0}
   skillButton2: {fileID: 0}
+  cooldown1: {fileID: 0}
+  cooldown2: {fileID: 0}
+  cooldownDuration1: 0
+  cooldownDuration2: 0
   thisIcon: {fileID: 0}
 --- !u!114 &256267066
 MonoBehaviour:
@@ -6620,7 +6629,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256267059}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -12081,6 +12090,7 @@ GameObject:
   - component: {fileID: 526603952}
   - component: {fileID: 526603951}
   - component: {fileID: 526603950}
+  - component: {fileID: 526603954}
   m_Layer: 5
   m_Name: SkillButton1
   m_TagString: Untagged
@@ -12222,6 +12232,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526603948}
   m_CullTransparentMesh: 1
+--- !u!225 &526603954
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526603948}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &536513600
 GameObject:
   m_ObjectHideFlags: 0
@@ -13427,6 +13449,7 @@ GameObject:
   - component: {fileID: 592156364}
   - component: {fileID: 592156363}
   - component: {fileID: 592156362}
+  - component: {fileID: 592156366}
   m_Layer: 5
   m_Name: SkillButton1
   m_TagString: Untagged
@@ -13568,6 +13591,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592156360}
   m_CullTransparentMesh: 1
+--- !u!225 &592156366
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592156360}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &603414075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14844,6 +14879,7 @@ GameObject:
   - component: {fileID: 682002467}
   - component: {fileID: 682002466}
   - component: {fileID: 682002465}
+  - component: {fileID: 682002469}
   m_Layer: 5
   m_Name: SkillButton1
   m_TagString: Untagged
@@ -14985,6 +15021,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682002463}
   m_CullTransparentMesh: 1
+--- !u!225 &682002469
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682002463}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &685088670
 GameObject:
   m_ObjectHideFlags: 0
@@ -16053,7 +16101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &720490701
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16791,6 +16839,10 @@ MonoBehaviour:
   isRevealed: 0
   skillButton1: {fileID: 0}
   skillButton2: {fileID: 0}
+  cooldown1: {fileID: 0}
+  cooldown2: {fileID: 0}
+  cooldownDuration1: 0
+  cooldownDuration2: 0
   thisIcon: {fileID: 0}
 --- !u!114 &743636650
 MonoBehaviour:
@@ -16799,7 +16851,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743636643}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -17969,6 +18021,7 @@ GameObject:
   - component: {fileID: 770732851}
   - component: {fileID: 770732850}
   - component: {fileID: 770732849}
+  - component: {fileID: 770732853}
   m_Layer: 5
   m_Name: SkillButton2
   m_TagString: Untagged
@@ -18110,6 +18163,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770732847}
   m_CullTransparentMesh: 1
+--- !u!225 &770732853
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770732847}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &783043516
 GameObject:
   m_ObjectHideFlags: 0
@@ -21171,7 +21236,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904337603}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -21179,11 +21244,11 @@ RectTransform:
   - {fileID: 1095370164}
   - {fileID: 1655454507}
   - {fileID: 1114130939}
-  m_Father: {fileID: 1968332054}
+  m_Father: {fileID: 208734807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 20.57, y: 170.90001}
   m_SizeDelta: {x: 644.87, y: 390.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904337605
@@ -24968,6 +25033,7 @@ GameObject:
   - component: {fileID: 1066292335}
   - component: {fileID: 1066292334}
   - component: {fileID: 1066292333}
+  - component: {fileID: 1066292337}
   m_Layer: 5
   m_Name: SkillButton2
   m_TagString: Untagged
@@ -25109,6 +25175,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066292331}
   m_CullTransparentMesh: 1
+--- !u!225 &1066292337
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066292331}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1068939851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25228,7 +25306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1079190922
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25522,7 +25600,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081970020}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -25586,6 +25664,10 @@ MonoBehaviour:
   isRevealed: 0
   skillButton1: {fileID: 0}
   skillButton2: {fileID: 0}
+  cooldown1: {fileID: 0}
+  cooldown2: {fileID: 0}
+  cooldownDuration1: 0
+  cooldownDuration2: 0
   thisIcon: {fileID: 0}
 --- !u!1 &1088080056
 GameObject:
@@ -27104,6 +27186,7 @@ GameObject:
   - component: {fileID: 1130600949}
   - component: {fileID: 1130600951}
   - component: {fileID: 1130600952}
+  - component: {fileID: 1130600953}
   m_Layer: 5
   m_Name: SkillButton1
   m_TagString: Untagged
@@ -27245,6 +27328,18 @@ MonoBehaviour:
   skillIcon: {fileID: 0}
   cooldownVisual: {fileID: 231155207}
   cooldownNumber: {fileID: 574344340}
+--- !u!225 &1130600953
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130600947}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1130626556
 GameObject:
   m_ObjectHideFlags: 0
@@ -37447,6 +37542,7 @@ GameObject:
   - component: {fileID: 1681147990}
   - component: {fileID: 1681147989}
   - component: {fileID: 1681147988}
+  - component: {fileID: 1681147992}
   m_Layer: 5
   m_Name: SkillButton2
   m_TagString: Untagged
@@ -37588,6 +37684,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681147986}
   m_CullTransparentMesh: 1
+--- !u!225 &1681147992
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681147986}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1683087010
 GameObject:
   m_ObjectHideFlags: 0
@@ -39756,6 +39864,7 @@ GameObject:
   - component: {fileID: 1806202134}
   - component: {fileID: 1806202133}
   - component: {fileID: 1806202132}
+  - component: {fileID: 1806202136}
   m_Layer: 5
   m_Name: SkillButton2
   m_TagString: Untagged
@@ -39897,6 +40006,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806202130}
   m_CullTransparentMesh: 1
+--- !u!225 &1806202136
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806202130}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1809721742
 GameObject:
   m_ObjectHideFlags: 0
@@ -43502,7 +43623,6 @@ RectTransform:
   - {fileID: 1050777568}
   - {fileID: 972045433}
   - {fileID: 208734807}
-  - {fileID: 904337604}
   - {fileID: 1662245233}
   - {fileID: 1769018931}
   m_Father: {fileID: 467437732}
@@ -44795,6 +44915,7 @@ GameObject:
   - component: {fileID: 2021622591}
   - component: {fileID: 2021622590}
   - component: {fileID: 2021622589}
+  - component: {fileID: 2021622593}
   m_Layer: 5
   m_Name: SkillButton2
   m_TagString: Untagged
@@ -44936,6 +45057,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021622587}
   m_CullTransparentMesh: 1
+--- !u!225 &2021622593
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021622587}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2028990754
 GameObject:
   m_ObjectHideFlags: 0
@@ -45434,6 +45567,10 @@ MonoBehaviour:
   isRevealed: 0
   skillButton1: {fileID: 0}
   skillButton2: {fileID: 0}
+  cooldown1: {fileID: 0}
+  cooldown2: {fileID: 0}
+  cooldownDuration1: 0
+  cooldownDuration2: 0
   thisIcon: {fileID: 0}
 --- !u!114 &2070008660
 MonoBehaviour:
@@ -45442,7 +45579,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070008653}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -46472,6 +46609,7 @@ GameObject:
   - component: {fileID: 2127849444}
   - component: {fileID: 2127849443}
   - component: {fileID: 2127849442}
+  - component: {fileID: 2127849446}
   m_Layer: 5
   m_Name: SkillButton1
   m_TagString: Untagged
@@ -46613,6 +46751,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127849440}
   m_CullTransparentMesh: 1
+--- !u!225 &2127849446
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127849440}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2130515344
 GameObject:
   m_ObjectHideFlags: 0
