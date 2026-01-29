@@ -61,6 +61,10 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning($"Page {pageName} not found!");
         }
+
+        //Audio
+        AudioManager.instance.PlaySFX("Button1");
+
     }
 
     public void CloseCurrentPage()
@@ -108,29 +112,28 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public Page lobbyPage; // assign in inspector
+
     public void LobbyState()
     {
-        //FreezeGamePlay();
-        // Set up lobby state
-        //spawner not active
+        // Reset gameplay
         enemySpawner.ClearAllSpawnedEnemies();
         specialSpawner.ClearAllSpawnedEnemies();
-
         enemySpawner.spawnerActive = false;
         specialSpawner.spawnerActive = false;
-
-        //all cats are unstunned and moved back to their team list's position.
-        //unstun all cats
         TeamManager.instance.ResetCatPosition();
-        //if any cats are "dead". delete them from team list.
-
-        CloseAllPages();
-
-        //travel manager not active
-        OpenPage("Lobby");
         TravelManager.instance.ResetToStart();
         TravelManager.instance.DisableTravel();
 
+        // Close all pages
+        CloseAllPages();
+
+        // Open lobby page
+        lobbyPage.pageObject.transform.position = lobbyPage.openPos.position;
+        currentPage = lobbyPage;
+
+        // Play lobby audio
+        AudioManager.instance.PlayTheme("Lobby");
     }
 
     public void StartMission()

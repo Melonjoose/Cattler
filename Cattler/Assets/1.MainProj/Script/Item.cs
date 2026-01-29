@@ -75,6 +75,7 @@ public class Item : MonoBehaviour
 
     void CollectItem()
     {
+        AudioManager.instance.PlaySFX("Collect");
         Destroy(gameObject);
         //later can be a sequence.
     }

@@ -24967,26 +24967,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiSlots:
   - iconIndex: -1
+    initialIconIndex: -1
     icon: {fileID: 1081970028}
     iconImage: {fileID: 1081970022}
     healthBar: {fileID: 1021024898}
     unit: {fileID: 0}
   - iconIndex: -1
+    initialIconIndex: -1
     icon: {fileID: 2070008659}
     iconImage: {fileID: 2070008655}
     healthBar: {fileID: 558069926}
     unit: {fileID: 0}
   - iconIndex: -1
+    initialIconIndex: -1
     icon: {fileID: 67617515}
     iconImage: {fileID: 67617511}
     healthBar: {fileID: 645018704}
     unit: {fileID: 0}
   - iconIndex: -1
+    initialIconIndex: -1
     icon: {fileID: 256267065}
     iconImage: {fileID: 256267061}
     healthBar: {fileID: 1940469767}
     unit: {fileID: 0}
   - iconIndex: -1
+    initialIconIndex: -1
     icon: {fileID: 743636649}
     iconImage: {fileID: 743636645}
     healthBar: {fileID: 2076997381}
@@ -43588,6 +43593,11 @@ MonoBehaviour:
     pageObject: {fileID: 1202500716}
     openPos: {fileID: 1825880842}
     closedPos: {fileID: 286165694}
+  lobbyPage:
+    name: Lobby
+    pageObject: {fileID: 1968332053}
+    openPos: {fileID: 1825880842}
+    closedPos: {fileID: 1633828341}
 --- !u!1 &1968332053
 GameObject:
   m_ObjectHideFlags: 0
@@ -44493,7 +44503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1990423404
 Transform:
   m_ObjectHideFlags: 0
@@ -44526,8 +44536,16 @@ MonoBehaviour:
   sfxSounds:
   - name: Button
     clip: {fileID: 8300000, guid: 7b2364c97a901864eb806d4b3c475a93, type: 3}
+  - name: Button1
+    clip: {fileID: 8300000, guid: 908a4a258212c3441b32f3f7b69a6164, type: 3}
   - name: EnemyHit
+    clip: {fileID: 8300000, guid: 67baa10faf9fb674eae26b983df77959, type: 3}
+  - name: Death
     clip: {fileID: 8300000, guid: c1584575c85056247b339feeeb9ab7fb, type: 3}
+  - name: Collect
+    clip: {fileID: 8300000, guid: ba606061c7e124849bcbbb60e629c9ff, type: 3}
+  - name: Consume
+    clip: {fileID: 8300000, guid: 1f8c3672f70af1947b2228554a6d5584, type: 3}
   themeSounds:
   - name: Lobby
     clip: {fileID: 8300000, guid: aba28dc91793ac74b90d8a981f28b3a8, type: 3}

@@ -108,6 +108,7 @@ public class CatUnit : MonoBehaviour
             Vector2 knockbackDirection = (target.transform.position - transform.position).normalized;
             float knockbackForce = 3f; // Adjust force as needed
             targetrb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+            targetrb.AddForce(Vector2.up * knockbackForce / 2, ForceMode2D.Impulse); // slight upward force
         }
     }
 

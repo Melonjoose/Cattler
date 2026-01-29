@@ -27,6 +27,7 @@ public class ConsumableItem : MonoBehaviour
 
     protected virtual void Consume()
     {
+        AudioManager.instance.PlaySFX("Consume");
         if (consumableData != null)
         {
             onConsumed?.Invoke(); //send to listener
