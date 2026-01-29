@@ -135,6 +135,7 @@ public class TeamManager : MonoBehaviour
         cat.transform.position = catContainers[slotIndex].transform.position;
         catMovement.MoveToDesignatedLocation(slotIndex);
         catContainers[slot.SlotIndex].occupyingCat = cat;
+        catMovement.initialCatIndex = slotIndex; //set the initial index to current slot index
 
 
         // Move cat to container position
@@ -314,5 +315,16 @@ public class TeamManager : MonoBehaviour
     {
         cats.Remove(cat);
         deadCats.Add(cat);
+    }
+
+    public void ResetCatPosition()
+    {
+        foreach (CatUnit cat in cats)
+        { 
+            cat.catMovement.ResetToInitialPosition(); //this resets world cat positions but not UI.
+            CatIconUI.instance.ResetAllIconToInitialIndex();
+            cat.Unstun();
+        }
+
     }
 }

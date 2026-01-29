@@ -120,6 +120,8 @@ public class GameManager : MonoBehaviour
         specialSpawner.spawnerActive = false;
 
         //all cats are unstunned and moved back to their team list's position.
+        //unstun all cats
+        TeamManager.instance.ResetCatPosition();
         //if any cats are "dead". delete them from team list.
 
         CloseAllPages();

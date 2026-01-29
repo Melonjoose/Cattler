@@ -12,6 +12,7 @@ public class CatIconUI : MonoBehaviour
     public class CatIconSlot
     {
         public int iconIndex = -1;
+        public int initialIconIndex = -1; // to reset position
         public Icon icon;
         public Image iconImage;
         public Slider healthBar;
@@ -90,6 +91,7 @@ public class CatIconUI : MonoBehaviour
         if (cat != null)
         {
             uiSlots[i].iconIndex = i;
+            uiSlots[i].initialIconIndex = i;
             uiSlots[i].icon.gameObject.SetActive(true);
 
             uiSlots[i].unit = cat;
@@ -234,5 +236,20 @@ public class CatIconUI : MonoBehaviour
         Button catUISlotbutton = catUISlot.icon.GetComponent<Button>();
         catUISlotbutton.interactable = false;
         catUISlot.healthBar.gameObject.SetActive(false);
+    }
+
+    public void ResetAllIconToInitialIndex()
+    {
+        // Loop through all uiSlots and reset their positions to their intial index
+        for (int i = 0; i < uiSlots.Length; i++)
+        {
+            var slot = uiSlots[i];
+            if (slot.unit != null)
+            {
+                var targetSlot = iconPosition[i].transform;
+                LeanTween.move(slot.icon.gameObject, targetSlot.position, 0.4f)
+                    .setEase(LeanTweenType.easeInOutQuad);
+            }
+        }
     }
 }

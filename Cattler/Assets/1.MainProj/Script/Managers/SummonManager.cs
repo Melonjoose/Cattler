@@ -8,6 +8,7 @@ public class SummonManager : MonoBehaviour
     public static SummonManager instance;
     public int summonCost = 100;
     public Animator summonAnimator;
+    public Canvas summonCanvas;
     public GameObject tapToRevealPage;
     public GameObject displaySummonedCatPage;
     public GameObject closeSummonPage;
@@ -38,6 +39,7 @@ public class SummonManager : MonoBehaviour
 
     private void Awake()
     {
+        summonCanvas.transform.localPosition = new Vector3(0, -10, 0);
         instance = this;
         tapToRevealPage.SetActive(false);
         displaySummonedCatPage.SetActive(false);

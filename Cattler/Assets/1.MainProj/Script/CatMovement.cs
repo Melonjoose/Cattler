@@ -5,6 +5,7 @@ using UnityEngine;
 public class CatMovement : MonoBehaviour
 {
     public int catIndex; // Current index in the lineup
+    public int initialCatIndex; // Initial index to reset to
     public bool inPosition = false;
     public Rigidbody2D rb;
     private CatUnit catUnit => GetComponent<CatUnit>();
@@ -23,6 +24,7 @@ public class CatMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         AssignWorldPositionsAndIndex();
         lastAssignedIndex = catIndex;
+        initialCatIndex = catIndex;
     }
     void Update()
     {
@@ -103,4 +105,8 @@ public class CatMovement : MonoBehaviour
         }
     }
 
+    public void ResetToInitialPosition()
+    {
+        catIndex = initialCatIndex;
+    }
 }
