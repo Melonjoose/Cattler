@@ -99,7 +99,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         }
 
         // If no valid slot or item type mismatch, return to original slot
-        if (targetSlot == null || !targetSlot.allowedTypes.Contains(this.itemType))
+        if (targetSlot == null || !targetSlot.allowedTypes.Contains(this.itemType) || targetSlot.blockSnapping)
         {
             currentSlot = originalSlot;
             Inventory.instance.PlaceItem(this, originalSlot);

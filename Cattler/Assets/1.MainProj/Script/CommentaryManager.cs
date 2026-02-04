@@ -7,6 +7,8 @@ public class CommentaryManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static CommentaryManager instance;
+    public GameObject catKeeper; // reference to catkeeper gameobject
+    public CanvasGroup catKeeperUI; // reference to catkeeper UI canvasgroup
     public TextMeshProUGUI text;
     public GameObject textBox;  //the gameobject that holds the text.
     public GameObject[] catContainer;
@@ -29,6 +31,7 @@ public class CommentaryManager : MonoBehaviour
 
     public void Start()
     {
+        catKeeperUI.alpha = 0;
         textBox.SetActive(false);
     }   
     // Update is called once per frame
@@ -43,6 +46,7 @@ public class CommentaryManager : MonoBehaviour
     public void BeginTalk(int TextChoice)
     {
         //called when catkeeper starts talking.
+        catKeeperUI.alpha = 1;
         isTalking = true;
         textBox.SetActive(true);
         string chosenDialogue = dialogueTextChoices[TextChoice];
@@ -55,6 +59,7 @@ public class CommentaryManager : MonoBehaviour
 
     void CloseDialogue()
     {
+        catKeeperUI.alpha = 0;
         isTalking = false;
         textBox.SetActive(false);
     }

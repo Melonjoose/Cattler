@@ -358,7 +358,15 @@ public class Inventory : MonoBehaviour
 
     public void PlaceItem(InventoryIcon item, SnappableLocation slot)
     {
-        if (!slot.allowedTypes.Contains(item.itemType)) return;
+        if (!slot.allowedTypes.Contains(item.itemType)) 
+        {   
+            return; 
+        }
+
+        if (slot.blockSnapping == true)
+        {
+            return;
+        }
 
         slot.isOccupied = true;
         slot.currentItem = item;
@@ -404,6 +412,11 @@ public class Inventory : MonoBehaviour
     }
     public void AddItemToPreviewList(GameObject itemGO)
     {
+        if(PreviewManager.instance.catUnit == null)
+        {
+            Debug.LogWarning("No cat in preview to add item to.");
+            return;
+        }   
         previewList.Add(itemGO);
     }
 

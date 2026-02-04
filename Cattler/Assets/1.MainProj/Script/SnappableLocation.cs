@@ -7,6 +7,7 @@ public class SnappableLocation : MonoBehaviour
 {
 
     //INCHARGE DATA TO BE READ..  HOLDS CONDTIONS TO BE ALLOWED TO PLACE IN HERE.
+    public bool blockSnapping;
     public bool isOccupied;
     public InventoryIcon currentItem;
     public int SlotIndex = 0;

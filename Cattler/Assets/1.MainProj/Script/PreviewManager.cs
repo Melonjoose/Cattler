@@ -15,6 +15,7 @@ public class PreviewManager : MonoBehaviour
     void Start()
     {
         instance = this;
+        ToggleLockItemSlots();
     }
 
     // Update is called once per frame
@@ -42,6 +43,7 @@ public class PreviewManager : MonoBehaviour
             AddItemToPreview(catUnit.weaponR, weaponRSlot);
         }
 
+        ToggleLockItemSlots();
         //check catUnit's Hat,Wep1,Wep2 for data. if have add them to respective slots.
     }
 
@@ -64,6 +66,8 @@ public class PreviewManager : MonoBehaviour
             Inventory.instance.RemoveItemFromPreviewList(weaponR.gameObject);
             ItemFollowCat(weaponR);
         }
+
+        ToggleLockItemSlots();
     }
 
     public Transform itemEquippedGroup; // Assign this in the Inspector
@@ -268,5 +272,21 @@ public class PreviewManager : MonoBehaviour
         catUnit.runtimeData.attackSpeed -= item.runtimeData.attackSpeed;
         catUnit.runtimeData.attackRange -= item.runtimeData.attackRange;
         catUnit.runtimeData.movementSpeed -= item.runtimeData.movementSpeed;
+    }
+
+    void ToggleLockItemSlots()
+    {
+        if (catUnit == null)
+        {
+            hatSlot.blockSnapping = true;
+            weaponLSlot.blockSnapping = true;
+            weaponRSlot.blockSnapping = true;
+        }
+        else
+        {
+            hatSlot.blockSnapping = false;
+            weaponLSlot.blockSnapping = false;
+            weaponRSlot.blockSnapping = false;
+        }
     }
 }
