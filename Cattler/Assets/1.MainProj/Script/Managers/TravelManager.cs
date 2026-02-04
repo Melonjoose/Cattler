@@ -13,7 +13,7 @@ public class TravelManager : MonoBehaviour
 
     public bool disableTravel = false;
 
-    private float floorLength = 23.09f; // adjust based on your tile size
+    private float floorLength = 24.80f; // adjust based on your tile size
 
     public static TravelManager instance;
 
@@ -28,8 +28,8 @@ public class TravelManager : MonoBehaviour
         for (int i = 0; i < floors.Length; i++)
         {
             float xPos = (i - (floors.Length - 1) / 2f) * floorLength;
-            floors[i].transform.position = new Vector3(xPos, -4f, 0);
-            //first floor is at (-23.09,-4, 0), second at (0, -4, 0), third at (23.09, -4, 0)
+            floors[i].transform.position = new Vector3(xPos, 0f, 0);
+            //first floor is at (-24.8,-4, 0), second at (0, 0, 0), third at (24.8, -4, 0)
         }
 
     }
