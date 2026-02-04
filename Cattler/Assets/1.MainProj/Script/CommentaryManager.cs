@@ -86,6 +86,7 @@ public class CommentaryManager : MonoBehaviour
 
     public void AddDialogueToQueue(int dialogueIndex)
     {
+        catKeeperUI.alpha = 1;
         // Add the chosen dialogue line to the queue
         string chosenDialogue = dialogueTextChoices[dialogueIndex];
         dialogueQueue.Add(chosenDialogue);
