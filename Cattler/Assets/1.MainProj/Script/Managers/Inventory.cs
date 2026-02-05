@@ -275,16 +275,18 @@ public class Inventory : MonoBehaviour
                 break;
 
             case SnappableLocation.SlotType.TeamList:
+                //removing Cat from the team slot.
                 slot.currentItem = null;
                 teamList.Remove(item);
                 CatUnit cat = item.GetComponent<CatUnit>();
+                //remove cat from world
                 TeamManager.instance.RemoveCatFromWorld(cat, slot);
-
+                
                 break;
 
 
             case SnappableLocation.SlotType.CharacterPreview:
-                //removing Cat
+                //removing Cat from the preview slot.
                 previewList.Remove(item);
                 if (slot.CompareTag("CatPreviewSlot"))
                 {

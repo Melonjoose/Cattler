@@ -44,8 +44,8 @@ public class PreviewManager : MonoBehaviour
         }
 
         ToggleLockItemSlots();
-        //check catUnit's Hat,Wep1,Wep2 for data. if have add them to respective slots.
     }
+
 
     public void RemoveCatFromPreview(CatUnit cat , SnappableLocation slot)
     {
@@ -54,17 +54,17 @@ public class PreviewManager : MonoBehaviour
         if (hat != null)
         {
             Inventory.instance.RemoveItemFromPreviewList(hat.gameObject);
-            ItemFollowCat(hat);
+            RemoveItemFromPreview(hat , hatSlot);
         }
         if (weaponL != null)
         {
             Inventory.instance.RemoveItemFromPreviewList(weaponL.gameObject);
-            ItemFollowCat(weaponL);
+            RemoveItemFromPreview(weaponL , weaponLSlot);
         }
         if (weaponR != null)
         {
             Inventory.instance.RemoveItemFromPreviewList(weaponR.gameObject);
-            ItemFollowCat(weaponR);
+            RemoveItemFromPreview(weaponR, weaponRSlot);
         }
 
         ToggleLockItemSlots();
@@ -72,7 +72,7 @@ public class PreviewManager : MonoBehaviour
 
     public Transform itemEquippedGroup; // Assign this in the Inspector
 
-    public void ItemFollowCat(Item item)
+    public void RemoveItemFromPreview(Item item , SnappableLocation slot)
     {
         if (item == null) return;
 
@@ -88,6 +88,7 @@ public class PreviewManager : MonoBehaviour
             item.transform.position = Vector3.zero;
         }
 
+        slot.currentItem = null; // Clear the slot's current item reference
         item.gameObject.SetActive(false); // Hide item temporarily
 
         // Clear references
@@ -103,13 +104,28 @@ public class PreviewManager : MonoBehaviour
         {
             weaponR = null;
         }
+
+        RemoveItem(slot);
+        /*
+        //right now the item is still inside the snappablelocation.cs. it is not removed yet.
+        InventoryIcon itemIcon = item.GetComponent<InventoryIcon>();
+        if (itemIcon != null)
+        {
+            SnappableLocation itemslot = itemIcon.currentSlot;
+            itemslot.currentItem = null;
+        }
+        */
     }
 
     public void AddItemToPreview(Item item, SnappableLocation slot)
     {
-        AddItemStatsToCat(item);
-
         if (catUnit == null || item == null || slot == null) return;
+        if(item.catUnit == null)
+        {
+            AddItemStatsToCat(item); //add stats only if the item is not already equipped.
+        }
+
+        item.catUnit = catUnit; // Set the catUnit reference in the item. act as a flag that this item is equipped.
 
         switch (item.runtimeData.template.itemType)
         {
@@ -119,12 +135,14 @@ public class PreviewManager : MonoBehaviour
                     if (slot.gameObject.CompareTag("WeaponPreviewSlot_R"))
                     {
                         weaponR = item;
+                        slot.currentItem = item.GetComponent<InventoryIcon>();
                         ReparentItemToSlot(item, slot);
                         SetItemToCat(item, "R_WeaponPlaceHolder");
                     }
                     else if (slot.gameObject.CompareTag("WeaponPreviewSlot_L"))
                     {
                         weaponL = item;
+                        slot.currentItem = item.GetComponent<InventoryIcon>();
                         ReparentItemToSlot(item, slot);
                         SetItemToCat(item, "L_WeaponPlaceHolder");
                     }
@@ -137,6 +155,7 @@ public class PreviewManager : MonoBehaviour
                     if (slot.gameObject.CompareTag("HatPreviewSlot"))
                     {
                         hat = item;
+                        slot.currentItem = item.GetComponent<InventoryIcon>();
                         ReparentItemToSlot(item, slot);
                         SetItemToCat(item, "T_HatPlaceHolder");
                     }
@@ -200,6 +219,7 @@ public class PreviewManager : MonoBehaviour
         Item itemToRemove = iconItemToRemove.GetComponent<Item>();
         if (itemToRemove == hat)
         {
+            hat.catUnit = null;
             hat = null;
             catUnit.hat = null;
             ClearItemFromCat("T_HatPlaceHolder");
@@ -207,12 +227,14 @@ public class PreviewManager : MonoBehaviour
         else if (itemToRemove == weaponL)
         {
             Debug.Log("Removing Left Weapon");
+            weaponL.catUnit = null;
             weaponL = null;
             catUnit.weaponL = null;
             ClearItemFromCat("L_WeaponPlaceHolder");
         }
         else if (itemToRemove == weaponR)
         {
+            weaponR.catUnit = null;
             weaponR = null;
             catUnit.weaponR = null;
             ClearItemFromCat("R_WeaponPlaceHolder");
@@ -245,16 +267,7 @@ public class PreviewManager : MonoBehaviour
         weaponR = null;
     }
 
-
-
-    public void UpdateStats()  //when equipping items 
-    {
-        // To be implemented: Update catUnit's stats based on equipped items
-        if (catUnit == null) return;
-
-    }
-
-    public void AddItemStatsToCat(Item item)
+    public void AddItemStatsToCat(Item item) 
     {
         catUnit.runtimeData.maxHealth += item.runtimeData.health;
         catUnit.runtimeData.currentHealth = catUnit.runtimeData.maxHealth;
@@ -273,6 +286,7 @@ public class PreviewManager : MonoBehaviour
         catUnit.runtimeData.attackRange -= item.runtimeData.attackRange;
         catUnit.runtimeData.movementSpeed -= item.runtimeData.movementSpeed;
     }
+
 
     void ToggleLockItemSlots()
     {

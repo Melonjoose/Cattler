@@ -21,11 +21,8 @@ public class Icon : MonoBehaviour
         thisIcon = this;
         skillButton1 = transform.Find("SkillButton1").GetComponent<Skill_Button>();
         skillButton2 = transform.Find("SkillButton2").GetComponent<Skill_Button>();
-        cooldown1 = skillButton1.transform.Find("CooldownVisual1").gameObject;
-        cooldown2 = skillButton2.transform.Find("CooldownVisual2").gameObject;
-
-        cooldown1.SetActive(false);
-        cooldown2.SetActive(false);
+        //cooldown1 = skillButton1.transform.Find("CooldownVisual1").gameObject;
+        //cooldown2 = skillButton2.transform.Find("CooldownVisual2").gameObject;
 
         thisIcon.HideButton();
     }
@@ -51,17 +48,22 @@ public class Icon : MonoBehaviour
     public void ShowButton()
     {
         isRevealed = true;
-        
-        CanvasGroup cg1 = skillButton1.GetComponent<CanvasGroup>();
-        cg1.alpha = 1f;
-        cg1.interactable = true;
-        cg1.blocksRaycasts = true;
+        //if button has no skill. don't show.
+        if(skillButton1.assignedSkill != null)
+        {
+            CanvasGroup cg1 = skillButton1.GetComponent<CanvasGroup>();
+            cg1.alpha = 1f;
+            cg1.interactable = true;
+            cg1.blocksRaycasts = true;
+        }
 
-        CanvasGroup cg2 = skillButton2.GetComponent<CanvasGroup>();
-        cg2.alpha = 1f;
-        cg2.interactable = true;
-        cg2.blocksRaycasts = true;
-        
+        if(skillButton2.assignedSkill != null)
+        {
+            CanvasGroup cg2 = skillButton2.GetComponent<CanvasGroup>();
+            cg2.alpha = 1f;
+            cg2.interactable = true;
+            cg2.blocksRaycasts = true;
+        }
         // Raise button above default position (relative to parent)
         //skillButton1.transform.localPosition = new Vector3(0f, 55f, 0f);
         //skillButton2.transform.localPosition = new Vector3(0f, 100f, 0f);
@@ -70,17 +72,7 @@ public class Icon : MonoBehaviour
     }
     public void HideButton()
     {
-        /*
-        CanvasGroup cg1 = skillButton1.GetComponent<CanvasGroup>();
-        cg1.alpha = 0f;
-        cg1.interactable = false;
-        cg1.blocksRaycasts = false;
 
-        CanvasGroup cg2 = skillButton2.GetComponent<CanvasGroup>();
-        cg2.alpha = 0f;
-        cg2.interactable = false;
-        cg2.blocksRaycasts = false;
-        */
         LeanTween.moveLocal(skillButton1.gameObject, new Vector3(-16f, 0f, 0.1f), 0.2f)
             .setOnComplete(() =>
             {

@@ -167,8 +167,10 @@ public class TeamManager : MonoBehaviour
             return;
         }
 
+        //remove link in the UI.
         CatIconUI.instance?.UnlinkCatFromIcon(worldCatUnit);
 
+        //Hide cat in the world
         worldCat.SetActive(false); // Hide cat in world
         cats.Remove(worldCatUnit);          // Remove from the list
         catContainers[slot.SlotIndex].occupyingCat = null;

@@ -133,7 +133,11 @@ public class GameManager : MonoBehaviour
         currentPage = lobbyPage;
 
         // Play lobby audio
-        AudioManager.instance.PlayTheme("Lobby");
+        if(AudioManager.instance != null)
+        {
+            AudioManager.instance.PlayTheme("Lobby");
+        }
+
     }
 
     public void StartMission()

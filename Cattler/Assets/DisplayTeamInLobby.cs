@@ -17,8 +17,13 @@ public class DisplayTeamInLobby : MonoBehaviour
         
     }
 
-    public void SpawnCat(GameObject catSlot)
+    public void DisplayCat(CatUnit cat)
     {
         
+    }
+
+    public void RemoveCat(CatUnit cat)
+    {
+
     }
 }

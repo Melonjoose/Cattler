@@ -112,6 +112,7 @@ public class CatIconUI : MonoBehaviour
             catUISlotbutton.interactable = true;
 
             cat.onHealthChanged += (current, max) => UpdateIconHealthUI(i, current, max);
+
         }
         else
         {
@@ -122,6 +123,9 @@ public class CatIconUI : MonoBehaviour
         }
 
         Icon thisIcon = uiSlots[i].icon;
+        
+        thisIcon.skillButton1.UpdateIcon(cat.weaponL);
+        thisIcon.skillButton2.UpdateIcon(cat.weaponR);
 
         if (cat.weaponL != null || cat.weaponR != null || cat.hat != null)
         {
@@ -138,6 +142,7 @@ public class CatIconUI : MonoBehaviour
                 {
                     skillButton1.AssignSkill(cat.weaponL.runtimeData.template.skill);
                     skillButton1.UpdateIcon(cat.weaponL);
+                    
                 }
                 else
                 {
@@ -159,11 +164,7 @@ public class CatIconUI : MonoBehaviour
                     Debug.Log("No right weapon found for skill assignment.");
                 }
             }
-            else
-            {
-                //change skillbutton to a cross icon to indicate no skill.
-                //cannot open if both skill is null.
-            }
+
         }
 
 
@@ -176,10 +177,20 @@ public class CatIconUI : MonoBehaviour
         {
             if (uiSlots[i].unit == cat)
             {
+                //unlinks the cat icon from the slot
+                // Move the icon back to its original position
                 var thisIconPosition = uiSlots[i].icon.gameObject.transform.position;
                 var positionSlotToSnap = iconPosition[cat.catMovement.catIndex].transform.position;
 
                 thisIconPosition = positionSlotToSnap;
+
+
+                //unlink skill buttons .. do first before removing cat from slot.
+                Icon thisIcon = uiSlots[i].icon;
+                thisIcon.skillButton1.RemoveSkill();
+                thisIcon.skillButton1.UpdateIcon(cat.weaponL);
+                thisIcon.skillButton2.RemoveSkill();
+                thisIcon.skillButton2.UpdateIcon(cat.weaponR);
 
                 // Unlink the cat from this slot
                 uiSlots[i].iconIndex = -1;
@@ -188,16 +199,10 @@ public class CatIconUI : MonoBehaviour
                 uiSlots[i].icon.gameObject.SetActive(false);
                 uiSlots[i].healthBar.gameObject.SetActive(false);
 
-
-                //unlink skill buttons
-
-
                 //Debug.Log($"Unlinked cat from icon slot {i}");
                 return;
             }
         }
-
-        Debug.LogWarning($"Tried to unlink cat, but no matching icon slot was found.");
     }
 
 

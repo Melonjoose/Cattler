@@ -10,6 +10,7 @@ public class Skill_Button : MonoBehaviour // add handlers
     public CatUnit catUnit;
     public ActiveAbility assignedSkill;
     public GameObject skillButton;
+    public CanvasGroup thisCanvas;
     public Button button;
     private RectTransform buttonRect;
     public Image skillIcon;
@@ -21,6 +22,7 @@ public class Skill_Button : MonoBehaviour // add handlers
     {
         skillButton = this.gameObject;
         button = skillButton.GetComponent<Button>();
+        thisCanvas = skillButton.GetComponent<CanvasGroup>();
         skillIcon = this.transform.Find("Sprite").GetComponent<Image>();
         skillIcon.sprite = null; // change to an X in the future??
         cooldownVisual = skillButton.transform.Find("CooldownVisual").gameObject;
@@ -44,19 +46,22 @@ public class Skill_Button : MonoBehaviour // add handlers
 
     }
 
-    public void UpdateIcon(Item item)
+    public void RemoveSkill()
     {
-        if(item == null)
+        assignedSkill = null;
+    }
+
+    public void UpdateIcon(Item item) //handle updating the skill icon based on items
+    {
+        if (item == null || skillIcon == null) //if no item. or no skillicon. hide this skill icon.
         {
+            thisCanvas.alpha = 0f;
             skillIcon.sprite = null;
             Debug.LogWarning("No item provided to update icon.");
             return;
         }
-        if(skillIcon == null)
-        {
-            Debug.LogWarning("Skill icon Image component not found.");
-            return;
-        } 
+        //if there is an item. show the icon.
+        thisCanvas.alpha = 1f;
         Sprite itemIcon = item.runtimeData.template.icon;
         skillIcon.sprite = itemIcon;
     }
