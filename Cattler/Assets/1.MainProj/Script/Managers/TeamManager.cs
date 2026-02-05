@@ -77,7 +77,8 @@ public class TeamManager : MonoBehaviour
             {
                 cats.Add(newCatUnit);
             }
-            
+
+            UpdateItemVisuals(newCatUnit);
             AddCatToTeam(newCatUnit, slot);
         }
 
@@ -114,6 +115,7 @@ public class TeamManager : MonoBehaviour
             {
                 cats.Add(existingCatUnit);
             }
+            UpdateItemVisuals(existingCatUnit);
 
             AddCatToTeam(existingCatUnit, slot);
         }
@@ -222,16 +224,16 @@ public class TeamManager : MonoBehaviour
     }
 
 
-    void EquipItem(Item item, CatUnit worldCat, string slotName)
+    void EquipItem(Item item, CatUnit worldCat, string slotName)  //Equip item visuals on world cat. if no item, hide the visuals.
     {
-        Debug.Log("additemtocat");
+
         if (item == null || item.runtimeData?.template?.icon == null)
         {
             Debug.LogWarning("Invalid item or missing icon.");
             return;
         }
 
-        Sprite newIcon = item.runtimeData.template.icon;
+        Sprite newIcon = item.runtimeData.template.icon; //change icon visual using template.
 
         // Hat Slot
         if (slotName == "Hat")
@@ -260,33 +262,34 @@ public class TeamManager : MonoBehaviour
 
 
         // Left Weapon Slot
-        if(slotName == "L_Weapon")
+        if (slotName == "L_Weapon") //checker for what slot to update.
         {
             Transform leftWeaponSlot = worldCat.transform.Find("L_WeaponSlot");
             if (leftWeaponSlot != null)
             {
-                Transform weapon = leftWeaponSlot.Find("Weapon");   
-                if (worldCat.weaponL != null)
+                Transform weapon = leftWeaponSlot.Find("Weapon");
+                SpriteRenderer sr = weapon.GetComponent<SpriteRenderer>();
+
+                if (worldCat.weaponL != null) // weapon equipped
                 {
                     weapon.gameObject.SetActive(true);
-                    SpriteRenderer sr = weapon.GetComponent<SpriteRenderer>();
                     sr.enabled = true;
-                    sr.sprite = item.runtimeData.template.icon;
+                    sr.sprite = worldCat.weaponL.runtimeData.template.icon;
                 }
-                else
+                else // no weapon equipped
                 {
                     Debug.Log("worldCat has no left weapon");
-                    weapon.gameObject.SetActive(false);
-                    SpriteRenderer sr = weapon.GetComponent<SpriteRenderer>();
                     sr.sprite = null;
                     sr.enabled = false;
+                    weapon.gameObject.SetActive(false);
                 }
             }
         }
 
 
+
         // Right Weapon Slot
-        if(slotName == "R_Weapon")
+        if (slotName == "R_Weapon")
         {
             Transform rightWeaponSlot = worldCat.transform.Find("R_WeaponSlot");
             if (rightWeaponSlot != null)
@@ -312,6 +315,44 @@ public class TeamManager : MonoBehaviour
 
     }
 
+    public void UpdateItemVisuals(CatUnit worldCat) //update all cats' item visuals in the world.
+    {
+        //reference for slots
+        Transform hatSlot = worldCat.transform.Find("T_HatSlot");
+        Transform leftWeaponSlot = worldCat.transform.Find("L_WeaponSlot");
+        Transform rightWeaponSlot = worldCat.transform.Find("R_WeaponSlot");
+        SpriteRenderer sr;
+        if(worldCat.hat != null)
+        {
+            sr = hatSlot.Find("Hat").GetComponent<SpriteRenderer>();
+            sr.sprite = worldCat.hat.runtimeData.template.icon;
+        }
+        else
+        {
+            sr = hatSlot.Find("Hat").GetComponent<SpriteRenderer>();
+            sr.sprite = null;
+        }
+        if(worldCat.weaponL != null)
+        {
+            sr = leftWeaponSlot.Find("Weapon").GetComponent<SpriteRenderer>();
+            sr.sprite = worldCat.weaponL.runtimeData.template.icon;
+        }
+        else
+        {
+            sr = leftWeaponSlot.Find("Weapon").GetComponent<SpriteRenderer>();
+            sr.sprite = null;
+        }
+        if(worldCat.weaponR != null)
+        {
+            sr = rightWeaponSlot.Find("Weapon").GetComponent<SpriteRenderer>();
+            sr.sprite = worldCat.weaponR.runtimeData.template.icon;
+        }
+        else
+        {
+            sr = rightWeaponSlot.Find("Weapon").GetComponent<SpriteRenderer>();
+            sr.sprite = null;
+        }
+    }
 
     public void StoreToDeadCatsList(CatUnit cat)
     {

@@ -57,7 +57,6 @@ public class Skill_Button : MonoBehaviour // add handlers
         {
             thisCanvas.alpha = 0f;
             skillIcon.sprite = null;
-            Debug.LogWarning("No item provided to update icon.");
             return;
         }
         //if there is an item. show the icon.
