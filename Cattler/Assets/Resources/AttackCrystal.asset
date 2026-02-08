@@ -19,4 +19,4 @@ MonoBehaviour:
   itemType: 3
   description: Increase ATK by 1
   value: 1
-  itemNameShort: ATK
+  itemNameShort: Attack Power

@@ -9,6 +9,7 @@ public class ItemData : ScriptableObject
     public ItemType itemType;
     public string description;
     public int value;
+    public float fvalue;
 
 }
 

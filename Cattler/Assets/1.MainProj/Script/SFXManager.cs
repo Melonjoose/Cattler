@@ -46,6 +46,9 @@ public class StatFXManager : MonoBehaviour
         pool.Enqueue(sfx);
     }
 
+    public void ShowCrystalFX()
+    {
 
+    }
 
 }

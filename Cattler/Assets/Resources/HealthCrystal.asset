@@ -19,4 +19,5 @@ MonoBehaviour:
   itemType: 3
   description: Increase MaxHP by 1
   value: 1
-  itemNameShort: MaxHP
+  fvalue: 0
+  itemNameShort: Max Health

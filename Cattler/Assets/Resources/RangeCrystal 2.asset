@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 626546a8f3a11b64f84fc7e7cc89e5c6, type: 3}
-  m_Name: HealingPotion
+  m_Name: RangeCrystal 2
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   prefab2: {fileID: 0}
-  itemName: Healing Potion
-  icon: {fileID: 1018383391595562092, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
+  itemName: Health Crystal
+  icon: {fileID: 21300000, guid: 9145cb5bd12768249b13f639bc95a389, type: 3}
   itemType: 3
-  description: Heal Cats
+  description: Increase Range by 1
   value: 1
   fvalue: 0
-  itemNameShort: Health
+  itemNameShort: Range

@@ -32,7 +32,7 @@ public class StatFX : MonoBehaviour
         }
     }
 
-    public void SetText(int amount, string stat)
+    public void SetText(float amount, string stat)
     {
         text.text = $"+{amount} {stat}"; 
     }
