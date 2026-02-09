@@ -3736,8 +3736,8 @@ RectTransform:
   m_GameObject: {fileID: 113738459}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 118658434}
   - {fileID: 1041177876}
@@ -3745,7 +3745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.29, y: 193.5}
+  m_AnchoredPosition: {x: 0, y: 183}
   m_SizeDelta: {x: 162.5, y: 58.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &113738461
@@ -6082,7 +6082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92549026, g: 0.57254905, b: 0.2901961, a: 1}
+  m_Color: {r: 1, g: 0.8663522, b: 0.759434, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -25574,6 +25574,7 @@ Transform:
   m_Children:
   - {fileID: 305924427}
   - {fileID: 1649449198}
+  - {fileID: 1956737757}
   m_Father: {fileID: 1966684235}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1080154233
@@ -25589,8 +25590,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SFXPoolContainer: {fileID: 1649449197}
-  poolSize: 30
+  StatSFXpoolSize: 5
   SFXPrefab: {fileID: 2204417235729385700, guid: 70b9def3847fc9f42b450fb6414726bf, type: 3}
+  VFXPoolContainer: {fileID: 1956737756}
+  onHitFXPoolSize: 5
+  onHitFXPrefabs:
+  - {fileID: 4090275234146666118, guid: a61d80d413e1c4d47a4fb6f263bf6271, type: 3}
 --- !u!1 &1081970020
 GameObject:
   m_ObjectHideFlags: 0
@@ -44190,6 +44195,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8026492918833390043, guid: 29295be9f362d7f4f9c32d7e08671517, type: 3}
   m_PrefabInstance: {fileID: 1953065155}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1956737756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1956737757}
+  m_Layer: 0
+  m_Name: onHit Effects Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1956737757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956737756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1080154232}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1957037191 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3023692388128447766, guid: 0584ecba7b4cffe4a82fbc2b1eb39820, type: 3}

@@ -134,6 +134,8 @@ public class EnemyUnit : MonoBehaviour
 
     public virtual void Die()
     {
+        StatFXManager.instance.PlayVFX(this.transform.position, 0);
+        AudioManager.instance.PlaySFX("EnemyDie");
         EnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); 
         
         //Debug.Log(enemyData.enemyName + " has been defeated.");
