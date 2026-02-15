@@ -79,11 +79,11 @@ public class Skill_Button : MonoBehaviour // add handlers
             return;
         }
 
-        Vector3 spawnloc = catUnit.transform.position + Vector3.right; // Vector3(1,0,0) also works
+        Vector3 spawnloc = catUnit.transform.position + assignedSkill.spawnLocationOffset; // Vector3(1,0,0) also works
         GameObject newSkillObject = Instantiate(assignedSkill.AbilityPrefab, spawnloc, transform.rotation); // use rotation, not transform
-        ActiveAbility SkillInfo = newSkillObject.GetComponent<ActiveAbility>();
-        CatUnit catInfo = catUnit.GetComponent<CatUnit>();
-        SkillInfo.catUnit = catInfo;
+        ActiveAbility SkillInfo = newSkillObject.GetComponent<ActiveAbility>(); //newskillobject is the new instantiated skill prefab. skillinfo is the activeability script attached to the prefab, which contains the info of the skill.
+        CatUnit catInfo = catUnit.GetComponent<CatUnit>(); 
+        SkillInfo.catUnit = catInfo; // reference catunit into the skill's activeability script so that the skill can access the cat's info for damage calculation and other purposes.
         //HideButton();
         Cooldown(assignedSkill.cooldown);
     }

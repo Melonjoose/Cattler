@@ -19,9 +19,10 @@ MonoBehaviour:
   itemType: 1
   description: Short Range but releases a flurry of attack!
   value: 1
-  skill: {fileID: 0}
-  AbilityName: Eliminate Target
-  AbilityDesc: Does massive damage to the nearest enemy
+  fvalue: 0
+  skill: {fileID: 7032846538255474606, guid: ac40a121dec285a48ae2177f4c64909a, type: 3}
+  AbilityName: Cross Slash
+  AbilityDesc: Slashes all enemy in front of the cat
   health: 2
   attackPower: 1
   attackSpeed: 3

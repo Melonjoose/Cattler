@@ -14,7 +14,8 @@ public class CatUnit : MonoBehaviour
     public Item weaponR; //R
 
     //--- Cat linked objects ---//
-    public GameObject catGO;
+    public InventoryIcon inventoryIcon; //this cat's UI icon in the inventory.
+    public GameObject catGO; //world cat gameobject
     public GameObject targetPoint;
 
     public CatRuntimeData runtimeData;

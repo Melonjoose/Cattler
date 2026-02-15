@@ -21,7 +21,7 @@ public class TriggerTrack : MonoBehaviour
     {
         if(triggerRadius != catUnit.runtimeData.template.attackRange)
         {
-            triggerRadius = catUnit.runtimeData.template.attackRange;
+            triggerRadius = catUnit.runtimeData.attackRange;
         }
         FindNearestEnemy();
         TrackEnemy();

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5512074555908395753}
   - component: {fileID: 3292437464079347448}
   m_Layer: 0
-  m_Name: Volley
+  m_Name: Volley Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,11 +53,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityPrefab: {fileID: 1501784088886520407}
   damage: 2
+  spawnLocationOffset: {x: 1, y: 0, z: 0}
   cooldown: 5
   range: 20
   movespeed: 100
   lifetime: 1.5
   timer: 0
+  damageMultiplier: 0.8
   col: {fileID: 0}
   rb: {fileID: 0}
   catUnit: {fileID: 0}
@@ -200,7 +202,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 4496002825605101114, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -287,7 +289,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 4496002825605101114, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -374,7 +376,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 4496002825605101114, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -461,7 +463,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 4496002825605101114, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -548,7 +550,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 4496002825605101114, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

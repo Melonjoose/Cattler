@@ -23,9 +23,9 @@ public class Slash : ActiveAbility
         EnemyUnit enemy = collision.gameObject.GetComponent<EnemyUnit>();
         if (enemy != null && catUnit != null )
         {
-            int damage = Mathf.CeilToInt(catUnit.runtimeData.template.attackPower * 1.5f);
+            int damage = Mathf.CeilToInt(catUnit.runtimeData.attackPower * damageMultiplier);
             enemy.TakeDamage(damage);
-            DamageNumberManager.Instance.ShowDamage((int)damage, enemy.transform.localPosition);
+            DamageNumberManager.Instance.ShowDamage((int)damage, enemy.transform.position);
             //Debug.Log("enemy hit by slash, taking" + damage);
         }
     }

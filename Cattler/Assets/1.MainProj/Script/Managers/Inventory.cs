@@ -438,5 +438,10 @@ public class Inventory : MonoBehaviour
         PlaceItem(replacedItem, draggedItemOriginalSlot);
     }
 
+    public void DeleteItem(GameObject item)
+    {
+        Destroy(item);
+    }
+
     ///             MOVEMENT            ///
 }

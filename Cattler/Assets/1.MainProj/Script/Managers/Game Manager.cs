@@ -122,6 +122,8 @@ public class GameManager : MonoBehaviour
         enemySpawner.spawnerActive = false;
         specialSpawner.spawnerActive = false;
         TeamManager.instance.ResetCatPosition();
+        TeamManager.instance.HealAllCats();
+        TeamManager.instance.ClearDeadCatsList();
         TravelManager.instance.ResetToStart();
         TravelManager.instance.DisableTravel();
 
@@ -164,15 +166,14 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void RetreatButton()
+    public void RetreatButton()         //When button is clicked.
     {
-        //When button is clicked.
         //pause the game.
         FreezeGamePlay();
         //confirm button pops up.
     }
 
-    public void ReturnToBase()
+    public void ReturnToBase() // sequence when confirm button is clicked.
     {
         ResumeGamePlay();
         // When confirm button is clicked.

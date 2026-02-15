@@ -356,8 +356,27 @@ public class TeamManager : MonoBehaviour
 
     public void StoreToDeadCatsList(CatUnit cat)
     {
-        cats.Remove(cat);
-        deadCats.Add(cat);
+        cats.Remove(cat); //remove from team list. 
+        deadCats.Add(cat); //add to dead cats list.
+
+        // delete the UI
+        //Destroy Inventory icon. can be found inside of catUnit.
+        //Item removedcat = cat.inventoryItem;
+        // Inventory.instance.ClearFromTeamList(removedcat);
+        //Destroy(removedcat.gameObject);
+    }
+
+    public void ClearDeadCatsList() //when battle ends, clear all dead cats by deleting them.
+    {
+        foreach (CatUnit deadCat in deadCats)
+        {
+            if (deadCat.catGO != null)
+            {
+                Destroy(deadCat.catGO); //it's safe to destroy dead cat gameobject now.
+            }
+            
+        }
+        deadCats.Clear();
     }
 
     public void ResetCatPosition()
@@ -369,5 +388,13 @@ public class TeamManager : MonoBehaviour
             cat.Unstun();
         }
 
+    }
+
+    public void HealAllCats()
+    {
+        foreach (CatUnit cat in cats)
+        {
+            cat.runtimeData.currentHealth = cat.runtimeData.maxHealth;
+        }
     }
 }

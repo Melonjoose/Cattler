@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5512074555908395753}
   - component: {fileID: 3292437464079347448}
   m_Layer: 0
-  m_Name: Slash SFX
+  m_Name: Slash Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,12 +48,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AbilityPrefab: {fileID: 1501784088886520407}
-  damage: 0
+  damage: 1
+  spawnLocationOffset: {x: 1, y: 0, z: 0}
   cooldown: 5
   range: 0
   movespeed: 80
-  lifetime: 0.2
+  lifetime: 0.5
   timer: 0
+  damageMultiplier: 1
   col: {fileID: 0}
   rb: {fileID: 0}
   catUnit: {fileID: 0}
@@ -196,7 +198,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: -665167661354399980, guid: a2094c1405b415d4a841fb8b4ceb7f23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
