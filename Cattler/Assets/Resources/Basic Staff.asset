@@ -19,8 +19,9 @@ MonoBehaviour:
   itemType: 1
   description: Poweful but slow
   value: 1
-  skill: {fileID: 376969740731148697, guid: 573b8b8c7830b6a41bd98da9c140a3f6, type: 3}
-  AbilityName: Explosion
+  fvalue: 0
+  skill: {fileID: 4527496120552723139, guid: 969984ffb0717b9409f5810de25cae70, type: 3}
+  AbilityName: FireBomb
   AbilityDesc: Fire explosive magic at the enemy!.
   health: 1
   attackPower: 4

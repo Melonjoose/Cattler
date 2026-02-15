@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bow : Item
+public class RangedWeapon : Item
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
