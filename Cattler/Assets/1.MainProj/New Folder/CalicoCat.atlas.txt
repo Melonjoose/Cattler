@@ -1,0 +1,32 @@
+CalicoCat.png
+size:512,512
+filter:Linear,Linear
+pma:true
+Leye
+bounds:364,253,85,118
+Mouth
+bounds:300,131,24,17
+rotate:90
+Reye
+bounds:144,122,88,121
+head
+bounds:2,245,360,257
+left arm
+bounds:379,175,62,76
+offsets:0,0,62,77
+left ear
+bounds:364,373,110,129
+left leg
+bounds:451,316,47,55
+right arm
+bounds:325,164,52,79
+right ear
+bounds:2,2,100,125
+rotate:90
+right leg
+bounds:234,109,46,64
+rotate:90
+tail
+bounds:234,157,89,86
+torso
+bounds:2,104,140,139

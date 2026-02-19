@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      catkeeper gacha sprite_0: 7880008646975052632
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

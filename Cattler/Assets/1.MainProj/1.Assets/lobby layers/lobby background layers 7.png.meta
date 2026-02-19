@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lobby background layers 7_0: -5222529585809481857
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fyp bg seamless foreground_0: -864531560729727676
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

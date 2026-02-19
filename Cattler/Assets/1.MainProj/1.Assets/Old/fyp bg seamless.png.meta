@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fyp bg seamless_0: 4950485764347820386
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

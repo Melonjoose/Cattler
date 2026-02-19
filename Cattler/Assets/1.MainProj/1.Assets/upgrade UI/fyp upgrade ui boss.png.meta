@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fyp upgrade ui boss_0: 3428898759890286093
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
