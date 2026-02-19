@@ -15,15 +15,16 @@ MonoBehaviour:
   prefab: {fileID: 4227622569212406947, guid: 097cf5f9a1f8d7a47881fdb8f5cf19e0, type: 3}
   prefab2: {fileID: 0}
   itemName: Basic Gun
-  icon: {fileID: 21300000, guid: 96e726683ceb73748a1f38cfef3a050a, type: 3}
+  icon: {fileID: 21300000, guid: 1a711669078ded94db9fd4e1b83fdd45, type: 3}
   itemType: 1
   description: High Damage but slow
   value: 1
-  skill: {fileID: 376969740731148697, guid: 17f2b63f9939f734797ad08d443d081d, type: 3}
-  AbilityName: Volley
-  AbilityDesc: Shoots a volley of arrows.
+  fvalue: 0
+  skill: {fileID: 646202139400624213, guid: 0f3bf352cd8824048b7b6ce0978c2d1a, type: 3}
+  AbilityName: HeavyShot
+  AbilityDesc: Shoot one bullet that does massive damage!
   health: 1
-  attackPower: 4
+  attackPower: 3
   attackSpeed: 1
   attackRange: 2
   movementSpeed: 1
