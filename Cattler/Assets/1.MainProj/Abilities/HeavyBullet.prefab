@@ -75,7 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityPrefab: {fileID: 1501784088886520407}
   damage: 2
-  spawnLocationOffset: {x: 0.5, y: 0, z: 0}
+  spawnLocationOffset: {x: 0.6, y: 0, z: 0}
   cooldown: 1
   range: 0
   movespeed: 40

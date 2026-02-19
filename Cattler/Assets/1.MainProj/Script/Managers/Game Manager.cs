@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -144,7 +145,7 @@ public class GameManager : MonoBehaviour
 
     public void StartMission()
     {
-        if(TeamManager.instance.currentTeamSize == 0)
+        if(TeamManager.instance.cats.Count == 0) //if there is no cats in cats list, cannot start mission.
         {
             Debug.LogWarning("Cannot start mission with no cats in the team!");
             return;

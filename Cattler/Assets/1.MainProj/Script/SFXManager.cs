@@ -72,18 +72,25 @@ public class StatFXManager : MonoBehaviour
     {
         if (!vfxPools.ContainsKey(prefabIndex)) return null;
 
+        GameObject vfx;
         if (vfxPools[prefabIndex].Count > 0)
         {
-            GameObject vfx = vfxPools[prefabIndex].Dequeue();
-            vfx.SetActive(true);
-            return vfx;
+            vfx = vfxPools[prefabIndex].Dequeue();
         }
         else
         {
-            GameObject vfx = Instantiate(onHitFXPrefabs[prefabIndex], VFXPoolContainer.transform);
-            return vfx;
+            vfx = Instantiate(onHitFXPrefabs[prefabIndex], VFXPoolContainer.transform);
         }
+
+        // Assign prefabIndex to the helper script
+        VFXreturner returner = vfx.GetComponent<VFXreturner>();
+        if (returner != null)
+            returner.prefabIndex = prefabIndex;
+
+        vfx.SetActive(true);
+        return vfx;
     }
+
 
     public void ReturnVFXToPool(GameObject vfx, int prefabIndex)
     {
@@ -112,4 +119,10 @@ public class StatFXManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
         ReturnVFXToPool(vfx, prefabIndex);
     }
+
+    public void ReturnAfterAnimation(GameObject vfx, int prefabIndex)
+    {
+        ReturnVFXToPool(vfx, prefabIndex);
+    }
+
 }
