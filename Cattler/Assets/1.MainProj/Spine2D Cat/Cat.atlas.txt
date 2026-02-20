@@ -1,0 +1,57 @@
+Cat.png
+size:1024,512
+filter:Linear,Linear
+pma:true
+Export CalicoCat/Leye
+bounds:436,125,85,118
+Export CalicoCat/Mouth
+bounds:765,88,24,17
+Export GreyCat/Mouth
+bounds:765,88,24,17
+Export CalicoCat/Reye
+bounds:256,122,88,121
+Export CalicoCat/head
+bounds:2,245,360,257
+Export CalicoCat/left arm
+bounds:701,86,62,76
+offsets:0,0,62,77
+Export CalicoCat/left ear
+bounds:144,114,110,129
+Export CalicoCat/left leg
+bounds:970,366,47,55
+Export CalicoCat/right arm
+bounds:970,423,52,79
+Export CalicoCat/right ear
+bounds:2,2,100,125
+rotate:90
+Export CalicoCat/right leg
+bounds:765,107,46,64
+Export CalicoCat/tail
+bounds:610,157,89,86
+Export CalicoCat/torso
+bounds:2,104,140,139
+Export GreyCat/head
+bounds:364,245,360,257
+Export GreyCat/left arm
+bounds:762,173,62,76
+offsets:0,0,62,77
+Export GreyCat/left ear
+bounds:726,251,110,129
+rotate:90
+Export GreyCat/left eye
+bounds:346,122,88,121
+Export GreyCat/left leg
+bounds:701,37,47,55
+rotate:90
+Export GreyCat/right arm
+bounds:701,164,59,79
+Export GreyCat/right ear
+bounds:868,377,100,125
+Export GreyCat/right eye
+bounds:523,125,85,118
+Export GreyCat/right leg
+bounds:826,185,46,64
+Export GreyCat/tail
+bounds:610,69,89,86
+Export GreyCat/torso
+bounds:726,363,140,139

@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerCollider2D: {fileID: 0}
   runtimeData:
-    template: {fileID: 11400000, guid: e100e0e9fe6335146bf0d75c630c6aa3, type: 2}
+    template: {fileID: 11400000, guid: 0227991a1f7d96d4b9c8a519d42c72cb, type: 2}
     health: 0
     attackPower: 0
     attackSpeed: 0
