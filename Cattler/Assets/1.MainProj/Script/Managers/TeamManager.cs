@@ -3,6 +3,8 @@ using System;
 using Unity.VisualScripting;
 using System.Collections.Generic;
 using System.Xml;
+using Spine.Unity;
+using Spine;
 
 public class TeamManager : MonoBehaviour
 {
@@ -56,6 +58,23 @@ public class TeamManager : MonoBehaviour
             newCatUnit.weaponL = newlyAddedCat.weaponL;
             newCatUnit.weaponR = newlyAddedCat.weaponR;
             newCatUnit.hat = newlyAddedCat.hat;
+
+            //update cat's skin based on data info.
+            //get cat skeleton.
+            newCatUnit.LinkAnimationBody();
+            string catSkinName = newCatUnit.runtimeData.template.skinName; //get skin name from data.
+            Skin skin = newCatUnit.skeletonAnimation.Skeleton.Data.FindSkin(catSkinName); //find corresponding skin in skeleton.
+            if(skin != null)
+            {
+                newCatUnit.skeletonAnimation.Skeleton.SetSkin(skin);
+                newCatUnit.skeletonAnimation.Skeleton.SetSlotsToSetupPose();
+                newCatUnit.skeletonAnimation.AnimationState.Apply(newCatUnit.skeletonAnimation.Skeleton);
+            }
+            else
+            {
+                Debug.LogWarning($"Skin {catSkinName} not found!");
+            }
+
 
             Debug.Log("AddCatToWorld");
             //if newlyAddedCat has item equipped. show item on catGO.

@@ -19,6 +19,8 @@ MonoBehaviour:
   itemType: 0
   description: A Basic Grey Cat
   value: 1
+  fvalue: 0
+  skinName: GreyCat
   catID: 3
   Rarity: 0
   skillName: Nil

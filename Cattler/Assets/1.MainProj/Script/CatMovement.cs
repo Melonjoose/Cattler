@@ -1,3 +1,4 @@
+using Spine.Unity;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class CatMovement : MonoBehaviour
     private int lastAssignedIndex = -1;
     [SerializeField] private float moveSpeed = 3f;
     public bool canWalk = true;
+
+    public bool isWalking = false;
 
     // To be assigned by CatPositionManager
     public Transform PlayerTeam;
@@ -83,27 +86,37 @@ public class CatMovement : MonoBehaviour
         catIndex = index;
     }
 
-    void Walk(int targetindex)
+    void Walk(int targetIndex)
     {
-        targetLocation = worldPositions[targetindex]; // 0 - 4
+        targetLocation = worldPositions[targetIndex];
 
         if (targetLocation != null && canWalk)
         {
-            {
-                Vector2 currentPos = rb.position;
-                Vector2 targetPos = targetLocation.position;
+            Vector2 currentPos = rb.position;
+            Vector2 targetPos = targetLocation.position;
 
-                // Move only X
-                float newX = Mathf.MoveTowards(currentPos.x, targetPos.x, moveSpeed * Time.fixedDeltaTime);
-                rb.MovePosition(new Vector2(newX, currentPos.y));
+            float newX = Mathf.MoveTowards(currentPos.x, targetPos.x, moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(new Vector2(newX, currentPos.y));
+
+            // If we just started walking, set animation once
+            if (!isWalking)
+            {
+                catUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
+                isWalking = true;
             }
 
+            // Snap to target if close enough
             if (Vector3.Distance(transform.position, targetLocation.position) < 0.05f)
             {
                 transform.position = targetLocation.position;
+
+                // Switch back to idle once arrived
+                catUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
+                isWalking = false;
             }
         }
     }
+
 
     public void ResetToInitialPosition()
     {

@@ -1,3 +1,4 @@
+using Spine.Unity;
 using System;
 using System.Collections;
 using Unity.Mathematics;
@@ -17,6 +18,8 @@ public class CatUnit : MonoBehaviour
     public InventoryIcon inventoryIcon; //this cat's UI icon in the inventory.
     public GameObject catGO; //world cat gameobject
     public GameObject targetPoint;
+    public GameObject AnimationBody; //the gameobject that has the animator component for this cat. (for animation purposes only, not the actual catGO)
+    public SkeletonAnimation skeletonAnimation;
 
     public CatRuntimeData runtimeData;
     public CatMovement catMovement;
@@ -42,6 +45,8 @@ public class CatUnit : MonoBehaviour
         }
         catMovement = GetComponent<CatMovement>();
         LinkTargetpoint();//link the targetPoint to and object called targetPoint located in this enemy's children
+        LinkAnimationBody(); //link the AnimationBody to and object called Spine GameObject (Cat) located in this this Cat's children
+        AnimationLogic();
     }
 
     private void Update()
@@ -58,6 +63,35 @@ public class CatUnit : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         TryAttack(other);
+    }
+
+    public void LinkAnimationBody()
+    {
+        AnimationBody = transform.Find("Spine GameObject (Cat)").gameObject; //link the AnimationBody to and object called Spine GameObject (Cat) located in this this Cat's children
+        skeletonAnimation = AnimationBody.GetComponent<SkeletonAnimation>();
+    }
+
+    public void AnimationLogic()
+    {
+        if(skeletonAnimation == null)
+        {
+            Debug.LogWarning($"{gameObject.name} does not have a skeleton animation linked and is unable to play animations.");
+            return;
+        }   
+        if (TravelManager.instance.isTraveling == true)
+        {
+            if (!isAttacking)
+            {
+                skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true); //play walk animation when traveling
+            }
+        }
+        else
+        {
+            if (!isAttacking)
+            {
+                skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true); //play idle animation when not traveling
+            }
+        }
     }
 
     void LinkTargetpoint()
@@ -80,14 +114,17 @@ public class CatUnit : MonoBehaviour
         EnemyUnit enemytarget = other.GetComponent<EnemyUnit>();
         if (attackCooldown <= 0f)
         {
-            
+            isAttacking = true;
             if (enemytarget != null)
             {
+                skeletonAnimation.AnimationState.SetAnimation(0, "Attack", false); //play attack animation
+
                 Attack(enemytarget);
                 Knockback(enemytarget); //knockback effect when attacked
                 attackCooldown = 1f / runtimeData.attackSpeed;
             }
         }
+        isAttacking = false;
     }
 
     private void Attack(EnemyUnit target)

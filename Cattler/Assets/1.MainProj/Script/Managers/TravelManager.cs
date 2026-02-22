@@ -1,3 +1,4 @@
+using Spine.Unity;
 using UnityEngine;
 
 public class TravelManager : MonoBehaviour
@@ -70,6 +71,7 @@ public class TravelManager : MonoBehaviour
 
     public void TeamWalk()
     {
+        
         distanceTraveled += (travelSpeed*distanceMultiplier) * Time.deltaTime;
         floorGRP.transform.position = new Vector3(-distanceTraveled, -4f, 0); // floor movement
         

@@ -19,6 +19,8 @@ MonoBehaviour:
   itemType: 0
   description: A colourful spotted cat
   value: 2
+  fvalue: 0
+  skinName: Calico
   catID: 1
   Rarity: 0
   skillName: Nil

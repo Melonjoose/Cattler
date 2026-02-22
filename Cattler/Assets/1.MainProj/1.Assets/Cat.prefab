@@ -707,6 +707,7 @@ MonoBehaviour:
   hat: {fileID: 0}
   weaponL: {fileID: 0}
   weaponR: {fileID: 0}
+  inventoryIcon: {fileID: 0}
   catGO: {fileID: 0}
   targetPoint: {fileID: 365364454014447571}
   runtimeData:
@@ -722,6 +723,7 @@ MonoBehaviour:
   catMovement: {fileID: 0}
   catIconSlot:
     iconIndex: -1
+    initialIconIndex: -1
     icon: {fileID: 0}
     iconImage: {fileID: 0}
     healthBar: {fileID: 0}
@@ -743,6 +745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catIndex: -1
+  initialCatIndex: 0
   inPosition: 0
   rb: {fileID: 0}
   moveSpeed: 3
