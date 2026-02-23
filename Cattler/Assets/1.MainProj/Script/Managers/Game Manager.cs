@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -148,22 +149,38 @@ public class GameManager : MonoBehaviour
         if(TeamManager.instance.cats.Count == 0) //if there is no cats in cats list, cannot start mission.
         {
             Debug.LogWarning("Cannot start mission with no cats in the team!");
+            CommentaryManager.instance.AddDialogueToQueue(7); // No cats dialogue
             return;
         }
 
-        CloseAllPages();
+        StartCoroutine(GameStartSequence());
+
+
         //ResumeGamePlay();
         // spawner active
         enemySpawner.spawnerActive = true;
         specialSpawner.spawnerActive = true;
 
-        TravelManager.instance.EnableTravel();
-        TravelManager.instance.ResetToStart();
+
         // make sure ink & core is same from lobbystate.
 
         // travel manager active
 
         //optional. catkeeper words of encouragement.
+    }
+    IEnumerator GameStartSequence()
+    {
+        Transition.instance.FadeOut();
+
+        yield return new WaitForSeconds(1.5f);
+
+        CloseAllPages();
+        Transition.instance.FadeIn();
+        // Wait for 2 seconds before enabling travel
+        yield return new WaitForSeconds(0.5f);
+
+        TravelManager.instance.EnableTravel();
+        TravelManager.instance.ResetToStart();
     }
 
 

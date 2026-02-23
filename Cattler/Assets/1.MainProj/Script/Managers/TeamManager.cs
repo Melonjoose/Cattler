@@ -61,6 +61,7 @@ public class TeamManager : MonoBehaviour
 
             //update cat's skin based on data info.
             //get cat skeleton.
+            
             newCatUnit.LinkAnimationBody();
             string catSkinName = newCatUnit.runtimeData.template.skinName; //get skin name from data.
             Skin skin = newCatUnit.skeletonAnimation.Skeleton.Data.FindSkin(catSkinName); //find corresponding skin in skeleton.

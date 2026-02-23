@@ -15,7 +15,7 @@ public class Transition : MonoBehaviour
     {
         
     }
-    public void FadeIn()
+    public void FadeIn() //fade to black
     {
         transitionAnimator.SetTrigger("FadeIn");
     }
