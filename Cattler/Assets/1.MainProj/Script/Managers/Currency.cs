@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Currency : MonoBehaviour
 {
 
-    public int ink = 0; // Ink currency drop by all enemies. Bosses drop more ink than enemies.
+    public int ink = 100; // Ink currency drop by all enemies. Bosses drop more ink than enemies.
     public int eXP = 0; // EXP can be earn after the player retreats. EXP can also be earn from dead cats
     public int core = 0; //Rare currency drop by mini bosses and bosses
     
@@ -13,11 +13,14 @@ public class Currency : MonoBehaviour
     public TextMeshProUGUI[] expText; // Text to display EXP amount
     public TextMeshProUGUI[] coreText; // Text to display core amount
     
-
     public Animator inkAnimator; // Animator for ink text
     public Animator eXPAnimator;
     public Animator coreAnimator;
 
+    //currency earned in current mission, reset to 0 after retreat or start new mission
+    public int inkEarnedThisMission = 0;
+    public int coreEarnedThisMission = 0;
+    public int itemsEarnedThisMission = 0;
 
     public static Currency instance; //Singleton instance to access this script easily from other scripts
 
@@ -26,6 +29,7 @@ public class Currency : MonoBehaviour
     void Start()
     {
         instance = this;
+        UpdateGUI();
         //Check for save data of currency
     }
 
@@ -40,6 +44,7 @@ public class Currency : MonoBehaviour
             inkAnimator.SetTrigger("Bounce"); // Trigger bounce animation
         }
 
+        inkEarnedThisMission += amount; // Track ink earned in this mission
     }
 
     public void AddEXP(int amount)
@@ -58,6 +63,8 @@ public class Currency : MonoBehaviour
         {
            coreAnimator.SetTrigger("Bounce"); // Trigger bounce animation
         }
+
+        coreEarnedThisMission += amount; // Track core earned in this mission
     }
 
     void UpdateGUI()
@@ -75,4 +82,11 @@ public class Currency : MonoBehaviour
             text.text = core.ToString();
         }
     }
+
+    public void ResetCurrencyForNewMission()
+    {
+        inkEarnedThisMission = 0;
+        coreEarnedThisMission = 0;
+        itemsEarnedThisMission = 0;
+    }   
 }

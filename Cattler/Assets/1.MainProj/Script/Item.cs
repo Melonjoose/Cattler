@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -69,8 +70,10 @@ public class Item : MonoBehaviour
 
     void AddItemtoInventory(Item item)
     {
+        
         Inventory.instance.InstantiateNewItem(item);
         CollectItem();
+        Currency.instance.itemsEarnedThisMission++; //plus 1 item int to itemsEarnedThisMission in Currency script, for calculating score at the end of the mission. 
     }
 
     void CollectItem()

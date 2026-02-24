@@ -124,6 +124,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
+        currentEnemyCount = 0;
         spawnedEnemies.Clear();
         UpdateSpawnedEnemy();
     }

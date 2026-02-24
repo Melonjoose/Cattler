@@ -155,6 +155,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(GameStartSequence());
 
+        Currency.instance.ResetCurrencyForNewMission(); // Reset mission-specific currency tracking
 
         //ResumeGamePlay();
         // spawner active
@@ -177,7 +178,7 @@ public class GameManager : MonoBehaviour
         CloseAllPages();
         Transition.instance.FadeIn();
         // Wait for 2 seconds before enabling travel
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
 
         TravelManager.instance.EnableTravel();
         TravelManager.instance.ResetToStart();
