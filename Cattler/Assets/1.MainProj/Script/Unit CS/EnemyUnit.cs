@@ -136,6 +136,7 @@ public class EnemyUnit : MonoBehaviour
     public virtual void Die()
     {
         StatFXManager.instance.PlayVFX(this.transform.position, 0);
+        StatFXManager.instance.PlayVFX(this.transform.position, 2);
         AudioManager.instance.PlaySFX("EnemyDie");
         EnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); 
         

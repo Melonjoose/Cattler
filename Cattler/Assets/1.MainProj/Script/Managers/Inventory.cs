@@ -130,9 +130,7 @@ public class Inventory : MonoBehaviour
             // Create runtime data based on template CatData
             newCatUnit.runtimeData = new CatRuntimeData(catData);
 
-     
-            // (Optional) link back to template if needed later
-            // newCatUnit.runtimeData.template = catData;
+            newCatUnit.inventoryIcon = newItemIcon; // Link InventoryIcon to CatUnit
 
             //Add to internal tracking
             inventoryList.Add(prefab);
@@ -440,6 +438,19 @@ public class Inventory : MonoBehaviour
 
     public void DeleteItem(GameObject item)
     {
+        //if item is in inventory, team or preview list, remove it from there first before destroying.
+        if (inventoryList.Contains(item))
+        {
+            inventoryList.Remove(item);
+        }
+        if (teamList.Contains(item))
+        {
+            teamList.Remove(item);
+        }
+        if (previewList.Contains(item))
+        {
+            previewList.Remove(item);
+        }
         Destroy(item);
     }
 
