@@ -44,8 +44,6 @@ public class TeamManager : MonoBehaviour
             GameObject newCatGO = Instantiate(catTemplatePrefab);  //new  cat gameobject in the world.
             newCatGO.name = newlyAddedCat.runtimeData.template.itemName;
 
-            currentTeamSize++;
-
             newCatUnit = newCatGO.GetComponent<CatUnit>(); //cat gameobject's catunit component.
             newCatUnit.runtimeData = newlyAddedCat.runtimeData;
             SpriteRenderer catSprite = newCatUnit.GetComponent<SpriteRenderer>();
@@ -66,7 +64,7 @@ public class TeamManager : MonoBehaviour
             newCatUnit.LinkAnimationBody();
             string catSkinName = newCatUnit.runtimeData.template.skinName; //get skin name from data.
             Skin skin = newCatUnit.skeletonAnimation.Skeleton.Data.FindSkin(catSkinName); //find corresponding skin in skeleton.
-            if(skin != null)
+            if (skin != null)
             {
                 newCatUnit.skeletonAnimation.Skeleton.SetSkin(skin);
                 newCatUnit.skeletonAnimation.Skeleton.SetSlotsToSetupPose();
@@ -87,7 +85,7 @@ public class TeamManager : MonoBehaviour
             if (newCatUnit.weaponL != null)
             {
                 Debug.Log("AddCatToWorldWithLeftWeapon");
-                EquipItem(newCatUnit.weaponL, newCatUnit , "L_Weapon");
+                EquipItem(newCatUnit.weaponL, newCatUnit, "L_Weapon");
             }
             if (newCatUnit.weaponR != null)
             {
@@ -102,50 +100,10 @@ public class TeamManager : MonoBehaviour
             UpdateItemVisuals(newCatUnit);
             AddCatToTeam(newCatUnit, slot);
         }
-
-        else // readded into the world.
-        {
-            CatUnit existingCatUnit = newlyAddedCat.catGO.GetComponent<CatUnit>();
-            existingCatUnit.gameObject.SetActive(true);
-            if (!cats.Contains(existingCatUnit))
-            {
-                cats.Add(existingCatUnit);
-            }
-
-            existingCatUnit.weaponL = newlyAddedCat.weaponL;
-            existingCatUnit.weaponR = newlyAddedCat.weaponR;
-            existingCatUnit.hat = newlyAddedCat.hat;
-
-            Debug.Log("AddCatToWorld");
-            //if newlyAddedCat has item equipped. show item on catGO.
-            if (existingCatUnit.hat != null)
-            {
-                EquipItem(existingCatUnit.hat, existingCatUnit, "Hat");
-            }
-            if (existingCatUnit.weaponL != null)
-            {
-                Debug.Log("AddCatToWorldWithLeftWeapon");
-                EquipItem(existingCatUnit.weaponL, existingCatUnit, "L_Weapon");
-            }
-            if (existingCatUnit.weaponR != null)
-            {
-                EquipItem(existingCatUnit.weaponR, existingCatUnit, "R_Weapon");
-            }
-
-            if (!cats.Contains(existingCatUnit))
-            {
-                cats.Add(existingCatUnit);
-            }
-            UpdateItemVisuals(existingCatUnit);
-
-            AddCatToTeam(existingCatUnit, slot);
-        }
     }
 
     public void AddCatToTeam(CatUnit cat , SnappableLocation slot)  // Team is not empty & ONLY to be added into the world when battle begin 
     {
-
-
         CatMovement catMovement = cat.GetComponent<CatMovement>();
         if (catMovement == null)
         {
@@ -153,6 +111,7 @@ public class TeamManager : MonoBehaviour
             return;
         }
 
+        currentTeamSize++;
         //int slotIndex = emptyContainer.containerIndex;
         int slotIndex = slot.SlotIndex;
         cat.transform.position = catContainers[slotIndex].transform.position;
@@ -180,6 +139,7 @@ public class TeamManager : MonoBehaviour
             return;
         }
 
+        currentTeamSize--;
         cats.Remove(cat);
         GameObject worldCat = cat.catGO;
         CatUnit worldCatUnit = worldCat.GetComponent<CatUnit>();
@@ -193,8 +153,8 @@ public class TeamManager : MonoBehaviour
         //remove link in the UI.
         CatIconUI.instance?.UnlinkCatFromIcon(worldCatUnit);
 
-        //Hide cat in the world
-        worldCat.SetActive(false); // Hide cat in world
+        Destroy(worldCat);
+        cat.catGO = null;// Destroy the cat GameObject in the world
         cats.Remove(worldCatUnit);          // Remove from the list
         catContainers[slot.SlotIndex].occupyingCat = null;
     }
