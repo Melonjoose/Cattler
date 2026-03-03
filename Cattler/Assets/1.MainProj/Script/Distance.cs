@@ -27,7 +27,7 @@ public class Distance : MonoBehaviour
 
     public void UpdateDistanceUI(float Distance)
     {
-        distanceText.text = Distance.ToString("F0");
+        distanceText.text = Distance.ToString("F2");
         distanceSlider.value = Distance;
     }
 }

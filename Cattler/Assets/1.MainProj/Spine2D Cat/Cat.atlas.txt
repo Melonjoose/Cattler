@@ -1,57 +1,130 @@
 Cat.png
-size:1024,512
+size:2048,512
 filter:Linear,Linear
 pma:true
 Export CalicoCat/Leye
-bounds:436,125,85,118
+bounds:182,25,85,118
+rotate:90
 Export CalicoCat/Mouth
-bounds:765,88,24,17
+bounds:2,2,24,17
+rotate:90
+Export ChefCat/mouth
+bounds:2,2,24,17
+rotate:90
 Export GreyCat/Mouth
-bounds:765,88,24,17
+bounds:2,2,24,17
+rotate:90
+Export MaidCat/mouth
+bounds:2,2,24,17
+rotate:90
 Export CalicoCat/Reye
-bounds:256,122,88,121
+bounds:1948,389,88,121
 Export CalicoCat/head
-bounds:2,245,360,257
+bounds:2,253,360,257
 Export CalicoCat/left arm
-bounds:701,86,62,76
+bounds:1223,85,62,76
 offsets:0,0,62,77
 Export CalicoCat/left ear
-bounds:144,114,110,129
-Export CalicoCat/left leg
-bounds:970,366,47,55
-Export CalicoCat/right arm
-bounds:970,423,52,79
-Export CalicoCat/right ear
-bounds:2,2,100,125
+bounds:1450,259,110,129
 rotate:90
+Export CalicoCat/left leg
+bounds:1399,106,47,55
+Export CalicoCat/right arm
+bounds:644,9,52,79
+rotate:90
+Export CalicoCat/right ear
+bounds:1846,385,100,125
 Export CalicoCat/right leg
-bounds:765,107,46,64
+bounds:725,15,46,64
+rotate:90
 Export CalicoCat/tail
-bounds:610,157,89,86
+bounds:563,63,89,86
 Export CalicoCat/torso
-bounds:2,104,140,139
+bounds:1450,371,140,139
+Export ChefCat/apron
+bounds:910,183,154,68
+Export ChefCat/head
+bounds:364,253,360,257
+Export ChefCat/left arm
+bounds:1144,85,77,76
+offsets:0,0,77,77
+Export ChefCat/left ear
+bounds:293,122,110,129
+Export ChefCat/left eye
+bounds:1066,163,88,121
+rotate:90
+Export ChefCat/left leg
+bounds:927,48,47,55
+rotate:90
+Export ChefCat/right arm
+bounds:1000,102,62,79
+Export ChefCat/right ear
+bounds:529,151,100,125
+rotate:90
+Export ChefCat/right eye
+bounds:302,2,85,118
+Export ChefCat/right leg
+bounds:1351,97,46,64
+Export ChefCat/tail
+bounds:654,63,89,86
+Export ChefCat/torso
+bounds:2,112,147,139
 Export GreyCat/head
-bounds:364,245,360,257
+bounds:726,253,360,257
 Export GreyCat/left arm
-bounds:762,173,62,76
+bounds:1287,85,62,76
 offsets:0,0,62,77
 Export GreyCat/left ear
-bounds:726,251,110,129
-rotate:90
+bounds:1734,381,110,129
 Export GreyCat/left eye
-bounds:346,122,88,121
-Export GreyCat/left leg
-bounds:701,37,47,55
+bounds:1189,163,88,121
 rotate:90
+Export GreyCat/left leg
+bounds:1712,314,47,55
 Export GreyCat/right arm
-bounds:701,164,59,79
+bounds:563,2,59,79
+rotate:90
 Export GreyCat/right ear
-bounds:868,377,100,125
+bounds:656,151,100,125
+rotate:90
 Export GreyCat/right eye
-bounds:523,125,85,118
+bounds:389,2,85,118
 Export GreyCat/right leg
-bounds:826,185,46,64
+bounds:791,15,46,64
+rotate:90
 Export GreyCat/tail
-bounds:610,69,89,86
+bounds:745,63,89,86
 Export GreyCat/torso
-bounds:726,363,140,139
+bounds:151,112,140,139
+Export MaidCat/apron
+bounds:405,142,122,109
+Export MaidCat/head
+bounds:1088,253,360,257
+Export MaidCat/left arm
+bounds:1064,89,72,78
+offsets:0,0,72,79
+rotate:90
+Export MaidCat/left ear
+bounds:1581,259,110,129
+rotate:90
+Export MaidCat/left eye
+bounds:1312,163,88,121
+rotate:90
+Export MaidCat/left leg
+bounds:1712,257,47,55
+Export MaidCat/right arm
+bounds:927,97,71,84
+Export MaidCat/right ear
+bounds:783,151,100,125
+rotate:90
+Export MaidCat/right eye
+bounds:476,22,85,118
+Export MaidCat/right leg
+bounds:857,15,46,64
+rotate:90
+Export MaidCat/skirt
+bounds:2,28,178,82
+Export MaidCat/tail
+bounds:836,63,89,86
+Export MaidCat/torso
+bounds:1592,371,140,139
