@@ -62,8 +62,12 @@ public class TriggerTrack : MonoBehaviour
             float distance = Vector3.Distance(cat.transform.position, enemy.transform.position); // Use cat's position
             if (distance < closestDistance && distance <= triggerRadius)
             {
-                closestDistance = distance;
-                closestEnemy = enemy;
+                EnemyUnit enemyUnit = enemy.GetComponent<EnemyUnit>();
+                if (enemyUnit != null && !enemyUnit.isDead) // Check if enemy is alive
+                {
+                    closestDistance = distance;
+                    closestEnemy = enemy;
+                }
             }
         }
 

@@ -1,10 +1,13 @@
+using Spine.Unity;
 using UnityEngine;
 
 public class EnemyUnit : MonoBehaviour
 {
     private GameObject thisUnit; // Reference to self for clarity
+    public SkeletonAnimation skeletonAnimation;
     private EnemyMovement EnemyMovement;
     public bool canWalk = true;
+    public bool isDead = false;
 
     public DropLoot dropLoot;
 
@@ -26,9 +29,20 @@ public class EnemyUnit : MonoBehaviour
     [SerializeField] public float attackRange;
 
     private void Start()
-    {
+    {   
+        
         EnemyMovement = GetComponent<EnemyMovement>();
         thisUnit = this.gameObject;
+        Transform child = transform.Find("Spine GameObject (BasicEnemy)");
+        if (child != null)
+        {
+            skeletonAnimation = child.GetComponent<SkeletonAnimation>();
+        }
+        else
+        {
+            Debug.LogWarning("Spine GameObject (BasicEnemy) not found under " + gameObject.name);
+        }
+        skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
         dropLoot = GetComponent<DropLoot>();
 
         if (enemyData != null)
@@ -76,7 +90,7 @@ public class EnemyUnit : MonoBehaviour
         if (attackCooldown <= 0f)
         {
             CatUnit cat = other.GetComponent<CatUnit>();
-            if (cat != null && other.gameObject == TargetCat) // only attack chosen target
+            if (cat != null && other.gameObject == TargetCat && isDead == false) // only attack chosen target. if it's not dead
             {
                 AttackCat(cat);
                 attackCooldown = 1f / attackSpeed; // Reset cooldown
@@ -125,27 +139,39 @@ public class EnemyUnit : MonoBehaviour
         StatFXManager.instance.PlayVFX(this.transform.position, 1); // onhit vfx
         AudioManager.instance.PlaySFX("EnemyHit");
         currentHealth -= amount;
-        //Debug.Log(enemyData.enemyName + " takes " + amount + " damage. Remaining HP: " + currentHealth);
+        
+        skeletonAnimation.AnimationState.SetAnimation(0, "Hit", false).Complete += (trackEntry) =>
+        {
+            if (canWalk)
+            {
+                skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
+            }
+        };
 
         if (currentHealth <= 0)
         {
+            isDead = true;
             Die();
+            skeletonAnimation.AnimationState.SetAnimation(0, "Death", false).Complete += (trackEntry) =>
+            {         
+                Destroy(gameObject);
+            };
+
         }
     }
 
     public virtual void Die()
     {
+        canWalk = false;
         StatFXManager.instance.PlayVFX(this.transform.position, 0);
         StatFXManager.instance.PlayVFX(this.transform.position, 2);
         AudioManager.instance.PlaySFX("EnemyDie");
         EnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); 
         
-        //Debug.Log(enemyData.enemyName + " has been defeated.");
-        //Currency.instance.AddInk(10); // Add ink to currency
+ 
         dropLoot.GiveLoot();
 
         EnemyDetector.instance.OnEnemyDestroyed(gameObject);
-        Destroy(gameObject);
     }
 
 
@@ -158,6 +184,14 @@ public class EnemyUnit : MonoBehaviour
         DamageNumberManager.Instance.ShowDamage((int)attackDamage, hitLocation);
         cat.TakeDamage((int)attackDamage); // Call CatUnit’s TakeDamage
         
+        skeletonAnimation.AnimationState.SetAnimation(0, "Attack", false).Complete += (trackEntry) =>
+        {
+            if (canWalk)
+            {
+                skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
+            }
+        };
+
         if (this.gameObject.CompareTag("Artillery") == true) 
             
             return; 

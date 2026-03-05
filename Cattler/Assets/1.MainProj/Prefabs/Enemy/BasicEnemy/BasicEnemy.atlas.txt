@@ -1,0 +1,25 @@
+BasicEnemy.png
+size:2048,512
+filter:Linear,Linear
+pma:true
+Export/back ear
+bounds:1662,338,92,191
+rotate:90
+Export/head
+bounds:429,92,379,338
+Export/left arm
+bounds:429,2,88,126
+rotate:90
+Export/left leg
+bounds:1414,276,246,154
+Export/right arm
+bounds:1855,309,121,128
+rotate:90
+Export/right ear
+bounds:1167,82,170,180
+Export/right leg
+bounds:1167,264,245,166
+Export/tail
+bounds:810,77,355,353
+Export/torso
+bounds:2,5,425,425
