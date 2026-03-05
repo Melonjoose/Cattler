@@ -5,7 +5,7 @@ public class DragWorldObject : MonoBehaviour
     private Camera mainCam;
     private Rigidbody2D rb;
     private bool isDragging = false;
-    public float followSpeed = 10f; // higher = faster catch-up, lower = more lag
+    public float followSpeed = 20f; // higher = faster catch-up, lower = more lag
 
     void Start()
     {

@@ -12,6 +12,7 @@ public class CatData : ItemData
     public string skillDesc;
     public int level;
     public int exp;
+    public CatSkill catSkill;
 
     [Header("Base Stats")]
     public int baseHealth;

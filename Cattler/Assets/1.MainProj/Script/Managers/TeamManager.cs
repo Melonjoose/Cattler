@@ -61,6 +61,16 @@ public class TeamManager : MonoBehaviour
             //update cat's skin based on data info.
             //get cat skeleton.
 
+            //If cat skill is not null, link the skill to cat Unit via instantiating skill prefab and setting it as a child of catGO.
+            if(newCatUnit.runtimeData.template.catSkill != null)
+            {
+                CatSkill skillGO = Instantiate(newCatUnit.runtimeData.template.catSkill);
+                skillGO.transform.SetParent(newCatUnit.transform);
+                skillGO.transform.localPosition = Vector3.zero; // Adjust as needed
+                CatSkill catSkillComponent = skillGO.GetComponent<CatSkill>();
+
+            }
+
             newCatUnit.LinkAnimationBody();
             string catSkinName = newCatUnit.runtimeData.template.skinName; //get skin name from data.
             Skin skin = newCatUnit.skeletonAnimation.Skeleton.Data.FindSkin(catSkinName); //find corresponding skin in skeleton.

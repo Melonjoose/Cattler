@@ -67,14 +67,17 @@ public class CatUnit : MonoBehaviour
 
     public void LinkAnimationBody()
     {
-        AnimationBody = transform.Find("Spine GameObject (Cat)").gameObject; //link the AnimationBody to and object called Spine GameObject (Cat) located in this this Cat's children
-        if(AnimationBody == null)
+        Transform found = transform.Find("Spine GameObject (Cat)");
+        if (found == null)
         {
             Debug.LogWarning($"{gameObject.name} does not have an AnimationBody linked and is unable to play animations.");
             return;
         }
+
+        AnimationBody = found.gameObject;
         skeletonAnimation = AnimationBody.GetComponent<SkeletonAnimation>();
     }
+
 
     public void AnimationLogic()
     {
