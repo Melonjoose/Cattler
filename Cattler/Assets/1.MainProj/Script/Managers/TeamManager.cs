@@ -46,7 +46,7 @@ public class TeamManager : MonoBehaviour
 
             newCatUnit = newCatGO.GetComponent<CatUnit>(); //cat gameobject's catunit component.
             newCatUnit.runtimeData = newlyAddedCat.runtimeData;
-            SpriteRenderer catSprite = newCatUnit.GetComponent<SpriteRenderer>();
+            SpriteRenderer catSprite = newCatUnit.GetComponent<SpriteRenderer>(); //this is causing error. if object don't have a SpriteRenderer, then ignore this.
             catSprite.sprite = newCatUnit.runtimeData.template.icon;
 
             newlyAddedCat.catGO = newCatUnit.gameObject;

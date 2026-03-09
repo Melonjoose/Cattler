@@ -20,10 +20,12 @@ public class CatUnit : MonoBehaviour
     public GameObject targetPoint;
     public GameObject AnimationBody; //the gameobject that has the animator component for this cat. (for animation purposes only, not the actual catGO)
     public SkeletonAnimation skeletonAnimation;
+    public SkeletonGraphic skeletonGraphic;
 
     public CatRuntimeData runtimeData;
     public CatMovement catMovement;
     public CatIconUI.CatIconSlot catIconSlot;
+    public string catSkin;
 
     private float attackCooldown;
 
@@ -47,6 +49,7 @@ public class CatUnit : MonoBehaviour
         LinkTargetpoint();//link the targetPoint to and object called targetPoint located in this enemy's children
         LinkAnimationBody(); //link the AnimationBody to and object called Spine GameObject (Cat) located in this this Cat's children
         AnimationLogic();
+        catSkin = this.runtimeData.template.skinName;
     }
 
     private void Update()

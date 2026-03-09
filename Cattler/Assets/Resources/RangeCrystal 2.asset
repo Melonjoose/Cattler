@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   prefab2: {fileID: 0}
   itemName: Health Crystal
-  icon: {fileID: 21300000, guid: 9145cb5bd12768249b13f639bc95a389, type: 3}
+  icon: {fileID: 21300000, guid: a041210a1a50a0d42934c85683c4a95c, type: 3}
   itemType: 3
   description: Increase Range by 1
   value: 1

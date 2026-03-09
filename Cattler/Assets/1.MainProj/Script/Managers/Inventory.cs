@@ -207,6 +207,7 @@ public class Inventory : MonoBehaviour
                 {
                     CatUnit catUnit = Item.GetComponent<CatUnit>();
                     TeamManager.instance.AddCatToWorld(catUnit, slot);
+                    CatRoamLobby.instance.AddCatToLobby(catUnit);
                 }
                 else
                 {
@@ -217,6 +218,7 @@ public class Inventory : MonoBehaviour
                     TeamManager.instance.RemoveCatFromWorld(replacedCatUnit, slot); //remove the replaced cat from world
                     TeamManager.instance.AddCatToWorld(catUnit, slot); //add the new cat to world
                     TeamManager.instance.AddCatToWorld(replacedCatUnit, PreviewSlotIndex); //readd the replaced cat to world into previous slot.
+                    CatRoamLobby.instance.AddCatToLobby(catUnit);
                 }
             }
             

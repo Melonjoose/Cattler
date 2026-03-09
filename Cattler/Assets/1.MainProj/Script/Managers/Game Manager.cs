@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     [Header("All Pages")]
     public List<Page> pages = new List<Page>();
 
-    private Page currentPage;
+    [SerializeField]private Page currentPage;
 
     void Awake()
     {
@@ -64,8 +64,16 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning($"Page {pageName} not found!");
         }
 
-        //Audio
-        AudioManager.instance.PlaySFX("Button1");
+        if (currentPage.name == "Lobby")
+        {
+            CatRoamLobby.instance.EnableAllLobbyCat();
+        }
+        else
+        {
+            CatRoamLobby.instance.DisableAllLobbyCat();
+        }
+            //Audio
+            AudioManager.instance.PlaySFX("Button1");
 
     }
 
