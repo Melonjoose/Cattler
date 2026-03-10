@@ -84,6 +84,15 @@ public class GameManager : MonoBehaviour
             currentPage.pageObject.transform.position = currentPage.closedPos.position;
             currentPage = null;
         }
+
+        if (currentPage.name == "Lobby")
+        {
+            CatRoamLobby.instance.EnableAllLobbyCat();
+        }
+        else
+        {
+            CatRoamLobby.instance.DisableAllLobbyCat();
+        }
     }
 
     public void CloseAllPages()

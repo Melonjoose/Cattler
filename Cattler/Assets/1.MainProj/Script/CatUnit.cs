@@ -1,3 +1,4 @@
+using Spine;
 using Spine.Unity;
 using System;
 using System.Collections;
@@ -15,8 +16,10 @@ public class CatUnit : MonoBehaviour
     public Item weaponR; //R
 
     //--- Cat linked objects ---//
+    public CatUnit thisCatUnit;
     public InventoryIcon inventoryIcon; //this cat's UI icon in the inventory.
     public GameObject catGO; //world cat gameobject
+    public GameObject catLobby; // reference the lobby cat of this
     public GameObject targetPoint;
     public GameObject AnimationBody; //the gameobject that has the animator component for this cat. (for animation purposes only, not the actual catGO)
     public SkeletonAnimation skeletonAnimation;
@@ -40,6 +43,7 @@ public class CatUnit : MonoBehaviour
 
     private void Start()
     {   
+        thisCatUnit = this.GetComponent<CatUnit>();
         InventoryIcon item = this.GetComponent<InventoryIcon>();
         if(item == null)
         {
@@ -213,7 +217,53 @@ public class CatUnit : MonoBehaviour
     public void AssignCat(CatRuntimeData runtimeCat)
     {
         runtimeData = runtimeCat;
-        GetComponent<SpriteRenderer>().sprite = runtimeCat.template.icon;
+
+        // If using SpriteRenderer (simple 2D icon)
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.sprite = runtimeCat.template.icon;
+        }
+        else
+        {
+            Debug.LogWarning($"{name} has no SpriteRenderer, skipping icon assignment.");
+        }
+
+        // If using Spine SkeletonGraphic (UI)
+        SkeletonGraphic sg = GetComponent<SkeletonGraphic>();
+        if (sg != null)
+        {
+            string skinName = runtimeCat.template.skinName;
+            Skin skin = sg.Skeleton.Data.FindSkin(skinName);
+            if (skin != null)
+            {
+                sg.Skeleton.SetSkin(skin);
+                sg.Skeleton.SetSlotsToSetupPose();
+                sg.AnimationState.Apply(sg.Skeleton);
+            }
+            else
+            {
+                Debug.LogWarning($"Skin '{skinName}' not found for {name}");
+            }
+        }
+
+        // If using Spine SkeletonAnimation (world object)
+        SkeletonAnimation sa = GetComponent<SkeletonAnimation>();
+        if (sa != null)
+        {
+            string skinName = runtimeCat.template.skinName;
+            Skin skin = sa.Skeleton.Data.FindSkin(skinName);
+            if (skin != null)
+            {
+                sa.Skeleton.SetSkin(skin);
+                sa.Skeleton.SetSlotsToSetupPose();
+                sa.AnimationState.Apply(sa.Skeleton);
+            }
+            else
+            {
+                Debug.LogWarning($"Skin '{skinName}' not found for {name}");
+            }
+        }
     }
 
     private Coroutine stunCoroutine;

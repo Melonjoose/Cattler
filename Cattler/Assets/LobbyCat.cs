@@ -2,6 +2,7 @@ using Spine;
 using Spine.Unity;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LobbyCat : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class LobbyCat : MonoBehaviour
         catUnit = GetComponent<CatUnit>();
         skeletonAnimation = GetComponent<SkeletonGraphic>();
         ChangeSkin();
+        UpdateInformation();
+        gameObject.SetActive(false);
     }
     public void ChangeSkin() 
     {
@@ -42,6 +45,11 @@ public class LobbyCat : MonoBehaviour
         }
     }
 
+
+    private void UpdateInformation()
+    {
+
+    }
     void OnEnable()
     {
         StartCoroutine(RoamSequence());
@@ -100,4 +108,7 @@ public class LobbyCat : MonoBehaviour
             yield return null; // wait one frame
         }
     }
+
+
+
 }

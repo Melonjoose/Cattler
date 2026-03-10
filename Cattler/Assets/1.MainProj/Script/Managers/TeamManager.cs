@@ -97,7 +97,7 @@ public class TeamManager : MonoBehaviour
                 Debug.Log("AddCatToWorldWithLeftWeapon");
                 EquipItem(newCatUnit.weaponL, newCatUnit, "L_Weapon");
             }
-            if (newCatUnit.weaponR != null)
+            if (newCatUnit.weaponR != null) 
             {
                 EquipItem(newCatUnit.weaponR, newCatUnit, "R_Weapon");
             }
@@ -109,6 +109,7 @@ public class TeamManager : MonoBehaviour
 
             UpdateItemVisuals(newCatUnit);
             AddCatToTeam(newCatUnit, slot);
+            CatRoamLobby.instance.AddCatToLobby(newCatUnit);
         }
     }
 
@@ -167,6 +168,8 @@ public class TeamManager : MonoBehaviour
         cat.catGO = null;// Destroy the cat GameObject in the world
         cats.Remove(worldCatUnit);          // Remove from the list
         catContainers[slot.SlotIndex].occupyingCat = null;
+
+        CatRoamLobby.instance.RemoveCatFromLobby(cat);
     }
 
 
