@@ -12,9 +12,15 @@ public class CatRoamLobby : MonoBehaviour
     public List<GameObject> catInLobby = new List<GameObject>();
     public GameObject catLobbyPrefab; // Prefab for the cat unit to be instantiated in the lobby
     public GameObject boundBox;
+    public GameObject lobbyCatGroup;
     public void Start()
     {
         instance = this; // Set the singleton instance
+    }
+
+    void Update()
+    {
+        ReorderCats();
     }
 
     public void AddCatToLobby(CatUnit cat)
@@ -23,7 +29,7 @@ public class CatRoamLobby : MonoBehaviour
         Debug.Log("Adding cat to lobby");
         GameObject newCat = Instantiate(catLobbyPrefab, GetRandomPositionWithinBounds(), Quaternion.identity); //create prefab instance of the cat in the lobby
         newCat.name = $"{cat.runtimeData.template.itemName}_Lobby";
-        newCat.transform.SetParent(this.transform); // ensure its in the lobby layer.
+        newCat.transform.SetParent(lobbyCatGroup.transform); // ensure its in the lobby layer.
         RectTransform catRect = newCat.GetComponent<RectTransform>(); //get the rect transform of the cat instance
         catRect.localScale = new Vector3(0.12f, 0.12f, 0.12f); //scale down the cat instance to fit the lobby better. adjust as needed.
         catInLobby.Add(newCat); //add to list
@@ -186,4 +192,16 @@ public class CatRoamLobby : MonoBehaviour
             }
         }
     }
+
+    void ReorderCats()
+    {
+        catInLobby.Sort((a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
+
+        // Apply sibling order based on sorted list
+        for (int i = 0; i < catInLobby.Count; i++)
+        {
+            catInLobby[i].transform.SetSiblingIndex(i);
+        }
+    }
+
 }

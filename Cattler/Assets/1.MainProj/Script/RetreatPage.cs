@@ -6,6 +6,7 @@ public class RetreatPage : MonoBehaviour
     public TextMeshProUGUI inkEarned; //manually referenced
     public TextMeshProUGUI coreEarned;
     public TextMeshProUGUI itemsEarned;
+    public TextMeshProUGUI travelDistance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,9 +21,11 @@ public class RetreatPage : MonoBehaviour
 
     void UpdateUI()
     {
-        inkEarned.text = "Ink Earned: " + Currency.instance.inkEarnedThisMission.ToString();
-        coreEarned.text = "Core Earned: " + Currency.instance.coreEarnedThisMission.ToString();
-        itemsEarned.text = "Items Earned: " + Currency.instance.itemsEarnedThisMission.ToString();
+        inkEarned.text = Currency.instance.inkEarnedThisMission.ToString();
+        coreEarned.text = Currency.instance.coreEarnedThisMission.ToString();
+        itemsEarned.text = Currency.instance.itemsEarnedThisMission.ToString();
+        string distance = TravelManager.instance.distanceTraveledUIvalue.ToString("F2");
+        travelDistance.text = $"You've travelled {distance} km";
     }
 
     public void OpenRetreatPage() 

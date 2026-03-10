@@ -56,11 +56,15 @@ public class Skill_Button : MonoBehaviour // add handlers
         if (item == null || skillIcon == null) //if no item. or no skillicon. hide this skill icon.
         {
             thisCanvas.alpha = 0f;
+            thisCanvas.interactable = false;
+            thisCanvas.blocksRaycasts = false;
             skillIcon.sprite = null;
             return;
         }
         //if there is an item. show the icon.
         thisCanvas.alpha = 1f;
+        thisCanvas.interactable = true;
+        thisCanvas.blocksRaycasts = true;
         Sprite itemIcon = item.runtimeData.template.icon;
         skillIcon.sprite = itemIcon;
     }

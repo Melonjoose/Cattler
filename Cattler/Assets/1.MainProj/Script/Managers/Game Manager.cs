@@ -153,8 +153,10 @@ public class GameManager : MonoBehaviour
         lobbyPage.pageObject.transform.position = lobbyPage.openPos.position;
         currentPage = lobbyPage;
 
+        CatRoamLobby.instance.EnableAllLobbyCat();
+
         // Play lobby audio
-        if(AudioManager.instance != null)
+        if (AudioManager.instance != null)
         {
             AudioManager.instance.PlayTheme("Lobby");
         }
@@ -169,6 +171,7 @@ public class GameManager : MonoBehaviour
             CommentaryManager.instance.AddDialogueToQueue(7); // No cats dialogue
             return;
         }
+
 
         StartCoroutine(GameStartSequence());
 
@@ -191,6 +194,8 @@ public class GameManager : MonoBehaviour
         Transition.instance.FadeOut();
 
         yield return new WaitForSeconds(1.5f);
+
+        CatRoamLobby.instance.DisableAllLobbyCat();
 
         CloseAllPages();
         Transition.instance.FadeIn();
@@ -219,6 +224,35 @@ public class GameManager : MonoBehaviour
         //shows cats that survived.
         //shows cats that died.
         //converts cats to ink.(money)
+    }
+
+    public void RetreatConfirmPressed()
+    {
+        StartCoroutine(RetreatSequence());
+    }
+
+    IEnumerator RetreatSequence()
+    {
+        Transition.instance.FadeOut();
+
+        yield return new WaitForSeconds(1.5f);
+
+        // Open lobby page
+        lobbyPage.pageObject.transform.position = lobbyPage.openPos.position;
+        currentPage = lobbyPage;
+
+        // Play lobby audio
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlayTheme("Lobby");
+        }
+
+        LobbyState();
+
+        Transition.instance.FadeIn();
+        // Wait for 2 seconds before enabling travel
+        yield return new WaitForSeconds(0.2f);
+
     }
 
     public void ResetDemo()
