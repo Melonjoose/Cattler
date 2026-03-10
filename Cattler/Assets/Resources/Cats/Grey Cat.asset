@@ -27,8 +27,9 @@ MonoBehaviour:
   skillDesc: No Skill
   level: 1
   exp: 0
+  catSkill: {fileID: 0}
   baseHealth: 5
-  attackPower: 4
+  attackPower: 3
   attackSpeed: 1
   attackRange: 8
   movementSpeed: 3

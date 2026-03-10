@@ -10,27 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
-  m_Name: Maid Cat
+  m_Name: Calico Cat
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   prefab2: {fileID: 0}
-  itemName: Maid Cat
-  icon: {fileID: 21300000, guid: 13a40da893fd5064dad401e8400f0faa, type: 3}
+  itemName: Calico Cat
+  icon: {fileID: 21300000, guid: 02613a1d2daf1bc468f710f9e059d7ea, type: 3}
   itemType: 0
-  description: A cat that loves cleanliness and tidiness. It has a suprising amount
-    of physical strength. Probably from all the cleaning..
+  description: A colourful spotted cat
   value: 2
   fvalue: 0
-  skinName: MaidCat
-  catID: 51
-  Rarity: 1
-  skillName: Sweep
-  skillDesc: Does a sweep attack that knocks enermies backward
+  skinName: Calico
+  catID: 1
+  Rarity: 0
+  skillName: Nil
+  skillDesc: Nil
   level: 1
   exp: 0
   catSkill: {fileID: 0}
-  baseHealth: 8
+  baseHealth: 5
   attackPower: 3
   attackSpeed: 1
-  attackRange: 11
-  movementSpeed: 4
+  attackRange: 8
+  movementSpeed: 3

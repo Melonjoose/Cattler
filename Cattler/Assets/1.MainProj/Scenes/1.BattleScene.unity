@@ -4380,6 +4380,14 @@ MonoBehaviour:
     weight: 30
   - catData: {fileID: 11400000, guid: d8d09585a7d34ad40ad1986070a27639, type: 2}
     weight: 30
+  - catData: {fileID: 11400000, guid: 2a6e1a137543b824a8e2f05938c1ef0d, type: 2}
+    weight: 30
+  - catData: {fileID: 11400000, guid: 2fdc2e6e8fec6bd44aadd79411cf0b0f, type: 2}
+    weight: 30
+  - catData: {fileID: 11400000, guid: ed1ed77f7f882094886d4f7ab326807e, type: 2}
+    weight: 30
+  - catData: {fileID: 11400000, guid: a8d97c604bfdd254d8849881c8145758, type: 2}
+    weight: 30
 --- !u!95 &171578810
 Animator:
   serializedVersion: 7
@@ -27380,7 +27388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 2852ec3ee9f555c4c82fa239eb1d4108, type: 2}
+  skeletonDataAsset: {fileID: 0}
   initialSkinName: GreyCat
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -27434,7 +27442,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1626cd54bceaed34892742b0c6c7969d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29843,7 +29851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 2852ec3ee9f555c4c82fa239eb1d4108, type: 2}
+  skeletonDataAsset: {fileID: 0}
   initialSkinName: ChefCat
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -29897,7 +29905,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1626cd54bceaed34892742b0c6c7969d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -42781,7 +42789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 2852ec3ee9f555c4c82fa239eb1d4108, type: 2}
+  skeletonDataAsset: {fileID: 0}
   initialSkinName: Calico
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -42835,7 +42843,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1626cd54bceaed34892742b0c6c7969d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

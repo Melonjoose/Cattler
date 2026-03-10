@@ -28,7 +28,7 @@ MonoBehaviour:
   level: 1
   exp: 0
   catSkill: {fileID: 3581489650429659403, guid: db8feea0c1a481a4c8e4970ba40ffd79, type: 3}
-  baseHealth: 10
+  baseHealth: 8
   attackPower: 3
   attackSpeed: 2
   attackRange: 10

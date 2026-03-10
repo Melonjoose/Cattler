@@ -10,25 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
-  m_Name: Calico Cat - 1star
+  m_Name: Butler Cat
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   prefab2: {fileID: 0}
-  itemName: Calico Cat
-  icon: {fileID: 21300000, guid: 02613a1d2daf1bc468f710f9e059d7ea, type: 3}
+  itemName: Butler Cat
+  icon: {fileID: 21300000, guid: 1538287599cf84e44bbb78e65a80e159, type: 3}
   itemType: 0
-  description: A colourful spotted cat
+  description: Yare Yare. Oujou-sama, it's time for you to go to bed.
   value: 2
   fvalue: 0
-  skinName: Calico
-  catID: 1
-  Rarity: 0
-  skillName: Nil
-  skillDesc: Nil
+  skinName: ButlerCat
+  catID: 53
+  Rarity: 1
+  skillName: Support
+  skillDesc: Boost a random cat's attack speed for 10 seconds every 30 seconds
   level: 1
   exp: 0
-  baseHealth: 5
+  catSkill: {fileID: 0}
+  baseHealth: 8
   attackPower: 3
-  attackSpeed: 1.2
-  attackRange: 8
-  movementSpeed: 3
+  attackSpeed: 1
+  attackRange: 11
+  movementSpeed: 4

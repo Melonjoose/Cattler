@@ -10,22 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
-  m_Name: Maid Cat
+  m_Name: Angel Cat
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   prefab2: {fileID: 0}
-  itemName: Maid Cat
-  icon: {fileID: 21300000, guid: 13a40da893fd5064dad401e8400f0faa, type: 3}
+  itemName: Angel Cat
+  icon: {fileID: 21300000, guid: 0fb15f2913898a645b2c7bfaf313c2be, type: 3}
   itemType: 0
-  description: A cat that loves cleanliness and tidiness. It has a suprising amount
-    of physical strength. Probably from all the cleaning..
+  description: Yare Yare. Oujou-sama, it's time for you to go to bed.
   value: 2
   fvalue: 0
-  skinName: MaidCat
-  catID: 51
+  skinName: AngelCat
+  catID: 53
   Rarity: 1
-  skillName: Sweep
-  skillDesc: Does a sweep attack that knocks enermies backward
+  skillName: Blinding Light
+  skillDesc: Stuns nearby enemies for 1 second every 15 seconds
   level: 1
   exp: 0
   catSkill: {fileID: 0}
