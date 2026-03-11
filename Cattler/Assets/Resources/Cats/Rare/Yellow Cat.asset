@@ -32,4 +32,4 @@ MonoBehaviour:
   attackPower: 3
   attackSpeed: 1
   attackRange: 11
-  movementSpeed: 10
+  movementSpeed: 4

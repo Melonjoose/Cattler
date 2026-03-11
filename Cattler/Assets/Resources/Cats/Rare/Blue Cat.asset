@@ -20,7 +20,7 @@ MonoBehaviour:
   description: I like his smile a lot. He could probably be a really fit for a movie!
   value: 2
   fvalue: 0
-  skinName: ButlerCat
+  skinName: BlueCat
   catID: 53
   Rarity: 1
   skillName: VeryFastCat
