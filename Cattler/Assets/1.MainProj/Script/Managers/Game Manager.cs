@@ -153,7 +153,10 @@ public class GameManager : MonoBehaviour
         lobbyPage.pageObject.transform.position = lobbyPage.openPos.position;
         currentPage = lobbyPage;
 
-        CatRoamLobby.instance.EnableAllLobbyCat();
+        if (CatRoamLobby.instance.catInLobby != null && CatRoamLobby.instance.catInLobby.Count > 0)
+        {
+            CatRoamLobby.instance.EnableAllLobbyCat();
+        }
 
         // Play lobby audio
         if (AudioManager.instance != null)

@@ -8,6 +8,12 @@ public class SummonManager : MonoBehaviour
     public static SummonManager instance;
     public int summonCost = 100;
     public Animator summonAnimator;
+
+    public CatData[] commonCats;
+    public CatData[] rareCats;
+    public CatData[] legendaryCats;
+
+
     public Canvas summonCanvas;
     public GameObject tapToRevealPage;
     public GameObject displaySummonedCatPage;
@@ -18,19 +24,7 @@ public class SummonManager : MonoBehaviour
     public RawImage catSummonedImage;
     public TextMeshProUGUI descText;
 
-
-
-    [System.Serializable]
-    public class GachaPoolEntry
-    {
-        public CatData catData;
-        public float weight; // probability weight
-    }
-
-    public GachaPoolEntry[] gachaPool; // assign in inspector
     public event Action onGacha;
-
-
 
     private void OnEnable()
     {
@@ -39,52 +33,91 @@ public class SummonManager : MonoBehaviour
 
     private void Awake()
     {
+
+        // Load all CatData assets from subfolders
+        commonCats = Resources.LoadAll<CatData>("Cats/Common");
+        rareCats = Resources.LoadAll<CatData>("Cats/Rare");
+        legendaryCats = Resources.LoadAll<CatData>("Cats/Legendary");
+
         summonCanvas.transform.localPosition = new Vector3(0, -10, 0);
         instance = this;
         tapToRevealPage.SetActive(false);
         displaySummonedCatPage.SetActive(false);
         closeSummonPage.SetActive(false);
-    }
+}
 
-    public CatData Roll()
+public enum Rarity { Common, Rare, Legendary }
+
+    private Rarity RollRarity(bool isPremium)
     {
-        float totalWeight = 0f;
-        foreach (var entry in gachaPool)
-            totalWeight += entry.weight;
+        float roll = UnityEngine.Random.Range(0f, 1f);
+        Rarity result;
 
-        float roll = UnityEngine.Random.Range(0f, totalWeight);
-        float cumulative = 0f;
-
-        foreach (var entry in gachaPool)
+        if (!isPremium)
         {
-            cumulative += entry.weight;
-            if (roll <= cumulative)
-                return entry.catData;
+            if (roll < 0.80f) result = Rarity.Common;
+            else if (roll < 0.95f) result = Rarity.Rare;
+            else result = Rarity.Legendary;
+        }
+        else
+        {
+            if (roll < 0.50f) result = Rarity.Common;
+            else if (roll < 0.80f) result = Rarity.Rare;
+            else result = Rarity.Legendary;
         }
 
-        return null; // should never happen
+        Debug.Log($"Rolled {roll:F2}, resulting in rarity: {result}");
+        return result;
     }
 
-    public void Summon()
-    {
-        currentRolledCat = Roll();
-        Debug.Log("Rolled cat = " + currentRolledCat);
 
-        if (currentRolledCat == null)
+    private CatData RollCat(Rarity rarity)
+    {
+        CatData[] pool = null;
+
+        switch (rarity)
+        {
+            case Rarity.Common: pool = commonCats; break;
+            case Rarity.Rare: pool = rareCats; break;
+            case Rarity.Legendary: pool = legendaryCats; break;
+        }
+
+        if (pool == null || pool.Length == 0)
+        {
+            Debug.LogError($"No cats found for rarity {rarity}!");
+            return null;
+        }
+
+        // Even distribution by default
+        int index = UnityEngine.Random.Range(0, pool.Length);
+        return pool[index];
+    }
+
+
+
+    public void Summon(bool isPremium = false)
+    {
+        Rarity rarity = RollRarity(isPremium);
+        currentRolledCat = RollCat(rarity);
+
+        if (currentRolledCat == null) //safety
         {
             Debug.LogError("No cat was rolled!");
             return;
         }
 
         Inventory.instance.InstantiateNewCat(currentRolledCat);
-        Debug.Log($"Summoned {currentRolledCat.itemName}!");
+        Debug.Log($"Summoned {rarity} cat: {currentRolledCat.itemName}!");
         onGacha?.Invoke();
     }
+
+
 
     void GachaSequence()
     {
         Debug.Log("Gacha sequence playing...");
     }
+
     void UpdateCatDisplay(CatData catData)
     {
         catNameText.text = catData.itemName;
