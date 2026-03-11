@@ -16,7 +16,7 @@ MonoBehaviour:
   prefab2: {fileID: 0}
   itemName: Attack Crystal
   icon: {fileID: 21300000, guid: aefc799f9f0aaa448b9f653e37697ff2, type: 3}
-  itemType: 3
+  itemType: 4
   description: Increase ATK by 1
   value: 1
   fvalue: 0

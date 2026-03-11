@@ -35,10 +35,6 @@ public class Inventory : MonoBehaviour
         InitializeInventorySpace(currentCapacity);
         SubscribeToSlots();
     }
-    private void Update()
-    {
-
-    }
 
     void SubscribeToSlots()
     {
@@ -217,6 +213,7 @@ public class Inventory : MonoBehaviour
                     TeamManager.instance.RemoveCatFromWorld(replacedCatUnit, slot); //remove the replaced cat from world
                     TeamManager.instance.AddCatToWorld(catUnit, slot); //add the new cat to world
                     TeamManager.instance.AddCatToWorld(replacedCatUnit, PreviewSlotIndex); //readd the replaced cat to world into previous slot.
+                    AudioManager.instance.PlaySFX("Meow");
                 }
             }
             
@@ -231,6 +228,7 @@ public class Inventory : MonoBehaviour
                 SelectedItemDisplayUI.instance.ShowCatStats(itemIcon);
                 CatUnit catUnit = Item.GetComponent<CatUnit>();
                 PreviewManager.instance.AddCatToPreview(catUnit);
+                AudioManager.instance.PlaySFX("Meow");
                 Debug.Log(itemIcon);
             }
 
@@ -238,6 +236,7 @@ public class Inventory : MonoBehaviour
             {
                 Item hatItem = Item.GetComponent<Item>();
                 PreviewManager.instance.AddItemToPreview(hatItem , slot);
+                AudioManager.instance.PlaySFX("Equip");
             }
 
             if (slot.gameObject.CompareTag("WeaponPreviewSlot_R"))
@@ -245,6 +244,7 @@ public class Inventory : MonoBehaviour
                 //Debug.Log("10");
                 Item weaponItem = Item.GetComponent<Item>();
                 PreviewManager.instance.AddItemToPreview(weaponItem , slot);
+                AudioManager.instance.PlaySFX("Equip");
             }
 
             if (slot.gameObject.CompareTag("WeaponPreviewSlot_L"))
@@ -252,6 +252,7 @@ public class Inventory : MonoBehaviour
                 //Debug.Log("20");
                 Item weaponItem = Item.GetComponent<Item>();
                 PreviewManager.instance.AddItemToPreview(weaponItem, slot);
+                AudioManager.instance.PlaySFX("Equip");
             }
         }
     }
@@ -329,7 +330,7 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void IncreaseCapacity(int addedSlots)
+    public void IncreaseCapacity(int addedSlots) //for upgradeManager to use
     {
         if (currentCapacity >= maxCapacity)
         {

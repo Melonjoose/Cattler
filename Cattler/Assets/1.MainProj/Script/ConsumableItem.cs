@@ -27,7 +27,20 @@ public class ConsumableItem : MonoBehaviour
 
     protected virtual void Consume()
     {
-        AudioManager.instance.PlaySFX("Consume");
+        if(consumableData.itemType == ItemType.Consumable)
+        {
+            AudioManager.instance.PlaySFX("Consume");
+            AudioManager.instance.PlaySFX("Heal");
+        }
+        if (consumableData.itemType == ItemType.Food)
+        {
+            AudioManager.instance.PlaySFX("Eat");
+            AudioManager.instance.PlaySFX("Heal");
+        }
+        if (consumableData.itemType == ItemType.PowerUp)
+        {
+            AudioManager.instance.PlaySFX("PowerUp");
+        }
         if (consumableData != null)
         {
             onConsumed?.Invoke(); //send to listener

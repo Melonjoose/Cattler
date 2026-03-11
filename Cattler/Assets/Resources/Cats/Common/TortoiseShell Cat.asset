@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   prefab2: {fileID: 0}
   itemName: TortoiseShell Cat
-  icon: {fileID: 21300000, guid: 02613a1d2daf1bc468f710f9e059d7ea, type: 3}
+  icon: {fileID: 21300000, guid: 6ec4a20bd2e74e343bbb4f59419ba7d4, type: 3}
   itemType: 0
   description: Dark spotted Cat with a peculiar name for it's breed.
   value: 2
