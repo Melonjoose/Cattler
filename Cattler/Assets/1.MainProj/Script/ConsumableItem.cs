@@ -37,6 +37,11 @@ public class ConsumableItem : MonoBehaviour
             AudioManager.instance.PlaySFX("Eat");
             AudioManager.instance.PlaySFX("Heal");
         }
+        if (consumableData.itemType == ItemType.Drink)
+        {
+            AudioManager.instance.PlaySFX("Drink");
+            AudioManager.instance.PlaySFX("Heal");
+        }
         if (consumableData.itemType == ItemType.PowerUp)
         {
             AudioManager.instance.PlaySFX("PowerUp");

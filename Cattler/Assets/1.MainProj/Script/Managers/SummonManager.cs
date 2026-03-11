@@ -136,9 +136,9 @@ public enum Rarity { Common, Rare, Legendary }
 
     public void SummonButtonPressed() //to add to button onclick event
     {
-        if (TeamManager.instance.currentTeamSize >= TeamManager.instance.availableTeamSlots)
+        if (Inventory.instance.inventoryList.Count >= Inventory.instance.currentCapacity)
         {
-            Debug.Log("No free team slots available!");
+            Debug.Log("Inventory is full! Unable to summon Cats");
             return;
         }
 

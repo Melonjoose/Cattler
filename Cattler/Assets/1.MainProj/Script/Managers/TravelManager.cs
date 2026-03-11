@@ -1,4 +1,5 @@
 using Spine.Unity;
+using System;
 using UnityEngine;
 
 public class TravelManager : MonoBehaviour
@@ -10,7 +11,22 @@ public class TravelManager : MonoBehaviour
     public GameObject[] floors; // floor1, floor2, floor3
     public GameObject floorGRP;
 
+    public event Action<bool> OnTravelStateChanged;
+
     public bool isTraveling = false;
+    public bool IsTraveling
+    {
+        get => isTraveling;
+        set
+        {
+            if (isTraveling != value)
+            {
+                isTraveling = value;
+                OnTravelStateChanged?.Invoke(isTraveling);
+            }
+        }
+    }
+
 
     public bool disableTravel = false;
 
@@ -40,30 +56,30 @@ public class TravelManager : MonoBehaviour
     {
         if (disableTravel == true)
         {
+            IsTraveling = false;
             return;
         }
         else
         {
-            if (EnemyDetector.instance.enemyDetected == false)//&& any cat is not attacking)
+            if (EnemyDetector.instance.enemyDetected == false) // && any cat is not attacking
             {
-                isTraveling = true;
+                IsTraveling = true;
             }
             else
             {
-                isTraveling = false;
+                IsTraveling = false;
             }
         }
 
-        if (isTraveling)
+        if (IsTraveling)
         {
             TeamWalk();
         }
 
-        // Check the first floor in the list
+        // Floor extension logic...
         if (floors[0].transform.position.x <= -31f)
         {
             ExtendFloorPlane();
-            
         }
 
         Distance.instance.UpdateDistanceUI(distanceTraveledUIvalue);

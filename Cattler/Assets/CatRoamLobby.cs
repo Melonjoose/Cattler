@@ -13,6 +13,7 @@ public class CatRoamLobby : MonoBehaviour
     public GameObject catLobbyPrefab; // Prefab for the cat unit to be instantiated in the lobby
     public GameObject boundBox;
     public GameObject lobbyCatGroup;
+    public GameObject battleDoor; //all cat will target this and move to it when movetodoor is called.
     public void Start()
     {
         instance = this; // Set the singleton instance
@@ -99,6 +100,7 @@ public class CatRoamLobby : MonoBehaviour
         foreach (GameObject cat in catInLobby)
         {
             cat.gameObject.SetActive(true);
+            cat.transform.position = GetRandomPositionWithinBounds();
         }
     }
 
@@ -201,6 +203,15 @@ public class CatRoamLobby : MonoBehaviour
         for (int i = 0; i < catInLobby.Count; i++)
         {
             catInLobby[i].transform.SetSiblingIndex(i);
+        }
+    }
+
+    public void AllCatsMoveToBattleDoor()
+    {
+        foreach (GameObject cat in catInLobby)
+        {
+            LobbyCat lobbyCat = cat.GetComponent<LobbyCat>();
+            lobbyCat.MoveCatTo(battleDoor.transform.position);
         }
     }
 

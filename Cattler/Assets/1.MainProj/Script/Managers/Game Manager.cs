@@ -194,6 +194,10 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator GameStartSequence()
     {
+        CatRoamLobby.instance.AllCatsMoveToBattleDoor();
+
+        yield return new WaitForSeconds(1f);
+        
         Transition.instance.FadeOut();
 
         yield return new WaitForSeconds(1.5f);

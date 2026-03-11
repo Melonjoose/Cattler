@@ -74,7 +74,6 @@ public class LobbyCat : MonoBehaviour
             Vector3 target = CatRoamLobby.instance.GetRandomPositionWithinBounds();
 
             // Phase 3: Walk smoothly to target
-            skeletonAnimation.AnimationState.SetAnimation(0, walkAnimationName, true);
             yield return StartCoroutine(MoveTo(target));
 
             // Loop back to idle phase
@@ -83,6 +82,7 @@ public class LobbyCat : MonoBehaviour
 
     IEnumerator MoveTo(Vector3 target)
     {
+        skeletonAnimation.AnimationState.SetAnimation(0, walkAnimationName, true);
         while (Vector3.Distance(transform.position, target) > 0.05f)
         {
             transform.position = Vector3.MoveTowards(
@@ -109,6 +109,10 @@ public class LobbyCat : MonoBehaviour
         }
     }
 
-
+    public void MoveCatTo(Vector3 target)
+    {
+        StopAllCoroutines();
+        StartCoroutine(MoveTo(target));
+    }
 
 }

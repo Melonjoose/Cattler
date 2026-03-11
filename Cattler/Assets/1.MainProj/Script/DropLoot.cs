@@ -64,7 +64,7 @@ public class DropLoot : MonoBehaviour
         if (dropPrefab != null)
         {
             GameObject dropInstance = Instantiate(dropPrefab, enemy.transform.position, Quaternion.identity);
-            StatFXManager.instance.PlayVFX(dropInstance.transform.position, 3); // drop vfx
+            StatFXManager.instance.PlayVFX(dropInstance.transform.position + new Vector3(0,-1,0), 3); // drop vfx
 
         }
 

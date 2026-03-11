@@ -42,18 +42,37 @@ public class CatUnit : MonoBehaviour
     public event Action CatDeath;
 
     private void Start()
-    {   
-        thisCatUnit = this.GetComponent<CatUnit>();
-        InventoryIcon item = this.GetComponent<InventoryIcon>();
-        if(item == null)
-        {
-            catGO = this.gameObject;
-        }
+    {
+        thisCatUnit = GetComponent<CatUnit>();
+        inventoryIcon = GetComponent<InventoryIcon>();
+
+        if (inventoryIcon == null)
+            catGO = gameObject;
+
         catMovement = GetComponent<CatMovement>();
-        LinkTargetpoint();//link the targetPoint to and object called targetPoint located in this enemy's children
-        LinkAnimationBody(); //link the AnimationBody to and object called Spine GameObject (Cat) located in this this Cat's children
+        LinkTargetpoint();
+        LinkAnimationBody();
+
+        if (skeletonAnimation != null)
+        {
+            skeletonAnimation.AnimationState.Complete += OnAnimationComplete;
+            TravelManager.instance.OnTravelStateChanged += HandleTravelStateChanged; // only subscribe if this catUnit.cs have a skeletonAnimation
+            HandleTravelStateChanged(TravelManager.instance.IsTraveling);
+        }
+
         AnimationLogic();
-        catSkin = this.runtimeData.template.skinName;
+
+        if (runtimeData != null && runtimeData.template != null)
+            catSkin = runtimeData.template.skinName;
+    }
+
+    private void OnDestroy()
+    {
+        if (skeletonAnimation != null)
+            skeletonAnimation.AnimationState.Complete -= OnAnimationComplete;
+
+        if (TravelManager.instance != null)
+            TravelManager.instance.OnTravelStateChanged -= HandleTravelStateChanged;
     }
 
     private void Update()
@@ -85,27 +104,39 @@ public class CatUnit : MonoBehaviour
         skeletonAnimation = AnimationBody.GetComponent<SkeletonAnimation>();
     }
 
+    private string currentAnim;
 
     public void AnimationLogic()
     {
-        if(skeletonAnimation == null)
+        if (skeletonAnimation == null) return;
+
+        string desiredAnim = (!isAttacking)
+            ? (TravelManager.instance.IsTraveling ? "Walk" : "Idle")
+            : "Attack";
+
+        if (currentAnim != desiredAnim)
         {
-            Debug.LogWarning($"{gameObject.name} does not have a skeleton animation linked and is unable to play animations.");
-            return;
-        }   
-        if (TravelManager.instance.isTraveling == true)
-        {
-            if (!isAttacking)
-            {
-                skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true); //play walk animation when traveling
-            }
+            skeletonAnimation.AnimationState.SetAnimation(0, desiredAnim, true);
+            currentAnim = desiredAnim;
         }
-        else
+    }
+
+    private void HandleTravelStateChanged(bool traveling)
+    {
+        if (!isAttacking)
         {
-            if (!isAttacking)
-            {
-                skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true); //play idle animation when not traveling
-            }
+            skeletonAnimation.state.SetAnimation(0, traveling ? "Walk" : "Idle", true).MixDuration = 0.2f;
+            currentAnim = traveling ? "Walk" : "Idle";
+        }
+    }
+
+    private void OnAnimationComplete(Spine.TrackEntry trackEntry)
+    {
+        // Only care about Attack animation finishing
+        if (trackEntry.Animation.Name == "Attack")
+        {
+            isAttacking = false;
+            AnimationLogic(); // return to Idle or Walk
         }
     }
 
@@ -117,30 +148,25 @@ public class CatUnit : MonoBehaviour
             targetPoint = tp.gameObject;
         }
     }
-    
+
     public void TryAttack(Collider2D other)
     {
-        if(targetPoint == null)
-        {
-            Debug.LogWarning($"{gameObject.name} do not have a 'targetPoint' and is unable to attack");
-            return;
-        }
+        if (targetPoint == null) return;
 
         EnemyUnit enemytarget = other.GetComponent<EnemyUnit>();
-        if (attackCooldown <= 0f)
+        if (attackCooldown <= 0f && enemytarget != null)
         {
             isAttacking = true;
-            if (enemytarget != null)
-            {
-                skeletonAnimation.AnimationState.SetAnimation(0, "Attack", false); //play attack animation
+            skeletonAnimation.AnimationState.SetAnimation(0, "Attack", false);
+            skeletonAnimation.AnimationState.AddAnimation(0,TravelManager.instance.IsTraveling ? "Walk" : "Idle",true,0f);
 
-                Attack(enemytarget);
-                Knockback(enemytarget); //knockback effect when attacked
-                attackCooldown = 1f / runtimeData.attackSpeed;
-            }
+            Attack(enemytarget);
+            Knockback(enemytarget);
+            attackCooldown = 1f / runtimeData.attackSpeed;
         }
-        isAttacking = false;
     }
+
+
 
     private void Attack(EnemyUnit target)
     {
