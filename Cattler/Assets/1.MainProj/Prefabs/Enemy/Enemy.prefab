@@ -416,6 +416,8 @@ MonoBehaviour:
     dropChance: 1
   - item: {fileID: 3579834142181638228, guid: c7547b5afe0e4cd479ff3ccab4121600, type: 3}
     dropChance: 1
+  - item: {fileID: 1063309126661408168, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
+    dropChance: 1
   minInkDrop: 10
   maXInkDrop: 30
   minCoreDrop: 0

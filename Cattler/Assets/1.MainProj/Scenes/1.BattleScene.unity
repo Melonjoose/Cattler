@@ -2924,8 +2924,8 @@ CanvasGroup:
   m_GameObject: {fileID: 81324708}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &81324712
 MonoBehaviour:
@@ -5963,6 +5963,7 @@ MonoBehaviour:
   summonCatDisplay: {fileID: 212793385}
   closeSummonPage: {fileID: 1173128747}
   currentRolledCat: {fileID: 0}
+  currentRolledRarity: 0
 --- !u!95 &171578810
 Animator:
   serializedVersion: 7
@@ -9228,8 +9229,8 @@ CanvasGroup:
   m_GameObject: {fileID: 314600749}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &314600753
 MonoBehaviour:
@@ -35770,7 +35771,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -52976,7 +52977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1752030928
 Transform:
   m_ObjectHideFlags: 0
@@ -53006,8 +53007,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerActive: 0
-  minSpawnInterval: 1
-  maxSpawnInterval: 1
+  minSpawnInterval: 2
+  maxSpawnInterval: 5
   minEnemiesPerInterval: 1
   maxEnemiesPerInterval: 3
   currentEnemyCount: 0
@@ -56029,8 +56030,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1874053677}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &1874053681
 MonoBehaviour:

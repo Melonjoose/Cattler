@@ -4,6 +4,7 @@ using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static SummonManager;
 
 public class SummonManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class SummonManager : MonoBehaviour
     public GameObject summonCatDisplay; // holds common,rare,legendary
     public GameObject closeSummonPage;
     public CatData currentRolledCat;
+    public Rarity currentRolledRarity;
 
     private void Awake()
     {
@@ -42,13 +44,14 @@ public class SummonManager : MonoBehaviour
 
     void InitializeCards()
     {
-        commonUI.gameObject.SetActive(true);
-        rareUI.gameObject.SetActive(true);
-        legendaryUI.gameObject.SetActive(true);
+        commonUI.gameObject.SetActive(false);
+        rareUI.gameObject.SetActive(false);
+        legendaryUI.gameObject.SetActive(false);
         summonCatDisplay.SetActive(false);
     }
 
-public enum Rarity { Common, Rare, Legendary }
+
+    public enum Rarity { Common, Rare, Legendary }
 
     private Rarity RollRarity(bool isPremium) // FIRST roll to see what tier you get.
     {
@@ -96,19 +99,16 @@ public enum Rarity { Common, Rare, Legendary }
 
     public void Summon(bool isPremium = false)
     {
-        Rarity rarity = RollRarity(isPremium);  //WHEN YOU SUMMON, CHECK TIER
-        currentRolledCat = RollCat(rarity);     //ROLL YOUR CAT AND ASSIGN IT AS CURRENTROLLEDCAT
+        Rarity rarity = RollRarity(isPremium);
+        currentRolledCat = RollCat(rarity);
+        currentRolledRarity = rarity;
 
-        if (currentRolledCat == null) //safety
-        {
-            Debug.LogError("No cat was rolled!"); 
-            return;
-        }
+        if (currentRolledCat == null) return;
 
         Inventory.instance.InstantiateNewCat(currentRolledCat);
         Debug.Log($"Summoned {rarity} cat: {currentRolledCat.itemName}!");
-        RarityChecker(rarity);
     }
+
 
     void RarityChecker(Rarity rarity)
     {
@@ -135,15 +135,14 @@ public enum Rarity { Common, Rare, Legendary }
         }
         
     }
-
     void DisplayGachaResult()
     {
-        summonCatDisplay.gameObject.SetActive(true);
+        summonCatDisplay.SetActive(true);
+        RarityChecker(currentRolledRarity); // use rolled cat’s rarity
         chosenUI.ShowCatData(currentRolledCat);
         summonAnimator.SetTrigger("Summon");
-
-        Debug.Log("Displaying gacha result to player...");
     }
+
 
     public void SummonButtonPressed() //to add to button onclick event
     {
@@ -162,6 +161,12 @@ public enum Rarity { Common, Rare, Legendary }
         }
         Currency.instance.AddInk(-summonCost); // Deduct summon cost
         Summon();
+
+        summonCatDisplay.SetActive(true);   // activate parent first
+        RarityChecker(currentRolledRarity);              // then toggle children
+        commonUI.gameObject.SetActive(false);
+        rareUI.gameObject.SetActive(false);
+        legendaryUI.gameObject.SetActive(false);
         OpenTapToRevealPage();
     }
 
@@ -183,6 +188,9 @@ public enum Rarity { Common, Rare, Legendary }
             return; //both pages are already closed
         }
         tapToRevealPage.SetActive(false);
+        commonUI.gameObject.SetActive(false);
+        rareUI.gameObject.SetActive(false);
+        legendaryUI.gameObject.SetActive(false);
         summonCatDisplay.SetActive(false);
         closeSummonPage.SetActive(false);
     }
