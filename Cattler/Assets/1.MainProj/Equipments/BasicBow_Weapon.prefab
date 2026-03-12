@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 6470101849914334256}
   - component: {fileID: 8555321338169535330}
   m_Layer: 7
-  m_Name: Basic_Bow
+  m_Name: BasicBow_Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

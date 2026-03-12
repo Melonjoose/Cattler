@@ -35,7 +35,6 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        DisplayItemManager.instance.ShowDisplayUI(rectTransform);
         //Debug.Log("MouseHover");
         if (itemUI.itemData != null)
         {
@@ -44,7 +43,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
                 CatUnit catUnit = GetComponent<CatUnit>();
                 if (catUnit != null)
                 {
-                    DisplayItemManager.instance.displayItemUI.Show(this.gameObject);
+                    DisplayItemManager.instance.ShowDisplayUI(this.gameObject);
                 }
             }
 
@@ -53,7 +52,7 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
                 Item weapon = GetComponent<Item>();
                 if (weapon != null)
                 {
-                    DisplayItemManager.instance.displayItemUI.Show(this.gameObject);
+                    DisplayItemManager.instance.ShowDisplayUI(this.gameObject);
                 }
             }
 

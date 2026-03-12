@@ -1,10 +1,12 @@
+using Unity.Burst.Intrinsics;
+using Unity.VisualScripting;
 using UnityEngine;
-
 public class DisplayItemManager : MonoBehaviour
 {
     public static DisplayItemManager instance;
 
-    public DisplayItemUI displayItemUI;
+    public DisplayItemUI commonUI,rareUI,legendaryUI;
+    [SerializeField] private DisplayItemUI chosenUI;
     [SerializeField] private Vector2 offset;
 
     private void Start()
@@ -12,13 +14,43 @@ public class DisplayItemManager : MonoBehaviour
         instance = this;
     }
 
-    public void ShowDisplayUI(RectTransform location)
+    void RarityChecker(CatUnit catUnit)
     {
-        RectTransform displayRect = displayItemUI.GetComponent<RectTransform>();
+        if (catUnit.runtimeData.template.Rarity == Rarity.Common)
+        {
+            chosenUI = commonUI;
+            commonUI.gameObject.SetActive(true);
+            rareUI.gameObject.SetActive(false);
+            legendaryUI.gameObject.SetActive(false);
+        }
+        else if (catUnit.runtimeData.template.Rarity == Rarity.Rare)
+        {
+            chosenUI = rareUI;
+            commonUI.gameObject.SetActive(false);
+            rareUI.gameObject.SetActive(true);
+            legendaryUI.gameObject.SetActive(false);
+        }
+        else if (catUnit.runtimeData.template.Rarity == Rarity.Legendary)
+        {
+            chosenUI = legendaryUI;
+            commonUI.gameObject.SetActive(false);
+            rareUI.gameObject.SetActive(false);
+            legendaryUI.gameObject.SetActive(true);
+        }
+
+    }
+
+
+    public void ShowDisplayUI(GameObject item)
+    {
+        CatUnit catUnit = item.GetComponent<CatUnit>();
+        RarityChecker(catUnit);
+
+        RectTransform displayRect = chosenUI.GetComponent<RectTransform>();
         RectTransform canvasRect = displayRect.GetComponentInParent<Canvas>().GetComponent<RectTransform>();
 
         // Start from the hovered element’s screen position
-        Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(null, location.position);
+        Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(null, item.transform.position);
 
         // Add small offset
         Vector2 targetPos = screenPos + offset;
@@ -45,12 +77,14 @@ public class DisplayItemManager : MonoBehaviour
         // Apply final position
         displayRect.localPosition = localPoint;
 
-        displayItemUI.gameObject.SetActive(true);
+        chosenUI.gameObject.SetActive(true);
+
+        chosenUI.Show(item);
     }
 
 
     public void HideDisplayUI()
     {
-        displayItemUI.gameObject.SetActive(false);
+        chosenUI.gameObject.SetActive(false);
     }
 }

@@ -117,6 +117,8 @@ public class TeamManager : MonoBehaviour
             UpdateItemVisuals(newCatUnit);
             AddCatToTeam(newCatUnit, slot);
             CatRoamLobby.instance.AddCatToLobby(newCatUnit);
+
+            newCatUnit.gameObject.SetActive(false); // disable it after everything is set up. // only to be enabled and disabled based on start and retreat
         }
     }
 
@@ -396,6 +398,22 @@ public class TeamManager : MonoBehaviour
         foreach (CatUnit cat in cats)
         {
             cat.runtimeData.currentHealth = cat.runtimeData.maxHealth;
+        }
+    }
+
+    public void DisableAllCats()
+    {
+        foreach (CatUnit cat in cats)
+        {
+            cat.gameObject.SetActive(false);
+        }
+    }
+
+    public void EnableAllCats()
+    {
+        foreach (CatUnit cat in cats)
+        {
+            cat.gameObject.SetActive(true);
         }
     }
 }

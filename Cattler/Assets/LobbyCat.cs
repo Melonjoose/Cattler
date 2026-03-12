@@ -52,7 +52,8 @@ public class LobbyCat : MonoBehaviour
     }
     void OnEnable()
     {
-        StartCoroutine(RoamSequence());
+        if (gameObject.activeSelf) { StartCoroutine(RoamSequence()); }
+
     }
 
     void OnDisable()

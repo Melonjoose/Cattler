@@ -143,6 +143,8 @@ public class GameManager : MonoBehaviour
         TeamManager.instance.ResetCatPosition();
         TeamManager.instance.HealAllCats();
         TeamManager.instance.ClearDeadCatsList();
+        TeamManager.instance.DisableAllCats();
+        
         TravelManager.instance.ResetToStart();
         TravelManager.instance.DisableTravel();
 
@@ -157,6 +159,11 @@ public class GameManager : MonoBehaviour
         {
             CatRoamLobby.instance.EnableAllLobbyCat();
         }
+        else
+        {
+            Debug.Log("No cats in lobby to enable.");
+        }
+
 
         // Play lobby audio
         if (AudioManager.instance != null)
@@ -195,13 +202,14 @@ public class GameManager : MonoBehaviour
     IEnumerator GameStartSequence()
     {
         CatRoamLobby.instance.AllCatsMoveToBattleDoor();
-
+        AudioManager.instance.PlaySFX("BattleStart");
         yield return new WaitForSeconds(1f);
         
         Transition.instance.FadeOut();
-
         yield return new WaitForSeconds(1.5f);
+        AudioManager.instance.PlayTheme("Battle");
 
+        TeamManager.instance.EnableAllCats();
         CatRoamLobby.instance.DisableAllLobbyCat();
 
         CloseAllPages();
@@ -241,7 +249,9 @@ public class GameManager : MonoBehaviour
     IEnumerator RetreatSequence()
     {
         Transition.instance.FadeOut();
-
+        AudioManager.instance.PlaySFX("Retreat");
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlaySFX("Retreat2");
         yield return new WaitForSeconds(1.5f);
 
         // Open lobby page

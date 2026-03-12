@@ -26,20 +26,38 @@ public class SpawnerManager : MonoBehaviour
 
     void ReorderAllEnemies()
     {
+        // Sort normal enemies by X
         enemySpawner.spawnedEnemies.Sort((a, b) =>
             a.transform.position.x.CompareTo(b.transform.position.x));
 
         for (int i = 0; i < enemySpawner.spawnedEnemies.Count; i++)
         {
-            enemySpawner.spawnedEnemies[i].transform.SetSiblingIndex(i);
+            var enemy = enemySpawner.spawnedEnemies[i];
+            enemy.transform.SetSiblingIndex(i);
+
+            // Find MeshRenderer on Spine child
+            MeshRenderer mr = enemy.transform.Find("Spine GameObject")?.GetComponent<MeshRenderer>();
+            if (mr != null)
+            {
+                // leftmost (lowest x) gets highest order
+                mr.sortingOrder = enemySpawner.spawnedEnemies.Count - i;
+            }
         }
 
+        // Sort special enemies by X
         specialEnemySpawner.spawnedEnemies.Sort((a, b) =>
             a.transform.position.x.CompareTo(b.transform.position.x));
 
         for (int i = 0; i < specialEnemySpawner.spawnedEnemies.Count; i++)
         {
-            specialEnemySpawner.spawnedEnemies[i].transform.SetSiblingIndex(i);
+            var enemy = specialEnemySpawner.spawnedEnemies[i];
+            enemy.transform.SetSiblingIndex(i);
+
+            MeshRenderer mr = enemy.transform.Find("Spine GameObject")?.GetComponent<MeshRenderer>();
+            if (mr != null)
+            {
+                mr.sortingOrder = specialEnemySpawner.spawnedEnemies.Count - i;
+            }
         }
     }
 

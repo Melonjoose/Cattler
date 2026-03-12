@@ -27,6 +27,7 @@ public class CatRoamLobby : MonoBehaviour
     public void AddCatToLobby(CatUnit cat)
     {
         
+        
         Debug.Log("Adding cat to lobby");
         GameObject newCat = Instantiate(catLobbyPrefab, GetRandomPositionWithinBounds(), Quaternion.identity); //create prefab instance of the cat in the lobby
         newCat.name = $"{cat.runtimeData.template.itemName}_Lobby";
@@ -44,6 +45,8 @@ public class CatRoamLobby : MonoBehaviour
         catUnit.weaponL = cat.weaponL;
         catUnit.weaponR = cat.weaponR;
         catUnit.hat = cat.hat;
+
+        cat.catLobby = newCat;
 
         if (catUnit.hat != null)
         {

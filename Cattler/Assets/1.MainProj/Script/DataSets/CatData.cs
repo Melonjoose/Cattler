@@ -22,4 +22,9 @@ public class CatData : ItemData
     public float movementSpeed;
 
 }
-    public enum Rarity { Common,Rare,Legendary}
+    public enum Rarity 
+{ 
+    Common,
+    Rare,
+    Legendary
+}

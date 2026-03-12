@@ -232,6 +232,7 @@ public class CatUnit : MonoBehaviour
 
         TeamManager.instance.StoreToDeadCatsList(this);
         Inventory.instance.DeleteItem(inventoryIcon.gameObject);
+        CatRoamLobby.instance.RemoveCatFromLobby(this);
         
         catGO.SetActive(false);
         //Destroy(gameObject);  //delete when return to lobby.

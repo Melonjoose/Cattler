@@ -99,6 +99,7 @@ public class CommentaryManager : MonoBehaviour
         {
             BeginTalkFromQueue();
         }
+        AudioManager.instance.PlaySFX("SoftDeny");
     }
     public void BeginTalkFromQueue()
     {

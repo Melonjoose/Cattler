@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069cbdd678f358c409c2b3b872401b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonAnimation: {fileID: 0}
+  skeletonAnimation: {fileID: 941896635207128551}
   canWalk: 1
   isDead: 0
   dropLoot: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 6983399302195854178}
   - component: {fileID: 941896635207128551}
   m_Layer: 0
-  m_Name: Spine GameObject (BasicEnemy)
+  m_Name: Spine GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

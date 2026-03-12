@@ -120,6 +120,7 @@ public class CatMovement : MonoBehaviour
 
     public void ResetToInitialPosition()
     {
-        catIndex = initialCatIndex;
+        catIndex = initialCatIndex; // they slowly walk to their original location. but now I want them to immediately position themself.
+        catUnit.gameObject.transform.position = worldPositions[catIndex].position;
     }
 }

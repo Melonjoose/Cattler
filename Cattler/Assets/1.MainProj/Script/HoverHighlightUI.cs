@@ -25,6 +25,7 @@ public class HoverHighlightUI : MonoBehaviour,
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (outline != null) outline.enabled = true;
+        AudioManager.instance.PlaySFX("ButtonUI2");
     }
 
     public void OnPointerExit(PointerEventData eventData)
