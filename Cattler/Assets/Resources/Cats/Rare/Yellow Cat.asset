@@ -21,7 +21,7 @@ MonoBehaviour:
   value: 2
   fvalue: 0
   skinName: YellowCat
-  catID: 53
+  catID: 58
   Rarity: 1
   skillName: ThunderBolt
   skillDesc: Shoots lightning

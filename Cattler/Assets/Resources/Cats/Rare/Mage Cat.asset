@@ -21,7 +21,7 @@ MonoBehaviour:
   value: 2
   fvalue: 0
   skinName: MageCat
-  catID: 52
+  catID: 56
   Rarity: 1
   skillName: Faster Casting
   skillDesc: Skill cooldown are faster by 20%

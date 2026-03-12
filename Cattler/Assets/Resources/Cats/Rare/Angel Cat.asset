@@ -21,7 +21,7 @@ MonoBehaviour:
   value: 2
   fvalue: 0
   skinName: AngelCat
-  catID: 53
+  catID: 51
   Rarity: 1
   skillName: Blinding Light
   skillDesc: Stuns nearby enemies for 1 second every 15 seconds

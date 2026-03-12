@@ -22,7 +22,7 @@ MonoBehaviour:
   value: 2
   fvalue: 0
   skinName: MaidCat
-  catID: 51
+  catID: 57
   Rarity: 1
   skillName: Sweep
   skillDesc: Does a sweep attack that knocks enermies backward

@@ -344,7 +344,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069cbdd678f358c409c2b3b872401b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skeletonAnimation: {fileID: 0}
   canWalk: 1
+  isDead: 0
   dropLoot: {fileID: 0}
   enemyData: {fileID: 11400000, guid: f498614201f45c44fa142f3772532706, type: 2}
   TargetCat: {fileID: 0}
@@ -408,12 +410,18 @@ MonoBehaviour:
     dropChance: 1
   - item: {fileID: 8110738209023974265, guid: 1c097599161fb9843b70efc124d80978, type: 3}
     dropChance: 1
+  - item: {fileID: 1853850657545492391, guid: f789fe1c3844bc64aaa83394183594be, type: 3}
+    dropChance: 1
+  - item: {fileID: 2275574895661701613, guid: 28768c572a776674eb5867df496624ae, type: 3}
+    dropChance: 1
+  - item: {fileID: 3579834142181638228, guid: c7547b5afe0e4cd479ff3ccab4121600, type: 3}
+    dropChance: 1
   minInkDrop: 10
   maXInkDrop: 30
   minCoreDrop: 0
   maxCoreDrop: 0
-  minEXPDrop: 10
-  maxEXPDrop: 20
+  minEXPDrop: 0
+  maxEXPDrop: 0
 --- !u!1 &9212962636598033212
 GameObject:
   m_ObjectHideFlags: 0

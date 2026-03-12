@@ -13,6 +13,7 @@ public class DisplayItemUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI StatsUI;
     [SerializeField] private TextMeshProUGUI HP , ATK , ATKSPD, RNG, MVSPD;
     [SerializeField] private TextMeshProUGUI LVLUI;
+    [SerializeField] private TextMeshProUGUI HexCode;
     [SerializeField] private TextMeshProUGUI EXPUI;
 
     private void Awake()
@@ -34,7 +35,7 @@ public class DisplayItemUI : MonoBehaviour
         if (StatsUI == null)
         {
             StatsUI = transform.Find("Stats")?.GetComponent<TextMeshProUGUI>();
-            catIDUI = StatsUI.transform.Find("CatHex")?.GetComponent<TextMeshProUGUI>();
+            catIDUI = StatsUI.transform.Find("HexCode")?.GetComponent<TextMeshProUGUI>();
             HP = StatsUI.transform.Find("HP")?.GetComponent<TextMeshProUGUI>();
             ATK = StatsUI.transform.Find("ATK")?.GetComponent<TextMeshProUGUI>();
             ATKSPD = StatsUI.transform.Find("ATKSPD")?.GetComponent<TextMeshProUGUI>();
@@ -44,6 +45,7 @@ public class DisplayItemUI : MonoBehaviour
 
         if (LVLUI == null)
             LVLUI = transform.Find("Level")?.GetComponent<TextMeshProUGUI>();
+
 
         if (EXPUI == null)
             EXPUI = transform.Find("Experience")?.GetComponent<TextMeshProUGUI>();
@@ -62,7 +64,7 @@ public class DisplayItemUI : MonoBehaviour
             if (catUnit != null)
             {
                 nameUI.text = catUnit.runtimeData.template.itemName;
-                catIDUI.text = $"{catUnit.runtimeData.template.catID}";
+                catIDUI.text = $"Cat ID: {catUnit.runtimeData.template.catID}";
                 iconUI.sprite = catUnit.runtimeData.template.icon;
                 descriptionUI.text = catUnit.runtimeData.template.description;
                 SkillUI.text = catUnit.runtimeData.template.skillDesc;

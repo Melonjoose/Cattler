@@ -71,5 +71,7 @@ public class Trash : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
         // Reset trash bin sprite
         if (image != null && closedSprite != null)
             image.sprite = closedSprite;
+
+        AudioManager.instance.PlaySFX("Trash");
     }
 }

@@ -21,7 +21,7 @@ MonoBehaviour:
   value: 2
   fvalue: 0
   skinName: DevilCat
-  catID: 52
+  catID: 55
   Rarity: 1
   skillName: Devil's Contract
   skillDesc: Deal damage to a friendly cat to instant kill one non-boss enemy

@@ -7,7 +7,7 @@ public class DropLoot : MonoBehaviour
     {
         public GameObject item;
         [Range(0f, 100f)]  // 0 % to 100%
-        public float dropChance; // Percentage chance to drop this item
+        public float dropChance; // Percentage chance to drop this item //if value is 1, means 1% to drop
     }
     public LootTableEntry[] lootTable; // Assign in inspector
 
