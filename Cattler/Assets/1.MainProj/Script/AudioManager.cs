@@ -30,6 +30,12 @@ public class AudioManager : MonoBehaviour
     // Play a theme track by name
     public void PlayTheme(string soundName)
     {
+        if (sfxPrefab == null)
+        {
+            Debug.LogWarning("Theme AudioSource is disabled");
+            return; //safety check 
+        }
+
         Sound s = themeSounds.Find(x => x.name == soundName);
         if (s != null && themeSource != null)
         {
@@ -46,6 +52,12 @@ public class AudioManager : MonoBehaviour
     // Play a one-shot SFX by name
     public void PlaySFX(string soundName)
     {
+        if(sfxPrefab == null)
+        {
+            Debug.LogWarning("SFX AudioSource is disabled");
+            return; //safety check 
+        }
+
         Sound s = sfxSounds.Find(x => x.name == soundName);
         if (s != null)
         {

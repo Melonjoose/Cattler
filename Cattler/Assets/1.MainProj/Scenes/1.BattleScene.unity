@@ -34514,11 +34514,11 @@ RectTransform:
   - {fileID: 1047930415}
   - {fileID: 1856698136}
   - {fileID: 2028990755}
+  - {fileID: 1490599385}
+  - {fileID: 1831458317}
+  - {fileID: 1137878950}
   - {fileID: 958561045}
   - {fileID: 4091502889388849405}
-  - {fileID: 1831458317}
-  - {fileID: 1490599385}
-  - {fileID: 1137878950}
   m_Father: {fileID: 467437732}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

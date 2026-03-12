@@ -2,8 +2,6 @@ using Spine;
 using Spine.Unity;
 using System;
 using System.Collections;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
@@ -44,7 +42,6 @@ public class CatUnit : MonoBehaviour
     private void Start()
     {
         thisCatUnit = GetComponent<CatUnit>();
-        inventoryIcon = GetComponent<InventoryIcon>();
 
         if (inventoryIcon == null)
             catGO = gameObject;

@@ -51,7 +51,6 @@ public class CatRoamLobby : MonoBehaviour
         }
         if (catUnit.weaponL != null)
         {
-            Debug.Log("EQUIPITEM01");
             EquipItem(catUnit.weaponL, catUnit, "L_WeaponSlot");
         }
         if (catUnit.weaponR != null)
@@ -106,7 +105,7 @@ public class CatRoamLobby : MonoBehaviour
 
     void EquipItem(Item item, CatUnit LobbyCat, string slotName)  //Equip item visuals on world cat. if no item, hide the visuals.
     {
-        Debug.Log("EQUIPITEM01.1");
+
         if (item == null || item.runtimeData?.template?.icon == null)
         {
             Debug.LogWarning("Invalid item or missing icon.");
@@ -143,17 +142,17 @@ public class CatRoamLobby : MonoBehaviour
         // Left Weapon Slot
         if (slotName == "L_WeaponSlot") //checker for what slot to update.
         {
-            Debug.Log("EQUIPITEM02");
+
             Transform leftWeaponSlot = LobbyCat.transform.Find("L_WeaponSlot");
             if (leftWeaponSlot != null)
             {
-                Debug.Log("EQUIPITEM03");
+
                 Transform weapon = leftWeaponSlot.Find("Weapon");
                 Image sr = weapon.GetComponent<Image>();
 
                 if (LobbyCat.weaponL != null) // weapon equipped
                 {
-                    Debug.Log("EQUIPITEM04");
+
                     weapon.gameObject.SetActive(true);
                     sr.enabled = true;
                     sr.sprite = LobbyCat.weaponL.runtimeData.template.icon;

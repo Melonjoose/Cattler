@@ -57,12 +57,19 @@ public class TeamManager : MonoBehaviour
             newCatUnit.weaponR = newlyAddedCat.weaponR;
             newCatUnit.hat = newlyAddedCat.hat;
 
-            newCatUnit.inventoryIcon = newlyAddedCat.inventoryIcon;
+            InventoryIcon icon = newlyAddedCat.inventoryIcon;
+            if (icon != null)
+            {
+                newCatUnit.inventoryIcon = icon;
+                Debug.Log($"{newCatUnit} icon is assigned with {icon}");
+            }
+
+
             //update cat's skin based on data info.
             //get cat skeleton.
 
             //If cat skill is not null, link the skill to cat Unit via instantiating skill prefab and setting it as a child of catGO.
-            if(newCatUnit.runtimeData.template.catSkill != null)
+            if (newCatUnit.runtimeData.template.catSkill != null)
             {
                 CatSkill skillGO = Instantiate(newCatUnit.runtimeData.template.catSkill);
                 skillGO.transform.SetParent(newCatUnit.transform);
