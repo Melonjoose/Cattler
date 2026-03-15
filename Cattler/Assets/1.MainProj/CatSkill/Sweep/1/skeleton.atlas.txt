@@ -1,0 +1,67 @@
+skeleton.png
+size:512,512
+filter:Linear,Linear
+pma:true
+Equipments/broom
+bounds:2,64,456,441
+offsets:0,17,500,500
+Free Smoke Fx Pixel 2/FloorSmoke/Effect110
+bounds:500,419,26,10
+offsets:18,30,64,64
+rotate:90
+Free Smoke Fx Pixel 2/FloorSmoke/Effect111
+bounds:361,46,37,16
+offsets:12,25,64,64
+Free Smoke Fx Pixel 2/FloorSmoke/Effect112
+bounds:460,84,54,22
+offsets:4,19,64,64
+rotate:90
+Free Smoke Fx Pixel 2/FloorSmoke/Effect113
+bounds:460,140,57,23
+offsets:2,18,64,64
+rotate:90
+Free Smoke Fx Pixel 2/FloorSmoke/Effect114
+bounds:241,39,58,23
+offsets:2,18,64,64
+Free Smoke Fx Pixel 2/FloorSmoke/Effect115
+bounds:301,40,58,22
+offsets:2,18,64,64
+Free Smoke Fx Pixel 2/Spiral/Spiral01
+bounds:2,2,38,60
+offsets:13,2,64,64
+Free Smoke Fx Pixel 2/Spiral/Spiral02
+bounds:82,4,39,58
+offsets:11,3,64,64
+Free Smoke Fx Pixel 2/Spiral/Spiral03
+bounds:185,24,38,54
+offsets:13,5,64,64
+rotate:90
+Free Smoke Fx Pixel 2/Spiral/Spiral04
+bounds:460,323,38,58
+offsets:13,3,64,64
+Free Smoke Fx Pixel 2/Spiral/Spiral05
+bounds:460,445,38,60
+offsets:13,2,64,64
+Free Smoke Fx Pixel 2/Spiral/Spiral06
+bounds:42,2,38,60
+offsets:13,2,64,64
+Free Smoke Fx Pixel 2/Spiral/Spiral07
+bounds:460,383,38,60
+offsets:13,2,64,64
+Free Smoke Fx Pixel 2/Spiral/Spiral08
+bounds:123,26,36,60
+offsets:14,2,64,64
+rotate:90
+Free Smoke Fx Pixel 2/Spiral/Spiral09
+bounds:460,199,28,60
+offsets:20,2,64,64
+Free Smoke Fx Pixel 2/Spiral/Spiral10
+bounds:460,261,36,60
+offsets:14,2,64,64
+Free Smoke Fx Pixel 2/Spiral/Spiral11
+bounds:123,6,18,56
+offsets:23,4,64,64
+rotate:90
+Free Smoke Fx Pixel 2/Spiral/Spiral12
+bounds:500,447,8,58
+offsets:28,3,64,64

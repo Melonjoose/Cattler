@@ -7,6 +7,7 @@ public class FireBomb : ActiveAbility
     public GameObject carpetsprite;
     public Collider2D bombCollider;
     public Collider2D carpetCollider;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

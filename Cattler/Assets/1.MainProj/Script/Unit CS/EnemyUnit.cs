@@ -38,10 +38,7 @@ public class EnemyUnit : MonoBehaviour
         {
             skeletonAnimation = child.GetComponent<SkeletonAnimation>();
         }
-        else
-        {
-            Debug.LogWarning("Spine GameObject (BasicEnemy) not found under " + gameObject.name);
-        }
+
         skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
         dropLoot = GetComponent<DropLoot>();
 
