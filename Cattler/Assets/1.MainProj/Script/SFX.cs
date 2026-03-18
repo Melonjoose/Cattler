@@ -34,7 +34,7 @@ public class StatFX : MonoBehaviour
 
     public void SetText(float amount, string stat)
     {
-        text.text = $"+{amount} {stat}"; 
+        text.text = $"+{amount.ToString("F2")} {stat}"; 
     }
 
     private System.Collections.IEnumerator FadeAndReturn()
