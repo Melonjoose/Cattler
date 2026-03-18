@@ -146,10 +146,10 @@ MonoBehaviour:
   isActive: 0
   skillDesc: 
   skillType: 
-  cooldown: 0
+  cooldown: 7
   time: 0
-  value: 0
-  speed: 0
+  value: 1
+  speed: 1
   itemObject: {fileID: 0}
   catUnit: {fileID: 0}
   skeleton: {fileID: 0}

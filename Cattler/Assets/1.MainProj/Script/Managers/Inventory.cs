@@ -289,10 +289,11 @@ public class Inventory : MonoBehaviour
                 previewList.Remove(item);
                 if (slot.CompareTag("CatPreviewSlot"))
                 {
-                    slot.currentItem = null;
-                    SelectedItemDisplayUI.instance.RemoveCatStats();
                     cat = item.GetComponent<CatUnit>();
+                    SelectedItemDisplayUI.instance.RemoveCatStats();
                     PreviewManager.instance.RemoveCatFromPreview(cat, slot);
+
+                    slot.currentItem = null;
                 }
                 else
                 {

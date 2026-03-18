@@ -6,7 +6,6 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Skill_Sweep : CatSkill
 {
-    public CatUnit catUnit; //this skill is attached to this cat.
     public SkeletonAnimation skeleton;
     public Rigidbody2D rb;
     public GameObject colPoint; //holds col

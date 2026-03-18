@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
@@ -112,7 +113,6 @@ public class CatIconUI : MonoBehaviour
             catUISlotbutton.interactable = true;
 
             cat.onHealthChanged += (current, max) => UpdateIconHealthUI(i, current, max);
-
         }
         else
         {
@@ -127,6 +127,10 @@ public class CatIconUI : MonoBehaviour
         thisIcon.skillButton1.UpdateIcon(cat.weaponL);
         thisIcon.skillButton2.UpdateIcon(cat.weaponR);
 
+        thisIcon.catUnit = cat; //make icon reference the catUnit.
+        cat.icon = thisIcon; // make the catUnit reference the icon
+
+
         if (cat.weaponL != null || cat.weaponR != null || cat.hat != null)
         {
             Debug.Log("Linking skill!");
@@ -138,11 +142,10 @@ public class CatIconUI : MonoBehaviour
             if (skillButton1 != null)
             {
                 skillButton1.AssignCat(cat);
-                if(cat.weaponL != null)
+                if (cat.weaponL != null)
                 {
                     skillButton1.AssignSkill(cat.weaponL.runtimeData.template.skill);
                     skillButton1.UpdateIcon(cat.weaponL);
-                    
                 }
                 else
                 {
@@ -164,23 +167,27 @@ public class CatIconUI : MonoBehaviour
                     Debug.Log("No right weapon found for skill assignment.");
                 }
             }
-
         }
-
-
+        if(cat.weaponL == null) { thisIcon.cooldownDuration1 = 0; thisIcon.originalCooldownDuration1 = 0; }
+        if(cat.weaponR == null) { thisIcon.cooldownDuration2 = 0; thisIcon.originalCooldownDuration2 = 0; }         
     }
 
-    public void UnlinkCatFromIcon(CatUnit cat)
+    public void UnlinkCatFromIcon(CatUnit cat) //the catUnit is to determine what icon should be unlinked. to select the correct icon. meaning without cat, this script doesn't know which icon to unlink.
     {
+        Debug.Log("UNLINKING PLAYING");
+
+        CatUnit catToBeRemoved = cat;
+
         // Find the slot that contains this cat
         for (int i = 0; i < uiSlots.Length; i++)
         {
-            if (uiSlots[i].unit == cat)
+            if (uiSlots[i].unit == catToBeRemoved)
             {
+                Debug.Log("UNLINKING PLAYING2");
                 //unlinks the cat icon from the slot
                 // Move the icon back to its original position
                 var thisIconPosition = uiSlots[i].icon.gameObject.transform.position;
-                var positionSlotToSnap = iconPosition[cat.catMovement.catIndex].transform.position;
+                var positionSlotToSnap = iconPosition[uiSlots[i].initialIconIndex].transform.position; //make sure that eg. slot 0 is move to it's original slot of slot 0.
 
                 thisIconPosition = positionSlotToSnap;
 
@@ -188,9 +195,16 @@ public class CatIconUI : MonoBehaviour
                 //unlink skill buttons .. do first before removing cat from slot.
                 Icon thisIcon = uiSlots[i].icon;
                 thisIcon.skillButton1.RemoveSkill();
-                thisIcon.skillButton1.UpdateIcon(cat.weaponL);
+                thisIcon.skillButton1.UpdateIcon(catToBeRemoved.weaponL);
                 thisIcon.skillButton2.RemoveSkill();
-                thisIcon.skillButton2.UpdateIcon(cat.weaponR);
+                thisIcon.skillButton2.UpdateIcon(catToBeRemoved.weaponR);
+
+                //icon return to original state
+                { thisIcon.cooldownDuration1 = 0; thisIcon.originalCooldownDuration1 = 0; }
+                { thisIcon.cooldownDuration2 = 0; thisIcon.originalCooldownDuration2 = 0; }
+
+                thisIcon.catUnit = null; //remove cat and make it null
+                thisIcon.gameObject.SetActive(false);
 
                 // Unlink the cat from this slot
                 uiSlots[i].iconIndex = -1;
@@ -199,7 +213,7 @@ public class CatIconUI : MonoBehaviour
                 uiSlots[i].icon.gameObject.SetActive(false);
                 uiSlots[i].healthBar.gameObject.SetActive(false);
 
-                //Debug.Log($"Unlinked cat from icon slot {i}");
+                Debug.Log($"Unlinked cat from icon slot {i}");
                 return;
             }
         }

@@ -76,7 +76,7 @@ MonoBehaviour:
   AbilityPrefab: {fileID: 1501784088886520407}
   damage: 2
   spawnLocationOffset: {x: 0.6, y: 0, z: 0}
-  cooldown: 1
+  cooldown: 2
   range: 0
   movespeed: 40
   lifetime: 0.5

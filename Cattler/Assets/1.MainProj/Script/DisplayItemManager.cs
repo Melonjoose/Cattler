@@ -44,7 +44,7 @@ public class DisplayItemManager : MonoBehaviour
     public void ShowDisplayUI(GameObject item)
     {
         CatUnit catUnit = item.GetComponent<CatUnit>();
-        RarityChecker(catUnit);
+        if (catUnit != null) { RarityChecker(catUnit); }
 
         RectTransform displayRect = chosenUI.GetComponent<RectTransform>();
         RectTransform canvasRect = displayRect.GetComponentInParent<Canvas>().GetComponent<RectTransform>();

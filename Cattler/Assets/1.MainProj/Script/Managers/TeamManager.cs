@@ -164,20 +164,15 @@ public class TeamManager : MonoBehaviour
         GameObject worldCat = cat.catGO;
         CatUnit worldCatUnit = worldCat.GetComponent<CatUnit>();
 
-        if (worldCatUnit == null)
-        {
-            Debug.LogWarning("Cat GameObject does not contain a CatUnit component.");
-            return;
-        }
-
         //remove link in the UI.
-        CatIconUI.instance?.UnlinkCatFromIcon(worldCatUnit);
+        
+        CatIconUI.instance.UnlinkCatFromIcon(worldCatUnit); //this is e worldCat's catUnit //only works when worldCatUnit is active.
+
+        cat.catGO = null;// Destroy the cat GameObject in the world
+        cats.Remove(worldCatUnit);          // Remove from the list //working
+        catContainers[slot.SlotIndex].occupyingCat = null; // this is working
 
         Destroy(worldCat);
-        cat.catGO = null;// Destroy the cat GameObject in the world
-        cats.Remove(worldCatUnit);          // Remove from the list
-        catContainers[slot.SlotIndex].occupyingCat = null;
-
         CatRoamLobby.instance.RemoveCatFromLobby(cat);
     }
 

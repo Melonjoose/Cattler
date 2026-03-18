@@ -11,7 +11,11 @@ public class CatUnit : MonoBehaviour
     //--- Equipments ---// memory allocation
     public Item hat;
     public Item weaponL; //L
+    public Skill_Button weaponL_Ability;
     public Item weaponR; //R
+    public Skill_Button weaponR_Ability;
+    public Icon icon; //icon is where the skill are handled and manipulated.
+    public CatSkill skill;
 
     //--- Cat linked objects ---//
     public CatUnit thisCatUnit;

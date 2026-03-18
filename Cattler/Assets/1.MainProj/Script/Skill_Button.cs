@@ -14,6 +14,7 @@ public class Skill_Button : MonoBehaviour // add handlers
     public Button button;
     private RectTransform buttonRect;
     public Image skillIcon;
+    public Icon parentIcon;
 
     public GameObject cooldownVisual;
     public TextMeshProUGUI cooldownNumber;
@@ -27,9 +28,8 @@ public class Skill_Button : MonoBehaviour // add handlers
         skillIcon.sprite = null; // change to an X in the future??
         cooldownVisual = skillButton.transform.Find("CooldownVisual").gameObject;
         cooldownNumber = cooldownVisual.transform.Find("CooldownNumber").GetComponent<TextMeshProUGUI>();
-
+        parentIcon = transform.parent.GetComponent<Icon>();
         cooldownVisual.SetActive(false);
-
         //skillButton.transform.localPosition = Vector3.zero;
         //buttonRect = skillButton.GetComponent<RectTransform>();
         //HideButton();
@@ -42,8 +42,18 @@ public class Skill_Button : MonoBehaviour // add handlers
 
     public void AssignSkill(ActiveAbility skill)
     {
-        assignedSkill = skill;
+        assignedSkill = skill;  
 
+        if (this == parentIcon.skillButton1)
+        {
+            parentIcon.cooldownDuration1 = skill.cooldown; //store the skill cooldown to parenIcon to be manipulated by any other scripts (eg. faster cooldown etc)
+            parentIcon.originalCooldownDuration1 = skill.cooldown; 
+        }
+        else if (this == parentIcon.skillButton2)
+        {
+            parentIcon.cooldownDuration2 = skill.cooldown; //store the skill cooldown to parenIcon to be manipulated by any other scripts (eg. faster cooldown etc)
+            parentIcon.originalCooldownDuration2 = skill.cooldown; 
+        }
     }
 
     public void RemoveSkill()
@@ -89,7 +99,15 @@ public class Skill_Button : MonoBehaviour // add handlers
         CatUnit catInfo = catUnit.GetComponent<CatUnit>(); 
         SkillInfo.catUnit = catInfo; // reference catunit into the skill's activeability script so that the skill can access the cat's info for damage calculation and other purposes.
         //HideButton();
-        Cooldown(assignedSkill.cooldown);
+        if (this == parentIcon.skillButton1)
+        {
+            Cooldown(parentIcon.cooldownDuration1);
+        }
+        if (this == parentIcon.skillButton2)
+        {
+            Cooldown(parentIcon.cooldownDuration2);
+        }
+
     }
 
     void Cooldown(float cooldownTime)

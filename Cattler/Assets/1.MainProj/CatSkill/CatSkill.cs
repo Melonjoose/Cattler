@@ -11,4 +11,10 @@ public class CatSkill : MonoBehaviour
     public float speed; // this can be used for skills that affect movement speed or attack speed, etc.
 
     public GameObject itemObject;
+    public CatUnit catUnit; // this is attached to this catUnit.
+
+    private void Start()
+    {
+        catUnit = GetComponentInParent<CatUnit>();
+    }
 }
