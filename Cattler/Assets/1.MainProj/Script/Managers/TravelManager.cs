@@ -9,7 +9,15 @@ public class TravelManager : MonoBehaviour
     public float travelSpeed = 1f;
     public float distanceMultiplier = 1f;
     public GameObject[] floors; // floor1, floor2, floor3
+    public SpriteRenderer[] backgroundUI;
+    public SpriteRenderer[] floorUI;
     public GameObject floorGRP;
+
+    public Sprite level1FloorSprite;
+    public Sprite level1BackgroundSprite;
+
+    public Sprite level2FloorSprite;
+    public Sprite level2BackgroundSprite;
 
     public event Action<bool> OnTravelStateChanged;
 
@@ -83,6 +91,11 @@ public class TravelManager : MonoBehaviour
         }
 
         Distance.instance.UpdateDistanceUI(distanceTraveledUIvalue);
+
+        if(distanceTraveledUIvalue >= 10)
+        {
+            TransitionToNewLevel();
+        }
     }
 
     public void TeamWalk()
@@ -115,7 +128,14 @@ public class TravelManager : MonoBehaviour
 
     public void TransitionToNewLevel()
     {
-        // Logic to transition to a new level, e.g., load new scene or change environment
+        foreach (var floor in floorUI)
+        {
+            floor.sprite = level2FloorSprite;
+        }
+        foreach (var BG in backgroundUI)
+        {
+            BG.sprite = level2BackgroundSprite;
+        }
     }
 
     public void ResetToStart()

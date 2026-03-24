@@ -18,7 +18,7 @@ MonoBehaviour:
   minSpawnInterval: 4
   maxSpawnInterval: 8
   minEnemiesPerInterval: 0
-  maxEnemiesPerInterval: 1
+  maxEnemiesPerInterval: 2
   maxEnemies: 1
   minSize: 1
   maxSize: 1

@@ -20,8 +20,8 @@ MonoBehaviour:
   minEnemiesPerInterval: 1
   maxEnemiesPerInterval: 1
   maxEnemies: 3
-  minSize: 1
-  maxSize: 1
+  minSize: 0.7
+  maxSize: 0.7
   enemyHealthPercentage: 0
   enemyAttackPercentage: 0
   enemySpeedPercentage: 0
