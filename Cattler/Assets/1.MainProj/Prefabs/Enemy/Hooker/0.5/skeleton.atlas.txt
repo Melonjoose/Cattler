@@ -1,0 +1,78 @@
+skeleton.png
+size:1024,256
+filter:Linear,Linear
+pma:true
+scale:0.5
+Export Artillery/Beam forward/tile096
+bounds:442,110,32,8
+offsets:0,12,32,32
+Export Artillery/Beam forward/tile097
+bounds:212,65,32,8
+offsets:0,12,32,32
+Export Artillery/Beam forward/tile098
+bounds:826,149,32,10
+offsets:0,11,32,32
+Export Artillery/Beam forward/tile099
+bounds:891,185,32,12
+offsets:0,10,32,32
+Export Artillery/Beam forward/tile100
+bounds:408,102,32,16
+offsets:0,8,32,32
+Export Artillery/Beam forward/tile101
+bounds:178,57,32,16
+offsets:0,8,32,32
+Export Artillery/Beam forward/tile102
+bounds:826,161,32,20
+offsets:0,6,32,32
+Export Artillery/Beam forward/tile103
+bounds:222,75,32,20
+offsets:0,6,32,32
+Export Artillery/Beam forward/tile104
+bounds:675,122,26,20
+offsets:3,6,32,32
+Export Artillery/Beam forward/tile105
+bounds:1000,222,26,22
+offsets:3,5,32,32
+rotate:90
+Export Artillery/Beam forward/tile106
+bounds:1000,194,26,22
+offsets:3,5,32,32
+rotate:90
+Export Artillery/Beam forward/tile107
+bounds:178,33,24,22
+offsets:4,5,32,32
+Export Artillery/Beam forward/tile108
+bounds:256,75,22,20
+offsets:5,6,32,32
+Export Artillery/Beam forward/tile109
+bounds:675,98,24,22
+offsets:4,5,32,32
+Export Artillery/Beam forward/tile110
+bounds:860,161,24,20
+offsets:4,6,32,32
+Export Artillery/Beam forward/tile111
+bounds:2,2,1,1
+Export Hooker/BaclkLeg
+bounds:587,144,104,147
+offsets:0,0,104,148
+rotate:90
+Export Hooker/Body
+bounds:222,97,184,151
+Export Hooker/Head
+bounds:2,75,218,173
+Export Hooker/Lleg
+bounds:736,183,153,65
+Export Hooker/Rleg
+bounds:736,183,153,65
+Export Hooker/Tentacle1
+bounds:587,62,86,80
+Export Hooker/Tentacle2
+bounds:891,199,107,49
+Export Hooker/Tentacle3
+bounds:736,140,88,41
+Export Hooker/nose
+bounds:408,120,128,177
+rotate:90
+Export Hooker/noseback
+bounds:2,5,68,174
+rotate:90

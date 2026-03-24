@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f525e3e74c8765541ae4b1f21c173680, type: 3}
+  m_Name: BE LVL 4
+  m_EditorClassIdentifier: 
+  level: 3
+  spawnableList:
+  - {fileID: 11400000, guid: f498614201f45c44fa142f3772532706, type: 2}
+  minSpawnInterval: 2
+  maxSpawnInterval: 4
+  minEnemiesPerInterval: 2
+  maxEnemiesPerInterval: 3
+  maxEnemies: 8
+  minSize: 1.5
+  maxSize: 1.7
+  enemyHealthPercentage: 5
+  enemyAttackPercentage: 5
+  enemySpeedPercentage: 5
+  lootPercentage: 5

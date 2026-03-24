@@ -18,6 +18,7 @@ public class CatIconUI : MonoBehaviour
         public Image iconImage;
         public Slider healthBar;
         public CatUnit unit;
+        public bool isDead = false;
     }
 
     [Header("UI Slots")]
@@ -255,6 +256,17 @@ public class CatIconUI : MonoBehaviour
         Button catUISlotbutton = catUISlot.icon.GetComponent<Button>();
         catUISlotbutton.interactable = false;
         catUISlot.healthBar.gameObject.SetActive(false);
+        catUISlot.isDead = true;
+    }
+
+    public void ResetIconToDefault(CatIconSlot catUISlot)
+    {
+        catUISlot.iconImage.sprite = null;
+        Button catUISlotbutton = catUISlot.icon.GetComponent<Button>();
+        catUISlotbutton.interactable = false;
+        catUISlot.healthBar.gameObject.SetActive(false);
+        catUISlot.isDead = false;
+        catUISlot.icon.gameObject.SetActive(false); //hide it 
     }
 
     public void ResetAllIconToInitialIndex()
@@ -268,6 +280,11 @@ public class CatIconUI : MonoBehaviour
                 var targetSlot = iconPosition[i].transform;
                 LeanTween.move(slot.icon.gameObject, targetSlot.position, 0.4f)
                     .setEase(LeanTweenType.easeInOutQuad);
+
+                if(slot.isDead == true)
+                {
+                    ResetIconToDefault(slot);
+                }
             }
         }
     }

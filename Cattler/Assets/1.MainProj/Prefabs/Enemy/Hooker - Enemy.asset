@@ -15,8 +15,14 @@ MonoBehaviour:
   prefab: {fileID: 9134958204535856097, guid: 079fc20874240ee4c9dadcd4e6ef9229, type: 3}
   enemyName: Hooker
   icon: {fileID: -8021277769608807489, guid: 2348ebc65ed3ebf45868445bf5eb58e6, type: 3}
+  enemyType: 1
   health: 10
   attackPower: 1
   attackSpeed: 5
   attackRange: 10
   movementSpeed: 1
+  minInkDrop: 0
+  maxInkDrop: 0
+  minCoreDrop: 0
+  maxCoreDrop: 0
+  expDrop: 0

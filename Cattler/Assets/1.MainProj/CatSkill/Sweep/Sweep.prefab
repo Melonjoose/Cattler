@@ -143,9 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147650cc7d5090f45be28b7a4c560068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 0
-  skillDesc: 
-  skillType: 
+  isActive: 1
+  skillDesc: Summons a broom that crush enemies
+  skillType: Attack
   cooldown: 7
   time: 0
   value: 1

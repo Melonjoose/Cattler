@@ -17,15 +17,15 @@ MonoBehaviour:
   itemName: Maid Cat
   icon: {fileID: 21300000, guid: 13a40da893fd5064dad401e8400f0faa, type: 3}
   itemType: 0
-  description: A cat that loves cleanliness and tidiness. It has a suprising amount
-    of physical strength. Probably from all the cleaning..
+  description: A cat that loves cleanliness and tidiness. It has a surprising of
+    physical strength. Probably from all the cleaning..
   value: 2
   fvalue: 0
   skinName: MaidCat
   catID: 57
   Rarity: 1
   skillName: Sweep
-  skillDesc: Does a sweep attack that knocks enermies backward
+  skillDesc: Does a sweep attack that knocks enemies backward
   level: 1
   exp: 0
   catSkill: {fileID: 3841337569234786181, guid: cc7ef9343929a1f4f842cd218eefc90d, type: 3}

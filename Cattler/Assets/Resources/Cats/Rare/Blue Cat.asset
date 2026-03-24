@@ -24,7 +24,7 @@ MonoBehaviour:
   catID: 52
   Rarity: 1
   skillName: VeryFastCat
-  skillDesc: It's very fast
+  skillDesc: It's very fast. Spawns with a high base movement speed.
   level: 1
   exp: 0
   catSkill: {fileID: 0}

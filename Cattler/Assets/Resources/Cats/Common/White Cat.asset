@@ -17,8 +17,8 @@ MonoBehaviour:
   itemName: White Cat
   icon: {fileID: 21300000, guid: 35d8a04499034264093061e5edff895e, type: 3}
   itemType: 0
-  description: White and pure. Typically very pretty and graceful. Fur is very visible
-    on dark furnitures.
+  description: White and pure. Typically very pretty and graceful. Fur are very visible
+    on dark furniture.
   value: 2
   fvalue: 0
   skinName: WhiteCat

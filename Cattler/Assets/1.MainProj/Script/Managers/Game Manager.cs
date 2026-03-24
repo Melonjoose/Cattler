@@ -38,11 +38,11 @@ public class GameManager : MonoBehaviour
         // Start at lobby
         LobbyState();
     }
-
-    private void Update()
+    void Update()
     {
 
     }
+
 
     public void OpenPage(string pageName)
     {
@@ -141,8 +141,11 @@ public class GameManager : MonoBehaviour
         enemySpawner.spawnerActive = false;
         specialSpawner.spawnerActive = false;
         TeamManager.instance.ResetCatPosition();
-        TeamManager.instance.HealAllCats();
-        TeamManager.instance.ClearDeadCatsList();
+        TeamManager.instance.ResetHealthAllCats();
+        
+
+
+        TeamManager.instance.ClearDeadCatsList(); //delete all worldGOcat that died.
         TeamManager.instance.DisableAllCats();
         
         TravelManager.instance.ResetToStart();
@@ -219,6 +222,8 @@ public class GameManager : MonoBehaviour
 
         TravelManager.instance.EnableTravel();
         TravelManager.instance.ResetToStart();
+
+        SpawnerManager.instance.StartLevelOne();
     }
 
 
@@ -241,19 +246,21 @@ public class GameManager : MonoBehaviour
         //converts cats to ink.(money)
     }
 
-    public void RetreatConfirmPressed()
+    public void RetreatConfirmPressed() //Confirm pressed inside retreat page.
     {
         StartCoroutine(RetreatSequence());
     }
 
     IEnumerator RetreatSequence()
     {
+        TeamManager.instance.MakeAllCatImmortal();
+        //remove all couroutine
         Transition.instance.FadeOut();
         AudioManager.instance.PlaySFX("Retreat");
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlaySFX("Retreat2");
         yield return new WaitForSeconds(1.5f);
-
+        ResumeGamePlay();
         // Open lobby page
         lobbyPage.pageObject.transform.position = lobbyPage.openPos.position;
         currentPage = lobbyPage;

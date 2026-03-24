@@ -1,10 +1,7 @@
-using NUnit.Framework;
+using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using TMPro;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 [RequireComponent(typeof(LineRenderer))]
 
 public class ArtilleryUnit : EnemyUnit
@@ -21,6 +18,7 @@ public class ArtilleryUnit : EnemyUnit
     public GameObject targetSpot;
     public bool attacking = false;
     public GameObject artilleryShot;
+    private Coroutine arcRoutine;
 
 
     public float shotCooldown = 10f;
@@ -45,13 +43,16 @@ public class ArtilleryUnit : EnemyUnit
             moveSpeed = enemyData.movementSpeed;
             attackRange = enemyData.attackRange;
 
-            // Apply sprite
-            SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            if (sr && enemyData.icon != null)
-            {
-                sr.sprite = enemyData.icon;
-            }
         }
+
+        //apply skeletonanimation
+        Transform child = transform.Find("Spine GameObject");
+        if (child != null)
+        {
+            skeletonAnimation = child.GetComponent<SkeletonAnimation>();
+        }
+
+        skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
 
         //triggerTrack = GetComponentInChildren<EnemyTriggerTrack>();
         LinkFloors();
@@ -101,13 +102,14 @@ public class ArtilleryUnit : EnemyUnit
 
     void ChooseRandomTargetLocation() //choose 1 / 5 position to shoot at.
     {
-        int randomIndex = Random.Range(0, 5);
-        GameObject chosenTarget = targetLocations[randomIndex];
-        targetSpot = chosenTarget;
+        int randomIndex = Random.Range(0, targetLocations.Count);
+        targetSpot = targetLocations[randomIndex];
     }
 
     void CooldownTimer()
     {
+
+        if (currentHealth <= 0) return; // don’t attack if dead
 
         cooldowntimer += Time.deltaTime; //make cooldowntimer run.
 
@@ -120,22 +122,46 @@ public class ArtilleryUnit : EnemyUnit
 
     IEnumerator StartAttackSequence()
     {
-        lockedCD = true; //stop timer from running
+        lockedCD = true;
         attacking = true;
         ChooseRandomTargetLocation();
         canWalk = false;
-        // Start arc updater
-        StartCoroutine(UpdateArc());
 
-        yield return new WaitForSeconds(2f); //  actually wait
-        FireArtillery();
+        skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
 
-        yield return new WaitForSeconds(5f); //  actually wait
+        if (arcRoutine != null)
+            StopCoroutine(arcRoutine);
+
+        arcRoutine = StartCoroutine(UpdateArc());
+        
+
+        yield return new WaitForSeconds(2f);
+
+        // Play attack animation
+        var track = skeletonAnimation.AnimationState.SetAnimation(0, "Attack", false);
+
+        // Subscribe to Spine events on this track
+        track.Event += (entry, e) =>
+        {
+            if (e.Data.Name == "Fire")
+            {
+                FireArtillery();
+            }
+        };
+
+        skeletonAnimation.AnimationState.AddAnimation(0, "Idle", true, 0);
+        yield return new WaitForSeconds(5f);
+
+        skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
         DeleteArc();
         canWalk = true;
-        attacking = false; // reset after attack
+        attacking = false;
         lockedCD = false;
+
+        arcRoutine = null;
     }
+
+
 
     void Walk()
     {
@@ -185,10 +211,24 @@ public class ArtilleryUnit : EnemyUnit
 
     public override void Die()
     {
-        SpecialEnemySpawner.instance.RemoveSpawnedEnemies(this.gameObject); 
-        //Debug.Log(enemyData.enemyName + " has been defeated.");
-        Currency.instance.AddInk(10); // Add ink to currency
+        canWalk = false;
+        StopAllCoroutines();
+        DeleteArc();
+        // Clear Spine animations immediately
+        if (skeletonAnimation != null)
+        {
+            skeletonAnimation.AnimationState.ClearTracks();
+            skeletonAnimation.AnimationState.SetEmptyAnimation(0, 0f);
+        }
+
+        StatFXManager.instance.PlayVFX(this.transform.position, 0);
+        StatFXManager.instance.PlayVFX(this.transform.position, 2);
+        AudioManager.instance.PlaySFX("EnemyDie");
+
         dropLoot.GiveLoot();
-        Destroy(gameObject);
+        SpecialEnemySpawner.instance.RemoveSpawnedEnemies(this.gameObject);
+        EnemyDetector.instance.OnEnemyDestroyed(gameObject);
+
     }
+
 }

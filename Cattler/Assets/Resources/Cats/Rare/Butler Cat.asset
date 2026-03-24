@@ -23,11 +23,12 @@ MonoBehaviour:
   skinName: ButlerCat
   catID: 53
   Rarity: 1
-  skillName: Support
-  skillDesc: Boost a random cat's attack speed for 10 seconds every 30 seconds
+  skillName: Tea Time
+  skillDesc: Serves tea that energize other cats. Boosting them to attack faster
+    temporarily.
   level: 1
   exp: 0
-  catSkill: {fileID: 0}
+  catSkill: {fileID: 1589610800187882439, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
   baseHealth: 8
   attackPower: 3
   attackSpeed: 1

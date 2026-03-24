@@ -6,8 +6,12 @@ public class EnemyUnit : MonoBehaviour
     private GameObject thisUnit; // Reference to self for clarity
     public SkeletonAnimation skeletonAnimation;
     private EnemyMovement EnemyMovement;
+    private EnemyTriggerTrack triggerTrack;
     public bool canWalk = true;
     public bool isDead = false;
+
+    public bool pickRandomCat = false;
+    public bool pickClosestCat = true;
 
     public DropLoot dropLoot;
 
@@ -33,13 +37,16 @@ public class EnemyUnit : MonoBehaviour
         
         EnemyMovement = GetComponent<EnemyMovement>();
         thisUnit = this.gameObject;
-        Transform child = transform.Find("Spine GameObject (BasicEnemy)");
+
+        //apply skeletonanimation
+        Transform child = transform.Find("Spine GameObject");
         if (child != null)
         {
             skeletonAnimation = child.GetComponent<SkeletonAnimation>();
         }
 
         skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
+        
         dropLoot = GetComponent<DropLoot>();
 
         if (enemyData != null)
@@ -65,7 +72,7 @@ public class EnemyUnit : MonoBehaviour
         }
 
         LinkTargetpoint(); // Link the targetPoint to an object called targetPoint located in this enemy's children
-        EnemyTriggerTrack triggerTrack = GetComponentInChildren<EnemyTriggerTrack>();
+        triggerTrack = GetComponentInChildren<EnemyTriggerTrack>();
         triggerTrack.triggerRadius = enemyData.attackRange;
     }
 
@@ -78,7 +85,14 @@ public class EnemyUnit : MonoBehaviour
 
         if (TargetCat == null || !TargetCat.activeSelf)
         {
-            ChooseRandomCat();
+            if(pickRandomCat == true)
+            {
+                ChooseRandomCat();
+            }
+            if (pickClosestCat == true)
+            {
+                FindClosestCat();
+            }
         }
     }
 
@@ -107,6 +121,27 @@ public class EnemyUnit : MonoBehaviour
             Debug.LogWarning("No child named 'targetPoint' found under " + gameObject.name);
         }
     }
+    void FindClosestCat()
+    {
+        GameObject[] allCats = GameObject.FindGameObjectsWithTag("Cat");
+
+        float closestDistance = Mathf.Infinity;
+        GameObject closestCat = null;
+
+        foreach (GameObject cat in allCats)
+        {
+            float distance = Vector3.Distance(this.transform.position, cat.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestCat = cat;
+            }
+        }
+
+        TargetCat = closestCat; // Will be null if no enemies are in range
+        triggerTrack.chosenCat = closestCat;
+        EnemyMovement.TargetCat = closestCat;
+    }
 
     private void ChooseRandomCat()
     {
@@ -128,6 +163,7 @@ public class EnemyUnit : MonoBehaviour
         if (TargetCat != null)
         {
             EnemyMovement.TargetCat = TargetCat;
+            triggerTrack.chosenCat = TargetCat;
         }
     }
 
@@ -160,12 +196,12 @@ public class EnemyUnit : MonoBehaviour
     public virtual void Die()
     {
         canWalk = false;
+        StopAllCoroutines();
         StatFXManager.instance.PlayVFX(this.transform.position, 0);
         StatFXManager.instance.PlayVFX(this.transform.position, 2);
         AudioManager.instance.PlaySFX("EnemyDie");
+
         EnemySpawner.instance.RemoveSpawnedEnemies(thisUnit); 
-        
- 
         dropLoot.GiveLoot();
 
         EnemyDetector.instance.OnEnemyDestroyed(gameObject);

@@ -17,13 +17,14 @@ MonoBehaviour:
   itemName: Yellow Cat
   icon: {fileID: 21300000, guid: c31ba8e130d3a2744894e24c0a20f755, type: 3}
   itemType: 0
-  description: Definitely an original design. This cat likes to shoot lightning.
+  description: A very yellow cat that like to rub it's body onto a lot of balloon
+    which causes it to have a lot of static in it's fur.
   value: 2
   fvalue: 0
   skinName: YellowCat
   catID: 100
   Rarity: 2
-  skillName: ThunderBolt
+  skillName: Static Coat
   skillDesc: Shoots lightning
   level: 1
   exp: 0

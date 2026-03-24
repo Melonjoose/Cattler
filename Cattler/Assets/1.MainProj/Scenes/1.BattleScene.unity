@@ -32407,30 +32407,35 @@ MonoBehaviour:
     iconImage: {fileID: 1081970022}
     healthBar: {fileID: 1021024898}
     unit: {fileID: 0}
+    isDead: 0
   - iconIndex: -1
     initialIconIndex: -1
     icon: {fileID: 2070008659}
     iconImage: {fileID: 2070008655}
     healthBar: {fileID: 558069926}
     unit: {fileID: 0}
+    isDead: 0
   - iconIndex: -1
     initialIconIndex: -1
     icon: {fileID: 67617515}
     iconImage: {fileID: 67617511}
     healthBar: {fileID: 645018704}
     unit: {fileID: 0}
+    isDead: 0
   - iconIndex: -1
     initialIconIndex: -1
     icon: {fileID: 256267065}
     iconImage: {fileID: 256267061}
     healthBar: {fileID: 1940469767}
     unit: {fileID: 0}
+    isDead: 0
   - iconIndex: -1
     initialIconIndex: -1
     icon: {fileID: 743636649}
     iconImage: {fileID: 743636645}
     healthBar: {fileID: 2076997381}
     unit: {fileID: 0}
+    isDead: 0
   iconPosition: []
   deathIcon: {fileID: 1660957820977104790, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
 --- !u!114 &1065959432
@@ -38493,7 +38498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1263659752
 Transform:
   m_ObjectHideFlags: 0
@@ -38523,8 +38528,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerActive: 0
-  minSpawnInterval: 2
-  maxSpawnInterval: 5
+  currentLevel: {fileID: 0}
+  minSpawnInterval: 3
+  maxSpawnInterval: 7
   minEnemiesPerInterval: 0
   maxEnemiesPerInterval: 2
   currentEnemyCount: 0
@@ -38533,7 +38539,6 @@ MonoBehaviour:
   maxSize: 1.4
   timer: 0
   spawnableList:
-  - {fileID: 11400000, guid: 2a9688ae1e8e824429bd9a70adc1483a, type: 2}
   - {fileID: 11400000, guid: d633694b975c70b4a844e1c03b7cc833, type: 2}
   spawnedEnemies: []
   spawnLocation: {fileID: 1850967998}
@@ -41850,68 +41855,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396115416}
   m_CullTransparentMesh: 1
---- !u!1001 &1401737732
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 374809845249456579, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838036158072221073, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.9379306
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838036158072221073, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.3236208
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838036158072221073, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838036158072221073, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838036158072221073, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838036158072221073, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838036158072221073, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838036158072221073, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838036158072221073, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838036158072221073, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014703416963196543, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-      propertyPath: m_Name
-      value: Skill_TeaTime
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5311494414789296179, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b873f4a09a99c8642a7833cbf145cef8, type: 3}
 --- !u!1 &1402304893
 GameObject:
   m_ObjectHideFlags: 0
@@ -48870,6 +48813,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f9baa5e031be6409892220c54c9ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevelIndex: 0
+  distanceTravelled: 0
+  currentLevel:
+    basicAssignedLevel: {fileID: 0}
+    specialAssignedLevel: {fileID: 0}
+    distanceToTrigger: 0
+    currentLevel: 0
+    isAdded: 0
+  distanceToTriggerNextLevel: 0
+  nextLevel:
+    basicAssignedLevel: {fileID: 0}
+    specialAssignedLevel: {fileID: 0}
+    distanceToTrigger: 0
+    currentLevel: 0
+    isAdded: 0
+  levels:
+  - basicAssignedLevel: {fileID: 11400000, guid: 919822e2a561e294dbae368d2b6977fa, type: 2}
+    specialAssignedLevel: {fileID: 11400000, guid: b58de526aa602584386af7f635e07f5c, type: 2}
+    distanceToTrigger: 0
+    currentLevel: 0
+    isAdded: 0
+  - basicAssignedLevel: {fileID: 11400000, guid: 7b14939c9b649dc47ad99e7821d79b6f, type: 2}
+    specialAssignedLevel: {fileID: 11400000, guid: 752acaff3fba7a244a16cc5ed3bfa5fc, type: 2}
+    distanceToTrigger: 2.5
+    currentLevel: 0
+    isAdded: 0
+  - basicAssignedLevel: {fileID: 11400000, guid: 77cd29371790959468d677d9e373163f, type: 2}
+    specialAssignedLevel: {fileID: 11400000, guid: 41616548664bd6742b0278eeb08726d0, type: 2}
+    distanceToTrigger: 5
+    currentLevel: 0
+    isAdded: 0
+  - basicAssignedLevel: {fileID: 11400000, guid: 3f09174dafc60a5459b0f5029bd22c3e, type: 2}
+    specialAssignedLevel: {fileID: 11400000, guid: 64912786472b101418ea133f3d9ef47b, type: 2}
+    distanceToTrigger: 7.5
+    currentLevel: 0
+    isAdded: 0
   enemySpawner: {fileID: 1752030929}
   specialEnemySpawner: {fileID: 1263659753}
 --- !u!1 &1610422453
@@ -53238,14 +53217,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerActive: 0
+  currentLevel: {fileID: 0}
   minSpawnInterval: 2
-  maxSpawnInterval: 5
+  maxSpawnInterval: 2
   minEnemiesPerInterval: 1
-  maxEnemiesPerInterval: 3
+  maxEnemiesPerInterval: 2
   currentEnemyCount: 0
   maxEnemies: 5
-  minSize: 0.8
-  maxSize: 1.2
+  minSize: 1
+  maxSize: 1
   timer: 0
   spawnableList:
   - {fileID: 11400000, guid: f498614201f45c44fa142f3772532706, type: 2}
@@ -65941,4 +65921,3 @@ SceneRoots:
   - {fileID: 1029033353}
   - {fileID: 982415485}
   - {fileID: 501119690}
-  - {fileID: 1401737732}

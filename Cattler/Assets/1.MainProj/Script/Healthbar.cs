@@ -7,11 +7,12 @@ public class Healthbar : MonoBehaviour
     public bool isEnemy;
     public bool isCat;
 
-    private EnemyUnit enemyUnit;
-    private CatUnit catUnit;
+    [SerializeField]private EnemyUnit enemyUnit;
+    [SerializeField]private CatUnit catUnit;
     private HealthbarUIElement healthBarUIElement; //  Correct type!
 
     private GameObject healthbarLocation;
+    public Vector3 healthbarLocationOffset;
     private void OnEnable()
     {
         // Detect unit type
@@ -31,7 +32,7 @@ public class Healthbar : MonoBehaviour
         if (healthBarUIElement == null) return;
 
         //  Update the position and value through HealthbarUIElement
-        healthBarUIElement.UpdatePosition(healthbarLocation.transform.position);
+        healthBarUIElement.UpdatePosition(healthbarLocation.transform.position + healthbarLocationOffset);
 
         if (isEnemy && enemyUnit != null)
         {

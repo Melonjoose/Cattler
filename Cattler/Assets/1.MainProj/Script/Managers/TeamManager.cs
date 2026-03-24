@@ -370,6 +370,7 @@ public class TeamManager : MonoBehaviour
         {
             if (deadCat.catGO != null)
             {
+                currentTeamSize--;
                 Destroy(deadCat.catGO); //it's safe to destroy dead cat gameobject now.
             }
             
@@ -388,11 +389,19 @@ public class TeamManager : MonoBehaviour
 
     }
 
-    public void HealAllCats()
+    public void ResetHealthAllCats() //reset cat currentHP to their maxHP
     {
         foreach (CatUnit cat in cats)
         {
             cat.runtimeData.currentHealth = cat.runtimeData.maxHealth;
+        }
+    }
+
+    public void MakeAllCatImmortal()
+    {
+        foreach (CatUnit cat in cats)
+        {
+            cat.runtimeData.currentHealth += 999;
         }
     }
 

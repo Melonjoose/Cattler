@@ -1,3 +1,4 @@
+using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,7 +40,14 @@ public class HookerUnit : EnemyUnit
             }
         }
 
-        //triggerTrack = GetComponentInChildren<EnemyTriggerTrack>();
+        //apply skeletonanimation
+        Transform child = transform.Find("Spine GameObject");
+        if (child != null)
+        {
+            skeletonAnimation = child.GetComponent<SkeletonAnimation>();
+        }
+
+        skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
     }
 
     // Update is called once per frame
@@ -55,6 +63,13 @@ public class HookerUnit : EnemyUnit
         {
             Walk();
             lockedCD = false; //unlock cooldown
+        }
+    }
+    private void PlayAnimation(string animName, bool loop = false)
+    {
+        if (skeletonAnimation != null)
+        {
+            skeletonAnimation.AnimationState.SetAnimation(0, animName, loop);
         }
     }
 
@@ -102,6 +117,10 @@ public class HookerUnit : EnemyUnit
 
         if (cooldowntimer > shotCooldown) // if cooldowntimer is bigger than the cooldown
         {
+            if (isDead)
+            {
+                return; //safeguard when this unit is dead, it cannot start a new attack
+            }
             StartCoroutine(StartAttackSequence());
             cooldowntimer = 0f; // reset cooldowntimer to 0
         }
@@ -117,6 +136,7 @@ public class HookerUnit : EnemyUnit
         StartCoroutine(UpdateLine());
 
         yield return new WaitForSeconds(0.5f); //  actually wait
+        PlayAnimation("AttackStart", false);
         HookCat();
     }
 
@@ -129,16 +149,17 @@ public class HookerUnit : EnemyUnit
 
     private Coroutine pullCoroutine;
 
-    void HookCat() //state 2
+    void HookCat()
     {
-        if (TargetCat != null) 
-        { 
+        if (TargetCat != null)
+        {
             DrawLine();
             hookedCat = TargetCat.GetComponent<CatUnit>();
             if (hookedCat != null)
             {
                 DebuffManager.instance.Stunned(hookedCat.gameObject, 999f);
                 Debug.Log($"{hookedCat.name} is hooked and stunned!");
+                PlayAnimation("AttackLoop", true);
                 pullCoroutine = StartCoroutine(pullCat());
             }
         }
@@ -164,7 +185,6 @@ public class HookerUnit : EnemyUnit
     public void UnHookCat()
     {
         DeleteLine();
-
         if (hookedCat != null)
         {
             hookedCat.catMovement.canWalk = true;
@@ -173,9 +193,10 @@ public class HookerUnit : EnemyUnit
         }
 
         hookedCat = null;
-        TargetCat = null;   // <-- important
-        attacking = false;  // stop UpdateLine loop
-        canWalk = true;     // resume walking
+        TargetCat = null;
+        attacking = false;
+        canWalk = true;
+        PlayAnimation("Walk", true);
     }
 
 
@@ -200,10 +221,14 @@ public class HookerUnit : EnemyUnit
             hookedCat = null;
         }
 
+        canWalk = false;
+
+        StatFXManager.instance.PlayVFX(this.transform.position, 0);
+        StatFXManager.instance.PlayVFX(this.transform.position, 2);
+        AudioManager.instance.PlaySFX("EnemyDie");
+
+        dropLoot.GiveLoot();
         SpecialEnemySpawner.instance.RemoveSpawnedEnemies(gameObject);
         EnemyDetector.instance.OnEnemyDestroyed(gameObject);
-        dropLoot.GiveLoot();
-
-        Destroy(gameObject);
     }
 }

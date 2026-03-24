@@ -7,6 +7,8 @@ public class EnemyData : ScriptableObject
 
     public string enemyName;
     public Sprite icon;
+    public EnemyType enemyType;
+
     public int health;
     
     public int attackPower;
@@ -24,5 +26,10 @@ public class EnemyData : ScriptableObject
     public int expDrop;
    
 
-    //public EnemyType type;
+    public enum EnemyType
+    {
+        Basic,
+        Special,
+        Boss,
+    }
 }

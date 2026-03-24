@@ -1,0 +1,146 @@
+Artillery.png
+size:2048,512
+filter:Linear,Linear
+pma:true
+Export Artillery/Beam forward/tile096
+bounds:128,8,64,14
+offsets:0,25,64,64
+Export Artillery/Beam forward/tile097
+bounds:1921,191,64,16
+offsets:0,24,64,64
+Export Artillery/Beam forward/tile098
+bounds:2,2,64,20
+offsets:0,22,64,64
+Export Artillery/Beam forward/tile099
+bounds:1708,164,64,22
+offsets:0,21,64,64
+Export Artillery/Beam forward/tile100
+bounds:1642,168,64,30
+offsets:0,17,64,64
+Export Artillery/Beam forward/tile101
+bounds:1642,200,64,32
+offsets:0,16,64,64
+Export Artillery/Beam forward/tile102
+bounds:1642,234,64,38
+offsets:0,13,64,64
+Export Artillery/Beam forward/tile103
+bounds:305,96,64,40
+offsets:0,12,64,64
+Export Artillery/Beam forward/tile104
+bounds:371,96,50,40
+offsets:7,12,64,64
+Export Artillery/Beam forward/tile105
+bounds:1517,121,50,42
+offsets:7,11,64,64
+Export Artillery/Beam forward/tile106
+bounds:1232,199,50,42
+offsets:7,11,64,64
+Export Artillery/Beam forward/tile107
+bounds:1708,230,48,42
+offsets:8,11,64,64
+Export Artillery/Beam forward/tile108
+bounds:1987,167,44,40
+offsets:10,12,64,64
+Export Artillery/Beam forward/tile109
+bounds:305,50,46,44
+offsets:9,10,64,64
+Export Artillery/Beam forward/tile110
+bounds:1708,188,48,40
+offsets:8,12,64,64
+Export Artillery/Beam forward/tile111
+bounds:1758,188,1,1
+Export Artillery/Cloud Outwards/Effect119
+bounds:1758,188,1,1
+Export Artillery/Cloud Outwards/Effect120
+bounds:1758,188,1,1
+Export Artillery/CloudForward/Effect108
+bounds:1758,188,1,1
+Export Artillery/CloudForward/Effect109
+bounds:1758,188,1,1
+Export Artillery/Bleg1
+bounds:911,80,161,319
+rotate:90
+Export Artillery/Bleg2
+bounds:2,24,112,301
+rotate:90
+Export Artillery/Bleg3
+bounds:1357,165,107,283
+rotate:90
+Export Artillery/Cloud Outwards/Effect110
+bounds:2035,484,26,10
+offsets:18,30,64,64
+rotate:90
+Export Artillery/Cloud Outwards/Effect111
+bounds:405,57,37,16
+offsets:12,25,64,64
+rotate:90
+Export Artillery/Cloud Outwards/Effect112
+bounds:1894,167,54,22
+offsets:4,19,64,64
+Export Artillery/Cloud Outwards/Effect113
+bounds:1232,174,57,23
+offsets:2,18,64,64
+Export Artillery/Cloud Outwards/Effect114
+bounds:1774,166,58,23
+offsets:2,18,64,64
+Export Artillery/Cloud Outwards/Effect115
+bounds:1834,167,58,22
+offsets:2,18,64,64
+Export Artillery/Cloud Outwards/Effect116
+bounds:68,2,58,20
+offsets:2,18,64,64
+Export Artillery/Cloud Outwards/Effect117
+bounds:1337,183,58,18
+offsets:2,19,64,64
+rotate:90
+Export Artillery/Cloud Outwards/Effect118
+bounds:194,4,52,18
+offsets:2,19,64,64
+Export Artillery/CloudForward/Effect099
+bounds:423,67,21,29
+offsets:22,7,64,64
+Export Artillery/CloudForward/Effect100
+bounds:1291,171,30,40
+offsets:18,6,64,64
+rotate:90
+Export Artillery/CloudForward/Effect101
+bounds:305,2,35,46
+offsets:16,6,64,64
+Export Artillery/CloudForward/Effect102
+bounds:353,56,38,50
+offsets:15,5,64,64
+rotate:90
+Export Artillery/CloudForward/Effect103
+bounds:1284,203,38,51
+offsets:15,5,64,64
+rotate:90
+Export Artillery/CloudForward/Effect104
+bounds:1517,68,39,51
+offsets:14,5,64,64
+Export Artillery/CloudForward/Effect105
+bounds:423,98,38,51
+offsets:15,5,64,64
+rotate:90
+Export Artillery/CloudForward/Effect106
+bounds:1569,123,40,50
+offsets:14,4,64,64
+rotate:90
+Export Artillery/CloudForward/Effect107
+bounds:1621,126,34,37
+offsets:15,4,64,64
+Export Artillery/Fleg1
+bounds:1232,56,107,283
+rotate:90
+Export Artillery/Fleg2
+bounds:1921,209,112,301
+Export Artillery/Fleg3
+bounds:1758,191,161,319
+Export Artillery/back pincer
+bounds:1357,274,399,236
+Export Artillery/body
+bounds:2,138,489,372
+Export Artillery/front pincer
+bounds:911,243,444,267
+Export Artillery/head
+bounds:493,107,403,416
+rotate:90

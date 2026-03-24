@@ -16,14 +16,13 @@ GameObject:
   - component: {fileID: 7612000161722782170}
   - component: {fileID: 8001055028227475695}
   - component: {fileID: 5945992635180273223}
-  - component: {fileID: 5311494414789296179}
   m_Layer: 7
   m_Name: DrinkSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1532053400367624321
 Transform:
   m_ObjectHideFlags: 0
@@ -182,6 +181,7 @@ MonoBehaviour:
   consumableData: {fileID: 11400000, guid: a0b2162a1a66ae545875a416fc2d2108, type: 2}
   cat: {fileID: 0}
   valuePercentage: 20
+  buffValue: 0
 --- !u!114 &7612000161722782170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,21 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994d48a95d63fc84e961208f7881aa59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5311494414789296179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 374809845249456579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0944dbad146accc4aa27cd17d9a9d7be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  consumableData: {fileID: 0}
-  cat: {fileID: 0}
-  valuePercentage: 20
 --- !u!1 &4014703416963196543
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1838036158072221073}
-  - component: {fileID: 3581489650429659403}
+  - component: {fileID: 1589610800187882439}
   m_Layer: 0
   m_Name: Skill_TeaTime
   m_TagString: Untagged
@@ -268,7 +253,7 @@ Transform:
   - {fileID: 1532053400367624321}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3581489650429659403
+--- !u!114 &1589610800187882439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,17 +262,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4014703416963196543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 014662701eb242349a51ae571b4ba6ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f66eec83c55f654dbdaa79c5a3479fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  skillDesc: Cook food for the team!
-  skillType: Healing
-  cooldown: 15
+  skillDesc: Buff Cats with Tea
+  skillType: Buff
+  cooldown: 4
   time: 0
   value: 5
   speed: 3
   itemObject: {fileID: 374809845249456579}
   catUnit: {fileID: 0}
   skillLocation: {x: 0, y: 0, z: 0}
-  foodPrefab: {fileID: 374809845249456579}
+  drinkPrefab: {fileID: 374809845249456579}

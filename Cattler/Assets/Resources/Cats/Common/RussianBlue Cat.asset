@@ -17,7 +17,7 @@ MonoBehaviour:
   itemName: RussianBlue Cat
   icon: {fileID: 21300000, guid: 9d815370160574b4db94117bd3b00437, type: 3}
   itemType: 0
-  description: A colourful spotted cat
+  description: Must be very russian and blue? maybe pass him some vodka.
   value: 2
   fvalue: 0
   skinName: RussianBlueCat
