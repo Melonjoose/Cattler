@@ -39,14 +39,17 @@
             "id": "4d49d54a054ca7d6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Grad Review.md",
-                "mode": "source",
-                "source": false
+                "file": "!!!Game Structure and Timeline.canvas",
+                "viewState": {
+                  "x": 253.7871239667906,
+                  "y": 1701.1856691911626,
+                  "zoom": -0.41312817220673675
+                }
               },
-              "icon": "lucide-file",
-              "title": "Grad Review"
+              "icon": "lucide-layout-dashboard",
+              "title": "!!!Game Structure and Timeline"
             }
           },
           {
@@ -238,22 +241,22 @@
   },
   "active": "4d49d54a054ca7d6",
   "lastOpenFiles": [
-    "Lobby/Team & Inventory.md",
     "Grad Review.md",
+    "Resolution for Assets.md",
+    "!!!Game Structure and Timeline.canvas",
+    "Team Management/House Rules.md",
+    "Team Management/FYP BOOTH Showcase.md",
+    "Lobby/Team & Inventory.md",
     "Untitled",
     "Lobby/LOBBY.md",
     "Lobby/Summon Page.md",
     "Marketing/Youtube Schedule Planning.md",
-    "Resolution for Assets.md",
     "Coding Notes.md",
     "Purrgatory Game (Main Game)/Dialogue system.md",
-    "Game Structure and Timeline.canvas",
     "Untitled 1.base",
     "Untitled.base",
     "Untitled 2.base",
     "Untitled 3.base",
-    "Team Management/House Rules.md",
-    "Team Management/FYP BOOTH Showcase.md",
     "Purrgatory Game (Main Game)/Game UI.md",
     "Purrgatory Game (Main Game)/Basic Cats.md",
     "Purrgatory Game (Main Game)/Control Manager.md",
@@ -273,7 +276,6 @@
     "List of Assets",
     "Team.md",
     "Lobby",
-    "!CODING.md",
     "Marketing",
     "Team Management",
     "User Interface",
