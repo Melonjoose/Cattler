@@ -54962,6 +54962,9 @@ MonoBehaviour:
   - {fileID: 1191036995}
   - {fileID: 138339285}
   - {fileID: 1516259356}
+  firstFloor: {fileID: 0}
+  middleFloor: {fileID: 0}
+  lastFloor: {fileID: 0}
   backgroundUI:
   - {fileID: 938390533}
   - {fileID: 1819023621}
@@ -54979,6 +54982,7 @@ MonoBehaviour:
   level1To2FloorSprite: {fileID: -6598655280329209528, guid: 659a6ea35438e1744ae378ddf405e6cd, type: 3}
   level2FloorSprite: {fileID: 8877314937526988253, guid: 9e77c0d90a315864db58d076bdaf6ada, type: 3}
   level2BackgroundSprite: {fileID: -214150547176089449, guid: 8b4d885d4963ff842b9fbc2c9ad091d7, type: 3}
+  level2Milestone: 7
   isTraveling: 0
   disableTravel: 0
 --- !u!95 &1809721745

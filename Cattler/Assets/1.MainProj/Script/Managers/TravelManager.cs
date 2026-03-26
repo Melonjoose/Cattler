@@ -2,7 +2,8 @@ using Spine.Unity;
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEditor; // only works in the Editor
+using UnityEditor;
+using UnityEngine.UIElements; // only works in the Editor
 
 
 public class TravelManager : MonoBehaviour
@@ -82,6 +83,7 @@ public class TravelManager : MonoBehaviour
 
     private bool completedTransitionPlayed = false; // declare at class level
     private bool level2Triggered = false; // class-level field
+    private bool level2TextTriggered = false; // class-level field
 
     private void Update()
     {
@@ -101,7 +103,11 @@ public class TravelManager : MonoBehaviour
             TransitionToNewLevel(2);
             level2Triggered = true;
         }
-
+        if (distanceTraveledUIvalue > (level2Milestone+3f) && !level2TextTriggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
+        {
+            TextPopUp("The Ruined City");
+            level2TextTriggered=true;
+        }
         // Check if transition floor has scrolled into view
 
         if (isTransitioning) //current scenario that doesn't work.. floor 3. is in firstfloor position. which is also the transitiontile. middleFloor is Floor 1, Lvl2tile. based on below code, it will check floor1SR if it is a lvl2floor. it is, hence it will upgrade the transitiontile to lvl2tile. BUT it doesnt.
@@ -164,9 +170,6 @@ public class TravelManager : MonoBehaviour
 
     }
 
-
-
-
     private void UpgradeToLevel2(GameObject floor)
     {
         SpriteRenderer floorRenderer = floor.GetComponent<SpriteRenderer>();
@@ -185,7 +188,6 @@ public class TravelManager : MonoBehaviour
             }
         }
     }
-
 
     public void TransitionToNewLevel(int level) //the moment it hit milestone, play this function
     {
@@ -213,27 +215,22 @@ public class TravelManager : MonoBehaviour
 
             isTransitioning = true;  //transitioning is still in progress.
 
-            text.gameObject.SetActive(true); 
-            text.text = "Transitioning to Level 2...";
-            animator.SetTrigger("Play");
-            //text animation sequence
         }
     }
     private void CompleteTransitionToLevel2()
     {
-        if (text != null)
-        {
-            text.gameObject.SetActive(true); // ensure visible
-            text.text = "Entering Level 2";
-        }
-        else
-        {
-            Debug.LogError("Text reference not assigned in inspector!");
-        }
-
-        animator.SetTrigger("Play");
+        //animator.SetTrigger("Play");
         isTransitioning = false;
-        Debug.Log("Entering Lvl2");
+        //Debug.Log("Entering Lvl2");
+    }
+
+    private void TextPopUp(String textmessage)
+    {
+
+        text.gameObject.SetActive(true);
+        text.text = textmessage;
+        animator.SetTrigger("Play");
+        //text animation sequence
     }
 
     public void ResetToStart()
