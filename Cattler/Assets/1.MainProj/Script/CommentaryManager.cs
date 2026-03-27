@@ -20,9 +20,11 @@ public class CommentaryManager : MonoBehaviour
     public float dialogueLifetime = 5.0f; // the time it stays open before it close.
     //create a list that holds string(text or comment)
     public string[] dialogueTextChoices;
+    public string[] tutorialTextChoices; // for tutorial
 
     public List<string> dialogueQueue = new List<string>();
-
+    public GameObject topLeftPosition;  //default
+    public GameObject bottomLeftPosition; //secondary
 
     public bool isTalking = false;
 
@@ -46,6 +48,7 @@ public class CommentaryManager : MonoBehaviour
         textBox.SetActive(true);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+        MoveCommentary(topLeftPosition);
     }
 
     public void BeginTalk(int TextChoice)
@@ -142,6 +145,23 @@ public class CommentaryManager : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
         textBox.SetActive(false);
         StopAllCoroutines();
+    }
+
+    //Tutorial Usage below//
+
+    public void TutorialText(int TextChoice)
+    {
+        string chosenDialogue = tutorialTextChoices[TextChoice];
+
+        isTalking = true;
+
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        typingCoroutine = StartCoroutine(TypeWritingEffect(chosenDialogue));
+    }
+
+    public void MoveCommentary(GameObject locationGO)
+    {
+        catKeeperUI.transform.position = locationGO.gameObject.transform.position;
     }
     //---- Triggers ---// 
 

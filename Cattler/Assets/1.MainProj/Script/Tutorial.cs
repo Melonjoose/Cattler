@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
-
+    public GameObject darkPanel; //darkpanel to darken the BG.
+    public GameObject spotLight; //the spotlight to unhide the darkness. to highlight objects.
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,8 +29,6 @@ public class Tutorial : MonoBehaviour
     }
 
 
-    // First cutscene where player is saved by cats //
-    // Long Black screen..
     // Fade into Lobby..
     // Player: "Where am I???"
     // Player: "My head.. . it hurts..."
@@ -55,8 +54,22 @@ public class Tutorial : MonoBehaviour
     //tutorial on equipping cats to team.
     //tutorial on entering battle.
 
-    //Tutorial Stage. Survive for 1 minute.
+    //Tutorial Stage. Survive for 1 minute. //toggle travelmanager movement off so they won't walk. set up timer to count 60second miletstone to trigger next event.
 
+    //Finish 1 minute milestone. 
+    // Boss: "The car is repaired! All of you, get back in here! We're retreating NOW!"
+    
+    //tutorial on retreating.
+
+
+    //CatKeeper: "That was a close call! We managed to shake them off didn't we?"
+    //Boss: "Darn inklings, they've never been this deep into sanctum forest before. Why now?"
+    //Timmy: "Boss! Where are we heading now?"
+    //Boss: "I guess we should head over to The ruined city for supplies. We are running low on supplies for our mistress."
+    //CatKeeper: "Thank you for your hardwork as always, sweetie."
+    //Boss: "YOU. I want you to assist us on this task, You proved your worth during that ambush."
+
+    //tutorial end. Mission: Get to 10km.
 
     public void CutSceneOne()
     {

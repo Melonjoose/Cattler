@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ruined city clean ground_0: 8877314937526988253
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

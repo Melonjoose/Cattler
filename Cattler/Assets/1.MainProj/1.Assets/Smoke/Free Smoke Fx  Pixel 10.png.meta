@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Free Smoke Fx  Pixel 10_0: 2984478242547204681
+      Free Smoke Fx  Pixel 10_1: 1417849349310519946
+      Free Smoke Fx  Pixel 10_2: 2122619664613089057
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

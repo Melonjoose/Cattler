@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      common healing wand_0: 5060896548927434722
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
