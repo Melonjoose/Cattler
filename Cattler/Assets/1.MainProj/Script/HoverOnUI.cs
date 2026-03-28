@@ -8,6 +8,7 @@ public class HoverOnUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private GameObject textGO;
     [SerializeField] private GameObject highlighter;
     [SerializeField] private Animator animator;
+    [SerializeField] private CanvasGroup canvasGroup;
 
     void Awake()
     {
@@ -15,6 +16,7 @@ public class HoverOnUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         highlighter = objectToHover.transform.Find("Highlighter")?.gameObject;
         textGO = objectToHover.transform.Find("Text")?.gameObject;
         animator = this.GetComponent<Animator>();
+        canvasGroup = this.GetComponent<CanvasGroup>();
 
         if (highlighter != null) highlighter.SetActive(false);
         if (textGO != null) textGO.SetActive(false);
@@ -23,6 +25,8 @@ public class HoverOnUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if(canvasGroup.interactable == false) { return; }
+        
         if (highlighter != null) highlighter.SetActive(true);
         if (textGO != null) textGO.SetActive(true);
         //set animator hovering bool to true
@@ -31,6 +35,8 @@ public class HoverOnUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (canvasGroup.interactable == false) { return; }
+
         if (highlighter != null) highlighter.SetActive(false);
         if (textGO != null) textGO.SetActive(false);
         if (animator != null) animator.SetBool("Hovering", false);
@@ -38,6 +44,8 @@ public class HoverOnUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (canvasGroup.interactable == false) { return; }
+
         if (highlighter != null) highlighter.SetActive(false);
         if (textGO != null) textGO.SetActive(false);
         if (animator != null) animator.SetBool("Hovering", false);

@@ -1,15 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+[System.Serializable]
+
+public class Highlights
+{
+    public GameObject highlight;
+    public CanvasGroup canvasGRP;
+}
 
 public class Tutorial : MonoBehaviour
 {
-    public GameObject darkPanel; //darkpanel to darken the BG.
-    public GameObject spotLight; //the spotlight to unhide the darkness. to highlight objects.
+    public bool inTutorial = false;
+    public static Tutorial instance;
+    public Canvas canvas;
+    public GameObject blackPanel; //darkpanel to darken the BG.
+    public Highlights[] highlights;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
-
+        canvas.gameObject.SetActive(false);
+        blackPanel.gameObject.SetActive(false);
     }
 
     public void Update()
@@ -18,18 +34,96 @@ public class Tutorial : MonoBehaviour
         {
             OpeningScene();
         }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            ShowHighlight(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            HideAllHighlights();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            CommentaryManager.instance.TutorialText(0);
+        }
     }
 
     public void OpeningScene()
     {
+        inTutorial = true;
         //Fade in from black
         Debug.Log("OpeningScene playing");
         Transition.instance.FadeIn();
-        CutSceneOne();
+        StartCoroutine(OpeningSceneSequence());
+    }
+    
+    IEnumerator OpeningSceneSequence()
+    {
+        yield return new WaitForSeconds(1f);
+        DialogueManager.instance.BeginTalk(0);
+
+    }
+
+    public void ShowHighlight(int index)
+    {
+        canvas.gameObject.SetActive(true);
+        blackPanel.gameObject.SetActive(true);
+        foreach (var highlight in highlights)
+        {
+            highlight.highlight.SetActive(false);
+            highlight.canvasGRP.interactable = true; //disable all interable inside of highlights
+        }
+        highlights[index].highlight.SetActive(true);
+        EnableSpecificButton(index);
+    }
+
+    public void HideAllHighlights()
+    {
+        foreach(var highlight in highlights)
+        {
+            highlight.highlight.SetActive(false);
+            highlight.canvasGRP.interactable = true; //disable all interable inside of highlights
+        }
+        canvas.gameObject.SetActive(false);
+        blackPanel.gameObject.SetActive(false);
+    }
+    public void EnableSpecificButton(int index)
+    {
+        foreach (var highlight in highlights)
+        {
+            highlight.canvasGRP.interactable = false; //disable all interable inside of highlights
+        }
+        highlights[index].canvasGRP.interactable = true;
+    }
+
+    public void OnTutorialButtonPressed(TutorialButton button) 
+    {
+        if( button != null)
+        {
+            Debug.Log("Tutorial button pressed: " + button.name);
+
+            CanvasGroup canvasGroup = button.GetComponent<CanvasGroup>();
+            //Debug.Log("CanvasGroup: " + canvasGroup);
+            //Debug.Log("Highlight[0].canvasGRP: " + highlights[0].canvasGRP);
+
+            if ( canvasGroup == highlights[0].canvasGRP) // if summoned is pressed while highlighted,
+            {
+                HideAllHighlights();
+                //tell player to summon one cat
+                ShowHighlight(1); //highlight summon button
+            }
+
+            if(canvasGroup == highlights[1].canvasGRP)
+            {
+
+            }
+        }
     }
 
 
-    // Fade into Lobby..
+    //BEFORE THIS IS TitleScreen 
+    // Fade into Lobby.. ///Trigger on start of game....
     // Player: "Where am I???"
     // Player: "My head.. . it hurts..."
     // you feel something heavy on your chest..
@@ -47,8 +141,8 @@ public class Tutorial : MonoBehaviour
     // Boss: "Then quickly get us out of here! We are in a car for christ sake!"
     // Timmy: "The thing is.. They blew off one of our tires and we are grounded here until we repair it!"
     // Boss: "Oh for christ sake! Why didn't you start with that. All cats to battle position! Buy me time to repair the fort!"
-    //CutSceneOne Ends.
-    
+    //CutSceneOne Ends. //DialogueManager.cs trigger Tutorial.cs
+
     //tutorial on navigating lobby.
     //tutorial on summoning a new cat. (First summon will always be Timmy the rookie)
     //tutorial on equipping cats to team.
@@ -58,7 +152,7 @@ public class Tutorial : MonoBehaviour
 
     //Finish 1 minute milestone. 
     // Boss: "The car is repaired! All of you, get back in here! We're retreating NOW!"
-    
+
     //tutorial on retreating.
 
 

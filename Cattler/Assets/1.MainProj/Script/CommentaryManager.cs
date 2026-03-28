@@ -9,6 +9,7 @@ public class CommentaryManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static CommentaryManager instance;
+    public Canvas canvas;
     public GameObject catKeeper; // reference to catkeeper gameobject
     public CanvasGroup catKeeperUI; // reference to catkeeper UI canvasgroup
     public TextMeshProUGUI text;
@@ -18,6 +19,7 @@ public class CommentaryManager : MonoBehaviour
     private bool isTyping = false;
     public float textTypingSpeed = 1.0f; //how fast the type writing effect is going to be
     public float dialogueLifetime = 5.0f; // the time it stays open before it close.
+    public float defaultDialogueLifetime = 5.0f; // default
     //create a list that holds string(text or comment)
     public string[] dialogueTextChoices;
     public string[] tutorialTextChoices; // for tutorial
@@ -31,6 +33,7 @@ public class CommentaryManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        canvas.gameObject.SetActive(true);
     }
 
     public void Start()
@@ -51,18 +54,17 @@ public class CommentaryManager : MonoBehaviour
         MoveCommentary(topLeftPosition);
     }
 
-    public void BeginTalk(int TextChoice)
+    public void LimitQueue()
     {
-        string chosenDialogue = dialogueTextChoices[TextChoice];
-
-        isTalking = true;
-
-        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-        typingCoroutine = StartCoroutine(TypeWritingEffect(chosenDialogue));
+        //only remember the 2 latests commentary. delete all old ones.
     }
 
+    public void StopSpam()
+    {
+       // prevent player from getting spammed.
+    }
 
-    IEnumerator TypeWritingEffect(string dialogue)
+    IEnumerator TypeWritingEffect(string dialogue ,float lifetime)
     {
         isTyping = true;
         text.text = "";
@@ -80,7 +82,7 @@ public class CommentaryManager : MonoBehaviour
 
         isTyping = false;
 
-        yield return new WaitForSeconds(dialogueLifetime);
+        yield return new WaitForSeconds(lifetime);
         CloseDialogue();
 
         if (dialogueQueue.Count > 0)
@@ -104,6 +106,7 @@ public class CommentaryManager : MonoBehaviour
         }
         AudioManager.instance.PlaySFX("SoftDeny");
     }
+
     public void BeginTalkFromQueue()
     {
         if (dialogueQueue.Count == 0) return;
@@ -115,7 +118,14 @@ public class CommentaryManager : MonoBehaviour
         dialogueQueue.RemoveAt(0);
 
         StopAllCoroutines();
-        StartCoroutine(TypeWritingEffect(nextDialogue));
+        if(Tutorial.instance.inTutorial == false)
+        {
+            StartCoroutine(TypeWritingEffect(nextDialogue, defaultDialogueLifetime));
+        }
+        else
+        {
+            StartCoroutine(TypeWritingEffect(nextDialogue, 999f));
+        }
     }
 
     public void ClickOnBoxInteraction()
@@ -136,7 +146,7 @@ public class CommentaryManager : MonoBehaviour
 
         CloseDialogue();
     }
-    void CloseDialogue()
+    public void CloseDialogue()
     {
         isTalking = false;
         catKeeperUI.alpha = 0;
@@ -151,12 +161,18 @@ public class CommentaryManager : MonoBehaviour
 
     public void TutorialText(int TextChoice)
     {
+        Debug.Log("tutorialComment" + TextChoice);
+        OpenCanvasGroup();
+        // Add the chosen dialogue line to the queue
         string chosenDialogue = tutorialTextChoices[TextChoice];
+        dialogueQueue.Add(chosenDialogue);
 
-        isTalking = true;
+        // If not currently talking, start immediately
+        if (!isTalking)
+        {
+            BeginTalkFromQueue();
+        }
 
-        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-        typingCoroutine = StartCoroutine(TypeWritingEffect(chosenDialogue));
     }
 
     public void MoveCommentary(GameObject locationGO)

@@ -41,6 +41,9 @@ public class DialogueManager : MonoBehaviour
     public Image CharacterRight; //image slot right
     public float readingTime = 3f;
 
+    public bool intro1Start = false;
+    public bool intro1Completed = false;
+
     //create a list that holds string(text or comment)
     //need a list that holds multiple dialogue choices,sprites and scenerios.(screenshake, emergency, shockCharacterLeft, shock characterRight) 
 
@@ -62,6 +65,7 @@ public class DialogueManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        canvas.gameObject.SetActive(true);
     }
 
     public void Start()
@@ -95,6 +99,10 @@ public class DialogueManager : MonoBehaviour
         canvas.gameObject.SetActive(true);
         dialogueCount = 0;  // reset every time you start a new sequence
         DialogueSequence seq = dialogueSequences[dialogueSeqIndex];
+        if(dialogueSeqIndex == 0)
+        {
+            intro1Start = true;
+        }
         textBox.SetActive(true);
         StopAllCoroutines();
         dialogueQueue.Clear(); // clear old lines
@@ -240,6 +248,15 @@ public class DialogueManager : MonoBehaviour
         textBox.SetActive(false);
         canvas.gameObject.SetActive(false);
         dialogueQueue.Clear();
+
+        if (intro1Start)
+        {
+            intro1Start = false; 
+            intro1Completed = true;
+            Tutorial.instance.ShowHighlight(0);
+            CommentaryManager.instance.TutorialText(0);
+            CommentaryManager.instance.MoveCommentary(CommentaryManager.instance.topLeftPosition);
+        }
     }
 
     //tap to skip typinganimation if it is still typing.
