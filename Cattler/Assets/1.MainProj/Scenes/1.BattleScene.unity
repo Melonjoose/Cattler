@@ -5955,6 +5955,8 @@ MonoBehaviour:
   commonCats: []
   rareCats: []
   legendaryCats: []
+  firstSummonCat: {fileID: 11400000, guid: 610f2dd8aea318643ba43fedb2c8ca1d, type: 2}
+  isFirstSummon: 1
   summonCanvas: {fileID: 1981240530}
   tapToRevealPage: {fileID: 287844393}
   commonUI: {fileID: 1874053679}
@@ -8494,13 +8496,13 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.49019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -25321,6 +25323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab699d5450398248945607a004aa095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inTutorial: 0
   canvas: {fileID: 667849249}
   blackPanel: {fileID: 840841741}
   highlights:
@@ -37013,6 +37016,7 @@ GameObject:
   - component: {fileID: 1173128750}
   - component: {fileID: 1173128749}
   - component: {fileID: 1173128751}
+  - component: {fileID: 1173128752}
   m_Layer: 5
   m_Name: ClosePagePanel
   m_TagString: Untagged
@@ -37133,6 +37137,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &1173128752
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173128747}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1179591102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55681,6 +55697,8 @@ MonoBehaviour:
     inklings.
   tutorialTextChoices:
   - Come and talk to me and I will summon you cats to defend us!
+  - Here is free 100 ink from me! You can collect more inks to summon more cats.
+    Press the summon button to summon our first defender!
   dialogueQueue: []
   topLeftPosition: {fileID: 1942794289}
   bottomLeftPosition: {fileID: 1897579559}

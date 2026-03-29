@@ -35,18 +35,6 @@ public class Tutorial : MonoBehaviour
             OpeningScene();
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            ShowHighlight(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            HideAllHighlights();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            CommentaryManager.instance.TutorialText(0);
-        }
     }
 
     public void OpeningScene()
@@ -97,6 +85,14 @@ public class Tutorial : MonoBehaviour
         highlights[index].canvasGRP.interactable = true;
     }
 
+    //introduce Summonbutton.
+    //talks about earning ink and cores to summon cats.
+    //tell players to summon cats.
+    //once they summon. force them to watch the animation.
+    //tell them to exit out of summon page.
+    //when enter lobby, highlight inventory page and tell them to go to the inventory.
+    //upon entering , highlight first Icon and team list 1. tell them to drag and drop cat into team slot to equip them.
+
     public void OnTutorialButtonPressed(TutorialButton button) 
     {
         if( button != null)
@@ -112,11 +108,13 @@ public class Tutorial : MonoBehaviour
                 HideAllHighlights();
                 //tell player to summon one cat
                 ShowHighlight(1); //highlight summon button
+
             }
 
             if(canvasGroup == highlights[1].canvasGRP)
             {
-
+                HideAllHighlights();
+                ShowHighlight(2);
             }
         }
     }

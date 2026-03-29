@@ -16,6 +16,8 @@ public class SummonManager : MonoBehaviour
     public CatData[] rareCats;
     public CatData[] legendaryCats;
 
+    public CatData firstSummonCat; // for tutorial, the guaranteed common cat on the first summon.
+    public bool isFirstSummon = true; // to track if the first summon has been done.
 
     public Canvas summonCanvas;
     public GameObject tapToRevealPage;
@@ -40,6 +42,7 @@ public class SummonManager : MonoBehaviour
         tapToRevealPage.SetActive(false);
         InitializeCards();// summoncat holding all the common,rare,legendary.
         closeSummonPage.SetActive(false);
+        //DisableSkipAnimation(); //disable until tutorial summon is done.
 }
 
     void InitializeCards()
@@ -97,6 +100,11 @@ public class SummonManager : MonoBehaviour
         return pool[index];
     }
 
+    public void FirstSummon()
+    {
+        Inventory.instance.InstantiateNewCat(firstSummonCat);
+    }
+
     public void Summon(bool isPremium = false)
     {
         Rarity rarity = RollRarity(isPremium);
@@ -143,9 +151,36 @@ public class SummonManager : MonoBehaviour
         summonAnimator.SetTrigger("Summon");
     }
 
+    void DisableSkipAnimation()
+    {
+        CanvasGroup canvasGroup = closeSummonPage.GetComponent<CanvasGroup>();
+        canvasGroup.interactable = false;
+    }
+
+    void EnableSkipAnimation() 
+    { 
+        CanvasGroup canvasGroup = closeSummonPage.GetComponent<CanvasGroup>();
+        canvasGroup.interactable = true;
+    }
 
     public void SummonButtonPressed() //to add to button onclick event
     {
+        if(isFirstSummon == true && firstSummonCat != null)
+        {
+            isFirstSummon = false;
+            Currency.instance.AddInk(-summonCost); // Deduct summon cost
+            FirstSummon();
+            summonCatDisplay.SetActive(true);   // activate parent first
+            currentRolledCat = firstSummonCat; // set the rolled cat to the first summon cat for display purposes
+            Rarity rarity = Rarity.Common; // first summon is always common
+            RarityChecker(rarity);
+            commonUI.gameObject.SetActive(false);
+            rareUI.gameObject.SetActive(false);
+            legendaryUI.gameObject.SetActive(false);
+            OpenTapToRevealPage();
+            return;
+        }
+
         if (Inventory.instance.inventoryList.Count >= Inventory.instance.currentCapacity)
         {
             CommentaryManager.instance.AddDialogueToQueue(4); // team is full
@@ -181,6 +216,8 @@ public class SummonManager : MonoBehaviour
         closeSummonPage.SetActive(true);
     }
 
+    private bool firstSummonCompleted = false;
+
     public void CloseSummonPages()
     {
         if(tapToRevealPage.activeSelf == false && summonCatDisplay.activeSelf == false && closeSummonPage.activeSelf)
@@ -193,5 +230,12 @@ public class SummonManager : MonoBehaviour
         legendaryUI.gameObject.SetActive(false);
         summonCatDisplay.SetActive(false);
         closeSummonPage.SetActive(false);
+
+        /*
+        if(firstSummonCompleted == false && isFirstSummon == true) //needs to be infirstsummon, yet not completed. this is to prevent players from skipping the tutorial summon and still getting the skip button unlocked.
+        {
+            firstSummonCompleted = true;
+            EnableSkipAnimation(); //enable skip button for tutorial after first summon.
+        }*/
     }
 }
