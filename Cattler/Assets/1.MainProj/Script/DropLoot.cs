@@ -12,7 +12,7 @@ public class DropLoot : MonoBehaviour
     public LootTableEntry[] lootTable; // Assign in inspector
 
     public int minInkDrop = 10;
-    public int maXInkDrop = 100;
+    public int maxInkDrop = 100;
     public int minCoreDrop = 0;
     public int maxCoreDrop = 0;
     public int minEXPDrop = 10;
@@ -45,7 +45,7 @@ public class DropLoot : MonoBehaviour
 
     public int RollInk()
     {
-        return Random.Range(minInkDrop, maXInkDrop);
+        return Random.Range(minInkDrop, maxInkDrop);
     }
 
     public int GetEXP()

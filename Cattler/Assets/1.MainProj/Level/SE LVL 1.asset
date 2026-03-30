@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: SE LVL 1
   m_EditorClassIdentifier: 
   level: 1
-  spawnableList:
-  - {fileID: 11400000, guid: 2a9688ae1e8e824429bd9a70adc1483a, type: 2}
+  spawnableList: []
   minSpawnInterval: 4
   maxSpawnInterval: 8
   minEnemiesPerInterval: 0
@@ -22,7 +21,8 @@ MonoBehaviour:
   maxEnemies: 1
   minSize: 1
   maxSize: 1
-  enemyHealthPercentage: 0
-  enemyAttackPercentage: 0
-  enemySpeedPercentage: 0
+  HPIncrease: 0
+  ATKIncrease: 0
+  ATKSPDIncrease: 0
+  MVSPDIncrease: 0
   lootPercentage: 0

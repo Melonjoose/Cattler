@@ -78,66 +78,6 @@ public class MovementDrag : MonoBehaviour
 
     }
 
-
-
-    /*
-    private void OnMouseDrag()
-    {
-        //realised clicking on target point trigger draggable.. Need to determine specifics like ONLY clicking on catUnit, then can trigger onMouseDrag. **need to work on.
-
-
-        if (!dragging) return;
-
-        // Draw line from object to arrow tip at mouse position.
-        // if there are any nearby positions, snap arrow tip to that position.
-        
-        startPos = transform.position;
-        Vector3 mouseScreen = Input.mousePosition;
-        mouseScreen.z = camToObjDistance;
-        Vector3 mouseWorld = mainCam.ScreenToWorldPoint(mouseScreen);
-        mouseWorld.z = 0; // flatten to 2D plane
-        Vector3 arrowTip = mouseWorld;
-
-        lastMouseWorld = mouseWorld;
-        DrawArc(startPos, arrowTip);
-
-        SnapArrowToPosition();
-    }
-
-
-    private void OnMouseUp()
-    {
-        dragging = false;
-        line.enabled = false;
-
-        CatUnit otherCat;
-        int nearestIndex = FindNearestPositionIndex(lastMouseWorld, out otherCat);
-
-        Debug.Log($"other cat is " + otherCat);
-        if (nearestIndex != -1)
-        {
-
-            if (otherCat != null) //if there is another cat.
-            {
-                Debug.Log(otherCat + "is found");
-                int originalIndex = catMovement.catIndex;
-                //catMovement.catIndex = nearestIndex;
-                //otherCat.catMovement.catIndex = originalIndex;
-                catMovement.MoveToDesignatedLocation(nearestIndex);
-                otherCat.catMovement.MoveToDesignatedLocation(originalIndex);
-            }
-            else
-            {
-                Debug.Log("no cat is not found");
-               
-                catMovement.MoveToDesignatedLocation(nearestIndex);
-            }
-        }
-
-        arrowHeadInstance.SetActive(false);
-    }
-    */
-
     void HandleRelease()
     {
         CatUnit otherCat;

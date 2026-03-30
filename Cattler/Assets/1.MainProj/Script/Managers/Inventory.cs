@@ -217,6 +217,11 @@ public class Inventory : MonoBehaviour
                 }
             }
             
+            if(Tutorial.instance.tutorialStage == 6 && Tutorial.instance.inTutorial)
+            {
+                Tutorial.instance.TriggerTUT7();
+            }//during tutorial, first cat added to team will trigger this on stage 6 and intutorial.
+
         }
         else if (slot.slotType == SnappableLocation.SlotType.CharacterPreview)
         {

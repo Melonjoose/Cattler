@@ -26,8 +26,9 @@ public class Level : ScriptableObject
     public float maxSize = 1.4f;
 
     //Difficulty
-    public float enemyHealthPercentage = 0; // + how much percentage in strength, if 10 = 10% increase of their base HP
-    public float enemyAttackPercentage = 0;
-    public float enemySpeedPercentage = 0;
+    public int HPIncrease = 0; // + how much percentage in strength, if 10 = 10% increase of their base HP
+    public int ATKIncrease = 0; // + how much percentage in strength, if 10 = 10% increase of their base HP
+    public float ATKSPDIncrease = 0;
+    public float MVSPDIncrease= 0;
     public float lootPercentage = 0;
 }

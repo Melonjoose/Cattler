@@ -80,44 +80,19 @@ public class EnemySpawner : MonoBehaviour
     }
 
 
-    void AdjustEnemyDifficulty(GameObject Enemy)
-    {
-        if(currentLevel == null)
-        {
-            return;
-        }
-        EnemyUnit enemyUnit = Enemy.GetComponent<EnemyUnit>();
-        if(enemyUnit != null)
-        {
-            if(currentLevel.enemyAttackPercentage > 0)
-            {
-                enemyUnit.attackDamage = (int)(enemyUnit.enemyData.attackPower * (1f + currentLevel.enemyAttackPercentage / 100f));
-            }
-            if (currentLevel.enemyHealthPercentage > 0)
-            {
-                enemyUnit.maxHealth += (int)(enemyUnit.enemyData.health * (1f + currentLevel.enemyHealthPercentage / 100f)); //add enemy percentage of it's base attack
-                enemyUnit.currentHealth = enemyUnit.maxHealth;
-            }
-            if (currentLevel.enemySpeedPercentage > 0)
-            {
-                enemyUnit.moveSpeed += (int)(enemyUnit.enemyData.movementSpeed * (1f + currentLevel.enemySpeedPercentage / 100f)); //add enemy percentage of it's base attack
-            }
-        }
-    }
 
     public void SpawnEnemy(EnemyData data)
     {
-        // Pick a random offset within a circle
         Vector2 spawnOffset = Random.insideUnitCircle * radius;
-
-        // Convert 2D offset to 3D position
         Vector3 spawnPos = spawnLocation.transform.position + new Vector3(spawnOffset.x, 0, 0f);
 
-        //enemy can spawn at a random size
         float randomSize = Random.Range(minSize, maxSize);
 
         GameObject newEnemy = Instantiate(data.prefab, spawnPos, Quaternion.identity);
-        AdjustEnemyDifficulty(newEnemy);
+
+        // Ensure stats are initialized before adjusting
+        EnemyUnit unit = newEnemy.GetComponent<EnemyUnit>();
+
         newEnemy.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
         newEnemy.transform.SetParent(TravelManager.instance.floorGRP.transform, true);
         AddEnemyToSpawnedList(newEnemy);

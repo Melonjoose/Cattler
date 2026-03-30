@@ -24,7 +24,7 @@ MonoBehaviour:
   AbilityName: HeavyShot
   AbilityDesc: Shoot one bullet that does massive damage!
   health: 1
-  attackPower: 3
-  attackSpeed: 1
-  attackRange: 2
+  attackPower: 1
+  attackSpeed: 0
+  attackRange: 1
   movementSpeed: 1

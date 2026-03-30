@@ -6,8 +6,9 @@ public class EnemyUnit : MonoBehaviour
     private GameObject thisUnit; // Reference to self for clarity
     public SkeletonAnimation skeletonAnimation;
     private EnemyMovement EnemyMovement;
-    private EnemyTriggerTrack triggerTrack;
+    public EnemyTriggerTrack triggerTrack;
     public bool canWalk = true;
+    public bool canAttack = true;
     public bool isDead = false;
 
     public bool pickRandomCat = false;
@@ -51,19 +52,10 @@ public class EnemyUnit : MonoBehaviour
 
         if (enemyData != null)
         {
-            // Initialize stats from SO
-            maxHealth = enemyData.health;
-            currentHealth = enemyData.health;
-            attackSpeed = enemyData.attackSpeed;
-            attackDamage = enemyData.attackPower;
-            moveSpeed = enemyData.movementSpeed;
-            attackRange = enemyData.attackRange;
-
-            // Apply sprite
-            SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            if (sr && enemyData.icon != null)
+            InitializeFromData(enemyData);
+            if(EnemySpawner.instance.currentLevel != null)
             {
-                sr.sprite = enemyData.icon;
+                AdjustEnemyDifficulty(EnemySpawner.instance.currentLevel);
             }
         }
         else
@@ -94,11 +86,20 @@ public class EnemyUnit : MonoBehaviour
                 FindClosestCat();
             }
         }
+
+        if(canWalk && EnemyMovement != null)
+        {
+            EnemyMovement.enabled = true;
+        }
+        else if(!canWalk && EnemyMovement != null)
+        {
+            EnemyMovement.enabled = false;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (attackCooldown <= 0f)
+        if (attackCooldown <= 0f && canAttack)
         {
             CatUnit cat = other.GetComponent<CatUnit>();
             if (cat != null && other.gameObject == TargetCat && isDead == false) // only attack chosen target. if it's not dead
@@ -106,6 +107,22 @@ public class EnemyUnit : MonoBehaviour
                 AttackCat(cat);
                 attackCooldown = 1f / attackSpeed; // Reset cooldown
             }
+        }
+    }
+    public void InitializeFromData(EnemyData data)
+    {
+        enemyData = data;
+        maxHealth = data.health;
+        currentHealth = data.health;
+        attackSpeed = data.attackSpeed;
+        attackDamage = data.attackPower;
+        moveSpeed = data.movementSpeed;
+        attackRange = data.attackRange;
+        // Apply sprite
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr && data.icon != null)
+        {
+            sr.sprite = data.icon;
         }
     }
 
@@ -169,6 +186,8 @@ public class EnemyUnit : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if(isDead) return; // Don't take damage if already dead
+
         StatFXManager.instance.PlayVFX(this.transform.position, 1); // onhit vfx
         AudioManager.instance.PlaySFX("EnemyHit");
         currentHealth -= amount;
@@ -229,5 +248,24 @@ public class EnemyUnit : MonoBehaviour
             
             return; 
         //Debug.Log(enemyData.enemyName + " attacked " + cat.name + " for " + attackDamage + " damage!");
+    }
+
+
+    public void AdjustEnemyDifficulty(Level level)
+    {
+        Debug.Log("adjust played;");
+        if (level == null) return;
+
+        attackDamage = enemyData.attackPower + level.ATKIncrease;
+        maxHealth = enemyData.health + level.HPIncrease;
+        currentHealth = maxHealth;
+        attackSpeed = enemyData.attackSpeed + level.ATKSPDIncrease;
+        moveSpeed = enemyData.movementSpeed + level.MVSPDIncrease;
+
+        DropLoot dropLootComponent = GetComponent<DropLoot>();
+        float lootMultiplier = 1 + (level.lootPercentage / 100f);
+        dropLootComponent.minInkDrop = (int)(dropLootComponent.minInkDrop * lootMultiplier);
+        dropLootComponent.maxInkDrop = (int)(dropLootComponent.maxInkDrop * lootMultiplier);
+
     }
 }

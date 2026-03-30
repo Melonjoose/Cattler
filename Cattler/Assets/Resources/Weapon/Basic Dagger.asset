@@ -23,8 +23,8 @@ MonoBehaviour:
   skill: {fileID: 7032846538255474606, guid: ac40a121dec285a48ae2177f4c64909a, type: 3}
   AbilityName: Cross Slash
   AbilityDesc: Slashes all enemy in front of the cat
-  health: 2
+  health: 1
   attackPower: 1
-  attackSpeed: 3
+  attackSpeed: 0.2
   attackRange: 1
   movementSpeed: 1

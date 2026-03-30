@@ -66,9 +66,14 @@ public class ArtilleryUnit : EnemyUnit
             Walk();
         }
 
-        if (lockedCD == false)
+        if (lockedCD == false && canAttack)
         {
             CooldownTimer();
+        }
+
+        if(canAttack == false)
+        {
+            StopAllCoroutines();
         }
     }
 

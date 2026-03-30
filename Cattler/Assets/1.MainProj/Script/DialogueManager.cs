@@ -80,7 +80,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.N)) // test
         {
-            BeginTalk(0);
+            //BeginTalk(0);
         }
 
         if (Input.GetMouseButtonDown(0)) // left click or tap
@@ -102,6 +102,14 @@ public class DialogueManager : MonoBehaviour
         if(dialogueSeqIndex == 0)
         {
             intro1Start = true;
+        }
+        if (dialogueSeqIndex == 1)
+        {
+            firstRetreat = true;
+        }
+        if(dialogueSeqIndex == 2)
+        {
+            backToLobby = true;
         }
         textBox.SetActive(true);
         StopAllCoroutines();
@@ -242,6 +250,10 @@ public class DialogueManager : MonoBehaviour
         textBox.SetActive(false);
     }
 
+    private bool firstRetreat = false;
+    private bool retreatCompleted = false;
+    private bool backToLobby = false;
+    private bool backToLobbyCompleted = false;
     void EndDialogueSequence()
     {
         isTalking = false;
@@ -249,16 +261,36 @@ public class DialogueManager : MonoBehaviour
         canvas.gameObject.SetActive(false);
         dialogueQueue.Clear();
 
+        CheckTriggers();
+    }
+
+    void CheckTriggers()
+    {
+
         if (intro1Start)
         {
-            intro1Start = false; 
+            intro1Start = false;
             intro1Completed = true;
+            Tutorial.instance.tutorialStage = 0;
             Tutorial.instance.ShowHighlight(0);
             CommentaryManager.instance.TutorialText(0);
             CommentaryManager.instance.MoveCommentary(CommentaryManager.instance.topLeftPosition);
         }
-    }
 
+        if (intro1Completed && firstRetreat)
+        {
+            firstRetreat = false;
+            retreatCompleted = true;
+            Tutorial.instance.TriggerTUT13();
+        }
+
+        if (retreatCompleted && backToLobby)
+        {
+            backToLobby = false;
+            backToLobbyCompleted = true;
+            Tutorial.instance.TriggerTUT16();
+        }
+    }
     //tap to skip typinganimation if it is still typing.
     //tap to skip the readingtime.
 }

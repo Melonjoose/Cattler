@@ -54,7 +54,7 @@ public class HookerUnit : EnemyUnit
     void Update()
     {
 
-        if (lockedCD == false && hookedCat == null)
+        if (lockedCD == false && hookedCat == null && canAttack)
         {
             CooldownTimer(); //timer runs
         }

@@ -23,6 +23,7 @@ public class CatUnit : MonoBehaviour
     public GameObject catGO; //world cat gameobject
     public GameObject catLobby; // reference the lobby cat of this
     public GameObject targetPoint;
+    public TriggerTrack triggerTrack;
     public GameObject AnimationBody; //the gameobject that has the animator component for this cat. (for animation purposes only, not the actual catGO)
     public SkeletonAnimation skeletonAnimation;
     public SkeletonGraphic skeletonGraphic;
@@ -35,6 +36,7 @@ public class CatUnit : MonoBehaviour
     private float attackCooldown;
 
     public bool isAttacking = false;
+    public bool canWalk = true;
     public bool isStunned = false;
     public bool isDead = false;
 
@@ -78,12 +80,20 @@ public class CatUnit : MonoBehaviour
 
     private void Update()
     {
-        if (canAttack) 
+        if (canAttack && triggerTrack != null) 
         {
             if (attackCooldown > 0f)
             {
                 attackCooldown -= Time.deltaTime; //reset cooldown if not attacking
             }
+        }
+        if (canWalk == false && catMovement != null)
+        {
+            catMovement.enabled = false;
+        }
+        else if(canWalk == true && catMovement != null)
+        {
+            catMovement.enabled = true;
         }
     }
 
@@ -147,6 +157,7 @@ public class CatUnit : MonoBehaviour
         if (tp != null)
         {
             targetPoint = tp.gameObject;
+            triggerTrack = targetPoint.GetComponent<TriggerTrack>();
         }
     }
 
@@ -232,6 +243,8 @@ public class CatUnit : MonoBehaviour
         
         isDead = true;
 
+        //disable skills & set icon to deathicon
+        CatIconUI.instance.UnlinkSkill(this);
         CatIconUI.instance.SetIconToDead(catIconSlot);
 
         TeamManager.instance.StoreToDeadCatsList(this);
@@ -239,6 +252,7 @@ public class CatUnit : MonoBehaviour
         CatRoamLobby.instance.RemoveCatFromLobby(this);
         
         catGO.SetActive(false);
+
         //Destroy(gameObject);  //delete when return to lobby.
     }
 

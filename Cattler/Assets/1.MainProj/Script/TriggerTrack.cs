@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class TriggerTrack : MonoBehaviour
 {
+    public bool canAttack = true;
     private GameObject cat;
     private CatUnit catUnit;
     public float triggerRadius = 5f;      // Radius around the cat
+    public bool inRange = false;         // Whether the enemy is in range for attack
     public float moveSpeed = 3f;
     public Vector3 offsetFromCat = new Vector3(0, 0, 1f); // Position in front of the cat
 
@@ -19,18 +21,21 @@ public class TriggerTrack : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(triggerRadius != catUnit.runtimeData.template.attackRange)
+
+        if (triggerRadius != catUnit.runtimeData.template.attackRange)
         {
             triggerRadius = catUnit.runtimeData.attackRange;
         }
         FindNearestEnemy();
         TrackEnemy();
+        RevealTracker();
     }
 
     void TrackEnemy()
     {
-        if (nearestEnemy != null)
+        if (nearestEnemy != null && canAttack)
         {
+            inRange = true;
             // Move toward the enemy
             transform.position = Vector3.MoveTowards(transform.position, nearestEnemy.transform.position, moveSpeed * Time.deltaTime);
             if (transform.position == nearestEnemy.transform.position)
@@ -40,6 +45,8 @@ public class TriggerTrack : MonoBehaviour
         }
         else
         {
+
+            inRange = false;
             // Return to position in front of the cat
             Vector3 targetPosition = cat.transform.position +
                                      cat.transform.forward * offsetFromCat.z +
@@ -95,6 +102,19 @@ public class TriggerTrack : MonoBehaviour
             {
                 catUnit.TryAttack(target); // Call Attack component, not static
             }
+        }
+    }
+
+    void RevealTracker()
+    {
+        //if there is a target and target is in range. show tracker. else hide tracker.
+        if (nearestEnemy != null && inRange)
+        {
+            GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 }

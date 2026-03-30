@@ -19,10 +19,11 @@ MonoBehaviour:
   maxSpawnInterval: 5
   minEnemiesPerInterval: 1
   maxEnemiesPerInterval: 1
-  maxEnemies: 3
+  maxEnemies: 2
   minSize: 0.7
   maxSize: 0.7
-  enemyHealthPercentage: 0
-  enemyAttackPercentage: 0
-  enemySpeedPercentage: 0
+  HPIncrease: 0
+  ATKIncrease: 0
+  ATKSPDIncrease: 0
+  MVSPDIncrease: 0
   lootPercentage: 0

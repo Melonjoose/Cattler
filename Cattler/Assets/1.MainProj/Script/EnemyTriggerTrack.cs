@@ -21,10 +21,13 @@ public class EnemyTriggerTrack : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Update range check first
+
+            // Update range check first
         inRange = IsInRange();
 
         TrackEnemy();
+        RevealTracker();
+
     }
 
     void TrackEnemy()
@@ -48,7 +51,6 @@ public class EnemyTriggerTrack : MonoBehaviour
                 moveSpeed * Time.deltaTime
             );
         }
-
         OnTargetChecker();
     }
 
@@ -66,5 +68,18 @@ public class EnemyTriggerTrack : MonoBehaviour
 
         // Check if tracker has reached the cat
         onTarget = (transform.position == chosenCat.transform.position);
+    }
+
+    void RevealTracker()
+    {
+        //if there is a target and target is in range. show tracker. else hide tracker.
+        if (chosenCat != null && inRange)
+        {
+            GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 }

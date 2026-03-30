@@ -39,10 +39,13 @@ public class SummonManager : MonoBehaviour
 
         summonCanvas.transform.localPosition = new Vector3(0, -10, 0);
         instance = this;
-        tapToRevealPage.SetActive(false);
+
+        //disable summon related UI first.
+        summonCatDisplay.SetActive(false);
         InitializeCards();// summoncat holding all the common,rare,legendary.
+        tapToRevealPage.SetActive(false);
         closeSummonPage.SetActive(false);
-        //DisableSkipAnimation(); //disable until tutorial summon is done.
+        DisableSkipAnimation(); //disable until tutorial summon is done.
 }
 
     void InitializeCards()
@@ -157,7 +160,7 @@ public class SummonManager : MonoBehaviour
         canvasGroup.interactable = false;
     }
 
-    void EnableSkipAnimation() 
+    void EnableSkipAnimation() //Triggered by event inside of animation.
     { 
         CanvasGroup canvasGroup = closeSummonPage.GetComponent<CanvasGroup>();
         canvasGroup.interactable = true;
@@ -167,7 +170,6 @@ public class SummonManager : MonoBehaviour
     {
         if(isFirstSummon == true && firstSummonCat != null)
         {
-            isFirstSummon = false;
             Currency.instance.AddInk(-summonCost); // Deduct summon cost
             FirstSummon();
             summonCatDisplay.SetActive(true);   // activate parent first
@@ -231,11 +233,21 @@ public class SummonManager : MonoBehaviour
         summonCatDisplay.SetActive(false);
         closeSummonPage.SetActive(false);
 
-        /*
+        
         if(firstSummonCompleted == false && isFirstSummon == true) //needs to be infirstsummon, yet not completed. this is to prevent players from skipping the tutorial summon and still getting the skip button unlocked.
         {
+            isFirstSummon = false; // only when the summon is closed. then considered it closed.
             firstSummonCompleted = true;
-            EnableSkipAnimation(); //enable skip button for tutorial after first summon.
-        }*/
+            Tutorial.instance.TriggerTUT4();
+        }
+    }
+
+    //TUT3 when summon animation completed for the first time. Catkeeper congratz player. tell them to tap the screen to continue.
+    void TutorialSummonAnimationCompleted()
+    {
+        if (firstSummonCompleted == false && isFirstSummon == true && Tutorial.instance.inTutorial == true)
+        {
+            Tutorial.instance.TriggerTUT3();
+        }
     }
 }

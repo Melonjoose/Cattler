@@ -7,7 +7,7 @@ public class CatMovement : MonoBehaviour
 {
     public int catIndex; // Current index in the lineup
     public int initialCatIndex; // Initial index to reset to
-    public bool inPosition = false;
+    public bool inPositionNewPosition = false;
     public Rigidbody2D rb;
     private CatUnit catUnit => GetComponent<CatUnit>();
     private Transform targetLocation;
@@ -72,7 +72,7 @@ public class CatMovement : MonoBehaviour
     {
         
         CatIconUI.instance.MoveIcon(catUnit,targetindex);
-        inPosition = false;
+        inPositionNewPosition = false;
         AssignCatIndex(targetindex);
         lastAssignedIndex = catIndex; // make lastAssignedIndex same as catIndex so it can update
 
@@ -84,6 +84,7 @@ public class CatMovement : MonoBehaviour
     {
         Debug.Log($"Assigning {gameObject.name} to index {index}");
         catIndex = index;
+        InPositionFirstTime();
     }
 
     void Walk(int targetIndex)
@@ -97,24 +98,8 @@ public class CatMovement : MonoBehaviour
 
             float newX = Mathf.MoveTowards(currentPos.x, targetPos.x, moveSpeed * Time.fixedDeltaTime);
             rb.MovePosition(new Vector2(newX, currentPos.y));
-
-            // If we just started walking, set animation once
-            if (!isWalking)
-            {
-                catUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
-                isWalking = true;
-            }
-
-            // Snap to target if close enough
-            if (Vector3.Distance(transform.position, targetLocation.position) < 0.05f)
-            {
-                transform.position = targetLocation.position;
-
-                // Switch back to idle once arrived
-                catUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
-                isWalking = false;
-            }
         }
+
     }
 
 
@@ -122,5 +107,17 @@ public class CatMovement : MonoBehaviour
     {
         catIndex = initialCatIndex; // they slowly walk to their original location. but now I want them to immediately position themself.
         catUnit.gameObject.transform.position = worldPositions[catIndex].position;
+    }
+
+    [SerializeField]private bool inPositionFirstTimeCompleted = false;
+    public void InPositionFirstTime()
+    {
+        Debug.Log($"InPositionFirstTime called for {gameObject.name}. Tutorial stage: {Tutorial.instance.tutorialStage}, inTutorial: {Tutorial.instance.inTutorial}, inPositionFirstTimeCompleted: {inPositionFirstTimeCompleted}");
+        if (Tutorial.instance.tutorialStage == 10 && Tutorial.instance.inTutorial && !inPositionFirstTimeCompleted) //needs to be in tutorial and right stage.
+        {
+            inPositionFirstTimeCompleted = true;
+            Tutorial.instance.TriggerTUT11();
+            Debug.Log($"InPositionFirstTime triggered TUT11 for {gameObject.name}");
+        }
     }
 }

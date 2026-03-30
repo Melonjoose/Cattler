@@ -258,6 +258,45 @@ public class CatIconUI : MonoBehaviour
         catUISlot.healthBar.gameObject.SetActive(false);
         catUISlot.isDead = true;
     }
+    public void UnlinkSkill(CatUnit cat)
+    {
+               // Find the slot that contains this cat
+        for (int i = 0; i < uiSlots.Length; i++)
+        {
+            if (uiSlots[i].unit == cat)
+            {
+                Icon thisIcon = uiSlots[i].icon;
+                thisIcon.skillButton1.RemoveSkill();
+                thisIcon.skillButton1.UpdateIcon(cat.weaponL);
+                thisIcon.skillButton2.RemoveSkill();
+                thisIcon.skillButton2.UpdateIcon(cat.weaponR);
+            }
+        }
+    }
+    public void DisableAllSkills()
+    {
+        foreach (var slot in uiSlots)
+        {
+            if (slot.unit != null)
+            {
+                Icon thisIcon = slot.icon;
+                thisIcon.skillButton1.button.interactable = false;
+                thisIcon.skillButton2.button.interactable = false;
+            }
+        }
+    }
+    public void EnableAllSkills()
+    {
+        foreach (var slot in uiSlots)
+        {
+            if (slot.unit != null)
+            {
+                Icon thisIcon = slot.icon;
+                thisIcon.skillButton1.button.interactable = true;
+                thisIcon.skillButton2.button.interactable = true;
+            }
+        }
+    }
 
     public void ResetIconToDefault(CatIconSlot catUISlot)
     {

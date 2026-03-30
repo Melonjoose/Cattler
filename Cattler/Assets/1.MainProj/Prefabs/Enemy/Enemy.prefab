@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7897934948310767509}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -0.11, z: 0}
+  m_LocalPosition: {x: -0.963, y: -0.376, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -138,9 +138,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerRadius: 5
+  inRange: 0
   moveSpeed: 5
-  offsetFromCat: {x: 0, y: 0, z: 1}
+  offsetFromEnemy: {x: 1, y: 0, z: 0}
   onTarget: 0
+  chosenCat: {fileID: 0}
 --- !u!1 &8920507231688988783
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,8 +347,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonAnimation: {fileID: 941896635207128551}
+  triggerTrack: {fileID: 0}
   canWalk: 1
+  canAttack: 1
   isDead: 0
+  pickRandomCat: 0
+  pickClosestCat: 1
   dropLoot: {fileID: 0}
   enemyData: {fileID: 11400000, guid: f498614201f45c44fa142f3772532706, type: 2}
   TargetCat: {fileID: 0}
@@ -387,6 +393,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 0
   isCat: 0
+  enemyUnit: {fileID: 0}
+  catUnit: {fileID: 0}
+  healthbarLocationOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &2900330853516322464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,8 +427,8 @@ MonoBehaviour:
     dropChance: 1
   - item: {fileID: 1063309126661408168, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
     dropChance: 1
-  minInkDrop: 10
-  maXInkDrop: 30
+  minInkDrop: 5
+  maXInkDrop: 10
   minCoreDrop: 0
   maxCoreDrop: 0
   minEXPDrop: 0

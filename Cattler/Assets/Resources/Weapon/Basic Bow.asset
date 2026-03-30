@@ -19,11 +19,12 @@ MonoBehaviour:
   itemType: 1
   description: Shoots Far
   value: 1
+  fvalue: 0
   skill: {fileID: 376969740731148697, guid: 17f2b63f9939f734797ad08d443d081d, type: 3}
   AbilityName: Volley
   AbilityDesc: Shoots a volley of arrows.
-  health: 2
-  attackPower: 3
-  attackSpeed: 2
-  attackRange: 3
+  health: 1
+  attackPower: 1
+  attackSpeed: 0.2
+  attackRange: 1
   movementSpeed: 1

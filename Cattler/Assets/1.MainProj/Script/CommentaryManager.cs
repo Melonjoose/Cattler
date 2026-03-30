@@ -27,6 +27,8 @@ public class CommentaryManager : MonoBehaviour
     public List<string> dialogueQueue = new List<string>();
     public GameObject topLeftPosition;  //default
     public GameObject bottomLeftPosition; //secondary
+    public GameObject topRightPosition; //secondary2
+    public GameObject addTeamPosition; //secondary2
 
     public bool isTalking = false;
 
@@ -163,7 +165,12 @@ public class CommentaryManager : MonoBehaviour
     {
         Debug.Log("tutorialComment" + TextChoice);
         OpenCanvasGroup();
-        // Add the chosen dialogue line to the queue
+        if(TextChoice >= tutorialTextChoices.Length)
+        {
+            CloseDialogue();
+            Debug.LogError("Invalid TextChoice index: " + TextChoice);
+            return;
+        }
         string chosenDialogue = tutorialTextChoices[TextChoice];
         dialogueQueue.Add(chosenDialogue);
 

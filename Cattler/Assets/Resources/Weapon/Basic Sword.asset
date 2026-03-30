@@ -19,11 +19,12 @@ MonoBehaviour:
   itemType: 1
   description: Basic and Reliable
   value: 1
+  fvalue: 0
   skill: {fileID: 376969740731148697, guid: 573b8b8c7830b6a41bd98da9c140a3f6, type: 3}
   AbilityName: Slash
   AbilityDesc: A short slash that attack all enemy infront of the cat.
-  health: 3
-  attackPower: 3
-  attackSpeed: 1
-  attackRange: 2
+  health: 1
+  attackPower: 1
+  attackSpeed: 0
+  attackRange: 1
   movementSpeed: 0

@@ -119,18 +119,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void FreezeGamePlay()
-    {
-        // Freeze all physics and gameplay that depend on Time.deltaTime
-        Time.timeScale = 0f;
-
-    }
-    public void ResumeGamePlay()
-    {
-        Time.timeScale = 1f; // Resume gameplay
-    }
-
-
     public Page lobbyPage; // assign in inspector
 
     public void LobbyState()
@@ -220,23 +208,35 @@ public class GameManager : MonoBehaviour
         // Wait for 2 seconds before enabling travel
         yield return new WaitForSeconds(0.2f);
 
-        TravelManager.instance.EnableTravel();
-        TravelManager.instance.ResetToStart();
 
-        SpawnerManager.instance.StartLevelOne();
+
+
+        if (Tutorial.instance.inTutorial)
+        {
+            TravelManager.instance.DisableTravel(); // cannot move during tutorial
+             Tutorial.instance.TutorialLevelStart();
+        }
+        else
+        {
+            TravelManager.instance.EnableTravel();
+            TravelManager.instance.ResetToStart();
+            SpawnerManager.instance.StartLevelOne();
+        }
     }
 
 
     public void RetreatButton()         //When button is clicked.
     {
         //pause the game.
-        FreezeGamePlay();
+        FreezeGameplay();
         //confirm button pops up.
     }
 
+
+
     public void ReturnToBase() // sequence when confirm button is clicked.
     {
-        ResumeGamePlay();
+        ResumeGameplay();
         // When confirm button is clicked.
         // goes to a summary page.
         //summary page shows rewards gained from the mission.
@@ -260,7 +260,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlaySFX("Retreat2");
         yield return new WaitForSeconds(1.5f);
-        ResumeGamePlay();
+        ResumeGameplay();
         // Open lobby page
         lobbyPage.pageObject.transform.position = lobbyPage.openPos.position;
         currentPage = lobbyPage;
@@ -285,6 +285,119 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
 
     }
+
+    public void Freeze()
+    {
+        Time.timeScale = 0f; // Freeze the game
+    }
+    public void UnFreeze()
+    {
+        Time.timeScale = 1f; // UnFreeze the game
+    }
+
+    public void FreezeGameplay()
+    {
+        EnemySpawner.instance.spawnerActive = false;
+        SpecialEnemySpawner.instance.spawnerActive = false;
+        //travel is disabled.
+        TravelManager.instance.DisableTravel();
+        //find all enemy, stop their movement and attack.
+        //stop all enemy animation.
+        foreach (var enemy in EnemySpawner.instance.spawnedEnemies)
+        {
+            EnemyUnit enemyUnit = enemy.GetComponent<EnemyUnit>();
+            enemyUnit.canWalk = false;
+            enemyUnit.canAttack = false;
+            enemyUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
+        }
+
+        foreach (var enemy in SpecialEnemySpawner.instance.spawnedEnemies)
+        {
+            EnemyUnit enemyUnit = enemy.GetComponent<EnemyUnit>();
+            enemyUnit.canWalk = false;
+            enemyUnit.canAttack = false;
+            enemyUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
+        }
+        //stop all cat movement and attack.
+        //stop all cat animation.
+        foreach (CatUnit cat in TeamManager.instance.cats)
+        {
+            cat.canWalk = false; 
+            cat.canAttack = false;
+            if (cat.skeletonAnimation != null)
+            {
+                cat.skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
+            }
+            //movement drag enabled false.
+            MovementDrag moveDrag = cat.GetComponent<MovementDrag>();
+            if (moveDrag != null)
+            {
+                moveDrag.enabled = false;
+            }
+        }
+        //disable controls. skills disabled.
+        CatIconUI.instance.DisableAllSkills();
+    }
+
+    public void ResumeGameplay()
+    {
+        EnemySpawner.instance.spawnerActive = true;
+        SpecialEnemySpawner.instance.spawnerActive = true;
+        TravelManager.instance.EnableTravel();
+        //resume all enemy movement and attack.
+        foreach (var enemy in EnemySpawner.instance.spawnedEnemies)
+        {
+            EnemyUnit enemyUnit = enemy.GetComponent<EnemyUnit>();
+            enemyUnit.canWalk = true;
+            enemyUnit.canAttack = true;
+            enemyUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
+        }
+
+        foreach (var enemy in SpecialEnemySpawner.instance.spawnedEnemies)
+        {
+            EnemyUnit enemyUnit = enemy.GetComponent<EnemyUnit>();
+            enemyUnit.canWalk = true;
+            enemyUnit.canAttack = true;
+            enemyUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
+        }
+
+        foreach (CatUnit cat in TeamManager.instance.cats)
+        {
+            cat.canWalk = true;
+            cat.canAttack = true;
+            if (cat.skeletonAnimation != null)
+            {
+                cat.skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
+            }
+            //movement drag enabled false.
+            MovementDrag moveDrag = cat.GetComponent<MovementDrag>();
+            if (moveDrag != null)
+            {
+                moveDrag.enabled = true;
+            }
+        }
+        CatIconUI.instance.EnableAllSkills();
+    }
+
+    public void EnableAllCats() //movement only. for tutorial.
+    {
+        foreach (CatUnit cat in TeamManager.instance.cats)
+        {
+            cat.canWalk = true;
+            cat.canAttack = false;
+            if (cat.skeletonAnimation != null)
+            {
+                cat.skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
+            }
+            //movement drag enabled false.
+            MovementDrag moveDrag = cat.GetComponent<MovementDrag>();
+            if (moveDrag != null)
+            {
+                moveDrag.enabled = true;
+            }
+        }
+    }
+
     /// ------------------------------- < Gameplay> ------------------------------------///
     //phases of the game during travel.
     //1. Level 1. 0 - 5km
