@@ -29,7 +29,7 @@ MonoBehaviour:
   exp: 0
   catSkill: {fileID: 0}
   baseHealth: 5
-  attackPower: 3
+  attackPower: 2
   attackSpeed: 1
-  attackRange: 8
+  attackRange: 4
   movementSpeed: 3

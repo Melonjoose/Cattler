@@ -31,5 +31,5 @@ MonoBehaviour:
   baseHealth: 8
   attackPower: 3
   attackSpeed: 1
-  attackRange: 11
+  attackRange: 4
   movementSpeed: 10

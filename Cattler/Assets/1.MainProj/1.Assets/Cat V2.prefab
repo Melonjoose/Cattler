@@ -82,7 +82,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31bd418d7067634cb63b0404e1c98c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAttack: 1
   triggerRadius: 10
+  inRange: 0
   moveSpeed: 10
   offsetFromCat: {x: 0.8, y: -0.1, z: 0}
 --- !u!212 &2858782718044782398
@@ -240,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 2852ec3ee9f555c4c82fa239eb1d4108, type: 2}
-  initialSkinName: MaidCat
+  initialSkinName: Comet
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
   initialFlipY: 0
@@ -919,6 +921,7 @@ MonoBehaviour:
   catGO: {fileID: 0}
   catLobby: {fileID: 0}
   targetPoint: {fileID: 365364454014447571}
+  triggerTrack: {fileID: 0}
   AnimationBody: {fileID: 0}
   skeletonAnimation: {fileID: 0}
   skeletonGraphic: {fileID: 0}
@@ -943,6 +946,7 @@ MonoBehaviour:
     isDead: 0
   catSkin: 
   isAttacking: 0
+  canWalk: 1
   isStunned: 0
   isDead: 0
   canAttack: 1
@@ -960,13 +964,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catIndex: -1
   initialCatIndex: 0
-  inPosition: 0
+  inPositionNewPosition: 0
   rb: {fileID: 0}
   moveSpeed: 3
   canWalk: 1
   isWalking: 0
   PlayerTeam: {fileID: 0}
   worldPositions: []
+  inPositionFirstTimeCompleted: 0
 --- !u!114 &-6617303911603268508
 MonoBehaviour:
   m_ObjectHideFlags: 0
