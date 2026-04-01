@@ -81,9 +81,9 @@ public class TravelManager : MonoBehaviour
 
     }
 
-    private bool completedTransitionPlayed = false; // declare at class level
-    private bool level2Triggered = false; // class-level field
-    private bool level2TextTriggered = false; // class-level field
+    public bool completedTransitionPlayed = false; // declare at class level
+    public bool level2Triggered = false; // class-level field
+    public bool level2TextTriggered = false; // class-level field
 
     private void Update()
     {
@@ -235,7 +235,12 @@ public class TravelManager : MonoBehaviour
 
     public void ResetToStart()
     {
-               distanceTraveled = 0f;
+        //all checks are reset to default
+        completedTransitionPlayed = false;
+        level2Triggered = false;
+        level2TextTriggered = false;
+
+        distanceTraveled = 0f;
         distanceTraveledUIvalue = 0f;
         floorGRP.transform.position = new Vector3(0, -4f, 0);
 

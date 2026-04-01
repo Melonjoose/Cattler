@@ -24,12 +24,12 @@ MonoBehaviour:
   catID: 51
   Rarity: 1
   skillName: Blinding Light
-  skillDesc: Stuns nearby enemies for 1 second every 15 seconds
+  skillDesc: Stuns nearby enemies with a flash of light every few seconds
   level: 1
   exp: 0
   catSkill: {fileID: 0}
   baseHealth: 8
   attackPower: 3
   attackSpeed: 1
-  attackRange: 11
+  attackRange: 4
   movementSpeed: 4
