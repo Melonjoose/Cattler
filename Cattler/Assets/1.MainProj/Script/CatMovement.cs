@@ -84,7 +84,10 @@ public class CatMovement : MonoBehaviour
     {
         Debug.Log($"Assigning {gameObject.name} to index {index}");
         catIndex = index;
-        InPositionFirstTime();
+        if (Tutorial.instance != null)
+        {
+            InPositionFirstTime();
+        }
     }
 
     void Walk(int targetIndex)
