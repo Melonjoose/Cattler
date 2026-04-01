@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 58ebdf84d9629e944820de1531b57641
+guid: 1e3c173ec3eff514d82e3464cf4bd765
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1645388994834433636
-    second: rarity box_0
+      213: 5216801705324695275
+    second: ATKIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,40 +96,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rarity box_0
+      name: ATKIcon_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 108
-        height: 107
+        x: 70
+        y: 69
+        width: 388
+        height: 388
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 10, y: 9, z: 9, w: 9}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c997e854d676a29e0800000000000000
-      internalID: -1645388994834433636
+      spriteID: beec78dd28dc56840800000000000000
+      internalID: 5216801705324695275
       vertices: []
       indices: 
       edges: []
@@ -138,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f8c84a0601d5177429daf80fbd1ae6a5
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      rarity box_0: -1645388994834433636
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

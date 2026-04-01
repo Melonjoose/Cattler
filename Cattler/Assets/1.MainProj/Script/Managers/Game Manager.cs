@@ -208,10 +208,7 @@ public class GameManager : MonoBehaviour
         // Wait for 2 seconds before enabling travel
         yield return new WaitForSeconds(0.2f);
 
-
-
-
-        if (Tutorial.instance.inTutorial)
+        if (Tutorial.instance.inTutorial) //if in tutorial.
         {
             TravelManager.instance.DisableTravel(); // cannot move during tutorial
              Tutorial.instance.TutorialLevelStart();

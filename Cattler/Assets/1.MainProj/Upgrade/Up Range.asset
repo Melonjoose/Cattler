@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aac87cda6c2db242a55c6af28eee405, type: 3}
   m_Name: Up Range
   m_EditorClassIdentifier: 
+  iconSprite: {fileID: -8440781982156007292, guid: b642caa538ffa714d97073373ab2d23e, type: 3}
   upgradeName: +1 RNG to all new cats
   description: '+1 Range to all newly summoned cats.
 
@@ -20,7 +21,7 @@ MonoBehaviour:
     now be able to attack further! allowing you to target enemy from a mile away!
     2 range is a cat''s length for reference!'
   price: 1000
-  currentlevel: 0
+  currentLevel: 0
   maxlevel: 5
   currentTotalValueAdded: 0
   nextTotalValueAdded: 0

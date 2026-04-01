@@ -14,7 +14,7 @@ public class CatRoamLobby : MonoBehaviour
     public GameObject boundBox;
     public GameObject lobbyCatGroup;
     public GameObject battleDoor; //all cat will target this and move to it when movetodoor is called.
-    public void Start()
+    public void Awake()
     {
         instance = this; // Set the singleton instance
     }

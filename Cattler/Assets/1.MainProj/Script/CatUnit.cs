@@ -166,7 +166,7 @@ public class CatUnit : MonoBehaviour
         if (targetPoint == null) return;
 
         EnemyUnit enemytarget = other.GetComponent<EnemyUnit>();
-        if (attackCooldown <= 0f && enemytarget != null)
+        if (attackCooldown <= 0f && enemytarget != null && enemytarget.isDead)
         {
             isAttacking = true;
             skeletonAnimation.AnimationState.SetAnimation(0, "Attack", false);

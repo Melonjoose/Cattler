@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aac87cda6c2db242a55c6af28eee405, type: 3}
   m_Name: Up ATKSPD
   m_EditorClassIdentifier: 
+  iconSprite: {fileID: 7962133062099050350, guid: a688e1f386d0b33428087a5de8a1a4e6, type: 3}
   upgradeName: +0.1 ATKSPD to all new cats
   description: '+0.1 attack to all newly summoned cats.
 
@@ -19,7 +20,7 @@ MonoBehaviour:
     Newly summoned cats
     will attack faster! 1 ATKSPD is 1 hit per second! Get those nimble paws going!'
   price: 300
-  currentlevel: 0
+  currentLevel: 0
   maxlevel: 0
   currentTotalValueAdded: 0
   nextTotalValueAdded: 0

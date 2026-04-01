@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aac87cda6c2db242a55c6af28eee405, type: 3}
   m_Name: Up MVSPD
   m_EditorClassIdentifier: 
+  iconSprite: {fileID: -1025179604993706990, guid: 83aeb0354959aa74690492735a265e13, type: 3}
   upgradeName: +1 MVSPD to all new cats
   description: '+1 MVSPD to all newly summoned cats.
 
@@ -19,7 +20,7 @@ MonoBehaviour:
     Newly summoned cats will
     now be able to re position and move to their destination faster!'
   price: 200
-  currentlevel: 0
+  currentLevel: 0
   maxlevel: 5
   currentTotalValueAdded: 0
   nextTotalValueAdded: 0

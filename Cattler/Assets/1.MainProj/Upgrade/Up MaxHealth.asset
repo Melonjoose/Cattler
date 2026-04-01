@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aac87cda6c2db242a55c6af28eee405, type: 3}
   m_Name: Up MaxHealth
   m_EditorClassIdentifier: 
+  iconSprite: {fileID: -6462378999320361261, guid: 209335efdcc5a75439a1cb79af2467b8, type: 3}
   upgradeName: +1 HP to all new cats
   description: '+1 maximum HP to all newly summoned cats.
 
@@ -19,7 +20,7 @@ MonoBehaviour:
     Newly summoned cats
     will now be tougher and can take more hits from enemies!'
   price: 100
-  currentlevel: 0
+  currentLevel: 0
   maxlevel: 0
   currentTotalValueAdded: 0
   nextTotalValueAdded: 0
