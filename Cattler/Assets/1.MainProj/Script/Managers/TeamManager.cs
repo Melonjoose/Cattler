@@ -1,9 +1,5 @@
 using UnityEngine;
-using System;
-using Unity.VisualScripting;
 using System.Collections.Generic;
-using System.Xml;
-using Spine.Unity;
 using Spine;
 
 public class TeamManager : MonoBehaviour

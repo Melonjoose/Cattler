@@ -44,7 +44,7 @@ public class HoverOnUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (canvasGroup.interactable == false) { return; }
+        //if (canvasGroup.interactable == false) { return; }
 
         if (highlighter != null) highlighter.SetActive(false);
         if (textGO != null) textGO.SetActive(false);

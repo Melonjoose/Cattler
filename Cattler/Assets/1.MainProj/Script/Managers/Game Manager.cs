@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public EnemySpawner enemySpawner;    // reference to spawner if needed
     public SpecialEnemySpawner specialSpawner; // reference to special spawner if needed
 
+    public GameObject battleDoor;
+    public bool inBattle = false; 
+
     public PlayerData playerData;
 
     [System.Serializable]
@@ -164,7 +167,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void StartMission()
+    public void StartMission() // battle door pressed
     {
         if(TeamManager.instance.cats.Count == 0) //if there is no cats in cats list, cannot start mission.
         {
@@ -192,6 +195,10 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator GameStartSequence()
     {
+        CanvasGroup canvasGRP = battleDoor.GetComponent<CanvasGroup>();
+        canvasGRP.alpha = 0;
+        canvasGRP.interactable = false;
+        
         CatRoamLobby.instance.AllCatsMoveToBattleDoor();
         AudioManager.instance.PlaySFX("BattleStart");
         yield return new WaitForSeconds(1f);
@@ -208,6 +215,9 @@ public class GameManager : MonoBehaviour
         // Wait for 2 seconds before enabling travel
         yield return new WaitForSeconds(0.2f);
 
+        canvasGRP.alpha = 1;
+        canvasGRP.interactable = true;//enable battle door again
+
         if (Tutorial.instance.inTutorial) //if in tutorial.
         {
             TravelManager.instance.DisableTravel(); // cannot move during tutorial
@@ -221,15 +231,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void RetreatButton()         //When button is clicked.
     {
         //pause the game.
         FreezeGameplay();
         //confirm button pops up.
     }
-
-
 
     public void ReturnToBase() // sequence when confirm button is clicked.
     {
@@ -393,6 +400,21 @@ public class GameManager : MonoBehaviour
                 moveDrag.enabled = true;
             }
         }
+    }
+
+    public void GameOver()
+    {
+        //if all cats are dead
+        if (inBattle)
+        {
+            if(TeamManager.instance.cats.Count == 0)
+            {
+                //Trigger the retreat sequence!
+
+            }
+        }
+        //force a retreat
+        //prompt a dialogue.
     }
 
     /// ------------------------------- < Gameplay> ------------------------------------///

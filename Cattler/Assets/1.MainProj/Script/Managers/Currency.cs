@@ -45,6 +45,23 @@ public class Currency : MonoBehaviour
         }
 
         inkEarnedThisMission += amount; // Track ink earned in this mission
+        //create a floating green text above the ink or red ink whenever transaction happens.
+    }
+
+    public void RemoveInk(int amount)
+    {
+
+        ink += amount;
+        UpdateGUI(); // Update the GUI after adding ink
+
+        if (inkAnimator != null)
+        {
+            inkAnimator.SetTrigger("Bounce"); // Trigger bounce animation
+        }
+
+
+
+        //create a floating green text above the ink or red ink whenever transaction happens.
     }
 
     public void AddEXP(int amount)

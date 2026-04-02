@@ -81,7 +81,7 @@ public class MasterTester : MonoBehaviour
 
     void MakeMeRich()
     {
-        Currency.instance.AddInk(1000); // Add 1000 ink to the currency
+        Currency.instance.AddInk(999999999); // Add 1000 ink to the currency
         Currency.instance.AddEXP(500); // Add 500 EXP to the currency
         Currency.instance.AddCore(10); // Add 10 core to the currency
     }

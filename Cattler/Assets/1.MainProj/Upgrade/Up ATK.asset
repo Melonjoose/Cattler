@@ -14,15 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconSprite: {fileID: 5216801705324695275, guid: 1e3c173ec3eff514d82e3464cf4bd765, type: 3}
   upgradeName: +1 ATK to all new cats
+  upgradeType: 0
   description: '+1 attack to all newly summoned cats.
 
 
     Newly summoned cats will
     deal more damage every hit! Build those muscles!'
   price: 300
+  maxPrice: 50000
   currentLevel: 0
-  maxlevel: 0
+  maxlevel: 6767
+  summaryUpgradeText: ATK to newly summoned cats
   currentTotalValueAdded: 0
-  nextTotalValueAdded: 0
+  nextTotalValueAdded: 1
   baseValue: 1
-  valueIncreasePerLevel: 0
+  valueIncreasePerLevel: 1

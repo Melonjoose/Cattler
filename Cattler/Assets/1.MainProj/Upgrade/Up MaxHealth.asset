@@ -14,15 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconSprite: {fileID: -6462378999320361261, guid: 209335efdcc5a75439a1cb79af2467b8, type: 3}
   upgradeName: +1 HP to all new cats
+  upgradeType: 2
   description: '+1 maximum HP to all newly summoned cats.
 
 
     Newly summoned cats
     will now be tougher and can take more hits from enemies!'
   price: 100
+  maxPrice: 50000
   currentLevel: 0
-  maxlevel: 0
+  maxlevel: 6767
+  summaryUpgradeText: MaxHP to newly summoned cats
   currentTotalValueAdded: 0
-  nextTotalValueAdded: 0
+  nextTotalValueAdded: 1
   baseValue: 1
-  valueIncreasePerLevel: 0
+  valueIncreasePerLevel: 1

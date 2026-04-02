@@ -166,7 +166,7 @@ public class CatUnit : MonoBehaviour
         if (targetPoint == null) return;
 
         EnemyUnit enemytarget = other.GetComponent<EnemyUnit>();
-        if (attackCooldown <= 0f && enemytarget != null && enemytarget.isDead)
+        if (attackCooldown <= 0f && enemytarget != null && enemytarget.isDead == false)
         {
             isAttacking = true;
             skeletonAnimation.AnimationState.SetAnimation(0, "Attack", false);
@@ -206,7 +206,7 @@ public class CatUnit : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-
+        CameraShake.instance.Shake(0.2f, 0.05f);
         runtimeData.currentHealth -= amount;
         onHealthChanged?.Invoke(runtimeData.currentHealth , runtimeData.maxHealth);
         int dyingHealth = runtimeData.maxHealth / 3;
@@ -235,7 +235,8 @@ public class CatUnit : MonoBehaviour
     }
 
     private void Die()
-    {   
+    {
+        CameraShake.instance.Shake(0.3f, 0.1f);
         CommentaryManager.instance.AddDialogueToQueue(2); // Cat defeated dialogue
         Debug.Log(runtimeData.template.itemName + " has been defeated.");
         //Give Send EXP gained from death to Retreat controller   

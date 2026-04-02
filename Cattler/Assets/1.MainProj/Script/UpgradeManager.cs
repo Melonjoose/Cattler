@@ -8,8 +8,12 @@ public class UpgradeManager : MonoBehaviour
 {
     public static UpgradeManager instance;
     public UpgradeUI upgradeUI;
+    public DescriptionBox descBox;
 
-    public Upgrade[] upgrades; // all available upgrades
+    public Upgrade[] upgradesLibrary; // all available upgrades library
+
+    [SerializeReference]
+    public List<Upgrade> upgrades = new List<Upgrade>(); //instantiate or copy the data to be changed/altered ingame
 
     private void Awake()
     {
@@ -18,10 +22,16 @@ public class UpgradeManager : MonoBehaviour
 
     void Start()
     {
+        upgrades.Clear();
         // Initialize all upgrade options at start
-        foreach (var upgrade in upgrades)
+        foreach (var upgrade in upgradesLibrary)
         {
-            InitializeUpgradeUIOption(upgrade); //create buttons
+            // Create a new instance (so we don’t modify the library directly)
+            Upgrade runtimeUpgrade = Instantiate(upgrade);
+            runtimeUpgrade.name = $"{upgrade.name} RT";
+            upgrades.Add(runtimeUpgrade);
+
+            InitializeUpgradeUIOption(runtimeUpgrade);
         }
         //check how many buttons are there.
         // If there are more than maxUpgradePerPage, we need to create new pages and assign buttons to them.
@@ -73,6 +83,7 @@ public class UpgradeManager : MonoBehaviour
         upgradeButton.UpdateUpgradeButtonUI(); // Update the button UI with the upgrade info
 
         upgradeUI.upgradeButtons.Add(upgradeButton); // Add to the array for reference
+
     }
 
     public void AssignButtonsToPage()
@@ -100,10 +111,77 @@ public class UpgradeManager : MonoBehaviour
                 newPage.upgradeButtons.Add(upgradeUI.upgradeButtons[buttonIndex]);
                 buttonIndex++;
             }
-            buttonIndex++;
 
             upgradeUI.upgradePages.Add(newPage);
         }
     }
 
+    public void PurchaseUpgrade(int inkCost) // logic when purchase happens
+    {
+        Currency.instance.AddInk(-inkCost);
+
+
+        descBox.upgrade.ApplyUpgrade(); // update stats of the upgrade 
+        UpgradeInventorySpace(); //if the upgrade type is inventoryspace.
+        descBox.UpdateDescriptionBox(descBox.upgrade);
+    }
+
+    public void ApplyUpgradesToNewCat(CatUnit cat) //affects inventory.
+    {
+        Debug.Log($"Applying upgrades to new cat: {cat.name}");
+
+        foreach (var upgrade in upgrades)
+        {
+            if (upgrade.currentTotalValueAdded > 0)
+            {
+                switch (upgrade.upgradeType)
+                {
+                    case UpgradeType.AttackPower:
+                        cat.runtimeData.attackPower += (int)upgrade.currentTotalValueAdded;
+                        Debug.Log($"Attack Power +{upgrade.currentTotalValueAdded} > {cat.runtimeData.attackPower}");
+                        break;
+
+                    case UpgradeType.AttackSpeed:
+                        cat.runtimeData.attackSpeed += upgrade.currentTotalValueAdded;
+                        Debug.Log($"Attack Speed +{upgrade.currentTotalValueAdded} > {cat.runtimeData.attackSpeed}");
+                        break;
+
+                    case UpgradeType.Range:
+                        cat.runtimeData.attackRange += upgrade.currentTotalValueAdded;
+                        Debug.Log($"Attack Range +{upgrade.currentTotalValueAdded} > {cat.runtimeData.attackRange}");
+                        break;
+
+                    case UpgradeType.Health:
+                        cat.runtimeData.maxHealth += (int)upgrade.currentTotalValueAdded;
+                        cat.runtimeData.currentHealth += (int)upgrade.currentTotalValueAdded;
+                        Debug.Log($"Health +{upgrade.currentTotalValueAdded} > {cat.runtimeData.currentHealth}/{cat.runtimeData.maxHealth}");
+                        break;
+
+                    case UpgradeType.MovementSpeed:
+                        cat.runtimeData.movementSpeed += upgrade.currentTotalValueAdded;
+                        Debug.Log($"Movement Speed +{upgrade.currentTotalValueAdded} > {cat.runtimeData.movementSpeed}");
+                        break;
+                }
+            }
+        }
+    }
+
+    public void UpgradeInventorySpace()
+    {
+        foreach (var upgrade in upgrades)
+        {
+            if (upgrade.currentTotalValueAdded > 0)
+            {
+                switch (upgrade.upgradeType)
+                {
+                    case UpgradeType.InventorySpace:
+                        Debug.Log("Upgrade Inventory");
+                        Inventory.instance.IncreaseCapacity(1);
+                        break;
+
+                }
+            }
+        }
+    }
 }
+

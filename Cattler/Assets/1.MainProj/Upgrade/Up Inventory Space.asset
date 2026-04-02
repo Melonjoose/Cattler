@@ -14,12 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconSprite: {fileID: -5643652430381483761, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
   upgradeName: +1 Inventory Space
+  upgradeType: 5
   description: "+1 slot inside of your inventory space! \n\nAllowing more storage
     to hold more cats and items! Giving you more flexibility with your team building."
   price: 100
+  maxPrice: 50000
   currentLevel: 0
-  maxlevel: 0
+  maxlevel: 56
+  summaryUpgradeText: Inventory slot added to inventory space
   currentTotalValueAdded: 0
-  nextTotalValueAdded: 0
+  nextTotalValueAdded: 1
   baseValue: 1
-  valueIncreasePerLevel: 0
+  valueIncreasePerLevel: 1

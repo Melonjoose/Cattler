@@ -14,15 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconSprite: {fileID: -1025179604993706990, guid: 83aeb0354959aa74690492735a265e13, type: 3}
   upgradeName: +1 MVSPD to all new cats
+  upgradeType: 3
   description: '+1 MVSPD to all newly summoned cats.
 
 
     Newly summoned cats will
     now be able to re position and move to their destination faster!'
   price: 200
+  maxPrice: 50000
   currentLevel: 0
   maxlevel: 5
+  summaryUpgradeText: MVSPD to newly summoned cats
   currentTotalValueAdded: 0
-  nextTotalValueAdded: 0
+  nextTotalValueAdded: 1
   baseValue: 1
-  valueIncreasePerLevel: 0
+  valueIncreasePerLevel: 1

@@ -47,12 +47,12 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             transform.localScale = Vector3.Lerp(transform.localScale, defaultScale, Time.deltaTime * 10f);
     }
 
-    public void UpdateUpgradeButtonUI() //update displays
+    public void UpdateUpgradeButtonUI() //update this buttons displays
     {
         if (icon != null) icon.sprite = upgrade.iconSprite;
         if (upgradeText != null) upgradeText.text = upgrade.upgradeName;
         if (levelText != null) levelText.text = $"LV. {upgrade.currentLevel} >> LV. {upgrade.currentLevel + 1}";
-        if (costText != null) costText.text = $"Cost: {upgrade.price}";
+        if (costText != null) costText.text = $"{upgrade.price}";
     }
 
     public bool isHovered { get; private set; }
@@ -66,12 +66,14 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         isHovered = false;
     }
 
-    private void OnClickUpgrade()
+    private void OnClickUpgrade() //when this is clicked at menu.. open page.
     {
+        Debug.Log($"{upgrade.name} button is pressed");
         // Reset scale on click
         transform.localScale = defaultScale;
-
-        // TODO: Open description box and update info
-        Debug.Log($"Upgrade clicked: {upgrade.name}, Level {upgrade.currentLevel} to Level{upgrade.currentLevel+1}");
+        UpgradeManager.instance.descBox.upgrade = upgrade;
+        UpgradeManager.instance.descBox.EnableThis();
+        UpgradeManager.instance.descBox.UpdateDescriptionBox(upgrade);
     }
+
 }

@@ -1,6 +1,8 @@
+using NUnit.Framework.Internal.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor.U2D.Aseprite;
 using UnityEditor.XR;
 using UnityEngine;
@@ -96,6 +98,7 @@ public class Inventory : MonoBehaviour
 
         //Instantiate the item prefab into the slot
         GameObject prefab = Instantiate(itemPlaceholder, emptySlot.transform);
+
         prefab.transform.SetParent(emptySlot.transform, false);
         prefab.transform.localPosition = Vector3.zero;
         prefab.transform.localScale = Vector3.one;
@@ -136,6 +139,9 @@ public class Inventory : MonoBehaviour
             emptySlot.isOccupied = true;
 
             Debug.Log($" Spawned new Cat: {catData.itemName} into slot {emptySlot.name}");
+            
+            //apply upgrades
+            UpgradeManager.instance.ApplyUpgradesToNewCat(newCatUnit);
         }
     }
 

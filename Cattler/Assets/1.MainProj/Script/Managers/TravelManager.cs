@@ -32,7 +32,10 @@ public class TravelManager : MonoBehaviour
     public Sprite level2FloorSprite;
     public Sprite level2BackgroundSprite;
 
-    public float level2Milestone = 10f;
+    public float level2Milestone = 7f; //at 7, trigger it to swap //at 7+3 = 10, actually reach the new location.event trigger
+    public bool level2MilstoneComplete = false;
+    public float level3Milestone = 17f;
+    public bool level3MilstoneComplete = false;
 
     public event Action<bool> OnTravelStateChanged;
 
@@ -84,6 +87,8 @@ public class TravelManager : MonoBehaviour
     public bool completedTransitionPlayed = false; // declare at class level
     public bool level2Triggered = false; // class-level field
     public bool level2TextTriggered = false; // class-level field
+    public bool level3Triggered = false; // class-level field
+    public bool level3TextTriggered = false; // class-level field
 
     private void Update()
     {
@@ -97,7 +102,7 @@ public class TravelManager : MonoBehaviour
         Distance.instance.UpdateDistanceUI(distanceTraveledUIvalue);
 
 
-
+        //level2//
         if (distanceTraveledUIvalue > level2Milestone  && !isTransitioning && !level2Triggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
         {
             TransitionToNewLevel(2);
@@ -105,8 +110,22 @@ public class TravelManager : MonoBehaviour
         }
         if (distanceTraveledUIvalue > (level2Milestone+3f) && !level2TextTriggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
         {
+            level2MilstoneComplete = true;
             TextPopUp("The Ruined City");
             level2TextTriggered=true;
+        }
+
+        //level3//
+        if (distanceTraveledUIvalue > level3Milestone  && !isTransitioning && !level3Triggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
+        {
+            TransitionToNewLevel(3);
+            level3Triggered = true;
+        }
+        if (distanceTraveledUIvalue > (level3Milestone+3f) && !level3TextTriggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
+        {
+            level3MilstoneComplete = true;
+            TextPopUp("The Outskirt");
+            level3TextTriggered=true;
         }
         // Check if transition floor has scrolled into view
 
@@ -268,6 +287,17 @@ public class TravelManager : MonoBehaviour
         text.gameObject.SetActive(true);
         text.text = "The Safe Heaven";
         animator.SetTrigger("Play");
+
+        if(level2MilstoneComplete == false)
+        {
+            Distance.instance.mileStoneText.text = $"{level2Milestone+3} KM";
+        }
+
+        if(level2MilstoneComplete == true && level3MilstoneComplete == false )
+        {
+            Distance.instance.mileStoneText.text = $"{level3Milestone+3} KM";
+        }
+        
     }
 
     public void DisableTravel()
