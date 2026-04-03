@@ -33,19 +33,34 @@ public class TeamManager : MonoBehaviour
             return;
         }
 
-        CatUnit newCatUnit;
-
-        if(newlyAddedCat == null)
+        if (newlyAddedCat != null)
         {
-            Rarity rarity = newlyAddedCat.runtimeData.template.Rarity; //check this newlyAddedCat rarity.
+            Debug.Log($"{newlyAddedCat} is detected");
         }
+
+        CatUnit newCatUnit;
+        GameObject newCatGO = null;
+
 
         if (newlyAddedCat.catGO == null )  //if first time added to world. is a common cat or rare cat
         {
-            GameObject newCatGO = Instantiate(catTemplatePrefab);  //new  cat gameobject in the world.
-            newCatGO.name = newlyAddedCat.runtimeData.template.itemName;
 
-            newCatUnit = newCatGO.GetComponent<CatUnit>(); //cat gameobject's catunit component.
+            Rarity rarity = newlyAddedCat.runtimeData.template.Rarity; //check this newlyAddedCat rarity.
+
+            if (rarity == Rarity.Common ||rarity == Rarity.Rare)
+            {
+                newCatGO = Instantiate(catTemplatePrefab);  //new  cat gameobject in the world.
+                newCatGO.name = newlyAddedCat.runtimeData.template.itemName;
+            }
+            if (rarity == Rarity.Legendary )
+            {
+                newCatGO = Instantiate(newlyAddedCat.runtimeData.template.prefab);  //new  cat gameobject in the world.
+                newCatGO.name = newlyAddedCat.runtimeData.template.itemName;
+            }
+
+            Debug.Log($"{newCatGO} is detected");
+            newCatUnit = newCatGO.GetComponent<CatUnit>();
+            Debug.Log($"{newCatUnit} is detected");
             newCatUnit.runtimeData = newlyAddedCat.runtimeData;
             SpriteRenderer catSprite = newCatUnit.GetComponent<SpriteRenderer>(); //this is causing error. if object don't have a SpriteRenderer, then ignore this.
             catSprite.sprite = newCatUnit.runtimeData.template.icon;

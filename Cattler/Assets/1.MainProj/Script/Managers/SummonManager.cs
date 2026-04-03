@@ -6,11 +6,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using static SummonManager;
 
+[Serializable]
+public class SummonChance
+{
+    public float commonChance;
+    public float rareChance;
+    public float legendaryChance;
+}
+
 public class SummonManager : MonoBehaviour
 {
     public static SummonManager instance;
     public int summonCost = 100;
     public Animator summonAnimator;
+
+
+    public SummonChance normalSummonChance; //80(80%) , 95(15%), 5(5%)
+    public SummonChance specialSummonChance; //80(50%) , 80(30%), 20(20%)
 
     public CatData[] commonCats;
     public CatData[] rareCats;
@@ -66,14 +78,14 @@ public class SummonManager : MonoBehaviour
 
         if (!isPremium)
         {
-            if (roll < 0.80f) result = Rarity.Common;
-            else if (roll < 0.95f) result = Rarity.Rare;
+            if (roll < normalSummonChance.commonChance) result = Rarity.Common;
+            else if (roll < normalSummonChance.rareChance) result = Rarity.Rare;
             else result = Rarity.Legendary;
         }
         else
         {
-            if (roll < 0.50f) result = Rarity.Common;
-            else if (roll < 0.80f) result = Rarity.Rare;
+            if (roll < specialSummonChance.commonChance) result = Rarity.Common;
+            else if (roll < specialSummonChance.rareChance) result = Rarity.Rare;
             else result = Rarity.Legendary;
         }
 

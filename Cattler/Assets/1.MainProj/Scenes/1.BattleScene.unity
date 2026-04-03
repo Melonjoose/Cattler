@@ -3349,8 +3349,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Battle
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 00416977037634d48937ade8f9901da3, type: 2}
-  m_sharedMaterial: {fileID: -4155425021065087315, guid: 00416977037634d48937ade8f9901da3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 670397da6d8e8f34daee9cf068a52f2c, type: 2}
+  m_sharedMaterial: {fileID: 2269804761589330375, guid: 670397da6d8e8f34daee9cf068a52f2c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5708,6 +5708,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   summonCost: 100
   summonAnimator: {fileID: 171578810}
+  normalSummonChance:
+    commonChance: 0.8
+    rareChance: 0.95
+    legendaryChance: 0.5
+  specialSummonChance:
+    commonChance: 0.5
+    rareChance: 0.3
+    legendaryChance: 0.2
   commonCats: []
   rareCats: []
   legendaryCats: []
@@ -21766,8 +21774,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Summon
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 00416977037634d48937ade8f9901da3, type: 2}
-  m_sharedMaterial: {fileID: -4155425021065087315, guid: 00416977037634d48937ade8f9901da3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 670397da6d8e8f34daee9cf068a52f2c, type: 2}
+  m_sharedMaterial: {fileID: 2269804761589330375, guid: 670397da6d8e8f34daee9cf068a52f2c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -35971,8 +35979,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Upgrade
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 00416977037634d48937ade8f9901da3, type: 2}
-  m_sharedMaterial: {fileID: -4155425021065087315, guid: 00416977037634d48937ade8f9901da3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 670397da6d8e8f34daee9cf068a52f2c, type: 2}
+  m_sharedMaterial: {fileID: 2269804761589330375, guid: 670397da6d8e8f34daee9cf068a52f2c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
