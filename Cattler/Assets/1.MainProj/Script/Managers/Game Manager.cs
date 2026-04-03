@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject battleDoor;
     public bool inBattle = false; 
+    public bool gameOver = false;
 
     public PlayerData playerData;
 
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-
+        CheckForGameOver();
     }
 
 
@@ -135,10 +136,12 @@ public class GameManager : MonoBehaviour
         TeamManager.instance.ResetHealthAllCats();
         
 
-
         TeamManager.instance.ClearDeadCatsList(); //delete all worldGOcat that died.
         TeamManager.instance.DisableAllCats();
-        
+
+        //reset cat Icons.
+        CatIconUI.instance.ResetAllIconToInitialIndex();
+
         TravelManager.instance.ResetToStart();
         TravelManager.instance.DisableTravel();
 
@@ -165,6 +168,9 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.PlayTheme("Lobby");
         }
 
+        DialogueManager.instance.resetDeathTriggers();
+        gameOver = false;
+        inBattle = false;
     }
 
     public void StartMission() // battle door pressed
@@ -222,6 +228,7 @@ public class GameManager : MonoBehaviour
         {
             TravelManager.instance.DisableTravel(); // cannot move during tutorial
              Tutorial.instance.TutorialLevelStart();
+
         }
         else
         {
@@ -229,6 +236,7 @@ public class GameManager : MonoBehaviour
             TravelManager.instance.ResetToStart();
             SpawnerManager.instance.StartLevelOne();
         }
+        inBattle = true;
     }
 
     public void RetreatButton()         //When button is clicked.
@@ -402,15 +410,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameOver()
+    public void CheckForGameOver()
     {
         //if all cats are dead
-        if (inBattle)
+        if (inBattle && !gameOver)
         {
             if(TeamManager.instance.cats.Count == 0)
             {
+                inBattle = false;
+                gameOver = true;
                 //Trigger the retreat sequence!
-
+                DialogueManager.instance.BeginTalk(3);
             }
         }
         //force a retreat

@@ -53,6 +53,23 @@
             }
           },
           {
+            "id": "5f0ac3c5dafe47b9",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "!!!Game Structure and Timeline.canvas",
+                "viewState": {
+                  "x": 695.3251396673526,
+                  "y": 1767.4969401628364,
+                  "zoom": -0.7464615055400701
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "!!!Game Structure and Timeline"
+            }
+          },
+          {
             "id": "f772fb44ab909a48",
             "type": "leaf",
             "state": {
@@ -91,7 +108,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -239,14 +256,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4d49d54a054ca7d6",
+  "active": "5f0ac3c5dafe47b9",
   "lastOpenFiles": [
+    "Lobby/Lobby.md",
+    "Lobby/Team & Inventory.md",
+    "List of Assets/Equipment's List.md",
+    "List of Assets/Hats List.md",
     "Grad Review.md",
     "Resolution for Assets.md",
     "!!!Game Structure and Timeline.canvas",
     "Team Management/House Rules.md",
     "Team Management/FYP BOOTH Showcase.md",
-    "Lobby/Team & Inventory.md",
     "Untitled",
     "Lobby/LOBBY.md",
     "Lobby/Summon Page.md",
@@ -265,14 +285,11 @@
     "Purrgatory Game (Main Game)/Enemy.md",
     "Purrgatory Game (Main Game)/Game Flow.canvas",
     "Marketing/Marketing.md",
-    "List of Assets/Hats List.md",
-    "List of Assets/Equipment's List.md",
     "List of Assets/Cats List.md",
     "List of Assets/Enemy List.md",
     "Main Gameplay Page.md",
     "Team Page.md",
     "Game Manager (Old).md",
-    "Lobby/Lobby.md",
     "List of Assets",
     "Team.md",
     "Lobby",

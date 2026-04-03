@@ -17,7 +17,7 @@ public class TeamManager : MonoBehaviour
 
     public GameObject playerTeamGO;
 
-    public GameObject catTemplatePrefab;
+    public GameObject catTemplatePrefab; //cat template for common and rare cats
 
     private void Awake()
     {
@@ -35,7 +35,12 @@ public class TeamManager : MonoBehaviour
 
         CatUnit newCatUnit;
 
-        if (newlyAddedCat.catGO == null)  //if first time added to world.
+        if(newlyAddedCat == null)
+        {
+            Rarity rarity = newlyAddedCat.runtimeData.template.Rarity; //check this newlyAddedCat rarity.
+        }
+
+        if (newlyAddedCat.catGO == null )  //if first time added to world. is a common cat or rare cat
         {
             GameObject newCatGO = Instantiate(catTemplatePrefab);  //new  cat gameobject in the world.
             newCatGO.name = newlyAddedCat.runtimeData.template.itemName;

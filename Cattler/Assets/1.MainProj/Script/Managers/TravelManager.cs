@@ -124,7 +124,7 @@ public class TravelManager : MonoBehaviour
         if (distanceTraveledUIvalue > (level3Milestone+3f) && !level3TextTriggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
         {
             level3MilstoneComplete = true;
-            TextPopUp("The Outskirt");
+            TextPopUp("DEMO ENDS");
             level3TextTriggered=true;
         }
         // Check if transition floor has scrolled into view

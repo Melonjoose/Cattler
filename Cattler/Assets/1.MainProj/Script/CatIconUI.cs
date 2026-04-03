@@ -303,6 +303,7 @@ public class CatIconUI : MonoBehaviour
         catUISlot.iconImage.sprite = null;
         Button catUISlotbutton = catUISlot.icon.GetComponent<Button>();
         catUISlotbutton.interactable = false;
+        catUISlot.unit = null;
         catUISlot.healthBar.gameObject.SetActive(false);
         catUISlot.isDead = false;
         catUISlot.icon.gameObject.SetActive(false); //hide it 
@@ -327,4 +328,5 @@ public class CatIconUI : MonoBehaviour
             }
         }
     }
+
 }

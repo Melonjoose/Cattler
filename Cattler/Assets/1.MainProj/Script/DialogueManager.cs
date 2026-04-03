@@ -62,6 +62,14 @@ public class DialogueManager : MonoBehaviour
     //while talking, tap to skip to the end of the text.
     //while end of text, tap to move to next dialogue in queue.
 
+    private bool firstRetreat = false;
+    private bool retreatCompleted = false;
+    private bool backToLobby = false;
+    private bool backToLobbyCompleted = false;
+
+    public bool deathDialoguePlay = false;
+    public bool deathDialogueEnd = false;
+
     private void Awake()
     {
         instance = this;
@@ -99,18 +107,8 @@ public class DialogueManager : MonoBehaviour
         canvas.gameObject.SetActive(true);
         dialogueCount = 0;  // reset every time you start a new sequence
         DialogueSequence seq = dialogueSequences[dialogueSeqIndex];
-        if(dialogueSeqIndex == 0)
-        {
-            intro1Start = true;
-        }
-        if (dialogueSeqIndex == 1)
-        {
-            firstRetreat = true;
-        }
-        if(dialogueSeqIndex == 2)
-        {
-            backToLobby = true;
-        }
+        CheckForTrigger(dialogueSeqIndex);
+
         textBox.SetActive(true);
         StopAllCoroutines();
         dialogueQueue.Clear(); // clear old lines
@@ -167,7 +165,25 @@ public class DialogueManager : MonoBehaviour
         CloseDialogue();
         BeginTalkFromQueue(dialogueSeq);
     }
-
+    public void CheckForTrigger(int dialogueSeqIndex)
+    {
+        if (dialogueSeqIndex == 0)
+        {
+            intro1Start = true;
+        }
+        if (dialogueSeqIndex == 1)
+        {
+            firstRetreat = true;
+        }
+        if (dialogueSeqIndex == 2)
+        {
+            backToLobby = true;
+        }
+        if (dialogueSeqIndex == 3)
+        {
+            deathDialoguePlay = true;
+        }
+    }
 
     public void BeginTalkFromQueue(DialogueSequence dialogueSeq)
     {
@@ -250,10 +266,6 @@ public class DialogueManager : MonoBehaviour
         textBox.SetActive(false);
     }
 
-    private bool firstRetreat = false;
-    private bool retreatCompleted = false;
-    private bool backToLobby = false;
-    private bool backToLobbyCompleted = false;
     void EndDialogueSequence()
     {
         isTalking = false;
@@ -290,6 +302,18 @@ public class DialogueManager : MonoBehaviour
             backToLobbyCompleted = true;
             Tutorial.instance.TriggerTUT16();
         }
+
+        if (deathDialoguePlay && !deathDialogueEnd) //if play is true, dialogue is played(at the start), and if deathdialogue havent end.
+        {
+            deathDialogueEnd = true;
+            GameManager.instance.RetreatConfirmPressed();
+        }
+    }
+
+    public void resetDeathTriggers()
+    {
+        deathDialoguePlay = false;
+        deathDialogueEnd = false;
     }
     //tap to skip typinganimation if it is still typing.
     //tap to skip the readingtime.
