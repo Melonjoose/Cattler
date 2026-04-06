@@ -1,0 +1,57 @@
+UFOCat.png
+size:512,512
+filter:Linear,Linear
+pma:true
+scale:0.5
+Arm
+bounds:420,118,112,67
+rotate:90
+Leye
+bounds:2,3,45,61
+rotate:90
+Meye
+bounds:489,290,21,26
+Pincer
+bounds:65,13,35,50
+rotate:90
+Reye
+bounds:459,318,50,59
+control panel
+bounds:396,304,205,61
+rotate:90
+head
+bounds:238,86,180,129
+joystick
+bounds:420,80,36,46
+rotate:90
+left amtenna
+bounds:117,2,32,46
+left arm
+bounds:199,3,36,27
+rotate:90
+left ear
+bounds:159,41,55,65
+rotate:90
+left leg
+bounds:251,56,24,28
+right amtenna
+bounds:151,7,32,46
+rotate:90
+right arm
+bounds:468,83,33,22
+rotate:90
+right ear
+bounds:459,446,50,63
+right leg
+bounds:226,52,23,32
+seat
+bounds:2,98,234,117
+tail
+bounds:459,379,65,46
+rotate:90
+torso
+bounds:396,232,70,70
+ufo
+bounds:2,217,392,292
+ufo base
+bounds:2,50,155,46

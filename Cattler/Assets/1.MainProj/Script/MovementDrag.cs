@@ -21,6 +21,7 @@ public class MovementDrag : MonoBehaviour
 
     public float snapRange = 2f;
 
+    public Vector3 startPositionOffset;
     public GameObject arrowHeadPrefab;
     private GameObject arrowHeadInstance;
 
@@ -57,7 +58,7 @@ public class MovementDrag : MonoBehaviour
 
         if (Input.GetMouseButton(0) && dragging)
         {
-            startPos = transform.position;
+            startPos = transform.position + startPositionOffset;
             Vector3 mouseScreen = Input.mousePosition;
             mouseScreen.z = camToObjDistance;
             Vector3 mouseWorld = mainCam.ScreenToWorldPoint(mouseScreen);

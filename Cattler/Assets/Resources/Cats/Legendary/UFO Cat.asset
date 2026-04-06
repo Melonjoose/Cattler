@@ -10,22 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
-  m_Name: Yellow Cat
+  m_Name: UFO Cat
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8409749662932035737, guid: 9f7b1e1fd28e66d49bdc8090df63dc7a, type: 3}
+  prefab: {fileID: 8409749662932035737, guid: f362a0210169e614e9336ff6c769ff6a, type: 3}
   prefab2: {fileID: 0}
-  itemName: Yellow Cat
-  icon: {fileID: 21300000, guid: c31ba8e130d3a2744894e24c0a20f755, type: 3}
+  itemName: UFO Cat
+  icon: {fileID: 21300000, guid: 5f30744befc18e746907642130f60ffb, type: 3}
   itemType: 0
-  description: A very yellow cat that like to rub it's body onto a lot of balloon
-    which causes it to have a lot of static in it's fur.
+  description: He don't belong here
   value: 2
   fvalue: 0
-  skinName: YellowCat
+  skinName: UFOCat
   catID: 100
   Rarity: 2
-  skillName: Static Coat
-  skillDesc: Shoots lightning
+  skillName: UFOBLASTER
+  skillDesc: Blast Enemy
   level: 1
   exp: 0
   catSkill: {fileID: 0}
