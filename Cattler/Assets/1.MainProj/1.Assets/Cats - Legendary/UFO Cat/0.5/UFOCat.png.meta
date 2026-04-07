@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 82565cf6b1429a244bd0184ee04b5b05
+guid: 4400bacfec4ed0c47b5bade4105f38b1
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -65,6 +65,30 @@ TextureImporter:
   - first:
       213: -6120442711464076988
     second: UFOCat_20
+  - first:
+      213: -8171237125013827303
+    second: UFOCat_21
+  - first:
+      213: 8183895485441333716
+    second: UFOCat_22
+  - first:
+      213: -3359117368313349087
+    second: UFOCat_23
+  - first:
+      213: -4716896577917940549
+    second: UFOCat_24
+  - first:
+      213: -8769801203055231528
+    second: UFOCat_25
+  - first:
+      213: 5479231538315501519
+    second: UFOCat_26
+  - first:
+      213: 5351628472014175231
+    second: UFOCat_27
+  - first:
+      213: 364082092266908206
+    second: UFOCat_28
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -177,9 +201,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 921
-        width: 127
-        height: 102
+        y: 465
+        width: 52
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,9 +223,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 827
-        width: 312
-        height: 94
+        y: 295
+        width: 227
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,10 +244,10 @@ TextureImporter:
       name: UFOCat_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 921
-        width: 124
-        height: 92
+        x: 53
+        y: 465
+        width: 35
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,10 +266,10 @@ TextureImporter:
       name: UFOCat_3
       rect:
         serializedVersion: 2
-        x: 252
-        y: 921
-        width: 66
-        height: 93
+        x: 88
+        y: 465
+        width: 30
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,10 +288,10 @@ TextureImporter:
       name: UFOCat_4
       rect:
         serializedVersion: 2
-        x: 318
-        y: 920
-        width: 66
-        height: 93
+        x: 118
+        y: 465
+        width: 28
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -286,10 +310,10 @@ TextureImporter:
       name: UFOCat_5
       rect:
         serializedVersion: 2
-        x: 384
-        y: 920
-        width: 55
-        height: 73
+        x: 228
+        y: 295
+        width: 131
+        height: 182
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -308,10 +332,10 @@ TextureImporter:
       name: UFOCat_6
       rect:
         serializedVersion: 2
-        x: 1
-        y: 592
-        width: 470
-        height: 235
+        x: 359
+        y: 464
+        width: 63
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -330,10 +354,10 @@ TextureImporter:
       name: UFOCat_7
       rect:
         serializedVersion: 2
-        x: 313
-        y: 827
-        width: 132
-        height: 93
+        x: 422
+        y: 464
+        width: 48
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,10 +376,10 @@ TextureImporter:
       name: UFOCat_8
       rect:
         serializedVersion: 2
-        x: 471
-        y: 592
-        width: 362
-        height: 259
+        x: 359
+        y: 395
+        width: 114
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -374,10 +398,10 @@ TextureImporter:
       name: UFOCat_9
       rect:
         serializedVersion: 2
-        x: 833
-        y: 786
-        width: 94
-        height: 73
+        x: 359
+        y: 347
+        width: 157
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -396,10 +420,10 @@ TextureImporter:
       name: UFOCat_10
       rect:
         serializedVersion: 2
-        x: 927
-        y: 786
-        width: 45
-        height: 68
+        x: 473
+        y: 395
+        width: 52
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,10 +442,10 @@ TextureImporter:
       name: UFOCat_11
       rect:
         serializedVersion: 2
-        x: 1
-        y: 6
-        width: 786
-        height: 586
+        x: 516
+        y: 347
+        width: 67
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -440,10 +464,10 @@ TextureImporter:
       name: UFOCat_12
       rect:
         serializedVersion: 2
-        x: 787
-        y: 418
-        width: 141
-        height: 142
+        x: 525
+        y: 395
+        width: 52
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -462,10 +486,10 @@ TextureImporter:
       name: UFOCat_13
       rect:
         serializedVersion: 2
-        x: 833
-        y: 560
-        width: 135
-        height: 226
+        x: 395
+        y: 228
+        width: 236
+        height: 119
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -484,10 +508,10 @@ TextureImporter:
       name: UFOCat_14
       rect:
         serializedVersion: 2
-        x: 928
-        y: 464
-        width: 44
-        height: 53
+        x: 583
+        y: 347
+        width: 38
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -506,10 +530,10 @@ TextureImporter:
       name: UFOCat_15
       rect:
         serializedVersion: 2
-        x: 928
-        y: 407
-        width: 49
-        height: 57
+        x: 1
+        y: 1
+        width: 394
+        height: 294
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -528,10 +552,10 @@ TextureImporter:
       name: UFOCat_16
       rect:
         serializedVersion: 2
-        x: 787
-        y: 6
-        width: 124
-        height: 412
+        x: 359
+        y: 295
+        width: 34
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -550,10 +574,10 @@ TextureImporter:
       name: UFOCat_17
       rect:
         serializedVersion: 2
-        x: 911
-        y: 359
-        width: 66
-        height: 48
+        x: 631
+        y: 291
+        width: 192
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -572,10 +596,10 @@ TextureImporter:
       name: UFOCat_18
       rect:
         serializedVersion: 2
-        x: 911
-        y: 257
-        width: 71
-        height: 102
+        x: 905
+        y: 236
+        width: 72
+        height: 72
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -594,10 +618,10 @@ TextureImporter:
       name: UFOCat_19
       rect:
         serializedVersion: 2
-        x: 911
-        y: 137
-        width: 101
-        height: 120
+        x: 395
+        y: 1
+        width: 170
+        height: 227
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -616,10 +640,10 @@ TextureImporter:
       name: UFOCat_20
       rect:
         serializedVersion: 2
-        x: 911
-        y: 6
-        width: 112
-        height: 131
+        x: 565
+        y: 1
+        width: 170
+        height: 227
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -630,6 +654,182 @@ TextureImporter:
       bones: []
       spriteID: 4491e0b08c1df0ba0800000000000000
       internalID: -6120442711464076988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UFOCat_21
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 228
+        width: 207
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 911111cb02fe99e80800000000000000
+      internalID: -8171237125013827303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UFOCat_22
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1
+        width: 170
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d957a87599039170800000000000000
+      internalID: 8183895485441333716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UFOCat_23
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 228
+        width: 67
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12c76d60d840261d0800000000000000
+      internalID: -3359117368313349087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UFOCat_24
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 1
+        width: 78
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbc02f6bd873a8eb0800000000000000
+      internalID: -4716896577917940549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UFOCat_25
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 180
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dd791d25486b4680800000000000000
+      internalID: -8769801203055231528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UFOCat_26
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 132
+        width: 34
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcf996bcd042a0c40800000000000000
+      internalID: 5479231538315501519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UFOCat_27
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 180
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffb754cbdbdc44a40800000000000000
+      internalID: 5351628472014175231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UFOCat_28
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 1
+        width: 37
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2a66a2ebba7d0500800000000000000
+      internalID: 364082092266908206
       vertices: []
       indices: 
       edges: []
@@ -662,6 +862,14 @@ TextureImporter:
       UFOCat_19: 7047816688340915693
       UFOCat_2: 6703787194575831142
       UFOCat_20: -6120442711464076988
+      UFOCat_21: -8171237125013827303
+      UFOCat_22: 8183895485441333716
+      UFOCat_23: -3359117368313349087
+      UFOCat_24: -4716896577917940549
+      UFOCat_25: -8769801203055231528
+      UFOCat_26: 5479231538315501519
+      UFOCat_27: 5351628472014175231
+      UFOCat_28: 364082092266908206
       UFOCat_3: -6710092940664609541
       UFOCat_4: 1076710210531039729
       UFOCat_5: -5899609384114644445

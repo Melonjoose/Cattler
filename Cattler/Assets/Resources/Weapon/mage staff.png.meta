@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: a396bb8017d4c9c4cabb67562ffb7495
+guid: bda25fbee72c0e44dad03c931c3b01f8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4336390633732180698
-    second: fyp staff_0
+      213: 5651411095072398357
+    second: mage staff_0
+  - first:
+      213: -4081019035901113106
+    second: mage staff_1
+  - first:
+      213: 451995107016436359
+    second: mage staff_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:

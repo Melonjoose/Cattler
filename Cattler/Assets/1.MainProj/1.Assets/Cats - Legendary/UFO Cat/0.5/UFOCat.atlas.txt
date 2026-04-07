@@ -1,0 +1,75 @@
+UFOCat.png
+size:1024,512
+filter:Linear,Linear
+pma:true
+scale:0.5
+Arm
+bounds:360,49,112,67
+BeamExport/Base
+bounds:906,277,233,76
+offsets:4,4,241,84
+rotate:90
+BeamExport/Lightraybase
+bounds:2,48,168,225
+rotate:90
+BeamExport/Ring
+bounds:632,168,190,52
+BeamExport/Ring1
+bounds:984,381,129,35
+rotate:90
+BeamExport/particle
+bounds:1009,322,9,13
+rotate:90
+BeamExport/ray/Lightray1
+bounds:396,285,168,225
+BeamExport/ray/Lightray2
+bounds:566,285,168,225
+BeamExport/ray/Lightray3
+bounds:736,285,168,225
+Leye
+bounds:360,2,45,61
+rotate:90
+Meye
+bounds:119,25,21,26
+rotate:90
+Pincer
+bounds:2,11,35,50
+rotate:90
+Reye
+bounds:526,57,50,59
+control panel
+bounds:632,222,205,61
+head
+bounds:229,36,180,129
+rotate:90
+joystick
+bounds:423,11,36,46
+rotate:90
+left amtenna
+bounds:360,170,32,46
+left arm
+bounds:584,137,36,27
+left ear
+bounds:839,228,55,65
+rotate:90
+left leg
+bounds:89,22,24,28
+rotate:90
+right amtenna
+bounds:984,333,32,46
+right arm
+bounds:54,24,33,22
+right ear
+bounds:474,53,50,63
+right leg
+bounds:984,299,23,32
+seat
+bounds:396,166,234,117
+tail
+bounds:517,118,65,46
+torso
+bounds:906,205,70,70
+ufo
+bounds:2,218,392,292
+ufo base
+bounds:360,118,155,46

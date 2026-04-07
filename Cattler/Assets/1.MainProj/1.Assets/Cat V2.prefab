@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 2852ec3ee9f555c4c82fa239eb1d4108, type: 2}
-  initialSkinName: Comet
+  initialSkinName: AngelCat
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
   initialFlipY: 0
@@ -989,6 +989,7 @@ MonoBehaviour:
   arcHeight: 1.5
   resolution: 20
   snapRange: 2
+  startPositionOffset: {x: 0, y: 0, z: 0}
   arrowHeadPrefab: {fileID: 160864614913606435, guid: ffaf35f42a86d1c45a038c4f3b3a4034, type: 3}
 --- !u!114 &766097720611422709
 MonoBehaviour:
@@ -1126,3 +1127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994d48a95d63fc84e961208f7881aa59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}

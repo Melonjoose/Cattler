@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fyp common bow 1_0
+      name: fyp dagger_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 38
-        width: 192
-        height: 382
+        x: 22
+        y: 26
+        width: 303
+        height: 315
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5cf2aa2dd407502c0800000000000000
-      internalID: -4466039975918817339
+      spriteID: c715fd70e8ece7b50800000000000000
+      internalID: 6592934013929738620
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fyp common bow 1_0: -4466039975918817339
+      fyp dagger_0: 6592934013929738620
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
