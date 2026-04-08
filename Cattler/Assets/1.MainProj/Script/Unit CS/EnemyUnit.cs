@@ -1,15 +1,13 @@
 using Spine.Unity;
+using System.Collections;
 using UnityEngine;
 
-public class EnemyUnit : MonoBehaviour
+public class EnemyUnit : Unit
 {
     private GameObject thisUnit; // Reference to self for clarity
     public SkeletonAnimation skeletonAnimation;
     private EnemyMovement EnemyMovement;
     public EnemyTriggerTrack triggerTrack;
-    public bool canWalk = true;
-    public bool canAttack = true;
-    public bool isDead = false;
 
     public bool pickRandomCat = false;
     public bool pickClosestCat = true;
@@ -69,7 +67,7 @@ public class EnemyUnit : MonoBehaviour
     }
 
 
-    private void Update()
+    protected override void OnUnitUpdate()
     {
         // Tick down cooldown
         if (attackCooldown > 0f)

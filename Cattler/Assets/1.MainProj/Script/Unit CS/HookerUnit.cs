@@ -51,7 +51,7 @@ public class HookerUnit : EnemyUnit
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void OnUnitUpdate()
     {
 
         if (lockedCD == false && hookedCat == null && canAttack)
@@ -157,7 +157,7 @@ public class HookerUnit : EnemyUnit
             hookedCat = TargetCat.GetComponent<CatUnit>();
             if (hookedCat != null)
             {
-                DebuffManager.instance.Stunned(hookedCat.gameObject, 999f);
+                DebuffManager.instance.ApplyDebuff(hookedCat.gameObject, DebuffManager.instance.stun);
                 Debug.Log($"{hookedCat.name} is hooked and stunned!");
                 PlayAnimation("AttackLoop", true);
                 pullCoroutine = StartCoroutine(pullCat());
@@ -165,16 +165,22 @@ public class HookerUnit : EnemyUnit
         }
     }
 
-
     IEnumerator pullCat()
     {
-        while (hookedCat != null && Vector3.Distance(hookedCat.transform.position, transform.position) > 1.2f  && hookedCat.isDead == false)
+        float timeout = 8f; // max seconds to pull
+        float elapsed = 0f;
+
+        while (hookedCat != null
+               && Vector3.Distance(hookedCat.transform.position, transform.position) > 1.2f
+               && hookedCat.isDead == false
+               && elapsed < timeout)
         {
             hookedCat.transform.position = Vector3.MoveTowards(
                 hookedCat.transform.position,
                 transform.position,
                 pullSpeed * Time.deltaTime
             );
+            elapsed += Time.deltaTime;
             yield return null;
         }
 
@@ -189,7 +195,8 @@ public class HookerUnit : EnemyUnit
         {
             hookedCat.catMovement.canWalk = true;
             hookedCat.GetComponent<CatMovement>().enabled = true;
-            DebuffManager.instance.RemoveStun(hookedCat.gameObject);
+            DebuffManager.instance.RemoveDebuff(hookedCat.gameObject, DebuffManager.instance.stun);
+
         }
 
         hookedCat = null;

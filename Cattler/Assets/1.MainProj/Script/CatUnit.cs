@@ -3,10 +3,8 @@ using Spine.Unity;
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
-public class CatUnit : MonoBehaviour
+public class CatUnit : Unit
 {
     //--- Equipments ---// memory allocation
     public Item hat;
@@ -35,12 +33,6 @@ public class CatUnit : MonoBehaviour
 
     private float attackCooldown;
 
-    public bool isAttacking = false;
-    public bool canWalk = true;
-    public bool isStunned = false;
-    public bool isDead = false;
-
-    public bool canAttack = true;
 
     public event Action<int,int> onHealthChanged;
     public event Action CatDeath;
@@ -78,7 +70,7 @@ public class CatUnit : MonoBehaviour
             TravelManager.instance.OnTravelStateChanged -= HandleTravelStateChanged;
     }
 
-    private void Update()
+    protected override void OnUnitUpdate()
     {
         if (canAttack && triggerTrack != null) 
         {
@@ -307,39 +299,6 @@ public class CatUnit : MonoBehaviour
                 Debug.LogWarning($"Skin '{skinName}' not found for {name}");
             }
         }
-    }
-
-    private Coroutine stunCoroutine;
-
-    public void Stunned(float duration)
-    {
-        if (stunCoroutine != null)
-        {
-            StopCoroutine(stunCoroutine); //stops the current stun
-        }
-
-        //reapply stun
-        isStunned = true; //isstunned
-        canAttack = false; //cannot attack
-        this.GetComponent<CatMovement>().enabled = false; //cannot move
-        stunCoroutine = StartCoroutine(StunSequence(duration));
-    }
-
-    IEnumerator StunSequence(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        Unstun();
-    }
-
-    public void Unstun()
-    {
-        if (!isStunned) return; // if not stunned, then cannot be unstunned.
-
-        isStunned = false; //notstunned
-        canAttack = true; //can attack
-        this.GetComponent<CatMovement>().enabled = true; //can move
-
-        stunCoroutine = null;
     }
 
 

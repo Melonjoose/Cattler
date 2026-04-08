@@ -1,40 +1,49 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class DebuffManager : MonoBehaviour
 {
     public static DebuffManager instance;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    [Header("All Debuff Types")]
+    public Debuff stun;
+    public Debuff slow;
+    public Debuff dot; // damage over time, burn,poison etc.
+
+    void Awake()
     {
         instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+            if (enemy != null)
+            {
+                DebuffManager.instance.ApplyDebuff(enemy, DebuffManager.instance.stun);
+            }
+        }
     }
 
+    public void ApplyDebuff(GameObject target, Debuff debuff) // to apply debuff to the target.
+    {
+        Unit unit = target.GetComponent<Unit>();
+        if (unit != null)
+        {
+            unit.OnDebuffApplied(debuff);
+            Debug.Log($"Applied {debuff.debuffType} to {target.name}");
+        }
+    }
 
-    public void Stunned(GameObject target, float duration)
+    public void RemoveDebuff(GameObject target, Debuff debuff)
     {
-        if (target.GetComponent<CatUnit>() != null)
+        Unit unit = target.GetComponent<Unit>();
+        if (unit != null)
         {
-            target.GetComponent<CatUnit>().Stunned(duration);
-        }
-        else if (target.GetComponent<EnemyUnit>() != null)
-        {
-            //target.GetComponent<EnemyUnit>().Stunned(duration);
+            unit.OnDebuffRemoved(debuff);
         }
     }
-    public void RemoveStun(GameObject target)
-    {
-        // Example if you store stuns in a dictionary or flag
-        CatUnit cat = target.GetComponent<CatUnit>();
-        if (cat != null)
-        {
-            cat.Unstun();
-            // Optionally stop any coroutines or reset speed here
-        }
-    }
+
 }

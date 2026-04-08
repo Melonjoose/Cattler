@@ -59,7 +59,7 @@ public class ArtilleryUnit : EnemyUnit
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void OnUnitUpdate()
     {
         if (canWalk)
         {

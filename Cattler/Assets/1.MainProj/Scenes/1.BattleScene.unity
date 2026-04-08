@@ -55600,6 +55600,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b87ae4cd7249af4eb2492ccb44dd15b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stun: {fileID: 11400000, guid: b585ad890f967034a95e0236e5ec1c09, type: 2}
+  slow: {fileID: 0}
+  dot: {fileID: 0}
 --- !u!1 &1829105489
 GameObject:
   m_ObjectHideFlags: 0
@@ -66606,6 +66609,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1903894620}
+  - {fileID: 1826804102}
   - {fileID: 1142552778}
   - {fileID: 1976883213}
   - {fileID: 793064997}
@@ -66621,7 +66625,6 @@ SceneRoots:
   - {fileID: 1080154232}
   - {fileID: 1607941321}
   - {fileID: 1809721743}
-  - {fileID: 1826804102}
   - {fileID: 1033593159}
   - {fileID: 1979985491}
   - {fileID: 519420032}
