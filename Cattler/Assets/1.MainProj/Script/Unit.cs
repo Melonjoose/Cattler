@@ -1,11 +1,17 @@
-using UnityEngine;
+using Spine.Unity;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
+    public Canvas debuffCanvas; //holds the debuff icons, assign in inspector
+
     public bool isAttacking = false;
     public bool canWalk = true;
     public bool isDead = false;
+    public SkeletonAnimation skeletonAnimation;
+    public SkeletonGraphic skeletonGraphic;
 
     public bool canAttack = true;
 
@@ -14,69 +20,115 @@ public abstract class Unit : MonoBehaviour
     [SerializeField]private List<DebuffInstance> activeBuffs = new List<DebuffInstance>(); //all the debuff currently applied onto this unit. //to be addedlater.
     [SerializeField]private List<DebuffInstance> activeDebuffs = new List<DebuffInstance>(); //all the debuff currently applied onto this unit.
 
+    private void Awake()
+    {
+        Transform child = transform.Find("DebuffCanvas");
+        if (child != null)
+        {
+            debuffCanvas = child.GetComponent<Canvas>();
+            Debug.Log("DebuffCanvas found and linked on " + gameObject.name);
+        }
+        else
+        {
+            Debug.LogWarning("DebuffCanvas not found on " + gameObject.name);
+        }
+    }
+    private void Start()
+    {
+        OnUnitStart();
+
+    }
+
+    protected virtual void OnUnitStart()
+    {
+        // Default behavior (optional)
+    }
+
+
     void Update() // sealed: subclasses cannot override
     {
-        TickDebuffs();
+        TickDebuffs(Time.deltaTime);
         Debug.Log($"Unit {gameObject.name} has {activeDebuffs.Count} active debuffs.");
+        ForceDeath(5f);
         OnUnitUpdate(); // hook for subclasses
     }
     protected virtual void OnUnitUpdate() { }
 
+    private float deathCheckerTimer = 0f; // persistent field
 
-    protected virtual void TickDebuffs()
+    void ForceDeath(float interval)
     {
+        // accumulate time
+        deathCheckerTimer += Time.deltaTime;
+        if (deathCheckerTimer >= interval)
+        {
+            deathCheckerTimer = 0f; // reset timer
+
+            if (isDead)
+            {
+                Debug.Log($"Safeguard: Destroying {gameObject.name} because it is flagged dead.");
+                Destroy(gameObject); // correct Unity API call
+            }
+        }
+    }
+
+
+    private void TickDebuffs(float deltaTime)
+    {
+        // Iterate backwards so we can safely remove expired debuffs
         for (int i = activeDebuffs.Count - 1; i >= 0; i--)
         {
-            if (activeDebuffs[i].Tick(Time.deltaTime))
+            DebuffInstance instance = activeDebuffs[i];
+
+            // Tick down the timer
+            bool expired = instance.Tick(deltaTime);
+
+            // If less than 1 second left, trigger blinking UI
+            if (instance.remainingTime <= 1.5f)
             {
-                OnDebuffRemoved(activeDebuffs[i].debuff);
+                instance.BlinkingUI();
+            }
+
+            if (expired)
+            {
+                // Remove effects + UI
+                instance.RemoveDebuffEffect();
+                instance.RemoveUI();
+
+                // Remove from list
                 activeDebuffs.RemoveAt(i);
             }
         }
     }
 
-    public virtual void OnDebuffApplied(Debuff debuff)
+    public void AddDebuff(Debuff debuff)
+    {
+        var instance = new DebuffInstance(debuff, this);
+        activeDebuffs.Add(instance);
+
+        instance.ApplyDebuffEffect();
+        instance.ShowUI();
+    }
+
+
+    public virtual void OnDebuffRemoved(Debuff debuff)
     {
         var existing = activeDebuffs.Find(d => d.debuff == debuff);
         if (existing != null)
         {
-            // Refresh duration instead of duplicating
-            existing.remainingTime = debuff.duration;
+            activeDebuffs.Remove(existing);
+            existing.RemoveDebuffEffect();
         }
-        else
+    }
+
+    public void RemoveAllDebuffs()
+    {
+        foreach (var instance in activeDebuffs)
         {
-            activeDebuffs.Add(new DebuffInstance(debuff));
+            instance.RemoveDebuffEffect();
+            instance.RemoveUI();
         }
-
-        if (debuff.debuffType == Debuff.DebuffType.Stun)
-            ApplyStun();
+        activeDebuffs.Clear();
     }
 
-    public virtual void OnDebuffRemoved(Debuff debuff)
-    {
-        if (debuff.debuffType == Debuff.DebuffType.Stun)
-            Unstun();
-        //else if (debuff.debuffType == Debuff.DebuffType.Slow)
-            //RemoveSlow();
-    }
-
-    private void ApplyStun()
-    {
-        isStunned = true;
-        canAttack = false;
-        canWalk = false;
-        // disable movement/attack here
-    }
-
-    public void Unstun()
-    {
-        isStunned = false;
-        canAttack = true;
-        canWalk = true;
-        // restore movement/attack here
-    }
-
-    //protected abstract void ApplySlow(float amount);
-    //protected abstract void RemoveSlow();
-    //protected abstract void ApplyPoison(float dps);
 }

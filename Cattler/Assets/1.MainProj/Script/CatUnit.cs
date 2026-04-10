@@ -23,8 +23,7 @@ public class CatUnit : Unit
     public GameObject targetPoint;
     public TriggerTrack triggerTrack;
     public GameObject AnimationBody; //the gameobject that has the animator component for this cat. (for animation purposes only, not the actual catGO)
-    public SkeletonAnimation skeletonAnimation;
-    public SkeletonGraphic skeletonGraphic;
+
 
     public CatRuntimeData runtimeData;
     public CatMovement catMovement;
@@ -37,7 +36,7 @@ public class CatUnit : Unit
     public event Action<int,int> onHealthChanged;
     public event Action CatDeath;
 
-    private void Start()
+    protected override void OnUnitStart()
     {
         thisCatUnit = GetComponent<CatUnit>();
 

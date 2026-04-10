@@ -26,7 +26,7 @@ public class ArtilleryUnit : EnemyUnit
     public bool lockedCD = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void OnUnitStart()
     {
         dropLoot = GetComponent<DropLoot>();
         line = GetComponent<LineRenderer>();
@@ -61,6 +61,20 @@ public class ArtilleryUnit : EnemyUnit
     // Update is called once per frame
     protected override void OnUnitUpdate()
     {
+        if (isStunned)
+        {
+            bool playedOnce = false;
+            if (playedOnce)
+            {
+                return;
+            }
+            DeleteArc();
+            StopAllCoroutines();
+            skeletonAnimation.AnimationState.SetAnimation(0, "Hit", false);
+            return;
+        }
+
+
         if (canWalk)
         {
             Walk();

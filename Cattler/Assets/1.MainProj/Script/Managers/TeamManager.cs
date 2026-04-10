@@ -400,7 +400,7 @@ public class TeamManager : MonoBehaviour
         { 
             cat.catMovement.ResetToInitialPosition(); //this resets world cat positions but not UI.
             CatIconUI.instance.ResetAllIconToInitialIndex();
-            cat.Unstun();
+            cat.RemoveAllDebuffs();
         }
 
     }

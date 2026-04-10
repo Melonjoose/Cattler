@@ -10,6 +10,8 @@ public class DebuffManager : MonoBehaviour
     public Debuff slow;
     public Debuff dot; // damage over time, burn,poison etc.
 
+    public GameObject iconPrefab; // contains debuff icon sprite renderer, used for showing debuff icon above enemy head.
+
     void Awake()
     {
         instance = this;
@@ -22,7 +24,7 @@ public class DebuffManager : MonoBehaviour
             GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
             if (enemy != null)
             {
-                DebuffManager.instance.ApplyDebuff(enemy, DebuffManager.instance.stun);
+               ApplyDebuff(enemy,stun);
             }
         }
     }
@@ -32,7 +34,7 @@ public class DebuffManager : MonoBehaviour
         Unit unit = target.GetComponent<Unit>();
         if (unit != null)
         {
-            unit.OnDebuffApplied(debuff);
+            unit.AddDebuff(debuff);
             Debug.Log($"Applied {debuff.debuffType} to {target.name}");
         }
     }

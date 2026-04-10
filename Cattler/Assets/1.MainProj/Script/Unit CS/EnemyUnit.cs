@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyUnit : Unit
 {
     private GameObject thisUnit; // Reference to self for clarity
-    public SkeletonAnimation skeletonAnimation;
     private EnemyMovement EnemyMovement;
     public EnemyTriggerTrack triggerTrack;
 
@@ -31,7 +30,7 @@ public class EnemyUnit : Unit
     [SerializeField] public float moveSpeed;
     [SerializeField] public float attackRange;
 
-    private void Start()
+    protected override void OnUnitStart()
     {   
         
         EnemyMovement = GetComponent<EnemyMovement>();
