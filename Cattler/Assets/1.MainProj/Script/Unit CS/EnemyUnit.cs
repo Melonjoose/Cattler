@@ -1,5 +1,6 @@
 using Spine.Unity;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyUnit : Unit
@@ -144,6 +145,9 @@ public class EnemyUnit : Unit
 
         foreach (GameObject cat in allCats)
         {
+            CatUnit catUnit = cat.GetComponent<CatUnit>();
+            if (catUnit == null || !catUnit.canTarget) continue; // skip untargetable cats
+
             float distance = Vector3.Distance(this.transform.position, cat.transform.position);
             if (distance < closestDistance)
             {
@@ -152,7 +156,7 @@ public class EnemyUnit : Unit
             }
         }
 
-        TargetCat = closestCat; // Will be null if no enemies are in range
+        TargetCat = closestCat; // Will be null if no valid cats
         triggerTrack.chosenCat = closestCat;
         EnemyMovement.TargetCat = closestCat;
     }
@@ -164,21 +168,28 @@ public class EnemyUnit : Unit
 
         GameObject[] allCats = GameObject.FindGameObjectsWithTag("Cat");
 
-        if (allCats.Length == 0)
+        // Filter only cats that can be targeted
+        List<GameObject> validCats = new List<GameObject>();
+        foreach (GameObject cat in allCats)
         {
-            Debug.LogWarning("No cats found in the scene.");
+            CatUnit catUnit = cat.GetComponent<CatUnit>();
+            if (catUnit != null && catUnit.canTarget)
+            {
+                validCats.Add(cat);
+            }
+        }
+
+        if (validCats.Count == 0)
+        {
+            Debug.LogWarning("No valid cats found in the scene.");
             TargetCat = null;
             return;
         }
 
-        // Pick random
-        TargetCat = allCats[Random.Range(0, allCats.Length)];
-
-        if (TargetCat != null)
-        {
-            EnemyMovement.TargetCat = TargetCat;
-            triggerTrack.chosenCat = TargetCat;
-        }
+        // Pick random from valid list
+        TargetCat = validCats[Random.Range(0, validCats.Count)];
+        EnemyMovement.TargetCat = TargetCat;
+        triggerTrack.chosenCat = TargetCat;
     }
 
     public void TakeDamage(int amount)

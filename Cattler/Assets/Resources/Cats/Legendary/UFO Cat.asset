@@ -23,8 +23,9 @@ MonoBehaviour:
   skinName: UFOCat
   catID: 100
   Rarity: 2
-  skillName: UFOBLASTER
-  skillDesc: Blast Enemy
+  skillName: Abduct
+  skillDesc: Flies above the enemy and abduct them into the sky. Deal constant damage
+    to the enemy while dragging them away from the team!
   level: 1
   exp: 0
   catSkill: {fileID: 0}

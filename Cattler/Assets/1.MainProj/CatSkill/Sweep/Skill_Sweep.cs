@@ -1,8 +1,5 @@
 using Spine.Unity;
-using Unity.Jobs;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Skill_Sweep : CatSkill
 {
@@ -28,25 +25,8 @@ public class Skill_Sweep : CatSkill
 
         skeleton.AnimationState.Event += HandleSpineEvent;
     }
-    void FixedUpdate() // Use FixedUpdate for consistent timing, especially if the skill's effects are time-sensitive
-    {
-        Cooldown();
-    }
-    public void Cooldown()
-    {
-        if (isActive == false)
-        {
-            return;
-        }
-        if (time <= 0)//check if the cooldown time has elapsed
-        {
-            UseSkill();
-            time = cooldown; //reset time to match the cooldown duration
-        }
 
-        time -= Time.deltaTime; //decrease time by the time that has passed since the last frame
-    }
-    public void UseSkill()
+    public override void UseSkill()
     {
         // Implement the logic for Sweep skill here
         //turn on collider of object. ensure toggleCollider() is working properly.

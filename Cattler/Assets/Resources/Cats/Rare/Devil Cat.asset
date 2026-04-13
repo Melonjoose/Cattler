@@ -27,7 +27,7 @@ MonoBehaviour:
   skillDesc: Deal damage to a friendly cat to instant kill one non-boss enemy
   level: 1
   exp: 0
-  catSkill: {fileID: 0}
+  catSkill: {fileID: 2471480427501066553, guid: b5949f4c436b28f49bbd5ce0fe43fd05, type: 3}
   baseHealth: 8
   attackPower: 3
   attackSpeed: 1

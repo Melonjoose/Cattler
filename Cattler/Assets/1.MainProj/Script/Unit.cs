@@ -10,6 +10,7 @@ public abstract class Unit : MonoBehaviour
     public bool isAttacking = false;
     public bool canWalk = true;
     public bool isDead = false;
+    public bool canTarget = true;
     public SkeletonAnimation skeletonAnimation;
     public SkeletonGraphic skeletonGraphic;
 
@@ -48,7 +49,6 @@ public abstract class Unit : MonoBehaviour
     void Update() // sealed: subclasses cannot override
     {
         TickDebuffs(Time.deltaTime);
-        Debug.Log($"Unit {gameObject.name} has {activeDebuffs.Count} active debuffs.");
         ForceDeath(5f);
         OnUnitUpdate(); // hook for subclasses
     }

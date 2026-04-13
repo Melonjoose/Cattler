@@ -16,5 +16,36 @@ public class CatSkill : MonoBehaviour
     private void Start()
     {
         catUnit = GetComponentInParent<CatUnit>();
+        RandomizeTimerStart(); // Randomize the starting point of the timer to create more dynamic skill usage
+    }
+
+    void FixedUpdate() // Use FixedUpdate for consistent timing, especially if the skill's effects are time-sensitive
+    {
+        Cooldown();
+    }
+    public void Cooldown()
+    {
+        if (isActive == false)
+        {
+            return;
+        }
+        if (time <= 0)//check if the cooldown time has elapsed
+        {
+            UseSkill();
+            time = cooldown; //reset time to match the cooldown duration
+        }
+
+        time -= Time.deltaTime; //decrease time by the time that has passed since the last frame
+    }
+    public virtual void UseSkill()
+    {
+        Debug.Log($"Using skill: {this.name}");
+    }
+
+
+    void RandomizeTimerStart()
+    {
+        //from 0 to cooldown, randomize the starting point of the timer to create more dynamic skill usage
+        time = Random.Range(0, cooldown);
     }
 }

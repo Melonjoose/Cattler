@@ -98,7 +98,10 @@ public class DebuffInstance
             unit.isStunned = true;
             unit.canAttack = false;
             unit.canWalk = false;
-            unit.skeletonAnimation.AnimationState.SetAnimation(0, "Hit", false);
+            if(unit.isDead == false)
+            {
+                unit.skeletonAnimation.AnimationState.SetAnimation(0, "Hit", false);
+            }
         }
         
     }
@@ -110,7 +113,10 @@ public class DebuffInstance
             unit.isStunned = false;
             unit.canAttack = true;
             unit.canWalk = true;
-            unit.skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
+            if (unit.isDead == false)
+            {
+                unit.skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
+            }
         }
     }
 }
