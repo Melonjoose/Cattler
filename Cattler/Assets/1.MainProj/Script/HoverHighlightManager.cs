@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class HoverHighlightManager : MonoBehaviour
 {
+    public static HoverHighlightManager instance; 
     public GameObject highlighter;       // The shared arrow indicator
     public Vector3 managerOffset;
 
@@ -10,6 +11,8 @@ public class HoverHighlightManager : MonoBehaviour
 
     void Start()
     {
+        instance = this;
+
         if (highlighter == null)
             highlighter = GameObject.Find("ArrowIndicator");
 

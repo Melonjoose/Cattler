@@ -1,10 +1,7 @@
-using NUnit.Framework.Internal.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
-using UnityEditor.U2D.Aseprite;
-using UnityEditor.XR;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour

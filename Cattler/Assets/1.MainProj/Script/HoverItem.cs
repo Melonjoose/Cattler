@@ -7,7 +7,7 @@ public class HoverItem : MonoBehaviour
 
     void Start()
     {
-        manager = FindObjectOfType<HoverHighlightManager>();
+        manager = HoverHighlightManager.instance;
         //hoverStartPoint = transform.position + offset;
     }
 

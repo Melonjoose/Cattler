@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Linq;
-using static SnappableLocation;
-using static UnityEditor.Progress;
 
 public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler , IPointerEnterHandler, IPointerExitHandler
 {

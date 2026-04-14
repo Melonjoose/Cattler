@@ -69,7 +69,7 @@ public class DevilContract : CatSkill
     public EnemyUnit ChooseRandomEnemy()
     {
         //later add a check to ensure that the enemy chosen is not a boss.
-        EnemyUnit[] enemies = FindObjectsOfType<EnemyUnit>();
+        EnemyUnit[] enemies = Object.FindObjectsByType<EnemyUnit>(FindObjectsSortMode.None);
         if (enemies.Length == 0)
             return null;
         int randomIndex = Random.Range(0, enemies.Length);

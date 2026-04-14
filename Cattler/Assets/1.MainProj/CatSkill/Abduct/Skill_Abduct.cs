@@ -1,6 +1,6 @@
 using Spine.Unity;
 using System.Collections;
-using UnityEditor.Build;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Skill_Abduct : CatSkill
@@ -8,8 +8,10 @@ public class Skill_Abduct : CatSkill
     public Rigidbody2D unitRB;
 
     public Collider2D abductCollider; // the collider for the beam that pulls enemies in. should be a trigger collider that is active during the horizontal movement of the cat.
-
+    public GameObject pullPoint;
     //Pull enemy backwards as UFOcat fly over their head. Enemy takes constant damage in the beam
+    private Dictionary<EnemyUnit, float> damageTimers = new Dictionary<EnemyUnit, float>();
+
 
     void Start()
     {
@@ -59,6 +61,7 @@ public class Skill_Abduct : CatSkill
             catUnit.transform.position = RightPosition; // ensure it ends at the exact end position
 
         //once it reaches the end of the screen, turns of the collider beam that pulls enemies in. then fly up.
+        abductCollider.enabled = false; //enable the collider for the beam that pulls enemies in during the skill
 
         yield return new WaitForSeconds(0.2f);
         Vector3 upPosition2 = RightPosition + new Vector3(0, 8f, 0); // fly up by 2 units
@@ -95,6 +98,8 @@ public class Skill_Abduct : CatSkill
             yield return null;
         }
         catUnit.transform.position = startPosition; // ensure it ends at the exact up position
+
+        EndSkillState();
     }
     //sequence of events:
     //0. timer runs out, skill is activated. stop the timer until the whole sequence of events is complete. the timer should only start again once the cat has landed back on the ground after flying up and across the screen.
@@ -121,6 +126,10 @@ public class Skill_Abduct : CatSkill
         catUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Skill1", true); //1. change animation to skill animation
     }
 
+    //currently the UFO is not invicible and still can be hit.
+    //the cat is moving to the right too fast.
+    //damage tick is too fast.
+
     void EndSkillState() //7.
     {
         isActive = true; //start timer again
@@ -131,4 +140,54 @@ public class Skill_Abduct : CatSkill
         abductCollider.enabled = false; //enable the collider for the beam that pulls enemies in during the skill
 
     }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        EnemyUnit enemy = other.GetComponent<EnemyUnit>();
+        if (enemy != null)
+        {
+            // Check if we have a timer for this enemy
+            if (!damageTimers.ContainsKey(enemy))
+                damageTimers[enemy] = 0f;
+
+            // If enough time has passed, apply damage
+            if (Time.time - damageTimers[enemy] >= 1f)
+            {
+                enemy.TakeDamage(1); // 1 damage every second
+                damageTimers[enemy] = Time.time; // reset timer
+            }
+
+
+            // Pull towards pullPoint
+            Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
+            if (enemyRB != null)
+            {
+                Vector2 direction = (pullPoint.transform.position - enemy.transform.position).normalized;
+                float distance = Vector2.Distance(enemy.transform.position, pullPoint.transform.position);
+                float pullForce = Mathf.Lerp(20f, 5f, distance / 10f); // stronger when closer
+                enemyRB.AddForce(direction * pullForce);
+
+            }
+            else
+            {
+                // fallback if no Rigidbody2D
+                Vector3 direction = (pullPoint.transform.position - enemy.transform.position).normalized;
+                float distance = Vector2.Distance(enemy.transform.position, pullPoint.transform.position);
+                float pullForce = Mathf.Lerp(20f, 5f, distance / 10f); // stronger when closer
+                enemyRB.AddForce(direction * pullForce);
+
+            }
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        EnemyUnit enemy = other.GetComponent<EnemyUnit>();
+        if (enemy != null)
+        {
+            // Clean up when enemy leaves the beam
+            if (damageTimers.ContainsKey(enemy))
+                damageTimers.Remove(enemy);
+        }
+    }
+
 }
