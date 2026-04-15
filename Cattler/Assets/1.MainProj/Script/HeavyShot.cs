@@ -40,7 +40,7 @@ public class HeavyShot : ActiveAbility
         if (enemy != null && catUnit != null)
         {
             int damage = Mathf.CeilToInt(catUnit.runtimeData.attackPower * damageMultiplier);
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(catUnit, damage, 1f);
             DamageNumberManager.Instance.ShowDamage((int)damage, enemy.transform.position);
             //Debug.Log("enemy hit by slash, taking" + damage);
         }

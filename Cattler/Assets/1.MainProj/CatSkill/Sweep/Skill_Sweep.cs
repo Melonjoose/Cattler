@@ -13,6 +13,7 @@ public class Skill_Sweep : CatSkill
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        catUnit = this.GetComponentInParent<CatUnit>(); // skill_sweep is a child of catUnit.
         skeleton = GetComponent<SkeletonAnimation>();
         colPoint = transform.Find("ColliderPoint")?.gameObject;
         colBody = colPoint.transform.Find("Collider")?.gameObject;

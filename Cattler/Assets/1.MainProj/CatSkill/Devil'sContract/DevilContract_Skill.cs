@@ -38,7 +38,7 @@ public class DevilContract : CatSkill
 
             if (targetCat.runtimeData.currentHealth > 1 && targetCat != catUnit)
             {
-                targetCat.TakeDamage(1); // take some damage
+                targetCat.TakeDamage(catUnit, 1, 0f); // take some damage
                 yield return new WaitForSeconds(1f);
 
                 EnemyUnit targetEnemy = ChooseRandomEnemy();
@@ -47,7 +47,7 @@ public class DevilContract : CatSkill
                     GameObject killMarkEffect = Instantiate(killMark, targetEnemy.transform);
                     killMarkEffect.transform.localPosition = Vector3.zero;
 
-                    targetEnemy.TakeDamage(targetEnemy.currentHealth);
+                    targetEnemy.TakeDamage(catUnit, targetEnemy.currentHealth, 3f);
                     Destroy(killMarkEffect, 1f);
                 }
             }

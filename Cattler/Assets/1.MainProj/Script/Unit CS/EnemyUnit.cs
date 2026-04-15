@@ -1,5 +1,4 @@
 using Spine.Unity;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -192,13 +191,16 @@ public class EnemyUnit : Unit
         triggerTrack.chosenCat = TargetCat;
     }
 
-    public void TakeDamage(int amount)
+    public override void TakeDamage(Unit hitter, int damage, float knockback)
     {
         if(isDead) return; // Don't take damage if already dead
 
+        base.TakeDamage(hitter, damage, knockback);
+
         StatFXManager.instance.PlayVFX(this.transform.position, 1); // onhit vfx
         AudioManager.instance.PlaySFX("EnemyHit");
-        currentHealth -= amount;
+
+        currentHealth -= damage;
         
         skeletonAnimation.AnimationState.SetAnimation(0, "Hit", false).Complete += (trackEntry) =>
         {
@@ -242,7 +244,7 @@ public class EnemyUnit : Unit
         Vector3 hitLocation = targetPoint != null ? targetPoint.transform.position : transform.position;
 
         DamageNumberManager.Instance.ShowDamage((int)attackDamage, hitLocation);
-        cat.TakeDamage((int)attackDamage); // Call CatUnit’s TakeDamage
+        cat.TakeDamage(this, (int)attackDamage, 0); // Call CatUnit’s TakeDamage
         
         skeletonAnimation.AnimationState.SetAnimation(0, "Attack", false).Complete += (trackEntry) =>
         {

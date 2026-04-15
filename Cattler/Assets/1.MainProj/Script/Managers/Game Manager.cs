@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
         specialSpawner.ClearAllSpawnedEnemies();
         enemySpawner.spawnerActive = false;
         specialSpawner.spawnerActive = false;
-        TeamManager.instance.ResetCatPosition();
+        TeamManager.instance.ResetCatPosition(); //it has the debuffremoval here.
         TeamManager.instance.ResetHealthAllCats();
         
 
@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour
         DialogueManager.instance.resetDeathTriggers();
         gameOver = false;
         inBattle = false;
+
     }
 
     public void StartMission() // battle door pressed

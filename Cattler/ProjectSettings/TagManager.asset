@@ -47,20 +47,23 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3807853687
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: SpecialEffects
-    uniqueID: 727658913
-    locked: 0
-  - name: Money
-    uniqueID: 1903572351
     locked: 0
   - name: Unit
     uniqueID: 966656191
     locked: 0
-  - name: Background
-    uniqueID: 3807853687
+  - name: Money
+    uniqueID: 1903572351
+    locked: 0
+  - name: SpecialEffects
+    uniqueID: 727658913
+    locked: 0
+  - name: UI
+    uniqueID: 3523807705
     locked: 0
   m_RenderingLayers:
   - Default

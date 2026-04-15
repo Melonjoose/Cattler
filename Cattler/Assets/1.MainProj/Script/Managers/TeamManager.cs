@@ -402,7 +402,6 @@ public class TeamManager : MonoBehaviour
             CatIconUI.instance.ResetAllIconToInitialIndex();
             cat.RemoveAllDebuffs();
         }
-
     }
 
     public void ResetHealthAllCats() //reset cat currentHP to their maxHP

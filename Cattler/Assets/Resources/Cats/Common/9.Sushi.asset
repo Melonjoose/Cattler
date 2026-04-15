@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
+  m_Name: 9.Sushi
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  prefab2: {fileID: 0}
+  itemName: Sushi
+  icon: {fileID: 21300000, guid: 205702cb7aa676341bc121680010f8ab, type: 3}
+  itemType: 0
+  description: A stray that got adopted. Now live a life of comfort! Has a tiny heart
+    on her hip
+  value: 2
+  fvalue: 0
+  skinName: Sushi
+  catID: 9
+  Rarity: 0
+  skillName: Nil
+  skillDesc: Nil
+  level: 1
+  exp: 0
+  catSkill: {fileID: 0}
+  baseHealth: 5
+  attackPower: 2
+  attackSpeed: 1
+  attackRange: 4
+  movementSpeed: 3
+  knockBackPower: 2

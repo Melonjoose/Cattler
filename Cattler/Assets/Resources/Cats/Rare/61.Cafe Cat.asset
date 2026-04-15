@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
+  m_Name: 61.Cafe Cat
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  prefab2: {fileID: 0}
+  itemName: Cafe Cat
+  icon: {fileID: 21300000, guid: 8995f41fdf7c1aa41a5ba3d2439dde48, type: 3}
+  itemType: 0
+  description: Caught sipping Matcha at cafe while reading books upside down. Some
+    cats call him purrformative.
+  value: 2
+  fvalue: 0
+  skinName: CafeCat
+  catID: 61
+  Rarity: 1
+  skillName: Spill Drink
+  skillDesc: He accidentally drops his matcha. Spilling it on enemies will slow them.
+  level: 1
+  exp: 0
+  catSkill: {fileID: 0}
+  baseHealth: 8
+  attackPower: 3
+  attackSpeed: 1
+  attackRange: 4
+  movementSpeed: 4
+  knockBackPower: 2

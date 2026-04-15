@@ -20,6 +20,7 @@ public class CatData : ItemData
     public float attackSpeed;
     public float attackRange;
     public float movementSpeed;
+    public float knockBackPower;
 
 }
     public enum Rarity 

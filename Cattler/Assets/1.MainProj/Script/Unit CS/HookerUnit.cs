@@ -11,6 +11,7 @@ public class HookerUnit : EnemyUnit
     public bool attacking = false;
     private CatUnit hookedCat;
     public float pullSpeed = 2f;
+    public float hookduration = 7f;
 
     public float shotCooldown = 10f;
     public float cooldowntimer = 0f;
@@ -169,7 +170,7 @@ public class HookerUnit : EnemyUnit
             hookedCat = TargetCat.GetComponent<CatUnit>();
             if (hookedCat != null)
             {
-                DebuffManager.instance.ApplyDebuff(hookedCat.gameObject, DebuffManager.instance.stun);
+                DebuffManager.instance.ApplyDebuff(hookedCat.gameObject, DebuffManager.instance.stun , hookduration);
                 Debug.Log($"{hookedCat.name} is hooked and stunned!");
                 PlayAnimation("AttackLoop", true);
                 pullCoroutine = StartCoroutine(pullCat());
@@ -179,7 +180,7 @@ public class HookerUnit : EnemyUnit
 
     IEnumerator pullCat()
     {
-        float timeout = 8f; // max seconds to pull
+        float timeout = hookduration; // max seconds to pull
         float elapsed = 0f;
 
         while (hookedCat != null
@@ -228,6 +229,35 @@ public class HookerUnit : EnemyUnit
         }
     }
 
+    public override void TakeDamage(Unit hitter, int damage, float knockback)
+    {
+        if (isDead) return; // Don't take damage if already dead
+
+        base.TakeDamage(hitter, damage, knockback); // Call base method for knockback
+
+        StatFXManager.instance.PlayVFX(this.transform.position, 1); // onhit vfx
+        AudioManager.instance.PlaySFX("EnemyHit");
+        currentHealth -= damage;
+
+        skeletonAnimation.AnimationState.SetAnimation(0, "Hit", false).Complete += (trackEntry) =>
+        {
+            if (attacking)
+            {
+                UnHookCat();
+            }
+        };
+
+        if (currentHealth <= 0)
+        {
+            isDead = true;
+            Die();
+            skeletonAnimation.AnimationState.SetAnimation(0, "Death", false).Complete += (trackEntry) =>
+            {
+                Destroy(gameObject);
+            };
+
+        }
+    }
     public override void Die()
     {
         if( pullCoroutine != null)

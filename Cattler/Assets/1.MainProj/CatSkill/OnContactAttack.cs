@@ -13,6 +13,7 @@ public class OnContactAttack : MonoBehaviour
     public int damage;
     void Start()
     {
+        catUnit = skill.catUnit;
         col = GetComponent<Collider2D>();
         body = GetComponent<Rigidbody2D>();
         // Subscribe to animation complete event
@@ -32,8 +33,7 @@ public class OnContactAttack : MonoBehaviour
         enemiesHit.Add(enemy);
 
         int damage = (catUnit != null) ? catUnit.runtimeData.attackPower : 4;
-        enemy.TakeDamage(damage);
-        Knockback(enemy);
+        enemy.TakeDamage(catUnit, damage, 8f); //base 5 knockback.
         DamageNumberManager.Instance.ShowDamage(damage, collision.transform.position);
 
         Debug.Log($"Hit enemy {enemy.name} once");
@@ -50,17 +50,4 @@ public class OnContactAttack : MonoBehaviour
         enemiesHit.Clear();
         Debug.Log("Hit list cleared");
     }
-
-    private void Knockback(EnemyUnit target)
-    {
-        Rigidbody2D targetrb = target.GetComponent<Rigidbody2D>();
-        if (targetrb != null)
-        {
-            Vector2 knockbackDirection = (target.transform.position - transform.position).normalized;
-            float knockbackForce = 5f; // Adjust force as needed
-            targetrb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
-            targetrb.AddForce(Vector2.up * knockbackForce / 2, ForceMode2D.Impulse); // slight upward force
-        }
-    }
-
 }

@@ -7,6 +7,7 @@ public class LightAura : MonoBehaviour
     public float expansionSpeed = 1f; // Speed at which the light aura expands
     public float maxScale = 6f; // Maximum scale of the light aura
     public float lightlingerDuration = 0.5f; // Duration for which the light aura lingers after reaching max scale
+    public float stunDuration = 2f; // Duration of the stun effect applied to enemies
     void Start()
     {
         blindingLight = GetComponentInParent<BlindingLight>(); // Get the BlindingLight component from the parent object
@@ -90,7 +91,7 @@ public class LightAura : MonoBehaviour
             EnemyUnit enemy = collision.GetComponent<EnemyUnit>();
             if (enemy != null)
             {
-                DebuffManager.instance.ApplyDebuff(enemy.gameObject, DebuffManager.instance.stun); // Apply a stun debuff for 2 seconds
+                DebuffManager.instance.ApplyDebuff(enemy.gameObject, DebuffManager.instance.stun, stunDuration); // Apply a stun debuff for the specified duration
             }
         }
     }

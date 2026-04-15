@@ -153,7 +153,7 @@ public class Skill_Abduct : CatSkill
             // If enough time has passed, apply damage
             if (Time.time - damageTimers[enemy] >= 1f)
             {
-                enemy.TakeDamage(1); // 1 damage every second
+                enemy.TakeDamage(catUnit, 1, 0f); // 1 damage every second
                 damageTimers[enemy] = Time.time; // reset timer
             }
 

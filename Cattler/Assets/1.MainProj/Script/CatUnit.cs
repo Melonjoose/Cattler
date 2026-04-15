@@ -164,7 +164,7 @@ public class CatUnit : Unit
             skeletonAnimation.AnimationState.AddAnimation(0,TravelManager.instance.IsTraveling ? "Walk" : "Idle",true,0f);
 
             Attack(enemytarget);
-            Knockback(enemytarget);
+            //Knockback(enemytarget);
             attackCooldown = 1f / runtimeData.attackSpeed;
         }
     }
@@ -173,30 +173,15 @@ public class CatUnit : Unit
 
     private void Attack(EnemyUnit target)
     {
-        Vector3 hitlocation = targetPoint.transform.position; // Indicate the targetPoint's position for where the damage number will be displayed
-
-        target.TakeDamage((int)runtimeData.attackPower); //run the TakeDamage method on the target enemy by dealing attackPower damage. (TAKES ACTUAL DMG)
+        target.TakeDamage(this, (int)runtimeData.attackPower , runtimeData.knockBackPower); //run the TakeDamage method on the target enemy by dealing attackPower damage. (TAKES ACTUAL DMG)
         //Debug.Log(runtimeData.unitName + " attacked " + target.name + " for " + runtimeData.attackPower + " damage!"); //debug to state damage dealt to who in console
-
-        DamageNumberManager.Instance.ShowDamage((int)runtimeData.attackPower, hitlocation); //Showdamage at location (SHOWS DMG TAKEN)
-        //VFX can be added here later.
     }
 
 
-    private void Knockback(EnemyUnit target)
+    public override void TakeDamage(Unit hitter ,int amount, float knockback)
     {
-        Rigidbody2D targetrb = target.GetComponent<Rigidbody2D>();
-        if (targetrb != null)
-        {
-            Vector2 knockbackDirection = (target.transform.position - transform.position).normalized;
-            float knockbackForce = 3f; // Adjust force as needed
-            targetrb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
-            targetrb.AddForce(Vector2.up * knockbackForce / 2, ForceMode2D.Impulse); // slight upward force
-        }
-    }
+        base.TakeDamage(hitter, amount, knockback);
 
-    public void TakeDamage(int amount)
-    {
         CameraShake.instance.Shake(0.2f, 0.05f);
         runtimeData.currentHealth -= amount;
         onHealthChanged?.Invoke(runtimeData.currentHealth , runtimeData.maxHealth);

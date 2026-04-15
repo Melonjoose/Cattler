@@ -3,8 +3,8 @@ using UnityEngine;
 public class HoverItem : MonoBehaviour
 {
     private HoverHighlightManager manager;
-    public Vector3 offset;
-
+    public Vector3 offset = new Vector3(0, 1, 0);
+    
     void Start()
     {
         manager = HoverHighlightManager.instance;

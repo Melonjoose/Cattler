@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
+  m_Name: 62.Puppet Cat
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  prefab2: {fileID: 0}
+  itemName: Puppet Cat
+  icon: {fileID: 21300000, guid: e3579b94f3edfd04480469c6ee3aefdb, type: 3}
+  itemType: 0
+  description: A cat dolled in a gothic dress. Likes to play with others.
+  value: 2
+  fvalue: 0
+  skinName: PuppetCat
+  catID: 62
+  Rarity: 1
+  skillName: Puppet Dance
+  skillDesc: Uses strings to force enemies backward temporarily.
+  level: 1
+  exp: 0
+  catSkill: {fileID: 0}
+  baseHealth: 8
+  attackPower: 3
+  attackSpeed: 1
+  attackRange: 4
+  movementSpeed: 4
+  knockBackPower: 2

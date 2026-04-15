@@ -12,12 +12,12 @@ public class DebuffInstance
 
     public float remainingTime;
 
-    public DebuffInstance(Debuff debuff, Unit unit)
+    public DebuffInstance(Debuff debuff, Unit unit, float duration)
     {
         this.debuff = debuff;
         this.unit = unit;
         this.sprite = debuff.debuffIcon;
-        this.remainingTime = debuff.duration;
+        this.remainingTime = duration;
     }
 
 
@@ -113,10 +113,15 @@ public class DebuffInstance
             unit.isStunned = false;
             unit.canAttack = true;
             unit.canWalk = true;
-            if (unit.isDead == false)
+            if (unit.isDead == false && unit.canWalk)
             {
                 unit.skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true);
             }
+            else
+            {
+                unit.skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
+            }
         }
+        RemoveUI();
     }
 }

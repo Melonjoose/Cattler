@@ -16,6 +16,7 @@ public class CatRuntimeData
     public float attackSpeed;
     public float attackRange;
     public float movementSpeed;
+    public float knockBackPower;
 
     public CatRuntimeData(CatData template)
     {
@@ -30,6 +31,7 @@ public class CatRuntimeData
         this.attackSpeed = template.attackSpeed;
         this.attackRange = template.attackRange;
         this.movementSpeed = template.movementSpeed;
+        this.knockBackPower = template.knockBackPower;
     }
 
     public void GainExp(int amount)

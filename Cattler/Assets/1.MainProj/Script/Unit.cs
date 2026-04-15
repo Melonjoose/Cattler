@@ -101,9 +101,9 @@ public abstract class Unit : MonoBehaviour
         }
     }
 
-    public void AddDebuff(Debuff debuff)
+    public void AddDebuff(Debuff debuff, float duration)
     {
-        var instance = new DebuffInstance(debuff, this);
+        var instance = new DebuffInstance(debuff, this, duration);
         activeDebuffs.Add(instance);
 
         instance.ApplyDebuffEffect();
@@ -121,7 +121,7 @@ public abstract class Unit : MonoBehaviour
         }
     }
 
-    public void RemoveAllDebuffs()
+    public void RemoveAllDebuffs() //clear all debuff from this unit.
     {
         foreach (var instance in activeDebuffs)
         {
@@ -131,4 +131,34 @@ public abstract class Unit : MonoBehaviour
         activeDebuffs.Clear();
     }
 
+
+    public virtual void TakeDamage(Unit hitter, int damage , float knockback)
+    {
+        // Default implementation (can be overridden) //base will call knockback and damage number.
+        Debug.Log($"{gameObject.name} took {damage} damage.");
+        if (knockback > 0f)
+        {
+            Knockback(hitter, knockback);
+        }
+        DamageNumberManager.Instance.ShowDamage(damage, this.gameObject.transform.position); //Showdamage at location (SHOWS DMG TAKEN)
+        //VFX can be added here later.
+    }
+    public void Knockback(Unit hitter,float knockback)
+    {
+        Rigidbody2D targetrb = this.GetComponent<Rigidbody2D>();
+        if (targetrb != null)
+        {
+            if(hitter == null)
+            {
+                Vector2 knockbackDirectionDefault = Vector2.right;  //default to push towards the right if hitter is null
+                targetrb.AddForce(knockbackDirectionDefault * knockback, ForceMode2D.Impulse);
+            }
+            else
+            {
+                Vector2 knockbackDirection = (this.transform.position - hitter.transform.position).normalized;
+                targetrb.AddForce(knockbackDirection * knockback, ForceMode2D.Impulse);
+                targetrb.AddForce(Vector2.up * knockback / 2, ForceMode2D.Impulse); // slight upward force
+            }
+        }
+    }
 }

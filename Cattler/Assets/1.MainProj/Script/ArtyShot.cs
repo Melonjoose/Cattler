@@ -57,7 +57,7 @@ public class ArtyShot : MonoBehaviour
             CatUnit cat = other.GetComponent<CatUnit>();
             if (cat != null)
             {
-                cat.TakeDamage(damage);
+                cat.TakeDamage(unit,damage,0f);
                 DamageNumberManager.Instance.ShowDamage(damage, cat.transform.position);
             }
             Destroy(gameObject);
