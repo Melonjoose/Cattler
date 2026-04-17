@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BuffManager : MonoBehaviour
 {
     public static BuffManager instance;
 
-    [Header("All Debuff Types")]
+    [Header("All Buff Types")]
     public Buff damageUp;
     public Buff attackSpeedUp;
     public Buff coolDownReduction;
+    public Buff healthRegen;
 
     public GameObject iconPrefab; // contains buff icon sprite renderer, used for showing buff icon above enemy head.
 

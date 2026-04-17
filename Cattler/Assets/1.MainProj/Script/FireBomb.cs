@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FireBomb : ActiveAbility
@@ -52,15 +53,19 @@ public class FireBomb : ActiveAbility
         Destroy(this.gameObject);
     }
 
+    private HashSet<EnemyUnit> hitEnemies = new HashSet<EnemyUnit>();
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         EnemyUnit enemy = collision.gameObject.GetComponent<EnemyUnit>();
-        if (enemy != null && catUnit != null)
+
+        if (enemy != null && catUnit != null && !hitEnemies.Contains(enemy))
         {
+            hitEnemies.Add(enemy); // mark this enemy as hit
+
             int damage = Mathf.CeilToInt(catUnit.runtimeData.attackPower * damageMultiplier);
             enemy.TakeDamage(catUnit, damage, 3f);
-            DamageNumberManager.Instance.ShowDamage((int)damage, enemy.transform.position);
-            //Debug.Log("enemy hit by slash, taking" + damage);
+            DamageNumberManager.Instance.ShowDamage(damage, enemy.transform.position);
         }
     }
 }

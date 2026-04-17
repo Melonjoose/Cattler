@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62d4114a6764024295b118ad43d00ae, type: 3}
+  m_Name: Basic HealingWand
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4227622569212406947, guid: 097cf5f9a1f8d7a47881fdb8f5cf19e0, type: 3}
+  prefab2: {fileID: 0}
+  itemName: Basic HealingWand
+  icon: {fileID: 21300000, guid: c59a9463773b9b942bcd26b4e196e727, type: 3}
+  itemType: 1
+  description: Heal your fellow Cats
+  value: 1
+  fvalue: 0
+  skill: {fileID: 4241394769917844243, guid: d7ca7dba784deeb4289cc3e44c2cf5d2, type: 3}
+  AbilityName: Group Heal
+  AbilityDesc: Heal all allies
+  health: 1
+  attackPower: 0
+  attackSpeed: 0
+  attackRange: 1
+  movementSpeed: 1

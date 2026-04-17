@@ -18,7 +18,9 @@ public class Buff : ScriptableObject
         Range,
         Defense,
         CooldownReduction,
-        Heal,
+        FlatHeal,
+        PercentageHeal,
+        HealthRegen
         // Add more buff types as needed
     }
 }

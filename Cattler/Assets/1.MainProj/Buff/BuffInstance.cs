@@ -93,11 +93,11 @@ public class BuffInstance
 
     public void IncreaseStat(float stat)
     {
-        if(buff != null)
+        if (buff != null)
         {
-            if(buffType == Buff.BuffType.AttackSpeed)
+            if (buffType == Buff.BuffType.AttackSpeed)
             {
-                if(valueIncreaseType == Buff.ValueIncreaseType.Flat)
+                if (valueIncreaseType == Buff.ValueIncreaseType.Flat)
                 {
                     valueIncreaseOfthisBuff = catUnit.runtimeData.attackSpeed += buff.value;
                 }
@@ -114,7 +114,7 @@ public class BuffInstance
                 }
 
             }
-        }   
+        }
     }
 
     public void RemoveIncreaseStat(float stat)
@@ -124,6 +124,32 @@ public class BuffInstance
             if (buffType == Buff.BuffType.AttackSpeed)
             {
                 catUnit.runtimeData.attackSpeed -= stat;
+            }
+        }
+    }
+
+    private float regenTimer = 0f;
+    public void HealthRegen(float deltaTime)
+    {
+        if (buff != null && buffType == Buff.BuffType.HealthRegen)
+        {
+            regenTimer += deltaTime;
+
+            // Heal once per second
+            if (regenTimer >= 1f)
+            {
+                regenTimer = 0f;
+
+                // Apply healing
+                catUnit.runtimeData.currentHealth += (int)buff.value;
+
+                // Clamp to max health
+                if (catUnit.runtimeData.currentHealth > catUnit.runtimeData.maxHealth)
+                {
+                    catUnit.runtimeData.currentHealth = catUnit.runtimeData.maxHealth;
+                }
+
+                catUnit.OnHealthChange(catUnit.runtimeData.currentHealth, catUnit.runtimeData.maxHealth);
             }
         }
     }

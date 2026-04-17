@@ -111,7 +111,8 @@ public abstract class Unit : MonoBehaviour
 
             // Tick down the timer
             bool expired = instance.Tick(deltaTime);
-
+            // Apply health regen if this buff is a regen type
+            instance.HealthRegen(deltaTime);
             // If less than 1 second left, trigger blinking UI
             if (instance.remainingTime <= 1.5f)
             {
