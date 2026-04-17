@@ -1,0 +1,35 @@
+boss cat layers.png
+size:1024,512
+filter:Linear,Linear
+pma:true
+Backing
+bounds:210,24,93,65
+Eye closed
+bounds:305,24,93,65
+Eyeopen LA
+bounds:400,25,81,62
+Eyewhite
+bounds:797,347,69,51
+Iris
+bounds:483,27,60,72
+rotate:90
+Scar
+bounds:966,455,51,51
+back body
+bounds:2,285,408,221
+offsets:0,0,414,221
+head
+bounds:2,91,358,192
+left ear
+bounds:2,13,117,76
+left front leg
+bounds:703,112,232,119
+rotate:90
+right ear
+bounds:121,2,87,87
+right front leg
+bounds:797,400,167,106
+shadow
+bounds:412,346,383,160
+tail
+bounds:412,89,289,255

@@ -1,0 +1,494 @@
+fileFormatVersion: 2
+guid: 3a9bf230e9923d64aa74547e262b4295
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3854312383162982885
+    second: boss cat layers_0
+  - first:
+      213: -6278971261476264859
+    second: boss cat layers_1
+  - first:
+      213: -7493704481619437977
+    second: boss cat layers_2
+  - first:
+      213: -6521106733246719929
+    second: boss cat layers_3
+  - first:
+      213: -9155630429023222449
+    second: boss cat layers_4
+  - first:
+      213: 7217198264529069193
+    second: boss cat layers_5
+  - first:
+      213: -7593653321554172147
+    second: boss cat layers_6
+  - first:
+      213: 2758305981433020469
+    second: boss cat layers_7
+  - first:
+      213: 3175269389956375225
+    second: boss cat layers_8
+  - first:
+      213: -3606814133240061862
+    second: boss cat layers_9
+  - first:
+      213: 6338644096893154372
+    second: boss cat layers_10
+  - first:
+      213: -6800294683777507080
+    second: boss cat layers_11
+  - first:
+      213: -3736283090020394926
+    second: boss cat layers_12
+  - first:
+      213: 5740595633552358440
+    second: boss cat layers_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: boss cat layers_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 423
+        width: 117
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e1a1d301b44d7530800000000000000
+      internalID: 3854312383162982885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 423
+        width: 87
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56422d4b7ec9cd8a0800000000000000
+      internalID: -6278971261476264859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_2
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 422
+        width: 95
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76612513a73010890800000000000000
+      internalID: -7493704481619437977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_3
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 423
+        width: 93
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 748db66f9ff5085a0800000000000000
+      internalID: -6521106733246719929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 425
+        width: 81
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f45405722aaa0f080800000000000000
+      internalID: -9155630429023222449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_5
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 425
+        width: 72
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98422de4593a82460800000000000000
+      internalID: 7217198264529069193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 229
+        width: 358
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d076c45798ced9690800000000000000
+      internalID: -7593653321554172147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_7
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 168
+        width: 289
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 530862d0da8774620800000000000000
+      internalID: 2758305981433020469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_8
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 168
+        width: 119
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b26586dfa2d01c20800000000000000
+      internalID: 3175269389956375225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_9
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 6
+        width: 405
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a502e51d7a502fdc0800000000000000
+      internalID: -3606814133240061862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_10
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 6
+        width: 383
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44471f8f83367f750800000000000000
+      internalID: 6338644096893154372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_11
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 114
+        width: 69
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f0e67db30080a1a0800000000000000
+      internalID: -6800294683777507080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_12
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 6
+        width: 167
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2581907435e062cc0800000000000000
+      internalID: -3736283090020394926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss cat layers_13
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 6
+        width: 51
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82cfb015051baaf40800000000000000
+      internalID: 5740595633552358440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      boss cat layers_0: 3854312383162982885
+      boss cat layers_1: -6278971261476264859
+      boss cat layers_10: 6338644096893154372
+      boss cat layers_11: -6800294683777507080
+      boss cat layers_12: -3736283090020394926
+      boss cat layers_13: 5740595633552358440
+      boss cat layers_2: -7493704481619437977
+      boss cat layers_3: -6521106733246719929
+      boss cat layers_4: -9155630429023222449
+      boss cat layers_5: 7217198264529069193
+      boss cat layers_6: -7593653321554172147
+      boss cat layers_7: 2758305981433020469
+      boss cat layers_8: 3175269389956375225
+      boss cat layers_9: -3606814133240061862
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

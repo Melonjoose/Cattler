@@ -1,0 +1,1092 @@
+fileFormatVersion: 2
+guid: 653bd29562d1c6e4b9c57dab899804ea
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6755494347187448017
+    second: catkeeper lobby sprite layers_0
+  - first:
+      213: -8230290670494456816
+    second: catkeeper lobby sprite layers_1
+  - first:
+      213: -6425540586330545145
+    second: catkeeper lobby sprite layers_2
+  - first:
+      213: -2969823634627686969
+    second: catkeeper lobby sprite layers_3
+  - first:
+      213: 2656041741630524187
+    second: catkeeper lobby sprite layers_4
+  - first:
+      213: -3574115758390651717
+    second: catkeeper lobby sprite layers_5
+  - first:
+      213: 8659469281322564589
+    second: catkeeper lobby sprite layers_6
+  - first:
+      213: 4341673302242741307
+    second: catkeeper lobby sprite layers_7
+  - first:
+      213: 4197310342874360209
+    second: catkeeper lobby sprite layers_8
+  - first:
+      213: 228475983784167219
+    second: catkeeper lobby sprite layers_9
+  - first:
+      213: 6921426482072489663
+    second: catkeeper lobby sprite layers_10
+  - first:
+      213: -7005314199711112213
+    second: catkeeper lobby sprite layers_11
+  - first:
+      213: 7887200675350408726
+    second: catkeeper lobby sprite layers_12
+  - first:
+      213: -1474167122357165154
+    second: catkeeper lobby sprite layers_13
+  - first:
+      213: -4358990415057450390
+    second: catkeeper lobby sprite layers_14
+  - first:
+      213: -6277604365110361253
+    second: catkeeper lobby sprite layers_15
+  - first:
+      213: 1739858468973306597
+    second: catkeeper lobby sprite layers_16
+  - first:
+      213: -5815883921914916930
+    second: catkeeper lobby sprite layers_17
+  - first:
+      213: 108042788173747419
+    second: catkeeper lobby sprite layers_18
+  - first:
+      213: -8652351918659055825
+    second: catkeeper lobby sprite layers_19
+  - first:
+      213: -1419963046624864497
+    second: catkeeper lobby sprite layers_20
+  - first:
+      213: -5053048880015077170
+    second: catkeeper lobby sprite layers_21
+  - first:
+      213: 8574681726334732261
+    second: catkeeper lobby sprite layers_22
+  - first:
+      213: 2966178281279270322
+    second: catkeeper lobby sprite layers_23
+  - first:
+      213: 2789103836568611613
+    second: catkeeper lobby sprite layers_24
+  - first:
+      213: 4545338358965056534
+    second: catkeeper lobby sprite layers_25
+  - first:
+      213: -6070956050066646291
+    second: catkeeper lobby sprite layers_26
+  - first:
+      213: 665255898874425247
+    second: catkeeper lobby sprite layers_27
+  - first:
+      213: -7076957981471712690
+    second: catkeeper lobby sprite layers_28
+  - first:
+      213: -1274129770586724094
+    second: catkeeper lobby sprite layers_29
+  - first:
+      213: -409720955030685383
+    second: catkeeper lobby sprite layers_30
+  - first:
+      213: 96041143299425332
+    second: catkeeper lobby sprite layers_31
+  - first:
+      213: 2953327821075707738
+    second: catkeeper lobby sprite layers_32
+  - first:
+      213: 1868207130995432150
+    second: catkeeper lobby sprite layers_33
+  - first:
+      213: 852891505890914429
+    second: catkeeper lobby sprite layers_34
+  - first:
+      213: 3639157915920007615
+    second: catkeeper lobby sprite layers_35
+  - first:
+      213: -2833267267999829070
+    second: catkeeper lobby sprite layers_36
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 835
+        width: 158
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f279bb1fea9af32a0800000000000000
+      internalID: -6755494347187448017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_1
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 835
+        width: 207
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01467fabd3228cd80800000000000000
+      internalID: -8230290670494456816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_2
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 935
+        width: 212
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 704a9e571e4e3d6a0800000000000000
+      internalID: -6425540586330545145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_3
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 993
+        width: 35
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cd057c932119c6d0800000000000000
+      internalID: -2969823634627686969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_4
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 934
+        width: 25
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1b4f7644e72cd420800000000000000
+      internalID: 2656041741630524187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_5
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 484
+        width: 368
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb4dffa77a0366ec0800000000000000
+      internalID: -3574115758390651717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_6
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 774
+        width: 263
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deb73a87e6d9c2870800000000000000
+      internalID: 8659469281322564589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_7
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 485
+        width: 277
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3cc9fe7dd8b04c30800000000000000
+      internalID: 4341673302242741307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_8
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 683
+        width: 64
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 199691fb487df3a30800000000000000
+      internalID: 4197310342874360209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_9
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 683
+        width: 16
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 337c92d52b5bb2300800000000000000
+      internalID: 228475983784167219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_10
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 516
+        width: 191
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbe89e2d6b8dd0060800000000000000
+      internalID: 6921426482072489663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_11
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 484
+        width: 92
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be32832e9df18ce90800000000000000
+      internalID: -7005314199711112213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_12
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 556
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61e6b7ed937f47d60800000000000000
+      internalID: 7887200675350408726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_13
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 516
+        width: 26
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e93675c00d4ba8be0800000000000000
+      internalID: -1474167122357165154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_14
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 581
+        height: 483
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6a0b2bff41c183c0800000000000000
+      internalID: -4358990415057450390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_15
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 484
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b53c721171871e8a0800000000000000
+      internalID: -6277604365110361253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_16
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 352
+        width: 206
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e2eb923f08352810800000000000000
+      internalID: 1739858468973306597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_17
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 352
+        width: 176
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebf0b5b0364d94fa0800000000000000
+      internalID: -5815883921914916930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_18
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 245
+        width: 146
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd493a9e758df7100800000000000000
+      internalID: 108042788173747419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_19
+      rect:
+        serializedVersion: 2
+        x: 1178
+        y: 277
+        width: 185
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2f48a8a5cbace780800000000000000
+      internalID: -8652351918659055825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_20
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 413
+        width: 40
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f075eb3e1274b4ce0800000000000000
+      internalID: -1419963046624864497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_21
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 352
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec0140ad0d6ffd9b0800000000000000
+      internalID: -5053048880015077170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_22
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 375
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e7073879936ff670800000000000000
+      internalID: 8574681726334732261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_23
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 277
+        width: 130
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bd212c6e6bf92920800000000000000
+      internalID: 2966178281279270322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_24
+      rect:
+        serializedVersion: 2
+        x: 1497
+        y: 374
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1be95c7923e4b620800000000000000
+      internalID: 2789103836568611613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_25
+      rect:
+        serializedVersion: 2
+        x: 1691
+        y: 290
+        width: 71
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 614b11eb729441f30800000000000000
+      internalID: 4545338358965056534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_26
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 277
+        width: 95
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dead4c443a1afbba0800000000000000
+      internalID: -6070956050066646291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_27
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 352
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9fa42127b67b3900800000000000000
+      internalID: 665255898874425247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_28
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 276
+        width: 140
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4a5300163899cd90800000000000000
+      internalID: -7076957981471712690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_29
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 245
+        width: 445
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 209ad6a69b1615ee0800000000000000
+      internalID: -1274129770586724094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_30
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 2
+        width: 326
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 939bc5256f0605af0800000000000000
+      internalID: -409720955030685383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_31
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 2
+        width: 317
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4344f2639e4355100800000000000000
+      internalID: 96041143299425332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_32
+      rect:
+        serializedVersion: 2
+        x: 1831
+        y: 268
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a57fe7081045cf820800000000000000
+      internalID: 2953327821075707738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_33
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 1
+        width: 601
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6da95d9cc743de910800000000000000
+      internalID: 1868207130995432150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_34
+      rect:
+        serializedVersion: 2
+        x: 1831
+        y: 2
+        width: 181
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7073984e4416db00800000000000000
+      internalID: 852891505890914429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_35
+      rect:
+        serializedVersion: 2
+        x: 2014
+        y: 45
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb186fbe7d2e08230800000000000000
+      internalID: 3639157915920007615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper lobby sprite layers_36
+      rect:
+        serializedVersion: 2
+        x: 2014
+        y: 2
+        width: 32
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b3f0295e663ea8d0800000000000000
+      internalID: -2833267267999829070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      catkeeper lobby sprite layers_0: -6755494347187448017
+      catkeeper lobby sprite layers_1: -8230290670494456816
+      catkeeper lobby sprite layers_10: 6921426482072489663
+      catkeeper lobby sprite layers_11: -7005314199711112213
+      catkeeper lobby sprite layers_12: 7887200675350408726
+      catkeeper lobby sprite layers_13: -1474167122357165154
+      catkeeper lobby sprite layers_14: -4358990415057450390
+      catkeeper lobby sprite layers_15: -6277604365110361253
+      catkeeper lobby sprite layers_16: 1739858468973306597
+      catkeeper lobby sprite layers_17: -5815883921914916930
+      catkeeper lobby sprite layers_18: 108042788173747419
+      catkeeper lobby sprite layers_19: -8652351918659055825
+      catkeeper lobby sprite layers_2: -6425540586330545145
+      catkeeper lobby sprite layers_20: -1419963046624864497
+      catkeeper lobby sprite layers_21: -5053048880015077170
+      catkeeper lobby sprite layers_22: 8574681726334732261
+      catkeeper lobby sprite layers_23: 2966178281279270322
+      catkeeper lobby sprite layers_24: 2789103836568611613
+      catkeeper lobby sprite layers_25: 4545338358965056534
+      catkeeper lobby sprite layers_26: -6070956050066646291
+      catkeeper lobby sprite layers_27: 665255898874425247
+      catkeeper lobby sprite layers_28: -7076957981471712690
+      catkeeper lobby sprite layers_29: -1274129770586724094
+      catkeeper lobby sprite layers_3: -2969823634627686969
+      catkeeper lobby sprite layers_30: -409720955030685383
+      catkeeper lobby sprite layers_31: 96041143299425332
+      catkeeper lobby sprite layers_32: 2953327821075707738
+      catkeeper lobby sprite layers_33: 1868207130995432150
+      catkeeper lobby sprite layers_34: 852891505890914429
+      catkeeper lobby sprite layers_35: 3639157915920007615
+      catkeeper lobby sprite layers_36: -2833267267999829070
+      catkeeper lobby sprite layers_4: 2656041741630524187
+      catkeeper lobby sprite layers_5: -3574115758390651717
+      catkeeper lobby sprite layers_6: 8659469281322564589
+      catkeeper lobby sprite layers_7: 4341673302242741307
+      catkeeper lobby sprite layers_8: 4197310342874360209
+      catkeeper lobby sprite layers_9: 228475983784167219
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

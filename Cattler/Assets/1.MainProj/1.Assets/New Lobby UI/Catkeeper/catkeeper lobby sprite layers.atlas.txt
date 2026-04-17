@@ -1,0 +1,97 @@
+catkeeper lobby sprite layers.png
+size:2048,1024
+filter:Linear,Linear
+pma:true
+LIris
+bounds:2014,949,24,30
+LeyeClose
+bounds:1365,589,38,21
+offsets:1,1,40,23
+Leyebrow
+bounds:743,515,25,14
+rotate:90
+Leyewhite
+bounds:1497,621,30,29
+Light eye
+bounds:969,641,39,31
+REyeLash
+bounds:936,450,58,29
+offsets:0,0,59,29
+rotate:90
+REyebrow
+bounds:715,299,42,16
+rotate:90
+RIris
+bounds:585,2,29,35
+rotate:90
+ReyeClose
+bounds:585,33,56,23
+offsets:2,1,59,25
+rotate:90
+Reyewhite
+bounds:2014,981,41,32
+rotate:90
+Right hand
+bounds:1638,643,124,104
+Shadow2
+bounds:583,674,445,105
+back hair
+bounds:1184,749,326,273
+back leg lower
+bounds:370,252,277,287
+back leg upper
+bounds:743,325,183,191
+rotate:90
+bangs
+bounds:1365,612,130,135
+beanbag
+bounds:2,541,579,481
+offsets:1,1,581,483
+face
+bounds:1030,588,146,191
+fringe
+bounds:649,259,64,82
+front leg lower
+bounds:1512,749,273,317
+rotate:90
+front leg upper
+bounds:1178,589,158,185
+rotate:90
+hat
+bounds:162,3,207,186
+left forearm
+bounds:2,2,158,187
+left sideburn
+bounds:649,343,92,197
+left upper arm
+bounds:1497,652,95,139
+offsets:1,0,96,140
+rotate:90
+mouth
+bounds:1831,749,11,7
+nose
+bounds:1010,655,17,18
+rotate:90
+notebook
+bounds:583,542,130,176
+rotate:90
+right sideburn
+bounds:371,15,74,212
+rotate:90
+shadow
+bounds:583,781,599,241
+offsets:1,1,602,245
+shawl
+bounds:1831,758,264,181
+rotate:90
+skirt
+bounds:761,510,162,206
+rotate:90
+skirt back
+bounds:1764,641,95,106
+table
+bounds:2,191,366,348
+offsets:1,1,368,350
+torso
+bounds:371,91,159,263
+rotate:90

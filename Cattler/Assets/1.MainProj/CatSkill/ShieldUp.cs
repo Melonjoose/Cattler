@@ -31,7 +31,7 @@ public class ShieldUp : CatSkill
         //when shield drops to 0, deactivate shield and start cooldown.
         itemObject.SetActive(true);
         shieldHealth = (int)value; // Set shield health to the value defined in the skill (e.g., 5)
-
+        isActive = false; // stop timer from running when shield is active
     }
 
     public void DestroyShield()
@@ -39,6 +39,7 @@ public class ShieldUp : CatSkill
         //deactivate shield and start cooldown.
         //play animation before shield is set false.
         itemObject.SetActive(false);
+        isActive = true; // Start cooldown timer when the shield is destroyed
     }
 
     //when shield is active and collide with an enemy, shield minus one, and enemy takes damage and knockback.//play animation when animation is collided.

@@ -197,4 +197,4 @@ MonoBehaviour:
   catUnit: {fileID: 0}
   shieldPosition: {fileID: 8562397949279978781}
   shield: {fileID: 95712796297652452}
-  shieldHealth: 5
+  shieldHealth: 2

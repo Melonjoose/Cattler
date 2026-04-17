@@ -23,7 +23,7 @@ public class HoverOnUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (animator != null) animator.SetBool("Hovering", false);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if(canvasGroup.interactable == false) { return; }
         
@@ -33,7 +33,7 @@ public class HoverOnUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if(animator != null) animator.SetBool("Hovering", true);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public virtual void OnPointerExit(PointerEventData eventData)
     {
         if (canvasGroup.interactable == false) { return; }
 
@@ -42,7 +42,7 @@ public class HoverOnUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (animator != null) animator.SetBool("Hovering", false);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
         //if (canvasGroup.interactable == false) { return; }
 
