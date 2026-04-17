@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UFO Cat
   m_EditorClassIdentifier: 
   prefab: {fileID: 8409749662932035737, guid: f362a0210169e614e9336ff6c769ff6a, type: 3}
-  prefab2: {fileID: 0}
+  prefab2: {fileID: 7772048519885695264, guid: c77b376c9fad74e44bff1ac19a3b801b, type: 3}
   itemName: UFO Cat
   icon: {fileID: 21300000, guid: 5f30744befc18e746907642130f60ffb, type: 3}
   itemType: 0

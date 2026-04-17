@@ -32241,6 +32241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45648c54819876f4eaeaec10b619b869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageUp: {fileID: 0}
+  attackSpeedUp: {fileID: 11400000, guid: 7b1008bfb0578fb498f807a9672015b2, type: 2}
+  coolDownReduction: {fileID: 0}
+  iconPrefab: {fileID: 6149748782767652087, guid: 3b417815980d1ae4c91f6ba6cb5f4928, type: 3}
 --- !u!1 &1037566709
 GameObject:
   m_ObjectHideFlags: 0
@@ -67153,6 +67157,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1903894620}
+  - {fileID: 1033593159}
   - {fileID: 1826804102}
   - {fileID: 1142552778}
   - {fileID: 1976883213}
@@ -67169,7 +67174,6 @@ SceneRoots:
   - {fileID: 1080154232}
   - {fileID: 1607941321}
   - {fileID: 1809721743}
-  - {fileID: 1033593159}
   - {fileID: 1979985491}
   - {fileID: 519420032}
   - {fileID: 619394802}

@@ -5,25 +5,28 @@ using UnityEngine;
 public class BuffManager : MonoBehaviour
 {
     public static BuffManager instance;
-    private List<Buff> activeBuffs = new List<Buff>();
+
+    [Header("All Debuff Types")]
+    public Buff damageUp;
+    public Buff attackSpeedUp;
+    public Buff coolDownReduction;
+
+    public GameObject iconPrefab; // contains buff icon sprite renderer, used for showing buff icon above enemy head.
+
 
     void Awake()
     {
         instance = this;
     }
 
-    public void ApplyBuff(Buff buff, CatUnit cat)
+    public void ApplyBuff(GameObject target , Buff buff, float duration , float strength)
     {
-        activeBuffs.Add(buff);
-        buff.Apply(cat);
-        StartCoroutine(RemoveBuffAfterDuration(buff , cat));
+        Unit unit = target.GetComponent<Unit>();
+        if(unit != null)
+        {
+            unit.AddBuff(buff, duration, strength);
+            Debug.Log($"Applied {buff.buffType} to {target.name}");
+        }
     }
 
-    private IEnumerator RemoveBuffAfterDuration(Buff buff, CatUnit cat)
-    {
-        yield return new WaitForSeconds(buff.duration);
-        buff.Remove(cat);
-        activeBuffs.Remove(buff);
-        Debug.Log($"{cat.name}'s {buff.buffName} expired.");
-    }
 }

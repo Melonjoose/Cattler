@@ -25,46 +25,98 @@ public class CatRoamLobby : MonoBehaviour
     }
 
     public void AddCatToLobby(CatUnit cat)
-    {     
-        Debug.Log("Adding cat to lobby");
-        GameObject newCat = Instantiate(catLobbyPrefab, GetRandomPositionWithinBounds(), Quaternion.identity); //create prefab instance of the cat in the lobby
-        newCat.name = $"{cat.runtimeData.template.itemName}_Lobby";
-        newCat.transform.SetParent(lobbyCatGroup.transform); // ensure its in the lobby layer.
-        RectTransform catRect = newCat.GetComponent<RectTransform>(); //get the rect transform of the cat instance
-        catRect.localScale = new Vector3(0.12f, 0.12f, 0.12f); //scale down the cat instance to fit the lobby better. adjust as needed.
-        catInLobby.Add(newCat); //add to list
-        CatUnit catUnit = newCat.GetComponent<CatUnit>(); //get the cat unit component from the prefab instance
-
-        catUnit.AssignCat(cat.runtimeData); //assign the cat's runtime data to the cat unit in the lobby so it can display the correct appearance and stats. //working
-        LobbyCat lobbyCat = newCat.GetComponent<LobbyCat>();
-        lobbyCat.skinName = cat.runtimeData.template.skinName;
-
-        catUnit.catLobby = newCat;
-        catUnit.weaponL = cat.weaponL;
-        catUnit.weaponR = cat.weaponR;
-        catUnit.hat = cat.hat;
-
-        cat.catLobby = newCat;
-
-        if (catUnit.hat != null)
+    {   
+        //if the cat is legendary enum, instantiate the cat using the catdata prefab2, holding legendary cat's lobbyprefab.
+        if(cat == null)
         {
-            EquipItem(catUnit.hat, catUnit, "T_HatSlot");
-        }
-        if (catUnit.weaponL != null)
-        {
-            EquipItem(catUnit.weaponL, catUnit, "L_WeaponSlot");
-        }
-        if (catUnit.weaponR != null)
-        {
-            EquipItem(catUnit.weaponR, catUnit, "R_WeaponSlot");
+            Debug.LogWarning("Attempted to add a null cat to the lobby.");
+            return; //safeguard.
         }
 
-        InventoryIcon icon = cat.inventoryIcon;
-        catUnit.inventoryIcon = icon;
+        if(cat.runtimeData.template.Rarity == Rarity.Legendary)
+        {
+            GameObject newCat = Instantiate(cat.runtimeData.template.prefab2, GetRandomPositionWithinBounds(), Quaternion.identity); //create prefab instance of the cat in the lobby
 
-        CatUnit catIconCS = catUnit.inventoryIcon.GetComponent<CatUnit>();
-        catIconCS.catLobby = newCat;
+            newCat.name = $"{cat.runtimeData.template.itemName}_Lobby";
+            newCat.transform.SetParent(lobbyCatGroup.transform); // ensure its in the lobby layer.
+            RectTransform catRect = newCat.GetComponent<RectTransform>(); //get the rect transform of the cat instance
+            catRect.localScale = new Vector3(0.12f, 0.12f, 0.12f); //scale down the cat instance to fit the lobby better. adjust as needed.
+            catInLobby.Add(newCat); //add to list
+            CatUnit catUnit = newCat.GetComponent<CatUnit>(); //get the cat unit component from the prefab instance
 
+            catUnit.AssignCat(cat.runtimeData); //assign the cat's runtime data to the cat unit in the lobby so it can display the correct appearance and stats. //working
+            LobbyCat lobbyCat = newCat.GetComponent<LobbyCat>();
+            lobbyCat.skinName = cat.runtimeData.template.skinName;
+
+            catUnit.catLobby = newCat;
+            catUnit.weaponL = cat.weaponL;
+            catUnit.weaponR = cat.weaponR;
+            catUnit.hat = cat.hat;
+
+            cat.catLobby = newCat;
+
+            if (catUnit.hat != null)
+            {
+                EquipItem(catUnit.hat, catUnit, "T_HatSlot");
+            }
+            if (catUnit.weaponL != null)
+            {
+                EquipItem(catUnit.weaponL, catUnit, "L_WeaponSlot");
+            }
+            if (catUnit.weaponR != null)
+            {
+                EquipItem(catUnit.weaponR, catUnit, "R_WeaponSlot");
+            }
+
+            InventoryIcon icon = cat.inventoryIcon;
+            catUnit.inventoryIcon = icon;
+
+            CatUnit catIconCS = catUnit.inventoryIcon.GetComponent<CatUnit>();
+            catIconCS.catLobby = newCat;
+        }
+
+        else if(cat.runtimeData.template.Rarity == Rarity.Common || cat.runtimeData.template.Rarity == Rarity.Rare)
+        {
+            //else, if cat is common or rare, use below script.
+            Debug.Log("Adding cat to lobby");
+            GameObject newCat = Instantiate(catLobbyPrefab, GetRandomPositionWithinBounds(), Quaternion.identity); //create prefab instance of the cat in the lobby
+            newCat.name = $"{cat.runtimeData.template.itemName}_Lobby";
+            newCat.transform.SetParent(lobbyCatGroup.transform); // ensure its in the lobby layer.
+            RectTransform catRect = newCat.GetComponent<RectTransform>(); //get the rect transform of the cat instance
+            catRect.localScale = new Vector3(0.12f, 0.12f, 0.12f); //scale down the cat instance to fit the lobby better. adjust as needed.
+            catInLobby.Add(newCat); //add to list
+            CatUnit catUnit = newCat.GetComponent<CatUnit>(); //get the cat unit component from the prefab instance
+
+            catUnit.AssignCat(cat.runtimeData); //assign the cat's runtime data to the cat unit in the lobby so it can display the correct appearance and stats. //working
+            LobbyCat lobbyCat = newCat.GetComponent<LobbyCat>();
+            lobbyCat.skinName = cat.runtimeData.template.skinName;
+
+            catUnit.catLobby = newCat;
+            catUnit.weaponL = cat.weaponL;
+            catUnit.weaponR = cat.weaponR;
+            catUnit.hat = cat.hat;
+
+            cat.catLobby = newCat;
+
+            if (catUnit.hat != null)
+            {
+                EquipItem(catUnit.hat, catUnit, "T_HatSlot");
+            }
+            if (catUnit.weaponL != null)
+            {
+                EquipItem(catUnit.weaponL, catUnit, "L_WeaponSlot");
+            }
+            if (catUnit.weaponR != null)
+            {
+                EquipItem(catUnit.weaponR, catUnit, "R_WeaponSlot");
+            }
+
+            InventoryIcon icon = cat.inventoryIcon;
+            catUnit.inventoryIcon = icon;
+
+            CatUnit catIconCS = catUnit.inventoryIcon.GetComponent<CatUnit>();
+            catIconCS.catLobby = newCat;
+        }
     }
 
     public void RemoveCatFromLobby(CatUnit cat)

@@ -27,7 +27,8 @@ public class AtkSpdCrystal : ConsumableItem
     {
         StatFX popup = StatFXManager.instance.GetFromPool();
         popup.transform.position = this.transform.position;
-        popup.SetText(consumableData.fvalue, consumableData.itemNameShort);
+        string valueText = consumableData.fvalue.ToString("F1");
+        popup.SetText(valueText, consumableData.itemNameShort);
         popup.SetIcon(consumableData.icon);
     }
 }

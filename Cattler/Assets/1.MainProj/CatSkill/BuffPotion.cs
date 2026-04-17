@@ -24,10 +24,7 @@ public class BuffPotion : ConsumableItem
     {
         if (cat == null || consumableData == null) return;
 
-        buffValue = (cat.runtimeData.attackSpeed * valuePercentage) / 100f;
-        Buff atkSpeedBuff = new Buff("Attack Speed Potion", 5f, StatType.AttackSpeed, buffValue); //apply buff for 5 seconds, atkspd type of value
-
-        BuffManager.instance.ApplyBuff(atkSpeedBuff , cat);
+        BuffManager.instance.ApplyBuff( cat.gameObject, BuffManager.instance.attackSpeedUp , 5f, BuffManager.instance.attackSpeedUp.value);
 
         Debug.Log($"{cat.name} buffed +{buffValue} AttackSpeed for 5s!");
     }
@@ -37,7 +34,9 @@ public class BuffPotion : ConsumableItem
     {
         StatFX popup = StatFXManager.instance.GetFromPool();
         popup.transform.position = this.transform.position;
-        popup.SetText(buffValue, consumableData.itemNameShort);
+
+        string valueText = (BuffManager.instance.attackSpeedUp.value).ToString("F0") + "%";
+        popup.SetText(valueText, consumableData.itemNameShort);
         popup.SetIcon(consumableData.icon);
     }
 }

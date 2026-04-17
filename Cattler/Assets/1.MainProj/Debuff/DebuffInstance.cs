@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 [System.Serializable]
@@ -8,7 +9,6 @@ public class DebuffInstance
 
     public Sprite sprite; // For UI display, if needed
     public GameObject debuffIcon;
-
 
     public float remainingTime;
 

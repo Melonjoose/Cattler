@@ -27,7 +27,8 @@ public class RangeCrystal : ConsumableItem
     {
         StatFX popup = StatFXManager.instance.GetFromPool();
         popup.transform.position = this.transform.position;
-        popup.SetText(consumableData.value, consumableData.itemNameShort);
+        string valueText = consumableData.value.ToString();
+        popup.SetText(valueText, consumableData.itemNameShort);
         popup.SetIcon(consumableData.icon);
     }
 }

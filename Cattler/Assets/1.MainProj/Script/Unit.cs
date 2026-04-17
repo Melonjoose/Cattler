@@ -18,7 +18,7 @@ public abstract class Unit : MonoBehaviour
 
     public bool isStunned;
 
-    [SerializeField]private List<DebuffInstance> activeBuffs = new List<DebuffInstance>(); //all the debuff currently applied onto this unit. //to be addedlater.
+    [SerializeField]private List<BuffInstance> activeBuffs = new List<BuffInstance>(); //all the debuff currently applied onto this unit. //to be addedlater.
     [SerializeField]private List<DebuffInstance> activeDebuffs = new List<DebuffInstance>(); //all the debuff currently applied onto this unit.
 
     private void Awake()
@@ -49,6 +49,7 @@ public abstract class Unit : MonoBehaviour
     void Update() // sealed: subclasses cannot override
     {
         TickDebuffs(Time.deltaTime);
+        TickBuffs(Time.deltaTime);
         ForceDeath(5f);
         OnUnitUpdate(); // hook for subclasses
     }
@@ -101,6 +102,34 @@ public abstract class Unit : MonoBehaviour
         }
     }
 
+    private void TickBuffs(float deltaTime)
+    {
+        // Iterate backwards so we can safely remove expired debuffs
+        for (int i = activeBuffs.Count - 1; i >= 0; i--)
+        {
+            BuffInstance instance = activeBuffs[i];
+
+            // Tick down the timer
+            bool expired = instance.Tick(deltaTime);
+
+            // If less than 1 second left, trigger blinking UI
+            if (instance.remainingTime <= 1.5f)
+            {
+                instance.BlinkingUI();
+            }
+
+            if (expired)
+            {
+                // Remove effects + UI
+                instance.RemoveBuffEffect();
+                instance.RemoveUI();
+
+                // Remove from list
+                activeBuffs.RemoveAt(i);
+            }
+        }
+    }
+
     public void AddDebuff(Debuff debuff, float duration)
     {
         var instance = new DebuffInstance(debuff, this, duration);
@@ -130,6 +159,17 @@ public abstract class Unit : MonoBehaviour
         }
         activeDebuffs.Clear();
     }
+
+    public void AddBuff(Buff buff, float duration , float strength)
+    {
+        var instance = new BuffInstance(buff, this, duration);
+        activeBuffs.Add(instance);
+
+        instance.ApplyBuffEffect();
+        instance.ShowUI();
+    }
+
+
 
 
     public virtual void TakeDamage(Unit hitter, int damage , float knockback)

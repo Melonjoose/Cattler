@@ -36,7 +36,8 @@ public class HealingPotion : ConsumableItem
     {
         StatFX popup = StatFXManager.instance.GetFromPool();
         popup.transform.position = this.transform.position;
-        popup.SetText(healthToRecover, consumableData.itemNameShort);
+        string valueText = healthToRecover.ToString();
+        popup.SetText(valueText, consumableData.itemNameShort);
         popup.SetIcon(consumableData.icon);
     }
 }

@@ -19,14 +19,7 @@ public class DebuffManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-            if (enemy != null)
-            {
-               ApplyDebuff(enemy,stun, 5f);
-            }
-        }
+
     }
 
     public void ApplyDebuff(GameObject target, Debuff debuff , float duration) // to apply debuff to the target.

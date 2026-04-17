@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Debuff", menuName = "Scriptable Objects/Debuff")]
+[CreateAssetMenu(fileName = "Debuff", menuName = "Status/Debuff")]
 public class Debuff : ScriptableObject
 {
     public string debuffName;

@@ -30,16 +30,24 @@ public class LobbyCat : MonoBehaviour
             skinName = catUnit.runtimeData.template.skinName;
             if (skinName != null)
             {
-                Skin skin = skeletonGraphic.Skeleton.Data.FindSkin(skinName);
-                if (skin != null)
+                if(catUnit.runtimeData.template.Rarity == Rarity.Common || catUnit.runtimeData.template.Rarity == Rarity.Rare)
                 {
-                    skeletonGraphic.Skeleton.SetSkin(skin);
-                    skeletonGraphic.Skeleton.SetSlotsToSetupPose();
-                    skeletonGraphic.AnimationState.Apply(skeletonGraphic.Skeleton);
+
+                    Skin skin = skeletonGraphic.Skeleton.Data.FindSkin(skinName);
+                    if (skin != null)
+                    {
+                        skeletonGraphic.Skeleton.SetSkin(skin);
+                        skeletonGraphic.Skeleton.SetSlotsToSetupPose();
+                        skeletonGraphic.AnimationState.Apply(skeletonGraphic.Skeleton);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Skin '{skinName}' not found in skeleton data.");
+                    }
                 }
-                else
+                else if(catUnit.runtimeData.template.Rarity == Rarity.Legendary)
                 {
-                    Debug.LogWarning($"Skin '{skinName}' not found in skeleton data.");
+                    Debug.Log("Legendary skin uses the default skin, no need to change.");
                 }
             }
         }
