@@ -1,0 +1,62 @@
+catkeeper gacha sprite layers merged.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+ahoge
+bounds:2,2,141,85
+back hair
+bounds:2,707,621,462
+back skirt
+bounds:1509,1818,333,217
+bangs
+bounds:1319,1553,198,228
+drop shadow
+bounds:2,1171,679,864
+offsets:1,1,681,866
+face
+bounds:625,866,246,270
+head back
+bounds:2,355,368,350
+offsets:0,0,368,352
+head phone back
+bounds:978,1283,66,58
+rotate:90
+head phones front
+bounds:372,380,325,248
+rotate:90
+left eye
+bounds:1519,1557,90,101
+rotate:90
+left forearm (merged)
+bounds:1056,1550,261,231
+left leg
+bounds:683,1351,357,265
+left sideburn
+bounds:683,1138,211,293
+rotate:90
+left upper arm
+bounds:625,727,137,250
+rotate:90
+mouth
+bounds:315,342,16,11
+neck
+bounds:1634,1721,98,95
+nose
+bounds:1509,1809,8,7
+notebook
+bounds:2,89,311,264
+right arm
+bounds:873,942,105,194
+right eye
+bounds:145,10,77,99
+rotate:90
+right leg
+bounds:1844,1867,149,168
+right sideburn
+bounds:1519,1649,113,167
+shawl
+bounds:1056,1783,451,252
+skirt
+bounds:1042,1303,252,245
+torso
+bounds:683,1618,371,417

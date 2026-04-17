@@ -1,0 +1,858 @@
+fileFormatVersion: 2
+guid: f57dae30c7898b049a7eeb6e36ca1ed9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8170182831156946675
+    second: catkeeper gacha sprite layers merged_0
+  - first:
+      213: -6741812766676411360
+    second: catkeeper gacha sprite layers merged_1
+  - first:
+      213: -3106018720680115978
+    second: catkeeper gacha sprite layers merged_2
+  - first:
+      213: 2008574019189169143
+    second: catkeeper gacha sprite layers merged_3
+  - first:
+      213: -4813844932310148576
+    second: catkeeper gacha sprite layers merged_4
+  - first:
+      213: -2291770608386207263
+    second: catkeeper gacha sprite layers merged_5
+  - first:
+      213: 3168149631901772240
+    second: catkeeper gacha sprite layers merged_6
+  - first:
+      213: 241390037982174488
+    second: catkeeper gacha sprite layers merged_7
+  - first:
+      213: -4017119368530635399
+    second: catkeeper gacha sprite layers merged_8
+  - first:
+      213: 644889559360735428
+    second: catkeeper gacha sprite layers merged_9
+  - first:
+      213: 3356934106827651396
+    second: catkeeper gacha sprite layers merged_10
+  - first:
+      213: 6384727170817302685
+    second: catkeeper gacha sprite layers merged_11
+  - first:
+      213: 8297033782276834818
+    second: catkeeper gacha sprite layers merged_12
+  - first:
+      213: 48186929470926379
+    second: catkeeper gacha sprite layers merged_13
+  - first:
+      213: -2511307447831852868
+    second: catkeeper gacha sprite layers merged_14
+  - first:
+      213: -7898016540761167799
+    second: catkeeper gacha sprite layers merged_15
+  - first:
+      213: -6601572471039923045
+    second: catkeeper gacha sprite layers merged_16
+  - first:
+      213: -6928185540320606219
+    second: catkeeper gacha sprite layers merged_17
+  - first:
+      213: 8435678655688450439
+    second: catkeeper gacha sprite layers merged_18
+  - first:
+      213: -8024682909281840382
+    second: catkeeper gacha sprite layers merged_19
+  - first:
+      213: 5492279193047959280
+    second: catkeeper gacha sprite layers merged_20
+  - first:
+      213: -8127322647637679353
+    second: catkeeper gacha sprite layers merged_21
+  - first:
+      213: 2421259595660574642
+    second: catkeeper gacha sprite layers merged_22
+  - first:
+      213: 3757603400120490080
+    second: catkeeper gacha sprite layers merged_23
+  - first:
+      213: 6554940713000367699
+    second: catkeeper gacha sprite layers merged_24
+  - first:
+      213: -1444659938044774500
+    second: catkeeper gacha sprite layers merged_25
+  - first:
+      213: -4792441569621972285
+    second: catkeeper gacha sprite layers merged_26
+  - first:
+      213: -7096982118895476294
+    second: catkeeper gacha sprite layers merged_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1960
+        width: 143
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0915e6a00ead9e80800000000000000
+      internalID: -8170182831156946675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_1
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 2012
+        width: 38
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02c1f0422054072a0800000000000000
+      internalID: -6741812766676411360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_2
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1992
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f006201e6435e4d0800000000000000
+      internalID: -3106018720680115978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_3
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 1961
+        width: 60
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fb59d6bd63efdb10800000000000000
+      internalID: 2008574019189169143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1695
+        width: 311
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02ad6d5f989c13db0800000000000000
+      internalID: -4813844932310148576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_5
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 1695
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e1957426cef130e0800000000000000
+      internalID: -2291770608386207263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1343
+        width: 368
+        height: 351
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d92accfd4787fb20800000000000000
+      internalID: 3168149631901772240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_7
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 1343
+        width: 248
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81dde3ae5f6995300800000000000000
+      internalID: 241390037982174488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 879
+        width: 621
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 975d36ac7335048c0800000000000000
+      internalID: -4017119368530635399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_9
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 1184
+        width: 250
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c80e0133ab13f800800000000000000
+      internalID: 644889559360735428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_10
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 912
+        width: 246
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 449fadbc8c9369e20800000000000000
+      internalID: 3356934106827651396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_11
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 912
+        width: 105
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d90a95cb88b1b9850800000000000000
+      internalID: 6384727170817302685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 12
+        width: 685
+        height: 866
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 206c602f34cf42370800000000000000
+      internalID: 8297033782276834818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_13
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 699
+        width: 293
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2e6eedc1c13ba000800000000000000
+      internalID: 48186929470926379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_14
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 699
+        width: 58
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb880328e2b062dd0800000000000000
+      internalID: -2511307447831852868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_15
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 500
+        width: 252
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94865c93dcb946290800000000000000
+      internalID: -7898016540761167799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_16
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 432
+        width: 357
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9ceaa070d08264a0800000000000000
+      internalID: -6601572471039923045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_17
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 267
+        width: 261
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f7413b45f32adf90800000000000000
+      internalID: -6928185540320606219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_18
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 266
+        width: 200
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 781a7af0b0d811570800000000000000
+      internalID: 8435678655688450439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_19
+      rect:
+        serializedVersion: 2
+        x: 1519
+        y: 426
+        width: 16
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2039b1d196992a090800000000000000
+      internalID: -8024682909281840382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_20
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 401
+        width: 68
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f684e4a3de783c40800000000000000
+      internalID: 5492279193047959280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_21
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 55
+        width: 357
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 703a194cc13f53f80800000000000000
+      internalID: -8127322647637679353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_22
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 13
+        width: 451
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bfba5c16ca0a9120800000000000000
+      internalID: 2421259595660574642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_23
+      rect:
+        serializedVersion: 2
+        x: 1509
+        y: 232
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0685bfe3260b52430800000000000000
+      internalID: 3757603400120490080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_24
+      rect:
+        serializedVersion: 2
+        x: 1519
+        y: 232
+        width: 113
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 356f12259d3d7fa50800000000000000
+      internalID: 6554940713000367699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_25
+      rect:
+        serializedVersion: 2
+        x: 1634
+        y: 232
+        width: 98
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c977a93c07983fbe0800000000000000
+      internalID: -1444659938044774500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_26
+      rect:
+        serializedVersion: 2
+        x: 1509
+        y: 13
+        width: 333
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3caeddba8c3dd7db0800000000000000
+      internalID: -4792441569621972285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: catkeeper gacha sprite layers merged_27
+      rect:
+        serializedVersion: 2
+        x: 1844
+        y: 13
+        width: 149
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab1afe14d54728d90800000000000000
+      internalID: -7096982118895476294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      catkeeper gacha sprite layers merged_0: -8170182831156946675
+      catkeeper gacha sprite layers merged_1: -6741812766676411360
+      catkeeper gacha sprite layers merged_10: 3356934106827651396
+      catkeeper gacha sprite layers merged_11: 6384727170817302685
+      catkeeper gacha sprite layers merged_12: 8297033782276834818
+      catkeeper gacha sprite layers merged_13: 48186929470926379
+      catkeeper gacha sprite layers merged_14: -2511307447831852868
+      catkeeper gacha sprite layers merged_15: -7898016540761167799
+      catkeeper gacha sprite layers merged_16: -6601572471039923045
+      catkeeper gacha sprite layers merged_17: -6928185540320606219
+      catkeeper gacha sprite layers merged_18: 8435678655688450439
+      catkeeper gacha sprite layers merged_19: -8024682909281840382
+      catkeeper gacha sprite layers merged_2: -3106018720680115978
+      catkeeper gacha sprite layers merged_20: 5492279193047959280
+      catkeeper gacha sprite layers merged_21: -8127322647637679353
+      catkeeper gacha sprite layers merged_22: 2421259595660574642
+      catkeeper gacha sprite layers merged_23: 3757603400120490080
+      catkeeper gacha sprite layers merged_24: 6554940713000367699
+      catkeeper gacha sprite layers merged_25: -1444659938044774500
+      catkeeper gacha sprite layers merged_26: -4792441569621972285
+      catkeeper gacha sprite layers merged_27: -7096982118895476294
+      catkeeper gacha sprite layers merged_3: 2008574019189169143
+      catkeeper gacha sprite layers merged_4: -4813844932310148576
+      catkeeper gacha sprite layers merged_5: -2291770608386207263
+      catkeeper gacha sprite layers merged_6: 3168149631901772240
+      catkeeper gacha sprite layers merged_7: 241390037982174488
+      catkeeper gacha sprite layers merged_8: -4017119368530635399
+      catkeeper gacha sprite layers merged_9: 644889559360735428
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
