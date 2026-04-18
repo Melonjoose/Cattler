@@ -117,6 +117,11 @@ public class SummonManager : MonoBehaviour
 
     public void FirstSummon()
     {
+        if(Tutorial.instance.inTutorial == false)
+        {
+            Debug.LogWarning("FirstSummon called outside of tutorial context!");
+            return;
+        }
         Inventory.instance.InstantiateNewCat(firstSummonCat);
     }
 
@@ -180,7 +185,7 @@ public class SummonManager : MonoBehaviour
 
     public void SummonButtonPressed() //to add to button onclick event
     {
-        if(isFirstSummon == true && firstSummonCat != null)
+        if(isFirstSummon == true && Tutorial.instance.inTutorial == true && firstSummonCat != null)
         {
             Currency.instance.AddInk(-summonCost); // Deduct summon cost
             FirstSummon();
@@ -208,6 +213,7 @@ public class SummonManager : MonoBehaviour
             Debug.Log("Not enough ink to summon!");
             return;
         }
+
         Currency.instance.AddInk(-summonCost); // Deduct summon cost
         Summon();
 
@@ -245,8 +251,7 @@ public class SummonManager : MonoBehaviour
         summonCatDisplay.SetActive(false);
         closeSummonPage.SetActive(false);
 
-        
-        if(firstSummonCompleted == false && isFirstSummon == true) //needs to be infirstsummon, yet not completed. this is to prevent players from skipping the tutorial summon and still getting the skip button unlocked.
+        if(firstSummonCompleted == false && isFirstSummon == true && Tutorial.instance.inTutorial == true) //needs to be infirstsummon, yet not completed. this is to prevent players from skipping the tutorial summon and still getting the skip button unlocked.
         {
             isFirstSummon = false; // only when the summon is closed. then considered it closed.
             firstSummonCompleted = true;

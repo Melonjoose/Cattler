@@ -23,8 +23,8 @@ MonoBehaviour:
   skinName: TabbyCat
   catID: 13
   Rarity: 0
-  skillName: Nil
-  skillDesc: Nil
+  skillName: No Ability
+  skillDesc: No Ability
   level: 1
   exp: 0
   catSkill: {fileID: 0}

@@ -68,7 +68,7 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (EnemyData data in currentLevel.spawnableList)
         {
-            if (data.enemyType == EnemyType.Basic && this is EnemySpawner)
+            if (data.enemyType == EnemyType.Basic && this is EnemySpawner)  
             {
                 spawnableList.Add(data);
             }

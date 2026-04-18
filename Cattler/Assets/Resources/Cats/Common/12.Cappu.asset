@@ -24,8 +24,8 @@ MonoBehaviour:
   skinName: Cappu
   catID: 12
   Rarity: 0
-  skillName: Nil
-  skillDesc: Nil
+  skillName: No Ability
+  skillDesc: No Ability
   level: 1
   exp: 0
   catSkill: {fileID: 0}
