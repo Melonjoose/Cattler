@@ -72,8 +72,6 @@ public class Currency : MonoBehaviour
 
     public void AddCore(int amount)
     {
-        if(amount <= 0) return;
-
         core += amount;
         UpdateGUI(); // Update the GUI after adding core
         if(coreAnimator != null )

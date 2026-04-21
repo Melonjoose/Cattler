@@ -25,16 +25,17 @@ public class Skill_Abduct : CatSkill
         StartCoroutine(UFOAbductSequence());
     }
 
-
     IEnumerator UFOAbductSequence()
     {
         SkillState();
         yield return new WaitForSeconds(0.3f);
+        AudioManager.instance.PlaySFX("AlienUFO");
+        AudioManager.instance.PlaySFX("Alien");
         AnimationState();
         //movement sequence
         //3. the cat flies up abit then flies horiztontally right across the screen.
             Vector3 startPosition = catUnit.transform.position;
-            Vector3 upPosition = startPosition + new Vector3(0, 0.5f, 0); // fly up by 2 units
+            Vector3 upPosition = startPosition + new Vector3(0, 0.3f, 0); // fly up by 2 units
         //move with lerp to the up position over 0.2 seconds
             float elapsedTime = 0f;
             float duration = 0.2f;
@@ -48,7 +49,7 @@ public class Skill_Abduct : CatSkill
 
         
         yield return new WaitForSeconds(0.2f);
-            Vector3 RightPosition = startPosition + new Vector3(25f, 0.5f, 0); // fly right across the screen by 10 units
+            Vector3 RightPosition = startPosition + new Vector3(25f, 0.3f, 0); // fly right across the screen by 10 units
         //move with lerp to the end position over 2 second
             elapsedTime = 0f;
             duration = 2f;
@@ -138,7 +139,10 @@ public class Skill_Abduct : CatSkill
         catUnit.canTarget = true; //cat can be targeted by the enemyunits again after the skill
         unitRB.bodyType = RigidbodyType2D.Dynamic; //make the cat not affected by physics during the skill
         abductCollider.enabled = false; //enable the collider for the beam that pulls enemies in during the skill
-
+        if (TravelManager.instance.IsTraveling) //if it's currently traveling, change animation to travel animation. if not, change to idle animation
+        { catUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Walk", true); }//1. change animation to travel
+        else
+        { catUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true); } //1. change animation to idle
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -154,6 +158,7 @@ public class Skill_Abduct : CatSkill
             if (Time.time - damageTimers[enemy] >= 1f)
             {
                 enemy.TakeDamage(catUnit, 1, 0f); // 1 damage every second
+                AudioManager.instance.PlaySFX("Abduct");
                 damageTimers[enemy] = Time.time; // reset timer
             }
 
@@ -164,7 +169,7 @@ public class Skill_Abduct : CatSkill
             {
                 Vector2 direction = (pullPoint.transform.position - enemy.transform.position).normalized;
                 float distance = Vector2.Distance(enemy.transform.position, pullPoint.transform.position);
-                float pullForce = Mathf.Lerp(20f, 5f, distance / 10f); // stronger when closer
+                float pullForce = Mathf.Lerp(23f, 10f, distance / 10f); // stronger when closer
                 enemyRB.AddForce(direction * pullForce);
 
             }

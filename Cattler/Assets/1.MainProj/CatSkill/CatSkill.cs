@@ -39,7 +39,15 @@ public class CatSkill : MonoBehaviour
     }
     public virtual void UseSkill()
     {
-        Debug.Log($"Using skill: {this.name}");
+        if(catUnit == null)
+        {
+            catUnit = GetComponentInParent<CatUnit>();
+        }   
+        if (catUnit != null) // animation
+        {
+            catUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Skill1", false);
+            catUnit.skeletonAnimation.AnimationState.AddAnimation(0, "Idle", true , 0f);
+        }
     }
 
 

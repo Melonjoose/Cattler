@@ -17,7 +17,7 @@ public class Skill_Cooking : CatSkill
 
     public override void UseSkill()
     {
-        // Implement the logic for the cooking skill here
+        base.UseSkill();
         Debug.Log("Cooking skill activated!");
         StartCoroutine(SkillSequence());
     }

@@ -24,14 +24,14 @@ MonoBehaviour:
   skinName: CafeCat
   catID: 61
   Rarity: 1
-  skillName: Spill Drink
+  skillName: Spilled Drink
   skillDesc: He accidentally drops his matcha. Spilling it on enemies will slow them.
   level: 1
   exp: 0
-  catSkill: {fileID: 0}
+  catSkill: {fileID: 2431040989358515849, guid: 91ca60d0ce157c64ea847e31f125e1ee, type: 3}
   baseHealth: 8
   attackPower: 3
   attackSpeed: 1
   attackRange: 4
   movementSpeed: 4
-  knockBackPower: 2
+  knockBackPower: 3

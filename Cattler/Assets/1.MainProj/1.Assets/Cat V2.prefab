@@ -212,6 +212,10 @@ MeshRenderer:
   - {fileID: 2100000, guid: f060f1fdf5dd0714088a640ae06adc15, type: 2}
   - {fileID: 2100000, guid: d96c7ca35533349468a9175acbaa87aa, type: 2}
   - {fileID: 2100000, guid: f060f1fdf5dd0714088a640ae06adc15, type: 2}
+  - {fileID: 2100000, guid: d96c7ca35533349468a9175acbaa87aa, type: 2}
+  - {fileID: 2100000, guid: f060f1fdf5dd0714088a640ae06adc15, type: 2}
+  - {fileID: 2100000, guid: d96c7ca35533349468a9175acbaa87aa, type: 2}
+  - {fileID: 2100000, guid: f060f1fdf5dd0714088a640ae06adc15, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -380,8 +384,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 966656191
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 7acf75292979b304cbcb283a24352fd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -467,8 +471,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 966656191
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d646d707c2b7bda49820c94b2ab5386e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -596,7 +600,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -771159591
   m_SortingOrder: 80
   m_TargetDisplay: 0
 --- !u!114 &1111104729319292584
@@ -794,8 +798,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 966656191
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 7acf75292979b304cbcb283a24352fd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1043,13 +1047,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debuffCanvas: {fileID: 0}
+  canAttack: 1
+  canTarget: 1
   isAttacking: 0
   canWalk: 1
+  isSlowed: 0
   isDead: 0
-  canTarget: 1
   skeletonAnimation: {fileID: 0}
   skeletonGraphic: {fileID: 0}
-  canAttack: 1
   isStunned: 0
   activeBuffs: []
   activeDebuffs: []
@@ -1077,6 +1082,7 @@ MonoBehaviour:
     attackSpeed: 0
     attackRange: 0
     movementSpeed: 0
+    knockBackPower: 0
   catMovement: {fileID: 0}
   catIconSlot:
     iconIndex: -1

@@ -27,10 +27,10 @@ MonoBehaviour:
   skillDesc: Periodically throws a medkit to heal the team!
   level: 1
   exp: 0
-  catSkill: {fileID: 0}
+  catSkill: {fileID: 6097937322975298416, guid: 3aa5a946bd2549d4ca735da2e4675410, type: 3}
   baseHealth: 8
   attackPower: 3
   attackSpeed: 1
   attackRange: 4
   movementSpeed: 4
-  knockBackPower: 2
+  knockBackPower: 3

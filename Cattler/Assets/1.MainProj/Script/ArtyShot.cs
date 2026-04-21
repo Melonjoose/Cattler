@@ -15,6 +15,7 @@ public class ArtyShot : MonoBehaviour
 
     public void Start()
     {
+        AudioManager.instance.PlaySFX("BombWhistle"); // Play bomb throw sound effect
         damage = unit.attackDamage;
     }
     private void Awake()
@@ -52,20 +53,27 @@ public class ArtyShot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.CompareTag("Cat"))
         {
             CatUnit cat = other.GetComponent<CatUnit>();
             if (cat != null)
             {
+                AudioManager.instance.PlaySFX("BombLand");
+                StatFXManager.instance.PlayVFX(transform.position, 5); // Play bomb explosion VFX
                 cat.TakeDamage(unit,damage,0f);
                 DamageNumberManager.Instance.ShowDamage(damage, cat.transform.position);
             }
             Destroy(gameObject);
+
         }
         else if (other.CompareTag("Floor"))
         {
+            AudioManager.instance.PlaySFX("BombLand");
+            StatFXManager.instance.PlayVFX(transform.position, 5); // Play bomb explosion VFX
             Debug.Log("Hit floor!");
             Destroy(gameObject);
+
         }
     }
 }

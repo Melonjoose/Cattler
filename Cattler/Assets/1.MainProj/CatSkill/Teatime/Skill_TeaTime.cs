@@ -15,7 +15,7 @@ public class Skill_TeaTime : CatSkill
 
     public override void UseSkill()
     {
-        // Implement the logic for the cooking skill here
+        base.UseSkill();
         Debug.Log("Teatime Skill activated!");
         StartCoroutine(SkillSequence());
     }

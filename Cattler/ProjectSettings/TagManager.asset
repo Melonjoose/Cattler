@@ -13,6 +13,7 @@ TagManager:
   - WeaponPreviewSlot_R
   - WeaponPreviewSlot_L
   - WeaponPreviewSlot
+  - Background
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - UI
   - Enemy
   - Item
-  - 
+  - Projectile
   - 
   - 
   - 

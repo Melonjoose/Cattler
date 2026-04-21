@@ -17,7 +17,8 @@ public class SummonChance
 public class SummonManager : MonoBehaviour
 {
     public static SummonManager instance;
-    public int summonCost = 100;
+    public int normalSummonCost = 100; //ink
+    public int specialSummonCost = 5; //core 
     public Animator summonAnimator;
 
 
@@ -183,12 +184,13 @@ public class SummonManager : MonoBehaviour
         canvasGroup.interactable = true;
     }
 
-    public void SummonButtonPressed() //to add to button onclick event
+    public void NormalSummonButtonPressed() //to add to button onclick event
     {
         if(isFirstSummon == true && Tutorial.instance.inTutorial == true && firstSummonCat != null)
         {
-            Currency.instance.AddInk(-summonCost); // Deduct summon cost
+            Currency.instance.AddInk(-normalSummonCost); // Deduct summon cost
             FirstSummon();
+            AudioManager.instance.PlaySFX("Purchase2");
             summonCatDisplay.SetActive(true);   // activate parent first
             currentRolledCat = firstSummonCat; // set the rolled cat to the first summon cat for display purposes
             Rarity rarity = Rarity.Common; // first summon is always common
@@ -207,16 +209,16 @@ public class SummonManager : MonoBehaviour
             return;
         }
 
-        if (Currency.instance.ink < summonCost)
+        if (Currency.instance.ink < normalSummonCost)
         {
             CommentaryManager.instance.AddDialogueToQueue(8); // Not enough currency. We should go and clear out some inklings.
             Debug.Log("Not enough ink to summon!");
             return;
         }
 
-        Currency.instance.AddInk(-summonCost); // Deduct summon cost
+        Currency.instance.AddInk(-normalSummonCost); // Deduct summon cost
         Summon();
-
+        AudioManager.instance.PlaySFX("Purchase2");
         summonCatDisplay.SetActive(true);   // activate parent first
         RarityChecker(currentRolledRarity);              // then toggle children
         commonUI.gameObject.SetActive(false);
@@ -224,6 +226,34 @@ public class SummonManager : MonoBehaviour
         legendaryUI.gameObject.SetActive(false);
         OpenTapToRevealPage();
     }
+
+    public void SpecialSummonButtonPressed() //to add to button onclick event
+    {
+        if (Inventory.instance.inventoryList.Count >= Inventory.instance.currentCapacity)
+        {
+            CommentaryManager.instance.AddDialogueToQueue(4); // team is full
+            Debug.Log("Inventory is full! Unable to summon Cats");
+            return;
+        }
+
+        if (Currency.instance.core < specialSummonCost)
+        {
+            CommentaryManager.instance.AddDialogueToQueue(10); // Not enough currency. We should go and clear out some inklings.
+            Debug.Log("Not enough core to summon!");
+            return;
+        }
+
+        Currency.instance.AddCore(-specialSummonCost); // Deduct summon cost
+        Summon(true);
+        AudioManager.instance.PlaySFX("Purchase2");
+        summonCatDisplay.SetActive(true);   // activate parent first
+        RarityChecker(currentRolledRarity);              // then toggle children
+        commonUI.gameObject.SetActive(false);
+        rareUI.gameObject.SetActive(false);
+        legendaryUI.gameObject.SetActive(false);
+        OpenTapToRevealPage();
+    }
+
 
     void OpenTapToRevealPage()
     {        

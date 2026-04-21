@@ -24,14 +24,12 @@ public class CatUnit : Unit
     public TriggerTrack triggerTrack;
     public GameObject AnimationBody; //the gameobject that has the animator component for this cat. (for animation purposes only, not the actual catGO)
 
-
     public CatRuntimeData runtimeData;
     public CatMovement catMovement;
     public CatIconUI.CatIconSlot catIconSlot;
     public string catSkin;
 
     private float attackCooldown;
-
 
     public event Action<int,int> onHealthChanged;
     public event Action CatDeath;
@@ -71,13 +69,14 @@ public class CatUnit : Unit
 
     protected override void OnUnitUpdate()
     {
-        if (canAttack && triggerTrack != null) 
+        if (canAttack == true && triggerTrack != null) 
         {
             if (attackCooldown > 0f)
             {
                 attackCooldown -= Time.deltaTime; //reset cooldown if not attacking
-            }
+             }
         }
+
         if (canWalk == false && catMovement != null)
         {
             catMovement.enabled = false;
@@ -154,18 +153,21 @@ public class CatUnit : Unit
 
     public void TryAttack(Collider2D other)
     {
-        if (targetPoint == null) return;
+        if (targetPoint == null) return; //have a target point.
 
         EnemyUnit enemytarget = other.GetComponent<EnemyUnit>();
-        if (attackCooldown <= 0f && enemytarget != null && enemytarget.isDead == false)
+        if (attackCooldown <= 0f && enemytarget != null && enemytarget.isDead == false && enemytarget.canTarget)
         {
-            isAttacking = true;
-            skeletonAnimation.AnimationState.SetAnimation(0, "Attack", false);
-            skeletonAnimation.AnimationState.AddAnimation(0,TravelManager.instance.IsTraveling ? "Walk" : "Idle",true,0f);
+            if(canAttack == true && isStunned == false)
+            {
+                isAttacking = true;
+                skeletonAnimation.AnimationState.SetAnimation(0, "Attack", false);
+                skeletonAnimation.AnimationState.AddAnimation(0, TravelManager.instance.IsTraveling ? "Walk" : "Idle", true, 0f);
 
-            Attack(enemytarget);
-            //Knockback(enemytarget);
-            attackCooldown = 1f / runtimeData.attackSpeed;
+                Attack(enemytarget);
+                //Knockback(enemytarget);
+                attackCooldown = 1f / runtimeData.attackSpeed;
+            }
         }
     }
 
@@ -182,6 +184,7 @@ public class CatUnit : Unit
     {
         base.TakeDamage(hitter, amount, knockback);
 
+        AudioManager.instance.PlaySFX("CatDamage");
         CameraShake.instance.Shake(0.2f, 0.05f);
         runtimeData.currentHealth -= amount;
         onHealthChanged?.Invoke(runtimeData.currentHealth , runtimeData.maxHealth);

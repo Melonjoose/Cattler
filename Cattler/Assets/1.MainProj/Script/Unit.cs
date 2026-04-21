@@ -7,14 +7,15 @@ public abstract class Unit : MonoBehaviour
 {
     public Canvas debuffCanvas; //holds the debuff icons, assign in inspector
 
-    public bool isAttacking = false;
-    public bool canWalk = true;
-    public bool isDead = false;
-    public bool canTarget = true;
+    public bool canAttack = true; //can this unit attack?
+    public bool canTarget = true; //can this unit be targetted?
+    public bool isAttacking = false; //is this unit in the midst of attacking?
+    public bool canWalk = true; //can this unit walk?
+    public bool isSlowed = false; //is this unit slowed?
+    public bool isDead = false; //is this unit dead?
     public SkeletonAnimation skeletonAnimation;
     public SkeletonGraphic skeletonGraphic;
 
-    public bool canAttack = true;
 
     public bool isStunned;
 
@@ -137,7 +138,6 @@ public abstract class Unit : MonoBehaviour
         activeDebuffs.Add(instance);
 
         instance.ApplyDebuffEffect();
-        instance.ShowUI();
     }
 
 

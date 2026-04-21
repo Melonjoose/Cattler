@@ -8,6 +8,7 @@ public class HeavyShot : ActiveAbility
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        AudioManager.instance.PlaySFX("BulletShot"); // Play heavy shot sound effect 
         bulletsprite = transform.GetChild(0).gameObject;
         bulletCollider = bulletsprite.GetComponent<Collider2D>();
         StartCoroutine(Spritemovement());
@@ -41,10 +42,12 @@ public class HeavyShot : ActiveAbility
         {
             int damage = Mathf.CeilToInt(catUnit.runtimeData.attackPower * damageMultiplier);
             enemy.TakeDamage(catUnit, damage, 1f);
-            DamageNumberManager.Instance.ShowDamage((int)damage, enemy.transform.position);
-            //Debug.Log("enemy hit by slash, taking" + damage);
+            DamageNumberManager.Instance.ShowDamage(damage, enemy.transform.position);
+
+            Destroy(gameObject); // ensures it doesn’t hit more than one enemy
         }
     }
+
     //reference the 2 child sprite objects and collider
     //animate the objects by moving them in a cross pattern.
     //in collision with enemy, deal damage.

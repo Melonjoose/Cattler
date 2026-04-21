@@ -46,6 +46,13 @@ public class ConsumableItem : MonoBehaviour
         {
             AudioManager.instance.PlaySFX("PowerUp");
         }
+
+        if (consumableData.itemType == ItemType.Coconut)
+        {
+            AudioManager.instance.PlaySFX("Drink");
+            AudioManager.instance.PlaySFX("Clock");
+        }
+
         if (consumableData != null)
         {
             onConsumed?.Invoke(); //send to listener

@@ -643,8 +643,8 @@ MonoBehaviour:
     dropChance: 1
   minInkDrop: 30
   maxInkDrop: 100
-  minCoreDrop: 0
-  maxCoreDrop: 0
+  minCoreDrop: 1
+  maxCoreDrop: 3
   minEXPDrop: 10
   maxEXPDrop: 20
 --- !u!114 &5716459444044239008
@@ -663,11 +663,13 @@ MonoBehaviour:
   isAttacking: 0
   canWalk: 1
   isDead: 0
+  canTarget: 1
+  skeletonAnimation: {fileID: 0}
+  skeletonGraphic: {fileID: 0}
   canAttack: 1
   isStunned: 0
   activeBuffs: []
   activeDebuffs: []
-  skeletonAnimation: {fileID: 0}
   triggerTrack: {fileID: 0}
   pickRandomCat: 0
   pickClosestCat: 1

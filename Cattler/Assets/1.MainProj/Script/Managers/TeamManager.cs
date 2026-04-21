@@ -91,7 +91,7 @@ public class TeamManager : MonoBehaviour
                 skillGO.transform.SetParent(newCatUnit.transform);
                 skillGO.transform.localPosition = Vector3.zero; // Adjust as needed
                 CatSkill catSkillComponent = skillGO.GetComponent<CatSkill>();
-
+                newCatUnit.skill = catSkillComponent; // Link the skill component to the cat unit
             }
 
             newCatUnit.LinkAnimationBody();

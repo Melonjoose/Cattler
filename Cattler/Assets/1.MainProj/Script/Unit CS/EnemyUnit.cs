@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyUnit : Unit
 {
     private GameObject thisUnit; // Reference to self for clarity
-    private EnemyMovement EnemyMovement;
+    public EnemyMovement EnemyMovement;
     public EnemyTriggerTrack triggerTrack;
 
     public bool pickRandomCat = false;
@@ -99,7 +99,7 @@ public class EnemyUnit : Unit
         if (attackCooldown <= 0f && canAttack)
         {
             CatUnit cat = other.GetComponent<CatUnit>();
-            if (cat != null && other.gameObject == TargetCat && isDead == false) // only attack chosen target. if it's not dead
+            if (cat != null && other.gameObject == TargetCat && isDead == false && cat.canTarget) // only attack chosen target. if it's not dead
             {
                 AttackCat(cat);
                 attackCooldown = 1f / attackSpeed; // Reset cooldown

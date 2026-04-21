@@ -675,8 +675,8 @@ MonoBehaviour:
     dropChance: 1
   minInkDrop: 50
   maxInkDrop: 100
-  minCoreDrop: 0
-  maxCoreDrop: 0
+  minCoreDrop: 1
+  maxCoreDrop: 3
   minEXPDrop: 10
   maxEXPDrop: 20
 --- !u!120 &3533009508938043914
@@ -802,11 +802,13 @@ MonoBehaviour:
   isAttacking: 0
   canWalk: 1
   isDead: 0
+  canTarget: 1
+  skeletonAnimation: {fileID: 0}
+  skeletonGraphic: {fileID: 0}
   canAttack: 1
   isStunned: 0
   activeBuffs: []
   activeDebuffs: []
-  skeletonAnimation: {fileID: 0}
   triggerTrack: {fileID: 0}
   pickRandomCat: 0
   pickClosestCat: 1
@@ -822,6 +824,7 @@ MonoBehaviour:
   attackRange: 0
   attacking: 0
   pullSpeed: 1
+  hookduration: 7
   shotCooldown: 3
   cooldowntimer: 0
   lockedCD: 0

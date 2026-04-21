@@ -16,7 +16,7 @@ public class BlindingLight : CatSkill
 
     public override void UseSkill()
     {
-        // Implement the logic for Blinding Light skill here
+        base.UseSkill();
         lightAura.gameObject.SetActive(true); // Activate the light aura effect
         AudioManager.instance.PlaySFX("BlindingLight"); // Play the blinding light sound effect (make sure to have this sound in your AudioManager)
     }

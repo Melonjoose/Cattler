@@ -189,6 +189,7 @@ public class ArtilleryUnit : EnemyUnit
 
     void FireArtillery()
     {
+        AudioManager.instance.PlaySFX("ArtilleryShot");
         GameObject shotGO = Instantiate(artilleryShot, transform.position, transform.rotation);
 
         ArtyShot shot = shotGO.GetComponent<ArtyShot>();

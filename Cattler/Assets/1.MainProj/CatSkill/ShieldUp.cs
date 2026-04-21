@@ -19,6 +19,7 @@ public class ShieldUp : CatSkill
 
     public override void UseSkill()
     {
+        base.UseSkill();
         CreateShield();
         //AudioManager.instance.PlaySFX("ShieldUp"); // Play the shield up sound effect (make sure to have this sound in your AudioManager)
     }

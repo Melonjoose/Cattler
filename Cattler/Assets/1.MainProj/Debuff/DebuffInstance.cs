@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.UI;
 [System.Serializable]
 public class DebuffInstance
@@ -79,12 +80,15 @@ public class DebuffInstance
 
     public void ApplyDebuffEffect() //apply this debuffeffect
     {
+        ShowUI();
         Stun();
+        Slow();
     }
 
     public void RemoveDebuffEffect()
     {
         UnStun();
+        RemoveSlow();
     }
 
 
@@ -102,8 +106,7 @@ public class DebuffInstance
             {
                 unit.skeletonAnimation.AnimationState.SetAnimation(0, "Hit", false);
             }
-        }
-        
+        }     
     }
 
     void UnStun()
@@ -120,6 +123,32 @@ public class DebuffInstance
             else
             {
                 unit.skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
+            }
+        }
+
+    }
+
+    private float originalMoveSpeed;
+    void Slow()
+    {
+        if (debuff.debuffType == Debuff.DebuffType.Slow && !unit.isSlowed)
+        {
+            EnemyUnit enemyUnit = unit as EnemyUnit;
+            originalMoveSpeed = enemyUnit.EnemyMovement.moveSpeed;
+            enemyUnit.EnemyMovement.moveSpeed *= 0.5f; // reduce by 50%
+            unit.isSlowed = true;
+        }
+    }
+
+    void RemoveSlow()
+    {
+        if (debuff.debuffType == Debuff.DebuffType.Slow)
+        {
+            if (unit.isSlowed)
+            {
+                EnemyUnit enemyUnit = unit as EnemyUnit;
+                enemyUnit.EnemyMovement.moveSpeed = originalMoveSpeed;
+                unit.isSlowed = false;
             }
         }
         RemoveUI();
