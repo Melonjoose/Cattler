@@ -22,7 +22,7 @@ MonoBehaviour:
   value: 2
   fvalue: 0
   skinName: YellowCat
-  catID: 100
+  catID: 101
   Rarity: 2
   skillName: Static Coat
   skillDesc: Shoots lightning

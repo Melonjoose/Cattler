@@ -10,7 +10,11 @@ public class Deleter : MonoBehaviour
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Destroy(other.gameObject);
+            EnemyUnit enemyUnit = other.gameObject.GetComponent<EnemyUnit>();
+            if(enemyUnit != null)
+            {
+                enemyUnit.Die();
+            }
         }
     }
 }

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
+  m_Name: Galaxy Cat
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7515003381397797525, guid: bf54d1ce8b586bb4496554191b4c18a8, type: 3}
+  prefab2: {fileID: 8373939177743189239, guid: 57359866b521bd24483d0c767c53cc5b, type: 3}
+  itemName: Galaxy Cat
+  icon: {fileID: 21300000, guid: ac3e4526e5e13c94eaea76a362372250, type: 3}
+  itemType: 0
+  description: Staring at him makes you wonder if an entire ecosystem exist within
+    this cat...
+  value: 2
+  fvalue: 0
+  skinName: GalaxyCat
+  catID: 102
+  Rarity: 2
+  skillName: Black Hole
+  skillDesc: Summon a vortex to obliterate enemies
+  level: 1
+  exp: 0
+  catSkill: {fileID: 1576006930913607325, guid: a3f15a651c440344193e89cc425e5178, type: 3}
+  baseHealth: 8
+  attackPower: 3
+  attackSpeed: 1
+  attackRange: 5
+  movementSpeed: 4
+  knockBackPower: 3

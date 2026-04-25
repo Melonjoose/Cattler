@@ -37,6 +37,9 @@ public class TravelManager : MonoBehaviour
     public float level3Milestone = 17f;
     public bool level3MilstoneComplete = false;
 
+    public bool reachRuinedCityFirstTime = false; //if player reach ruined city for the first time, trigger dialogue. and update the milestone to 20km.
+    public bool completeDemo = false; //if hit 20km. complete demo. Activate dialogue and update milestone to 6767km.
+
     public event Action<bool> OnTravelStateChanged;
 
     public bool isTraveling = false;

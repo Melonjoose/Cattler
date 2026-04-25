@@ -1,0 +1,31 @@
+BlackHole.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+BaseBack
+bounds:577,1329,433,466
+Beam
+bounds:2,1797,875,220
+Debris 1
+bounds:2,670,665,343
+rotate:90
+Debris 4
+bounds:2,168,423,500
+Debris2
+bounds:879,1857,684,160
+Debris3
+bounds:1565,1555,462,481
+rotate:90
+Purple Particle1
+bounds:782,949,378,304
+rotate:90
+Purple Particle2
+bounds:2,1337,573,458
+VoidRefelect
+bounds:347,768,92,91
+VoidRefelect2
+bounds:2,2,304,164
+base
+bounds:347,861,433,466
+light
+bounds:1012,1377,489,478

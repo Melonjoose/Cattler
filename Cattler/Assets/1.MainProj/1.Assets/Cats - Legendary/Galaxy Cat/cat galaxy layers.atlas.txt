@@ -1,0 +1,20 @@
+cat galaxy layers.png
+size:1024,512
+filter:Linear,Linear
+pma:true
+Head
+bounds:2,209,446,259
+left arm
+bounds:750,407,71,61
+left arm Copy
+bounds:823,406,67,62
+left ear
+bounds:450,337,113,131
+left eye
+bounds:450,212,97,123
+right ear
+bounds:565,341,102,127
+right eye
+bounds:669,350,79,118
+torso
+bounds:2,2,401,205
