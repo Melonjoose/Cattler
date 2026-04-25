@@ -278,4 +278,5 @@ public class EnemyUnit : Unit
         dropLootComponent.maxInkDrop = (int)(dropLootComponent.maxInkDrop * lootMultiplier);
 
     }
+
 }

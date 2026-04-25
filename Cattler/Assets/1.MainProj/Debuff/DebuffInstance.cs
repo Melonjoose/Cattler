@@ -131,12 +131,28 @@ public class DebuffInstance
     private float originalMoveSpeed;
     void Slow()
     {
-        if (debuff.debuffType == Debuff.DebuffType.Slow && !unit.isSlowed)
+        if (debuff.debuffType == Debuff.DebuffType.Slow)
         {
-            EnemyUnit enemyUnit = unit as EnemyUnit;
-            originalMoveSpeed = enemyUnit.EnemyMovement.moveSpeed;
-            enemyUnit.EnemyMovement.moveSpeed *= 0.5f; // reduce by 50%
-            unit.isSlowed = true;
+            // Only apply if not already slowed
+            if (unit.isSlowed == false)
+            {
+                if(unit is EnemyUnit enemyUnit)
+                {
+                    if(enemyUnit.EnemyMovement != null)
+                    {
+                        originalMoveSpeed = enemyUnit.EnemyMovement.moveSpeed;
+                        enemyUnit.EnemyMovement.moveSpeed *= 0.5f; // reduce by 50%
+                        enemyUnit.isSlowed = true;
+                    }
+                    else
+                    {
+                        originalMoveSpeed = enemyUnit.moveSpeed;
+                        enemyUnit.moveSpeed *= 0.5f; // reduce by 50%
+                        enemyUnit.isSlowed = true;
+                    }
+
+                }
+            }
         }
     }
 
@@ -146,11 +162,20 @@ public class DebuffInstance
         {
             if (unit.isSlowed)
             {
-                EnemyUnit enemyUnit = unit as EnemyUnit;
-                enemyUnit.EnemyMovement.moveSpeed = originalMoveSpeed;
-                unit.isSlowed = false;
+                if(unit is EnemyUnit enemyUnit)
+                {
+                    if (enemyUnit.EnemyMovement != null)
+                    {
+                        enemyUnit.EnemyMovement.moveSpeed = originalMoveSpeed;
+                        enemyUnit.isSlowed = false;
+                    }
+                    else
+                    {
+                        enemyUnit.moveSpeed = originalMoveSpeed;
+                        enemyUnit.isSlowed = false;
+                    }
+                }
             }
         }
-        RemoveUI();
     }
 }
