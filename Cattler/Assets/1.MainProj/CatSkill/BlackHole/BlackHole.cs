@@ -7,7 +7,7 @@ public class BlackHole : CatSkill
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,6 +25,7 @@ public class BlackHole : CatSkill
 
     IEnumerator SkillSequence()
     {
+        AudioManager.instance.PlaySFX("CastBlackMagic");
         yield return new WaitForSeconds(0.5f);
         GameObject blackHole = Instantiate(itemObject, spawnLocation.position, Quaternion.identity);
         blackHole.gameObject.SetActive(true);

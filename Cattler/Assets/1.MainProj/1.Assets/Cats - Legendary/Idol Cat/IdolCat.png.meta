@@ -1,0 +1,832 @@
+fileFormatVersion: 2
+guid: 4d601e93ddc81d440a45253f7dd1a256
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5712034963588459613
+    second: IdolCat_0
+  - first:
+      213: 1406447514939277749
+    second: IdolCat_1
+  - first:
+      213: -3237916895120242069
+    second: IdolCat_2
+  - first:
+      213: -7644467517523999618
+    second: IdolCat_3
+  - first:
+      213: 5001519264688089904
+    second: IdolCat_4
+  - first:
+      213: 8442507238517097563
+    second: IdolCat_5
+  - first:
+      213: -7536323479852279167
+    second: IdolCat_6
+  - first:
+      213: -7870512004743378124
+    second: IdolCat_7
+  - first:
+      213: 880644121999914651
+    second: IdolCat_8
+  - first:
+      213: -5975719658613077474
+    second: IdolCat_9
+  - first:
+      213: 3986724501032754995
+    second: IdolCat_10
+  - first:
+      213: -5602709299454062356
+    second: IdolCat_11
+  - first:
+      213: 8053631359579369747
+    second: IdolCat_12
+  - first:
+      213: -8362692863572947784
+    second: IdolCat_13
+  - first:
+      213: -8634087066472284740
+    second: IdolCat_14
+  - first:
+      213: 1616058922044856444
+    second: IdolCat_15
+  - first:
+      213: 7314272448487432572
+    second: IdolCat_16
+  - first:
+      213: -317749008964202596
+    second: IdolCat_17
+  - first:
+      213: 3291461364117011419
+    second: IdolCat_18
+  - first:
+      213: 6559474481469924667
+    second: IdolCat_19
+  - first:
+      213: 8786646507123143246
+    second: IdolCat_20
+  - first:
+      213: 8140407901681607156
+    second: IdolCat_21
+  - first:
+      213: -4491917397589308795
+    second: IdolCat_22
+  - first:
+      213: 8499772216787179383
+    second: IdolCat_23
+  - first:
+      213: 7771177588700694451
+    second: IdolCat_24
+  - first:
+      213: 8091215236599911079
+    second: IdolCat_25
+  - first:
+      213: 7711414188265338198
+    second: IdolCat_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: IdolCat_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 479
+        width: 60
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5c2d452989354f40800000000000000
+      internalID: 5712034963588459613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 270
+        width: 348
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b1cf2b2094b48310800000000000000
+      internalID: 1406447514939277749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_2
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 372
+        width: 131
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6a4f163dbb9013d0800000000000000
+      internalID: -3237916895120242069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_3
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 437
+        width: 48
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7448f08b4569e590800000000000000
+      internalID: -7644467517523999618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_4
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 369
+        width: 163
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03ba105a547f86540800000000000000
+      internalID: 5001519264688089904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_5
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 230
+        width: 142
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b54c9756a9fc92570800000000000000
+      internalID: 8442507238517097563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_6
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 371
+        width: 48
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18a18f669b9996790800000000000000
+      internalID: -7536323479852279167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_7
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 12
+        width: 362
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43bc2dc080356c290800000000000000
+      internalID: -7870512004743378124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_8
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 231
+        width: 174
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b963751c92da83c00800000000000000
+      internalID: 880644121999914651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_9
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 248
+        width: 126
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1a8c0791aaf11da0800000000000000
+      internalID: -5975719658613077474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_10
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 248
+        width: 123
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f5765afc0b35730800000000000000
+      internalID: 3986724501032754995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_11
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 247
+        width: 97
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce0534a939d2f32b0800000000000000
+      internalID: -5602709299454062356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_12
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 12
+        width: 387
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 311bca33d0f34cf60800000000000000
+      internalID: 8053631359579369747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_13
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 13
+        width: 286
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bc4a05e52fb1fb80800000000000000
+      internalID: -8362692863572947784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_14
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 138
+        width: 208
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbdff13fe8f8d2880800000000000000
+      internalID: -8634087066472284740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_15
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 137
+        width: 89
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c78959007056d6610800000000000000
+      internalID: 1616058922044856444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_16
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 133
+        width: 88
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c71258a0a04818560800000000000000
+      internalID: 7314272448487432572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_17
+      rect:
+        serializedVersion: 2
+        x: 1427
+        y: 133
+        width: 81
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9fc4f8b5f0279bf0800000000000000
+      internalID: -317749008964202596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_18
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 133
+        width: 45
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdbfd18fbae9dad20800000000000000
+      internalID: 3291461364117011419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_19
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 29
+        width: 259
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b35214d894fe70b50800000000000000
+      internalID: 6559474481469924667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_20
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 12
+        width: 259
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e427000d17070f970800000000000000
+      internalID: 8786646507123143246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_21
+      rect:
+        serializedVersion: 2
+        x: 1556
+        y: 27
+        width: 234
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f1e38a5bd988f070800000000000000
+      internalID: 8140407901681607156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_22
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 13
+        width: 101
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58aca441de089a1c0800000000000000
+      internalID: -4491917397589308795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_23
+      rect:
+        serializedVersion: 2
+        x: 1790
+        y: 12
+        width: 192
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77795552cc145f570800000000000000
+      internalID: 8499772216787179383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_24
+      rect:
+        serializedVersion: 2
+        x: 1982
+        y: 12
+        width: 58
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b74bfce7d4c8db60800000000000000
+      internalID: 7771177588700694451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_25
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 12
+        width: 107
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a214ca7365c94070800000000000000
+      internalID: 8091215236599911079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdolCat_26
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 12
+        width: 52
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 655767fe852740b60800000000000000
+      internalID: 7711414188265338198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      IdolCat_0: 5712034963588459613
+      IdolCat_1: 1406447514939277749
+      IdolCat_10: 3986724501032754995
+      IdolCat_11: -5602709299454062356
+      IdolCat_12: 8053631359579369747
+      IdolCat_13: -8362692863572947784
+      IdolCat_14: -8634087066472284740
+      IdolCat_15: 1616058922044856444
+      IdolCat_16: 7314272448487432572
+      IdolCat_17: -317749008964202596
+      IdolCat_18: 3291461364117011419
+      IdolCat_19: 6559474481469924667
+      IdolCat_2: -3237916895120242069
+      IdolCat_20: 8786646507123143246
+      IdolCat_21: 8140407901681607156
+      IdolCat_22: -4491917397589308795
+      IdolCat_23: 8499772216787179383
+      IdolCat_24: 7771177588700694451
+      IdolCat_25: 8091215236599911079
+      IdolCat_26: 7711414188265338198
+      IdolCat_3: -7644467517523999618
+      IdolCat_4: 5001519264688089904
+      IdolCat_5: 8442507238517097563
+      IdolCat_6: -7536323479852279167
+      IdolCat_7: -7870512004743378124
+      IdolCat_8: 880644121999914651
+      IdolCat_9: -5975719658613077474
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

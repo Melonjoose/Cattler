@@ -25,7 +25,7 @@ MonoBehaviour:
   catID: 101
   Rarity: 2
   skillName: Static Coat
-  skillDesc: Shoots lightning
+  skillDesc: It's coats cause lightning bolt to strike enemies
   level: 1
   exp: 0
   catSkill: {fileID: 0}

@@ -13,6 +13,7 @@ public abstract class Unit : MonoBehaviour
     public bool canWalk = true; //can this unit walk?
     public bool isSlowed = false; //is this unit slowed?
     public bool isDead = false; //is this unit dead?
+    public bool inAnimation = false; //when using skill animation.
     public SkeletonAnimation skeletonAnimation;
     public SkeletonGraphic skeletonGraphic;
 

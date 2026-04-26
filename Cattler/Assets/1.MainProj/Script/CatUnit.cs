@@ -1,7 +1,6 @@
 using Spine;
 using Spine.Unity;
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class CatUnit : Unit
@@ -111,7 +110,7 @@ public class CatUnit : Unit
     {
         if (skeletonAnimation == null) return;
 
-        string desiredAnim = (!isAttacking)
+        string desiredAnim = (!isAttacking && !inAnimation)
             ? (TravelManager.instance.IsTraveling ? "Walk" : "Idle")
             : "Attack";
 
@@ -124,7 +123,7 @@ public class CatUnit : Unit
 
     private void HandleTravelStateChanged(bool traveling)
     {
-        if (!isAttacking)
+        if (!isAttacking && !inAnimation)
         {
             skeletonAnimation.state.SetAnimation(0, traveling ? "Walk" : "Idle", true).MixDuration = 0.2f;
             currentAnim = traveling ? "Walk" : "Idle";

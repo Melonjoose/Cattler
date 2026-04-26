@@ -7,6 +7,7 @@ public class BuffManager : MonoBehaviour
     [Header("All Buff Types")]
     public Buff damageUp;
     public Buff attackSpeedUp;
+    public Buff range;
     public Buff coolDownReduction;
     public Buff healthRegen;
 

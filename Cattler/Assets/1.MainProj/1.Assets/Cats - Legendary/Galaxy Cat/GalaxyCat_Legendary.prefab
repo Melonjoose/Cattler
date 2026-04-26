@@ -958,6 +958,7 @@ MonoBehaviour:
   canWalk: 1
   isSlowed: 0
   isDead: 0
+  inAnimation: 0
   skeletonAnimation: {fileID: 0}
   skeletonGraphic: {fileID: 0}
   isStunned: 0
@@ -1175,7 +1176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994d48a95d63fc84e961208f7881aa59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 1.3, z: 0}
 --- !u!1 &8920258767262056111
 GameObject:
   m_ObjectHideFlags: 0

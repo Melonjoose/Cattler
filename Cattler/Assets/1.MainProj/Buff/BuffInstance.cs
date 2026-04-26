@@ -99,20 +99,45 @@ public class BuffInstance
             {
                 if (valueIncreaseType == Buff.ValueIncreaseType.Flat)
                 {
-                    valueIncreaseOfthisBuff = catUnit.runtimeData.attackSpeed += buff.value;
+                    catUnit.runtimeData.attackSpeed += buff.value;
+                    valueIncreaseOfthisBuff = buff.value;
                 }
                 else if (valueIncreaseType == Buff.ValueIncreaseType.Percentage)
                 {
-                    // Calculate the increase based on the CURRENT attack speed
                     float increase = catUnit.runtimeData.attackSpeed * (buff.value / 100f);
-
-                    // Apply the buff
                     catUnit.runtimeData.attackSpeed += increase;
-
-                    // Store only the added amount so we can remove it later
                     valueIncreaseOfthisBuff = increase;
                 }
+            }
 
+            if (buffType == Buff.BuffType.AttackPower)
+            {
+                if (valueIncreaseType == Buff.ValueIncreaseType.Flat)
+                {
+                    catUnit.runtimeData.attackPower += (int)buff.value;
+                    valueIncreaseOfthisBuff = buff.value;
+                }
+                else if (valueIncreaseType == Buff.ValueIncreaseType.Percentage)
+                {
+                    int increase = Mathf.RoundToInt(catUnit.runtimeData.attackPower * (buff.value / 100f));
+                    catUnit.runtimeData.attackPower += increase;
+                    valueIncreaseOfthisBuff = increase;
+                }
+            }
+
+            if (buffType == Buff.BuffType.Range)
+            {
+                if (valueIncreaseType == Buff.ValueIncreaseType.Flat)
+                {
+                    catUnit.runtimeData.attackRange += buff.value;
+                    valueIncreaseOfthisBuff = buff.value;
+                }
+                else if (valueIncreaseType == Buff.ValueIncreaseType.Percentage)
+                {
+                    float increase = catUnit.runtimeData.attackRange * (buff.value / 100f);
+                    catUnit.runtimeData.attackRange += increase;
+                    valueIncreaseOfthisBuff = increase;
+                }
             }
         }
     }
@@ -125,8 +150,19 @@ public class BuffInstance
             {
                 catUnit.runtimeData.attackSpeed -= stat;
             }
+
+            if (buffType == Buff.BuffType.AttackPower)
+            {
+                catUnit.runtimeData.attackPower -= (int)stat;
+            }
+
+            if (buffType == Buff.BuffType.Range)
+            {
+                catUnit.runtimeData.attackRange -= stat; // keep consistent with float
+            }
         }
     }
+
 
     private float regenTimer = 0f;
     public void HealthRegen(float deltaTime)

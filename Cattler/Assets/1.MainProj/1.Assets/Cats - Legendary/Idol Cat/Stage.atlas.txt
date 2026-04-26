@@ -1,0 +1,29 @@
+Stage.png
+size:2048,512
+filter:Linear,Linear
+pma:true
+Triangle 1
+bounds:1049,212,219,308
+rotate:90
+Triangle 1 copy
+bounds:1359,219,212,314
+rotate:90
+floating cat 1
+bounds:745,167,302,264
+floating cat 2
+bounds:426,160,317,271
+glowstick colour 1
+bounds:121,19,56,115
+glowstick colour 2
+bounds:1732,316,57,115
+glowstick colour 3
+bounds:59,17,60,117
+glowstick colour 4
+bounds:1791,378,53,118
+rotate:90
+glowstick colour 5
+bounds:2,2,55,132
+glowstick colour 6
+bounds:1675,299,55,132
+stage
+bounds:2,136,422,295

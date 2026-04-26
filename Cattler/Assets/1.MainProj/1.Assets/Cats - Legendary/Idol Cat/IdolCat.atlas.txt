@@ -1,0 +1,75 @@
+IdolCat.png
+size:2048,512
+filter:Linear,Linear
+pma:true
+Export Idol Cat/Eye2
+bounds:935,174,90,95
+offsets:2,1,93,97
+rotate:90
+Export Idol Cat/Eye3
+bounds:1249,284,87,90
+offsets:1,1,89,92
+Export Idol Cat/Mouth2
+bounds:2,2,58,30
+offsets:2,1,61,33
+Export Idol Cat/Static1
+bounds:1039,376,257,123
+offsets:2,1,260,125
+Export Idol Cat/Static2
+bounds:1557,377,232,122
+offsets:1,1,234,124
+Export Idol Cat/Static3
+bounds:1298,381,257,118
+offsets:1,2,259,121
+Export Idol Cat/collar ribbon
+bounds:1983,420,79,56
+offsets:1,1,81,58
+rotate:90
+Export Idol Cat/crown
+bounds:515,20,120,131
+rotate:90
+Export Idol Cat/head
+bounds:2,243,360,256
+offsets:1,2,362,259
+Export Idol Cat/headphones
+bounds:364,283,385,216
+offsets:1,1,387,218
+Export Idol Cat/left arm
+bounds:1338,300,87,79
+offsets:1,0,88,79
+Export Idol Cat/left ear
+bounds:751,266,286,233
+Export Idol Cat/left eye
+bounds:682,162,102,126
+rotate:90
+Export Idol Cat/left leg
+bounds:648,19,46,55
+offsets:1,1,49,57
+Export Idol Cat/mask
+bounds:2,34,346,207
+offsets:1,2,348,211
+Export Idol Cat/mouth
+bounds:1510,341,38,45
+rotate:90
+Export Idol Cat/ribbon
+bounds:1791,387,190,112
+offsets:1,1,192,114
+Export Idol Cat/right arm
+bounds:1427,300,79,81
+rotate:90
+Export Idol Cat/right ear
+bounds:364,145,136,174
+rotate:90
+Export Idol Cat/right eye
+bounds:810,176,88,123
+rotate:90
+Export Idol Cat/right leg
+bounds:648,76,46,64
+offsets:1,1,48,66
+Export Idol Cat/skirt
+bounds:1039,281,208,93
+Export Idol Cat/tail
+bounds:350,36,163,107
+Export Idol Cat/torso
+bounds:540,142,140,139
+offsets:1,1,142,141

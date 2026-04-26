@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde6994a592237241ba71f806b7f4d0f, type: 3}
+  m_Name: Idol Cat
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 9172367367576740499, guid: 8c30aff79fe55ac418b743e5bb5caab1, type: 3}
+  prefab2: {fileID: 51610556503292173, guid: 9ea7f136f3292a24999a65afa0d1ca92, type: 3}
+  itemName: Idol Cat
+  icon: {fileID: 21300000, guid: aaa2b156529e09644a8323e67cb6fe12, type: 3}
+  itemType: 0
+  description: A super popular cat that unite an entire stadium of fans!
+  value: 2
+  fvalue: 0
+  skinName: IdolCat
+  catID: 103
+  Rarity: 2
+  skillName: GrandStage
+  skillDesc: Performs on a stage that gets everyone hyped around it! Buffing all
+    of their stats for a short period!
+  level: 1
+  exp: 0
+  catSkill: {fileID: 2596941355716501216, guid: 0afc7d84a11121b49b259ed48824b1df, type: 3}
+  baseHealth: 8
+  attackPower: 3
+  attackSpeed: 1
+  attackRange: 5
+  movementSpeed: 4
+  knockBackPower: 3

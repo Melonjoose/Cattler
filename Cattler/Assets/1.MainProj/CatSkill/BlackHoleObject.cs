@@ -15,10 +15,10 @@ public class BlackHoleObject : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        AudioManager.instance.PlaySFX("BlackHole");
         //when the black hole is instantiated, play the entry animation
         spineAnimation.state.Event += HandleSpineEvent;
         spineAnimation.AnimationState.SetAnimation(0, "BlackHole_Entry", false);
-
     }
 
     private void HandleSpineEvent(TrackEntry trackEntry, Spine.Event e)
