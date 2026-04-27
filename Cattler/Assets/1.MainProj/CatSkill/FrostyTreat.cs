@@ -6,9 +6,9 @@ public class FrostyTreat : CatSkill
     public int projectileCount = 3; // Number of projectiles to spawn
     public GameObject puddle; // Assign the puddle prefab in the Inspector
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
-        
+        base.RandomizeTimerStart();
     }
 
     // Update is called once per frame

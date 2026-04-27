@@ -1,0 +1,14 @@
+cat clock layers - Export.png
+size:1024,512
+filter:Linear,Linear
+pma:true
+Arrow
+bounds:865,306,49,120
+Clock
+bounds:2,138,305,288
+Happy
+bounds:309,150,276,276
+Sad
+bounds:587,150,276,276
+Tail
+bounds:2,2,224,134

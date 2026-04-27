@@ -5,6 +5,11 @@ using System.Collections.Generic;
 public class StaticCoat : CatSkill
 {
     public Vector3 offset = new(0, -1, 0);
+
+    protected override void Start()
+    {
+        base.RandomizeTimerStart();
+    }
     public override void UseSkill()
     {
         base.UseSkill();

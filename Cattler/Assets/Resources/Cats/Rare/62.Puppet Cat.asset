@@ -27,7 +27,7 @@ MonoBehaviour:
   skillDesc: Uses strings to force enemies backward temporarily.
   level: 1
   exp: 0
-  catSkill: {fileID: 0}
+  catSkill: {fileID: 2370436346997459103, guid: c08da9d973650984488653906354a51c, type: 3}
   baseHealth: 8
   attackPower: 3
   attackSpeed: 1

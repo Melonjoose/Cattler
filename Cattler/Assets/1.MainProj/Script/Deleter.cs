@@ -8,6 +8,17 @@ public class Deleter : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Projectile"))
+        {
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ball"))
+        {
+            Destroy(other.gameObject);
+        }
+
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             EnemyUnit enemyUnit = other.gameObject.GetComponent<EnemyUnit>();
@@ -16,5 +27,6 @@ public class Deleter : MonoBehaviour
                 enemyUnit.Die();
             }
         }
+
     }
 }

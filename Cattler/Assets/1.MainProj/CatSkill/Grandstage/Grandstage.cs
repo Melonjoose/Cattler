@@ -8,8 +8,9 @@ public class Grandstage : CatSkill
     public SkeletonAnimation stageAnimator;
     public SkeletonAnimation catAnimator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
+        base.RandomizeTimerStart();
         catUnit = GetComponentInParent<CatUnit>();
         catAnimator = catUnit.skeletonAnimation;
 

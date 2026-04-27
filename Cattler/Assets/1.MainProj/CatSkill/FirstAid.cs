@@ -5,8 +5,9 @@ public class FirstAid : CatSkill
 {
     public GameObject foodPrefab; // Prefab for the food that will be thrown
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
+        base.RandomizeTimerStart();
         foodPrefab = itemObject;
     }
 

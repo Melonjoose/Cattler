@@ -5042,7 +5042,7 @@ GameObject:
   m_Component:
   - component: {fileID: 138339287}
   - component: {fileID: 138339286}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor 2
   m_TagString: Background
   m_Icon: {fileID: 0}
@@ -8327,7 +8327,7 @@ GameObject:
   - component: {fileID: 290390161}
   - component: {fileID: 290390163}
   - component: {fileID: 290390162}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor (Collider)
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -8383,7 +8383,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -3.25}
+  m_Offset: {x: 0, y: -2.89}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -17388,7 +17388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 564990587}
   - component: {fileID: 564990588}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34260,7 +34260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 938390532}
   - component: {fileID: 938390533}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36598,7 +36598,7 @@ GameObject:
   - component: {fileID: 1014876102}
   - component: {fileID: 1014876104}
   m_Layer: 0
-  m_Name: Deleter
+  m_Name: Deleter Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36648,7 +36648,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.1227512, y: 12.644803}
+  m_Size: {x: 9.8, y: 63.84}
   m_EdgeRadius: 0
 --- !u!4 &1014876103
 Transform:
@@ -36659,7 +36659,7 @@ Transform:
   m_GameObject: {fileID: 1014876101}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.55, y: 0.4, z: -0.14433852}
+  m_LocalPosition: {x: -23.7, y: 1.6, z: -0.14433852}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37372,7 +37372,7 @@ GameObject:
   - component: {fileID: 1029033352}
   - component: {fileID: 1029033351}
   m_Layer: 0
-  m_Name: Deleter 2
+  m_Name: Deleter Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42396,7 +42396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1191036996}
   - component: {fileID: 1191036998}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor 1
   m_TagString: Background
   m_Icon: {fileID: 0}
@@ -46576,6 +46576,97 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360191820}
   m_CullTransparentMesh: 1
+--- !u!1 &1365166143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365166146}
+  - component: {fileID: 1365166145}
+  - component: {fileID: 1365166144}
+  m_Layer: 0
+  m_Name: Deleter Left (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1365166144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365166143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24acf3ebbdb56804a8e10eac0e43bdf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1365166145
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365166143}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.09097481, y: -0.18195009}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 9.8, y: 63.84}
+  m_EdgeRadius: 0
+--- !u!4 &1365166146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365166143}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 34.5, y: 1.5999999, z: -0.14433852}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1368441179
 GameObject:
   m_ObjectHideFlags: 0
@@ -51612,7 +51703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1516259357}
   - component: {fileID: 1516259359}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor 3
   m_TagString: Background
   m_Icon: {fileID: 0}
@@ -60968,7 +61059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1819023622}
   - component: {fileID: 1819023621}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67287,6 +67378,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 863a4d184b8f8374eb9a0ea2dd9bd5a8, type: 3}
   - name: Lightning
     clip: {fileID: 8300000, guid: e6d30c7561635a540b5c6b2994da2382, type: 3}
+  - name: Bounce
+    clip: {fileID: 8300000, guid: fa37e999a7cf2c64eab22df3c29be00d, type: 3}
+  - name: ClownHonk
+    clip: {fileID: 8300000, guid: 70305d4143982bc4f8f6f95dc9a0579b, type: 3}
+  - name: MarionetteString
+    clip: {fileID: 8300000, guid: 78e5fd1b1eb6f7f4da98b5bfc374354b, type: 3}
+  - name: StringAttack
+    clip: {fileID: 8300000, guid: cf56c5c5a29eb854ba15d96ec4fff757, type: 3}
   themeSounds:
   - name: Lobby
     clip: {fileID: 8300000, guid: aba28dc91793ac74b90d8a981f28b3a8, type: 3}
@@ -69057,6 +69156,97 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &2044917512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2044917515}
+  - component: {fileID: 2044917514}
+  - component: {fileID: 2044917513}
+  m_Layer: 0
+  m_Name: Deleter Top
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2044917513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044917512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24acf3ebbdb56804a8e10eac0e43bdf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &2044917514
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044917512}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 18.745369, y: -2.9520001}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 69.35773, y: 7.104703}
+  m_EdgeRadius: 0
+--- !u!4 &2044917515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044917512}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.55, y: 32.8, z: -0.14433852}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2056815902
 GameObject:
   m_ObjectHideFlags: 0
@@ -70489,7 +70679,7 @@ GameObject:
   - component: {fileID: 2114858011}
   - component: {fileID: 2114858013}
   - component: {fileID: 2114858012}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor (Collider)
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -70545,7 +70735,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -3.25}
+  m_Offset: {x: 0, y: -2.89}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -71778,7 +71968,7 @@ GameObject:
   - component: {fileID: 2146686219}
   - component: {fileID: 2146686221}
   - component: {fileID: 2146686220}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor (Collider)
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -71834,7 +72024,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -3.25}
+  m_Offset: {x: 0, y: -2.89}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -72742,4 +72932,6 @@ SceneRoots:
   - {fileID: 1150937719}
   - {fileID: 1113265132}
   - {fileID: 1014876103}
+  - {fileID: 1365166146}
   - {fileID: 1029033353}
+  - {fileID: 2044917515}

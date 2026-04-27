@@ -27,7 +27,7 @@ MonoBehaviour:
   skillDesc: Summon words to obliterate enemies.
   level: 1
   exp: 0
-  catSkill: {fileID: 0}
+  catSkill: {fileID: 5617629257571237212, guid: 16d949ec8d2732f45ad859f2e6d3478d, type: 3}
   baseHealth: 8
   attackPower: 3
   attackSpeed: 1

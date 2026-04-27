@@ -1,3 +1,4 @@
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class CatSkill : MonoBehaviour
@@ -13,7 +14,7 @@ public class CatSkill : MonoBehaviour
     public GameObject itemObject;
     public CatUnit catUnit; // this is attached to this catUnit.
 
-    private void Start()
+    protected virtual void Start()
     {
         catUnit = GetComponentInParent<CatUnit>();
         RandomizeTimerStart(); // Randomize the starting point of the timer to create more dynamic skill usage
@@ -51,7 +52,7 @@ public class CatSkill : MonoBehaviour
     }
 
 
-    void RandomizeTimerStart()
+    public void RandomizeTimerStart()
     {
         //from 0 to cooldown, randomize the starting point of the timer to create more dynamic skill usage
         time = Random.Range(0, cooldown);
