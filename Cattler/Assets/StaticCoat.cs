@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class StaticCoat : CatSkill
 {
+    public Vector3 offset = new(0, -1, 0);
     public override void UseSkill()
     {
         base.UseSkill();
@@ -20,8 +21,12 @@ public class StaticCoat : CatSkill
         Transform enemy = RandomEnemy();
         if (enemy != null)
         {
-            GameObject lightning = Instantiate(itemObject, enemy.position, Quaternion.identity);
+            GameObject lightning = Instantiate(itemObject, (enemy.position + offset), Quaternion.identity);
+            Lightning lightningCS = lightning.GetComponent<Lightning>();
+            lightningCS.staticCoat = this;
             lightning.SetActive(true);
+            
+            AudioManager.instance.PlaySFX("Lightning");
         }
         else
         {
