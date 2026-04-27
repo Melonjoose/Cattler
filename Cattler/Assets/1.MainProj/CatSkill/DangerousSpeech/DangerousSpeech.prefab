@@ -54,6 +54,9 @@ MonoBehaviour:
   speed: 1
   itemObject: {fileID: 6277137629455506954, guid: b0b0b3ffc7012d64ba90745f91c73d84, type: 3}
   catUnit: {fileID: 0}
+  sprite1: {fileID: 21300000, guid: 747c12f43f24b174fbe27657e6af879e, type: 3}
+  sprite2: {fileID: 21300000, guid: 659783f3486cfc640a3532ef82561b3c, type: 3}
+  sprite3: {fileID: 21300000, guid: 8f8b1379b72bed645be7a9e0347cdf17, type: 3}
 --- !u!1001 &5531597702941321245
 PrefabInstance:
   m_ObjectHideFlags: 0

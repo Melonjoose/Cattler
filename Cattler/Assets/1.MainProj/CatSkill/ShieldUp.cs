@@ -6,15 +6,10 @@ public class ShieldUp : CatSkill
     public Shield shield;
     public int shieldHealth = 5; // Health of the shield
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         itemObject.SetActive(false); // Ensure the shield is initially inactive
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public override void UseSkill()

@@ -13,8 +13,9 @@ public class Skill_Abduct : CatSkill
     private Dictionary<EnemyUnit, float> damageTimers = new Dictionary<EnemyUnit, float>();
 
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         catUnit = GetComponentInParent<CatUnit>();
         unitRB = catUnit.GetComponent<Rigidbody2D>();
         abductCollider = this.GetComponent<Collider2D>();

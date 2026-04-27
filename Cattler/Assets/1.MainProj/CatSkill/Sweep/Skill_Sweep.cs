@@ -11,8 +11,9 @@ public class Skill_Sweep : CatSkill
     public Collider2D col;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         catUnit = this.GetComponentInParent<CatUnit>(); // skill_sweep is a child of catUnit.
         skeleton = GetComponent<SkeletonAnimation>();
         colPoint = transform.Find("ColliderPoint")?.gameObject;

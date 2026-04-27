@@ -69,6 +69,7 @@ public class UpgradeUI : MonoBehaviour
     {
         if (pageIndex + 1 < upgradePages.Count)
         {
+            AudioManager.instance.PlaySFX("Button1");
             OpenPage(pageIndex + 1);
         }
     }
@@ -77,6 +78,7 @@ public class UpgradeUI : MonoBehaviour
     {
         if (pageIndex - 1 >= 0)
         {
+            AudioManager.instance.PlaySFX("Button1");
             OpenPage(pageIndex - 1);
         }
     }

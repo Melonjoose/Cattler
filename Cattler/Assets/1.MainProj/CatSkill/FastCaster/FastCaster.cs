@@ -5,8 +5,9 @@ public class FastCaster : CatSkill
 {
     public Icon icon; //the skill to be edited.
                       // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         catUnit = GetComponentInParent<CatUnit>();
         icon = catUnit.icon;
         DecreaseCoolDown();

@@ -266,7 +266,7 @@ public class DialogueManager : MonoBehaviour
         textBox.SetActive(false);
     }
 
-    void EndDialogueSequence()
+    public void EndDialogueSequence()
     {
         isTalking = false;
         textBox.SetActive(false);

@@ -34,6 +34,7 @@ public class Tutorial : MonoBehaviour
     public bool inTutorial = false;
     public static Tutorial instance;
     public Canvas canvas;
+    public Canvas skipTutorialCanvas;
     public GameObject blackPanel; //darkpanel to darken the BG.
     public Highlights[] highlights;
     public TutorialLevel tutorialLevel;
@@ -45,6 +46,7 @@ public class Tutorial : MonoBehaviour
     }
     void Start()
     {
+        skipTutorialCanvas.gameObject.SetActive(false);
         canvas.gameObject.SetActive(false);
         blackPanel.gameObject.SetActive(false);
         finishButton.SetActive(false);
@@ -55,10 +57,15 @@ public class Tutorial : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.T))
         {
             OpeningScene();
+            skipTutorialCanvas.gameObject.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
             HideAllHighlights();
+        }
+        if(Input.GetKeyDown(KeyCode.Space) && inTutorial)
+        {
+            SkipTutorial();
         }
 
         if(tutorialLevel.istutorialLevelActive && !tutorialLevel.isLevelCompleted )
@@ -94,6 +101,20 @@ public class Tutorial : MonoBehaviour
             {
                 TriggerTUT12();
             }
+        }
+    }
+
+    public void SkipTutorial() //when click on button, Finish Tutorial!
+    {
+        if(inTutorial == true)
+        {
+            StopAllCoroutines();
+            CommentaryManager.instance.CloseDialogue();
+            DialogueManager.instance.EndDialogueSequence();
+            //CommentaryManager.
+            canvas.gameObject.SetActive(false);
+            skipTutorialCanvas.gameObject.SetActive(false);
+            inTutorial = false;
         }
     }
 

@@ -166,6 +166,8 @@ public class SummonManager : MonoBehaviour
     }
     void DisplayGachaResult()
     {
+        AudioManager.instance.PlaySFX("Spin");
+        AudioManager.instance.PlaySFX("Reveal");
         summonCatDisplay.SetActive(true);
         RarityChecker(currentRolledRarity); // use rolled cat’s rarity
         chosenUI.ShowCatData(currentRolledCat);
@@ -191,6 +193,8 @@ public class SummonManager : MonoBehaviour
             Currency.instance.AddInk(-normalSummonCost); // Deduct summon cost
             FirstSummon();
             AudioManager.instance.PlaySFX("Purchase2");
+            AudioManager.instance.PlaySFX("FlipBook");
+
             summonCatDisplay.SetActive(true);   // activate parent first
             currentRolledCat = firstSummonCat; // set the rolled cat to the first summon cat for display purposes
             Rarity rarity = Rarity.Common; // first summon is always common
@@ -219,6 +223,7 @@ public class SummonManager : MonoBehaviour
         Currency.instance.AddInk(-normalSummonCost); // Deduct summon cost
         Summon();
         AudioManager.instance.PlaySFX("Purchase2");
+        AudioManager.instance.PlaySFX("FlipBook");
         summonCatDisplay.SetActive(true);   // activate parent first
         RarityChecker(currentRolledRarity);              // then toggle children
         commonUI.gameObject.SetActive(false);
@@ -246,6 +251,7 @@ public class SummonManager : MonoBehaviour
         Currency.instance.AddCore(-specialSummonCost); // Deduct summon cost
         Summon(true);
         AudioManager.instance.PlaySFX("Purchase2");
+        AudioManager.instance.PlaySFX("FlipBook");
         summonCatDisplay.SetActive(true);   // activate parent first
         RarityChecker(currentRolledRarity);              // then toggle children
         commonUI.gameObject.SetActive(false);
@@ -262,6 +268,7 @@ public class SummonManager : MonoBehaviour
 
     public void TapToReveal()
     {
+        AudioManager.instance.PlaySFX("FlipBook");
         DisplayGachaResult();
         closeSummonPage.SetActive(true);
     }

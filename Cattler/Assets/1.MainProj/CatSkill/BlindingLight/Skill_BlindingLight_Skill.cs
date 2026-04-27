@@ -7,8 +7,9 @@ public class BlindingLight : CatSkill
     //value is the stun duration
     //speed is the expansion speed of the blinding light effect
     //itemobject is the blinding light effect prefab called lightaura
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         lightAura = GetComponentInChildren<LightAura>(); // Get the LightAura component from the child object
         lightAura.gameObject.SetActive(false); // Ensure the light aura effect is initially inactive
     }

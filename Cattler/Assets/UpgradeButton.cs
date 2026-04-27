@@ -58,6 +58,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public bool isHovered { get; private set; }
     public void OnPointerEnter(PointerEventData eventData)
     {
+        AudioManager.instance.PlaySFX("ButtonUI2");
         isHovered = true;
     }
 
@@ -68,6 +69,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void OnClickUpgrade() //when this is clicked at menu.. open page.
     {
+        AudioManager.instance.PlaySFX("Button1");
         Debug.Log($"{upgrade.name} button is pressed");
         // Reset scale on click
         transform.localScale = defaultScale;

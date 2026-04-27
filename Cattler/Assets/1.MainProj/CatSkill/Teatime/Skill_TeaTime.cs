@@ -6,8 +6,9 @@ public class Skill_TeaTime : CatSkill
     public Vector3 skillLocation; // The location where the skill will be activated (e.g., in front of the cat)
     public GameObject drinkPrefab; // Prefab for the food that will be thrown
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         drinkPrefab = itemObject;
         skillLocation = transform.position + (transform.up * 1.5f); // above the cat. 
         this.gameObject.transform.position = skillLocation; // Set the skill's game object to the location where it will be activated

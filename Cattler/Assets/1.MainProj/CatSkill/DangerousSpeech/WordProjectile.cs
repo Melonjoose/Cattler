@@ -4,9 +4,11 @@ using System.Collections;
 public class WordProjectile : MonoBehaviour
 {
     public DangerousSpeech dangerousSpeech;
+    public SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         Transform enemy = RandomEnemy();
         if (enemy != null)
         {
@@ -76,6 +78,7 @@ public class WordProjectile : MonoBehaviour
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             if (rb != null)
             {
+                AudioManager.instance.PlaySFX("WordSound");
                 rb.bodyType = RigidbodyType2D.Dynamic;
                 rb.gravityScale = 0;
 

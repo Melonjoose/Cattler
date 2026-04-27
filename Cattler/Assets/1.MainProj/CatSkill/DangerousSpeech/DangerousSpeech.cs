@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DangerousSpeech : CatSkill
 {
+    public Sprite sprite1, sprite2, sprite3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
@@ -27,8 +28,15 @@ public class DangerousSpeech : CatSkill
             GameObject word = Instantiate(itemObject, spawnPos, Quaternion.identity);
             word.gameObject.SetActive(true);
             word.transform.localScale = Vector3.zero;
+
             WordProjectile wordCS = word.GetComponent<WordProjectile>();
             wordCS.dangerousSpeech = this;
+
+            // Assign random sprite
+            Sprite[] options = new Sprite[] { sprite1, sprite2, sprite3};
+            int randomIndex = Random.Range(0, options.Length);
+            wordCS.spriteRenderer = wordCS.GetComponentInChildren<SpriteRenderer>();
+            wordCS.spriteRenderer.sprite = options[randomIndex];
 
             float t = 0f;
             while (t < 1f)

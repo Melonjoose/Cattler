@@ -3,14 +3,14 @@ using UnityEngine;
 public class Matcha : MonoBehaviour
 {
     public SpilledDrink spilledDrink;
-    public Collider2D collider2D;
+    public Collider2D matchacollider2D;
     public Puddle puddle;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         this.gameObject.SetActive(true);
-        collider2D = GetComponent<Collider2D>();
+        matchacollider2D = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class Matcha : MonoBehaviour
             sr.enabled = false;
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.bodyType = RigidbodyType2D.Static;
-            collider2D.enabled = false;
+            matchacollider2D.enabled = false;
             puddle.gameObject.SetActive(true);
             AudioManager.instance.PlaySFX("GlassBreak"); // Play hit sound effect
             Expiry();

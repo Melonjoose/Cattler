@@ -8,10 +8,10 @@ public class DevilContract : CatSkill
     public GameObject curse; //this appears on the cat that is cursed.
     public GameObject killMark;  //this appears on enemy marked for death.
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         catUnit = GetComponentInParent<CatUnit>();
-
     }
 
     // Update is called once per frame
