@@ -39,7 +39,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public Image CharacterLeft; //image slot left
     public Image CharacterRight; //image slot right
-    public float readingTime = 3f;
+    public float readingTime = 7f;
 
     public bool intro1Start = false;
     public bool intro1Completed = false;
@@ -167,19 +167,20 @@ public class DialogueManager : MonoBehaviour
     }
     public void CheckForTrigger(int dialogueSeqIndex)
     {
-        if (dialogueSeqIndex == 0)
+
+        if (dialogueSeqIndex == 0 && Tutorial.instance.inTutorial == true)
         {
             intro1Start = true;
         }
-        if (dialogueSeqIndex == 1)
+        if (dialogueSeqIndex == 1 && Tutorial.instance.inTutorial == true)
         {
             firstRetreat = true;
         }
-        if (dialogueSeqIndex == 2)
+        if (dialogueSeqIndex == 2 && Tutorial.instance.inTutorial == true)
         {
             backToLobby = true;
         }
-        if (dialogueSeqIndex == 3)
+        if (dialogueSeqIndex == 3) //for death
         {
             deathDialoguePlay = true;
         }
@@ -279,7 +280,7 @@ public class DialogueManager : MonoBehaviour
     void CheckTriggers()
     {
 
-        if (intro1Start)
+        if (intro1Start && Tutorial.instance.inTutorial == true)
         {
             intro1Start = false;
             intro1Completed = true;
@@ -289,14 +290,14 @@ public class DialogueManager : MonoBehaviour
             CommentaryManager.instance.MoveCommentary(CommentaryManager.instance.topLeftPosition);
         }
 
-        if (intro1Completed && firstRetreat)
+        if (intro1Completed && firstRetreat && Tutorial.instance.inTutorial == true)
         {
             firstRetreat = false;
             retreatCompleted = true;
             Tutorial.instance.TriggerTUT13();
         }
 
-        if (retreatCompleted && backToLobby)
+        if (retreatCompleted && backToLobby && Tutorial.instance.inTutorial == true)
         {
             backToLobby = false;
             backToLobbyCompleted = true;

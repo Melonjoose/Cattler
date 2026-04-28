@@ -20,8 +20,18 @@ public class Transition : MonoBehaviour
         transitionAnimator.SetTrigger("FadeIn");
     }
 
+    public void FadeInSlow() //fade to black
+    {
+        transitionAnimator.SetTrigger("FadeInSlow");
+    }
+
     public void FadeOut()
     {
         transitionAnimator.SetTrigger("FadeOut");
+    }
+
+    public void FadeOutSlow()
+    {
+        transitionAnimator.SetTrigger("FadeOutSlow");
     }
 }

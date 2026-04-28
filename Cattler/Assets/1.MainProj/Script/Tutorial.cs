@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 [System.Serializable]
 
@@ -57,7 +55,7 @@ public class Tutorial : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.T))
         {
             OpeningScene();
-            skipTutorialCanvas.gameObject.SetActive(true);
+
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -108,29 +106,32 @@ public class Tutorial : MonoBehaviour
     {
         if(inTutorial == true)
         {
+            inTutorial = false;
+            HideAllHighlights();
             StopAllCoroutines();
             CommentaryManager.instance.CloseDialogue();
             DialogueManager.instance.EndDialogueSequence();
             //CommentaryManager.
             canvas.gameObject.SetActive(false);
             skipTutorialCanvas.gameObject.SetActive(false);
-            inTutorial = false;
         }
     }
 
     public void OpeningScene()
     {
+        skipTutorialCanvas.gameObject.SetActive(true);
         inTutorial = true;
         //Fade in from black
         Debug.Log("OpeningScene playing");
-        Transition.instance.FadeIn();
-        StartCoroutine(OpeningSceneSequence());
+        //Transition.instance.FadeIn();
+        DialogueManager.instance.BeginTalk(0);
+        //StartCoroutine(OpeningSceneSequence());
     }
     
     IEnumerator OpeningSceneSequence()
     {
         yield return new WaitForSeconds(1f);
-        DialogueManager.instance.BeginTalk(0);
+
 
     }
 

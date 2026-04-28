@@ -13,6 +13,14 @@ public class DragWorldObject : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void OnDestroy()
+    {
+        if (HoverHighlightManager.instance != null)
+        {
+            HoverHighlightManager.instance.isDragging = false;
+        }
+    }
+
     void OnMouseDown()
     {
         isDragging = true;

@@ -22,6 +22,12 @@ public class HoverHighlightManager : MonoBehaviour
 
     void Update()
     {
+        if (isDragging && currentItem == null)
+        {
+            isDragging = false;
+            highlighter?.SetActive(false);
+        }
+
         if (!isDragging && highlighter != null && highlighter.activeSelf && currentItem != null)
         {
             // Just keep following currentItem without offset

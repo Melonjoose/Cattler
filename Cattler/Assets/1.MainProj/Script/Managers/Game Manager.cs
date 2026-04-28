@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
 
 
         // Play lobby audio
-        if (AudioManager.instance != null)
+        if (AudioManager.instance != null && Introduction.instance.inIntroduction == false)
         {
             AudioManager.instance.PlayTheme("Lobby");
         }
@@ -425,6 +425,7 @@ public class GameManager : MonoBehaviour
             }
         }
         //force a retreat
+
         //prompt a dialogue.
     }
 

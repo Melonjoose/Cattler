@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rainbow bg_0: 4181823154384864373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

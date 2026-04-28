@@ -255,6 +255,9 @@ public class CatIconUI : MonoBehaviour
         catUISlotbutton.interactable = false;
         catUISlot.healthBar.gameObject.SetActive(false);
         catUISlot.isDead = true;
+        
+        //disable all skills
+
     }
     public void UnlinkSkill(CatUnit cat)
     {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 [System.Serializable]
@@ -48,6 +49,48 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Theme sound not found: " + soundName);
         }
     }
+
+    public void TransitionTheme(string soundName)
+    {
+        Sound s = themeSounds.Find(x => x.name == soundName);
+        if (s != null && themeSource != null)
+        {
+            StartCoroutine(TransitionSequence(s.clip));
+        }
+    }
+
+    IEnumerator TransitionSequence(AudioClip newClip)
+    {
+        float originalVolume = themeSource.volume;
+        float duration = 1.0f; // fade time in seconds
+        float t = 0f;
+
+        // Fade out
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            themeSource.volume = Mathf.Lerp(originalVolume, 0f, t / duration);
+            yield return null;
+        }
+
+        // Swap clip
+        themeSource.clip = newClip;
+        themeSource.loop = true;
+        themeSource.Play();
+
+        // Fade in
+        t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            themeSource.volume = Mathf.Lerp(0f, originalVolume, t / duration);
+            yield return null;
+        }
+
+        // Ensure exact reset
+        themeSource.volume = originalVolume;
+    }
+
 
     // Play a one-shot SFX by name
     public void PlaySFX(string soundName)
