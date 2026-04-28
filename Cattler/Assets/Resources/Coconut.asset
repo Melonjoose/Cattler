@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   prefab2: {fileID: 0}
   itemName: Coconut
-  icon: {fileID: 21300000, guid: 2a493885e18c9344193fb54ba2489a48, type: 3}
+  icon: {fileID: 21300000, guid: 76a398bc56850a440b46469f77b4b059, type: 3}
   itemType: 7
   description: Buff Cat
   value: 20

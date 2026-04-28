@@ -51,6 +51,6 @@ MonoBehaviour:
   time: 10
   value: 0
   speed: 0
-  itemObject: {fileID: 1930171780827623856, guid: c67e5a5c8c7bbda4f9533e145fb90fc2, type: 3}
+  itemObject: {fileID: 2519831728689370014, guid: 52a65ba194c48064c9a165c9fb657fd0, type: 3}
   catUnit: {fileID: 0}
-  foodPrefab: {fileID: 1930171780827623856, guid: c67e5a5c8c7bbda4f9533e145fb90fc2, type: 3}
+  foodPrefab: {fileID: 2519831728689370014, guid: 52a65ba194c48064c9a165c9fb657fd0, type: 3}

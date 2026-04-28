@@ -14,6 +14,8 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public SnappableLocation originalSlot;
     public SnappableLocation currentSlot;
 
+    public bool isDragging = false;
+
     [SerializeField] private ItemUI itemUI;
     
     private void Awake()
@@ -63,8 +65,23 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         DisplayItemManager.instance.HideDisplayUI();
     }
 
+    private float dragCooldown = 0.1f;
+    private float lastDragTime = 0f;
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (Time.time - lastDragTime < dragCooldown) return;
+        lastDragTime = Time.time;
+
+        if (isDragging) { return; }
+
+        if (currentSlot == null)
+        {
+            currentSlot = originalSlot;
+        }
+
+        isDragging = true;
+
         originalParent = transform.parent;
         transform.SetParent(transform.root); // move to top canvas so it doesn’t get hidden
         canvasGroup.blocksRaycasts = false;
@@ -84,6 +101,8 @@ public class InventoryIcon : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        isDragging = false; // force reset
+
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 

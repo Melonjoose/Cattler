@@ -124,4 +124,18 @@ public class Icon : MonoBehaviour
         button.interactable = true;
         cooldownVisual.SetActive(false);
     }
+
+    public void EnableSkillsToggle()
+    {
+        ShowButton();
+        CanvasGroup thisIconCG = GetComponent<CanvasGroup>();
+        thisIconCG.interactable = true;
+    }
+
+    public void DisableSkillsToggle()
+    {
+        HideButton();
+        CanvasGroup thisIconCG = GetComponent<CanvasGroup>();
+        thisIconCG.interactable = false;
+    }
 }

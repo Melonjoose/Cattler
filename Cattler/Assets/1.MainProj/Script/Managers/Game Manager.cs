@@ -350,6 +350,18 @@ public class GameManager : MonoBehaviour
         }
         //disable controls. skills disabled.
         CatIconUI.instance.DisableAllSkills();
+        DisableAllCatAbilities();
+    }
+
+    void DisableAllCatAbilities()
+    {
+        foreach(CatUnit cat in TeamManager.instance.cats)
+        {
+            if(cat.skill != null)
+            {
+                cat.skill.isActive = false;
+            }
+        }
     }
 
     public void ResumeGameplay()
@@ -390,8 +402,18 @@ public class GameManager : MonoBehaviour
             }
         }
         CatIconUI.instance.EnableAllSkills();
+        EnableAllCatAbilities();
     }
-
+    void EnableAllCatAbilities()
+    {
+        foreach (CatUnit cat in TeamManager.instance.cats)
+        {
+            if(cat.skill != null)
+            {
+                cat.skill.isActive = true;
+            }
+        }
+    }
     public void EnableAllCats() //movement only. for tutorial.
     {
         foreach (CatUnit cat in TeamManager.instance.cats)

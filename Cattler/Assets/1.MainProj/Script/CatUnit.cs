@@ -223,10 +223,12 @@ public class CatUnit : Unit
         isDead = true;
 
         //disable skills & set icon to deathicon
+        icon.DisableSkillsToggle();
         CatIconUI.instance.UnlinkSkill(this);
         CatIconUI.instance.SetIconToDead(catIconSlot);
 
         TeamManager.instance.StoreToDeadCatsList(this);
+        TeamManager.instance.currentTeamSize--;
         Inventory.instance.DeleteItem(inventoryIcon.gameObject);
         CatRoamLobby.instance.RemoveCatFromLobby(this);
         

@@ -386,7 +386,6 @@ public class TeamManager : MonoBehaviour
         {
             if (deadCat.catGO != null)
             {
-                currentTeamSize--;
                 Destroy(deadCat.catGO); //it's safe to destroy dead cat gameobject now.
             }
             
@@ -409,6 +408,7 @@ public class TeamManager : MonoBehaviour
         foreach (CatUnit cat in cats)
         {
             cat.runtimeData.currentHealth = cat.runtimeData.maxHealth;
+            cat.OnHealthChange(cat.runtimeData.currentHealth, cat.runtimeData.maxHealth);
         }
     }
 

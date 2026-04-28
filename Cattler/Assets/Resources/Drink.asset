@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   prefab2: {fileID: 0}
   itemName: Drink
-  icon: {fileID: -3605180235212209959, guid: bf36fbd53b3a7d544b3e8c121834e939, type: 3}
+  icon: {fileID: 21300000, guid: 20a29ff665ab44e4483bc60d8633bfed, type: 3}
   itemType: 6
   description: Buff Cat
   value: 1

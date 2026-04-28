@@ -24,7 +24,7 @@ public class Deleter : MonoBehaviour
             EnemyUnit enemyUnit = other.gameObject.GetComponent<EnemyUnit>();
             if(enemyUnit != null)
             {
-                enemyUnit.Die();
+                enemyUnit.TakeDamage(null,99999,0);
             }
         }
 

@@ -10,6 +10,10 @@ public class HoverItem : MonoBehaviour
         manager = HoverHighlightManager.instance;
         //hoverStartPoint = transform.position + offset;
     }
+    void Update()
+    {
+
+    }
 
     void OnMouseEnter()
     {
