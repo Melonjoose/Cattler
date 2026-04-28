@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 93fe75bfc590da9448694f85c6beb1de
+guid: ee2e5dce5cc03e5488874fa111795ab3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1950438267704383048
-    second: Matcha_0
+      213: -9095717837082945937
+    second: Capsule_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Matcha_0
+      name: Capsule_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 11
-        width: 121
-        height: 102
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84619d64549511b10800000000000000
-      internalID: 1950438267704383048
+      spriteID: f669c7f71d485c180800000000000000
+      internalID: -9095717837082945937
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Matcha_0: 1950438267704383048
+      Capsule_0: -9095717837082945937
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
