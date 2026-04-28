@@ -10,7 +10,7 @@ public class Skill_TeaTime : CatSkill
     {
         base.Start();
         drinkPrefab = itemObject;
-        skillLocation = transform.position + (transform.up * 1.5f); // above the cat. 
+        skillLocation = transform.position + new Vector3(0, 2, 0); // above the cat. 
         this.gameObject.transform.position = skillLocation; // Set the skill's game object to the location where it will be activated
     }
 
@@ -29,7 +29,7 @@ public class Skill_TeaTime : CatSkill
         //Instantiate the food gameobject and apply force to it to create the arc motion
 
         StatFXManager.instance.PlayVFX(transform.position, 4); // Play cooking effect at the cat's position
-        GameObject NewFood = Instantiate(drinkPrefab, transform.position + transform.forward * 1.5f, Quaternion.identity);
+        GameObject NewFood = Instantiate(drinkPrefab, skillLocation, Quaternion.identity);
         NewFood.SetActive(true);
         //the food will have it's own script to handle movement and picking up by players.
         //Throw food in a arc motion randomly.
