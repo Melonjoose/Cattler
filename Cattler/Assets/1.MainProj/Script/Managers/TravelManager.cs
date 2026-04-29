@@ -6,6 +6,18 @@ using UnityEditor;
 using UnityEngine.UIElements; // only works in the Editor
 
 
+public class MapLevel
+{
+    public string mapName;
+    public int mapLevel;
+    public Sprite mapBackgroundSprite;
+    public Sprite mapFloorSprite;
+
+    public int distanceToTrigger; //7 , 17, 27, 37.
+    public int mapDistance;  //10 , 20, 30, 40
+    public bool mileStoneChecker = false; //set to true if enter here for the first time.
+}
+
 public class TravelManager : MonoBehaviour
 {
     public float distanceTraveled;
@@ -33,9 +45,9 @@ public class TravelManager : MonoBehaviour
     public Sprite level2BackgroundSprite;
 
     public float level2Milestone = 7f; //at 7, trigger it to swap //at 7+3 = 10, actually reach the new location.event trigger
-    public bool level2MilstoneComplete = false;
+    public bool level2MilestoneComplete = false;
     public float level3Milestone = 17f;
-    public bool level3MilstoneComplete = false;
+    public bool level3MilestoneComplete = false;
 
     public bool reachRuinedCityFirstTime = false; //if player reach ruined city for the first time, trigger dialogue. and update the milestone to 20km.
     public bool completeDemo = false; //if hit 20km. complete demo. Activate dialogue and update milestone to 6767km.
@@ -113,9 +125,13 @@ public class TravelManager : MonoBehaviour
         }
         if (distanceTraveledUIvalue > (level2Milestone+3f) && !level2TextTriggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
         {
-            level2MilstoneComplete = true;
+            level2MilestoneComplete = true;
             TextPopUp("The Ruined City");
             level2TextTriggered=true;
+            if(level2MilestoneComplete == false)
+            {
+                UpdateMilestoneText("20KM");
+            }
         }
 
         //level3//
@@ -126,7 +142,7 @@ public class TravelManager : MonoBehaviour
         }
         if (distanceTraveledUIvalue > (level3Milestone+3f) && !level3TextTriggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
         {
-            level3MilstoneComplete = true;
+            level3MilestoneComplete = true;
             TextPopUp("DEMO ENDS");
             level3TextTriggered=true;
         }
@@ -291,16 +307,25 @@ public class TravelManager : MonoBehaviour
         text.text = "The Safe Heaven";
         animator.SetTrigger("Play");
 
-        if(level2MilstoneComplete == false)
+        if(level2MilestoneComplete == false)
         {
-            Distance.instance.mileStoneText.text = $"{level2Milestone+3} KM";
+            UpdateMilestoneText("10KM");
         }
 
-        if(level2MilstoneComplete == true && level3MilstoneComplete == false )
+        if(level2MilestoneComplete == true && level3MilestoneComplete == false )
         {
-            Distance.instance.mileStoneText.text = $"{level3Milestone+3} KM";
+            UpdateMilestoneText("20KM");
         }
-        
+
+        if (level2MilestoneComplete == true && level3MilestoneComplete == false)
+        {
+            UpdateMilestoneText("DEMO COMPLETED");
+        }
+    }
+
+    void UpdateMilestoneText(string milestoneText)
+    {
+        Distance.instance.mileStoneText.text = milestoneText;
     }
 
     public void DisableTravel()

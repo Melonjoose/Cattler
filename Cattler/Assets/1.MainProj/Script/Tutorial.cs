@@ -102,24 +102,31 @@ public class Tutorial : MonoBehaviour
         }
     }
 
+    public void ContinueTutorialButton()
+    {
+        skipTutorialCanvas.gameObject.SetActive(false);
+        OpeningScene();
+    }
+
+    public void SkipTutorialButton()
+    {
+        SkipTutorial();
+    }
+
     public void SkipTutorial() //when click on button, Finish Tutorial!
     {
-        if(inTutorial == true)
-        {
-            inTutorial = false;
-            HideAllHighlights();
-            StopAllCoroutines();
-            CommentaryManager.instance.CloseDialogue();
-            DialogueManager.instance.EndDialogueSequence();
-            //CommentaryManager.
-            canvas.gameObject.SetActive(false);
-            skipTutorialCanvas.gameObject.SetActive(false);
-        }
+        inTutorial = false;
+        HideAllHighlights();
+        StopAllCoroutines();
+        CommentaryManager.instance.CloseDialogue();
+        DialogueManager.instance.EndDialogueSequence();
+        //CommentaryManager.
+        canvas.gameObject.SetActive(false);
+        skipTutorialCanvas.gameObject.SetActive(false);
     }
 
     public void OpeningScene()
     {
-        skipTutorialCanvas.gameObject.SetActive(true);
         inTutorial = true;
         //Fade in from black
         Debug.Log("OpeningScene playing");

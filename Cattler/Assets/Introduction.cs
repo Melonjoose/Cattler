@@ -48,7 +48,7 @@ public class Introduction : MonoBehaviour
     {
         //open Transition.SlowFade
         Transition.instance.FadeInSlow();
-        Tutorial.instance.OpeningScene();
+        Tutorial.instance.skipTutorialCanvas.gameObject.SetActive(true);
         AudioManager.instance.TransitionTheme("Lobby");
     }
     

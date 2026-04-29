@@ -79,7 +79,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Canvas/WorldTitle(TMP)
+    path: Canvas - Map Title/WorldTitle(TMP)
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -92,7 +92,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1137966785
+      path: 535182482
       attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
@@ -184,7 +184,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Canvas/WorldTitle(TMP)
+    path: Canvas - Map Title/WorldTitle(TMP)
     classID: 224
     script: {fileID: 0}
     flags: 0

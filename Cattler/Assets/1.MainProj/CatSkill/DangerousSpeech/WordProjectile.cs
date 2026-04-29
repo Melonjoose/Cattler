@@ -14,7 +14,7 @@ public class WordProjectile : MonoBehaviour
         {
             StartCoroutine(RotateAndLaunch(enemy));
         }
-        
+        Destroy(gameObject, 8f);
     }
 
     // lock onto enemy when this is spawned. rotate towards enemy.

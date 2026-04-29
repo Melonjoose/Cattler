@@ -170,7 +170,7 @@ public class HookerUnit : EnemyUnit
             hookedCat = TargetCat.GetComponent<CatUnit>();
             if (hookedCat != null)
             {
-                DebuffManager.instance.ApplyDebuff(hookedCat.gameObject, DebuffManager.instance.stun , hookduration);
+                //DebuffManager.instance.ApplyDebuff(hookedCat.gameObject, DebuffManager.instance.stun , hookduration);
                 Debug.Log($"{hookedCat.name} is hooked and stunned!");
                 PlayAnimation("AttackLoop", true);
                 pullCoroutine = StartCoroutine(pullCat());
@@ -255,7 +255,7 @@ public class HookerUnit : EnemyUnit
             {
                 Destroy(gameObject);
             };
-
+            Destroy(gameObject,5f); //safety in case this object didn't finish death animation.
         }
     }
     public override void Die()
