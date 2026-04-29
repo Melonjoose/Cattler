@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PreviewManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PreviewManager : MonoBehaviour
     public Item hat;
     public Item weaponL;
     public Item weaponR;
+
+    public Image catBackdrop;
+
     // this is to control items to be added onto the catUnit.
     void Start()
     {
@@ -19,7 +23,14 @@ public class PreviewManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (catUnit == null)
+        {
+            catBackdrop.enabled = true;
+        }
+        else
+        {
+            catBackdrop.enabled = false;
+        }
     }
 
     public void AddCatToPreview(CatUnit cat)
@@ -42,6 +53,8 @@ public class PreviewManager : MonoBehaviour
         }
 
         ToggleLockItemSlots();
+
+
     }
 
 

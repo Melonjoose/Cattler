@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class FireLine : MonoBehaviour
 {
+    public int damage = 10;
+    public int knockback = 5;
     public float speed = 5f; // movement speed
     public Vector2 direction = new Vector2(1, -1); // 45� down-right
 
@@ -23,7 +25,7 @@ public class FireLine : MonoBehaviour
         EnemyUnit enemyUnit = collision.GetComponent<EnemyUnit>();
         if (enemyUnit != null)
         {
-            enemyUnit.TakeDamage(null, 10, 5);
+            enemyUnit.TakeDamage(null, damage, knockback);
             Destroy(gameObject);
             return;
         }

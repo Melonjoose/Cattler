@@ -17,11 +17,12 @@ public class LightAura : MonoBehaviour
     {
         //when this gameobject is enabled, intialize the data from blinding light
         //run the timer for expansion and lingering
+        if(blindingLight != null)
+        {
             expansionSpeed = blindingLight.speed;
             lightlingerDuration = blindingLight.value;
-            maxScale = 6f; // Set the maximum scale for the light aura
-                           //reset the scale to zero when enabled
-                           //reset opacity to 1 when enabled
+        }
+
         StartCoroutine(ExpandAndLinger());
     }
 

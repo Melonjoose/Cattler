@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5629166447751903960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2875902600922531037}
+  - component: {fileID: 1167046280708250828}
+  m_Layer: 0
+  m_Name: Tea Party
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2875902600922531037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629166447751903960}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.265494, y: 1.6940626, z: -0.08027655}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1167046280708250828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629166447751903960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664bb9637ceb6c14a972db8af4ca447f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityPrefab: {fileID: 5629166447751903960}
+  damage: 0
+  spawnLocationOffset: {x: 0, y: 1, z: 0}
+  cooldown: 40
+  range: 0
+  movespeed: 3
+  lifetime: 0.7
+  timer: 0
+  damageMultiplier: 1.2
+  col: {fileID: 0}
+  rb: {fileID: 0}
+  catUnit: {fileID: 0}
+  minSpawn: 5
+  maxSpawn: 8
+  spacing: 1
+  spawnDelay: 0.1
+  teaPrefab: {fileID: 5495255292163524304, guid: bf779bb48e9f726449e8200813ad56f2, type: 3}

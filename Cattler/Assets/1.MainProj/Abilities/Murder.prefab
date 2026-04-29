@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4418116498711791086}
   - component: {fileID: 5054086985946174865}
   m_Layer: 0
-  m_Name: FireCarpet Ability
+  m_Name: Murder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8486287779114324618}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10.12, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,9 +73,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AbilityPrefab: {fileID: 8486287779114324618}
-  damage: 10
-  spawnLocationOffset: {x: 0, y: 6, z: 0}
-  cooldown: 30
+  damage: 999
+  spawnLocationOffset: {x: 1, y: 0, z: 0}
+  cooldown: 60
   range: 0
   movespeed: 3
   lifetime: 0.7
@@ -84,8 +84,8 @@ MonoBehaviour:
   col: {fileID: 0}
   rb: {fileID: 0}
   catUnit: {fileID: 0}
-  fireLinePrefab: {fileID: 3397912113094102649, guid: fee6fd4f716563446a2d396fd56cbeee, type: 3}
-  knockback: 5
-  fireCount: 8
+  fireLinePrefab: {fileID: 3397912113094102649, guid: 34c5a3fcd1f3efa47b620d697c135fac, type: 3}
+  knockback: 99
+  fireCount: 7
   spacing: 1
   spawnDelay: 0.1

@@ -4,6 +4,7 @@ using System.Collections;
 public class FireCarpet : ActiveAbility
 {
     public GameObject fireLinePrefab;
+    public int knockback = 5;
     public int fireCount = 8;           // number of flames in the line
     public float spacing = 1.0f;        // horizontal spacing between flames
     public float spawnDelay = 0.1f;     // delay between each spawn
@@ -32,6 +33,12 @@ public class FireCarpet : ActiveAbility
             Vector3 spawnPos = startPos + new Vector3(i * spacing, 0, 0);
 
             GameObject flame = Instantiate(fireLinePrefab, spawnPos, Quaternion.Euler(0, 0, 35));
+            FireLine fireLine = GetComponent<FireLine>();
+            if (fireLine != null)
+            {
+                fireLine.damage = damage;
+                fireLine.knockback = knockback;
+            }
             flame.SetActive(true);
 
             // Do NOT parent to FireCarpet, let them live independently

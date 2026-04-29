@@ -1,6 +1,5 @@
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
 using UnityEngine;
+
 public class DisplayItemManager : MonoBehaviour
 {
     public static DisplayItemManager instance;

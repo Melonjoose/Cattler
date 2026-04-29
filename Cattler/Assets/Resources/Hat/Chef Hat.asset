@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62d4114a6764024295b118ad43d00ae, type: 3}
+  m_Name: Chef Hat
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4227622569212406947, guid: 097cf5f9a1f8d7a47881fdb8f5cf19e0, type: 3}
+  prefab2: {fileID: 0}
+  itemName: Chef Hat
+  icon: {fileID: 21300000, guid: 1a321b5e60d3f46408142997b95e9876, type: 3}
+  itemType: 2
+  description: A fine gentleman's apparel
+  value: 1
+  fvalue: 0
+  skill: {fileID: 0}
+  AbilityName: 
+  AbilityDesc: 
+  health: 2
+  attackPower: 1
+  attackSpeed: 1
+  attackRange: 1
+  movementSpeed: 1

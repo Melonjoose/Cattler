@@ -123,7 +123,7 @@ public class CatUnit : Unit
 
     private void HandleTravelStateChanged(bool traveling)
     {
-        if (!isAttacking && !inAnimation)
+        if (!isAttacking && !inAnimation && !isDead)
         {
             skeletonAnimation.state.SetAnimation(0, traveling ? "Walk" : "Idle", true).MixDuration = 0.2f;
             currentAnim = traveling ? "Walk" : "Idle";
@@ -157,7 +157,7 @@ public class CatUnit : Unit
         EnemyUnit enemytarget = other.GetComponent<EnemyUnit>();
         if (attackCooldown <= 0f && enemytarget != null && enemytarget.isDead == false && enemytarget.canTarget)
         {
-            if(canAttack == true && isStunned == false)
+            if(canAttack == true && isStunned == false && isDead == false && isHit == false)
             {
                 isAttacking = true;
                 skeletonAnimation.AnimationState.SetAnimation(0, "Attack", false);
@@ -179,26 +179,44 @@ public class CatUnit : Unit
     }
 
 
+    private bool isHit = false;
     public override void TakeDamage(Unit hitter ,int amount, float knockback)
     {
-        base.TakeDamage(hitter, amount, knockback);
+        isHit = true;
 
-        AudioManager.instance.PlaySFX("CatDamage");
-        CameraShake.instance.Shake(0.2f, 0.05f);
-        runtimeData.currentHealth -= amount;
-        onHealthChanged?.Invoke(runtimeData.currentHealth , runtimeData.maxHealth);
-        int dyingHealth = runtimeData.maxHealth / 3;
-        if (runtimeData.currentHealth <= 0)
+        if(runtimeData.currentHealth >= 0 && isDead == false)
+        {
+            base.TakeDamage(hitter, amount, knockback); //show number and knockback
+
+            var trackEntryHit = skeletonAnimation.AnimationState.SetAnimation(0, "Hit", false);
+            trackEntryHit.Complete += delegate
+            {
+                isHit = false;
+            };
+            skeletonAnimation.AnimationState.AddAnimation(0, "Idle", true, 0);
+
+            AudioManager.instance.PlaySFX("CatDamage");
+            CameraShake.instance.Shake(0.2f, 0.05f);
+            runtimeData.currentHealth -= amount;
+            onHealthChanged?.Invoke(runtimeData.currentHealth, runtimeData.maxHealth);
+            int dyingHealth = runtimeData.maxHealth / 3;
+            if (runtimeData.currentHealth <= dyingHealth)         //33% of max health
+            {
+                Dying();
+            }
+        }
+
+        if (runtimeData.currentHealth <= 0 && !isDead)
         {
             Die();
+
+            var trackEntry = skeletonAnimation.AnimationState.SetAnimation(0, "Death", false);
+            trackEntry.Complete += delegate {
+                // This runs once the Death animation finishes
+                catGO.gameObject.SetActive(false);
+            };
         }
-        else if (runtimeData.currentHealth <= dyingHealth)         //33% of max health
-        {
-            Dying();
-            //Add a saving Grace function here later. ensure it survives at 1HP instead of dying.
-            //Invunerable for 2 seconds.
-            //then add a knockback to all enemies around it.
-        }
+
     } 
 
     public void OnHealthChange(int currentHPAmount , int maxHpAmount)
@@ -214,13 +232,14 @@ public class CatUnit : Unit
 
     private void Die()
     {
+        isDead = true;
+        
         CameraShake.instance.Shake(0.3f, 0.1f);
         CommentaryManager.instance.AddDialogueToQueue(2); // Cat defeated dialogue
         Debug.Log(runtimeData.template.itemName + " has been defeated.");
         //Give Send EXP gained from death to Retreat controller   
         CatDeath?.Invoke();
         
-        isDead = true;
 
         //disable skills & set icon to deathicon
         icon.DisableSkillsToggle();
@@ -232,7 +251,7 @@ public class CatUnit : Unit
         Inventory.instance.DeleteItem(inventoryIcon.gameObject);
         CatRoamLobby.instance.RemoveCatFromLobby(this);
         
-        catGO.SetActive(false);
+        //catGO.SetActive(false);
 
         //Destroy(gameObject);  //delete when return to lobby.
     }

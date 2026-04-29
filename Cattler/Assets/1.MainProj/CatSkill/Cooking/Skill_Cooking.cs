@@ -3,15 +3,14 @@ using UnityEngine;
 
 public class Skill_Cooking : CatSkill
 {
-    public Vector3 skillLocation; // The location where the skill will be activated (e.g., in front of the cat)
+    public Vector3 offset; // The location where the skill will be activated (e.g., in front of the cat)
     public GameObject foodPrefab; // Prefab for the food that will be thrown
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
         base.RandomizeTimerStart();
         foodPrefab = itemObject;
-        skillLocation = transform.position + new Vector3(0, 2 , 0); // above the cat. 
-        this.gameObject.transform.position = skillLocation; // Set the skill's game object to the location where it will be activated
+        offset = new Vector3(0, 2 , 0); // above the cat. 
     }
 
     // Update is called once per frame
@@ -31,7 +30,7 @@ public class Skill_Cooking : CatSkill
         //Instantiate the food gameobject and apply force to it to create the arc motion
 
         StatFXManager.instance.PlayVFX(transform.position, 4); // Play cooking effect at the cat's position
-        GameObject NewFood = Instantiate(foodPrefab, skillLocation, Quaternion.identity);
+        GameObject NewFood = Instantiate(foodPrefab, transform.position + offset, Quaternion.identity);
         NewFood.SetActive(true);
         //the food will have it's own script to handle movement and picking up by players.
         //Throw food in a arc motion randomly.

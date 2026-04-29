@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf95d9ce702b4a48b62dfbda2e279dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consumableData: {fileID: 11400000, guid: 9984ce3d86ce11d40b68adf45280a804, type: 2}
+  consumableData: {fileID: 11400000, guid: 813941545a770e147acd980dc52ac97c, type: 2}
   cat: {fileID: 0}
   HealingPercentage: 30
 --- !u!114 &2334868861449400454
