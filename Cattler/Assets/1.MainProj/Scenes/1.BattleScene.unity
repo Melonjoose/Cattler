@@ -21100,8 +21100,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4284335103
+  m_fontColor: {r: 1, g: 0.7649144, b: 0.36320752, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
@@ -25681,7 +25681,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793064996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d59527fd76784ad4cac2b870db0fca60, type: 3}
   m_Name: 
@@ -62067,6 +62067,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894d2bc5fc28f68499e37e1698cc14a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableTravel: 0
+  isTraveling: 0
   distanceTraveled: 0
   distanceTraveledUIvalue: 0
   travelSpeed: 0.1
@@ -62075,9 +62077,9 @@ MonoBehaviour:
   - {fileID: 1191036995}
   - {fileID: 138339285}
   - {fileID: 1516259356}
-  firstFloor: {fileID: 0}
-  middleFloor: {fileID: 0}
-  lastFloor: {fileID: 0}
+  firstFloor: {fileID: 1191036995}
+  middleFloor: {fileID: 138339285}
+  lastFloor: {fileID: 1516259356}
   backgroundUI:
   - {fileID: 938390533}
   - {fileID: 1819023621}
@@ -62087,27 +62089,46 @@ MonoBehaviour:
   - {fileID: 138339286}
   - {fileID: 1516259359}
   floorGRP: {fileID: 1991103110}
+  mapLevels:
+  - mapName: The Haven Forest
+    milestoneDistance: 0
+    thisLevelFloorSprite: {fileID: -4477049235300208723, guid: f9e9872e90889be40a559daebc3e95b6, type: 3}
+    thisLevelBackgroundSprite: {fileID: -2643186401316992739, guid: 01000f5a661b3de418021f51490ecb97, type: 3}
+    transitionFloorSprite: {fileID: -4477049235300208723, guid: f9e9872e90889be40a559daebc3e95b6, type: 3}
+    transitionBackgroundSprite: {fileID: -2643186401316992739, guid: 01000f5a661b3de418021f51490ecb97, type: 3}
+    finalFloorSprite: {fileID: -4477049235300208723, guid: f9e9872e90889be40a559daebc3e95b6, type: 3}
+    finalBackgroundSprite: {fileID: -2643186401316992739, guid: 01000f5a661b3de418021f51490ecb97, type: 3}
+    milestoneText: 10KM
+    popupMessage: The Haven Forest
+    transitionTriggered: 0
+    textTriggered: 0
+  - mapName: The Ruined City
+    milestoneDistance: 7
+    thisLevelFloorSprite: {fileID: -4477049235300208723, guid: f9e9872e90889be40a559daebc3e95b6, type: 3}
+    thisLevelBackgroundSprite: {fileID: -2643186401316992739, guid: 01000f5a661b3de418021f51490ecb97, type: 3}
+    transitionFloorSprite: {fileID: -6598655280329209528, guid: 659a6ea35438e1744ae378ddf405e6cd, type: 3}
+    transitionBackgroundSprite: {fileID: 748789781721645781, guid: 1c87b41f1908b1c41a89c50f49511159, type: 3}
+    finalFloorSprite: {fileID: 8877314937526988253, guid: 9e77c0d90a315864db58d076bdaf6ada, type: 3}
+    finalBackgroundSprite: {fileID: -214150547176089449, guid: 8b4d885d4963ff842b9fbc2c9ad091d7, type: 3}
+    milestoneText: 20KM
+    popupMessage: The Ruined City
+    transitionTriggered: 0
+    textTriggered: 0
+  - mapName: The End Of Demo
+    milestoneDistance: 17
+    thisLevelFloorSprite: {fileID: 8877314937526988253, guid: 9e77c0d90a315864db58d076bdaf6ada, type: 3}
+    thisLevelBackgroundSprite: {fileID: -214150547176089449, guid: 8b4d885d4963ff842b9fbc2c9ad091d7, type: 3}
+    transitionFloorSprite: {fileID: 8877314937526988253, guid: 9e77c0d90a315864db58d076bdaf6ada, type: 3}
+    transitionBackgroundSprite: {fileID: -214150547176089449, guid: 8b4d885d4963ff842b9fbc2c9ad091d7, type: 3}
+    finalFloorSprite: {fileID: 8877314937526988253, guid: 9e77c0d90a315864db58d076bdaf6ada, type: 3}
+    finalBackgroundSprite: {fileID: -214150547176089449, guid: 8b4d885d4963ff842b9fbc2c9ad091d7, type: 3}
+    milestoneText: 9999KM
+    popupMessage: The End Of Demo
+    transitionTriggered: 0
+    textTriggered: 0
+  currentLevelIndex: 0
   animator: {fileID: 1809721745}
   text: {fileID: 697001260}
-  level1FloorSprite: {fileID: -4477049235300208723, guid: f9e9872e90889be40a559daebc3e95b6, type: 3}
-  level1BackgroundSprite: {fileID: -2643186401316992739, guid: 01000f5a661b3de418021f51490ecb97, type: 3}
-  level1To2BackgroundSprite: {fileID: 748789781721645781, guid: 1c87b41f1908b1c41a89c50f49511159, type: 3}
-  level1To2FloorSprite: {fileID: -6598655280329209528, guid: 659a6ea35438e1744ae378ddf405e6cd, type: 3}
-  level2FloorSprite: {fileID: 8877314937526988253, guid: 9e77c0d90a315864db58d076bdaf6ada, type: 3}
-  level2BackgroundSprite: {fileID: -214150547176089449, guid: 8b4d885d4963ff842b9fbc2c9ad091d7, type: 3}
-  level2Milestone: 7
-  level2MilstoneComplete: 0
-  level3Milestone: 17
-  level3MilstoneComplete: 0
-  reachRuinedCityFirstTime: 0
-  completeDemo: 0
-  isTraveling: 0
-  disableTravel: 0
-  completedTransitionPlayed: 0
-  level2Triggered: 0
-  level2TextTriggered: 0
-  level3Triggered: 0
-  level3TextTriggered: 0
 --- !u!95 &1809721745
 Animator:
   serializedVersion: 7

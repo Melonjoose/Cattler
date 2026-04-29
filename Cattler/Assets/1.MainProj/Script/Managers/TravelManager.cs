@@ -3,23 +3,33 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.UIElements; // only works in the Editor
+using UnityEngine.UIElements;
+using System.Collections.Generic; // only works in the Editor
 
-
+[System.Serializable]
 public class MapLevel
 {
+[Header("Level Settings")]
     public string mapName;
-    public int mapLevel;
-    public Sprite mapBackgroundSprite;
-    public Sprite mapFloorSprite;
+    public int milestoneDistance;  //7 //17  (+3) to  become //10 //20  etc.
+    public Sprite thisLevelFloorSprite;
+    public Sprite thisLevelBackgroundSprite;
+    public Sprite transitionFloorSprite;
+    public Sprite transitionBackgroundSprite;
+    public Sprite finalFloorSprite;
+    public Sprite finalBackgroundSprite;
+    public string milestoneText;
+    public string popupMessage;
 
-    public int distanceToTrigger; //7 , 17, 27, 37.
-    public int mapDistance;  //10 , 20, 30, 40
-    public bool mileStoneChecker = false; //set to true if enter here for the first time.
+    public bool transitionTriggered = false;
+    public bool textTriggered = false;
 }
+
 
 public class TravelManager : MonoBehaviour
 {
+    public bool disableTravel = false;
+    public bool isTraveling = false;
     public float distanceTraveled;
     public float distanceTraveledUIvalue;
     public float travelSpeed = 1f;
@@ -32,31 +42,13 @@ public class TravelManager : MonoBehaviour
     public SpriteRenderer[] floorUI;
     public GameObject floorGRP;
 
+    public List<MapLevel> mapLevels = new List<MapLevel>();
+    [SerializeField]private int currentLevelIndex = 0;
+
     public Animator animator;
     public TextMeshProUGUI text;
-    
-    public Sprite level1FloorSprite;
-    public Sprite level1BackgroundSprite;
-
-    public Sprite level1To2BackgroundSprite; //transitionSprite
-    public Sprite level1To2FloorSprite; //transitionSprite
-    
-    public Sprite level2FloorSprite;
-    public Sprite level2BackgroundSprite;
-
-    public float level2Milestone = 7f; //at 7, trigger it to swap //at 7+3 = 10, actually reach the new location.event trigger
-    public bool level2MilestoneComplete = false;
-    public float level3Milestone = 17f;
-    public bool level3MilestoneComplete = false;
-
-    public bool reachRuinedCityFirstTime = false; //if player reach ruined city for the first time, trigger dialogue. and update the milestone to 20km.
-    public bool completeDemo = false; //if hit 20km. complete demo. Activate dialogue and update milestone to 6767km.
 
     public event Action<bool> OnTravelStateChanged;
-
-    public bool isTraveling = false;
-
-    private bool isTransitioning = false;
 
     public bool IsTraveling
     {
@@ -72,8 +64,6 @@ public class TravelManager : MonoBehaviour
     }
 
 
-    public bool disableTravel = false;
-
     private float floorLength = 24.80f; // adjust based on your tile size
 
     public static TravelManager instance;
@@ -85,6 +75,13 @@ public class TravelManager : MonoBehaviour
         firstFloor = floors[0];
         middleFloor = floors[1];
         lastFloor = floors[2];
+
+        ResetToStart();
+
+        // Explicitly show level 1 popup at boot
+        TextPopUp(mapLevels[0].popupMessage);
+        UpdateMilestoneText(mapLevels[0].milestoneText);
+        mapLevels[0].textTriggered = true;
     }
 
     private void Awake()
@@ -99,79 +96,35 @@ public class TravelManager : MonoBehaviour
 
     }
 
-    public bool completedTransitionPlayed = false; // declare at class level
-    public bool level2Triggered = false; // class-level field
-    public bool level2TextTriggered = false; // class-level field
-    public bool level3Triggered = false; // class-level field
-    public bool level3TextTriggered = false; // class-level field
-
     private void Update()
     {
+    
         if (disableTravel) { IsTraveling = false; return; }
         else { IsTraveling = !EnemyDetector.instance.enemyDetected; }
 
-        if (IsTraveling) TeamWalk();
+        if (IsTraveling) TeamWalk(); //teamwalk
 
-        if (floors[0].transform.position.x <= -31f) ExtendFloorPlane();
+        if (floors[0].transform.position.x <= -31f) ExtendFloorPlane();  //shift plane to back once hit certain X
 
         Distance.instance.UpdateDistanceUI(distanceTraveledUIvalue);
 
-
-        //level2//
-        if (distanceTraveledUIvalue > level2Milestone  && !isTransitioning && !level2Triggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
+        if(disableTravel == false && GameManager.instance.inBattle)
         {
-            TransitionToNewLevel(2);
-            level2Triggered = true;
-        }
-        if (distanceTraveledUIvalue > (level2Milestone+3f) && !level2TextTriggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
-        {
-            level2MilestoneComplete = true;
-            TextPopUp("The Ruined City");
-            level2TextTriggered=true;
-            if(level2MilestoneComplete == false)
+            // Loop through levels
+            foreach (var level in mapLevels)
             {
-                UpdateMilestoneText("20KM");
-            }
-        }
-
-        //level3//
-        if (distanceTraveledUIvalue > level3Milestone  && !isTransitioning && !level3Triggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
-        {
-            TransitionToNewLevel(3);
-            level3Triggered = true;
-        }
-        if (distanceTraveledUIvalue > (level3Milestone+3f) && !level3TextTriggered) //if its not transitiong (false) play it once. then inside transiton to newlevel it will trigger intrantioning = true. causing this to play once. but when completed it trigger intransition to become false which plays this again due to no safeguarding the distance pasttt
-        {
-            level3MilestoneComplete = true;
-            TextPopUp("DEMO ENDS");
-            level3TextTriggered=true;
-        }
-        // Check if transition floor has scrolled into view
-
-        if (isTransitioning) //current scenario that doesn't work.. floor 3. is in firstfloor position. which is also the transitiontile. middleFloor is Floor 1, Lvl2tile. based on below code, it will check floor1SR if it is a lvl2floor. it is, hence it will upgrade the transitiontile to lvl2tile. BUT it doesnt.
-        {
-            // Always check middleFloor
-            SpriteRenderer middleFloorSR = middleFloor.GetComponent<SpriteRenderer>();
-            if (middleFloorSR.sprite == level1To2FloorSprite || middleFloorSR.sprite == level2FloorSprite)
-            {
-                UpgradeToLevel2(lastFloor);
-            }
-
-            bool allLevel2 = true;
-            foreach (GameObject floor in floors)
-            {
-                SpriteRenderer sr = floor.GetComponent<SpriteRenderer>();
-                if (sr.sprite != level2FloorSprite)
+                if (!level.transitionTriggered && distanceTraveledUIvalue > level.milestoneDistance)
                 {
-                    allLevel2 = false;
-                    break;
+                    TransitionToNewLevel(level);
+                    level.transitionTriggered = true;
                 }
-            }
 
-            if (allLevel2 && !completedTransitionPlayed)
-            {
-                CompleteTransitionToLevel2();
-                completedTransitionPlayed = true; // now it persists
+                if (!level.textTriggered && distanceTraveledUIvalue > level.milestoneDistance + 3f)
+                {
+                    TextPopUp(level.popupMessage);
+                    UpdateMilestoneText(level.milestoneText);
+                    level.textTriggered = true;
+                }
             }
         }
     }
@@ -188,78 +141,58 @@ public class TravelManager : MonoBehaviour
 
     public void ExtendFloorPlane()
     {
-        firstFloor = floors[0];
-        lastFloor = floors[floors.Length - 1];
+        GameObject movedFloor = floors[0];
 
-        // Move first floor to the end
-        firstFloor.transform.position = lastFloor.transform.position + Vector3.right * floorLength;
-
-        // Shift the list
+        // Shift array
         for (int i = 0; i < floors.Length - 1; i++)
-        {
             floors[i] = floors[i + 1];
+
+        // Place moved floor
+        GameObject newLastFloor = floors[floors.Length - 2];
+        movedFloor.transform.position = newLastFloor.transform.position + Vector3.right * floorLength;
+        floors[floors.Length - 1] = movedFloor;
+
+        // Apply current level sprites
+        MapLevel currentLevel = mapLevels[currentLevelIndex];
+        SpriteRenderer floorRenderer = movedFloor.GetComponent<SpriteRenderer>();
+        if (floorRenderer != null && currentLevel.finalFloorSprite != null)
+            floorRenderer.sprite = currentLevel.finalFloorSprite;
+
+        Transform bgTransform = movedFloor.transform.Find("Background");
+        if (bgTransform != null)
+        {
+            SpriteRenderer bgRenderer = bgTransform.GetComponent<SpriteRenderer>();
+            if (bgRenderer != null && currentLevel.finalBackgroundSprite != null)
+                bgRenderer.sprite = currentLevel.finalBackgroundSprite;
         }
-        floors[floors.Length - 1] = firstFloor;
 
         // Update references
         firstFloor = floors[0];
         middleFloor = floors[1];
-        lastFloor = floors[2];
-
+        lastFloor = floors[floors.Length - 1];
     }
 
-    private void UpgradeToLevel2(GameObject floor)
-    {
-        SpriteRenderer floorRenderer = floor.GetComponent<SpriteRenderer>();
-        if (floorRenderer != null)
-        {
-            floorRenderer.sprite = level2FloorSprite;
-        }
 
-        Transform bgTransform = floor.transform.Find("Background");
+
+    public void TransitionToNewLevel(MapLevel level)
+    {
+        lastFloor = floors[floors.Length - 1];
+
+        // Transition tile
+        SpriteRenderer floorRenderer = lastFloor.GetComponent<SpriteRenderer>();
+        if (floorRenderer != null)
+            floorRenderer.sprite = level.transitionFloorSprite;
+
+        Transform bgTransform = lastFloor.transform.Find("Background");
         if (bgTransform != null)
         {
             SpriteRenderer bgRenderer = bgTransform.GetComponent<SpriteRenderer>();
             if (bgRenderer != null)
-            {
-                bgRenderer.sprite = level2BackgroundSprite;
-            }
+                bgRenderer.sprite = level.transitionBackgroundSprite;
         }
-    }
 
-    public void TransitionToNewLevel(int level) //the moment it hit milestone, play this function
-    {
-        if (level == 2 && !isTransitioning)
-        {
-            lastFloor = floors[floors.Length - 1]; //mark last floor
-
-            // Floor sprite
-            SpriteRenderer floorRenderer = lastFloor.GetComponent<SpriteRenderer>(); //find floorSR
-            if (floorRenderer != null)
-            {
-                floorRenderer.sprite = level1To2FloorSprite;  //Change the last floor to new tile.
-            }
-
-            // Background sprite (child of lastFloor)
-            Transform bgTransform = lastFloor.transform.Find("Background"); //find BackgroundSR
-            if (bgTransform != null)
-            {
-                SpriteRenderer bgRenderer = bgTransform.GetComponent<SpriteRenderer>();
-                if (bgRenderer != null)
-                {
-                    bgRenderer.sprite = level1To2BackgroundSprite; //change backgroundSR
-                }
-            }
-
-            isTransitioning = true;  //transitioning is still in progress.
-
-        }
-    }
-    private void CompleteTransitionToLevel2()
-    {
-        //animator.SetTrigger("Play");
-        isTransitioning = false;
-        //Debug.Log("Entering Lvl2");
+        // Switch current level so recycled tiles use final sprites
+        currentLevelIndex = mapLevels.IndexOf(level);
     }
 
     private void TextPopUp(String textmessage)
@@ -273,10 +206,11 @@ public class TravelManager : MonoBehaviour
 
     public void ResetToStart()
     {
-        //all checks are reset to default
-        completedTransitionPlayed = false;
-        level2Triggered = false;
-        level2TextTriggered = false;
+        foreach (MapLevel level in mapLevels)
+        {
+            level.transitionTriggered = false;
+            level.textTriggered = false;
+        }
 
         distanceTraveled = 0f;
         distanceTraveledUIvalue = 0f;
@@ -287,40 +221,28 @@ public class TravelManager : MonoBehaviour
         {
             float xPos = (i - (floors.Length - 1) / 2f) * floorLength;
             floors[i].transform.position = new Vector3(xPos, -4f, 0);
-            //first floor is at (-23.09,-3.64, 0), second at (0, -3.64, 0), third at (23.09, -3.64, 0)
         }
 
-        EnteringLevel1();
+        currentLevelIndex = 0;
+        IntializeLevel(mapLevels[0]);
+
+        // Force milestone text for level 1
+        UpdateMilestoneText(mapLevels[0].milestoneText);
+        TextPopUp(mapLevels[0].popupMessage);
+        mapLevels[0].textTriggered = true;
     }
-    public void EnteringLevel1()
+
+    public void IntializeLevel(MapLevel level)
     {
         foreach (var floor in floorUI)
         {
-            floor.sprite = level1FloorSprite;
+            floor.sprite = level.finalFloorSprite;
         }
         foreach (var BG in backgroundUI)
         {
-            BG.sprite = level1BackgroundSprite;
+            BG.sprite = level.finalBackgroundSprite;
         }
 
-        text.gameObject.SetActive(true);
-        text.text = "The Safe Heaven";
-        animator.SetTrigger("Play");
-
-        if(level2MilestoneComplete == false)
-        {
-            UpdateMilestoneText("10KM");
-        }
-
-        if(level2MilestoneComplete == true && level3MilestoneComplete == false )
-        {
-            UpdateMilestoneText("20KM");
-        }
-
-        if (level2MilestoneComplete == true && level3MilestoneComplete == false)
-        {
-            UpdateMilestoneText("DEMO COMPLETED");
-        }
     }
 
     void UpdateMilestoneText(string milestoneText)
