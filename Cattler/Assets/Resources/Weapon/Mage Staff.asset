@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4227622569212406947, guid: 097cf5f9a1f8d7a47881fdb8f5cf19e0, type: 3}
   prefab2: {fileID: 0}
-  itemName: Basic Staff
-  icon: {fileID: 21300000, guid: a396bb8017d4c9c4cabb67562ffb7495, type: 3}
+  itemName: Mage Staff
+  icon: {fileID: 21300000, guid: bda25fbee72c0e44dad03c931c3b01f8, type: 3}
   itemType: 1
-  description: Poweful but slow
+  description: Shoots a line of fire upon enemies
   value: 1
   fvalue: 0
-  skill: {fileID: 4527496120552723139, guid: 969984ffb0717b9409f5810de25cae70, type: 3}
-  AbilityName: World In Flame
+  skill: {fileID: 5054086985946174865, guid: 96ac08c7f55046440a7296fb0af68323, type: 3}
+  AbilityName: FireCarpet
   AbilityDesc: Create a carpet of bombs onto the battlefield
   health: 1
   attackPower: 1
