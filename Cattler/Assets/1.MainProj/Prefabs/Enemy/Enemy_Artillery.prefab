@@ -641,6 +641,32 @@ MonoBehaviour:
     dropChance: 1
   - item: {fileID: 1063309126661408168, guid: 9725bb313e7419449b7a5bbb7e6d23eb, type: 3}
     dropChance: 1
+  - item: {fileID: 1344861204367359622, guid: c42a8c6a9f8d8624b9ec3da10f630ed8, type: 3}
+    dropChance: 1
+  - item: {fileID: 6546025854996225294, guid: 97e859029b510784d9a43559ac8f9ed3, type: 3}
+    dropChance: 1
+  - item: {fileID: 7238457492539462839, guid: 763c3e60f921c744dacf125825611ed9, type: 3}
+    dropChance: 1
+  - item: {fileID: 314303823658104329, guid: 5528b2561089c434790adc5af5a72666, type: 3}
+    dropChance: 1
+  - item: {fileID: 6168461328000588854, guid: f3df674cdbf5e34468410962c74147a7, type: 3}
+    dropChance: 1
+  - item: {fileID: 1423213206439657523, guid: f39cb03d108c4da4db44c658fadab9ba, type: 3}
+    dropChance: 1
+  - item: {fileID: 7597868296511490909, guid: 297955617a2a95846a3f91caa0d26c52, type: 3}
+    dropChance: 1
+  - item: {fileID: 4681247925304493802, guid: 75ef10a1e998e644db76d13f26ee8315, type: 3}
+    dropChance: 1
+  - item: {fileID: 411042388279814542, guid: 6332d17695acb69429ec47b187ac83d2, type: 3}
+    dropChance: 1
+  - item: {fileID: 2309849227621542200, guid: 688082702416699499011e33486ac73b, type: 3}
+    dropChance: 1
+  - item: {fileID: 584105267725587779, guid: 81b033c2387c36646829ed4b3bde64ac, type: 3}
+    dropChance: 1
+  - item: {fileID: 6326610859395023262, guid: dfd5dffeb031f0a40b32e13756829332, type: 3}
+    dropChance: 1
+  - item: {fileID: 700614002346383490, guid: 5c812285706c4974a8fa8977e78ea262, type: 3}
+    dropChance: 1
   minInkDrop: 30
   maxInkDrop: 100
   minCoreDrop: 1
@@ -660,16 +686,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debuffCanvas: {fileID: 0}
+  canAttack: 1
+  canTarget: 1
   isAttacking: 0
   canWalk: 1
+  isSlowed: 0
   isDead: 0
-  canTarget: 1
+  inAnimation: 0
   skeletonAnimation: {fileID: 0}
   skeletonGraphic: {fileID: 0}
-  canAttack: 1
   isStunned: 0
   activeBuffs: []
   activeDebuffs: []
+  EnemyMovement: {fileID: 0}
   triggerTrack: {fileID: 0}
   pickRandomCat: 0
   pickClosestCat: 1

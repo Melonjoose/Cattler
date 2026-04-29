@@ -576,6 +576,22 @@ MonoBehaviour:
     dropChance: 1
   - item: {fileID: 6168461328000588854, guid: f3df674cdbf5e34468410962c74147a7, type: 3}
     dropChance: 1
+  - item: {fileID: 1423213206439657523, guid: f39cb03d108c4da4db44c658fadab9ba, type: 3}
+    dropChance: 1
+  - item: {fileID: 7597868296511490909, guid: 297955617a2a95846a3f91caa0d26c52, type: 3}
+    dropChance: 1
+  - item: {fileID: 4681247925304493802, guid: 75ef10a1e998e644db76d13f26ee8315, type: 3}
+    dropChance: 1
+  - item: {fileID: 411042388279814542, guid: 6332d17695acb69429ec47b187ac83d2, type: 3}
+    dropChance: 1
+  - item: {fileID: 2309849227621542200, guid: 688082702416699499011e33486ac73b, type: 3}
+    dropChance: 1
+  - item: {fileID: 584105267725587779, guid: 81b033c2387c36646829ed4b3bde64ac, type: 3}
+    dropChance: 1
+  - item: {fileID: 6326610859395023262, guid: dfd5dffeb031f0a40b32e13756829332, type: 3}
+    dropChance: 1
+  - item: {fileID: 700614002346383490, guid: 5c812285706c4974a8fa8977e78ea262, type: 3}
+    dropChance: 1
   minInkDrop: 5
   maxInkDrop: 100
   minCoreDrop: 0
