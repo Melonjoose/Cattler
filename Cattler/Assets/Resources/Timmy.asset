@@ -34,3 +34,4 @@ MonoBehaviour:
   attackSpeed: 1
   attackRange: 8
   movementSpeed: 3
+  knockBackPower: 3

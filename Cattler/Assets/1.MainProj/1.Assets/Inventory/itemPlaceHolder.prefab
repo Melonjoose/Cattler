@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: -5236114768822398605}
   - component: {fileID: 4425046505213308379}
   - component: {fileID: 5172497390688962501}
+  - component: {fileID: 7979174131559638493}
   m_Layer: 5
   m_Name: itemPlaceHolder
   m_TagString: Untagged
@@ -230,6 +231,7 @@ MonoBehaviour:
   itemType: 0
   originalSlot: {fileID: 0}
   currentSlot: {fileID: 0}
+  isDragging: 0
   itemUI: {fileID: 0}
 --- !u!114 &-5236114768822398605
 MonoBehaviour:
@@ -271,6 +273,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 638765ee031cbeb4c899e803a6b3a9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7979174131559638493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115270866861483169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f70dec866086245995b99d81d18366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7389705132092025438

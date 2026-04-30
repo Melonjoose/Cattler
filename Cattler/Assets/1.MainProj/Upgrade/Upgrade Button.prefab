@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 1950436696410332620}
   - component: {fileID: 8826781575019688953}
   - component: {fileID: 1169990190420516567}
+  - component: {fileID: 760456388284759149}
   m_Layer: 5
   m_Name: Upgrade Button
   m_TagString: Untagged
@@ -220,6 +221,18 @@ MonoBehaviour:
   levelText: {fileID: 8611612707584590936}
   costText: {fileID: 7495060775865276152}
   button: {fileID: 0}
+--- !u!114 &760456388284759149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970818806382082491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f70dec866086245995b99d81d18366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4081629816374159564
 GameObject:
   m_ObjectHideFlags: 0

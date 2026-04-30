@@ -18,24 +18,47 @@ public class HoverItem : MonoBehaviour
     void OnMouseEnter()
     {
         if (manager != null)
+        {
             manager.OnItemHoverEnter(gameObject, offset);
+        }
+        if (!CursorManager.instance.isDragging)
+        {
+            CursorManager.instance.SetHoverCursor();
+        }
     }
 
     void OnMouseExit()
     {
         if (manager != null)
+        {
             manager.OnItemHoverExit(gameObject, offset);
+        }
+        if (!CursorManager.instance.isDragging)
+        {
+            CursorManager.instance.SetDefaultCursor();
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        CursorManager.instance.SetGrabCursor();
+        CursorManager.instance.isDragging = true;
     }
 
     void OnMouseDrag()
     {
         if (manager != null)
+        {
             manager.OnItemDragStart(gameObject, offset);
+        }
+        CursorManager.instance.SetGrabCursor();
     }
 
     void OnMouseUp()
     {
         if (manager != null)
             manager.OnItemDragEnd(gameObject, offset);
+        CursorManager.instance.SetDefaultCursor();
+        CursorManager.instance.isDragging = false;
     }
 }
