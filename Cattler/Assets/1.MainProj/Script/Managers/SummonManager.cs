@@ -1,10 +1,7 @@
 using System;
-using TMPro;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using static SummonManager;
+using Spine.Unity;
 
 [Serializable]
 public class SummonChance
@@ -20,7 +17,7 @@ public class SummonManager : MonoBehaviour
     public int normalSummonCost = 100; //ink
     public int specialSummonCost = 5; //core 
     public Animator summonAnimator;
-
+    public SkeletonGraphic skeletonGraphic;
 
     public SummonChance normalSummonChance; //80(80%) , 95(15%), 5(5%)
     public SummonChance specialSummonChance; //80(50%) , 80(30%), 20(20%)
@@ -49,7 +46,7 @@ public class SummonManager : MonoBehaviour
         commonCats = Resources.LoadAll<CatData>("Cats/Common");
         rareCats = Resources.LoadAll<CatData>("Cats/Rare");
         legendaryCats = Resources.LoadAll<CatData>("Cats/Legendary");
-
+        
         summonCanvas.transform.localPosition = new Vector3(0, -10, 0);
         instance = this;
 
@@ -57,9 +54,60 @@ public class SummonManager : MonoBehaviour
         summonCatDisplay.SetActive(false);
         InitializeCards();// summoncat holding all the common,rare,legendary.
         tapToRevealPage.SetActive(false);
+        skeletonGraphic.gameObject.SetActive(false);
         closeSummonPage.SetActive(false);
         DisableSkipAnimation(); //disable until tutorial summon is done.
-}
+
+        // Subscribe once at initialization
+        skeletonGraphic.AnimationState.Event += HandleSpineEvent;
+        skeletonGraphic.AnimationState.Complete += HandleSpineComplete;
+    }
+
+    private void HandleSpineEvent(Spine.TrackEntry trackEntry, Spine.Event e)
+    {
+
+        // Example: trigger result display when Spine fires "RevealTrigger"
+        if (e.Data.Name == "RevealTrigger")
+        {
+            DisplayGachaResult();
+        }
+
+        if (e.Data.Name == "ArrowDown")
+        {
+            AudioManager.instance.PlaySFX("ButtonUI2");
+        }
+        if (e.Data.Name == "Click")
+        {
+            AudioManager.instance.PlaySFX("BookFlip");
+
+        }
+        if (e.Data.Name == "Swoosh")
+        {
+            AudioManager.instance.PlaySFX("Swoosh");
+        }
+        if (e.Data.Name == "Scribble")
+        {
+            AudioManager.instance.PlaySFX("Scribble");
+        }
+    }
+
+    private void HandleSpineComplete(Spine.TrackEntry trackEntry)
+    {
+        if (trackEntry.Animation.Name == "GachaEntry")
+        {
+            tapToRevealPage.SetActive(true);
+        }
+
+        if (trackEntry.Animation.Name == "GachaTapReveal")
+        {
+            closeSummonPage.SetActive(true);
+        }
+
+        if (trackEntry.Animation.Name == "RevealTrigger")
+        {
+            closeSummonPage.SetActive(true);
+        }
+    }
 
     void InitializeCards()
     {
@@ -186,7 +234,7 @@ public class SummonManager : MonoBehaviour
         canvasGroup.interactable = true;
     }
 
-    public void NormalSummonButtonPressed() //to add to button onclick event
+    public void NormalSummonButtonPressed() //to add to button onclick event  //01 SEQUENCE
     {
         if(isFirstSummon == true && Tutorial.instance.inTutorial == true && firstSummonCat != null)
         {
@@ -260,17 +308,29 @@ public class SummonManager : MonoBehaviour
         OpenTapToRevealPage();
     }
 
-
-    void OpenTapToRevealPage()
-    {        
-        tapToRevealPage.SetActive(true);
+    private bool tapRevealOnce = false;
+    void OpenTapToRevealPage() //02 SEQUENCE
+    {
+        AudioManager.instance.PlaySFX("BookLand");
+        AudioManager.instance.PlaySFX("PencilLand");
+        AudioManager.instance.TransitionTheme("Gacha");
+        skeletonGraphic.gameObject.SetActive(true);
+        skeletonGraphic.AnimationState.SetAnimation(0, "GachaEntry", false);
+        //only when event "GachaEntryExit" is triggered, then TapToRevealpage is set active. 
+        skeletonGraphic.AnimationState.AddAnimation(0, "GachaLoop", true, 0);
+        //tapToRevealPage.SetActive(true); //the button to press to trigger next animation
     }
 
-    public void TapToReveal()
+    public void TapToReveal() //03 SEQUENCE
     {
-        AudioManager.instance.PlaySFX("FlipBook");
-        DisplayGachaResult();
-        closeSummonPage.SetActive(true);
+        if(tapRevealOnce == true) { return; }
+        tapRevealOnce = true;
+        skeletonGraphic.AnimationState.SetAnimation(0, "GachaTapReveal", false);
+        skeletonGraphic.AnimationState.AddAnimation(0, "GachaTapRevealLoop", true, 0);
+        //AudioManager.instance.PlaySFX("FlipBook");    audios will be triggered by events.
+
+        //DisplayGachaResult(); Delay this to only play at "RevealTrigger" during 
+        //closeSummonPage.SetActive(true); // only trigger when gahcatapReveal ends //allow closing of gacha
     }
 
     private bool firstSummonCompleted = false;
@@ -287,8 +347,11 @@ public class SummonManager : MonoBehaviour
         legendaryUI.gameObject.SetActive(false);
         summonCatDisplay.SetActive(false);
         closeSummonPage.SetActive(false);
+        skeletonGraphic.gameObject.SetActive(false);
+        AudioManager.instance.TransitionTheme("Lobby");
+        tapRevealOnce = false;  //reset it.
 
-        if(firstSummonCompleted == false && isFirstSummon == true && Tutorial.instance.inTutorial == true) //needs to be infirstsummon, yet not completed. this is to prevent players from skipping the tutorial summon and still getting the skip button unlocked.
+        if (firstSummonCompleted == false && isFirstSummon == true && Tutorial.instance.inTutorial == true) //needs to be infirstsummon, yet not completed. this is to prevent players from skipping the tutorial summon and still getting the skip button unlocked.
         {
             isFirstSummon = false; // only when the summon is closed. then considered it closed.
             firstSummonCompleted = true;

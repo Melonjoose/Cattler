@@ -1,0 +1,2314 @@
+fileFormatVersion: 2
+guid: fa2de2ead1465e24d806c220d49cf6fa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7060857113576739855
+    second: GachaScreen_2_0
+  - first:
+      213: 5351928883169304340
+    second: GachaScreen_2_1
+  - first:
+      213: 2456181871949359146
+    second: GachaScreen_2_2
+  - first:
+      213: -316797336294459662
+    second: GachaScreen_2_3
+  - first:
+      213: 4536443954558911868
+    second: GachaScreen_2_4
+  - first:
+      213: -4513081378744719305
+    second: GachaScreen_2_5
+  - first:
+      213: -7582725100565572691
+    second: GachaScreen_2_6
+  - first:
+      213: 6484645528024699405
+    second: GachaScreen_2_7
+  - first:
+      213: -4819174115655220679
+    second: GachaScreen_2_8
+  - first:
+      213: -7864201040280609274
+    second: GachaScreen_2_9
+  - first:
+      213: 7814201072667701989
+    second: GachaScreen_2_10
+  - first:
+      213: 8005820721607170587
+    second: GachaScreen_2_11
+  - first:
+      213: 3822528902306584400
+    second: GachaScreen_2_12
+  - first:
+      213: 1327559649948199836
+    second: GachaScreen_2_13
+  - first:
+      213: 2445593056710419750
+    second: GachaScreen_2_14
+  - first:
+      213: 2900209639001269426
+    second: GachaScreen_2_15
+  - first:
+      213: -4999779214648354709
+    second: GachaScreen_2_16
+  - first:
+      213: 4067287508016056430
+    second: GachaScreen_2_17
+  - first:
+      213: -2135303852737724030
+    second: GachaScreen_2_18
+  - first:
+      213: -6529063576796885235
+    second: GachaScreen_2_19
+  - first:
+      213: -1692739624881856220
+    second: GachaScreen_2_20
+  - first:
+      213: -2211239657654520075
+    second: GachaScreen_2_21
+  - first:
+      213: -112620465989524772
+    second: GachaScreen_2_22
+  - first:
+      213: -2785837219194321009
+    second: GachaScreen_2_23
+  - first:
+      213: 6775597514929641816
+    second: GachaScreen_2_24
+  - first:
+      213: 8184533944788288133
+    second: GachaScreen_2_25
+  - first:
+      213: 3736983374309343129
+    second: GachaScreen_2_26
+  - first:
+      213: 2205225638719641075
+    second: GachaScreen_2_27
+  - first:
+      213: -1265132825047981922
+    second: GachaScreen_2_28
+  - first:
+      213: 8958903385039559488
+    second: GachaScreen_2_29
+  - first:
+      213: 1712894390917390494
+    second: GachaScreen_2_30
+  - first:
+      213: 8760423174083677694
+    second: GachaScreen_2_31
+  - first:
+      213: 5161671694869469577
+    second: GachaScreen_2_32
+  - first:
+      213: 6891477319588182075
+    second: GachaScreen_2_33
+  - first:
+      213: 2501293904636638794
+    second: GachaScreen_2_34
+  - first:
+      213: 3725986564597179655
+    second: GachaScreen_2_35
+  - first:
+      213: 2717459062485705018
+    second: GachaScreen_2_36
+  - first:
+      213: -6614245230557618190
+    second: GachaScreen_2_37
+  - first:
+      213: -2361113678566573580
+    second: GachaScreen_2_38
+  - first:
+      213: -969968150370080055
+    second: GachaScreen_2_39
+  - first:
+      213: -854795248738031521
+    second: GachaScreen_2_40
+  - first:
+      213: -4040559783281724139
+    second: GachaScreen_2_41
+  - first:
+      213: -4578226932932376132
+    second: GachaScreen_2_42
+  - first:
+      213: -5663597154197683418
+    second: GachaScreen_2_43
+  - first:
+      213: 1927089376330493885
+    second: GachaScreen_2_44
+  - first:
+      213: -8189956779740855790
+    second: GachaScreen_2_45
+  - first:
+      213: -3546373035016505467
+    second: GachaScreen_2_46
+  - first:
+      213: -8153294193099657421
+    second: GachaScreen_2_47
+  - first:
+      213: 8919385047739097303
+    second: GachaScreen_2_48
+  - first:
+      213: -7612832620029100011
+    second: GachaScreen_2_49
+  - first:
+      213: -5252530278501425720
+    second: GachaScreen_2_50
+  - first:
+      213: -7436829774742712345
+    second: GachaScreen_2_51
+  - first:
+      213: 6735239163524919681
+    second: GachaScreen_2_52
+  - first:
+      213: 3436344879990567946
+    second: GachaScreen_2_53
+  - first:
+      213: -5043102667403079685
+    second: GachaScreen_2_54
+  - first:
+      213: -4477383441148415561
+    second: GachaScreen_2_55
+  - first:
+      213: 4117296537236903403
+    second: GachaScreen_2_56
+  - first:
+      213: -7153826108359696395
+    second: GachaScreen_2_57
+  - first:
+      213: -6823389502533846718
+    second: GachaScreen_2_58
+  - first:
+      213: -750353592156881624
+    second: GachaScreen_2_59
+  - first:
+      213: 8148098226823401464
+    second: GachaScreen_2_60
+  - first:
+      213: -245791980448201043
+    second: GachaScreen_2_61
+  - first:
+      213: 332018804101011905
+    second: GachaScreen_2_62
+  - first:
+      213: 4603167766470514786
+    second: GachaScreen_2_63
+  - first:
+      213: 5509842297360935836
+    second: GachaScreen_2_64
+  - first:
+      213: -1532732245011845911
+    second: GachaScreen_2_65
+  - first:
+      213: 2948347373892158613
+    second: GachaScreen_2_66
+  - first:
+      213: 3739477654461866854
+    second: GachaScreen_2_67
+  - first:
+      213: -25859720757688484
+    second: GachaScreen_2_68
+  - first:
+      213: 357729970434689479
+    second: GachaScreen_2_69
+  - first:
+      213: 6536069164743222293
+    second: GachaScreen_2_70
+  - first:
+      213: 5485766705405461747
+    second: GachaScreen_2_71
+  - first:
+      213: -7595461303774981450
+    second: GachaScreen_2_72
+  - first:
+      213: -813751064016330726
+    second: GachaScreen_2_73
+  - first:
+      213: -4927669112243918961
+    second: GachaScreen_2_74
+  - first:
+      213: 3936857042728256124
+    second: GachaScreen_2_75
+  - first:
+      213: -3465056386423116210
+    second: GachaScreen_2_76
+  - first:
+      213: -8429580423016665456
+    second: GachaScreen_2_77
+  - first:
+      213: 4362271513323230911
+    second: GachaScreen_2_78
+  - first:
+      213: 5383167813672502806
+    second: GachaScreen_2_79
+  - first:
+      213: -2871253137728816007
+    second: GachaScreen_2_80
+  - first:
+      213: -8146086370516528035
+    second: GachaScreen_2_81
+  - first:
+      213: 5160844157928772777
+    second: GachaScreen_2_82
+  - first:
+      213: -8716589664619303878
+    second: GachaScreen_2_83
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GachaScreen_2_0
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 1895
+        width: 301
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fbe77f7ddbc20e90800000000000000
+      internalID: -7060857113576739855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_1
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 1770
+        width: 91
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41f9578a6fed54a40800000000000000
+      internalID: 5351928883169304340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_2
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 1754
+        width: 57
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a28ab4d266c161220800000000000000
+      internalID: 2456181871949359146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_3
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 2008
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f6f06840828a9bf0800000000000000
+      internalID: -316797336294459662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1498
+        width: 305
+        height: 477
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c75c3f6ddbfa4fe30800000000000000
+      internalID: 4536443954558911868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_5
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 1724
+        width: 242
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 738ad79b5605e51c0800000000000000
+      internalID: -4513081378744719305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_6
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 1852
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da3d95f22bfb4c690800000000000000
+      internalID: -7582725100565572691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_7
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1730
+        width: 155
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d02dc3820c61ef950800000000000000
+      internalID: 6484645528024699405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_8
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1804
+        width: 86
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9320d95ccaade1db0800000000000000
+      internalID: -4819174115655220679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_9
+      rect:
+        serializedVersion: 2
+        x: 1570
+        y: 1811
+        width: 17
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60e11d7f1debcd290800000000000000
+      internalID: -7864201040280609274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_10
+      rect:
+        serializedVersion: 2
+        x: 1594
+        y: 1775
+        width: 15
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e2b5d3697e917c60800000000000000
+      internalID: 7814201072667701989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_11
+      rect:
+        serializedVersion: 2
+        x: 1645
+        y: 1750
+        width: 111
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1a5bd697836a1f60800000000000000
+      internalID: 8005820721607170587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_12
+      rect:
+        serializedVersion: 2
+        x: 1674
+        y: 1859
+        width: 58
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 057d5a5b8c95c0530800000000000000
+      internalID: 3822528902306584400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_13
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 1723
+        width: 158
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9bed49c7707c6210800000000000000
+      internalID: 1327559649948199836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_14
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 1891
+        width: 53
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 625e2628ded70f120800000000000000
+      internalID: 2445593056710419750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_15
+      rect:
+        serializedVersion: 2
+        x: 1803
+        y: 1842
+        width: 85
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b4a5dafc4d9f3820800000000000000
+      internalID: 2900209639001269426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_16
+      rect:
+        serializedVersion: 2
+        x: 1827
+        y: 1847
+        width: 73
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b68d0835b473d9ab0800000000000000
+      internalID: -4999779214648354709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_17
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1696
+        width: 239
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e684eaa6078e17830800000000000000
+      internalID: 4067287508016056430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_18
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 1723
+        width: 191
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2818b029570ed52e0800000000000000
+      internalID: -2135303852737724030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_19
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 1783
+        width: 88
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0f8415f44b1465a0800000000000000
+      internalID: -6529063576796885235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_20
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 1711
+        width: 119
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42160b9974e2288e0800000000000000
+      internalID: -1692739624881856220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_21
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 1763
+        width: 24
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f6fe3c3f391051e0800000000000000
+      internalID: -2211239657654520075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_22
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 1727
+        width: 83
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd2614a6844ef6ef0800000000000000
+      internalID: -112620465989524772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_23
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1701
+        width: 216
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f874cd32fc7b659d0800000000000000
+      internalID: -2785837219194321009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_24
+      rect:
+        serializedVersion: 2
+        x: 1835
+        y: 1733
+        width: 172
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 859966a8a02c70e50800000000000000
+      internalID: 6775597514929641816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_25
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 1706
+        width: 160
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5828b3f524e459170800000000000000
+      internalID: 8184533944788288133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_26
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 1754
+        width: 36
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99fbf3d549e6cd330800000000000000
+      internalID: 3736983374309343129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_27
+      rect:
+        serializedVersion: 2
+        x: 1810
+        y: 1701
+        width: 153
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f5d77dd8098a9e10800000000000000
+      internalID: 2205225638719641075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_28
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 1585
+        width: 111
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9024590668517ee0800000000000000
+      internalID: -1265132825047981922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_29
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 1683
+        width: 95
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04bd352992b645c70800000000000000
+      internalID: 8958903385039559488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_30
+      rect:
+        serializedVersion: 2
+        x: 1718
+        y: 1679
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e90e36c8f5c65c710800000000000000
+      internalID: 1712894390917390494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_31
+      rect:
+        serializedVersion: 2
+        x: 1913
+        y: 1673
+        width: 63
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efd8b5d4676439970800000000000000
+      internalID: 8760423174083677694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_32
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 1644
+        width: 93
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98912eb0f01f1a740800000000000000
+      internalID: 5161671694869469577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_33
+      rect:
+        serializedVersion: 2
+        x: 1749
+        y: 1630
+        width: 207
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b38f6bb0c1273af50800000000000000
+      internalID: 6891477319588182075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_34
+      rect:
+        serializedVersion: 2
+        x: 1234
+        y: 1611
+        width: 238
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4677b8cd8166b220800000000000000
+      internalID: 2501293904636638794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_35
+      rect:
+        serializedVersion: 2
+        x: 1744
+        y: 1616
+        width: 176
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70561b41a0d55b330800000000000000
+      internalID: 3725986564597179655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_36
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 1600
+        width: 82
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a31602f9e9a56b520800000000000000
+      internalID: 2717459062485705018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_37
+      rect:
+        serializedVersion: 2
+        x: 1718
+        y: 1570
+        width: 294
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ff9a4fa10b7534a0800000000000000
+      internalID: -6614245230557618190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_38
+      rect:
+        serializedVersion: 2
+        x: 1768
+        y: 1602
+        width: 95
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f939ba7e93ab3fd0800000000000000
+      internalID: -2361113678566573580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_39
+      rect:
+        serializedVersion: 2
+        x: 1925
+        y: 1600
+        width: 65
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9caafb93b1bf982f0800000000000000
+      internalID: -969968150370080055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_40
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 1578
+        width: 48
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f58274b00482324f0800000000000000
+      internalID: -854795248738031521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_41
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 1566
+        width: 107
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51573cfe84c0de7c0800000000000000
+      internalID: -4040559783281724139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_42
+      rect:
+        serializedVersion: 2
+        x: 1384
+        y: 1572
+        width: 80
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb980796cded670c0800000000000000
+      internalID: -4578226932932376132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_43
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 1543
+        width: 119
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6234221356cd661b0800000000000000
+      internalID: -5663597154197683418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_44
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 1416
+        width: 286
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbfab9ed3956eba10800000000000000
+      internalID: 1927089376330493885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_45
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1559
+        width: 31
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2128eb973bd675e80800000000000000
+      internalID: -8189956779740855790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_46
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1503
+        width: 216
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58731de9380c8cec0800000000000000
+      internalID: -3546373035016505467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_47
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 1531
+        width: 141
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f2a0f112ea9de80800000000000000
+      internalID: -8153294193099657421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_48
+      rect:
+        serializedVersion: 2
+        x: 1913
+        y: 1553
+        width: 46
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d06b69a17508cb70800000000000000
+      internalID: 8919385047739097303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_49
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 1268
+        width: 276
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 510c8ac0119c95690800000000000000
+      internalID: -7612832620029100011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_50
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 1343
+        width: 191
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cd50f17a834b17b0800000000000000
+      internalID: -5252530278501425720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_51
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 1397
+        width: 198
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ef896dc8b21bc890800000000000000
+      internalID: -7436829774742712345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_52
+      rect:
+        serializedVersion: 2
+        x: 1309
+        y: 1304
+        width: 207
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 181b33b9550687d50800000000000000
+      internalID: 6735239163524919681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_53
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 1292
+        width: 117
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a04f199367950bf20800000000000000
+      internalID: 3436344879990567946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_54
+      rect:
+        serializedVersion: 2
+        x: 1591
+        y: 1489
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bff4d9fe7dc430ab0800000000000000
+      internalID: -5043102667403079685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_55
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 1499
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b1f1238b732dd1c0800000000000000
+      internalID: -4477383441148415561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_56
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 1304
+        width: 231
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be593f0e263932930800000000000000
+      internalID: 4117296537236903403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_57
+      rect:
+        serializedVersion: 2
+        x: 1757
+        y: 1459
+        width: 208
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ff1e4a9e0188bc90800000000000000
+      internalID: -7153826108359696395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_58
+      rect:
+        serializedVersion: 2
+        x: 1757
+        y: 1449
+        width: 173
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 249375936637e41a0800000000000000
+      internalID: -6823389502533846718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_59
+      rect:
+        serializedVersion: 2
+        x: 1966
+        y: 1495
+        width: 46
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82dfc8b22653695f0800000000000000
+      internalID: -750353592156881624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_60
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1211
+        width: 269
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff8cc4ba2cd31170800000000000000
+      internalID: 8148098226823401464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_61
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 1470
+        width: 43
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da6cebcfe75c69cf0800000000000000
+      internalID: -245791980448201043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_62
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 1314
+        width: 180
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c9d03dd7519b9400800000000000000
+      internalID: 332018804101011905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_63
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 1331
+        width: 24
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 268d00ae1bcb1ef30800000000000000
+      internalID: 4603167766470514786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_64
+      rect:
+        serializedVersion: 2
+        x: 1649
+        y: 1278
+        width: 95
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9bee968064e67c40800000000000000
+      internalID: 5509842297360935836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_65
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 1277
+        width: 156
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ec2848d424aabae0800000000000000
+      internalID: -1532732245011845911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_66
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 1234
+        width: 90
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5944c47c052aae820800000000000000
+      internalID: 2948347373892158613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_67
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 1222
+        width: 94
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 663e5b73d1b45e330800000000000000
+      internalID: 3739477654461866854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_68
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 1263
+        width: 42
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c574f3298b024aff0800000000000000
+      internalID: -25859720757688484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_69
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 1222
+        width: 52
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c945454389e6f400800000000000000
+      internalID: 357729970434689479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_70
+      rect:
+        serializedVersion: 2
+        x: 1725
+        y: 1239
+        width: 78
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51467e79648c4ba50800000000000000
+      internalID: 6536069164743222293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_71
+      rect:
+        serializedVersion: 2
+        x: 1798
+        y: 1362
+        width: 119
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f48b54f0cb512c40800000000000000
+      internalID: 5485766705405461747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_72
+      rect:
+        serializedVersion: 2
+        x: 1477
+        y: 1260
+        width: 21
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b2544bcf20879690800000000000000
+      internalID: -7595461303774981450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_73
+      rect:
+        serializedVersion: 2
+        x: 1604
+        y: 1200
+        width: 14
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a10e5bdf7b9f4b4f0800000000000000
+      internalID: -813751064016330726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_74
+      rect:
+        serializedVersion: 2
+        x: 1612
+        y: 1282
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f876902ec076d9bb0800000000000000
+      internalID: -4927669112243918961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_75
+      rect:
+        serializedVersion: 2
+        x: 1715
+        y: 1263
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c72005b3f9682a630800000000000000
+      internalID: 3936857042728256124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_76
+      rect:
+        serializedVersion: 2
+        x: 1618
+        y: 1256
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4e2d804395a9efc0800000000000000
+      internalID: -3465056386423116210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_77
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 838
+        width: 285
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09e2180644d140b80800000000000000
+      internalID: -8429580423016665456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_78
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 907
+        width: 280
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb6df6d34d6e98c30800000000000000
+      internalID: 4362271513323230911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_79
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 311
+        width: 888
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6160444fa9ad4ba40800000000000000
+      internalID: 5383167813672502806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_80
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 641
+        width: 116
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97cb279db724728d0800000000000000
+      internalID: -2871253137728816007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_81
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 354
+        width: 317
+        height: 533
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5416b71b9943fe80800000000000000
+      internalID: -8146086370516528035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_82
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 319
+        width: 252
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a49e761b600f9740800000000000000
+      internalID: 5160844157928772777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaScreen_2_83
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 311
+        width: 313
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3c668be1e3780780800000000000000
+      internalID: -8716589664619303878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      GachaScreen_2_0: -7060857113576739855
+      GachaScreen_2_1: 5351928883169304340
+      GachaScreen_2_10: 7814201072667701989
+      GachaScreen_2_11: 8005820721607170587
+      GachaScreen_2_12: 3822528902306584400
+      GachaScreen_2_13: 1327559649948199836
+      GachaScreen_2_14: 2445593056710419750
+      GachaScreen_2_15: 2900209639001269426
+      GachaScreen_2_16: -4999779214648354709
+      GachaScreen_2_17: 4067287508016056430
+      GachaScreen_2_18: -2135303852737724030
+      GachaScreen_2_19: -6529063576796885235
+      GachaScreen_2_2: 2456181871949359146
+      GachaScreen_2_20: -1692739624881856220
+      GachaScreen_2_21: -2211239657654520075
+      GachaScreen_2_22: -112620465989524772
+      GachaScreen_2_23: -2785837219194321009
+      GachaScreen_2_24: 6775597514929641816
+      GachaScreen_2_25: 8184533944788288133
+      GachaScreen_2_26: 3736983374309343129
+      GachaScreen_2_27: 2205225638719641075
+      GachaScreen_2_28: -1265132825047981922
+      GachaScreen_2_29: 8958903385039559488
+      GachaScreen_2_3: -316797336294459662
+      GachaScreen_2_30: 1712894390917390494
+      GachaScreen_2_31: 8760423174083677694
+      GachaScreen_2_32: 5161671694869469577
+      GachaScreen_2_33: 6891477319588182075
+      GachaScreen_2_34: 2501293904636638794
+      GachaScreen_2_35: 3725986564597179655
+      GachaScreen_2_36: 2717459062485705018
+      GachaScreen_2_37: -6614245230557618190
+      GachaScreen_2_38: -2361113678566573580
+      GachaScreen_2_39: -969968150370080055
+      GachaScreen_2_4: 4536443954558911868
+      GachaScreen_2_40: -854795248738031521
+      GachaScreen_2_41: -4040559783281724139
+      GachaScreen_2_42: -4578226932932376132
+      GachaScreen_2_43: -5663597154197683418
+      GachaScreen_2_44: 1927089376330493885
+      GachaScreen_2_45: -8189956779740855790
+      GachaScreen_2_46: -3546373035016505467
+      GachaScreen_2_47: -8153294193099657421
+      GachaScreen_2_48: 8919385047739097303
+      GachaScreen_2_49: -7612832620029100011
+      GachaScreen_2_5: -4513081378744719305
+      GachaScreen_2_50: -5252530278501425720
+      GachaScreen_2_51: -7436829774742712345
+      GachaScreen_2_52: 6735239163524919681
+      GachaScreen_2_53: 3436344879990567946
+      GachaScreen_2_54: -5043102667403079685
+      GachaScreen_2_55: -4477383441148415561
+      GachaScreen_2_56: 4117296537236903403
+      GachaScreen_2_57: -7153826108359696395
+      GachaScreen_2_58: -6823389502533846718
+      GachaScreen_2_59: -750353592156881624
+      GachaScreen_2_6: -7582725100565572691
+      GachaScreen_2_60: 8148098226823401464
+      GachaScreen_2_61: -245791980448201043
+      GachaScreen_2_62: 332018804101011905
+      GachaScreen_2_63: 4603167766470514786
+      GachaScreen_2_64: 5509842297360935836
+      GachaScreen_2_65: -1532732245011845911
+      GachaScreen_2_66: 2948347373892158613
+      GachaScreen_2_67: 3739477654461866854
+      GachaScreen_2_68: -25859720757688484
+      GachaScreen_2_69: 357729970434689479
+      GachaScreen_2_7: 6484645528024699405
+      GachaScreen_2_70: 6536069164743222293
+      GachaScreen_2_71: 5485766705405461747
+      GachaScreen_2_72: -7595461303774981450
+      GachaScreen_2_73: -813751064016330726
+      GachaScreen_2_74: -4927669112243918961
+      GachaScreen_2_75: 3936857042728256124
+      GachaScreen_2_76: -3465056386423116210
+      GachaScreen_2_77: -8429580423016665456
+      GachaScreen_2_78: 4362271513323230911
+      GachaScreen_2_79: 5383167813672502806
+      GachaScreen_2_8: -4819174115655220679
+      GachaScreen_2_80: -2871253137728816007
+      GachaScreen_2_81: -8146086370516528035
+      GachaScreen_2_82: 5160844157928772777
+      GachaScreen_2_83: -8716589664619303878
+      GachaScreen_2_9: -7864201040280609274
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

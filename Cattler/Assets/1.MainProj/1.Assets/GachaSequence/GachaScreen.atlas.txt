@@ -1,0 +1,84 @@
+GachaScreen.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+Arrow
+bounds:1885,1879,40,43
+BG
+bounds:2,1022,1600,900
+offsets:1,1,1602,902
+Layer 5 Copy
+bounds:2,24,94,639
+offsets:1,1,96,642
+rotate:90
+Layer 8 Copy
+bounds:2,2,529,20
+offsets:1,1,531,22
+TapWord
+bounds:643,73,116,45
+WhitePanel
+bounds:2,120,1600,900
+offsets:1,1,1602,902
+eraser
+bounds:1604,442,198,221
+pen
+bounds:1604,1432,279,490
+pencil
+bounds:1604,1035,395,296
+rotate:90
+purrgatory stamp
+bounds:1604,665,368,356
+rotate:90
+
+GachaScreen_2.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+Cloud
+bounds:2,839,1154,898
+Cloud copy
+bounds:2,35,1110,802
+HaloRing
+bounds:1158,850,888,887
+line ray
+bounds:1158,2,846,854
+rotate:90
+
+GachaScreen_3.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+CatCard
+bounds:2,2,797,1083
+Folder 6 Copy 5
+bounds:801,292,767,793
+Radial
+bounds:2,1087,1001,902
+backdrop
+bounds:1005,1190,805,799
+offsets:3,2,810,804
+
+GachaScreen_4.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+BackPage
+bounds:2,2,533,656
+rotate:90
+Layer 22 Copy
+bounds:2,1253,670,718
+offsets:1,2,673,722
+Layer 23 Copy
+bounds:2,537,666,714
+offsets:1,1,668,717
+Layer 3 Copy
+bounds:1205,635,530,651
+offsets:1,2,532,655
+Layer 4 Copy
+bounds:1260,1292,545,679
+offsets:1,1,547,681
+Layer 9 Copy
+bounds:674,1288,584,683
+offsets:1,1,586,685
+Page
+bounds:670,595,533,656
