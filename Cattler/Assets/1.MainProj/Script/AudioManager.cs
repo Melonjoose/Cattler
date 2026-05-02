@@ -113,6 +113,21 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlaySFX(AudioClip AudioClip)
+    {
+        if (sfxPrefab == null)
+        {
+            Debug.LogWarning("SFX AudioSource is disabled");
+            return; //safety check 
+        }
+
+        if (AudioClip != null)
+        {
+            AudioSource source = GetAvailableSource();
+            source.PlayOneShot(AudioClip);
+        }
+
+    }
     // Get an available pooled AudioSource for SFX
     private AudioSource GetAvailableSource()
     {

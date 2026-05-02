@@ -574,6 +574,8 @@ MonoBehaviour:
     dropChance: 1
   - item: {fileID: 314303823658104329, guid: 5528b2561089c434790adc5af5a72666, type: 3}
     dropChance: 1
+  - item: {fileID: 2882512175453751292, guid: 945606ed2bbca5b4886a4e995f670d30, type: 3}
+    dropChance: 1
   - item: {fileID: 6168461328000588854, guid: f3df674cdbf5e34468410962c74147a7, type: 3}
     dropChance: 1
   - item: {fileID: 1423213206439657523, guid: f39cb03d108c4da4db44c658fadab9ba, type: 3}

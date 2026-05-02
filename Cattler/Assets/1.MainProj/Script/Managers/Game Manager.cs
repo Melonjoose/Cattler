@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-
         //default state at lobby.
         
     }
@@ -47,6 +46,27 @@ public class GameManager : MonoBehaviour
         CheckForGameOver();
     }
 
+    private bool isTransitioning = false;
+
+    public void PageButtonClicked(string pageName)
+    {
+        if (isTransitioning) return;
+        //Audio
+        AudioManager.instance.PlaySFX("Button1");
+        StartCoroutine(PageTransitionSequence(pageName));
+    }
+
+    private IEnumerator PageTransitionSequence(string pageName)
+    {
+        isTransitioning = true;
+
+        Transition.instance.FadeOut();
+        yield return new WaitForSeconds(0.2f);
+
+        OpenPage(pageName);
+
+        isTransitioning = false;
+    }
 
     public void OpenPage(string pageName)
     {
@@ -76,8 +96,7 @@ public class GameManager : MonoBehaviour
         {
             CatRoamLobby.instance.DisableAllLobbyCat();
         }
-            //Audio
-            AudioManager.instance.PlaySFX("Button1");
+
 
     }
 
@@ -125,7 +144,7 @@ public class GameManager : MonoBehaviour
 
     public Page lobbyPage; // assign in inspector
 
-    public void LobbyState()
+    public void LobbyState() //open lobby page
     {
         // Reset gameplay
         enemySpawner.ClearAllSpawnedEnemies();
@@ -208,17 +227,18 @@ public class GameManager : MonoBehaviour
         
         CatRoamLobby.instance.AllCatsMoveToBattleDoor();
         AudioManager.instance.PlaySFX("BattleStart");
-        yield return new WaitForSeconds(1f);
-        
-        Transition.instance.FadeOut();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
+
+        Transition.instance.FadeOut(); //auto fade om
+        yield return new WaitForSeconds(0.2f);
+        CloseAllPages();
+
         AudioManager.instance.PlayTheme("Battle");
 
         TeamManager.instance.EnableAllCats();
         CatRoamLobby.instance.DisableAllLobbyCat();
 
         CloseAllPages();
-        Transition.instance.FadeIn();
         // Wait for 2 seconds before enabling travel
         yield return new WaitForSeconds(0.2f);
 
@@ -238,6 +258,7 @@ public class GameManager : MonoBehaviour
             SpawnerManager.instance.StartLevelOne();
         }
         inBattle = true;
+        ResumeGameplay();
     }
 
     public void RetreatButton()         //When button is clicked.
@@ -267,14 +288,16 @@ public class GameManager : MonoBehaviour
     IEnumerator RetreatSequence()
     {
         TeamManager.instance.MakeAllCatImmortal();
+        ResumeGameplay();
         //remove all couroutine
-        Transition.instance.FadeOut();
         AudioManager.instance.PlaySFX("Retreat");
         yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlaySFX("Retreat2");
-        yield return new WaitForSeconds(1.5f);
-        ResumeGameplay();
+
         // Open lobby page
+        Transition.instance.FadeOut(); //auto fade om
+        yield return new WaitForSeconds(0.2f);
+        CloseAllPages();
         lobbyPage.pageObject.transform.position = lobbyPage.openPos.position;
         currentPage = lobbyPage;
 
@@ -286,7 +309,8 @@ public class GameManager : MonoBehaviour
 
         LobbyState();
 
-        Transition.instance.FadeIn();
+        //kill all enemies
+        KillAllEnemies();
         // Wait for 2 seconds before enabling travel
         yield return new WaitForSeconds(0.2f);
 
@@ -451,6 +475,12 @@ public class GameManager : MonoBehaviour
         //prompt a dialogue.
     }
 
+
+    public void KillAllEnemies()
+    {
+        SpawnerManager.instance.enemySpawner.ClearAllSpawnedEnemies();
+        SpawnerManager.instance.specialEnemySpawner.ClearAllSpawnedEnemies();
+    }
     /// ------------------------------- < Gameplay> ------------------------------------///
     //phases of the game during travel.
     //1. Level 1. 0 - 5km

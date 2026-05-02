@@ -307,6 +307,7 @@ MonoBehaviour:
   col: {fileID: 0}
   rb: {fileID: 0}
   catUnit: {fileID: 0}
+  skillSound: {fileID: 8300000, guid: cf82550223e30224d9d5b9e6414434fe, type: 3}
   leftsprite: {fileID: 0}
   rightsprite: {fileID: 0}
   leftCollider: {fileID: 0}

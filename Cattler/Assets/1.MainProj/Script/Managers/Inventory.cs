@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -368,6 +369,7 @@ public class Inventory : MonoBehaviour
 
     public void PlaceItem(InventoryIcon item, SnappableLocation slot)
     {
+        StartCoroutine(CoolDownAfterDragging());
         if (!slot.allowedTypes.Contains(item.itemType)) 
         {   
             return; 
@@ -394,6 +396,9 @@ public class Inventory : MonoBehaviour
             item.transform.position = startWorldPos; // Restore world position after reparenting
         }
 
+        item.canvasGroup.blocksRaycasts = false; //disable
+
+
         // Animate movement and scale
         LeanTween.move(item.gameObject, endWorldPos, tweenDuration).setEase(LeanTweenType.easeInOutQuad);
         LeanTween.scale(item.gameObject, targetScale, tweenDuration).setEase(LeanTweenType.easeInOutQuad);
@@ -407,6 +412,7 @@ public class Inventory : MonoBehaviour
 
             item.currentSlot = slot;
             Add(item.gameObject, slot);
+
         });
     }
 
@@ -464,5 +470,50 @@ public class Inventory : MonoBehaviour
         Destroy(item);
     }
 
-    ///             MOVEMENT            ///
+    
+    IEnumerator CoolDownAfterDragging()
+    {
+        DisableAllItemRaycast();
+        yield return new WaitForSeconds(0.2f);
+        EnableAllItemRaycast();
+    }
+
+    public void DisableAllItemRaycast()
+    {
+        Debug.Log("disable raycast of objects");
+        foreach(GameObject item in inventoryList)
+        {
+            InventoryIcon itemIcon = item.GetComponent<InventoryIcon>();
+            itemIcon.canvasGroup.blocksRaycasts = false;
+        }
+        foreach(GameObject item in teamList)
+        {
+            InventoryIcon itemIcon = item.GetComponent<InventoryIcon>();
+            itemIcon.canvasGroup.blocksRaycasts = false;
+        }
+        foreach (GameObject item in previewList)
+        {
+            InventoryIcon itemIcon = item.GetComponent<InventoryIcon>();
+            itemIcon.canvasGroup.blocksRaycasts = false;
+        }
+    }
+    public void EnableAllItemRaycast()
+    {
+        Debug.Log("enable raycast of objects");
+        foreach (GameObject item in inventoryList)
+        {
+            InventoryIcon itemIcon = item.GetComponent<InventoryIcon>();
+            itemIcon.canvasGroup.blocksRaycasts = true;
+        }
+        foreach (GameObject item in teamList)
+        {
+            InventoryIcon itemIcon = item.GetComponent<InventoryIcon>();
+            itemIcon.canvasGroup.blocksRaycasts = true;
+        }
+        foreach (GameObject item in previewList)
+        {
+            InventoryIcon itemIcon = item.GetComponent<InventoryIcon>();
+            itemIcon.canvasGroup.blocksRaycasts = true;
+        }
+    }
 }

@@ -74,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityPrefab: {fileID: 8486287779114324618}
   damage: 999
-  spawnLocationOffset: {x: 1, y: 0, z: 0}
+  spawnLocationOffset: {x: 1, y: 3, z: 0}
   cooldown: 60
   range: 0
   movespeed: 3
@@ -84,6 +84,7 @@ MonoBehaviour:
   col: {fileID: 0}
   rb: {fileID: 0}
   catUnit: {fileID: 0}
+  skillSound: {fileID: 8300000, guid: b27d3291bf28c72428f844d3175fcba5, type: 3}
   fireLinePrefab: {fileID: 3397912113094102649, guid: 34c5a3fcd1f3efa47b620d697c135fac, type: 3}
   knockback: 99
   fireCount: 7

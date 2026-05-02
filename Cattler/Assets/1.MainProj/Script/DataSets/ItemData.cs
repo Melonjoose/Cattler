@@ -13,5 +13,5 @@ public class ItemData : ScriptableObject
 
 }
 
-public enum ItemType { Cat, Weapon, Hat , Consumable, PowerUp, Food, Drink, Coconut}
+public enum ItemType { Cat, Weapon, Hat , Consumable, PowerUp, Food, Drink, Coconut, HealingPotion}
 

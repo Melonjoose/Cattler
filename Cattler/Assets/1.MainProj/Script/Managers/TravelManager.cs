@@ -20,6 +20,7 @@ public class MapLevel
     public Sprite finalBackgroundSprite;
     public string milestoneText;
     public string popupMessage;
+    public string musicName;
 
     public bool transitionTriggered = false;
     public bool textTriggered = false;
@@ -122,6 +123,7 @@ public class TravelManager : MonoBehaviour
                 if (!level.textTriggered && distanceTraveledUIvalue > level.milestoneDistance + 3f)
                 {
                     TextPopUp(level.popupMessage);
+                    PlayTheme(level.musicName);
                     UpdateMilestoneText(level.milestoneText);
                     level.textTriggered = true;
                 }
@@ -202,6 +204,14 @@ public class TravelManager : MonoBehaviour
         text.text = textmessage;
         animator.SetTrigger("Play");
         //text animation sequence
+    }
+
+    private void PlayTheme(string musicName)
+    {
+        if(musicName != null)
+        {
+            AudioManager.instance.TransitionTheme(musicName);
+        }
     }
 
     public void ResetToStart()

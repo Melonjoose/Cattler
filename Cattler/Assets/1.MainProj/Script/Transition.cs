@@ -8,6 +8,8 @@ public class Transition : MonoBehaviour
     void Start()
     {
         instance = this;
+        FadeInSlow();
+
     }
 
     // Update is called once per frame
@@ -34,4 +36,5 @@ public class Transition : MonoBehaviour
     {
         transitionAnimator.SetTrigger("FadeOutSlow");
     }
+
 }

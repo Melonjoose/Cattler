@@ -129,6 +129,7 @@ public class CatIconUI : MonoBehaviour
         thisIcon.catUnit = cat; //make icon reference the catUnit.
         cat.icon = thisIcon; // make the catUnit reference the icon
 
+        thisIcon.skillCooldownVisual.IntializeCDVisual();
 
         if (cat.weaponL != null || cat.weaponR != null || cat.hat != null)
         {

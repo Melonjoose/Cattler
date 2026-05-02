@@ -16,7 +16,7 @@ MonoBehaviour:
   prefab2: {fileID: 0}
   itemName: Healing Potion
   icon: {fileID: 21300000, guid: d6615aaf2c76afd47880c4b432b9263e, type: 3}
-  itemType: 6
+  itemType: 8
   description: Heal Cats
   value: 1
   fvalue: 0

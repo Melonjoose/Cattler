@@ -28,6 +28,7 @@ public class Introduction : MonoBehaviour
 
     void PlayButtonClick()
     {
+        Transition.instance.FadeOutSlow();
         AudioManager.instance.PlaySFX("Button1");
     }
 
@@ -47,7 +48,7 @@ public class Introduction : MonoBehaviour
     void ExitIntroduction()
     {
         //open Transition.SlowFade
-        Transition.instance.FadeInSlow();
+
         Tutorial.instance.skipTutorialCanvas.gameObject.SetActive(true);
         AudioManager.instance.TransitionTheme("Lobby");
     }

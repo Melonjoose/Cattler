@@ -96,18 +96,25 @@ public class CommentaryManager : MonoBehaviour
 
     public void AddDialogueToQueue(int dialogueIndex)
     {
-        OpenCanvasGroup();
-        // Add the chosen dialogue line to the queue
         string chosenDialogue = dialogueTextChoices[dialogueIndex];
+
+        // Prevent duplicates: if already queued or currently showing, skip
+        if (dialogueQueue.Contains(chosenDialogue) || text.text == chosenDialogue)
+        {
+            return;
+        }
+
+        OpenCanvasGroup();
         dialogueQueue.Add(chosenDialogue);
 
-        // If not currently talking, start immediately
         if (!isTalking)
         {
             BeginTalkFromQueue();
         }
+
         AudioManager.instance.PlaySFX("SoftDeny");
     }
+
 
     public void BeginTalkFromQueue()
     {

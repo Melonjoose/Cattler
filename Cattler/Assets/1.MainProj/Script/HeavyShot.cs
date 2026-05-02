@@ -43,6 +43,7 @@ public class HeavyShot : ActiveAbility
             int damage = Mathf.CeilToInt(catUnit.runtimeData.attackPower * damageMultiplier);
             enemy.TakeDamage(catUnit, damage, 1f);
             DamageNumberManager.Instance.ShowDamage(damage, enemy.transform.position);
+            StatFXManager.instance.PlayVFX(enemy.transform.position, 7);
 
             Destroy(gameObject); // ensures it doesn’t hit more than one enemy
         }

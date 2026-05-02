@@ -86,6 +86,7 @@ MonoBehaviour:
   col: {fileID: 0}
   rb: {fileID: 0}
   catUnit: {fileID: 0}
+  skillSound: {fileID: 8300000, guid: a491c82af4bbcca48b3c6d2031b64a0a, type: 3}
   bombsprite: {fileID: 0}
   carpetsprite: {fileID: 0}
   bombCollider: {fileID: 0}
@@ -167,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 30
-  m_Sprite: {fileID: 2434374238850540079, guid: a2094c1405b415d4a841fb8b4ceb7f23, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a0ae5515fcc81184ebcb16bf836ed2eb, type: 3}
   m_Color: {r: 1, g: 0.99530035, b: 0.495283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -212,8 +213,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.04}
-  m_Size: {x: 0.23, y: 0.28}
+  m_Offset: {x: -0.0072450163, y: -0.04}
+  m_Size: {x: 0.3065896, y: 0.3065896}
   m_Direction: 0
 --- !u!1 &8439005743972253006
 GameObject:
@@ -242,7 +243,7 @@ Transform:
   m_GameObject: {fileID: 8439005743972253006}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: -0.04, y: 10.64, z: 0}
   m_LocalScale: {x: 10, y: 5, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -292,7 +293,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 29
-  m_Sprite: {fileID: -1981279551897839680, guid: a2094c1405b415d4a841fb8b4ceb7f23, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 312081b42bd2ee443b12161085ee167d, type: 3}
   m_Color: {r: 1, g: 0.99530035, b: 0.495283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -337,6 +338,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.32, y: 0.11}
+  m_Offset: {x: 0.0041401307, y: -0.14075933}
+  m_Size: {x: 0.43178135, y: 0.1514004}
   m_Direction: 1

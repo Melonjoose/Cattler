@@ -12,6 +12,9 @@ public class Icon : MonoBehaviour
 {
     public bool isRevealed = false;
     public CatUnit catUnit; //this icon is linked to this cat.
+    public CatSkill skill; // cat ability
+    public CatSkillCooldownVisual skillCooldownVisual;
+
     public Skill_Button skillButton1, skillButton2;
     //public GameObject cooldown1, cooldown2;
     public float cooldownDuration1, cooldownDuration2; //cooldown durations for skills
@@ -24,7 +27,7 @@ public class Icon : MonoBehaviour
         thisIcon = this;
         skillButton1 = transform.Find("SkillButton1").GetComponent<Skill_Button>();
         skillButton2 = transform.Find("SkillButton2").GetComponent<Skill_Button>();
-
+        skillCooldownVisual = GetComponentInChildren<CatSkillCooldownVisual>();
         thisIcon.HideButton();
     }
 

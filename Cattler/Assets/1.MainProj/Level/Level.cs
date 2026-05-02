@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Level", menuName = "Levels/Level")]
 public class Level : ScriptableObject
 {
-    public int level; //the game stage
+    public float level; //the game stage
 
     ///Normal Enemies///
     //Type of Enemies

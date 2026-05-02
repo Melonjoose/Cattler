@@ -27,4 +27,4 @@ MonoBehaviour:
   ATKIncrease: 0
   ATKSPDIncrease: 0
   MVSPDIncrease: 0
-  lootPercentage: 0
+  lootPercentage: 20

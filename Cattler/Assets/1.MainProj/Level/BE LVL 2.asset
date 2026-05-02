@@ -15,14 +15,15 @@ MonoBehaviour:
   level: 2
   spawnableList:
   - {fileID: 11400000, guid: f498614201f45c44fa142f3772532706, type: 2}
-  minSpawnInterval: 3
-  maxSpawnInterval: 5
+  minSpawnInterval: 2
+  maxSpawnInterval: 4
   minEnemiesPerInterval: 1
   maxEnemiesPerInterval: 2
   maxEnemies: 5
   minSize: 1.2
   maxSize: 1.4
-  enemyHealthPercentage: 5
-  enemyAttackPercentage: 5
-  enemySpeedPercentage: 5
+  HPIncrease: 0
+  ATKIncrease: 0
+  ATKSPDIncrease: 0
+  MVSPDIncrease: 0
   lootPercentage: 5

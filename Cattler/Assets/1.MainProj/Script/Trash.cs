@@ -15,6 +15,7 @@ public class Trash : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
     [SerializeField] private Sprite closedSprite;
     [SerializeField] private Sprite openSprite;
 
+
     void Awake()
     {
         instance = this;
@@ -60,12 +61,7 @@ public class Trash : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
         if (droppedItem != null)
         {
             Debug.Log($"Dropped {droppedItem.name} into trash!");
-
-            // Tell Inventory to remove it properly
-            Inventory.instance.Remove(droppedItem, null);
-
-            // Destroy the GameObject itself
-            Destroy(droppedItem);
+            DeleteObject(droppedItem);
         }
 
         // Reset trash bin sprite
@@ -73,5 +69,15 @@ public class Trash : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
             image.sprite = closedSprite;
 
         AudioManager.instance.PlaySFX("Trash");
+    }
+
+    public void DeleteObject(GameObject deletingObject)
+    {
+
+        // Tell Inventory to remove it properly
+        Inventory.instance.Remove(deletingObject, null);
+
+        // Destroy the GameObject itself
+        Destroy(deletingObject);
     }
 }

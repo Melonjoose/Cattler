@@ -7,6 +7,14 @@ public class Slash : ActiveAbility
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
     }
+    private void OnEnable()
+    {
+        if(skillSound != null)
+        {
+            AudioManager.instance.PlaySFX(skillSound);
+        }
+    }
+
     void Update()
     {
         rb.MovePosition(rb.position + Vector2.right * movespeed * Time.deltaTime);

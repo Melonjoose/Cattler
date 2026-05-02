@@ -44,7 +44,7 @@ public class CatSkill : MonoBehaviour
         {
             catUnit = GetComponentInParent<CatUnit>();
         }   
-        if (catUnit != null) // animation
+        if (catUnit != null) // animation   
         {
             catUnit.skeletonAnimation.AnimationState.SetAnimation(0, "Skill1", false);
             catUnit.skeletonAnimation.AnimationState.AddAnimation(0, "Idle", true , 0f);

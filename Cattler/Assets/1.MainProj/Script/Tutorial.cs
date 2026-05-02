@@ -189,11 +189,11 @@ public class Tutorial : MonoBehaviour
             CanvasGroup canvasGroup = button.GetComponent<CanvasGroup>();
             if (canvasGroup == highlights[0].canvasGRP) // if summon page (catKeeper) is pressed while highlighted, IN LOBBY PAGE > SUMMON PAGE.
             {
-                TriggerTUT1();
+                Invoke("TriggerTUT1", 0.2f);
             }
             if (canvasGroup == highlights[1].canvasGRP) //summon button is pressed while highlighted, STILL IN SUMMON PAGE. When summon pressed, summon animation triggers.
             {
-                TriggerTUT2();
+                Invoke("TriggerTUT2", 0.2f);
             }
 
             //TUT3 at SummonManager.cs
@@ -202,24 +202,24 @@ public class Tutorial : MonoBehaviour
 
             if (canvasGroup == highlights[5].canvasGRP) //close button inside of Summonpage.
             {
-                TriggerTUT5();
+                Invoke("TriggerTUT5", 0.2f);
             }
 
             if (canvasGroup == highlights[2].canvasGRP) //if click on inventory button at lobby.
             {
-                TriggerTUT6();
+                Invoke("TriggerTUT6", 0.2f);
             }
 
             //TUT7 in Inventory.cs when drag and drop is successful. highlight close button to back to lobby page.
 
             if (canvasGroup == highlights[7].canvasGRP) //if button is close button at inventory page.
             {
-                TriggerTUT8();
+                Invoke("TriggerTUT8", 0.2f);
             }
 
             if (canvasGroup == highlights[4].canvasGRP) //if battle door is clicked while highlighted,
             {
-                TriggerTUT9();
+                Invoke("TriggerTUT9", 0.2f);
             }
 
             //TUT10; at update.
@@ -236,7 +236,7 @@ public class Tutorial : MonoBehaviour
 
             if (canvasGroup == highlights[10].canvasGRP) //if confirm button in retreat page is clicked and is highlighted,
             {
-                Invoke("TriggerTUT15", 2f);
+                Invoke("TriggerTUT15", 0.9f);
             }
         }
     }

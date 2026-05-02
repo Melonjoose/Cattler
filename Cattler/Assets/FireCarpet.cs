@@ -33,6 +33,7 @@ public class FireCarpet : ActiveAbility
             Vector3 spawnPos = startPos + new Vector3(i * spacing, 0, 0);
 
             GameObject flame = Instantiate(fireLinePrefab, spawnPos, Quaternion.Euler(0, 0, 35));
+            AudioManager.instance.PlaySFX(skillSound);
             FireLine fireLine = GetComponent<FireLine>();
             if (fireLine != null)
             {

@@ -84,6 +84,7 @@ MonoBehaviour:
   col: {fileID: 0}
   rb: {fileID: 0}
   catUnit: {fileID: 0}
+  skillSound: {fileID: 8300000, guid: 90bfbed46b10bdb438d141bcc250b23c, type: 3}
   fireLinePrefab: {fileID: 3397912113094102649, guid: fee6fd4f716563446a2d396fd56cbeee, type: 3}
   knockback: 5
   fireCount: 8

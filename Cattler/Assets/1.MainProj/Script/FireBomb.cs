@@ -18,6 +18,7 @@ public class FireBomb : ActiveAbility
         carpetCollider = carpetsprite.GetComponent<Collider2D>();
 
         StartCoroutine(SpriteSequence());
+        AudioManager.instance.PlaySFX("BombWhistle");
     }
 
     IEnumerator SpriteSequence() 
@@ -39,7 +40,7 @@ public class FireBomb : ActiveAbility
         //after bomb comes into contact with the ground, bomb sprite disappears and carpet sprite appears. // I will disable the bomb sprite and enable the carpet sprite.
         bombsprite.SetActive(false);
         carpetsprite.SetActive(true);
-
+        AudioManager.instance.PlaySFX(skillSound);
         //carpet sprite will scale horizontally, X-axis scales up. for a certain duration. // I will use a coroutine to scale the carpet sprite over time.
         float duration2 = lifetime; // seconds
         float elapsed2 = 0f;

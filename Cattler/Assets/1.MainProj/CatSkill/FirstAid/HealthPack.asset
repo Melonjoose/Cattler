@@ -16,7 +16,7 @@ MonoBehaviour:
   prefab2: {fileID: 0}
   itemName: HealthPack
   icon: {fileID: 21300000, guid: 8bb965fed5a6cd442ac0d044ffa68b7d, type: 3}
-  itemType: 6
+  itemType: 3
   description: Heal Cats
   value: 1
   fvalue: 0

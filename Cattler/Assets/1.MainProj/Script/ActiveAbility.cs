@@ -17,6 +17,8 @@ public class ActiveAbility : MonoBehaviour
 
     public CatUnit catUnit;
 
+    public AudioClip skillSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

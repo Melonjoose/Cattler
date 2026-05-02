@@ -108,6 +108,7 @@ public class Skill_Button : MonoBehaviour // add handlers
             Cooldown(parentIcon.cooldownDuration2);
         }
 
+        AudioManager.instance.PlaySFX("UseSKill");
     }
 
     void Cooldown(float cooldownTime)

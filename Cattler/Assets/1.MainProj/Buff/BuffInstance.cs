@@ -186,6 +186,7 @@ public class BuffInstance
                 }
 
                 AudioManager.instance.PlaySFX("Heal");
+                StatFXManager.instance.PlayVFX(unit.gameObject.transform.position, 7);
                 catUnit.OnHealthChange(catUnit.runtimeData.currentHealth, catUnit.runtimeData.maxHealth);
             }
         }

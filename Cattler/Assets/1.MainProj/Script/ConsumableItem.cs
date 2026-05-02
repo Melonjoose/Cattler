@@ -31,11 +31,19 @@ public class ConsumableItem : MonoBehaviour
         {
             AudioManager.instance.PlaySFX("Consume");
             AudioManager.instance.PlaySFX("Heal");
+            StatFXManager.instance.PlayVFX(cat.gameObject.transform.position, 7);
         }
         if (consumableData.itemType == ItemType.Food)
         {
             AudioManager.instance.PlaySFX("Eat");
             AudioManager.instance.PlaySFX("Heal");
+            StatFXManager.instance.PlayVFX(cat.gameObject.transform.position, 7);
+        }
+        if (consumableData.itemType == ItemType.HealingPotion)
+        {
+            AudioManager.instance.PlaySFX("Drink");
+            AudioManager.instance.PlaySFX("Heal");
+            StatFXManager.instance.PlayVFX(cat.gameObject.transform.position, 7);
         }
         if (consumableData.itemType == ItemType.Drink)
         {
@@ -45,6 +53,7 @@ public class ConsumableItem : MonoBehaviour
         if (consumableData.itemType == ItemType.PowerUp)
         {
             AudioManager.instance.PlaySFX("PowerUp");
+            StatFXManager.instance.PlayVFX(cat.gameObject.transform.position, 8);
         }
 
         if (consumableData.itemType == ItemType.Coconut)

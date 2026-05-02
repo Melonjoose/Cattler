@@ -144,3 +144,4 @@ MonoBehaviour:
   col: {fileID: 0}
   rb: {fileID: 0}
   catUnit: {fileID: 0}
+  skillSound: {fileID: 8300000, guid: 57fbe1364038f324282096ea52f4aaee, type: 3}

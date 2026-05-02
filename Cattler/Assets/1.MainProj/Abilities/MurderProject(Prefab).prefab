@@ -169,4 +169,4 @@ MonoBehaviour:
   damage: 10
   knockback: 5
   speed: 25
-  direction: {x: 1, y: 0}
+  direction: {x: 1, y: -0.1}

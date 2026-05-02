@@ -59,6 +59,7 @@ MonoBehaviour:
   col: {fileID: 0}
   rb: {fileID: 0}
   catUnit: {fileID: 0}
+  skillSound: {fileID: 8300000, guid: a5070c34149e8be4685fffa853660f6d, type: 3}
 --- !u!70 &5512074555908395753
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
