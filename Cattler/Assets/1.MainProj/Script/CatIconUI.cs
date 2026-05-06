@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class CatIconUI : MonoBehaviour
 {
@@ -93,6 +94,13 @@ public class CatIconUI : MonoBehaviour
             uiSlots[i].iconIndex = i;
             uiSlots[i].initialIconIndex = i;
             uiSlots[i].icon.gameObject.SetActive(true);
+
+            Image iconImage = uiSlots[i].iconImage;
+            if (iconImage != null)
+            {
+                Color c = iconImage.color;
+                iconImage.color = new Color(c.r, c.g, c.b, 1f); // full opacity
+            }
 
             uiSlots[i].unit = cat;
             uiSlots[i].iconImage.sprite = cat.runtimeData.template.icon;
@@ -256,10 +264,32 @@ public class CatIconUI : MonoBehaviour
         catUISlotbutton.interactable = false;
         catUISlot.healthBar.gameObject.SetActive(false);
         catUISlot.isDead = true;
-        
-        //disable all skills
 
+        // disable all skills
+        StartCoroutine(SlowFadeIconToNothing(catUISlot.iconImage));
     }
+
+    IEnumerator SlowFadeIconToNothing(Image iconImage)
+    {
+        // Hold full opacity for 3 seconds
+        yield return new WaitForSeconds(3f);
+
+        float duration = 1f; // Duration of the fade
+        float currentTime = 0f;
+        Color originalColor = iconImage.color;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, currentTime / duration);
+            iconImage.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+
+        // Ensure it's fully transparent at the end
+        iconImage.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+    }
+
     public void UnlinkSkill(CatUnit cat)
     {
                // Find the slot that contains this cat
